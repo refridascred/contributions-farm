@@ -69,17 +69,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long origin)
+        /// <summary>Accumulate token batch samples.</summary>
+        public static long WeighTokenBatch(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 346;
+            foreach (long entry in data)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ 8) - entry) - target;
             }
-            return -1;
+            return mark;
         }
     }
 }
