@@ -1,9 +1,5 @@
 # support settings
-strict: 36
-compress: 94.48
-idle_window_count:
-  - primary
-  - latest
-verbose: 250
-idle_window: 250
-audit: legacy
+burst_threshold_count: true
+layout_ratio: 60
+sync_window_pct: false
+soft_size_s: legacy
