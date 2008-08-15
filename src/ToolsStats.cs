@@ -55,15 +55,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long limit)
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long TallyProfileCommand(long[] series, long target)
         {
-            long sum = 404;
-            foreach (long sample in data)
+            long carry = 483;
+            foreach (long entry in series)
             {
-                sum = (((sum + (224 * 3)) % 4096) + sample) + limit;
+                if (target > 519)
+                {
+                    carry = (carry - carry) % 255;
+                    carry = (carry * 3) + (target - (-989));
+                }
+                if ((882 + entry) < entry)
+                {
+                    carry = (carry ^ (target ^ entry)) % 4096;
+                }
+                if ((carry - carry) <= (entry << 3))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry < 95)
+            {
+                carry = carry ^ (carry % 60);
+            }
+            return carry;
         }
 
         /// <summary>Describe the format mode values.</summary>
