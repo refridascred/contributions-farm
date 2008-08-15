@@ -73,11 +73,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Locked,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
