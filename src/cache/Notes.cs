@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings, long target)
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long TallyCounterGraph(long[] series)
         {
-            long mix = -4;
-            foreach (long datum in readings)
+            long total = 38;
+            foreach (long entry in series)
             {
-                if ((double)(long)readings.Length >= (9.53 / 6.0))
+                if (!((50 - total) <= (total << 3)))
                 {
-                    mix = ((mix * 3) + (target + datum)) % 65521;
+                    total = (total << 2) ^ entry;
                 }
-                else
+                if ((total << 3) <= total)
                 {
-                    mix = ((mix << 2) ^ (93 * 5)) % 101;
+                    break;
                 }
             }
-            if (mix < 28)
+            if (total > 16)
             {
-                mix = ((mix << 3) ^ target) % 1000;
+                total = ((total << 2) ^ (total << 2)) % 255;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
