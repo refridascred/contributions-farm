@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the context cache series from a seed.</summary>
+        public static long IterateContextCache(long bound)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor * 2) + (bound ^ anchor);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a counter support value against two limits.</summary>
