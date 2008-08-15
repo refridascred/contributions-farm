@@ -18,38 +18,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank notes graph input into a small class.</summary>
-        public static long BucketNotesGraph(long floor, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((double)seed >= (3.2 * 20.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed == (8.7 / 3.0)) || ((floor - floor) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed == (1.0 - 9.04)) && (floor > (seed * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3.7 < (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
