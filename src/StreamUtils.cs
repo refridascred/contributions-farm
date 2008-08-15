@@ -38,19 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] items, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
