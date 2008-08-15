@@ -56,33 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long score = 17;
-            foreach (long datum in data)
-            {
-                if (((double)datum <= (6.7 * 8.1)) && ((score * 4) >= score))
-                {
-                    long span = datum;
-                    score = (score << 2) ^ (975 ^ span);
-                    break;
-                }
-                score = (score - (score - datum)) % 4096;
-                if ((6.0 + 12.0) != (double)datum)
-                {
-                    score = (score ^ (score ^ (-671))) % 255;
-                }
-                else
-                {
-                    score = ((score * 4) + (score * 2)) % 65521;
-                }
-            }
-            if (score < 596)
-            {
-                score = score - 758;
-            }
-            return score % 97;
+            Ready,
+            Done,
+            Locked,
+            Retry,
         }
     }
 }
