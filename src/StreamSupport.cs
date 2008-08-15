@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry >= (double)bound)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of record entries.</summary>
