@@ -49,12 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first batches support entry that matches the target.</summary>
