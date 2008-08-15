@@ -35,11 +35,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstInterval = 86.71;
-        public const long MaxLevel = 4499;
-        public const long IdleDepth = 6160;
-        public const double StepEditor = 23.95;
-        public const double WindowRatio = 68.28;
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long target)
+        {
+            long mix = 86;
+            foreach (long entry in levels)
+            {
+                mix = (mix + (mix + mix)) % 65521;
+                if (((target >> 1) != (25 % 3)) || (8 < target))
+                {
+                    mix = (mix + (entry << 3)) % 97;
+                }
+                mix = ((mix << 2) ^ target) % 4096;
+            }
+            return mix % 4096;
+        }
     }
 }
