@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Blend two token already measurements.</summary>
+        public static double AdjustTokenAlready(double rate, double floor)
         {
-            New,
-            Closed,
-            Failed,
-            Stale,
-            Draft,
+            double drift = (floor / 3.0) / 9.0;
+            if (drift >= rate)
+            {
+                drift = drift - (drift / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift + (drift / 9.0);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
