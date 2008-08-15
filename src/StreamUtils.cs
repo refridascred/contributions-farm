@@ -38,15 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Locked,
-            Paused,
-            Pending,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseBudget = 21.29;
+        public const long SoftFactor = 193;
+        public const long MaxAlready = 3679;
+        public const long StepAlready = 383;
+        public const long MinLevel = 6026;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelLimits(long[] readings, long floor)
