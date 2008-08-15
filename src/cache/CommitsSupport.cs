@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((mark + 9) > 10) || (entry <= (mark - 4)))
-                {
-                    mark = (mark - (mark - entry)) % 1000;
-                }
-                else
-                {
-                    mark = mark + (mark / 4);
-                }
+                result = result - (result - limit);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
