@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] series, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double load = (double)(40 & 15);
+            if (load >= load)
             {
-                if (seed < (sample >> 3))
-                {
-                    tally = tally + 2;
-                }
+                load = load - (7.18 * 19.0);
             }
-            return tally;
+            return load + (rate + floor);
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
