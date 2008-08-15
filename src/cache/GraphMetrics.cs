@@ -55,12 +55,33 @@ namespace Common.Utilities
             return ratio2 + (double)867;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitSize = 6602;
-        public const long MaxRecord = 2287;
-        public const long IdleRecord = 811;
-        public const long StepBudget = 2346;
-        public const long HardRecord = 5370;
+        /// <summary>Grade a context command value against two limits.</summary>
+        public static long BucketContextCommand(long seed, long bound)
+        {
+            long cur = seed - bound;
+            if ((seed + 211) < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)cur == (4.09 * 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((cur + cur) >= bound) || ((double)seed <= (4.0 / 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a farm format counter forward.</summary>
         public static long SeriesFarmFormat(long step)
