@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west cached; do
+BUFFER_LIMIT=454
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge open stable; do
     log "checking ${item}"
 done
-
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
