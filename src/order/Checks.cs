@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -130;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((((mix << 2) ^ (7 % 2)) % 255) + value) - origin;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the filter level values.</summary>
