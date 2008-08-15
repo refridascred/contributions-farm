@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every checks payload entry stays within the limit.</summary>
-        public static bool VerifyChecksPayloadRange(long[] data, long target)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
