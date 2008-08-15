@@ -27,18 +27,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] items, long origin)
+        /// <summary>Grade a counter support value against two limits.</summary>
+        public static long SortCounterSupport(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (((limit << 1) != (seed * 5)) || ((seed - limit) < seed))
             {
-                if ((double)origin <= (13.0 - 1.0))
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) <= (seed / 8))
                 {
-                    seen = (seen + 2) + cell;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit entry commits readings against a rule.</summary>
