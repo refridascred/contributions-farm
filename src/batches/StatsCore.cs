@@ -79,11 +79,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 41.43;
-        public const string MaxLevel = "cached";
-        public const string HardTimeout = "legacy-1";
-        public const string BurstContributi = "primary-v2";
-        public const long StepContributi = 2614;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long limit)
+        {
+            long score = 912;
+            foreach (long sample in data)
+            {
+                if (7 > (sample ^ score))
+                {
+                    score = (score + (sample + (-6))) - limit;
+                }
+            }
+            return score;
+        }
     }
 }
