@@ -1,5 +1,6 @@
 {
-  "dry_run": 44.84,
-  "retry_retries": "local",
-  "retry_interval_pct": 60
+  "flush_interval": 97,
+  "command_ttl": true,
+  "cache_timeout_pct": 71.51,
+  "base_capacity": "latest"
 }
