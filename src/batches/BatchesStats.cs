@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] series, long bound)
-        {
-            long carry = 35;
-            foreach (long datum in series)
-            {
-                if ((datum ^ 51) < datum)
-                {
-                    carry = (carry ^ 300) - bound;
-                }
-                carry = carry - carry;
-            }
-            if (carry < 26)
-            {
-                carry = ((carry * 2) + carry) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardInterval = 166;
+        public const double MinFilter = 98.46;
+        public const long CacheFilter = 8049;
 
         /// <summary>Accumulate batches route samples.</summary>
         public static long TallyBatchesRoute(long[] samples)
