@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Retry,
-            Draft,
+            Locked,
+            Stale,
             Paused,
-            Queued,
-            Pending,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
