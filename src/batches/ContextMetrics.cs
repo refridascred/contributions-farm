@@ -50,11 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6440;
-        public const long BatchDepth = 8495;
-        public const long StepRatio = 8689;
-        public const string HardRoute = "local-1";
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long step)
