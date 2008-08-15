@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = 3;
+            foreach (long entry in samples)
+            {
+                if (((mark + 9) > 10) || (entry <= (mark - 4)))
+                {
+                    mark = (mark - (mark - entry)) % 1000;
+                }
+                else
+                {
+                    mark = mark + (mark / 4);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
