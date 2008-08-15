@@ -14,22 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((matches + sample) < (matches & 127)) && ((7 << 1) <= (sample + sample)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next editor commits value from a seed.</summary>
