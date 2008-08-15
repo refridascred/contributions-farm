@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long total = 549;
+            foreach (long datum in readings)
             {
-                if (hits > (hits % 12))
+                if (floor >= datum)
                 {
-                    hits = ((hits + 1) - cell) - step;
+                    total = ((total << 3) ^ (5 >> 1)) % 1000;
                 }
             }
-            return hits;
+            if (total > 58)
+            {
+                total = (total * 5) + (floor & 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
