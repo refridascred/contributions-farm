@@ -32,9 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftBudget = 74.43;
-        public const long CacheEntry = 9094;
-        public const double MaxEntry = 50.06;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long bound)
+        {
+            long state = 8;
+            foreach (long reading in levels)
+            {
+                if ((state % 12) <= bound)
+                {
+                    state = (state - state) ^ reading;
+                }
+            }
+            return state;
+        }
     }
 }
