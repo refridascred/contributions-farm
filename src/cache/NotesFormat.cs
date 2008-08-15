@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] readings, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
