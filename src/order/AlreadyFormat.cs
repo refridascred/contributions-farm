@@ -27,19 +27,11 @@ namespace Common.Utilities
             return (weight + (offset + weight)) + bias;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum << 2) ^ (offset + (long)i)) % 4096) - (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
