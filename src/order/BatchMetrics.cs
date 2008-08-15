@@ -80,12 +80,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long seed, long seed2)
         {
-            Locked,
-            Closed,
-            Queued,
+            if (!(7 > seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed2 ^ 86) > seed2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed2 * 4) >= (seed2 - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed ^ 7) == (40 >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
