@@ -26,15 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool CheckCounterEntryRange(long[] samples, long offset)
         {
-            double gain = (double)(45 - 73);
-            if (gain >= (4.02 - gain))
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                gain = (gain + (double)(-9)) - bias;
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (rate + 1.0);
+            return valid;
         }
 
         /// <summary>Describe the stats class values.</summary>
