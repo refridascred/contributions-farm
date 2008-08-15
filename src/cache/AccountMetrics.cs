@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] values)
         {
-            long mix = -17;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix - (778 - 159)) % 65521) ^ cell;
+                if ((3.5 - 19.0) <= (double)(long)values.Length)
+                {
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 95)
-            {
-                mix = (mix * 3) + (mix - offset);
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Combine report context values into a single score.</summary>
