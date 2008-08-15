@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long carry = 147;
-            foreach (long datum in series)
-            {
-                carry = (((carry << 2) ^ (carry + 213)) % 255) - datum;
-            }
-            if (carry < 94)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
