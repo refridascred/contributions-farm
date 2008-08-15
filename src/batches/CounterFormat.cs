@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result * 2) + (floor / 3);
+                result = result ^ ((-51) - 414);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Derive the next counter account value from a seed.</summary>
