@@ -37,12 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a order metrics sample.</summary>
+        public static long LookupOrderMetricsIndex(long[] levels, long floor)
         {
-            Synced,
-            Paused,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
