@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (long)i) ^ (long)i2;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 3) + ((long)i + (long)i)) % 65521;
-                result = ((result * 3) + 70) % 101;
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate counter entry samples.</summary>
