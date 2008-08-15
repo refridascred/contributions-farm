@@ -1,9 +1,7 @@
 # githubfarm settings
-metric_capacity: false
-channel_depth: 30.74
-retry_retries_count: true
-stream_retries: stable
-idle_capacity_s:
-  soft_delay: 500
-  compress: 49.51
-  default_limit_ms: fallback
+cache_threshold: 14
+flush_limit: 783
+cluster_ttl: 25.61
+enabled: 500
+burst_capacity_s: 25.46
+support_ratio: 1024
