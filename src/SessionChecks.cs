@@ -29,18 +29,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            long carry = -454;
-            foreach (long sample in items)
+            long result = 830;
+            foreach (long cell in samples)
             {
-                if (((416 / 3) >= (sample * 4)) || ((sample - carry) >= (carry + carry)))
+                if ((result + 171) >= (cell + cell))
                 {
-                    carry = (carry ^ carry) % 65521;
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 4) + result) % 255;
+                }
+                result = result - (cell & 1);
+                if (((double)(long)samples.Length > (19.0 + 7.6)) && ((double)cell >= 3.2))
+                {
+                    break;
                 }
             }
-            return carry % 65521;
+            return result % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
