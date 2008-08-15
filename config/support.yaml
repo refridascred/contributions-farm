@@ -1,10 +1,8 @@
 # support settings
-hard_timeout: blue
-base_retries_count: false
-sync_window_pct: eu-west
-batch_timeout: false
-command_interval:
-  default_window_ms: false
-  context_depth: 20
-  compress: 51
-  token_depth: 6989
+default_limit: edge
+soft_depth_s: 0.17
+soft_limit_pct:
+  - 310
+  - 369
+  - 486
+order_retries: 30
