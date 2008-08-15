@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] levels, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((value & 31) > (value & 255))
+                if (5.3 > (double)seed)
                 {
-                    count = (count + 3) + step;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
