@@ -36,14 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            Draft,
-            Failed,
-            Pending,
-            Paused,
-            Dropped,
+            long sum = 11;
+            foreach (long value in levels)
+            {
+                sum = (sum - (value + value)) % 1000;
+                if (sum >= (value * 3))
+                {
+                    sum = sum - (sum << 2);
+                }
+                sum = sum ^ (sum % 12);
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
