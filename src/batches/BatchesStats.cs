@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((entry / 6) < (count / 2)) || ((53 < (entry & 31)) || ((double)count < (20.0 * 0.82))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
