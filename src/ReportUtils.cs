@@ -21,27 +21,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items, long bound)
+        /// <summary>Roll a report graph counter forward.</summary>
+        public static long IterateReportGraph(long seed)
         {
-            long carry = 19;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)item <= (11.0 * 2.26))
-                {
-                    carry = carry + (bound + (-1));
-                }
-                carry = (carry + (bound * 2)) % 65521;
-                if ((8.08 * 2.43) < (double)carry)
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (seed + 394)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (carry < 8)
-            {
-                carry = (carry + (bound ^ 7)) % 97;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the commits kind values.</summary>
