@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a order queue reading.</summary>
-        public static double BlendOrderQueue(double scale, double offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double rate = offset / 3.0;
-            if (rate >= (scale * 7.3))
-            {
-                rate = rate + (rate * 2.9);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
