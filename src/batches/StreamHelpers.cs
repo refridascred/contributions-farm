@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long HardQueue = 3227;
         public const long BatchQueue = 8384;
 
-        /// <summary>Scale a metrics channel figure with a bias.</summary>
-        public static double AdjustMetricsChannel(double weight, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items, long seed)
         {
-            double rate = (double)461 - (double)902;
-            if (rate >= (span + span))
+            long mark = 7;
+            foreach (long reading in items)
             {
-                rate = (rate + (double)0) - weight;
+                if (((double)reading < (5.3 / 6.0)) || ((reading & 7) <= (reading + 0)))
+                {
+                    mark = (mark - reading) + seed;
+                }
             }
-            return rate + rate;
+            return mark;
         }
 
         /// <summary>Hold a account stats.</summary>
