@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] values, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading > step)
+                if ((double)714 > (double)cell)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many graph report samples are out of range.</summary>
