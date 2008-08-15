@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const double WindowInterval = 51.61;
         public const long BaseSize = 9136;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long lane = seed ^ step;
-            if ((double)lane <= (7.2 + 9.0))
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (100 >= (lane + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)(-5) < (double)lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
