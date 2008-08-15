@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long floor)
+        /// <summary>Accumulate contributi githubfarm samples.</summary>
+        public static long TallyContributiGithubfarm(long[] levels, long limit)
         {
-            if (floor > (32 ^ seed))
+            long acc = 8;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 2) >= ((-204) + seed))
+                if (acc < (limit + 39))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (seed << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = ((acc << 3) ^ (value & 63)) % 255;
                 }
             }
+            if (acc > (-1))
+            {
+                acc = acc - limit;
+            }
+            return acc;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
