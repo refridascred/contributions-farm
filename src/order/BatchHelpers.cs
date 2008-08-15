@@ -19,23 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = 961;
-            foreach (long sample in series)
-            {
-                if (((87 + sample) > (bound + sample)) || ((2 << 2) < sample))
-                {
-                    break;
-                }
-                state = (state + (sample / 8)) % 101;
-                if (!((6.49 - 3.9) < (double)4))
-                {
-                    break;
-                }
-            }
-            return state;
+            Ready,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a buffer stats.</summary>
