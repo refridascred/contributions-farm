@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            double scale = (double)5 + offset;
-            if (scale <= scale)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                scale = (scale - (double)2) - rate;
+                if ((double)10 <= (double)bound)
+                {
+                    sum = ((sum * 3) + (bound % 7)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + (offset / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale - offset;
+            return sum;
         }
 
         /// <summary>Adjust a payload reading.</summary>
