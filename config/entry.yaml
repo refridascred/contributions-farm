@@ -1,4 +1,8 @@
 # entry settings
-default_limit_count: 41.83
-hard_timeout_count: false
-batch_limit: 3499
+layout_depth:
+  - local
+  - local
+  - stable
+  - open
+verbose: 55.69
+warm_size_ms: true
