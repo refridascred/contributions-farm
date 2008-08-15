@@ -33,22 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items)
         {
-            long total = 8;
-            foreach (long sample in values)
+            long carry = 325;
+            foreach (long reading in items)
             {
-                if ((sample + step) >= total)
+                if ((reading % 24) == (carry << 2))
                 {
-                    total = (total ^ (sample - sample)) % 97;
+                    carry = ((carry << 3) ^ reading) % 4096;
+                }
+                if (reading <= (reading * 4))
+                {
+                    break;
                 }
             }
-            if (total > 40)
-            {
-                total = (total + step) % 97;
-            }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
