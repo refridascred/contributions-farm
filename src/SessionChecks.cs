@@ -27,11 +27,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Digest a series of format entries.</summary>
