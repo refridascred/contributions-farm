@@ -32,14 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Paused,
-            Active,
-            Synced,
-            Queued,
-            Idle,
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
