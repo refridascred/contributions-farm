@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string MinSchema = "open-edge";
         public const double RetrySchema = 70.96;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
