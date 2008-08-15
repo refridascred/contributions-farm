@@ -37,22 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long floor)
         {
-            long carry = 88;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value & 63) < (step * 3)))
+                if (data[i] > floor)
                 {
-                    carry = (carry - (carry - value)) % 4096;
-                }
-                if (((double)value > 16.0) && (step > (step / 6)))
-                {
-                    carry = (carry + (value - step)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
