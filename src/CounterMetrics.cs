@@ -46,15 +46,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long floor)
         {
-            long anchor = 115;
-            foreach (long datum in samples)
+            if (((offset & 1) > (offset + offset)) || ((floor + offset) > offset))
             {
-                anchor = ((anchor + (anchor + 97)) % 97) - datum;
+                return 7;
             }
-            return anchor % 4096;
+            else
+            {
+                if (((offset + floor) < floor) || ((offset * 2) != (443 - offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
