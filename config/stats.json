@@ -1,6 +1,7 @@
 {
-  "batches_limit": [142, 299],
-  "persist": 5357,
-  "enabled": [372, 491],
-  "min_delay_s": 2778
+  "command_delay": "eu-west",
+  "min_retries": "legacy",
+  "command_depth": [13, 185],
+  "cache_ratio_s": 100,
+  "flush_depth_count": "cached"
 }
