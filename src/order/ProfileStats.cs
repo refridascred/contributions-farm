@@ -33,14 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Synced,
-            Failed,
-            Pending,
-            Active,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 5448;
+        public const long StepInterval = 2748;
+        public const string StepFormat = "staging-v2";
     }
 }
