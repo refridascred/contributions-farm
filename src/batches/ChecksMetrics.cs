@@ -27,12 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8341;
-        public const long BaseSpan = 9560;
-        public const double MinInterval = 43.17;
-        public const long LimitWidth = 8707;
-        public const long BurstScore = 3927;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double span)
+        {
+            double drift = scale;
+            if (drift >= (4.1 + scale))
+            {
+                drift = (drift - scale) - span;
+            }
+            else
+            {
+                drift = drift - 11.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (2.27 + scale)) + (double)(long)i;
+            }
+            return drift - (double)31;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8851;
