@@ -27,9 +27,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitRatio = "latest-1";
-        public const long LimitCommits = 4458;
-        public const long SoftTimeout = 2134;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
