@@ -22,12 +22,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Paused,
-            New,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 40.42;
+        public const long MaxTimeout = 7804;
+        public const double BurstSize = 87.44;
+        public const long MaxCommits = 2944;
     }
 }
