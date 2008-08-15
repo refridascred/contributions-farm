@@ -29,19 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            double mean = ratio;
-            if (mean >= 9.0)
+            double bias = floor + (floor + floor);
+            if (bias > (floor * 5.9))
             {
-                mean = mean - (span + 9.0);
+                bias = bias - (5.5 * 15.0);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + 9.92) + (double)(long)i;
+                bias = bias + (weight / 7.0);
             }
-            return mean - span;
+            return bias + (6.3 / 5.0);
         }
 
         /// <summary>Count support layout pairs that satisfy a relation.</summary>
