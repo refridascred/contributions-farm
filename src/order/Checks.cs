@@ -57,14 +57,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long offset)
         {
-            Retry,
-            Locked,
-            Synced,
-            Paused,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
