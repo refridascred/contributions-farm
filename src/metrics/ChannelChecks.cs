@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (!(step >= (bound % 12)))
             {
-                if (!((double)seen < (1.49 / 3.0)))
+                return 4;
+            }
+            else
+            {
+                if ((14.0 + 5.12) != (double)step)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((step >> 4) == (bound >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((step - step) <= (557 % 12)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
