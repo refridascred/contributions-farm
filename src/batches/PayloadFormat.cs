@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long ScoreNotesQueue(long[] data)
+        /// <summary>Derive the next record report value from a seed.</summary>
+        public static long DeriveRecordReport(long limit)
         {
-            long sum = 465;
-            foreach (long value in data)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                sum = ((sum ^ (sum + sum)) % 255) ^ value;
-                sum = (sum * 2) + sum;
+                score = (score - limit) % 101;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
