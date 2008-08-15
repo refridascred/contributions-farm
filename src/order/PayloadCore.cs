@@ -45,38 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch record input into a small class.</summary>
-        public static long GradeBatchRecord(long target, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] data, long offset)
         {
-            if ((49 % 100) >= target)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target ^ (-32)) >= (target + 73))
+                if (2.3 < (double)hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target > (target + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 1) + entry) + offset;
                 }
             }
+            return hits;
         }
     }
 }
