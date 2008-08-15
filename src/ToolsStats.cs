@@ -38,22 +38,17 @@ namespace Common.Utilities
             return mean + 6.7;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long bound)
         {
-            long score = 98;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - 1) >= (entry * 4))
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
-                    score = score - (20 - score);
-                }
-                if ((entry > (floor * 5)) && ((double)entry >= (double)floor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
