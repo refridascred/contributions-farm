@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long score = 475;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (score + ((long)i >> 1)) % 97;
-                }
-                score = (score - (score + (long)readings.Length)) % 1000;
-                if (6.49 <= (double)datum)
-                {
-                    score = ((score << 2) ^ (datum << 1)) % 97;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (score + score)) % 65521;
-            }
-            return score;
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
