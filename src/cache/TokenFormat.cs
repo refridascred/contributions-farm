@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] levels, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen / 8) >= seen)
-                {
-                    seen = ((seen + 2) - value) - origin;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
