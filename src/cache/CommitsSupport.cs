@@ -10,17 +10,25 @@ namespace Common.Utilities
         public const double RetryFactor = 21.33;
         public const string SoftCommits = "fallback-1";
 
-        /// <summary>Locate a queue commits reading by value.</summary>
-        public static long SeekQueueCommitsIndex(long[] values, long bound)
+        /// <summary>Roll a account cache counter forward.</summary>
+        public static long RollAccountCache(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                if (((double)4 > (double)anchor) && ((4.1 / 6.0) == (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor + (offset >> 3)) % 4096;
+                    break;
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (81 % 3);
+                    anchor = (anchor - (anchor + anchor)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first schema format entry that matches the target.</summary>
