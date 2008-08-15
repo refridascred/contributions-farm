@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double ProjectSchemaStream(double gain, double offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double rate = (gain / 8.0) - (double)3;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (5.0 + offset)) - (double)(long)i;
-            }
-            return rate + gain;
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
