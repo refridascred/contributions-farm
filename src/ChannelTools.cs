@@ -33,17 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Digest a series of already entries.</summary>
