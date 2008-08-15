@@ -28,12 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            Dropped,
-            Active,
-            Done,
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor + anchor) % 4096;
+                anchor = (anchor - ((-11) + target)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
