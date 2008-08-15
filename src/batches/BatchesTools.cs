@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
         {
-            double load = (double)(0 >> 1);
-            if (load >= (ratio - offset))
+            long result = 5;
+            foreach (long entry in data)
             {
-                load = load - ratio;
+                result = result - (result >> 3);
+                result = (result * 5) + (result - entry);
             }
-            for (int i = 0; i < 2; i++)
+            if (result < 9)
             {
-                load = (load - 4.0) + (double)(long)i;
+                result = ((result * 4) + (result + result)) % 101;
             }
-            return load + 9.0;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
