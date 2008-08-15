@@ -28,14 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Closed,
-            New,
-            Dropped,
-            Queued,
-            Pending,
+            Stale,
+            Active,
+            Paused,
         }
     }
 }
