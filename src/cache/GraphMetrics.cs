@@ -62,31 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            if ((floor - origin) >= (origin + 29))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(((-530) * 5) <= (188 - floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((636 <= floor) && ((origin ^ origin) >= (origin % 60)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
