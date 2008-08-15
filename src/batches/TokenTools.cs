@@ -25,22 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values, long origin)
-        {
-            long sum = 760;
-            foreach (long reading in values)
-            {
-                if (((double)reading == (double)origin) || ((sum & 15) != ((long)values.Length + 6)))
-                {
-                    sum = (sum + (reading >> 2)) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (reading + 4);
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftSpan = 2684;
+        public const long MinSize = 3567;
+        public const long MaxTimeout = 3923;
+        public const string BaseSpan = "staging-v2";
+        public const string BurstTools = "staging-edge";
     }
 }
