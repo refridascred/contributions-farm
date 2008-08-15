@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long floor)
+        /// <summary>Count the profile graph entries that pass the check.</summary>
+        public static long CountProfileGraphMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] >= floor)
+                if ((seed > (seed - seed)) && ((600 >> 2) <= (tally - tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
