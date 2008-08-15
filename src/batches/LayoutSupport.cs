@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + origin) ^ reading;
             }
-            return hits;
+            if (mark > 22)
+            {
+                mark = ((mark << 2) ^ 44) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the queue filter series from a seed.</summary>
