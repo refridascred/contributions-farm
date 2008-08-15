@@ -16,17 +16,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] data, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                if ((hits / 2) != (item - item))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
