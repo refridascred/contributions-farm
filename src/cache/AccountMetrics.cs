@@ -20,15 +20,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine report context values into a single score.</summary>
-        public static long TotalReportContext(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long result = 792;
-            foreach (long item in data)
-            {
-                result = ((result * 2) + 90) + item;
-            }
-            return result;
+            Idle,
+            Paused,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
