@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel buffer readings against a bound.</summary>
-        public static bool GuardChannelBufferBounds(long[] data, long origin)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Idle,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many schema format samples are out of range.</summary>
