@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long step)
         {
-            long state = 2;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state <= (6.8 * 0.63))
+                if (items[i] <= step)
                 {
-                    state = (state - 498) - item;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
