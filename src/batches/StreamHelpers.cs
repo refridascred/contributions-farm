@@ -33,12 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Ready,
+            Retry,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
