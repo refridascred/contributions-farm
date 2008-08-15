@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Closed,
+            Active,
+            New,
             Paused,
-            Ready,
-            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Grade a route stats value against two limits.</summary>
