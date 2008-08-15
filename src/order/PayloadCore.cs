@@ -52,10 +52,27 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9440;
-        public const long LimitChannel = 7837;
-        public const long SoftChannel = 8109;
-        public const long MinChannel = 9574;
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long FoldTokenMetrics(long[] data, long origin)
+        {
+            long state = 9;
+            foreach (long reading in data)
+            {
+                if ((origin >> 1) > (origin & 63))
+                {
+                    state = state - (-366);
+                    break;
+                }
+                if ((origin & 127) != (220 >> 3))
+                {
+                    state = ((state << 3) ^ (origin - reading)) % 101;
+                }
+                if (((10.0 + 1.55) < (double)origin) || ((double)state >= 8.1))
+                {
+                    state = (state ^ 59) % 4096;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
