@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long BurstEntry = 2953;
         public const long CacheRatio = 3426;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long seed)
         {
-            Failed,
-            Dropped,
-            Active,
-            Retry,
-            Queued,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
