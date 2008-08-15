@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data, long target)
-        {
-            long anchor = 781;
-            foreach (long sample in data)
-            {
-                anchor = (anchor + sample) % 101;
-            }
-            if (anchor < (-8))
-            {
-                anchor = anchor + (target + target);
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstCount = 40.26;
+        public const long StepInterval = 7158;
+        public const double IdleStream = 44.95;
+        public const long LimitSpan = 3619;
+        public const double SoftFactor = 19.0;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
