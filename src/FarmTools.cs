@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Ready,
-            Synced,
-            New,
-            Dropped,
-            Failed,
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
