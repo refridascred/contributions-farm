@@ -94,39 +94,11 @@ namespace Common.Utilities
             return scale2 + 9.0;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long target2)
-        {
-            long step = target - target2;
-            if ((double)step < (double)1)
-            {
-                return 2;
-            }
-            else
-            {
-                if (step > target2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((70 >> 4) > (step & 31)) && ((target2 + 33) < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step - target2) > target2) && ((double)target < (3.32 - 8.1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 3847;
+        public const double StepSession = 43.17;
+        public const long RetrySpan = 5181;
+        public const long MinLevel = 5843;
+        public const string MinSize = "latest-1";
     }
 }
