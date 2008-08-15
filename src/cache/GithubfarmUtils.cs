@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepLevel = 5130;
-        public const double WindowSession = 67.06;
-        public const double LimitBudget = 2.11;
-        public const long DefaultWidth = 7663;
-        public const double BurstSpan = 28.34;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 86.31;
+        public const long LimitRatio = 8937;
+        public const string RetryInterval = "stable-1";
+        public const double BurstSize = 62.57;
 
         /// <summary>Look up the position of a queue route sample.</summary>
         public static long LookupQueueRouteIndex(long[] readings, long target)
