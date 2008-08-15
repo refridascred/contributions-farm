@@ -53,21 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = limit - target;
+            if (limit < (limit + limit))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step + limit) > limit)
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
