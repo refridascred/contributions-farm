@@ -48,29 +48,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next farm checks value from a seed.</summary>
-        public static long DeriveFarmChecks(long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = acc - (bound >> 1);
-                if ((bound + acc) > (long)i)
-                {
-                    acc = (acc - bound) % 255;
-                }
-                if ((acc + 2) > acc)
-                {
-                    acc = (acc << 3) ^ (acc % 5);
-                    acc = (acc - (acc - acc)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (bound % 10);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Draft,
+            Closed,
+            Retry,
+            Done,
+            Paused,
         }
     }
 }
