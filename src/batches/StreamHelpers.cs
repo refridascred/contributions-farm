@@ -40,22 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long offset)
         {
-            long acc = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry > (1.8 + 5.3))
+                if (values[i] < offset)
                 {
-                    acc = (acc + acc) - seed;
+                    return (long)i;
                 }
             }
-            if (acc < 41)
-            {
-                acc = acc ^ 619;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
