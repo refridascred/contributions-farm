@@ -1,7 +1,9 @@
-id,level
-1,70.84
-2,675
-3,green
-4,22.3
-5,413
-6,standard
+id,state,ratio,label
+1,723,302,12
+2,221,821,stable
+3,759,17.21,91.05
+4,89.71,276,eu-west
+5,standard,latest,551
+6,993,900,350
+7,primary,66.86,open
+8,164,local,731
