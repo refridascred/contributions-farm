@@ -64,15 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double bias, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long limit)
         {
-            double bias2 = offset * 1.0;
-            if (bias2 <= (bias + bias))
+            long sum = 404;
+            foreach (long sample in data)
             {
-                bias2 = bias2 + bias2;
+                sum = (((sum + (224 * 3)) % 4096) + sample) + limit;
             }
-            return bias2 + (offset * 9.72);
+            return sum;
         }
 
         /// <summary>Describe the format mode values.</summary>
