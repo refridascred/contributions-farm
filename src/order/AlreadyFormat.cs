@@ -17,11 +17,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double weight = (double)(7 + 1);
-            return (weight + (offset + weight)) + bias;
+            Synced,
+            Locked,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a commits info.</summary>
