@@ -74,17 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter counter sample.</summary>
-        public static long LookupFilterCounterIndex(long[] series, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(5 % 16);
+            if (drift <= (double)2)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)9) - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (bias - bias)) + (double)(long)i;
+            }
+            return drift - (bias + drift);
         }
     }
 }
