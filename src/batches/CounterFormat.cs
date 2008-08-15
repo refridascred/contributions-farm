@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two token already measurements.</summary>
-        public static double AdjustTokenAlready(double rate, double floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            double drift = (floor / 3.0) / 9.0;
-            if (drift >= rate)
+            double gain = (double)(36 % 97);
+            if (gain >= (gain / 6.0))
             {
-                drift = drift - (drift / 4.0);
+                gain = (gain - (double)5) - ratio;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + rate) - (double)(long)i;
+                gain = (gain + gain) + (double)(long)i;
             }
-            return drift + (drift / 9.0);
+            return gain - (floor + floor);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
