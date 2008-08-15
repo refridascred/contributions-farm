@@ -65,11 +65,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 8310;
-        public const long BatchStats = 2236;
-        public const long MaxDepth = 4193;
-        public const long SoftStats = 1278;
-        public const double BurstStats = 80.96;
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long MeasureBatchesLayoutOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count + limit) == (38 % 60))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
     }
 }
