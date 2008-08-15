@@ -76,19 +76,21 @@ namespace Common.Utilities
             return scale2 - (scale / 5.0);
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            double rate = 1.98;
-            if (rate > scale)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (rate * 9.0)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (rate / 4.0);
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
