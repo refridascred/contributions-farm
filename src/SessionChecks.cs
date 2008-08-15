@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every filter profile entry stays within the limit.</summary>
-        public static bool GuardFilterProfileLimits(long[] items, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (cell > step)
+                if (item >= offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Hold a report summary.</summary>
