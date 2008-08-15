@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            Failed,
-            Ready,
-            Pending,
-            Synced,
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
