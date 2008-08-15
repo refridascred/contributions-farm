@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long TallyFormatGithubfarmOutliers(long[] values)
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long ScoreAlreadyStats(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 7;
+            foreach (long value in items)
             {
-                if (((matches - reading) >= reading) || (reading > (reading + reading)))
+                if ((9 << 2) > sum)
                 {
-                    matches = matches + 2;
+                    sum = ((sum ^ sum) ^ value) + target;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a farm summary.</summary>
