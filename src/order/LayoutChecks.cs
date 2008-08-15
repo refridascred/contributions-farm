@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const string HardCounter = "stable-v2";
         public const long StepCounter = 9401;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                result = (result ^ step) % 4096;
-                result = ((result * 3) + (long)i) % 101;
+                if (cell > ((-970) + cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
