@@ -68,38 +68,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already metric value against two limits.</summary>
-        public static long SortAlreadyMetric(long limit, long limit2)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((limit & 1) <= (limit / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit2 + 0) != (limit / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((limit ^ limit) == (7 - limit2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 - limit) <= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Draft,
         }
     }
 }
