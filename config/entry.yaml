@@ -1,10 +1,7 @@
 # entry settings
-compress: stable
-command_capacity:
-  - strict
-  - local
-  - staging
-  - primary
-warm_ttl_s: 41.46
-metrics_depth: 500
-cluster_limit: staging
+verbose: false
+soft_window: true
+channel_ratio: 50.6
+idle_size_pct: true
+flush_threshold: 89
+cache_threshold_ms: staging
