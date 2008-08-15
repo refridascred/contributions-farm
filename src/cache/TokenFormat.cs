@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleTimeout = 7889;
-        public const long CacheCommand = 1012;
-        public const string MaxTimeout = "local-v2";
-        public const long BaseBudget = 631;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Token { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] samples)
