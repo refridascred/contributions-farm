@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate tools account readings against a bound.</summary>
-        public static bool GuardToolsAccountLimits(long[] samples, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long carry = 35;
+            foreach (long datum in series)
             {
-                if (sample >= floor)
+                if ((datum ^ 51) < datum)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ 300) - bound;
                 }
+                carry = carry - carry;
             }
-            return valid;
+            if (carry < 26)
+            {
+                carry = ((carry * 2) + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate batches route samples.</summary>
