@@ -14,12 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values, long seed)
         {
-            Stale,
-            Dropped,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seed < (7.76 + 17.0))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
