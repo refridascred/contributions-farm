@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate contributi githubfarm samples.</summary>
-        public static long TallyContributiGithubfarm(long[] levels, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long target)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (acc < (limit + 39))
+                if ((count * 5) >= value)
                 {
-                    acc = ((acc << 3) ^ (value & 63)) % 255;
+                    count = (count + 2) + target;
                 }
             }
-            if (acc > (-1))
-            {
-                acc = acc - limit;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
