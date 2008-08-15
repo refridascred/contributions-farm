@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 5435;
-        public const long SoftStats = 261;
-        public const string BurstStats = "alpha-1";
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long limit)
+        {
+            if (((double)seed != (6.81 - 5.0)) || (limit <= (seed << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0 ^ 4) <= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= 5)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((718 + limit) == (limit * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] items)
