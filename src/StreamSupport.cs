@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((sample & 7) >= matches) && (((5.0 - 8.7) == (double)matches) || ((matches >> 5) < 36)))
+                if ((seen + 528) < (seed % 8))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
