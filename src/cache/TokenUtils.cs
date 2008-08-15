@@ -21,18 +21,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series)
+        /// <summary>Locate a session token reading by value.</summary>
+        public static long LookupSessionTokenIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((108 + item) <= (tally * 3)) && ((item - 723) <= (item + tally)))
+                if (items[i] == limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
