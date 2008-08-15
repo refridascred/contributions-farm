@@ -56,30 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] levels, long step)
         {
-            long sum = 156;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)3 < (double)sample)
+                if ((step % 12) != (count / 7))
                 {
-                    sum = ((sum << 2) ^ (seed / 9)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 4) + (seed / 4);
-                }
-                if ((sum + sample) < (242 - sum))
-                {
-                    sum = ((sum << 3) ^ (sum / 3)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (sum >> 4)) % 101;
+                    count = (count + 1) + datum;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
