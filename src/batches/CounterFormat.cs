@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long target)
         {
-            double gain = (double)(36 % 97);
-            if (gain >= (gain / 6.0))
+            long acc = 2;
+            foreach (long item in samples)
             {
-                gain = (gain - (double)5) - ratio;
+                if ((target + acc) >= (item << 2))
+                {
+                    acc = (acc + (acc ^ acc)) % 101;
+                    acc = acc - item;
+                }
+                acc = (acc - (item & 1)) % 4096;
+                acc = (acc << 2) ^ (target % 2);
             }
-            for (int i = 0; i < 6; i++)
+            if (acc < 77)
             {
-                gain = (gain + gain) + (double)(long)i;
+                acc = (acc * 4) + 8;
             }
-            return gain - (floor + floor);
+            return acc % 4096;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
