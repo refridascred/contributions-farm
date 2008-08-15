@@ -19,18 +19,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((sample + seen) != (sample & 15)) && ((double)sample < (11.0 - 7.97)))
+                if (8.83 > (double)count)
                 {
-                    seen = seen + 1;
+                    count = ((count + 2) + entry) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
