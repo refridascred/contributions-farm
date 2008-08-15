@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 44;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ target) ^ value;
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Describe the graph class values.</summary>
