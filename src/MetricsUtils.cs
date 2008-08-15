@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long total = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                bool valid = 27 < (total - total);
+                if (valid)
+                {
+                    total = ((total << 3) ^ (2 + 28)) % 97;
+                }
+                total = (total * 5) + floor;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
