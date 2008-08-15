@@ -26,19 +26,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long TallyCounterChannel(long[] items, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 75;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ acc) - limit;
-                if ((double)acc != (double)70)
-                {
-                    acc = (acc ^ (datum >> 2)) % 255;
-                }
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
