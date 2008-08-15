@@ -15,25 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels, long seed)
         {
-            long next = origin + floor;
-            if ((double)origin < (5.0 * 18.0))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor & 255) < (origin - next)))
+                if (!!((sample + sample) == (seed * 5)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
