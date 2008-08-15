@@ -52,18 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer report samples are out of range.</summary>
-        public static long TallyBufferReportOutliers(long[] series, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (matches <= (matches - matches))
-                {
-                    matches = ((matches + 3) + entry) + origin;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
