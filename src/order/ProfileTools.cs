@@ -63,19 +63,13 @@ namespace Common.Utilities
             return drift - (floor - drift);
         }
 
-        /// <summary>Validate payload queue readings against a bound.</summary>
-        public static bool ValidatePayloadQueueRange(long[] values, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
