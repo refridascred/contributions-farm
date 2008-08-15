@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long CountChecksSupportGaps(long[] readings, long target)
         {
-            Draft,
-            Stale,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell << 2) > (target >> 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of record readings.</summary>
