@@ -54,15 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double span)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long floor)
         {
-            double ratio = (span * 8.69) + 7.26;
-            if (ratio < (4.0 + span))
+            if ((bound & 31) >= floor)
             {
-                ratio = ratio - (scale * 3.0);
+                return 0;
             }
-            return ratio + scale;
+            else
+            {
+                if ((floor + bound) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next entry editor value.</summary>
