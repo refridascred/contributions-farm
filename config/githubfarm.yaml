@@ -1,17 +1,15 @@
 # githubfarm settings
-base_threshold: 7793
-entry_delay:
-  graph_retries: false
-  base_delay_count: 40.61
-  min_capacity_ms: true
-  command_limit: 250
-audit: green
-flush_timeout_s: eu-west
-idle_window: 3663
-persist:
-  soft_retries: 19
-  cache_threshold: 9.15
-  poll_ttl: 97.02
-  commits_delay: 4.37
-  burst_limit_s: standard
-  payload_ratio: cached
+persist: false
+batch_interval:
+  poll_timeout_s: 100
+  metrics_ratio:
+    idle_window_ms: 78.23
+    enabled: blue
+    idle_ratio_s: 96.02
+    buffer_interval: 25.03
+    verbose: 4362
+  hard_ratio_pct: true
+  command_threshold: false
+  compress: stable
+  buffer_interval: open
+schema_threshold: true
