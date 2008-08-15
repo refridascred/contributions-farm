@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next already context value.</summary>
-        public static double BlendAlreadyContext(double gain, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double rate = offset;
-            if (rate <= (gain - offset))
-            {
-                rate = rate - (double)8;
-            }
-            return rate + (7.0 * 9.0);
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up channel samples.</summary>
