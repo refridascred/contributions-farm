@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((double)origin != (1.38 - 4.5))
             {
-                if ((matches ^ (long)samples.Length) != (matches * 5))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 2) < (63 << 3))
                 {
-                    matches = (matches + 1) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
