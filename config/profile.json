@@ -1,26 +1,5 @@
 {
-  "sync_threshold_count": {
-    "hard_interval": "staging",
-    "default_limit_count": 79.07,
-    "burst_size": 9715,
-    "record_timeout": 54.75,
-    "soft_limit_count": false,
-    "hard_ratio_ms": 10.05
-  },
-  "warm_delay_pct": "open",
-  "idle_window": {
-    "retry_capacity": 99,
-    "cache_ratio_pct": 30,
-    "persist": true,
-    "flush_retries": 63,
-    "cache_limit_s": {
-      "soft_ratio_s": 3862,
-      "compress": 29.16,
-      "filter_size": "green",
-      "flush_limit_count": 30,
-      "cache_size_pct": true
-    }
-  },
-  "cluster_depth": false,
-  "dry_run": 5826
+  "retry_threshold_count": "primary",
+  "burst_delay_ms": [5, 386, 477],
+  "checks_timeout": 100
 }
