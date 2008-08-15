@@ -31,15 +31,17 @@ namespace Common.Utilities
         public const string BurstCount = "local-1";
         public const long HardCache = 1387;
 
-        /// <summary>Blend two format payload measurements.</summary>
-        public static double ProjectFormatPayload(double ratio, double span)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] data, long limit)
         {
-            double gain = ratio - span;
-            if (gain <= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - span;
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (double)524;
+            return -1;
         }
     }
 }
