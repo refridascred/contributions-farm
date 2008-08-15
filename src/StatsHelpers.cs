@@ -38,11 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "staging-v2";
-        public const long SoftScore = 4202;
-        public const long HardBudget = 4196;
-        public const string BurstTimeout = "staging";
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long limit)
