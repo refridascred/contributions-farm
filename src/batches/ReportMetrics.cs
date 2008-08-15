@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 6833;
         public const string DefaultFilter = "staging-1";
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many session batch samples are out of range.</summary>
+        public static long AuditSessionBatchOutliers(long[] series)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= ((long)series.Length / 6))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools level values.</summary>
