@@ -14,23 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] values, long floor)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (seed % 7)) + reading;
-                if (!((seed << 1) == (88 / 5)))
+                if ((values[i] < floor) && ((values[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 5)
-            {
-                total = total ^ seed;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
