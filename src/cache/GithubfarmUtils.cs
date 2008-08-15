@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((6.1 * 4.0) == (double)seen)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 7388;
+        public const long HardSchema = 4697;
+        public const double MinSchema = 92.48;
+        public const double DefaultSchema = 20.12;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] series, long limit)
