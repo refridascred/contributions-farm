@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long target2)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long diff = target + target2;
-            if (!((1.7 / 9.0) > (double)target))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 % 5) > (diff - 96))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((11.0 + 0.61) == (double)diff)
+                    if ((levels[i] + levels[j]) != 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff % 12) <= (diff << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
