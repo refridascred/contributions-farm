@@ -19,23 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings, long floor)
         {
-            double weight = (double)984 + (scale + scale);
-            if (weight <= (offset / 2.0))
+            long score = 996;
+            foreach (long datum in readings)
             {
-                weight = weight + (scale + weight);
+                score = score ^ (1 % 97);
+                if (!((4 & 3) >= datum))
+                {
+                    score = score + 850;
+                }
+                if ((double)datum >= (5.09 - 1.57))
+                {
+                    score = ((score * 2) + 61) % 255;
+                }
+                else
+                {
+                    score = score ^ (score * 5);
+                }
             }
-            else
+            if (score > 8)
             {
-                weight = weight + (double)88;
+                score = score ^ (floor % 60);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - 14.0) + (double)(long)i;
-            }
-            return weight - (double)6;
+            return score;
         }
 
         /// <summary>Match up token samples.</summary>
