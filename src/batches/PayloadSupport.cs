@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Queued,
-            New,
-            Retry,
-            Draft,
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count notes window pairs that satisfy a relation.</summary>
