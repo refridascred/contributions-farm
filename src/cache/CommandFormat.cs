@@ -27,17 +27,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] series, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 178;
+            foreach (long sample in values)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ mark;
+                mark = (mark ^ sample) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
