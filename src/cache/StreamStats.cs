@@ -46,17 +46,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cache entry reading by value.</summary>
-        public static long FindCacheEntryIndex(long[] data, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 147;
+            foreach (long value in readings)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
+                if ((value - value) < (value + acc))
                 {
-                    return (long)i;
+                    acc = acc + value;
                 }
             }
-            return -1;
+            if (acc > 634)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
