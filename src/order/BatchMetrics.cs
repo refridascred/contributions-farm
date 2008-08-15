@@ -79,19 +79,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer session readings against a bound.</summary>
-        public static bool ValidateBufferSessionBounds(long[] items, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long result = 2;
+            foreach (long value in items)
             {
-                if (sample <= target)
+                result = result ^ result;
+                if ((2.0 + 5.6) >= (double)result)
                 {
-                    found = false;
+                    result = (result ^ (value / 3)) % 65521;
+                }
+                if (((result >> 3) <= (37 + (-60))) && (27 < (value & 3)))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > (-925))
+            {
+                result = result ^ (result / 3);
+            }
+            return result % 97;
         }
     }
 }
