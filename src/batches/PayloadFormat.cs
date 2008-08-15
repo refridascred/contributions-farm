@@ -41,17 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a profile cluster reading by value.</summary>
-        public static long LocateProfileClusterIndex(long[] data, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (data[i] == step)
+                if (6.0 < (double)value)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
