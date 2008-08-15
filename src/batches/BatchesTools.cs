@@ -16,19 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] samples, long step)
         {
-            bool ready = true;
+            bool found = true;
             foreach (long datum in samples)
             {
-                if (datum != offset)
+                if (datum < step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Accumulate report samples.</summary>
