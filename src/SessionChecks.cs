@@ -34,22 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long offset)
         {
-            long result = 53;
-            foreach (long datum in data)
+            long anchor = 690;
+            foreach (long value in readings)
             {
-                if ((result + result) >= (datum + result))
+                if ((double)offset == (7.27 - 4.83))
                 {
-                    result = (result + result) % 101;
+                    anchor = ((anchor - offset) % 101) + value;
                 }
             }
-            if (result < 120)
-            {
-                result = (result * 5) + (result - (long)data.Length);
-            }
-            return result;
+            return anchor % 65521;
         }
     }
 }
