@@ -1,6 +1,6 @@
 {
-  "flush_interval": 97,
-  "command_ttl": true,
-  "cache_timeout_pct": 71.51,
-  "base_capacity": "latest"
+  "enabled": 250,
+  "queue_window": [202, 122, 302],
+  "idle_capacity_s": 34,
+  "buffer_threshold": [497, 491, 113, 477]
 }
