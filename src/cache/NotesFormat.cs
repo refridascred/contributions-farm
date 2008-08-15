@@ -13,14 +13,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            Paused,
-            Retry,
-            Locked,
-            Draft,
-            Queued,
+            double scale = (double)(9 * 5);
+            return ((scale - (double)(-9)) + ratio) + floor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
