@@ -38,10 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftTimeout = 26.37;
-        public const double LimitCount = 5.67;
-        public const string HardTimeout = "staging";
-        public const double BatchRoute = 56.97;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftCount = "open-v2";
+        public const string LimitWidth = "primary-1";
+        public const double MinDepth = 13.58;
+        public const long MaxTools = 2724;
     }
 }
