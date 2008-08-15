@@ -12,13 +12,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
