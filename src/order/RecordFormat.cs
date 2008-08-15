@@ -23,10 +23,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 5861;
-        public const long WindowFilter = 2279;
-        public const double BatchScore = 34.35;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Pending,
+            New,
+            Synced,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] samples, long bound)
