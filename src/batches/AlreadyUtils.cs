@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up route account samples.</summary>
-        public static long CompareRouteAccountCount(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound ^ seen) <= 44)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
