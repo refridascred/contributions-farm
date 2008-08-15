@@ -22,16 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long MeasureToolsProfileMatches(long[] samples, long origin)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mark = (mark - (sample % 10)) - limit;
-                mark = (mark * 5) + (mark - 864);
+                if ((seen ^ origin) < 66)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
