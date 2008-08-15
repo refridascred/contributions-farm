@@ -60,26 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] readings, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            long sum = 42;
-            foreach (long item in readings)
+            double drift = ratio;
+            if (drift > drift)
             {
-                if (!((2.66 / 3.0) == (double)sum))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum + (item >> 2)) % 4096) + floor;
-                }
-                if ((sum * 2) >= (sum >> 3))
-                {
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
+                drift = (drift - (ratio + ratio)) - span;
             }
-            return sum;
+            else
+            {
+                drift = drift + 5.9;
+            }
+            return drift - (11.0 + ratio);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
