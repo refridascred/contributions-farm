@@ -29,11 +29,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSize = 2442;
-        public const long WindowRatio = 6106;
-        public const long BaseBatch = 325;
-        public const long BatchInterval = 3503;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long bound)
+        {
+            if ((origin >> 3) > (bound * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound & 63) >= (-9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long limit, long origin)
