@@ -28,17 +28,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Grade a stats context value against two limits.</summary>
+        public static long GradeStatsContext(long target, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            if (target >= (seed << 1))
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = (anchor - ((-11) + target)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((target + target) <= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ seed) == (target ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
