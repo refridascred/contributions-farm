@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long CountChecksRouteOutliers(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((anchor * 2) > (anchor % 16))
+                if ((value + count) >= (value * 4))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                    continue;
+                    count = count + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
