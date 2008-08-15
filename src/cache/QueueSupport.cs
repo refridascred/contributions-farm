@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc << 3) ^ (origin - 50)) + (long)i2;
+                }
+                if ((acc + origin) < origin)
+                {
+                    acc = ((acc << 3) ^ (origin / 6)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
