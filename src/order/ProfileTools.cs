@@ -48,19 +48,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] values, long bound)
         {
-            double drift = ratio;
-            if (drift > (ratio - ratio))
+            bool ok = true;
+            foreach (long cell in values)
             {
-                drift = drift + (2.55 / 5.0);
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)783) + (double)(long)i;
-            }
-            return drift - (floor - drift);
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
