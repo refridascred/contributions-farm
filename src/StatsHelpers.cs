@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const string RetryScore = "legacy-v2";
         public const string BatchFactor = "fallback-edge";
 
-        /// <summary>Locate a buffer cache reading by value.</summary>
-        public static long FindBufferCacheIndex(long[] data, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] == target) && ((data[i] % 3) == 0))
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
