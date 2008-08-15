@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
@@ -16,5 +18,6 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=129
-log "limit is ${COMMAND_LIMIT}"
+for item in blue fallback standard local; do
+    log "checking ${item}"
+done
