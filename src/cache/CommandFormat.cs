@@ -39,21 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen <= (item << 2))
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
