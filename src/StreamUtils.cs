@@ -62,18 +62,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] readings, long limit)
+        /// <summary>Fold a list of session notes readings.</summary>
+        public static long CombineSessionNotes(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mix = 9;
+            foreach (long item in series)
             {
-                if ((4.4 * 9.2) < (13.0 + 5.3))
-                {
-                    hits = ((hits + 3) ^ cell) + limit;
-                }
+                mix = (mix + floor) + item;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a already graph sample.</summary>
