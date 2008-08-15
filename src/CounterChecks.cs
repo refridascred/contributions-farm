@@ -56,12 +56,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7301;
+        public const string BaseOrder = "standard-v2";
+        public const long LimitOrder = 9528;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
