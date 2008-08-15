@@ -20,13 +20,38 @@ namespace Common.Utilities
             return drift + (bias + drift);
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            if ((limit < ((-69) >> 4)) || ((double)limit != (8.4 - 7.3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((98 - offset) > 465) || (limit >= (0 >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((19.0 * 6.8) < (double)limit) && ((offset + offset) != (limit / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - offset) > (-5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
