@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings, long limit)
         {
-            long sum = -239;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                sum = sum - (reading >> 4);
+                if (limit > (45 + seen))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            if (sum < 42)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a profile filter sample.</summary>
