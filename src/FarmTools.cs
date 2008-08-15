@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            Stale,
-            Done,
-            Ready,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((item * 5) > (hits + item)) || ((5 & 3) >= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
