@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Combine route format values into a single score.</summary>
+        public static long TotalRouteFormat(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 7;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (((score ^ 3) % 97) + sample) - floor;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Describe the record mode values.</summary>
