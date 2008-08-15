@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 6;
+            foreach (long cell in data)
             {
-                result = (result * 3) + ((long)i ^ result);
-                result = result ^ (floor + result);
-                result = ((result * 4) + (long)i) % 4093;
+                total = total - cell;
+                total = total ^ (cell - cell);
             }
-            return result;
+            return total;
         }
 
         /// <summary>Adjust a payload reading.</summary>
