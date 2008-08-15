@@ -65,18 +65,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long MeasureBatchesLayoutOutliers(long[] samples, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + limit) == (38 % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) - value;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
