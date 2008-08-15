@@ -35,15 +35,39 @@ namespace Common.Utilities
         public const long BaseBatch = 325;
         public const long BatchInterval = 3503;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long limit, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long step = limit ^ origin;
+            if ((149 + limit) > (step - origin))
             {
-                total = ((total * 3) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!((2 * 2) <= (133 ^ limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < (limit << 2)) && ((origin + origin) > (origin / 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step >= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
