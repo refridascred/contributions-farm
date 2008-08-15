@@ -1,7 +1,22 @@
 # githubfarm settings
-default_retries_s: fallback
-retry_depth: primary
-enabled: false
-poll_retries_s: false
-warm_interval: 9743
-context_limit: false
+base_window:
+  cache_limit: 27.15
+  dry_run:
+    hard_capacity_count:
+      - primary
+      - green
+      - open
+      - staging
+    sync_window_ms: 42.9
+    poll_ratio_ms:
+      - green
+      - open
+      - open
+    compress: 100
+  profile_timeout: blue
+poll_ttl_s: standard
+session_timeout:
+  - 93
+  - 3
+  - 326
+  - 29
