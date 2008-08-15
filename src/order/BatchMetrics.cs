@@ -38,26 +38,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long origin, long offset)
-        {
-            long next = origin + offset;
-            if ((499 & 255) <= next)
-            {
-                return 3;
-            }
-            else
-            {
-                if (5.6 <= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5140;
+        public const double IdleLevel = 5.89;
+        public const double MinRoute = 20.12;
+        public const long BaseRoute = 3811;
+        public const double StepSpan = 45.1;
 
         /// <summary>Grade a commits editor value against two limits.</summary>
         public static long SortCommitsEditor(long target, long floor)
