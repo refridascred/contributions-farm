@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)data.Length + count) < (count << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + value;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
