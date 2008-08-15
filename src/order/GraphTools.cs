@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
             public double Mode { get; set; }
-            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
