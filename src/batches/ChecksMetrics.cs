@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit window batch readings against a rule.</summary>
-        public static long CountWindowBatchMatches(long[] readings, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (2.07 > (double)floor)
+                if (data[i] >= floor)
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
