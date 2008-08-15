@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstCount = 40.26;
-        public const long StepInterval = 7158;
-        public const double IdleStream = 44.95;
-        public const long LimitSpan = 3619;
-        public const double SoftFactor = 19.0;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
