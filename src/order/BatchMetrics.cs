@@ -20,23 +20,13 @@ namespace Common.Utilities
             return drift + (bias + drift);
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double weight2 = floor * 19.0;
-            if (weight2 >= (weight2 / 5.0))
-            {
-                weight2 = weight2 + weight2;
-            }
-            else
-            {
-                weight2 = weight2 - (weight2 - weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
-            }
-            return weight2 - floor;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
