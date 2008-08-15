@@ -35,12 +35,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long seed)
         {
-            Active,
-            Locked,
-            Pending,
+            long cur = step + seed;
+            if (cur <= (-63))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed >= (double)824))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur <= (0.1 / 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session status values.</summary>
