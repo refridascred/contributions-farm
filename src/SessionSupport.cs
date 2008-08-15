@@ -28,15 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report batch entries.</summary>
-        public static long CombineReportBatch(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = 58;
-            foreach (long cell in series)
-            {
-                total = ((total << 3) ^ cell) % 255;
-            }
-            return total;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
