@@ -46,11 +46,20 @@ namespace Common.Utilities
             return drift - (double)31;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 8851;
-        public const long WindowBatches = 2134;
-        public const long DefaultDepth = 94;
-        public const double StepInterval = 40.13;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] levels, long seed)
+        {
+            long carry = 67;
+            foreach (long item in levels)
+            {
+                carry = ((carry ^ (395 - seed)) % 97) + item;
+            }
+            if (carry < 1)
+            {
+                carry = ((carry << 2) ^ (4 % 7)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
