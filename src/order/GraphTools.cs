@@ -47,11 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double rate, double span)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            double bias = (double)(76 << 3);
+            if (bias > bias)
+            {
+                bias = (bias - rate) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias - (rate * 9.96);
         }
     }
 }
