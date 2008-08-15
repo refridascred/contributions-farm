@@ -1,7 +1,17 @@
 {
-  "default_timeout_pct": 1024,
-  "contributi_limit": true,
-  "dry_run": false,
-  "cache_depth": "primary",
-  "account_window": 55.88
+  "batch_interval_ms": 45,
+  "notes_retries": "strict",
+  "layout_threshold": "open",
+  "warm_limit": {
+    "audit": 1024,
+    "cache_threshold_count": 96.09,
+    "hard_size_s": "legacy",
+    "record_timeout": 49,
+    "default_window_ms": {
+      "sync_size": true,
+      "enabled": 60.14,
+      "retry_ttl_s": 30
+    },
+    "schema_window": ["fallback", "edge", "eu-west"]
+  }
 }
