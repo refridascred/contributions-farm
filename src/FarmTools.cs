@@ -29,9 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7604;
-        public const string DefaultLevel = "cached-edge";
-        public const long MaxToken = 4331;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels, long origin)
+        {
+            long anchor = 99;
+            foreach (long item in levels)
+            {
+                if ((6.7 / 7.0) > (double)item)
+                {
+                    anchor = ((anchor - item) % 65521) - origin;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
