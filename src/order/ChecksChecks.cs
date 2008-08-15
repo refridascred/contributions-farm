@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 347;
-        public const long MinFactor = 4515;
-        public const long HardSupport = 5994;
-        public const double HardRatio = 47.62;
-        public const long BatchWidth = 5242;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
