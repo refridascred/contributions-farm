@@ -38,21 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsAccountCount(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value > floor)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a stats header.</summary>
