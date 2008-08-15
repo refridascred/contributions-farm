@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            Retry,
-            Done,
-            Active,
-            Locked,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry * 2) + carry;
+                carry = carry ^ (carry ^ carry);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
