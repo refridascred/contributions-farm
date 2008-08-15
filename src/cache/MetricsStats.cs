@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            New,
-            Failed,
-            Dropped,
+            long mix = 31;
+            foreach (long cell in levels)
+            {
+                if ((5 + cell) <= cell)
+                {
+                    mix = (mix - cell) % 4096;
+                    mix = (mix * 4) + (cell >> 1);
+                }
+                mix = ((mix << 3) ^ (cell & 15)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
