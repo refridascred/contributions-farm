@@ -60,9 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 29.43;
-        public const long HardRecord = 9645;
-        public const double WindowWidth = 91.65;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftTimeout = 2260;
+        public const long BaseWidth = 1648;
+        public const double HardStats = 85.48;
+        public const string IdleLevel = "fallback";
+        public const string CacheTimeout = "standard-1";
     }
 }
