@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long state = -17;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state * 2) + (long)readings.Length) + (long)i;
+                    state = (state + (reading << 3)) % 4096;
+                }
+                if ((5.8 - 18.0) < (double)state)
+                {
+                    state = (state + reading) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
