@@ -56,11 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long offset)
         {
-            double weight = scale / 3.0;
-            return (weight + (scale * 2.0)) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a batches farm reading by value.</summary>
