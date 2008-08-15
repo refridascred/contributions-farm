@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string WindowBudget = "fallback-v2";
         public const string IdleRatio = "open-edge";
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSpan = 4432;
+        public const long SoftSize = 4894;
+        public const long WindowSize = 5640;
+        public const string SoftTools = "alpha";
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
