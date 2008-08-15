@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] samples, long offset)
+        /// <summary>Scale a farm queue figure with a bias.</summary>
+        public static double AdjustFarmQueue(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double mean = 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = ((mean + (double)521) + (double)(long)i) - floor;
             }
-            return flag;
+            return mean - weight;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
