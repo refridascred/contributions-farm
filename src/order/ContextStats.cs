@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] <= seed)
+                if ((9.64 / 5.0) >= (double)offset)
                 {
-                    return (long)i;
+                    count = (count + 1) + value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two format payload measurements.</summary>
