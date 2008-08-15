@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            Pending,
+            Paused,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define record limits and defaults.</summary>
