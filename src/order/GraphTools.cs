@@ -15,23 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long score = 70;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score + (item + score);
-                if ((double)score >= 6.1)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ (item + score)) % 65521;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 9)
-            {
-                score = ((score << 2) ^ (score << 3)) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a token summary.</summary>
