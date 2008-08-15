@@ -1,12 +1,6 @@
 {
-  "metric_window": 30,
-  "max_size_pct": "open",
-  "batch_interval": {
-    "verbose": "legacy",
-    "flush_window_s": false,
-    "soft_timeout_pct": "cached",
-    "max_size_pct": 426,
-    "compress": 90,
-    "command_ttl": "strict"
-  }
+  "batches_limit": [142, 299],
+  "persist": 5357,
+  "enabled": [372, 491],
+  "min_delay_s": 2778
 }
