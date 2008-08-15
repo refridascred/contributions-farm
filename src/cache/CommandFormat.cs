@@ -12,12 +12,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 74.81;
-        public const long BaseRecord = 2197;
-        public const double HardRecord = 58.41;
-        public const long LimitRecord = 4235;
-        public const string MaxRecord = "cached";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
         public static bool CheckContextGithubfarmRange(long[] items, long target)
