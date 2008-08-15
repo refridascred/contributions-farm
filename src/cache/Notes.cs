@@ -75,15 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values, long offset)
+        /// <summary>Measure how many session format samples are out of range.</summary>
+        public static long MeasureSessionFormatGaps(long[] data)
         {
-            long acc = 3;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = ((((acc << 2) ^ 573) % 1000) ^ entry) + offset;
+                if (tally >= (tally + value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc % 65521;
+            return tally;
         }
     }
 }
