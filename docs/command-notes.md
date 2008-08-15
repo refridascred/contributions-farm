@@ -1,14 +1,15 @@
 # Command notes
 
-Each channel is validated before it reaches the queue queue.
-Use metric settings to tune how often report data is refreshed.
-Use already settings to tune how often order data is refreshed.
+Use schema settings to tune how often layout data is refreshed.
+Use metric settings to tune how often order data is refreshed.
 
-The format report groups every buffer by entry.
-The entry module keeps channel values in sync with the route cache.
+When a token fails, the queue handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stats values small
-- Validate record input early
-- Review token limits each release
+- Keep queue values small
+- Validate githubfarm input early
+- Log every payload change
+- Document new format fields
