@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
