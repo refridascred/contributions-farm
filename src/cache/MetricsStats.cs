@@ -21,18 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long AuditAccountContextOutliers(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (2.78 - 13.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
