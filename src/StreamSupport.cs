@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double ratio, double bias)
-        {
-            double rate = (double)(3 / 5);
-            if (rate < (bias + rate))
-            {
-                rate = rate + (double)322;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate + (double)(-3);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9387;
+        public const long BaseSession = 9524;
+        public const long RetrySpan = 4104;
+        public const long BatchRatio = 2941;
+        public const double BaseDepth = 20.81;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
