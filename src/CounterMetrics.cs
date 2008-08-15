@@ -32,18 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster notes samples are out of range.</summary>
-        public static long AuditClusterNotesHits(long[] levels, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((2 / 7) == (count + target))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
