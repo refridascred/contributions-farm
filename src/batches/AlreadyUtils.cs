@@ -26,12 +26,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            Retry,
-            Ready,
-            Draft,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry << 3) >= entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches status values.</summary>
