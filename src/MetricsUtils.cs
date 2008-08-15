@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const long WindowSchema = 1302;
         public const long BurstSpan = 478;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 47.85;
-        public const string HardBudget = "stable";
-        public const long DefaultChecks = 4474;
-        public const long BaseRatio = 9477;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Level { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadMatches(long[] data, long bound)
