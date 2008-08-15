@@ -54,18 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 29.13;
+        public const long RetrySize = 6578;
+        public const string StepCommand = "fallback-edge";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] data, long step)
