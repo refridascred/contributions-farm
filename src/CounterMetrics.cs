@@ -53,14 +53,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Grade a counter contributi value against two limits.</summary>
+        public static long GradeCounterContributi(long offset, long seed)
         {
-            Active,
-            Idle,
-            Retry,
-            New,
-            Dropped,
+            long offset2 = offset ^ seed;
+            if (7.86 >= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset2 + 26) < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
