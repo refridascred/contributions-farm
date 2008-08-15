@@ -56,22 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long MeasureOrderReportGaps(long[] values, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((seen & 255) < (14 + item)) || (step >= (67 & 127)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
