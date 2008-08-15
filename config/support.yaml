@@ -1,5 +1,12 @@
 # support settings
-report_timeout: 53
-burst_window_count: 59.0
-strict: 0.68
-hard_ratio_s: 67.34
+persist: standard
+order_limit:
+  burst_ratio_ms: true
+  profile_limit: 60
+  burst_size_s: 3589
+  flush_depth_s: 90.7
+readonly: 18
+batch_depth:
+  - 341
+  - 125
+retry_delay: 100
