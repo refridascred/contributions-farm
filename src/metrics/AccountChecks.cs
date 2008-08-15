@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const string IdleCount = "strict";
         public const string MaxFormat = "alpha-v2";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] samples, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((tally - 58) < (tally + tally))
+                if ((double)count < 17.0)
                 {
-                    tally = ((tally + 2) ^ cell) + seed;
+                    count = (count + 1) ^ entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
