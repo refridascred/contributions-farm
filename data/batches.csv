@@ -1,10 +1,6 @@
-id,region,rank,label
-1,10.69,618,staging
-2,430,legacy,blue
-3,blue,stable,fallback
-4,legacy,864,edge
-5,298,9.29,819
-6,strict,stable,14
-7,primary,46.22,primary
-8,48,605,29.26
-9,latest,22.64,953
+id,score,level
+1,732,primary
+2,457,43.46
+3,66.34,67.87
+4,latest,open
+5,63.36,649
