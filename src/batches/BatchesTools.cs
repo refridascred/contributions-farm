@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
