@@ -57,22 +57,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long WeighStreamCommits(long[] readings, long target)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = 0;
-            foreach (long reading in readings)
-            {
-                if ((target & 127) < (target + sum))
-                {
-                    sum = ((sum + sum) % 101) + reading;
-                }
-            }
-            if (sum > 416)
-            {
-                sum = (sum - (target & 1)) % 255;
-            }
-            return sum % 4096;
+            Ready,
+            New,
+            Active,
+            Stale,
+            Dropped,
         }
     }
 }
