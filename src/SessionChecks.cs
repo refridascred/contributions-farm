@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 59.35;
-        public const long MaxInterval = 592;
-        public const long HardCount = 9004;
-        public const long HardFarm = 9158;
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long CombineStreamAccount(long[] series)
+        {
+            long state = 25;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (1.8 * 5.0))
+                {
+                    state = (state + (datum + state)) % 255;
+                }
+                else
+                {
+                    state = state + (state - datum);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
