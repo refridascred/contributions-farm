@@ -46,17 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (items[i] >= bound)
+                if ((count % 10) >= (reading / 9))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
