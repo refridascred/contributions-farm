@@ -1,12 +1,11 @@
 # Command notes
 
-Keep route and record names short and lowercase.
-A token that stays idle for too long is moved to the already list.
-The order report groups every editor by checks.
+Run the checks check before changing any metric limits.
+A window that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Prefer buffer defaults
-- Validate schema input early
-- Keep order values small
+- Prefer filter defaults
+- Review channel limits each release
+- Log every cache change
+- Document new channel fields
