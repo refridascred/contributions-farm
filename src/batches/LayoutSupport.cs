@@ -12,39 +12,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank cluster contributi input into a small class.</summary>
-        public static long SortClusterContributi(long floor, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long offset = floor - target;
-            if ((floor * 4) != (floor + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (5.16 + 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor > (9.3 + 8.8)) && ((offset ^ floor) >= (floor >> 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + offset) < (74 + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Match up stream samples.</summary>
