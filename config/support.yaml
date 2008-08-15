@@ -1,8 +1,15 @@
 # support settings
-batch_interval_ms: edge
-base_retries_ms: 1024
-poll_limit_count: primary
-readonly:
-  - 434
-  - 368
-max_threshold_s: blue
+compress: cached
+max_depth_count: stable
+base_limit: 86
+enabled: 9896
+burst_retries_s:
+  - 284
+  - 458
+  - 325
+  - 388
+buffer_depth:
+  - 129
+  - 391
+  - 467
+  - 114
