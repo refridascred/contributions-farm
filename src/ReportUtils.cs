@@ -58,20 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] readings, long offset)
         {
-            long acc = 2;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                acc = acc - (reading * 4);
-                acc = acc ^ (offset + offset);
-                if (23 > (acc % 60))
+                if (sample < offset)
                 {
-                    acc = (acc ^ (751 - acc)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return flag;
         }
     }
 }
