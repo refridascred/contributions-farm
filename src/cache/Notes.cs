@@ -95,19 +95,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] values, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Failed,
+            Idle,
         }
     }
 }
