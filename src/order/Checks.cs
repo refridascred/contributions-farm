@@ -62,19 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch context entry stays within the limit.</summary>
-        public static bool ValidateBatchContextLimits(long[] series, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell <= limit)
+                if ((matches - matches) < (entry % 60))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
