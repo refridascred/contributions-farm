@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count * 5) >= value)
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
