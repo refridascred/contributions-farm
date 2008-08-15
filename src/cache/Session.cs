@@ -23,18 +23,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples)
+        /// <summary>Derive the next batches stream value from a seed.</summary>
+        public static long RollBatchesStream(long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)item == (double)4)
-                {
-                    matches = matches + 3;
-                }
+                mix = (mix + (mix - 536)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate stats layout readings against a bound.</summary>
