@@ -32,19 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Measure how many cluster notes samples are out of range.</summary>
+        public static long AuditClusterNotesHits(long[] levels, long target)
         {
-            long total = 807;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                total = (total + (total / 3)) + entry;
+                if ((2 / 7) == (count + target))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            if (total > 477)
-            {
-                total = ((total * 5) + (total * 2)) % 65521;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
