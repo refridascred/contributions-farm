@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long mark = 2;
-            foreach (long reading in values)
-            {
-                mark = (mark + origin) ^ reading;
-            }
-            if (mark > 22)
-            {
-                mark = ((mark << 2) ^ 44) % 97;
-            }
-            return mark % 1000;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
