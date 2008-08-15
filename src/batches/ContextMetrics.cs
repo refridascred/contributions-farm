@@ -66,21 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats order samples.</summary>
-        public static long CompareStatsOrderCount(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a report summary.</summary>
