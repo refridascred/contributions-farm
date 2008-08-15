@@ -37,13 +37,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long floor)
         {
-            Locked,
-            Draft,
-            Failed,
-            Active,
+            long score = 7;
+            foreach (long cell in items)
+            {
+                score = (((score - (score >> 4)) % 4096) + cell) + floor;
+            }
+            return score;
         }
     }
 }
