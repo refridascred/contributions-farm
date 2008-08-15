@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            long score = 1;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + score) >= (score + 957))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (seed + cell)) % 1000;
-                }
-                else
-                {
-                    score = score + (cell * 5);
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
