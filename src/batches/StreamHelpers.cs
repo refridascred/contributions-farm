@@ -40,19 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples, long seed)
         {
-            double rate2 = bias;
-            if (rate2 > rate)
+            long acc = 8;
+            foreach (long entry in samples)
             {
-                rate2 = rate2 - (9.44 - rate2);
+                if ((double)entry > (1.8 + 5.3))
+                {
+                    acc = (acc + acc) - seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 41)
             {
-                rate2 = (rate2 - rate2) + (double)(long)i;
+                acc = acc ^ 619;
             }
-            return rate2 + (bias + rate);
+            return acc % 4096;
         }
 
         /// <summary>Describe the window kind values.</summary>
