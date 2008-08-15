@@ -49,15 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstLevel = 81.7;
+        public const long WindowEditor = 9702;
+        public const long CacheWidth = 5457;
+        public const string LimitEditor = "latest-v2";
+        public const string BurstSpan = "local";
     }
 }
