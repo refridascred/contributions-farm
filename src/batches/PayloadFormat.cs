@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the graph route series from a seed.</summary>
-        public static long IterateGraphRoute(long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((result * 3) + (floor & 7)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
+                if ((target - target) < (target * 5))
+                {
+                    mix = (mix ^ ((long)i * 3)) % 4096;
+                    mix = ((mix << 2) ^ ((long)i ^ 75)) % 255;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
