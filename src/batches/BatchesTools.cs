@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 6723;
-        public const long IdleEntry = 9657;
-        public const double MaxEntry = 18.83;
-        public const long BurstEntry = 2953;
-        public const long CacheRatio = 3426;
+        /// <summary>Roll a editor channel counter forward.</summary>
+        public static long DeriveEditorChannel(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long target)
