@@ -18,17 +18,22 @@ namespace Common.Utilities
         public const string RetryInterval = "stable-1";
         public const double BurstSize = 62.57;
 
-        /// <summary>Look up the position of a queue route sample.</summary>
-        public static long LookupQueueRouteIndex(long[] readings, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
+                if ((0.4 - 8.9) >= (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
