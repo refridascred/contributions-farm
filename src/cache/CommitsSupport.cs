@@ -38,27 +38,17 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 385;
         public const long SoftGithubfarm = 3049;
 
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long ScoreChannelRecord(long[] samples)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long seed)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((73 + carry) == (carry & 7))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    carry = (carry - (carry >> 4)) % 97;
-                    continue;
-                }
-                if ((cell / 8) >= (cell + (-41)))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + cell)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
