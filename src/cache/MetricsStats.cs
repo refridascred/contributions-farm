@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((double)matches < (4.6 * 1.3)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
