@@ -1,8 +1,12 @@
 {
-  "max_ratio_ms": 100,
-  "command_capacity": "primary",
-  "readonly": "strict",
-  "enabled": 77.44,
-  "warm_ratio": 100,
-  "stats_timeout": ["stable", "blue", "legacy", "blue"]
+  "flush_retries_s": 92,
+  "dry_run": {
+    "strict": 5393,
+    "notes_delay": 100,
+    "audit": 30,
+    "poll_ttl_s": true,
+    "dry_run": "green"
+  },
+  "enabled": 50,
+  "batch_timeout_ms": false
 }
