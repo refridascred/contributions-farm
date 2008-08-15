@@ -1,24 +1,11 @@
 # support settings
-dry_run:
-  already_interval: 9288
-  verbose:
-    - 386
-    - 45
-    - 194
-  poll_threshold_pct: 75
-burst_size_pct: false
-readonly:
-  base_interval_count: false
-  strict: staging
-  hard_delay_count: 1024
-  cache_timeout:
-    dry_run: false
-    idle_size_pct:
-      - 465
-      - 6
-      - 51
-      - 404
-    sync_ttl_count: true
-    idle_capacity_pct: 100
-hard_capacity_count: false
-flush_threshold: 3
+audit: edge
+warm_delay_s:
+  - open
+  - open
+  - standard
+  - strict
+min_depth: 67
+base_ttl_s: 250
+warm_threshold: 26
+format_depth: 5286
