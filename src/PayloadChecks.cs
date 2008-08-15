@@ -64,19 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Count the githubfarm order entries that pass the check.</summary>
+        public static long CountGithubfarmOrderOutliers(long[] levels, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((922 * 4) < (matches & 31))
                 {
-                    sum = ((sum - offset) % 65521) ^ (long)i2;
+                    matches = ((matches + 1) - value) - offset;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every report format entry stays within the limit.</summary>
