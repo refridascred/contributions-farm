@@ -47,9 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 5448;
-        public const long StepInterval = 2748;
-        public const string StepFormat = "staging-v2";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
