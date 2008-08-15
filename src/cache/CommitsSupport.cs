@@ -55,15 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long mix = 14;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix ^ (sample + bound);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return hits;
         }
     }
 }
