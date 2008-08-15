@@ -56,29 +56,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter cluster pair into a bucket.</summary>
-        public static long SortCounterCluster(long bound, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long floor)
         {
-            long bound2 = bound - seed;
-            if (!(0 <= (seed << 2)))
+            if ((floor - origin) >= (origin + 29))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((double)49 != (double)seed) || ((bound2 << 1) <= (bound << 1)))
+                if (!(((-530) * 5) <= (188 - floor)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (0 <= (bound ^ bound))
+                    if ((636 <= floor) && ((origin ^ origin) >= (origin % 60)))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 0;
                     }
                 }
             }
