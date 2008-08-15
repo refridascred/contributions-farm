@@ -1,7 +1,11 @@
 # support settings
-enabled: latest
-verbose: 24
-batches_ratio: 41.65
-burst_delay_ms:
-  - latest
-  - latest
+sync_threshold: green
+soft_timeout_ms: 97
+account_ttl:
+  max_size_count: green
+  base_size: 3
+  readonly: eu-west
+  poll_depth:
+    - 127
+    - 6
+  retry_depth_pct: 96
