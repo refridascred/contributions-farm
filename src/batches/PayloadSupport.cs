@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Check that every stats tools entry stays within the limit.</summary>
+        public static bool ValidateStatsToolsBounds(long[] items, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((double)6 <= (double)carry)
+                if (item >= origin)
                 {
+                    stale = false;
                     break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a payload info.</summary>
