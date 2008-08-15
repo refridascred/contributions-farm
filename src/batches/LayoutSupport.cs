@@ -20,16 +20,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the queue filter series from a seed.</summary>
-        public static long DeriveQueueFilter(long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + 97) % 255;
-                total = ((total * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
