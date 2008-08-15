@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a stream already sample.</summary>
-        public static long FindStreamAlreadyIndex(long[] values, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] <= target)
+                if (508 < (bound * 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate batches route samples.</summary>
