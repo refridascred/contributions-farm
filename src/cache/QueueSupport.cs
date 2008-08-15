@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc << 3) ^ (origin - 50)) + (long)i2;
-                }
-                if ((acc + origin) < origin)
-                {
-                    acc = ((acc << 3) ^ (origin / 6)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
