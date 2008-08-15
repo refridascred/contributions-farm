@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a githubfarm filter sample.</summary>
-        public static long LocateGithubfarmFilterIndex(long[] values, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = 7.6;
+            if (bias >= 3.2)
             {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (bias - weight)) + span;
             }
-            return -1;
+            return bias + (double)542;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
