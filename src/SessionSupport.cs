@@ -23,12 +23,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 66.49;
-        public const long RetrySize = 5780;
-        public const double BaseRatio = 61.7;
-        public const double BatchWidth = 26.41;
-        public const double WindowBatches = 25.81;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double offset)
+        {
+            double rate = offset;
+            if (rate > rate)
+            {
+                rate = rate - gain;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate + (double)65;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
