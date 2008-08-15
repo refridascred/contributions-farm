@@ -43,31 +43,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long step)
+        /// <summary>Locate a payload session reading by value.</summary>
+        public static long LookupPayloadSessionIndex(long[] values, long limit)
         {
-            if ((4.19 + 6.25) < (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (offset >> 4))
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((step >> 2) == (step * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
