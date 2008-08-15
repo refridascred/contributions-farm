@@ -64,14 +64,17 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long offset)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Synced,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
