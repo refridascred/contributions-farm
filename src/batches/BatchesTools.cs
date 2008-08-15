@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a editor channel counter forward.</summary>
-        public static long DeriveEditorChannel(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the window level values.</summary>
