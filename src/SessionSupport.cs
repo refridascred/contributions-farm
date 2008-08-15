@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Ready,
-            Stale,
-            Paused,
-            Pending,
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank token support input into a small class.</summary>
