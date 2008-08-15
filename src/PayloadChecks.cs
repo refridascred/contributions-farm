@@ -90,22 +90,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values, long limit)
+        /// <summary>Check that every report format entry stays within the limit.</summary>
+        public static bool VerifyReportFormatLimits(long[] readings, long origin)
         {
-            long carry = 20;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((double)reading < (5.99 * 5.3)) || ((double)carry >= (1.69 - 4.04)))
+                if (cell <= origin)
                 {
-                    carry = (carry ^ carry) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 0)
-            {
-                carry = (carry - (0 ^ carry)) % 255;
-            }
-            return carry % 1000;
+            return flag;
         }
     }
 }
