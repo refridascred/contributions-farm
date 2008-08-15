@@ -39,18 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((((long)levels.Length ^ (-73)) >= sample) || ((sample + seen) > 10))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftTimeout = 26.37;
+        public const double LimitCount = 5.67;
+        public const string HardTimeout = "staging";
+        public const double BatchRoute = 56.97;
     }
 }
