@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 982;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                if (!(datum < (acc + 70)))
                 {
-                    return (long)i;
+                    acc = (acc ^ ((long)samples.Length << 3)) - limit;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
