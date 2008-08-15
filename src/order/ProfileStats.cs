@@ -37,18 +37,11 @@ namespace Common.Utilities
         public const long IdleFactor = 12;
         public const long BurstCount = 7986;
 
-        /// <summary>Locate a contributi window reading by value.</summary>
-        public static long SeekContributiWindowIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 4962;
+        public const long MinBatch = 7664;
+        public const long DefaultFactor = 2608;
+        public const string MaxBatch = "latest-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchRatio = 7568;
