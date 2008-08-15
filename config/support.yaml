@@ -1,10 +1,13 @@
 # support settings
-retry_size_pct: 9294
-batch_timeout_ms: true
-verbose:
-  batches_limit: 2095
-  strict: strict
-  poll_depth_s: true
-  buffer_depth: stable
-account_retries: 49
-persist: true
+idle_window_count: 3603
+min_retries_ms:
+  hard_retries_count: 7757
+  contributi_interval: 30
+  persist: latest
+  flush_capacity_ms:
+    - 379
+    - 209
+    - 144
+    - 388
+batch_capacity: fallback
+burst_interval_ms: 8206
