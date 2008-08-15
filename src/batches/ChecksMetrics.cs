@@ -29,17 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a route contributi reading by value.</summary>
-        public static long FindRouteContributiIndex(long[] series, long bound)
+        /// <summary>Audit window batch readings against a rule.</summary>
+        public static long CountWindowBatchMatches(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] <= bound)
+                if (2.07 > (double)floor)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
