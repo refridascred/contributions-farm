@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cluster entry entries that pass the check.</summary>
-        public static long MeasureClusterEntryOutliers(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = -192;
+            foreach (long item in values)
             {
-                if ((count - count) < (count & 3))
+                if ((item / 5) <= item)
                 {
-                    count = (count + 3) ^ datum;
+                    acc = acc + acc;
+                }
+                if ((12.0 / 7.0) > (double)acc)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
