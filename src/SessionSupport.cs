@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = -9;
+            foreach (long datum in levels)
             {
-                if (5.3 > (double)seed)
+                if (((double)mark == (0.4 + 2.3)) && ((datum % 64) >= 983))
                 {
-                    tally = (tally + 1) + cell;
+                    mark = (mark - (datum + 452)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
