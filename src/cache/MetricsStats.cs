@@ -58,13 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
