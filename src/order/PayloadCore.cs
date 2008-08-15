@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] readings, long origin)
+        /// <summary>Count the queue channel entries that pass the check.</summary>
+        public static long CountQueueChannelOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (cell >= origin)
+                if (8 > item)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
