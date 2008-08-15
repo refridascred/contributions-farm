@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftTimeout = "latest-edge";
-        public const long BurstDepth = 8445;
-        public const string BaseLevel = "fallback-1";
-        public const string SoftDepth = "staging-v2";
-        public const long CacheFactor = 5290;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result * 3) + ((long)i ^ result);
+                result = result ^ (floor + result);
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double bias, double offset)
