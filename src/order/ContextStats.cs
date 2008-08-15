@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const string BurstCount = "local-1";
         public const long HardCache = 1387;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long limit)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load > bias)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - (12.0 / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (double)6;
         }
     }
 }
