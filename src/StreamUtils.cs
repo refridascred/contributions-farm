@@ -68,19 +68,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] readings, long limit)
         {
-            double drift = ratio;
-            if (drift > drift)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                drift = (drift - (ratio + ratio)) - span;
+                if ((4.4 * 9.2) < (13.0 + 5.3))
+                {
+                    hits = ((hits + 3) ^ cell) + limit;
+                }
             }
-            else
-            {
-                drift = drift + 5.9;
-            }
-            return drift - (11.0 + ratio);
+            return hits;
         }
 
         /// <summary>Describe the metrics class values.</summary>
