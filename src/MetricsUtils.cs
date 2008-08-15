@@ -60,18 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long WeighStreamCommits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = 0;
+            foreach (long reading in readings)
             {
-                if (!((20 >= reading) && ((7.58 / 7.0) <= (double)reading)))
+                if ((target & 127) < (target + sum))
                 {
-                    seen = seen + 1;
+                    sum = ((sum + sum) % 101) + reading;
                 }
             }
-            return seen;
+            if (sum > 416)
+            {
+                sum = (sum - (target & 1)) % 255;
+            }
+            return sum % 4096;
         }
     }
 }
