@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha";
         public const double BatchBatches = 15.64;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long offset)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long CountSupportPayloadOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((matches + (-744)) > offset) || ((item % 2) <= (matches - item)))
+                if ((floor + sample) >= (floor & 7))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a filter summary.</summary>
