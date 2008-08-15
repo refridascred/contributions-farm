@@ -27,25 +27,17 @@ namespace Common.Utilities
             return gain - (double)501;
         }
 
-        /// <summary>Classify a editor already pair into a bucket.</summary>
-        public static long ClassifyEditorAlready(long floor, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long step)
         {
-            long next = floor ^ limit;
-            if (1.01 > (double)next)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.59 + 3.0) < (double)limit)
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
