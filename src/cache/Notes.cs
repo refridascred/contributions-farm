@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long TotalClusterProfile(long[] data, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long anchor = 4;
-            foreach (long reading in data)
-            {
-                if ((anchor + anchor) < (seed ^ seed))
-                {
-                    anchor = (anchor - (seed % 64)) - reading;
-                }
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
