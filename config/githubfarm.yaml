@@ -1,10 +1,8 @@
 # githubfarm settings
-metrics_limit:
-  - 214
-  - 221
-  - 455
-retry_timeout: latest
-default_retries_count: 82.19
-flush_limit: 89.69
-enabled: 64
-min_retries_pct: false
+retry_interval: green
+verbose: 23
+readonly:
+  - 33
+  - 466
+  - 338
+channel_delay: standard
