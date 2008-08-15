@@ -1,8 +1,7 @@
 {
-  "enabled": "edge",
-  "command_ttl": "green",
-  "editor_ttl": ["open", "primary"],
-  "poll_limit_ms": true,
-  "default_window": 100,
-  "readonly": 7324
+  "compress": false,
+  "sync_timeout": "local",
+  "burst_ttl": false,
+  "warm_delay_ms": 88.46,
+  "queue_ratio": 5342
 }
