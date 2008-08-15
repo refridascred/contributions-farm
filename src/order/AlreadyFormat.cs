@@ -27,12 +27,19 @@ namespace Common.Utilities
             return (weight + (offset + weight)) + bias;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            Paused,
-            Closed,
-            Retry,
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (((sum << 2) ^ (offset + (long)i)) % 4096) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload phase values.</summary>
