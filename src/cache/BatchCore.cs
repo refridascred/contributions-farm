@@ -24,12 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstLevel = 23.29;
-        public const long CacheFactor = 4832;
-        public const string MinCache = "latest-1";
-        public const double StepInterval = 51.07;
-        public const long DefaultSize = 5589;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Done,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
