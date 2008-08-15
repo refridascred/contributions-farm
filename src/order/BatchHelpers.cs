@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] samples, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 2;
+            foreach (long item in items)
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state << 2)) % 1000) - item;
             }
-            return -1;
+            if (state > 6)
+            {
+                state = ((state * 5) + (state * 5)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
