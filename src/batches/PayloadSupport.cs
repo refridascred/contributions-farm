@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double scale, double offset)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            double drift = offset;
+            if (drift < offset)
+            {
+                drift = (drift + (6.8 / 8.0)) + scale;
+            }
+            else
+            {
+                drift = drift + 4.4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift + (9.3 + drift);
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
