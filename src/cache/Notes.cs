@@ -62,18 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session format samples are out of range.</summary>
-        public static long MeasureSessionFormatGaps(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= (tally + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
