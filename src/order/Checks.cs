@@ -41,16 +41,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long acc = 2;
+            foreach (long sample in items)
             {
-                mix = ((mix << 2) ^ (target + target)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (acc < (7 + sample))
+                {
+                    continue;
+                }
+                if (!((double)sample == (15.0 - 2.17)))
+                {
+                    acc = ((acc ^ (508 + 77)) % 101) - offset;
+                }
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Hold a batches record.</summary>
