@@ -38,14 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Dropped,
-            Idle,
-            Closed,
-            Stale,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
