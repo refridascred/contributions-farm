@@ -14,31 +14,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long limit)
+        /// <summary>Look up the position of a entry batch sample.</summary>
+        public static long LocateEntryBatchIndex(long[] levels, long floor)
         {
-            if ((limit << 1) != (offset + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (8.0 - 8.61))
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((925 - limit) <= (8 % 12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
