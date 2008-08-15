@@ -52,31 +52,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a cache checks value against two limits.</summary>
-        public static long RankCacheChecks(long limit, long seed)
+        /// <summary>Combine metric filter values into a single score.</summary>
+        public static long WeighMetricFilter(long[] readings)
         {
-            if (((limit >> 2) <= (451 % 7)) || (limit <= (seed + seed)))
+            long mark = 9;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(980 >= (limit & 63)))
+                if (((mark % 5) <= (mark * 5)) && ((long)readings.Length > (value ^ mark)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = mark - (value >> 2);
                 }
             }
+            if (mark > 9)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
