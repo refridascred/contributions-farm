@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a tools checks pair into a bucket.</summary>
-        public static long GradeToolsChecks(long bound, long seed)
-        {
-            if ((double)seed != (3.23 * 4.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + seed) < bound) || (seed >= (seed + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed <= (seed ^ 815)) || (8.0 > (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheLevel = 93.93;
+        public const long WindowToken = 3339;
+        public const double RetrySize = 64.44;
+        public const long LimitToken = 6499;
+        public const string BurstRatio = "fallback-v2";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] values)
