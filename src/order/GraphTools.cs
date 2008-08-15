@@ -34,12 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "local-1";
+        public const long DefaultPayload = 7541;
+        public const string StepLevel = "alpha-1";
+        public const long BasePayload = 3469;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long bound, long bound2)
