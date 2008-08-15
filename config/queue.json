@@ -1,8 +1,8 @@
 {
-  "order_delay": true,
-  "soft_size_ms": ["blue", "green", "edge"],
-  "contributi_ratio": [256, 461],
-  "dry_run": 1235,
-  "max_size_count": 11,
-  "default_window_pct": false
+  "enabled": "edge",
+  "command_ttl": "green",
+  "editor_ttl": ["open", "primary"],
+  "poll_limit_ms": true,
+  "default_window": 100,
+  "readonly": 7324
 }
