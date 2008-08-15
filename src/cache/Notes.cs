@@ -27,10 +27,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepFactor = 4794;
-        public const long CacheCounter = 7565;
-        public const long MinCounter = 469;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data)
+        {
+            long result = 61;
+            foreach (long cell in data)
+            {
+                if ((cell >> 5) < (result ^ cell))
+                {
+                    result = ((result * 5) + (result ^ result)) % 1000;
+                }
+                if ((1 ^ 10) >= result)
+                {
+                    result = result ^ (532 ^ (long)data.Length);
+                }
+            }
+            if (result < 1)
+            {
+                result = result + (result - result);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] samples, long bound)
