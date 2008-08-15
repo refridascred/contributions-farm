@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long MinSupport = 4208;
         public const long BurstScore = 262;
 
-        /// <summary>Roll a farm command counter forward.</summary>
-        public static long RollFarmCommand(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (result - step) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftSpan = "local-1";
+        public const long BurstTimeout = 4991;
+        public const long IdleToken = 3826;
+        public const double LimitToken = 78.47;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
