@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double gain, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            double load = floor;
-            if (load <= gain)
+            long mix = -55;
+            foreach (long sample in levels)
             {
-                load = load - (floor / 3.0);
+                if (!((mix - 0) == (mix & 7)))
+                {
+                    mix = (mix - (0 / 8)) % 255;
+                }
+                if ((15.0 / 9.0) <= (double)sample)
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
             }
-            return load + floor;
+            return mix % 65521;
         }
 
         /// <summary>Hold a stats header.</summary>
