@@ -46,9 +46,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 68.18;
-        public const string BurstWidth = "primary";
-        public const long WindowSession = 5285;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
