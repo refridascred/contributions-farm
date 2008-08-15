@@ -20,27 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer record readings.</summary>
-        public static long TotalBufferRecord(long[] levels, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long anchor = 833;
-            foreach (long sample in levels)
-            {
-                if ((13.0 * 8.0) > (double)sample)
-                {
-                    anchor = ((anchor * 3) + (1 + offset)) % 255;
-                }
-                if ((8.52 * 5.63) == (double)offset)
-                {
-                    long tally = (anchor * 2) << 3;
-                    anchor = ((anchor << 3) ^ tally) % 97;
-                }
-                if ((anchor % 24) != (anchor % 100))
-                {
-                    anchor = (anchor * 5) + (offset ^ anchor);
-                }
-            }
-            return anchor % 1000;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
