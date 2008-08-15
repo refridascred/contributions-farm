@@ -68,25 +68,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long target)
         {
-            long bound = offset - seed;
-            if ((offset + bound) <= (10 & 127))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset > (3.6 / 2.0)) || ((seed * 4) <= (seed - 68)))
+                if (samples[i] < target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
