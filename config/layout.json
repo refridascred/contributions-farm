@@ -1,7 +1,5 @@
 {
-  "base_ratio_ms": false,
-  "poll_interval": 9157,
-  "persist": "latest",
-  "retry_timeout_s": 100,
-  "dry_run": 37.93
+  "warm_timeout": 21.46,
+  "idle_ttl_ms": "cached",
+  "audit": "green"
 }
