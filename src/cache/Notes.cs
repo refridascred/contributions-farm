@@ -21,16 +21,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the context session series from a seed.</summary>
-        public static long DeriveContextSession(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepLevel = 3896;
+        public const long SoftSize = 6775;
+        public const string HardWindow = "primary";
+        public const long LimitWindow = 1948;
+        public const double BurstWindow = 27.35;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] values, long bound)
