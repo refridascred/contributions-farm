@@ -13,22 +13,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series, long origin)
         {
-            long carry = 9;
-            foreach (long sample in data)
+            long result = 45;
+            foreach (long item in series)
             {
-                if (carry <= (505 - 987))
+                if ((581 % 64) > (244 - origin))
                 {
-                    carry = ((carry + carry) % 1000) - sample;
+                    result = (result * 4) + result;
+                }
+                if (!((origin + 678) != (8 + 257)))
+                {
+                    result = (result * 3) + (origin >> 3);
+                }
+                if (!((item + result) <= (item - result)))
+                {
+                    break;
                 }
             }
-            if (carry > (-8))
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Digest a series of counter channel entries.</summary>
