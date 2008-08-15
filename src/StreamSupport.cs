@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9387;
-        public const long BaseSession = 9524;
-        public const long RetrySpan = 4104;
-        public const long BatchRatio = 2941;
-        public const double BaseDepth = 20.81;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double scale, double floor)
+        {
+            double ratio = (double)(0 % 7);
+            if (ratio <= 0.1)
+            {
+                ratio = (ratio - floor) - scale;
+            }
+            return ratio - (double)3;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
