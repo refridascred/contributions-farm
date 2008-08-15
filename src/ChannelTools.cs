@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] readings, long target)
         {
-            long edge = seed - offset;
-            if ((double)offset < (2.0 * 9.3))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed != (double)87)
+                if (((6.21 + 14.0) != (double)count) || ((24 ^ count) != (target + 974)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset + offset) != (edge >> 5)) || ((seed / 8) > (offset & 127)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 3) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
