@@ -12,21 +12,38 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target * 5) > target)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((382 >> 1) <= bound)
                 {
-                    if ((levels[i] + levels[j]) > 10)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + target) <= bound)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((target / 9) >= bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
