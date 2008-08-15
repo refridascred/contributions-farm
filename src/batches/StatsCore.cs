@@ -68,13 +68,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Dropped,
-            Synced,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 41.43;
+        public const string MaxLevel = "cached";
+        public const string HardTimeout = "legacy-1";
+        public const string BurstContributi = "primary-v2";
+        public const long StepContributi = 2614;
     }
 }
