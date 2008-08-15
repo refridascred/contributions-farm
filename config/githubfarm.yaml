@@ -1,7 +1,7 @@
 # githubfarm settings
-graph_retries: 500
-verbose: 5822
-poll_retries_s: edge
-default_size_ms: 100
-compress: 40.28
-default_window_count: 17
+default_retries_s: fallback
+retry_depth: primary
+enabled: false
+poll_retries_s: false
+warm_interval: 9743
+context_limit: false
