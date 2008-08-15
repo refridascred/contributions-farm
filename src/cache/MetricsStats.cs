@@ -79,12 +79,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            double load = rate;
+            if (load <= load)
+            {
+                load = load + (load - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (offset / 9.0)) + (double)(long)i;
+            }
+            return load - 0.93;
         }
     }
 }
