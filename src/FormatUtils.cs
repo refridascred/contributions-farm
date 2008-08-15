@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] levels, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 3;
+            foreach (long value in items)
             {
-                if ((hits ^ cell) > hits)
+                mix = ((mix * 4) + mix) % 4096;
+                if (value <= (mix / 6))
                 {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix * 2) + (mix % 60)) % 1000;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a layout info.</summary>
