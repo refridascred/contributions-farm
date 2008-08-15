@@ -19,17 +19,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count the stream command entries that pass the check.</summary>
