@@ -28,18 +28,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long FoldCounterContext(long[] items, long floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            long acc = 6;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((acc + (long)items.Length) <= 9) || ((double)value < (double)floor))
+                if ((3.0 <= (double)(long)i) || ((long)i < (sum + sum)))
                 {
-                    acc = (acc - (acc & 255)) % 1000;
+                    sum = (sum - (sum - limit)) % 65521;
                 }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc % 97;
+            return sum;
         }
     }
 }
