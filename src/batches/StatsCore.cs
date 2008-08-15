@@ -23,22 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias2 = 8.0;
+            if (bias2 >= (bias2 / 7.0))
             {
-                if (value > (11 % 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias2 = (bias2 + (bias2 + span)) - bias;
             }
-            return seen;
+            return bias2 + span;
         }
 
         /// <summary>Hold a batches entry.</summary>
