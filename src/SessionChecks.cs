@@ -20,26 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mix = -458;
-            foreach (long cell in items)
-            {
-                if (!((limit - 0) <= cell))
-                {
-                    mix = (mix << 2) ^ (42 & 127);
-                }
-                else
-                {
-                    mix = mix - (limit << 1);
-                }
-            }
-            if (mix > 43)
-            {
-                mix = mix ^ (mix & 31);
-            }
-            return mix % 65521;
+            Stale,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
