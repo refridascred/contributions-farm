@@ -28,17 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of layout schema entries.</summary>
