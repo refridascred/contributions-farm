@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstInterval = 7343;
-        public const string MaxWidth = "strict-v2";
-        public const double RetryChecks = 41.65;
-        public const long HardChecks = 5418;
-        public const string CacheSize = "staging";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] readings)
