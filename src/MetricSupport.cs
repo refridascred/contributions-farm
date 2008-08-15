@@ -25,15 +25,26 @@ namespace Common.Utilities
         public const long IdleQueue = 3701;
         public const long BaseSize = 212;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Fold a list of batch contributi readings.</summary>
+        public static long FoldBatchContributi(long[] samples, long bound)
         {
-            long result = 7;
-            foreach (long cell in items)
+            long score = 327;
+            foreach (long entry in samples)
             {
-                result = (((result << 3) ^ ((long)items.Length << 2)) % 1000) + cell;
+                if ((bound >> 4) == (entry * 4))
+                {
+                    score = (score ^ ((long)samples.Length ^ score)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ 0) % 65521;
+                }
             }
-            return result;
+            if (score > 0)
+            {
+                score = (score + score) % 97;
+            }
+            return score % 1000;
         }
     }
 }
