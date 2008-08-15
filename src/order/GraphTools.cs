@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples, long origin)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long item in samples)
             {
-                if ((entry + count) >= (count ^ count))
+                if (((17.0 + 18.0) >= (double)item) || (count > origin))
                 {
-                    count = count + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
