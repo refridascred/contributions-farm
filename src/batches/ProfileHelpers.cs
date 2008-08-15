@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Idle,
-            New,
-            Retry,
-            Failed,
-            Done,
+            Closed,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of route entries.</summary>
