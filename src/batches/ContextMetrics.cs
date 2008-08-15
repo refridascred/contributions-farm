@@ -47,15 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
