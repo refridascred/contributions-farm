@@ -72,19 +72,18 @@ namespace Common.Utilities
         public const long CacheCount = 4138;
         public const double RetryCluster = 48.89;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] series, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (item != seed)
+                if (525 <= (datum % 2))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
