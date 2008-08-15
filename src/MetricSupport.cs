@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitFactor = 88.55;
-        public const long IdleQueue = 3701;
-        public const long BaseSize = 212;
+        /// <summary>Adjust a contributi metric reading.</summary>
+        public static double AdjustContributiMetric(double ratio, double offset)
+        {
+            double ratio2 = (double)(685 ^ 1);
+            if (ratio2 >= (double)5)
+            {
+                ratio2 = (ratio2 + offset) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + offset) - (double)(long)i;
+            }
+            return ratio2 + (9.78 / 3.0);
+        }
 
         /// <summary>Fold a list of batch contributi readings.</summary>
         public static long FoldBatchContributi(long[] samples, long bound)
