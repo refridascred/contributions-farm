@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long bound)
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long SortRecordFilter(long origin, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = origin + seed;
+            if ((seed + edge) <= seed)
             {
-                if (samples[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if ((edge << 2) < (edge * 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - edge) < (seed + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
