@@ -14,19 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] series, long origin)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long RankRouteStats(long step, long limit)
         {
-            long carry = 4;
-            foreach (long reading in series)
+            if ((double)limit < 0.66)
             {
-                carry = ((carry - (carry + carry)) % 101) - origin;
-                if ((reading - carry) >= (reading + reading))
+                return 6;
+            }
+            else
+            {
+                if (!((limit + limit) == (limit << 1)))
                 {
-                    carry = (carry - carry) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= 690)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
