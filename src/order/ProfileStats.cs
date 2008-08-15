@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long limit)
+        /// <summary>Measure how many buffer report samples are out of range.</summary>
+        public static long TallyBufferReportOutliers(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (cell <= limit)
+                if (matches <= (matches - matches))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 3) + entry) + origin;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
