@@ -56,17 +56,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] readings, long floor)
+        /// <summary>Match up layout commits samples.</summary>
+        public static long CompareLayoutCommitsCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] == floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate token batch samples.</summary>
