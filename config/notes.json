@@ -1,17 +1,14 @@
 {
-  "cache_limit": false,
-  "channel_timeout": {
-    "dry_run": 30,
-    "record_interval": false,
-    "compress": 60,
-    "audit": {
-      "metrics_window": "eu-west",
-      "idle_limit_ms": [74, 274, 5, 345],
-      "stream_capacity": "green"
-    }
+  "cluster_capacity": {
+    "strict": false,
+    "poll_size_ms": ["stable", "local", "standard"],
+    "route_interval": 60,
+    "contributi_depth": "open",
+    "contributi_limit": 500,
+    "verbose": 4717
   },
-  "dry_run": "open",
-  "batch_ratio_pct": 30,
-  "enabled": 6307,
-  "filter_interval": "latest"
+  "flush_interval_count": "fallback",
+  "compress": true,
+  "persist": 66,
+  "enabled": "edge"
 }
