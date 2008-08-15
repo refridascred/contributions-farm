@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long bound, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data, long target)
         {
-            if ((bound << 2) == (bound + bound))
+            long sum = 2;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed < (6 & 15))
+                if ((3.9 / 4.0) < (double)target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-691) >= (bound - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum * 4) + cell;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the metric mode values.</summary>
