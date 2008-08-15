@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Audit command batch readings against a rule.</summary>
+        public static long MeasureCommandBatchMatches(long[] items, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!((step / 3) > step))
+                if ((1.9 * 1.82) < (double)seen)
                 {
-                    anchor = (anchor << 2) ^ (anchor / 8);
+                    seen = ((seen + 2) ^ value) - target;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
