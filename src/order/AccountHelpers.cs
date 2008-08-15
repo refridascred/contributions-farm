@@ -56,19 +56,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] series, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (value <= offset)
+                sum = sum - (sum * 5);
+                if ((6.0 + 19.0) != (double)floor)
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
