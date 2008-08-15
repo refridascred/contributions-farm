@@ -26,21 +26,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = step ^ limit;
+            if ((step + step) > step)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(delta <= (limit / 5)))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
