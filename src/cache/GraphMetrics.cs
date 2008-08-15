@@ -30,22 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long limit2)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long floor)
         {
-            if ((double)limit2 < (double)limit)
+            if ((floor + seed) <= seed)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (limit2 > (973 % 97))
+                if ((seed + 37) != (seed & 63))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 2;
                 }
             }
         }
