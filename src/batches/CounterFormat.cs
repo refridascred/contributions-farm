@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result * 2) + (floor / 3);
-                result = result ^ ((-51) - 414);
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            double bias = 9.37;
+            return (bias + (span - bias)) + gain;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
