@@ -1,7 +1,4 @@
 # support settings
-batch_ttl: strict
-verbose: 38.58
-report_depth: 0.69
-persist: true
-order_interval: cached
-buffer_size: true
+retry_depth_pct: standard
+profile_retries: eu-west
+metric_retries: legacy
