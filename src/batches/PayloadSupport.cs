@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Locate a token contributi reading by value.</summary>
+        public static long SeekTokenContributiIndex(long[] levels, long offset)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank buffer farm input into a small class.</summary>
