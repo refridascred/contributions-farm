@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] items, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum > step)
+                if (!(item <= 1) && ((double)tally >= (double)80))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
