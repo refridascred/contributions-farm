@@ -1,5 +1,6 @@
 {
-  "warm_depth_ms": "standard",
-  "persist": [4, 106, 312],
-  "base_capacity": 500
+  "graph_capacity": 54.55,
+  "route_delay": [494, 38, 70],
+  "sync_size_count": 100,
+  "warm_depth": 250
 }
