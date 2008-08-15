@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Audit already payload readings against a rule.</summary>
+        public static long CountAlreadyPayloadOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.08 * 3.59) > (double)tally)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
