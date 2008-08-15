@@ -22,15 +22,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            New,
-            Stale,
-            Idle,
-            Active,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 5074;
+        public const long HardCommits = 3571;
+        public const long IdleCommits = 994;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] series)
