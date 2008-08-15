@@ -60,11 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftTimeout = 2260;
-        public const long BaseWidth = 1648;
-        public const double HardStats = 85.48;
-        public const string IdleLevel = "fallback";
-        public const string CacheTimeout = "standard-1";
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series, long bound)
+        {
+            long anchor = 51;
+            foreach (long sample in series)
+            {
+                anchor = (anchor << 3) ^ (bound + sample);
+            }
+            return anchor;
+        }
     }
 }
