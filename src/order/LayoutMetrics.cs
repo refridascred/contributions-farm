@@ -38,18 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window contributi readings against a rule.</summary>
-        public static long CountWindowContributiGaps(long[] values, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((matches / 8) == (bound ^ matches))
+                if (!((double)seed >= (double)entry) && ((hits * 3) > seed))
                 {
-                    matches = (matches + 1) ^ item;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
