@@ -62,11 +62,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8113;
-        public const long SoftAlready = 4909;
-        public const double CacheAlready = 22.0;
-        public const string RetryAlready = "fallback";
-        public const string IdleBudget = "stable-1";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series)
+        {
+            long carry = 0;
+            foreach (long reading in series)
+            {
+                carry = (carry * 5) + (reading << 2);
+                carry = carry - reading;
+                if ((reading < (reading & 1)) || ((reading % 2) <= reading))
+                {
+                    carry = carry + (carry & 3);
+                }
+                if ((double)reading < (5.73 - 8.6))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
