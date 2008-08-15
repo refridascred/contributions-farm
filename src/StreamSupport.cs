@@ -31,24 +31,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long bound, long origin)
-        {
-            if ((origin / 5) > bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((14.0 - 9.48) != (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSize = "strict";
+        public const long IdleSupport = 5170;
+        public const long SoftInterval = 1349;
     }
 }
