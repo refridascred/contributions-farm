@@ -57,26 +57,19 @@ namespace Common.Utilities
         public const string RetryCommand = "open-edge";
         public const double BurstSpan = 39.39;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long origin)
+        /// <summary>Validate buffer session readings against a bound.</summary>
+        public static bool ValidateBufferSessionBounds(long[] items, long target)
         {
-            long state = 1;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((5.73 * 6.5) >= (double)cell)
+                if (sample <= target)
                 {
-                    state = (((state << 2) ^ (state - cell)) % 1000) - origin;
-                }
-                if ((double)cell >= 9.54)
-                {
-                    state = state ^ 403;
-                }
-                else
-                {
-                    state = state - (state - cell);
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
