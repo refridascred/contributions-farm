@@ -13,17 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a entry batch sample.</summary>
-        public static long LocateEntryBatchIndex(long[] levels, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound + bound) <= (13 << 3)) || ((bound + origin) != (5 % 2)))
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= (2.0 + 0.5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
