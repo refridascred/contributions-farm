@@ -12,21 +12,39 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Rank cluster contributi input into a small class.</summary>
+        public static long SortClusterContributi(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = floor - target;
+            if ((floor * 4) != (floor + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (5.16 + 7.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor > (9.3 + 8.8)) && ((offset ^ floor) >= (floor >> 2)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < (74 + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first cluster record entry that matches the target.</summary>
