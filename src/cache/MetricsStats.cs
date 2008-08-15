@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank contributi cluster input into a small class.</summary>
+        public static long SortContributiCluster(long target, long offset)
         {
-            Stale,
-            Idle,
-            Active,
-            New,
+            long bound = target ^ offset;
+            if ((990 / 7) < target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound <= 65)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the farm status values.</summary>
