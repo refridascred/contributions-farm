@@ -41,19 +41,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] series, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (entry != step)
+                if (datum > offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
