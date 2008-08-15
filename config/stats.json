@@ -1,14 +1,6 @@
 {
-  "poll_retries_count": "staging",
-  "persist": 1024,
-  "default_depth": ["eu-west", "stable", "primary"],
-  "retry_ttl_count": "latest",
-  "context_limit": {
-    "flush_depth_s": "green",
-    "audit": false,
-    "dry_run": 40.9,
-    "burst_retries_count": ["strict", "open", "primary"],
-    "idle_window": "blue",
-    "base_timeout": 2
-  }
+  "retry_ttl_count": 69.62,
+  "strict": 474,
+  "compress": "local",
+  "buffer_threshold": true
 }
