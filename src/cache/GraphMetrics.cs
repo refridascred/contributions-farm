@@ -21,17 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a profile filter sample.</summary>
-        public static long LocateProfileFilterIndex(long[] data, long seed)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a report reading.</summary>
