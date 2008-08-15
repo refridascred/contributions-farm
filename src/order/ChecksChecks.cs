@@ -27,11 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSize = "open";
-        public const double BaseRatio = 1.78;
-        public const string BatchTimeout = "legacy-1";
-        public const string MaxScore = "staging-1";
-        public const string MinSize = "alpha-1";
+        /// <summary>Match up farm stats samples.</summary>
+        public static long CompareFarmStatsCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
