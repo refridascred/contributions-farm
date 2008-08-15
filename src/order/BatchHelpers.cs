@@ -19,26 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long result = 0;
-            foreach (long cell in samples)
-            {
-                if (((-70) << 1) <= cell)
-                {
-                    result = (result - 123) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - (long)samples.Length)) % 1000;
-                }
-            }
-            if (result < (-4))
-            {
-                result = (result + (result ^ result)) % 97;
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
