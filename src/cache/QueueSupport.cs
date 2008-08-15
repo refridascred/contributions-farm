@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const double HardRecord = 61.91;
         public const string DefaultRatio = "latest-1";
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
