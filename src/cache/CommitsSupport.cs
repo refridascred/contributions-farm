@@ -62,10 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 61.66;
-        public const string BaseNotes = "fallback-edge";
-        public const long HardScore = 1026;
+        /// <summary>Match up profile window samples.</summary>
+        public static long MatchProfileWindowCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] samples, long bound)
