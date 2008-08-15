@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if ((target % 5) > ((-985) << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)target != (8.61 / 2.0)) && ((double)offset > 5.5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
