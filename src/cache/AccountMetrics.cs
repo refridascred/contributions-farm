@@ -95,12 +95,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] levels)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count <= (datum % 100))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
