@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count channel graph pairs that satisfy a relation.</summary>
-        public static long MatchChannelGraphCount(long[] levels)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
