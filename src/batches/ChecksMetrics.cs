@@ -16,30 +16,22 @@ namespace Common.Utilities
         public const double HardRoute = 10.3;
         public const long BurstRoute = 8970;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            long score = 51;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((63 <= item) && (score < (score + 9)))
+                if (!((double)entry >= (4.1 / 4.0)))
                 {
-                    score = (score ^ 791) % 65521;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    score = (score - (floor + floor)) % 4096;
-                }
-                if (((0.06 / 3.0) == (double)floor) && ((floor % 24) == (score * 3)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ (floor - score)) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
