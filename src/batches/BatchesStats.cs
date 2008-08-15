@@ -66,15 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = 337;
+            foreach (long cell in series)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (!(((double)824 <= (3.6 - 9.0)) && ((mix ^ cell) <= (mix / 5))))
+                {
+                    mix = (mix * 3) + (cell - (-412));
+                }
+                if ((6.8 + 1.0) >= (double)bound)
+                {
+                    mix = (mix + (-9)) % 255;
+                }
             }
-            return mark;
+            if (mix > 69)
+            {
+                mix = (mix * 3) + (mix + bound);
+            }
+            return mix % 1000;
         }
     }
 }
