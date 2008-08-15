@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 7494;
+        public const long SoftSession = 2883;
+        public const long MaxSession = 2250;
+        public const long SoftWidth = 722;
+        public const string BaseSession = "strict-v2";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] data)
