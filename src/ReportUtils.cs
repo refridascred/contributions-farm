@@ -52,13 +52,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            Queued,
-            Dropped,
-            New,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total << 2) ^ ((long)i + total)) % 65521;
+                if (((long)i - offset) <= (long)i)
+                {
+                    total = total + offset;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
