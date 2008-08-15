@@ -25,19 +25,15 @@ namespace Common.Utilities
             return rate + 3.57;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series)
+        /// <summary>Audit account channel readings against a rule.</summary>
+        public static long TallyAccountChannelMatches(long[] series)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long entry in series)
             {
-                if ((datum << 3) <= (datum >> 5))
+                if ((entry + count) >= entry)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
