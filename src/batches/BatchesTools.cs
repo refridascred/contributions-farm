@@ -16,19 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] samples, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate report samples.</summary>
