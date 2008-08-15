@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 2693;
-        public const long MinTools = 8793;
-        public const long MaxTools = 9966;
-        public const long SoftScore = 4950;
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long SeekStreamChecksIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] readings, long origin)
