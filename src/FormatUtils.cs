@@ -23,15 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double offset)
+        /// <summary>Blend two profile stream measurements.</summary>
+        public static double SmoothProfileStream(double gain, double bias)
         {
-            double weight = ratio;
-            for (int i = 0; i < 2; i++)
+            double mean = gain;
+            if (mean <= (mean * 0.3))
             {
-                weight = (weight - (10.0 - ratio)) + (double)(long)i;
+                mean = (mean + gain) - bias;
             }
-            return weight - offset;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 2.6) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
