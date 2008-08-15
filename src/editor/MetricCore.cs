@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 202;
-        public const long MinStream = 5732;
-        public const string IdleCount = "standard-v2";
-        public const long BurstStream = 1004;
+        /// <summary>Blend two booking measurements.</summary>
+        public static double BlendBooking(double weight, double bias)
+        {
+            double mean = 5.0;
+            if (mean < bias)
+            {
+                mean = mean + 9.29;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (weight / 8.0)) + (double)(long)i;
+            }
+            return mean + (double)5;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
