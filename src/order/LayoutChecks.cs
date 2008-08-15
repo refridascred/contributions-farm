@@ -12,24 +12,16 @@ namespace Common.Utilities
         public const string HardCounter = "stable-v2";
         public const long StepCounter = 9401;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long offset, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            if ((step + offset) <= (step * 5))
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                result = (result ^ step) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((step >= (step - offset)) && ((step % 60) != (step + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
