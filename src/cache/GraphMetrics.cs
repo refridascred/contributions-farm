@@ -48,19 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double bias)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
         {
-            double ratio2 = 6.1;
-            if (ratio2 <= bias)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                ratio2 = (ratio2 - (double)88) - ratio;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total - limit) % 255) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 + (double)867;
+            return total;
         }
 
         /// <summary>Grade a context command value against two limits.</summary>
