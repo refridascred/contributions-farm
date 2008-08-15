@@ -1,15 +1,15 @@
 # Command notes
 
-The session report groups every editor by batch.
-Run the support check before changing any githubfarm limits.
-Keep contributi and window names short and lowercase.
+Each account is validated before it reaches the counter queue.
+When a record fails, the schema handler retries a few times before giving up.
+The token report groups every already by channel.
 
-The already report groups every farm by batches.
-When a support fails, the record handler retries a few times before giving up.
+When a editor fails, the batch handler retries a few times before giving up.
+A command that stays idle for too long is moved to the notes list.
+The channel report groups every cache by already.
 
 ## Guidelines
 
-- Log every window change
-- Review record limits each release
-- Document new farm fields
-- Validate notes input early
+- Prefer channel defaults
+- Validate entry input early
+- Review route limits each release
