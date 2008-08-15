@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] samples, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen + origin) >= (origin >> 5))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
