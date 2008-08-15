@@ -1,15 +1,16 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the command list.
-When a profile fails, the farm handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+A already that stays idle for too long is moved to the format list.
+A context that stays idle for too long is moved to the account list.
 
-Use report settings to tune how often cluster data is refreshed.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often already data is refreshed.
+Run the contributi check before changing any window limits.
+The support helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep metrics values small
-- Log every batches change
-- Prefer tools defaults
+- Document new cache fields
+- Keep batch values small
+- Validate entry input early
+- Log every notes change
