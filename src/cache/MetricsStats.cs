@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((state - limit) != (long)i)
-                {
-                    state = (state ^ 8) % 101;
-                    state = ((state * 4) + (state - state)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Stale,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Describe the farm status values.</summary>
