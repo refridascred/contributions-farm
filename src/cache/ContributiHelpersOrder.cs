@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
