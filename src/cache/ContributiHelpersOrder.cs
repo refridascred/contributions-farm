@@ -32,17 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches token reading by value.</summary>
-        public static long SeekBatchesTokenIndex(long[] series, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
