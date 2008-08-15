@@ -69,17 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches farm reading by value.</summary>
-        public static long LocateBatchesFarmIndex(long[] items, long target)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
