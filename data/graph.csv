@@ -1,7 +1,9 @@
-id,weight,token,state
-1,691,strict,821
-2,96.08,719,13.65
-3,2.97,41.28,889
-4,371,primary,78.01
-5,25.24,91,81.01
-6,390,staging,green
+id,level,owner
+1,open,30.18
+2,stable,65.22
+3,94.27,117
+4,staging,316
+5,strict,597
+6,201,strict
+7,202,850
+8,60.45,845
