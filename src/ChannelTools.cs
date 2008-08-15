@@ -40,26 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph token entries.</summary>
-        public static long CombineGraphToken(long[] readings, long floor)
-        {
-            long mark = 611;
-            foreach (long value in readings)
-            {
-                if (3 >= (value - mark))
-                {
-                    mark = (mark - floor) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ value) % 4096;
-                }
-            }
-            if (mark > 24)
-            {
-                mark = (mark ^ (floor ^ floor)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultRatio = 883;
+        public const double BurstFactor = 21.67;
+        public const string CacheCount = "strict-v2";
+        public const string BurstInterval = "staging";
     }
 }
