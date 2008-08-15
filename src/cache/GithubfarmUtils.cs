@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Rank token batches input into a small class.</summary>
+        public static long BucketTokenBatches(long limit, long limit2)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            if (1 < (limit2 * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0.37 - 2.92) <= (double)limit2) || (limit2 < (limit2 - limit2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 ^ 5) == (limit % 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
