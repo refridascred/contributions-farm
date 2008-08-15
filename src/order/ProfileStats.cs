@@ -52,22 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + 625) <= matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchRatio = 7568;
+        public const long SoftProfile = 6491;
+        public const string SoftInterval = "open-edge";
+        public const double HardProfile = 32.93;
+        public const long SoftRatio = 7622;
     }
 }
