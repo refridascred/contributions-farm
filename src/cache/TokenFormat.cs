@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Closed,
-            Done,
             Synced,
-            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
