@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long carry = 4;
+            foreach (long sample in series)
             {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((((carry * 3) + 269) % 4096) ^ sample) - target;
             }
-            return stale;
+            if (carry > 186)
+            {
+                carry = (carry * 2) + (carry << 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next tools value.</summary>
