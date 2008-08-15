@@ -44,18 +44,25 @@ namespace Common.Utilities
             return load - (1.72 / 8.0);
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items, long step)
+        /// <summary>Rank batch entry input into a small class.</summary>
+        public static long ClassifyBatchEntry(long step, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long step2 = step - origin;
+            if ((double)origin >= 6.1)
             {
-                if ((double)step <= (13.0 - 4.1))
+                return 4;
+            }
+            else
+            {
+                if ((origin >= (7 + step2)) && (58 > origin))
                 {
-                    matches = (matches + 2) - reading;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
