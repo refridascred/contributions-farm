@@ -1,7 +1,5 @@
 # githubfarm settings
-cache_threshold: 14
-flush_limit: 783
-cluster_ttl: 25.61
-enabled: 500
-burst_capacity_s: 25.46
-support_ratio: 1024
+route_interval: 30
+profile_ratio: 1024
+flush_timeout: 49.82
+cache_limit_pct: 73.33
