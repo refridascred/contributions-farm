@@ -24,11 +24,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftSpan = 2158;
-        public const long WindowProfile = 4415;
-        public const long MaxProfile = 4207;
-        public const long SoftProfile = 9676;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long limit, long limit2)
