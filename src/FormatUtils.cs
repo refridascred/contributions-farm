@@ -14,11 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2366;
-        public const long BatchCount = 6001;
-        public const long MinScore = 684;
-        public const long BurstTimeout = 2408;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] items, long limit)
