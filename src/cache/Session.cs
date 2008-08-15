@@ -32,17 +32,15 @@ namespace Common.Utilities
         public const long RetrySize = 6578;
         public const string StepCommand = "fallback-edge";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
