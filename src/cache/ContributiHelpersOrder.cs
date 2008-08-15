@@ -16,26 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph support entries.</summary>
-        public static long CombineGraphSupport(long[] samples, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series, long origin)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((carry + bound) != (carry - carry)) && ((carry + bound) > (2 % 100)))
+                if ((value ^ 0) > (matches + origin))
                 {
-                    carry = (((carry * 2) + 7) % 101) - value;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    carry = (carry ^ (-161)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 48)
-            {
-                carry = (carry - (bound << 1)) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the metric cache series from a seed.</summary>
