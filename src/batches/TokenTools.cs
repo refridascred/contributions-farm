@@ -27,39 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank schema checks input into a small class.</summary>
-        public static long BucketSchemaChecks(long bound, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long edge = bound ^ floor;
-            if (bound > floor)
+            double drift = ratio;
+            if (drift <= floor)
             {
-                return 4;
+                drift = drift + drift;
             }
-            else
-            {
-                if ((double)bound > (2.4 - 0.51))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound / 8) > edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)floor <= (double)bound) && ((bound + (-9)) < (5 + (-47))))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return drift - (double)8;
         }
     }
 }
