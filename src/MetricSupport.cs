@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long step)
-        {
-            long anchor = -9;
-            foreach (long entry in data)
-            {
-                anchor = (((anchor * 5) + anchor) ^ entry) - step;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitFactor = 88.55;
+        public const long IdleQueue = 3701;
+        public const long BaseSize = 212;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long WeighGithubfarm(long[] items)
