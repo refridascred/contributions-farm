@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Synced,
-            New,
-            Retry,
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
