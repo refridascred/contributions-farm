@@ -65,31 +65,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            if ((limit & 3) <= 37)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + bound) > (bound ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound < (bound & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
