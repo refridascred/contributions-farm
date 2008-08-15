@@ -34,19 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            double ratio = (double)(7 + 9);
-            if (ratio <= (double)6)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio - (double)43) - floor;
+                state = ((state * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (12.0 - 5.5)) + (double)(long)i;
-            }
-            return ratio + (bias / 4.0);
+            return state;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
