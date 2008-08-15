@@ -101,9 +101,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 1610;
-        public const long BaseCommand = 8631;
-        public const double DefaultLevel = 83.37;
+        /// <summary>Accumulate metric queue samples.</summary>
+        public static long CombineMetricQueue(long[] levels)
+        {
+            long total = 74;
+            foreach (long cell in levels)
+            {
+                long seen = (total % 12) >> 3;
+                total = ((total << 2) ^ (cell - seen)) % 255;
+                if (((cell * 3) != (total - cell)) && (cell > (total * 5)))
+                {
+                    total = ((total << 2) ^ (total - total)) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + (0 & 15)) % 65521;
+                }
+            }
+            if (total < 6)
+            {
+                total = ((total * 5) + (72 * 3)) % 1000;
+            }
+            return total % 4096;
+        }
     }
 }
