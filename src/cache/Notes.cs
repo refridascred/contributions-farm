@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long CacheCounter = 7565;
         public const long MinCounter = 469;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepLevel = 3896;
-        public const long SoftSize = 6775;
-        public const string HardWindow = "primary";
-        public const long LimitWindow = 1948;
-        public const double BurstWindow = 27.35;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
