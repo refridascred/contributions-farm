@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double IdleBatches = 53.13;
         public const long RetryBatches = 3650;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long floor)
+        /// <summary>Audit buffer counter readings against a rule.</summary>
+        public static long AuditBufferCounterMatches(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (entry <= floor)
+                if (((double)origin > (double)datum) || ((tally & 127) == (origin + origin)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
