@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftFactor = "fallback-v2";
-        public const long DefaultWindow = 3851;
-        public const long HardTimeout = 9193;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double offset)
+        {
+            double weight = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (10.0 - ratio)) + (double)(long)i;
+            }
+            return weight - offset;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long bound, long bound2)
