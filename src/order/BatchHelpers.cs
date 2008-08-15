@@ -19,36 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long offset)
+        /// <summary>Classify a session cluster pair into a bucket.</summary>
+        public static long SortSessionCluster(long limit, long offset)
         {
-            if (((floor + 4) != (offset >> 5)) && ((double)offset < (6.0 - 18.0)))
+            if (((64 << 3) > (offset << 1)) && ((limit * 2) <= limit))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((floor <= (offset + offset)) || ((525 & 255) < (floor & 255)))
+                if ((limit >> 3) != (limit - limit))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset >> 1) >= 3)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset <= 12.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
