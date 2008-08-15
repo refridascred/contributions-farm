@@ -53,11 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftRatio = "fallback-1";
-        public const long HardLevel = 4847;
-        public const long LimitSize = 9171;
-        public const long LimitChannel = 2681;
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long MeasureOrderReportGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!((seen & 255) < (14 + item)) || (step >= (67 & 127)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] levels, long floor)
