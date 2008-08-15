@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-fallback}"
 case "${mode}" in
-    cached)
+    blue)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
