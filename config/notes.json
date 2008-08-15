@@ -1,26 +1,5 @@
 {
-  "min_ratio_ms": {
-    "cache_capacity": {
-      "format_threshold": true,
-      "flush_ratio_ms": "open",
-      "strict": "staging",
-      "dry_run": 1697,
-      "soft_size_pct": 94,
-      "min_interval_s": ["blue", "staging"]
-    },
-    "poll_limit_s": "open",
-    "base_threshold_ms": 62.53,
-    "strict": true,
-    "flush_capacity": {
-      "poll_threshold_s": "standard",
-      "hard_ratio": [319, 322, 393],
-      "compress": 2916,
-      "audit": 62.17,
-      "cache_delay": false
-    },
-    "soft_limit_ms": true
-  },
-  "warm_window_ms": "green",
-  "strict": "latest",
-  "readonly": 2151
+  "route_ttl": 60,
+  "layout_capacity": false,
+  "base_ttl_ms": true
 }
