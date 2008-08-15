@@ -24,12 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCount = 1557;
-        public const long BaseCount = 4418;
-        public const double StepSize = 7.33;
-        public const double BurstScore = 55.88;
-        public const double RetryCount = 53.65;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphLimits(long[] levels, long bound)
