@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSpan = 5389;
-        public const string SoftScore = "primary";
-        public const long WindowChannel = 3220;
-        public const long BaseChannel = 8976;
+        /// <summary>Grade a stream farm value against two limits.</summary>
+        public static long RankStreamFarm(long target, long bound)
+        {
+            if ((double)bound > (1.6 - 0.9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + target) <= 874)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target < (6.74 - 6.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((79 + target) != (44 - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] samples)
