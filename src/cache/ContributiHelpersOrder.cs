@@ -28,31 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats context value against two limits.</summary>
-        public static long GradeStatsContext(long target, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long step)
         {
-            if (target >= (seed << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) <= target)
+                if (data[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ seed) == (target ^ target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
