@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetrySpan = 56.17;
-        public const string BatchFarm = "primary-1";
-        public const long MaxFarm = 4557;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Ready,
+            Done,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] values, long limit)
