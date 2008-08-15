@@ -47,19 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool CheckStatsLayoutBounds(long[] items, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading <= bound)
+                if (!((6.17 - 5.0) == (double)reading))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
