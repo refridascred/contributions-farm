@@ -1,6 +1,8 @@
-id,label,active,score
-1,cached,466,503
-2,51.85,34.75,24.93
-3,8.16,local,54.26
-4,edge,primary,74.42
-5,58.32,primary,55.37
+id,token,weight
+1,latest,694
+2,189,legacy
+3,7,40
+4,legacy,69.13
+5,staging,local
+6,891,981
+7,cached,136
