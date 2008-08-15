@@ -1,19 +1,9 @@
 # support settings
-poll_interval: 7.42
-soft_ratio_ms:
-  - local
+strict: 36
+compress: 94.48
+idle_window_count:
   - primary
   - latest
-batch_retries: 32
-base_capacity:
-  flush_ratio:
-    flush_size_pct: 500
-    idle_interval_ms: 81
-    contributi_window: 8143
-    idle_size_ms: false
-    soft_interval_ms: 250
-    audit: primary
-  max_size_ms: 500
-  hard_delay: 9148
-compress: 8998
-audit: 2.6
+verbose: 250
+idle_window: 250
+audit: legacy
