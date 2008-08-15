@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values)
         {
-            long score = 67;
-            foreach (long sample in levels)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 12; i++)
+                if (entry < (entry + mark))
                 {
-                    score = ((score * 2) + (sample - limit)) + (long)i;
-                }
-                if (limit >= (limit * 2))
-                {
-                    score = (score ^ score) % 97;
+                    mark = mark - (entry ^ mark);
                 }
             }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Describe the command level values.</summary>
