@@ -1,6 +1,7 @@
 # githubfarm settings
-verbose: stable
-window_delay: 100
-sync_threshold: 49.23
-layout_timeout: true
-burst_timeout: 92
+min_ratio_pct: 60
+retry_timeout_count: 39
+entry_delay: latest
+enabled: 30
+cache_threshold_s: 86.21
+verbose: local
