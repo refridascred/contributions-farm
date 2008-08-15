@@ -1,5 +1,6 @@
 {
-  "soft_threshold": "local",
-  "verbose": ["open", "blue", "open"],
-  "readonly": 9137
+  "graph_window": true,
+  "token_depth": "green",
+  "strict": [446, 188],
+  "githubfarm_capacity": "staging"
 }
