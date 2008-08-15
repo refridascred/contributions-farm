@@ -19,11 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5867;
-        public const long RetryCommits = 3830;
-        public const long WindowCommits = 812;
-        public const long CacheWidth = 3051;
+        /// <summary>Grade a route stream value against two limits.</summary>
+        public static long BucketRouteStream(long bound, long origin)
+        {
+            if (((-4) + bound) <= (bound - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (9.1 < (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.1 + 7.9) == (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
