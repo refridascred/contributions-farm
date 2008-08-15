@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long carry = 0;
-            foreach (long cell in readings)
-            {
-                if (((carry - carry) != (limit ^ 502)) || ((double)cell < (2.7 + 0.1)))
-                {
-                    carry = carry + (limit % 3);
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
