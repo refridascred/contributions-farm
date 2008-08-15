@@ -22,22 +22,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long origin, long offset)
         {
-            long result = 94;
-            foreach (long entry in items)
+            if ((double)origin > (2.05 - 5.2))
             {
-                if (((0.7 / 4.0) >= (double)entry) || ((entry + 546) >= (target / 6)))
+                return 3;
+            }
+            else
+            {
+                if ((origin + 934) >= ((-42) % 7))
                 {
-                    result = ((result * 4) + (81 & 7)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result > 917)
-            {
-                result = (result << 3) ^ (target / 2);
-            }
-            return result;
         }
 
         /// <summary>Combine counter token values into a single score.</summary>
