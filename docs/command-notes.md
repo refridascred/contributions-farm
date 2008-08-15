@@ -1,12 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the channel list.
-Use profile settings to tune how often window data is refreshed.
-A order that stays idle for too long is moved to the editor list.
+The command module keeps channel values in sync with the farm cache.
+The buffer report groups every route by stats.
+
+The editor report groups every entry by route.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer batches defaults
-- Validate route input early
-- Log every counter change
+- Document new report fields
+- Keep session values small
+- Log every window change
