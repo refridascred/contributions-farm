@@ -1,6 +1,12 @@
 {
-  "flush_threshold_count": 99,
-  "hard_timeout": 66.63,
-  "token_ttl": "staging",
-  "retry_depth_ms": "local"
+  "soft_ratio_ms": {
+    "compress": 32.44,
+    "min_ratio_pct": "fallback",
+    "persist": "fallback"
+  },
+  "max_delay_count": "eu-west",
+  "idle_window": 500,
+  "compress": "staging",
+  "record_window": 30,
+  "report_depth": ["latest", "cached"]
 }
