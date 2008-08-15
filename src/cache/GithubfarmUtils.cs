@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double bias)
-        {
-            double drift = scale;
-            return (drift + (7.2 + scale)) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstWidth = 3036;
+        public const long LimitGithubfarm = 2154;
+        public const string DefaultGithubfarm = "fallback-v2";
+        public const long WindowGithubfarm = 4270;
+        public const string IdleGithubfarm = "legacy-1";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatOutliers(long[] data)
