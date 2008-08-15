@@ -29,11 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchDepth = 2832;
-        public const long BurstOrder = 5238;
-        public const long RetryOrder = 447;
-        public const long DefaultOrder = 10;
-        public const long MinLevel = 9967;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7604;
+        public const string DefaultLevel = "cached-edge";
+        public const long MaxToken = 4331;
     }
 }
