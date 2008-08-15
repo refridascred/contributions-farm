@@ -21,19 +21,19 @@ namespace Common.Utilities
             return gain2 + (gain - gain2);
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] items, long origin)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                acc = ((acc << 3) ^ (9 & 15)) - value;
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (acc < 48)
-            {
-                acc = ((acc * 2) + (acc ^ acc)) % 101;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Measure how many route report samples are out of range.</summary>
