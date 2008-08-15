@@ -58,19 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] readings, long offset)
+        /// <summary>Count the buffer channel entries that pass the check.</summary>
+        public static long MeasureBufferChannelMatches(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (sample < offset)
+                if (7.7 <= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 1) - value) + step;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
