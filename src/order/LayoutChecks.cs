@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const long LimitSize = 9171;
         public const long LimitChannel = 2681;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultSpan = 82.46;
-        public const string IdleOrder = "latest";
-        public const long LimitOrder = 3498;
-        public const long SoftWidth = 8439;
-        public const string SoftTimeout = "local-v2";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
