@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double offset)
         {
-            long sum = 8;
-            foreach (long entry in data)
+            double load = 11.0;
+            if (load < load)
             {
-                sum = ((sum << 3) ^ (entry - entry)) % 255;
+                load = (load + (double)80) + scale;
             }
-            if (sum > 8)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return load - offset;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
