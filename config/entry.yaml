@@ -1,8 +1,23 @@
 # entry settings
-layout_depth:
-  - local
-  - local
-  - stable
-  - open
-verbose: 55.69
-warm_size_ms: true
+strict:
+  - 199
+  - 29
+  - 147
+default_delay_pct: 60
+cluster_ratio:
+  - 105
+  - 401
+record_timeout:
+  - 279
+  - 62
+  - 59
+  - 88
+commits_depth:
+  hard_limit_s: 8475
+  enabled:
+    min_retries: true
+    burst_capacity: true
+    route_window: 250
+  warm_ratio_count: 2386
+  compress: 994
+warm_capacity: cached
