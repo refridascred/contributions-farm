@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items)
         {
-            Stale,
-            Pending,
-            Retry,
+            long sum = 336;
+            foreach (long entry in items)
+            {
+                if ((entry >> 5) > 6)
+                {
+                    sum = sum - (-68);
+                }
+                if ((entry - entry) != (entry * 3))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
