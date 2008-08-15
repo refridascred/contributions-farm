@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value > step)
+                if (tally >= (3 + reading))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
