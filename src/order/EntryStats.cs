@@ -71,20 +71,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] readings, long offset)
         {
-            long sum = -2;
-            foreach (long cell in readings)
+            long state = -1;
+            foreach (long datum in readings)
             {
-                sum = (sum + (cell >> 4)) % 101;
-                sum = (sum - (origin + (long)readings.Length)) % 1000;
+                if (((offset & 7) <= (offset - datum)) && ((datum * 4) >= datum))
+                {
+                    state = state - datum;
+                }
+                else
+                {
+                    state = (state - (state * 3)) % 255;
+                }
             }
-            if (sum > 9)
-            {
-                sum = ((sum * 4) + (origin + origin)) % 255;
-            }
-            return sum;
+            return state % 4096;
         }
     }
 }
