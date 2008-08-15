@@ -29,16 +29,22 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Derive the next batches stream value from a seed.</summary>
-        public static long RollBatchesStream(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mix = (mix + (mix - 536)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (((-32) + value) != (hits >> 4))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate stats layout readings against a bound.</summary>
