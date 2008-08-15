@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitBudget = 5942;
+        public const long BaseWindow = 5313;
+        public const string LimitSpan = "latest";
+        public const string MinWidth = "strict";
+        public const string CacheWindow = "stable-v2";
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
