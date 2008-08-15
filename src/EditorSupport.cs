@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Measure how many token session samples are out of range.</summary>
-        public static long CountTokenSessionMatches(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((12.0 - 6.0) >= (double)item)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the channel kind values.</summary>
