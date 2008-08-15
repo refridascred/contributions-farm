@@ -34,18 +34,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.0 + 7.0) <= (double)matches)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a format stats.</summary>
