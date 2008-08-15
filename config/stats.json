@@ -1,5 +1,5 @@
 {
-  "default_interval_s": "legacy",
-  "flush_interval": true,
-  "cache_threshold_count": "standard"
+  "buffer_limit": 30,
+  "audit": "cached",
+  "entry_retries": 8.93
 }
