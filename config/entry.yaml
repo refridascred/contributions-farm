@@ -1,22 +1,8 @@
 # entry settings
-base_ttl_count:
-  hard_depth:
-    - edge
-    - staging
-    - latest
-  compress: legacy
-  account_capacity: 11.57
-  audit:
-    compress: true
-    idle_depth: 14.19
-    dry_run: legacy
-    soft_window_s: staging
-    soft_limit: eu-west
-    poll_size_pct: 500
-entry_interval:
-  batch_interval: false
-  account_timeout: 88.46
-  enabled: local
-  idle_timeout_count: 63
-  readonly: green
-buffer_timeout: true
+warm_delay: 14
+default_retries_pct: false
+checks_ttl: 9156
+cache_depth_ms: 87
+hard_timeout_pct:
+  - local
+  - primary
