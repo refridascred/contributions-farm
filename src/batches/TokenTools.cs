@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long limit, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((6 >> 4) >= (offset << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((369 + limit) >= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((16.0 - 5.0) > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
