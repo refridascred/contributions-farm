@@ -14,19 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long sum = 6;
+            foreach (long sample in series)
             {
-                if (entry < target)
+                if ((1.3 / 2.0) == (double)sum)
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum + (limit - sum)) % 1000) - sample;
                 }
             }
-            return stale;
+            if (sum > 2)
+            {
+                sum = ((sum * 4) + (sum - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
