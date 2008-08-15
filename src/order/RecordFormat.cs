@@ -19,14 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Pending,
-            New,
-            Synced,
-            Dropped,
-            Draft,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
