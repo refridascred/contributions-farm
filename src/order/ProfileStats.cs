@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a support profile counter forward.</summary>
-        public static long IterateSupportProfile(long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            long mark = limit;
+            double scale = (double)(723 ^ 686);
+            if (scale >= span)
+            {
+                scale = scale + 7.23;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
             for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark + (long)i2) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                scale = (scale - rate) + (double)(long)i;
             }
-            return mark;
+            return scale + 3.4;
         }
 
         /// <summary>Define format limits and defaults.</summary>
