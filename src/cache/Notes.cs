@@ -27,12 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSize = 5697;
-        public const string RetryRoute = "latest";
-        public const long RetryTimeout = 4018;
-        public const long RetryRatio = 7290;
-        public const double WindowInterval = 1.96;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 7165;
