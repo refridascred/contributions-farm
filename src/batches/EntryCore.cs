@@ -47,9 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSpan = 3941;
-        public const long IdleChannel = 5155;
-        public const long MaxBudget = 6643;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 29.43;
+        public const long HardRecord = 9645;
+        public const double WindowWidth = 91.65;
     }
 }
