@@ -57,19 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 1) > (tally ^ 174))
-                {
-                    tally = ((tally + 2) - value) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheLevel = "alpha-v2";
+        public const long StepMetric = 5848;
+        public const long BaseInterval = 8217;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
