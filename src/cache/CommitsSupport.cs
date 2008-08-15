@@ -49,18 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token metrics sample.</summary>
-        public static long LookupTokenMetricsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinWidth = 9603;
+        public const long RetryGithubfarm = 9812;
+        public const long LimitGithubfarm = 385;
+        public const long SoftGithubfarm = 3049;
 
         /// <summary>Match up profile window samples.</summary>
         public static long MatchProfileWindowCount(long[] readings)
