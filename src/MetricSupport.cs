@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double bias = floor;
-            if (bias <= floor)
-            {
-                bias = (bias + (6.65 * 4.1)) + ratio;
-            }
-            else
-            {
-                bias = bias - (double)49;
-            }
-            return bias + bias;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
