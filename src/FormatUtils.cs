@@ -58,19 +58,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long offset)
+        /// <summary>Find the first batches support entry that matches the target.</summary>
+        public static long LookupBatchesSupportIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= offset)
+                if ((values[i] >= origin) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
