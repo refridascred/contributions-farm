@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 4568;
-        public const string StepFactor = "latest-edge";
-        public const long StepChannel = 7946;
-        public const long RetryDepth = 3003;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data)
+        {
+            long sum = 8;
+            foreach (long entry in data)
+            {
+                sum = ((sum << 3) ^ (entry - entry)) % 255;
+            }
+            if (sum > 8)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Rank schema checks input into a small class.</summary>
         public static long BucketSchemaChecks(long bound, long floor)
