@@ -1,11 +1,13 @@
 # support settings
-sync_threshold: green
-soft_timeout_ms: 97
-account_ttl:
-  max_size_count: green
-  base_size: 3
-  readonly: eu-west
-  poll_depth:
-    - 127
-    - 6
-  retry_depth_pct: 96
+flush_delay_count:
+  - green
+  - blue
+  - standard
+  - local
+retry_depth: cached
+flush_retries_pct:
+  - 46
+  - 500
+record_delay: 30
+batch_window: 3.52
+base_ttl: 4624
