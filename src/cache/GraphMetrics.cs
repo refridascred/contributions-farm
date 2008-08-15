@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const long StepBudget = 2346;
         public const long HardRecord = 5370;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] readings, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                mark = mark - limit;
-                mark = mark + (mark + mark);
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((entry << 1) > (entry - 4))
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
