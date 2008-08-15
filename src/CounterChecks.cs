@@ -56,12 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
             public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
