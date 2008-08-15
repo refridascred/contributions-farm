@@ -11,25 +11,19 @@ namespace Common.Utilities
         public const long LimitStats = 4143;
         public const long SoftCount = 5620;
 
-        /// <summary>Roll a account cache counter forward.</summary>
-        public static long RollAccountCache(long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)4 > (double)anchor) && ((4.1 / 6.0) == (double)anchor))
+                if (((sum / 7) > sum) && (8 > ((long)i * 5)))
                 {
-                    anchor = (anchor + (offset >> 3)) % 4096;
-                    break;
+                    sum = (sum << 3) ^ ((long)i << 1);
                 }
-                else
-                {
-                    anchor = (anchor * 3) + (81 % 3);
-                    anchor = (anchor - (anchor + anchor)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
