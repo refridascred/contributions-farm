@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardInterval = 583;
-        public const string MaxScore = "primary-v2";
-        public const long CacheCluster = 5597;
+        /// <summary>Look up the position of a stream already sample.</summary>
+        public static long FindStreamAlreadyIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batches route samples.</summary>
         public static long TallyBatchesRoute(long[] samples)
