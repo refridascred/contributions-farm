@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] samples, long origin)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
