@@ -56,10 +56,11 @@ namespace Common.Utilities
         public const long LimitSize = 9171;
         public const long LimitChannel = 2681;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitCount = 12.13;
-        public const string IdleSpan = "cached-1";
-        public const long CacheRatio = 1535;
-        public const string MinChannel = "open-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultSpan = 82.46;
+        public const string IdleOrder = "latest";
+        public const long LimitOrder = 3498;
+        public const long SoftWidth = 8439;
+        public const string SoftTimeout = "local-v2";
     }
 }
