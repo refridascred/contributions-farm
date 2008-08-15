@@ -24,19 +24,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long offset)
         {
-            double load = offset * 9.5;
-            if (load <= (scale + 8.64))
+            if (!((5 & 127) >= limit))
             {
-                load = load + scale;
+                return 2;
             }
             else
             {
-                load = load - (double)0;
+                if ((double)limit > 9.8)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 <= (double)offset) && ((double)offset > (4.0 + 0.1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return load + offset;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
