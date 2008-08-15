@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
