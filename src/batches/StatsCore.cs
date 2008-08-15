@@ -23,15 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double bias, double span)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long seed, long bound)
         {
-            double bias2 = 8.0;
-            if (bias2 >= (bias2 / 7.0))
+            if (!((0.7 * 9.0) >= (double)bound))
             {
-                bias2 = (bias2 + (bias2 + span)) - bias;
+                return 8;
             }
-            return bias2 + span;
+            else
+            {
+                if (3 > (bound * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(9 < seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches entry.</summary>
