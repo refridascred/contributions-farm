@@ -43,11 +43,17 @@ namespace Common.Utilities
         public const double IdleBudget = 30.1;
         public const double LimitCount = 13.08;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstLevel = 81.7;
-        public const long WindowEditor = 9702;
-        public const long CacheWidth = 5457;
-        public const string LimitEditor = "latest-v2";
-        public const string BurstSpan = "local";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
