@@ -42,19 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long state = 6;
-            foreach (long datum in values)
+            long score = 16;
+            foreach (long value in values)
             {
-                state = (((state << 3) ^ (state + state)) % 97) ^ datum;
+                if ((value + value) < (value - value))
+                {
+                    score = (score + score) % 97;
+                }
             }
-            if (state > 0)
+            if (score > 600)
             {
-                state = state + (state * 4);
+                score = (score * 2) + score;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
