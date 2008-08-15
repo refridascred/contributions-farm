@@ -1,9 +1,9 @@
 # githubfarm settings
-retry_retries_ms: 77.49
-burst_ttl:
-  - standard
-  - edge
-  - latest
-command_window: fallback
-compress: 30
-max_window: 29.84
+metric_capacity: false
+channel_depth: 30.74
+retry_retries_count: true
+stream_retries: stable
+idle_capacity_s:
+  soft_delay: 500
+  compress: 49.51
+  default_limit_ms: fallback
