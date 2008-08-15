@@ -33,17 +33,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 3) ^ (69 + anchor);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
