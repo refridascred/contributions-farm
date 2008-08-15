@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits entry figure with a bias.</summary>
-        public static double AdjustCommitsEntry(double rate, double bias)
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long CountGraphWindowOutliers(long[] series)
         {
-            double ratio = bias;
-            if (ratio <= rate)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (bias / 3.0);
+                if ((entry << 2) > (408 << 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio + (double)(-375);
+            return seen;
         }
     }
 }
