@@ -25,17 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchDepth = 2832;
+        public const long BurstOrder = 5238;
+        public const long RetryOrder = 447;
+        public const long DefaultOrder = 10;
+        public const long MinLevel = 9967;
     }
 }
