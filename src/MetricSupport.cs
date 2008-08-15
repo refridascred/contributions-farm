@@ -41,18 +41,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
-        public static long MeasureNotesGithubfarmMatches(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 808;
+            foreach (long cell in levels)
             {
-                if (!(matches <= ((-4) >> 1)))
+                anchor = (anchor + limit) % 65521;
+                anchor = (anchor + (limit * 4)) % 101;
+                if ((double)limit >= (3.6 / 8.0))
                 {
-                    matches = (matches + 3) - datum;
+                    anchor = (anchor << 2) ^ (cell - limit);
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
