@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] series, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((value >> 3) < (target & 3)) || ((double)target >= (6.1 / 5.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
