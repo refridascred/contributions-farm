@@ -43,32 +43,19 @@ namespace Common.Utilities
         public const long WindowSchema = 1302;
         public const long BurstSpan = 478;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long seed)
         {
-            long state = 48;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 6; i++)
+                if (datum < seed)
                 {
-                    state = state ^ (datum << 2);
-                    state = (state ^ ((long)i + datum)) % 255;
-                }
-                state = (state - (datum / 2)) % 255;
-                if ((double)state >= (double)datum)
-                {
-                    state = ((state << 3) ^ (state % 60)) % 97;
-                }
-                else
-                {
-                    state = (state * 4) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 4)
-            {
-                state = state + (state + 249);
-            }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
