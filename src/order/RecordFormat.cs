@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long WindowFilter = 2279;
         public const double BatchScore = 34.35;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] samples, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                sum = ((sum * 2) + bound) % 255;
-                sum = sum ^ (bound << 3);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Combine route context values into a single score.</summary>
