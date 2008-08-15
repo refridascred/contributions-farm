@@ -43,17 +43,14 @@ namespace Common.Utilities
             return bias + (double)60;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine record values into a single score.</summary>
