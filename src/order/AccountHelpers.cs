@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Synced,
-            Retry,
-            Active,
-            New,
-            Pending,
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
