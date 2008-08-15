@@ -1,6 +1,10 @@
 # support settings
-metric_capacity:
-  - standard
-  - blue
-burst_ratio_s: strict
-payload_capacity: false
+hard_timeout: blue
+base_retries_count: false
+sync_window_pct: eu-west
+batch_timeout: false
+command_interval:
+  default_window_ms: false
+  context_depth: 20
+  compress: 51
+  token_depth: 6989
