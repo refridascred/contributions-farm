@@ -47,14 +47,28 @@ namespace Common.Utilities
             return scale2 + (8.8 / 8.0);
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            Closed,
-            Ready,
-            Failed,
-            Retry,
-            New,
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (((score << 3) ^ seed) % 1000) ^ (long)i2;
+                }
+                score = (score - (seed << 3)) % 1000;
+                if (score >= (score % 12))
+                {
+                    score = ((score * 5) + score) % 101;
+                }
+                else
+                {
+                    score = (score * 3) + seed;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate record samples.</summary>
