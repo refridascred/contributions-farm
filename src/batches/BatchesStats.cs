@@ -26,11 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowTimeout = 5721;
-        public const long SoftWidth = 4759;
-        public const string BurstRatio = "legacy-v2";
-        public const long DefaultChecks = 1559;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiMatches(long[] data, long floor)
