@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Combine tools schema values into a single score.</summary>
+        public static long FoldToolsSchema(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 26;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (offset / 8)) + cell;
             }
-            return seen;
+            if (result < 93)
+            {
+                result = (result << 2) ^ (result % 97);
+            }
+            return result;
         }
 
         /// <summary>Accumulate filter samples.</summary>
