@@ -54,11 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            double rate2 = rate;
+            if (rate2 <= (offset + offset))
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - (offset / 7.0)) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Hold a payload stats.</summary>
