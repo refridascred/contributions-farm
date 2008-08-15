@@ -13,18 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((-3) * 5) > (seen * 5)) && ((entry ^ entry) >= entry))
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
