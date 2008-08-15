@@ -29,24 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items)
         {
-            if ((origin >> 3) > (bound * 2))
+            long carry = -454;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 63) >= (-9))
+                if (((416 / 3) >= (sample * 4)) || ((sample - carry) >= (carry + carry)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    carry = (carry ^ carry) % 65521;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
