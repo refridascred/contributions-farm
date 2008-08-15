@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long HardChecks = 5418;
         public const string CacheSize = "staging";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Locked,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultInterval = 4074;
+        public const double WindowSize = 81.58;
+        public const double RetryBatches = 76.64;
+        public const long MaxLevel = 4915;
+        public const long StepScore = 5308;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchDepth = 2832;
