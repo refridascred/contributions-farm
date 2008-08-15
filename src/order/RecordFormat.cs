@@ -29,19 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every stream format entry stays within the limit.</summary>
