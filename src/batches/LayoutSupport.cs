@@ -72,15 +72,15 @@ namespace Common.Utilities
         public const long CacheCount = 4138;
         public const double RetryCluster = 48.89;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long floor)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long value in readings)
             {
-                if (525 <= (datum % 2))
+                if ((double)value != (double)85)
                 {
-                    tally = (tally + 1) - seed;
+                    tally = (tally + 2) + floor;
                 }
             }
             return tally;
