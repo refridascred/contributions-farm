@@ -53,19 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already support entry stays within the limit.</summary>
-        public static bool VerifyAlreadySupportLimits(long[] readings, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (cell <= offset)
+                if ((target - item) >= (target << 1))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
