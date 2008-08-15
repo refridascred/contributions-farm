@@ -60,17 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long offset)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long MeasureNotesMetricOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] == offset)
+                if ((matches + matches) <= cell)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
