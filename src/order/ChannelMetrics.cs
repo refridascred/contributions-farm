@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] samples, long seed)
-        {
-            long score = -68;
-            foreach (long datum in samples)
-            {
-                score = (score + (datum & 3)) % 1000;
-            }
-            if (score < 43)
-            {
-                score = ((score * 2) + seed) % 101;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "alpha-1";
+        public const string HardSpan = "standard";
+        public const long DefaultOrder = 7560;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
