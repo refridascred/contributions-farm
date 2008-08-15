@@ -48,11 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCount = 2334;
-        public const double CacheCommand = 49.43;
-        public const string RetryCommand = "open-edge";
-        public const double BurstSpan = 39.39;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate buffer session readings against a bound.</summary>
         public static bool ValidateBufferSessionBounds(long[] items, long target)
