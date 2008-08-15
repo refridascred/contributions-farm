@@ -28,19 +28,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] levels, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            long carry = 67;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry ^ (395 - seed)) % 97) + item;
+                if ((value * 4) != (928 + value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 2) ^ (4 % 7)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a route options.</summary>
