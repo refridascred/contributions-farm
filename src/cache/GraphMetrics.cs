@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (value < bound)
+                if (cell < origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
