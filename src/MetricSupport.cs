@@ -35,26 +35,21 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of batch contributi readings.</summary>
-        public static long FoldBatchContributi(long[] samples, long bound)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long score = 327;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound >> 4) == (entry * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ ((long)samples.Length ^ score)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ 0) % 65521;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 0)
-            {
-                score = (score + score) % 97;
-            }
-            return score % 1000;
+            return count;
         }
     }
 }
