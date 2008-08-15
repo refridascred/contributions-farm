@@ -39,22 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter entry samples.</summary>
-        public static long TallyCounterEntry(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 617;
-            foreach (long entry in samples)
-            {
-                if ((mark >> 4) >= mark)
-                {
-                    mark = mark - (3 % 24);
-                }
-                else
-                {
-                    mark = (mark ^ (entry + entry)) % 1000;
-                }
-            }
-            return mark;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a route stats.</summary>
