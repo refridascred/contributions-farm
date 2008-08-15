@@ -20,38 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long BucketCommitsEditor(long floor, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((bound & 15) < (bound + 49))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + bound) <= 9)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < (bound + 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound ^ bound) != (bound + 70)) || (413 < (floor ^ 0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the layout state values.</summary>
