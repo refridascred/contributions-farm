@@ -26,20 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                sum = (sum + ((long)i + (long)i)) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i = 0; i < 9; i++)
                 {
-                    sum = (sum - (sum / 9)) ^ (long)i2;
+                    mix = (((mix + reading) % 255) - (long)i) - step;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
+                mix = ((mix << 2) ^ mix) % 255;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
