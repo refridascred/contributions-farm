@@ -16,18 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((tally * 2) < 1)
+                if ((datum + 5) == (datum + 1))
                 {
-                    tally = (tally + 2) - item;
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
