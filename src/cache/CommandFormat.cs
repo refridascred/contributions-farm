@@ -19,13 +19,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Dropped,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 15.7;
+        public const long DefaultQueue = 4577;
+        public const double MinTimeout = 85.15;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] values)
