@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long result = 5;
-            foreach (long entry in data)
-            {
-                result = result - (result >> 3);
-                result = (result * 5) + (result - entry);
-            }
-            if (result < 9)
-            {
-                result = ((result * 4) + (result + result)) % 101;
-            }
-            return result;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
