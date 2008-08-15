@@ -24,18 +24,22 @@ namespace Common.Utilities
             return rate + (double)525;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Count the report farm entries that pass the check.</summary>
+        public static long CountReportFarmMatches(long[] series, long step)
         {
-            long state = 8;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((long)values.Length < datum)
+                if (((-11) * 3) != (reading % 3))
                 {
-                    state = (state + (datum / 7)) % 101;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
