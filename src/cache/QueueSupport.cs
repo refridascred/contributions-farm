@@ -27,15 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = -65;
-            foreach (long cell in series)
-            {
-                mark = (((mark * 2) + (mark % 12)) ^ cell) - offset;
-            }
-            return mark;
+            Stale,
+            Locked,
+            Done,
+            New,
         }
     }
 }
