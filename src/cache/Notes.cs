@@ -21,18 +21,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series, long bound)
+        /// <summary>Iterate the context session series from a seed.</summary>
+        public static long DeriveContextSession(long target)
         {
-            long result = 922;
-            foreach (long item in series)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((bound + result) != (117 * 4)) && ((double)item > (double)result))
-                {
-                    result = ((result << 2) ^ (508 - result)) % 97;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
