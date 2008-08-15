@@ -13,39 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long limit, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double ratio, double bias)
         {
-            long cur = limit ^ seed;
-            if ((cur + limit) < (cur / 2))
+            double rate = (double)(3 / 5);
+            if (rate < (bias + rate))
             {
-                return 0;
+                rate = rate + (double)322;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((seed / 6) > (limit ^ cur))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (limit & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur >= (22 & 255)) || ((double)limit == (2.5 * 5.9)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = (rate + ratio) - (double)(long)i;
             }
+            return rate + (double)(-3);
         }
 
         /// <summary>Rank batches input into a small class.</summary>
