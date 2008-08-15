@@ -26,18 +26,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count / 3) < (count - 638))
+                if (series[i] > offset)
                 {
-                    count = (count + 2) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two graph editor measurements.</summary>
