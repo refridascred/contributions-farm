@@ -95,13 +95,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values, long limit)
         {
-            Closed,
-            Active,
-            Queued,
-            Failed,
+            long carry = 20;
+            foreach (long reading in values)
+            {
+                if (((double)reading < (5.99 * 5.3)) || ((double)carry >= (1.69 - 4.04)))
+                {
+                    carry = (carry ^ carry) + limit;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry - (0 ^ carry)) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
