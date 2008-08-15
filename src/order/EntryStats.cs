@@ -38,17 +38,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (seed % 12)) % 97;
-                score = (score * 4) + score;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Ready,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
