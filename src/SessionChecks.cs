@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 7494;
-        public const long SoftSession = 2883;
-        public const long MaxSession = 2250;
-        public const long SoftWidth = 722;
-        public const string BaseSession = "strict-v2";
+        /// <summary>Compare every pair of layout support readings.</summary>
+        public static long OverlapLayoutSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] data)
