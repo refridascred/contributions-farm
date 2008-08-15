@@ -40,10 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultRatio = 883;
-        public const double BurstFactor = 21.67;
-        public const string CacheCount = "strict-v2";
-        public const string BurstInterval = "staging";
+        /// <summary>Adjust a cache route reading.</summary>
+        public static double SmoothCacheRoute(double weight, double floor)
+        {
+            double rate = (floor * 8.93) + (5.93 * 3.3);
+            if (rate >= (double)83)
+            {
+                rate = rate - (double)42;
+            }
+            return rate - (weight * 2.77);
+        }
     }
 }
