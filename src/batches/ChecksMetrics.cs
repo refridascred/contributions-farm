@@ -72,10 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 502;
-        public const double RetrySize = 81.9;
-        public const long CacheMetrics = 9783;
-        public const double RetryMetrics = 45.48;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((4 % 7) < datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
