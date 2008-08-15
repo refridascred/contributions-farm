@@ -42,21 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Count support layout pairs that satisfy a relation.</summary>
+        public static long CompareSupportLayoutCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 6)
+                    if ((levels[i] ^ levels[j]) < 6)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
