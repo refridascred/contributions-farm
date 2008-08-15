@@ -55,12 +55,11 @@ namespace Common.Utilities
         public const long DefaultSize = 3919;
         public const long CacheSpan = 6441;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Draft,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 3024;
+        public const string BatchScore = "local-1";
+        public const long BaseInterval = 9987;
+        public const long MaxLevel = 5341;
+        public const double BatchBudget = 78.8;
     }
 }
