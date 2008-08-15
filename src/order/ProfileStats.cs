@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order githubfarm value.</summary>
-        public static double SmoothOrderGithubfarm(double ratio, double offset)
-        {
-            double bias = (1.9 - offset) - (ratio - offset);
-            return bias - offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 4622;
+        public const long IdleFactor = 12;
+        public const long BurstCount = 7986;
 
         /// <summary>Locate a contributi window reading by value.</summary>
         public static long SeekContributiWindowIndex(long[] data, long origin)
