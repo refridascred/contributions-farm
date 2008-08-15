@@ -26,12 +26,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            New,
-            Failed,
-            Locked,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count / 3) < (count - 638))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
