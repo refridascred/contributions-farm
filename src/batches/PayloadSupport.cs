@@ -14,14 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count notes window pairs that satisfy a relation.</summary>
+        public static long OverlapNotesWindowCount(long[] readings)
         {
-            Pending,
-            Idle,
-            Stale,
-            Failed,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema format samples are out of range.</summary>
