@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 75.91;
-        public const double MaxTimeout = 5.59;
-        public const long HardCluster = 8600;
-        public const long SoftBudget = 5960;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
