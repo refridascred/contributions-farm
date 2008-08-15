@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            if ((target << 2) <= (27 % 7))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target2 - target) <= 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target * 3) >= target2))
+                    if ((series[i] + series[j]) != 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
