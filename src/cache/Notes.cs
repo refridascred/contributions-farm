@@ -40,37 +40,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank graph format input into a small class.</summary>
-        public static long SortGraphFormat(long origin, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long target)
         {
-            long gap = origin - floor;
-            if (((origin - gap) > (3 - 437)) && ((gap * 5) >= (origin - gap)))
+            long slot = seed + target;
+            if (!((double)seed <= 0.99))
             {
                 return 5;
             }
             else
             {
-                if (!((origin - 2) >= (floor - 1)))
+                if (((slot * 2) != (13 >> 1)) && ((target >> 1) >= (slot / 6)))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin + gap) >= (origin & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)89 <= (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
