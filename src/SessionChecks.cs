@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long CombineStreamAccount(long[] series)
+        /// <summary>Check that every filter profile entry stays within the limit.</summary>
+        public static bool GuardFilterProfileLimits(long[] items, long step)
         {
-            long state = 25;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((double)datum < (1.8 * 5.0))
+                if (cell > step)
                 {
-                    state = (state + (datum + state)) % 255;
-                }
-                else
-                {
-                    state = state + (state - datum);
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Hold a report summary.</summary>
