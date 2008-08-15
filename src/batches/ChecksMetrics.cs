@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] >= floor)
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
