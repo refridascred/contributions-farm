@@ -52,19 +52,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (value < floor)
+                if ((double)hits >= (8.31 * 0.03))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 2) + value) + offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Project the next counter value.</summary>
