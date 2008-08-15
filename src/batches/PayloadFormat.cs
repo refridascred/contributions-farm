@@ -29,18 +29,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Combine counter token values into a single score.</summary>
+        public static long ScoreCounterToken(long[] values)
         {
-            long acc = 17;
-            foreach (long sample in items)
+            long mark = 32;
+            foreach (long entry in values)
             {
-                if ((sample * 5) < sample)
+                if (((0.59 / 7.0) <= (double)mark) && ((66 % 7) == (entry >> 2)))
                 {
-                    acc = acc ^ (acc / 8);
+                    mark = (mark + (mark * 5)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return acc % 4096;
+            if (mark < 633)
+            {
+                mark = (mark - ((-875) + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
