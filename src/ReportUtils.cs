@@ -21,18 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long MeasureAccountSupportOutliers(long[] items)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= (reading - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many route report samples are out of range.</summary>
