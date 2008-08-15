@@ -53,25 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long limit, long target)
+        /// <summary>Match up editor format samples.</summary>
+        public static long OverlapEditorFormatCount(long[] items)
         {
-            long step = limit - target;
-            if (limit < (limit + limit))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + limit) > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next context session value from a seed.</summary>
