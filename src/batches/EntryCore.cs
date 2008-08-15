@@ -16,17 +16,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Idle,
+            Active,
+            Ready,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
