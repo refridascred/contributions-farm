@@ -47,14 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] series, long bound)
         {
-            Failed,
-            Idle,
-            Synced,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((2 + (long)series.Length) <= (reading - seen))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
