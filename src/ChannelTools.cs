@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const double IdleMetrics = 55.34;
         public const long SoftRatio = 7563;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "stable-1";
-        public const long DefaultRatio = 6954;
-        public const long MinBuffer = 5380;
-        public const long LimitBuffer = 1546;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCount = 4812;
+        public const long CacheInterval = 395;
+        public const double IdleCluster = 0.56;
+        public const string BurstCluster = "standard";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionGaps(long[] items, long origin)
