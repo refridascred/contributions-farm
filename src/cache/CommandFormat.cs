@@ -27,18 +27,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the stream command entries that pass the check.</summary>
-        public static long CountStreamCommandHits(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < (count / 9))
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
