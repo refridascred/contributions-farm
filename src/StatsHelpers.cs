@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long MinNotes = 8209;
         public const long IdleInterval = 4434;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowFactor = "alpha-1";
+        public const string DefaultLevel = "strict-edge";
+        public const string RetryScore = "legacy-v2";
+        public const string BatchFactor = "fallback-edge";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long WeighEditor(long[] data)
