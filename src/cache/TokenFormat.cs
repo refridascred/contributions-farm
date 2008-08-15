@@ -22,39 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long offset)
-        {
-            if ((limit + offset) >= (offset >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >= (offset % 8)) && ((limit << 3) > offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 2) >= (limit - 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit < 799)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinRatio = 1.63;
+        public const double LimitSession = 7.24;
+        public const string BatchSession = "open-1";
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] series)
