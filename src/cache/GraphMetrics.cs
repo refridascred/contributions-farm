@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Look up the position of a profile filter sample.</summary>
+        public static long LocateProfileFilterIndex(long[] data, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
