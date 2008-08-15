@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] readings, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 83;
+            foreach (long reading in series)
             {
-                if (readings[i] < target)
+                result = result + (result + reading);
+                if ((double)result < (7.12 - 4.15))
                 {
-                    return (long)i;
+                    result = (result * 5) + (34 + 649);
+                }
+                if ((4.1 / 8.0) == (double)result)
+                {
+                    result = result ^ (bound + result);
+                }
+                if ((reading < (reading >> 5)) && ((561 + result) < result))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 16)
+            {
+                result = ((result << 3) ^ bound) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
