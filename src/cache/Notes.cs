@@ -12,38 +12,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long bound)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long TotalClusterProfile(long[] data, long seed)
         {
-            if ((target * 5) > target)
+            long anchor = 4;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((382 >> 1) <= bound)
+                if ((anchor + anchor) < (seed ^ seed))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + target) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((target / 9) >= bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor - (seed % 64)) - reading;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
