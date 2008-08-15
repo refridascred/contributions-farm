@@ -71,19 +71,20 @@ namespace Common.Utilities
             return scale2 + 9.0;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] values, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < target)
+                acc = (acc - (1 - 788)) % 65521;
+                if (acc <= (offset + (long)i))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 2) ^ (offset ^ offset)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
     }
 }
