@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of metrics tools readings.</summary>
-        public static long CompareMetricsToolsCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits > (hits % 12))
                 {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) - cell) - step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a farm entry.</summary>
