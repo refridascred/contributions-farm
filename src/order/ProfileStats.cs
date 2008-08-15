@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8647;
-        public const double BaseRatio = 6.77;
-        public const long LimitFilter = 1367;
-        public const long SoftLevel = 5110;
-        public const string DefaultTimeout = "primary";
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Idle,
+            Closed,
+            Locked,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long ClassifyToken(long target, long origin)
