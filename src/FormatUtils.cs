@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const long IdleBudget = 5480;
         public const string HardWidth = "open";
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
