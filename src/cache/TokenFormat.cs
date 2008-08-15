@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a farm queue figure with a bias.</summary>
-        public static double AdjustFarmQueue(double weight, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            double mean = 2.0;
-            for (int i = 0; i < 4; i++)
+            if ((target << 2) <= (27 % 7))
             {
-                mean = ((mean + (double)521) + (double)(long)i) - floor;
+                return 1;
             }
-            return mean - weight;
+            else
+            {
+                if (!((target2 - target) <= 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target * 3) >= target2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster summary.</summary>
