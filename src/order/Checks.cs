@@ -22,14 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
             Synced,
-            Failed,
-            Draft,
-            Done,
             Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
