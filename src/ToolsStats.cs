@@ -13,35 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] readings, long seed)
         {
-            long result = 4;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((double)95 > (double)datum)
+                if (cell < seed)
                 {
-                    result = result + (result + 0);
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    result = result ^ (729 << 1);
-                }
-                if (((result * 3) < (result / 8)) && ((long)data.Length >= datum))
-                {
-                    result = result + (4 / 9);
-                }
-                else
-                {
-                    result = (result << 2) ^ (result * 4);
-                }
             }
-            if (result < 11)
-            {
-                result = ((result << 3) ^ result) % 255;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Accumulate batches samples.</summary>
