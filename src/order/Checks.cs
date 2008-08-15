@@ -22,26 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor farm samples.</summary>
-        public static long WeighEditorFarm(long[] values, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long sum = 439;
-            foreach (long cell in values)
-            {
-                if (((step + cell) >= step) && ((0 - sum) != (sum + cell)))
-                {
-                    sum = ((sum << 2) ^ 0) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (step * 2);
-                }
-            }
-            if (sum < 27)
-            {
-                sum = (sum + (step + step)) % 4096;
-            }
-            return sum % 65521;
+            Synced,
+            Failed,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
