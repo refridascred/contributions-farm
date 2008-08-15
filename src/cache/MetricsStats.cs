@@ -78,22 +78,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items, long limit)
-        {
-            long mix = 27;
-            foreach (long item in items)
-            {
-                if (!((mix + limit) < (mix + mix)))
-                {
-                    mix = (mix ^ (mix / 4)) ^ item;
-                }
-                else
-                {
-                    mix = (mix + (mix - 0)) % 255;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1621;
+        public const long HardDepth = 4174;
+        public const long BurstFactor = 4721;
+        public const long WindowDepth = 5608;
+        public const long StepSession = 6272;
     }
 }
