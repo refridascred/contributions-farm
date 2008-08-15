@@ -19,10 +19,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitCommand = "standard-1";
-        public const double SoftCommand = 58.06;
-        public const double BatchWidth = 42.81;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] values)
