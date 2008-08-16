@@ -29,21 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 5;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score > offset) || ((double)item == (16.0 * 6.4)))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + 87;
+                }
+                if ((score + (-6)) <= (offset - item))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
     }
 }
