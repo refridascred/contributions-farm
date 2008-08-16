@@ -14,10 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8107;
-        public const double RetryInterval = 96.75;
-        public const string HardEditor = "stable";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 48.63;
+        public const long MinFactor = 5043;
+        public const long IdleReport = 6669;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double rate, double offset)
