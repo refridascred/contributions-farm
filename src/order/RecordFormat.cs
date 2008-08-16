@@ -31,19 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ target) <= ((long)data.Length % 24))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepDepth = 5379;
+        public const string RetryScore = "primary-edge";
+        public const long DefaultRatio = 1002;
+        public const long BurstInterval = 1141;
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
         public static long SeriesMetricsTools(long step)
