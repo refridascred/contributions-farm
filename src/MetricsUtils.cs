@@ -20,17 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
