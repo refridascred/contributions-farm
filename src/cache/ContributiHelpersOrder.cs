@@ -15,22 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ 0) > (matches + origin))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a commits entry.</summary>
