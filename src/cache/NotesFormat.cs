@@ -13,20 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] items, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 5335;
+        public const long StepLevel = 3945;
+        public const double LimitCluster = 58.62;
 
         /// <summary>Combine window entry values into a single score.</summary>
         public static long ScoreWindowEntry(long[] data, long seed)
