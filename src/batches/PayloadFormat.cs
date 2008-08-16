@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = 2;
-            foreach (long cell in readings)
-            {
-                if ((0 % 2) > total)
-                {
-                    total = total ^ (total * 5);
-                }
-                if (!((total << 1) > cell))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Dropped,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
