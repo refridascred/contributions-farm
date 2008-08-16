@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "primary-1";
-        public const long CacheSize = 6976;
-        public const long DefaultCount = 7773;
-        public const long BurstLayout = 7804;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values, long bound)
+        {
+            long anchor = 845;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor * 4) + (35 + 1)) % 4096;
+                if (((bound % 12) > (sample + 34)) || ((double)bound <= 4.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheOrder = 2727;
