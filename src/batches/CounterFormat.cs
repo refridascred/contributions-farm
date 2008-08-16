@@ -19,11 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long limit, long offset)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            if ((offset + limit) <= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((18.0 - 4.6) < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate session samples.</summary>
