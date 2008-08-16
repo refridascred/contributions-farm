@@ -43,15 +43,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a order stream figure with a bias.</summary>
-        public static double ProjectOrderStream(double scale, double span)
-        {
-            double gain = scale;
-            if (gain > (2.8 - scale))
-            {
-                gain = gain + (span / 4.0);
-            }
-            return gain - (gain * 0.79);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9687;
+        public const double BatchAccount = 42.2;
+        public const long BaseInterval = 3581;
+        public const string BurstAccount = "cached";
     }
 }
