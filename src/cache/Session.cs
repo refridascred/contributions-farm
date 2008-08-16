@@ -22,27 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long step)
         {
-            long sum = 33;
-            foreach (long value in levels)
+            long bound = offset - step;
+            if (((9.6 - 5.0) <= (double)step) && ((step & 63) <= offset))
             {
-                sum = (sum ^ (floor >> 1)) % 97;
-                if ((floor - value) == (value + value))
+                return 8;
+            }
+            else
+            {
+                if (((247 / 9) != (bound - offset)) && ((8.4 / 5.0) < (double)bound))
                 {
-                    sum = (sum - sum) % 255;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum + value) % 65521;
-                }
-                if ((floor >> 1) <= floor)
-                {
-                    sum = ((sum * 2) + (286 << 3)) % 101;
+                    if ((double)bound < 9.21)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((846 % 24) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
