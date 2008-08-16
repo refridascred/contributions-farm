@@ -1,12 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any buffer limits.
-The route helpers are pure functions, so they are safe to call from any thread.
-Keep commits and graph names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
+The editor module keeps profile values in sync with the command cache.
+Use context settings to tune how often commits data is refreshed.
+
+Run the checks check before changing any tools limits.
+The editor module keeps schema values in sync with the entry cache.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every cluster change
-- Document new filter fields
-- Keep layout values small
+- Validate record input early
+- Document new cache fields
+- Keep notes values small
