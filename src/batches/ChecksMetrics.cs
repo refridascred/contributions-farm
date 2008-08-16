@@ -13,11 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "local";
-        public const long CacheRoute = 2483;
-        public const double HardRoute = 10.3;
-        public const long BurstRoute = 8970;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4687;
+        public const string RetryEntry = "staging-1";
+        public const long BurstEntry = 45;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
