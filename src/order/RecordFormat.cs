@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mark = 7;
-            foreach (long entry in values)
-            {
-                if (entry < (entry + mark))
-                {
-                    mark = mark - (entry ^ mark);
-                }
-            }
-            return mark;
+            New,
+            Idle,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a schema info.</summary>
