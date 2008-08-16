@@ -1,6 +1,10 @@
-id,count,score,label
-1,98.61,401,23.71
-2,94.21,78.07,78.81
-3,59.85,649,87.76
-4,green,92.35,339
-5,237,673,84.49
+id,active,level
+1,86,310
+2,open,eu-west
+3,89.93,green
+4,fallback,latest
+5,blue,845
+6,strict,207
+7,staging,94.74
+8,996,latest
+9,edge,32
