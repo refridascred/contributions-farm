@@ -45,19 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = 314;
-            foreach (long cell in data)
-            {
-                score = (((score * 5) + ((-2) & 1)) % 97) + cell;
-            }
-            if (score > (-707))
-            {
-                score = (score + (score << 1)) % 101;
-            }
-            return score % 1000;
+            Done,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
