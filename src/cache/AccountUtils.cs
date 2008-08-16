@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Find the first metric command entry that matches the target.</summary>
+        public static long LookupMetricCommandIndex(long[] items, long bound)
         {
-            long carry = 76;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
                 {
-                    carry = (carry - (value - carry)) + (long)i;
-                }
-                if (carry >= (value - carry))
-                {
-                    carry = ((carry << 3) ^ (value * 5)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value + carry)) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a report options.</summary>
