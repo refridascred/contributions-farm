@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long AuditChecksSessionMatches(long[] samples, long seed)
         {
-            double mean = (double)(50 & 15);
-            if (mean <= (double)3)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mean = (mean - (mean + 3.26)) - offset;
+                if ((double)seed <= (6.9 * 0.82))
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean + ratio;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
