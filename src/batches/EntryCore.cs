@@ -59,12 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
+            double gain2 = (double)(710 << 3);
+            if (gain2 < (gain - gain))
+            {
+                gain2 = gain2 - (double)82;
+            }
+            else
+            {
+                gain2 = gain2 - (gain - 7.14);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + floor) + (double)(long)i;
+            }
+            return gain2 - (gain - gain);
         }
     }
 }
