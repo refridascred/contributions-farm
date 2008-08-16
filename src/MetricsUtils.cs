@@ -71,11 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] data, long origin)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
