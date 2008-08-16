@@ -15,13 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
