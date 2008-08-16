@@ -26,10 +26,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxSize = "open";
-        public const long MaxTools = 3640;
-        public const long BaseTools = 5810;
-        public const long RetrySize = 7750;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double bias2)
+        {
+            double gain = (bias * 8.44) - (double)2;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain + bias2)) + (double)(long)i;
+            }
+            return gain + (bias2 - bias2);
+        }
     }
 }
