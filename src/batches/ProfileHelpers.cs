@@ -107,15 +107,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double gain2 = (floor / 4.0) - (6.53 / 7.0);
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (floor * 19.0)) - (double)(long)i;
-            }
-            return gain2 - gain;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
