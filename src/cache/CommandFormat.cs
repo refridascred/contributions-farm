@@ -20,17 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 34;
+            foreach (long datum in samples)
             {
-                if (items[i] <= limit)
+                if ((double)limit == (6.3 - 6.2))
                 {
-                    return (long)i;
+                    score = (((score * 3) + (0 << 3)) % 101) - datum;
+                }
+                else
+                {
+                    score = (score * 4) + (score << 1);
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
