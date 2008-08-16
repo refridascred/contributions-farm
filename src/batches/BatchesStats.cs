@@ -40,11 +40,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepScore = 85.51;
-        public const double WindowWidth = 76.15;
-        public const string LimitBatches = "legacy";
-        public const long RetryBatches = 3305;
-        public const double BurstBudget = 50.93;
+        /// <summary>Validate report window readings against a bound.</summary>
+        public static bool ValidateReportWindowBounds(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
