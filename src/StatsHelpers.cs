@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] series, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)matches <= (18.0 * 9.0))
-                {
-                    matches = ((matches + 2) - datum) - bound;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
