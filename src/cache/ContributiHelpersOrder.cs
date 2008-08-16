@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 134;
+            foreach (long sample in data)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (sample & 3)) - limit;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
