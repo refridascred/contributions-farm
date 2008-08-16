@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const double LimitBudget = 53.42;
         public const long MinSize = 6464;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)27 >= (double)cell)
+                if (limit < ((long)i & 63))
                 {
-                    hits = hits + 3;
+                    score = (score + (limit - (long)i)) % 101;
+                    score = (score + score) % 1000;
                 }
+                if ((limit << 2) == (757 - limit))
+                {
+                    score = (score << 2) ^ limit;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
