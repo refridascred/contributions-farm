@@ -1,12 +1,5 @@
 {
-  "buffer_retries": 65.62,
-  "stats_window": [498, 189, 361],
-  "strict": 5.98,
-  "payload_timeout": 60,
-  "editor_limit": {
-    "soft_limit": 70.31,
-    "burst_ttl": 66,
-    "editor_timeout": true
-  },
-  "flush_interval_ms": false
+  "flush_interval_s": "standard",
+  "idle_threshold_s": false,
+  "poll_timeout_pct": [210, 86]
 }
