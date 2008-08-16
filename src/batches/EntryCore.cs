@@ -38,23 +38,13 @@ namespace Common.Utilities
             return (gain - bias) + bias2;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double gain2 = (double)(710 << 3);
-            if (gain2 < (gain - gain))
-            {
-                gain2 = gain2 - (double)82;
-            }
-            else
-            {
-                gain2 = gain2 - (gain - 7.14);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + floor) + (double)(long)i;
-            }
-            return gain2 - (gain - gain);
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
