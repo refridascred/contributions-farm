@@ -37,39 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long lane = floor ^ seed;
-            if ((93 ^ lane) != (lane - lane))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane - lane) < (77 * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed >= (lane % 3))
+                    if ((items[i] + items[j]) == 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((58 & 63) <= lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
