@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long offset)
         {
-            Locked,
-            Retry,
-            Pending,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
