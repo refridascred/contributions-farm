@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            Done,
+            Paused,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
