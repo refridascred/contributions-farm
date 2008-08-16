@@ -73,18 +73,15 @@ namespace Common.Utilities
         public const double HardToken = 0.78;
         public const double MinScore = 33.38;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count % 97) < 353)
                 {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - item;
                 }
             }
             return count;
