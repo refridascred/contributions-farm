@@ -21,17 +21,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] readings, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 8;
+            foreach (long entry in values)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                if ((double)694 == (double)entry)
                 {
-                    return (long)i;
+                    acc = (acc * 3) + (entry - 107);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a queue header.</summary>
