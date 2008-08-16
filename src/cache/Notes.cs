@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next editor commits value.</summary>
-        public static double ScaleEditorCommits(double ratio, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            double load = 2.1;
-            if (load < (double)(-681))
+            double mean = offset;
+            if (mean < (offset * 0.72))
             {
-                load = (load + (load + ratio)) + offset;
+                mean = mean - bias;
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - 11.0;
+            return mean - (bias - offset);
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
