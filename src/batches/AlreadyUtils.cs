@@ -53,14 +53,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long seed)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count - 9) != (count & 7))
+                {
+                    count = ((count + 1) + entry) + seed;
+                }
+            }
+            return count;
         }
     }
 }
