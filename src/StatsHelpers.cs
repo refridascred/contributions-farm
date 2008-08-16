@@ -18,11 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowFactor = "alpha-1";
-        public const string DefaultLevel = "strict-edge";
-        public const string RetryScore = "legacy-v2";
-        public const string BatchFactor = "fallback-edge";
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long seed, long step)
+        {
+            long diff = seed - step;
+            if ((2.15 - 3.0) > (double)diff)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((2.3 + 10.0) >= (double)step) || (diff <= seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step % 2) != (346 - diff)) && ((seed + diff) < (seed & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheTimeout = 710;
