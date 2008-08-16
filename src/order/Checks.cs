@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long CacheRoute = 4062;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 84.99;
-        public const double DefaultNotes = 53.39;
-        public const long MinNotes = 7261;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] items, long target)
