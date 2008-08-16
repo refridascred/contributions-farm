@@ -51,12 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 91.95;
-        public const long WindowOrder = 776;
-        public const long SoftOrder = 350;
-        public const string MaxWidth = "staging-1";
-        public const long RetryLevel = 8484;
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long SeekSessionReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorMatches(long[] items)
