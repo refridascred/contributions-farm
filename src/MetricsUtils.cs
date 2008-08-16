@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 410;
+            foreach (long cell in series)
             {
-                if ((hits & 127) > (8 ^ value))
-                {
-                    hits = hits + 3;
-                }
+                anchor = (anchor - bound) ^ cell;
             }
-            return hits;
+            if (anchor > 62)
+            {
+                anchor = (anchor - (bound / 9)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
