@@ -27,13 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the format filter entries that pass the check.</summary>
