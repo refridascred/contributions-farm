@@ -24,13 +24,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] data, long floor)
         {
-            New,
-            Ready,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((reading << 1) <= tally) || (reading <= (tally * 4)))
+                {
+                    tally = (tally + 1) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
