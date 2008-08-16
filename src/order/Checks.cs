@@ -33,18 +33,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8538;
+        public const double WindowSpan = 53.56;
+        public const long WindowFarm = 7821;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long seed)
