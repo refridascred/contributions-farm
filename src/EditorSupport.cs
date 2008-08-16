@@ -27,21 +27,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Accumulate payload profile samples.</summary>
+        public static long ScorePayloadProfile(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 65;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)anchor <= (5.1 + 4.65))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (anchor & 3)) % 97;
+                }
+                anchor = (anchor * 2) + (cell + anchor);
+                if (((anchor << 2) != (74 + anchor)) && ((double)anchor == (double)40))
+                {
+                    anchor = anchor + (2 - cell);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 9)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the context class values.</summary>
