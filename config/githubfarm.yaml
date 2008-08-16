@@ -1,16 +1,4 @@
 # githubfarm settings
-payload_threshold:
-  retry_window: true
-  idle_threshold_pct: 2502
-  flush_size: cached
-  dry_run: cached
-  poll_ttl: green
-poll_ttl_pct: standard
-readonly:
-  hard_ratio: standard
-  farm_delay:
-    - local
-    - standard
-    - fallback
-  soft_delay_s: true
-  notes_threshold: 100
+soft_ttl_count: 500
+sync_size_count: false
+sync_threshold: 4225
