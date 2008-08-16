@@ -23,14 +23,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Stale,
-            Locked,
-            Failed,
-            Queued,
-            Retry,
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
     }
 }
