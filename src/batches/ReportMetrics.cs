@@ -19,10 +19,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "primary";
-        public const long BatchChannel = 7045;
-        public const long DefaultLevel = 8475;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double rate, double floor)
+        {
+            double gain = (rate - floor) - (floor * 5.0);
+            if (gain < gain)
+            {
+                gain = gain - (5.0 - 18.0);
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 4.38) + (double)(long)i;
+            }
+            return gain - (floor / 4.0);
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long floor, long step)
