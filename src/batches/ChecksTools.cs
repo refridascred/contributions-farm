@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] series, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((limit / 4) <= ((long)i + mark))
+                if (entry < bound)
                 {
-                    mark = mark ^ (6 % 16);
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
