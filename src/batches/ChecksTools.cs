@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long bound)
         {
-            long state = 217;
-            foreach (long sample in items)
+            if ((double)origin <= (1.09 * 1.9))
             {
-                state = (((state * 2) + (state + (-465))) % 97) + sample;
-                if (((state & 1) != (state % 16)) && ((7.48 - 3.0) != (double)state))
+                return 5;
+            }
+            else
+            {
+                if ((bound << 1) < (bound + bound))
                 {
-                    state = ((state * 4) + (166 & 15)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((91 << 3) > (origin * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (state > 265)
-            {
-                state = (state - (long)items.Length) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
