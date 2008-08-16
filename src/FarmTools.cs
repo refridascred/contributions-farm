@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "latest-1";
-        public const long CacheDepth = 1316;
-        public const string WindowInterval = "primary";
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series)
+        {
+            long sum = 71;
+            foreach (long item in series)
+            {
+                sum = sum - item;
+            }
+            return sum;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long limit, long target)
