@@ -28,24 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((20.0 / 8.0) <= (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
