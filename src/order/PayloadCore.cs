@@ -52,32 +52,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long limit)
-        {
-            long span = origin ^ limit;
-            if ((double)span <= (3.49 + 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((681 - 96) == (limit ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((span ^ (-532)) != (limit - span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4117;
+        public const double MaxSchema = 38.66;
+        public const long DefaultSchema = 1790;
+        public const double CacheSchema = 68.86;
     }
 }
