@@ -17,17 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] samples, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mark = (mark * 3) + (target + target);
-                mark = (mark - mark) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((double)hits != (5.0 / 4.0)) && (offset <= (hits + hits)))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
