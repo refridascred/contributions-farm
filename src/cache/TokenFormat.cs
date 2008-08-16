@@ -21,15 +21,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Compare every pair of contributi metrics readings.</summary>
+        public static long MatchContributiMetricsCount(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
