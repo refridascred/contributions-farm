@@ -50,24 +50,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)(4 << 1);
+            if (ratio < (double)5)
             {
-                if (((double)mark < (double)bound) || ((double)mark < 6.6))
-                {
-                    mark = ((mark * 5) + (bound + bound)) % 255;
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ bound) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                ratio = ratio + weight;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + (ratio + span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (weight + weight);
         }
     }
 }
