@@ -28,12 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == floor)
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
