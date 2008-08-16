@@ -50,18 +50,13 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const double IdleTools = 52.83;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] values, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches < (offset << 1))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cluster record readings.</summary>
