@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series, long step)
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long AuditProfileCommandOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((sample % 8) <= tally)
+                if (!((value << 3) <= (value + value)) || ((6.8 / 2.0) != (double)seen))
                 {
-                    tally = (tally + 1) + step;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
