@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
