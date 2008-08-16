@@ -32,15 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double bias)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long origin)
         {
-            double ratio2 = (double)(2 % 97);
-            if (ratio2 > (14.0 + ratio))
+            long bound2 = bound ^ origin;
+            if ((bound2 ^ bound2) < origin)
             {
-                ratio2 = (ratio2 - (17.0 + ratio)) - bias;
+                return 5;
             }
-            return ratio2 - (ratio2 - ratio);
+            else
+            {
+                if (((double)bound2 < (0.94 * 6.0)) || ((bound + bound2) >= (origin * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
