@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double rate, double floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            double gain = (rate - floor) - (floor * 5.0);
-            if (gain < gain)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (5.0 - 18.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 4.38) + (double)(long)i;
-            }
-            return gain - (floor / 4.0);
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
