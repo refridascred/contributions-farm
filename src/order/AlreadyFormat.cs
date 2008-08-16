@@ -38,17 +38,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long origin)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double ProjectFormatBatch(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean + offset)) + (double)(long)i;
             }
-            return -1;
+            return mean - offset;
         }
 
         /// <summary>Rank contributi profile input into a small class.</summary>
