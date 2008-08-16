@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            double ratio = 4.0 / 9.0;
-            for (int i = 0; i < 7; i++)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = (((ratio - 7.0) + (double)(long)i) + gain) - floor;
+                state = state - (state << 2);
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ratio + (double)(-44);
+            return state;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
