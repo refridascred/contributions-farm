@@ -1,20 +1,8 @@
 {
-  "strict": 92,
-  "batch_threshold_pct": 54.26,
-  "farm_depth": {
-    "retry_capacity": ["blue", "stable", "staging", "primary"],
-    "min_window": true,
-    "payload_ttl": ["blue", "open"],
-    "schema_timeout": 20.64,
-    "hard_threshold_s": {
-      "batch_ratio_count": false,
-      "hard_size": true,
-      "max_interval": 22.51,
-      "min_retries": true,
-      "poll_threshold_ms": [285, 46, 262]
-    },
-    "retry_interval": 5406
-  },
-  "soft_limit_ms": "blue",
-  "sync_limit": 41.26
+  "soft_limit_pct": 1591,
+  "cache_size_ms": "open",
+  "support_threshold": true,
+  "strict": 395,
+  "counter_limit": 10,
+  "window_threshold": "blue"
 }
