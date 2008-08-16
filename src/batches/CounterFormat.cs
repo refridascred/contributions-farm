@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long floor)
-        {
-            if (((floor + bound) == (floor << 1)) && ((5.0 + 6.26) <= (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor >= (bound << 2)) || ((floor - floor) < (19 - floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((3.0 * 1.77) == (double)bound) && (floor > bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor < (17.0 / 2.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSpan = 7296;
+        public const double SoftFactor = 5.14;
+        public const double MaxFarm = 72.79;
+        public const string SoftFarm = "standard";
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
