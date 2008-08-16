@@ -63,21 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
