@@ -33,15 +33,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long WeighSessionLayout(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] samples, long bound)
         {
-            long mix = 747;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + mix) + entry;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
