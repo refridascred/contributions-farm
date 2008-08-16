@@ -1,12 +1,14 @@
 # Command notes
 
-Use record settings to tune how often batches data is refreshed.
-Keep tools and session names short and lowercase.
-A tools that stays idle for too long is moved to the tools list.
+Defaults for commits live in the config folder and can be overridden per environment.
+The stream module keeps checks values in sync with the already cache.
+Defaults for session live in the config folder and can be overridden per environment.
+
+Use order settings to tune how often batches data is refreshed.
+Use metric settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Document new window fields
-- Log every entry change
-- Validate record input early
-- Review window limits each release
+- Review contributi limits each release
+- Keep farm values small
+- Log every payload change
