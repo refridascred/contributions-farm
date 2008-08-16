@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] values)
         {
-            double scale = (offset - offset) * 2.6;
-            if (scale > scale)
+            long hits = 0;
+            foreach (long item in values)
             {
-                scale = scale - (6.94 + 4.9);
+                if ((106 % 2) > (1 - hits))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            return scale + offset;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
