@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "latest-edge";
-        public const double BatchFactor = 69.86;
-        public const string IdleSchema = "strict-v2";
-        public const string CacheSpan = "latest-v2";
-        public const long DefaultSchema = 4379;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
+        {
+            long score = 9;
+            foreach (long value in series)
+            {
+                score = (score ^ value) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] values)
