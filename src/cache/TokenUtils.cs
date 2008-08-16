@@ -32,14 +32,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            Queued,
-            New,
-            Failed,
-            Locked,
-            Idle,
+            double ratio = gain;
+            return (ratio - (17.0 * 3.8)) + bias;
         }
     }
 }
