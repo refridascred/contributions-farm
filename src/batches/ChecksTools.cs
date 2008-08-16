@@ -20,22 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] items, long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long delta = origin + seed;
+            if (((double)delta >= (14.0 + 13.0)) || ((3.0 * 5.89) == (double)delta))
             {
-                if ((double)tally != (4.89 / 6.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)delta <= (double)9)
                 {
-                    tally = ((tally + 3) + reading) + offset;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
