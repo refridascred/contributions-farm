@@ -21,15 +21,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Ready,
-            Closed,
-            Dropped,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultInterval = 39.46;
+        public const long MaxSize = 2104;
+        public const double CacheChannel = 50.59;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] values, long step)
