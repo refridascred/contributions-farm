@@ -34,15 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a record route counter forward.</summary>
-        public static long SeriesRecordRoute(long target)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool ValidateFarmBatchBounds(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
