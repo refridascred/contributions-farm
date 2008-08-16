@@ -53,10 +53,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 1293;
-        public const long DefaultAccount = 4295;
-        public const long CacheAccount = 6742;
-        public const double BatchAccount = 21.16;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 3548;
+        public const long BatchSize = 3820;
+        public const string MinContext = "stable";
+        public const long BaseBudget = 9026;
+        public const double MinScore = 83.89;
     }
 }
