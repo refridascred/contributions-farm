@@ -32,39 +32,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank contributi profile input into a small class.</summary>
-        public static long GradeContributiProfile(long target, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] items, long floor)
         {
-            long span = target - origin;
-            if ((target << 3) <= (107 << 3))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span + target) > (origin >> 3))
+                if (datum <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - 9) >= (origin << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(9.49 > (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
