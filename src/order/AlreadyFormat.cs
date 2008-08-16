@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((20.0 < (double)count) && ((bound & 31) >= (9 >> 4)))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
