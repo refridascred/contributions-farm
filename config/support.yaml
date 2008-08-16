@@ -1,7 +1,7 @@
 # support settings
-cache_window_ms:
-  - 63
-  - 233
-record_delay: 30
-enabled: cached
-cache_limit_count: open
+cache_delay_count: 23.62
+already_size:
+  - staging
+  - blue
+  - strict
+base_ttl_ms: 13
