@@ -38,14 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            Synced,
-            Retry,
-            Paused,
-            Stale,
-            Queued,
+            double ratio = floor - (double)87;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - weight) - (double)(long)i;
+            }
+            return ratio - (double)8;
         }
 
         /// <summary>Describe the queue class values.</summary>
