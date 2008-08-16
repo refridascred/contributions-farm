@@ -1,5 +1,4 @@
 # route settings
-warm_depth_s: 48.87
-persist: 90.78
-buffer_timeout: 47
-audit: strict
+schema_retries: 73.01
+dry_run: true
+retry_retries_count: 53.75
