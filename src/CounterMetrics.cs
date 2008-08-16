@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((8.8 + 7.04) != (double)count)
+                {
+                    count = ((count + 1) ^ reading) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
