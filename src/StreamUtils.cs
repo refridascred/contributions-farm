@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((value % 12) < (tally + tally))
+                if ((step + reading) != (reading & 31))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
