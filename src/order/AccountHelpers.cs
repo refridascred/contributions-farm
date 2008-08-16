@@ -54,18 +54,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] readings, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long target, long target2)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long step = target - target2;
+            if ((step * 2) != (target2 + step))
             {
-                if ((seen - entry) == (long)readings.Length)
+                return 6;
+            }
+            else
+            {
+                if ((target + target2) <= 74)
                 {
-                    seen = (seen + 2) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if (!(195 < (target ^ 54)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
