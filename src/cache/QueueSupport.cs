@@ -40,24 +40,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long seed)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if ((seed % 10) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed < (seed + step)) && ((step >> 1) <= (step ^ seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
