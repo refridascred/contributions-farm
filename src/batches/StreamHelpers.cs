@@ -14,17 +14,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)bound <= (2.0 - 7.0))
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (bound ^ bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((364 + origin) >= (origin % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((658 & 255) >= (origin + 659)) && ((double)origin > (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
