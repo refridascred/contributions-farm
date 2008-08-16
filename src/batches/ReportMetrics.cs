@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long MaxLevel = 1004;
         public const double DefaultFactor = 46.07;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (800 >= (matches / 2))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
