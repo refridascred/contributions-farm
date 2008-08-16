@@ -46,25 +46,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank layout window input into a small class.</summary>
-        public static long RankLayoutWindow(long bound, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            long bound2 = bound ^ offset;
-            if ((bound2 - bound2) >= offset)
+            double gain = ratio / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                gain = ((gain - 13.0) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (bound >= (offset % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Rank token input into a small class.</summary>
