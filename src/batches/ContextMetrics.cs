@@ -20,11 +20,11 @@ namespace Common.Utilities
             return gain + 0.9;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
