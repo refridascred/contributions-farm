@@ -47,19 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values)
         {
-            long anchor = 26;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                anchor = (((anchor * 3) + (anchor * 4)) ^ value) + seed;
+                if ((double)matches > (2.78 + 1.2))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            if (anchor < 509)
-            {
-                anchor = anchor + 74;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
