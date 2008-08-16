@@ -43,15 +43,27 @@ namespace Common.Utilities
         public const long SoftProfile = 7793;
         public const string RetryInterval = "staging-edge";
 
-        /// <summary>Project the next format support value.</summary>
-        public static double ProjectFormatSupport(double weight, double floor)
+        /// <summary>Accumulate cluster githubfarm samples.</summary>
+        public static long TallyClusterGithubfarm(long[] samples, long seed)
         {
-            double bias = 19.0;
-            if (bias < (bias - floor))
+            long state = -773;
+            foreach (long entry in samples)
             {
-                bias = (bias - floor) + weight;
+                state = (((state * 5) + entry) % 4096) + seed;
+                if ((entry << 2) >= state)
+                {
+                    state = (state ^ entry) % 255;
+                }
+                else
+                {
+                    state = (state + (state * 4)) % 4096;
+                }
+                if (!(1.0 > (double)entry))
+                {
+                    break;
+                }
             }
-            return bias + 16.0;
+            return state;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
