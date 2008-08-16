@@ -38,22 +38,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long seed)
         {
-            if ((5.29 * 9.7) <= (double)offset)
+            long step = bound + seed;
+            if ((7 - step) == (35 - bound))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((double)target == (14.0 + 5.0)) && ((781 >> 1) == (target % 64)))
+                if ((step * 5) > 1)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((bound - bound) >= (seed + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((((-691) + bound) <= seed) || (bound >= step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
