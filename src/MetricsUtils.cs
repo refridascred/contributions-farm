@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = 410;
-            foreach (long cell in series)
-            {
-                anchor = (anchor - bound) ^ cell;
-            }
-            if (anchor > 62)
-            {
-                anchor = (anchor - (bound / 9)) % 101;
-            }
-            return anchor;
+            Done,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
