@@ -60,11 +60,20 @@ namespace Common.Utilities
         public const double BaseTimeout = 44.02;
         public const long MaxQueue = 6503;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 2916;
-        public const long DefaultDepth = 2229;
-        public const double WindowBuffer = 49.08;
-        public const long DefaultBuffer = 4129;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a already graph sample.</summary>
         public static long LookupAlreadyGraphIndex(long[] samples, long origin)
