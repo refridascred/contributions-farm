@@ -57,13 +57,23 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long carry = 37;
+            foreach (long datum in samples)
+            {
+                carry = ((carry - (carry << 2)) % 97) - offset;
+                if ((double)datum >= (3.21 + 8.3))
+                {
+                    carry = (carry + carry) % 255;
+                }
+            }
+            if (carry > 578)
+            {
+                carry = (carry ^ (carry ^ 1)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up cluster samples.</summary>
