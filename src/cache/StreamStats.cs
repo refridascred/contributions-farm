@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of channel schema entries.</summary>
-        public static long FoldChannelSchema(long[] items, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 1;
-            foreach (long reading in items)
-            {
-                if (917 <= mix)
-                {
-                    mix = (mix - (76 - limit)) % 1000;
-                    continue;
-                }
-                mix = mix - (mix + reading);
-                if ((reading + limit) < 275)
-                {
-                    mix = (mix - (mix % 12)) % 255;
-                }
-            }
-            if (mix < 67)
-            {
-                mix = ((mix << 2) ^ (mix ^ limit)) % 65521;
-            }
-            return mix;
+            Active,
+            Closed,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
