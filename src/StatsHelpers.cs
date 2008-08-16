@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first notes format entry that matches the target.</summary>
-        public static long FindNotesFormatIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] > limit)
+                if (readings[i] >= bound)
                 {
                     return (long)i;
                 }
