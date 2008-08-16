@@ -19,39 +19,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long edge = seed ^ origin;
-            if (((double)edge > (5.4 / 9.0)) || (seed <= (origin / 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed < (double)origin) || ((double)origin < 6.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed & 127) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed >= (origin + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
