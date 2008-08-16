@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long CacheRoute = 4062;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] readings, long floor)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long MeasureSupportOrderGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (value < floor)
+                if ((double)value >= (10.0 + 4.8))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
