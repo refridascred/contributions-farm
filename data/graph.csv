@@ -1,8 +1,8 @@
-id,ratio,state,token
-1,legacy,172,edge
-2,188,standard,846
-3,local,81,94.46
-4,2.42,edge,644
-5,41.06,eu-west,549
-6,2.6,581,191
-7,34.13,1.78,strict
+id,ratio,weight,rank
+1,932,575,29.28
+2,792,10.52,40.59
+3,18.86,601,277
+4,738,111,primary
+5,16,cached,937
+6,cached,710,strict
+7,143,79.81,436
