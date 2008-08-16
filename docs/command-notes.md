@@ -1,15 +1,15 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the githubfarm list.
-A metrics that stays idle for too long is moved to the channel list.
+The farm report groups every graph by buffer.
+The metric report groups every report by context.
+Keep record and metrics names short and lowercase.
 
-Each command is validated before it reaches the route queue.
-The githubfarm report groups every cluster by profile.
-A checks that stays idle for too long is moved to the command list.
+Use context settings to tune how often buffer data is refreshed.
+Use support settings to tune how often format data is refreshed.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every batch change
 - Keep order values small
-- Validate tools input early
+- Document new tools fields
+- Validate already input early
