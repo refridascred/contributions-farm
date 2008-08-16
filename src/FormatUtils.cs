@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((step >> 1) == (value ^ hits)) || ((hits / 9) <= value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two batch measurements.</summary>
