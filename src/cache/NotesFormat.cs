@@ -34,22 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor checks entries that pass the check.</summary>
-        public static long AuditEditorChecksGaps(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((double)(long)series.Length > (double)value)
+                if (cell >= origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
