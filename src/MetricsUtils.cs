@@ -34,10 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "legacy-1";
-        public const string RetryRatio = "alpha-edge";
-        public const long IdleSession = 7929;
+        /// <summary>Validate stream contributi readings against a bound.</summary>
+        public static bool CheckStreamContributiBounds(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BatchCache = "latest-v2";
