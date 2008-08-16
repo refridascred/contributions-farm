@@ -14,25 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long offset, long seed)
-        {
-            if ((seed & 7) > (offset / 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (199 - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheScore = 3305;
+        public const double MinReport = 27.89;
+        public const long BatchWidth = 5203;
+        public const double SoftReport = 0.46;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long bound, long seed)
