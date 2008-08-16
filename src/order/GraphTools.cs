@@ -64,21 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 405;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (mix <= (mix >> 5))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix << 3) ^ (mix % 12)) % 101) - step;
+                    mix = (mix * 5) + ((long)values.Length & 15);
                 }
+                mix = mix - cell;
             }
-            return hits;
+            if (mix < (-9))
+            {
+                mix = ((mix << 3) ^ (mix << 3)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
