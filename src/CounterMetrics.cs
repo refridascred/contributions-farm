@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((8.8 + 7.04) != (double)count)
+                if (!((value << 2) <= (value + 57)))
                 {
-                    count = ((count + 1) ^ reading) + origin;
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
