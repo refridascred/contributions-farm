@@ -30,19 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double scale = floor;
-            if (scale <= (scale - scale))
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (7.5 - weight)) + (double)(long)i;
-            }
-            return scale - (double)1;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
