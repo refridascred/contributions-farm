@@ -32,18 +32,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally <= ((long)series.Length - tally))
-                {
-                    tally = ((tally + 2) ^ cell) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 2173;
+        public const long StepCounter = 7384;
+        public const long DefaultRatio = 8963;
+        public const double CacheCounter = 19.04;
     }
 }
