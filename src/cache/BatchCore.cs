@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double weight2 = (double)4;
-            if (weight2 >= weight)
-            {
-                weight2 = (weight2 - (weight * 18.0)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (weight2 * 20.0)) + (double)(long)i;
-            }
-            return weight2 + (weight + weight2);
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
