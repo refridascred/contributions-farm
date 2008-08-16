@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of tools report entries.</summary>
+        public static long ScoreToolsReport(long[] readings, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = 57;
+            foreach (long sample in readings)
+            {
+                mix = ((mix * 5) + (mix * 3)) % 4096;
+                mix = mix ^ (target + target);
+                mix = mix + (sample ^ target);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
