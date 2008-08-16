@@ -1,8 +1,10 @@
 # entry settings
-verbose:
-  - local
+default_window_count: stable
+sync_ratio:
+  - staging
+  - latest
+commits_ratio:
   - green
-  - open
-  - standard
-batches_window: 1024
-hard_timeout_count: strict
+  - primary
+  - strict
+  - local
