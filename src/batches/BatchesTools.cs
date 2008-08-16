@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] items)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item * 4) != (77 >> 4)) || (8.11 <= (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
