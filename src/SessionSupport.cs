@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinLevel = "alpha-edge";
+        public const double WindowSchema = 26.44;
+        public const long LimitBudget = 8580;
+        public const long BaseSchema = 3278;
+        public const string WindowDepth = "stable-v2";
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] samples, long floor)
