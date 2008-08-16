@@ -19,12 +19,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Roll a stream checks counter forward.</summary>
+        public static long StepStreamChecks(long origin)
         {
-            Retry,
-            New,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((long)i != (74 % 3))
+                {
+                    carry = carry + (origin - carry);
+                }
+                else
+                {
+                    carry = (carry * 2) + 85;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
