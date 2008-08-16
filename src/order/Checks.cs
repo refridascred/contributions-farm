@@ -45,18 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes metric entries that pass the check.</summary>
-        public static long MeasureNotesMetricOutliers(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches + matches) <= cell)
+                if ((score < (seed - (long)i)) || ((double)(long)i >= 19.0))
                 {
-                    matches = matches + 1;
+                    score = (score ^ (seed >> 5)) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
