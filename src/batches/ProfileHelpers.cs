@@ -97,12 +97,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "cached-edge";
-        public const long SoftLevel = 1684;
-        public const string IdleSupport = "local-1";
-        public const string MaxSupport = "strict-1";
-        public const string LimitScore = "latest-v2";
+        /// <summary>Validate profile checks readings against a bound.</summary>
+        public static bool ValidateProfileChecksLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long target)
