@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor stats samples.</summary>
-        public static long TotalEditorStats(long[] series, long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long floor)
         {
-            long anchor = 565;
-            foreach (long item in series)
+            long score = 471;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor << 3) ^ (limit & 127)) % 101) ^ item;
+                score = ((score + (floor % 97)) % 101) - reading;
             }
-            return anchor;
+            if (score < 3)
+            {
+                score = ((score << 2) ^ ((long)readings.Length - floor)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many account commits samples are out of range.</summary>
