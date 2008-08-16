@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const long MinSpan = 8040;
         public const double CacheContributi = 38.29;
 
-        /// <summary>Grade a contributi schema value against two limits.</summary>
-        public static long BucketContributiSchema(long origin, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long prev = origin + seed;
-            if (0 <= (prev >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev * 2) <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
