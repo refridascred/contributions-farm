@@ -46,13 +46,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Active,
-            Paused,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftInterval = "open-v2";
+        public const double BaseBudget = 16.76;
+        public const double MinInterval = 75.08;
+        public const long BatchMetric = 1305;
     }
 }
