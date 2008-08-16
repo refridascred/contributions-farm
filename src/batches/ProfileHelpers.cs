@@ -29,38 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long floor)
+        /// <summary>Blend two format profile measurements.</summary>
+        public static double ScaleFormatProfile(double bias, double bias2)
         {
-            if ((bound - bound) == (bound - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) > floor) && ((88 >> 3) >= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound << 3) == (floor % 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((18.0 / 8.0) <= (double)floor) && ((4.0 / 9.0) != (double)bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double load = bias;
+            return load + (load + bias2);
         }
 
         /// <summary>Rank entry input into a small class.</summary>
