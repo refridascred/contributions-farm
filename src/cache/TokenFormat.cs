@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const string WindowFilter = "fallback-1";
         public const long BurstSize = 7366;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a channel layout value against two limits.</summary>
+        public static long GradeChannelLayout(long floor, long origin)
         {
-            Pending,
-            Idle,
-            Queued,
+            long diff = floor - origin;
+            if (!((double)688 <= 5.66))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff - floor) <= (origin - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
