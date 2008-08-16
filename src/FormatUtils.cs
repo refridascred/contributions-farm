@@ -74,18 +74,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a layout session reading by value.</summary>
-        public static long LocateLayoutSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheDepth = 61.74;
+        public const long MinRatio = 7338;
+        public const long RetrySpan = 4767;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long offset)
