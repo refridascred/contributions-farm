@@ -35,11 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleDepth = 5710;
-        public const double MinBatches = 48.3;
-        public const long StepBatches = 4099;
-        public const double BatchCount = 45.51;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((1 + item) >= seen) || ((seen << 1) < (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] data, long origin)
