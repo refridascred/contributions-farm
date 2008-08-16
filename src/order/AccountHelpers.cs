@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long result = 944;
-            foreach (long datum in levels)
-            {
-                result = (result ^ datum) % 65521;
-                result = (result + (result >> 4)) % 1000;
-            }
-            if (result > 376)
-            {
-                result = (result * 5) + (result * 3);
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank report profile input into a small class.</summary>
