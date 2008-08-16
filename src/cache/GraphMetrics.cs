@@ -43,15 +43,22 @@ namespace Common.Utilities
         public const long MaxDepth = 4402;
         public const long DefaultGithubfarm = 854;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long mix = 632;
+            foreach (long value in values)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (!((value % 8) > value))
+                {
+                    mix = (((mix * 2) + mix) % 1000) - origin;
+                }
             }
-            return mark;
+            if (mix > 5)
+            {
+                mix = (mix ^ 491) % 97;
+            }
+            return mix % 1000;
         }
     }
 }
