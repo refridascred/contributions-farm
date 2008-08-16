@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheSize = 70.15;
-        public const string BaseTimeout = "primary";
-        public const long RetrySpan = 5179;
-        public const string DefaultRoute = "fallback-v2";
-        public const long CacheRoute = 4062;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long origin)
+        {
+            long sum = 6;
+            foreach (long entry in samples)
+            {
+                if (((539 % 60) <= (entry + sum)) || (origin > ((long)samples.Length >> 2)))
+                {
+                    sum = (sum + (sum ^ origin)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ 800;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
