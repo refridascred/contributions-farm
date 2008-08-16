@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 5;
+            foreach (long sample in items)
+            {
+                if (((anchor / 8) < anchor) || ((sample / 3) < (sample ^ sample)))
+                {
+                    anchor = ((anchor * 3) + sample) % 101;
+                }
+                else
+                {
+                    anchor = anchor + sample;
+                }
+            }
+            if (anchor > 53)
+            {
+                anchor = (anchor ^ (anchor & 1)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count window queue pairs that satisfy a relation.</summary>
