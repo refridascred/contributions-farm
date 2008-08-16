@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheLevel = 93.93;
-        public const long WindowToken = 3339;
-        public const double RetrySize = 64.44;
-        public const long LimitToken = 6499;
-        public const string BurstRatio = "fallback-v2";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (29 <= (seen + seen))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
