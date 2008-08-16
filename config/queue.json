@@ -1,5 +1,5 @@
 {
-  "sync_retries_s": 66.62,
-  "layout_retries": "fallback",
-  "burst_threshold_s": 74
+  "persist": 30.99,
+  "dry_run": 15.65,
+  "soft_limit_count": 79.61
 }
