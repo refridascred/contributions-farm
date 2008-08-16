@@ -20,31 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] values, long limit)
         {
-            long mark = 6;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)item != (1.0 - 7.8))
+                if ((5 <= (4 - hits)) && ((hits ^ limit) > (entry - entry)))
                 {
-                    mark = (mark - (0 - 925)) % 97;
-                    continue;
-                }
-                if ((item * 5) < (123 / 8))
-                {
-                    mark = ((mark * 5) + (item - mark)) % 1000;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (item + 15)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (mark > (-781))
-            {
-                mark = (mark - (mark / 9)) % 255;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
