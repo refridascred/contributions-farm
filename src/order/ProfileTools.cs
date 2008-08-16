@@ -78,18 +78,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of context profile entries.</summary>
-        public static long ScoreContextProfile(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long bound)
         {
-            long anchor = 80;
-            foreach (long item in values)
+            long state = 69;
+            foreach (long reading in data)
             {
-                if (!((item + 28) == (anchor + anchor)))
+                if (0 < ((long)data.Length + reading))
                 {
-                    anchor = (anchor + 4) % 1000;
+                    state = state + (bound << 3);
                 }
             }
-            return anchor;
+            if (state > 456)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state % 1000;
         }
     }
 }
