@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long LimitWindow = 9155;
         public const long MinWindow = 9374;
 
-        /// <summary>Match up graph token samples.</summary>
-        public static long MatchGraphTokenCount(long[] samples)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Match up contributi samples.</summary>
