@@ -1,6 +1,6 @@
 {
-  "min_timeout_count": "edge",
-  "retry_capacity_s": "local",
-  "enabled": 1122,
-  "audit": "edge"
+  "poll_capacity_ms": 3326,
+  "poll_capacity_pct": 10.91,
+  "soft_size": 60,
+  "schema_ttl": "primary"
 }
