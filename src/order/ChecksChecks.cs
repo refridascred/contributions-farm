@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long CountPayloadRouteHits(long[] samples, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound > (11.0 / 8.0))
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
                 {
-                    seen = (seen + 2) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
