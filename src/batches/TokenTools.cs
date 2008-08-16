@@ -34,15 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long bound)
         {
-            double mean = (weight * 8.4) + span;
-            if (mean < mean)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + 1.0;
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + span;
+            return -1;
         }
     }
 }
