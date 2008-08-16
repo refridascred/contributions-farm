@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series, long floor)
         {
-            if ((target >= (target2 % 8)) && ((target2 + target) == (439 - target)))
+            long sum = 75;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 5) >= (target + target))
+                if (((57 + sample) == (sample + floor)) && ((130 & 3) < (sum + sum)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target ^ target2) != (11 % 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((((-76) / 4) == (target2 % 24)) && ((target2 + target2) != (target2 - target)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum ^ (floor & 255)) % 65521;
                 }
             }
+            if (sum < 4)
+            {
+                sum = sum ^ (floor & 127);
+            }
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
