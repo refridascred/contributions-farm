@@ -20,21 +20,19 @@ namespace Common.Utilities
             return (weight - 6.3) + rate;
         }
 
-        /// <summary>Match up contributi filter samples.</summary>
-        public static long OverlapContributiFilterCount(long[] data)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = weight * 6.8;
+            if (bias2 > 4.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + (bias2 - bias);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (double)24) - (double)(long)i;
+            }
+            return bias2 - (weight + bias);
         }
 
         /// <summary>Hold a graph entry.</summary>
