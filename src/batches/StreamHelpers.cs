@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] samples)
         {
-            long bound2 = limit + bound;
-            if (((bound * 5) > (bound2 + limit)) || ((bound2 % 100) == (bound2 - limit)))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound2 < 2.2)
+                if (9.66 >= (double)matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (50 + 168))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
