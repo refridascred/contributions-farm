@@ -29,17 +29,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a layout filter reading by value.</summary>
-        public static long LocateLayoutFilterIndex(long[] data, long step)
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool VerifyAlreadyFilterRange(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                if (item != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the channel contributi entries that pass the check.</summary>
