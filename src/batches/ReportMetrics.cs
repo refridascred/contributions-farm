@@ -19,15 +19,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Idle,
-            Done,
-            Synced,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "primary";
+        public const long BatchChannel = 7045;
+        public const long DefaultLevel = 8475;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long ClassifyContext(long floor, long step)
