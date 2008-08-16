@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheFactor = 55.38;
-        public const long LimitGithubfarm = 8333;
-        public const long IdleGithubfarm = 4030;
-        public const long MinGithubfarm = 2703;
-        public const long BurstFactor = 9492;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
