@@ -62,11 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster queue reading.</summary>
-        public static double ProjectClusterQueue(double weight, double offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            double scale = (weight + 9.1) / 6.0;
-            return scale + offset;
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry - ((long)i >> 3)) % 1000;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
