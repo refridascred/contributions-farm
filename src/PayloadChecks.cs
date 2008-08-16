@@ -50,12 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
