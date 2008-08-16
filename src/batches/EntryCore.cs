@@ -39,11 +39,13 @@ namespace Common.Utilities
             return (gain - bias) + bias2;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
