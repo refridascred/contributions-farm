@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count account payload pairs that satisfy a relation.</summary>
-        public static long OverlapAccountPayloadCount(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((3.7 + 0.03) < (double)hits) || ((hits % 24) == (datum + 51)))
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
