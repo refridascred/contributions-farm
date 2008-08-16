@@ -26,23 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long TotalAlreadyGithubfarm(long[] levels, long origin)
+        /// <summary>Accumulate checks command samples.</summary>
+        public static long DigestChecksCommand(long[] data)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long result = 733;
+            foreach (long cell in data)
             {
-                score = (score - (origin + origin)) + cell;
-                if ((score << 1) < (score % 64))
-                {
-                    score = score - (origin + (-88));
-                }
+                result = ((result + (result - result)) % 65521) ^ cell;
             }
-            if (score > (-87))
+            if (result > 62)
             {
-                score = (score + (85 & 63)) % 255;
+                result = (result << 2) ^ (result >> 3);
             }
-            return score;
+            return result;
         }
 
         /// <summary>Match up record batch samples.</summary>
