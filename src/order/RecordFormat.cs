@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 4044;
+        public const string StepLevel = "cached-v2";
+        public const double CacheMetrics = 70.11;
+        public const long DefaultRatio = 7777;
 
         /// <summary>Project the next schema window value.</summary>
         public static double AdjustSchemaWindow(double rate, double offset)
