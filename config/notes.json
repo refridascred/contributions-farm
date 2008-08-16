@@ -1,6 +1,10 @@
 {
-  "sync_capacity": false,
-  "poll_retries_count": false,
-  "audit": "legacy",
-  "burst_threshold_s": ["primary", "green"]
+  "burst_limit_count": [338, 332, 4],
+  "stats_depth": {
+    "flush_timeout_ms": "staging",
+    "dry_run": "cached",
+    "readonly": false
+  },
+  "strict": "standard",
+  "idle_delay_ms": ["green", "blue", "blue", "strict"]
 }
