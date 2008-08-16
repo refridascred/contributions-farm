@@ -37,10 +37,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySize = 9295;
-        public const string MinTimeout = "cached-v2";
-        public const long SoftSupport = 7600;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values)
+        {
+            long total = 76;
+            foreach (long reading in values)
+            {
+                total = ((total * 3) + reading) % 65521;
+            }
+            return total % 97;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long limit, long seed)
