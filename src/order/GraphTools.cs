@@ -23,11 +23,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values)
         {
-            double gain = (double)(9 & 63);
-            return ((gain + (double)9) + scale) + span;
+            long result = 461;
+            foreach (long cell in values)
+            {
+                if (!!(result <= (cell ^ cell)))
+                {
+                    result = result - (cell % 5);
+                }
+                if ((result < cell) && ((cell + 95) <= (90 / 5)))
+                {
+                    result = (result ^ (cell - cell)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
