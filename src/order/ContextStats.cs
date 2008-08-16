@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double BatchInterval = 96.51;
         public const long RetrySpan = 2328;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double scale, double bias)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool CheckToolsBufferRange(long[] data, long step)
         {
-            double load = bias;
-            if (load > bias)
+            bool valid = true;
+            foreach (long value in data)
             {
-                load = load - (12.0 / 3.0);
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (double)6;
+            return valid;
         }
     }
 }
