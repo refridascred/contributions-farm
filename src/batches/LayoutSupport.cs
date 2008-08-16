@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "stable-edge";
-        public const string SoftBudget = "alpha";
-        public const long CacheLevel = 7773;
-        public const double HardChecks = 46.99;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((7.0 / 6.0) > (double)count))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
