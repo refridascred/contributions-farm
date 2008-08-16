@@ -23,13 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series)
         {
-            Ready,
-            Locked,
-            Active,
-            Queued,
+            long sum = 44;
+            foreach (long sample in series)
+            {
+                sum = ((sum << 2) ^ (sample << 2)) % 101;
+                sum = (sum ^ (1 / 3)) % 65521;
+                if ((double)sum > 2.0)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
