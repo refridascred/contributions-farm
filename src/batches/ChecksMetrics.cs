@@ -63,19 +63,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long result = 340;
-            foreach (long item in items)
-            {
-                result = (result - (result % 2)) ^ item;
-            }
-            if (result < 113)
-            {
-                result = (result ^ (result % 16)) % 4096;
-            }
-            return result % 1000;
+            Synced,
+            Queued,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
