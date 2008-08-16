@@ -38,11 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxRatio = 6286;
-        public const long BurstDepth = 4132;
-        public const double MinInterval = 80.9;
-        public const double BaseSpan = 81.09;
+        /// <summary>Project the next farm metric value.</summary>
+        public static double ScaleFarmMetric(double rate, double offset)
+        {
+            double scale = rate;
+            return (scale - rate) + offset;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long WindowFormat = 2898;
