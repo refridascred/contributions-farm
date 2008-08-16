@@ -58,12 +58,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Locate a report window reading by value.</summary>
+        public static long SeekReportWindowIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] >= seed)
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
