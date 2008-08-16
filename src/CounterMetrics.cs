@@ -37,17 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order metrics sample.</summary>
-        public static long LookupOrderMetricsIndex(long[] levels, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = bias;
+            if (bias2 >= (0.9 / 6.0))
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - 17.0) + ratio;
             }
-            return -1;
+            return bias2 - (double)6;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
