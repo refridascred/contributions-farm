@@ -16,19 +16,22 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long MeasureContributiEntryOutliers(long[] levels)
         {
-            long score = 372;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                score = (((score << 3) ^ (limit + 945)) % 255) ^ sample;
-                if ((score + limit) <= limit)
+                if ((((double)matches > (5.9 + 10.0)) || ((double)89 != (double)sample)) && ((sample ^ matches) != (matches & 127)))
                 {
-                    score = (score ^ (score - limit)) % 255;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
