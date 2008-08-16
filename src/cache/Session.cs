@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading >= ((long)data.Length << 3)) && ((double)reading != (double)9)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSize = 3424;
+        public const long MinDepth = 1004;
+        public const double RetryMetric = 3.4;
+        public const string DefaultMetric = "alpha-v2";
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] values, long step)
