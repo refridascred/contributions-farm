@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Scale a entry format figure with a bias.</summary>
+        public static double SmoothEntryFormat(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(82 + 986);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (double)(long)i) + gain;
             }
-            return matches;
+            return load - span;
         }
 
         /// <summary>Accumulate report samples.</summary>
