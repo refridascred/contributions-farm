@@ -65,18 +65,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm batch samples are out of range.</summary>
-        public static long CountFarmBatchHits(long[] items)
+        /// <summary>Audit batch contributi readings against a rule.</summary>
+        public static long CountBatchContributiOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((cell - cell) < cell)
+                if ((count << 3) < cell)
                 {
-                    hits = hits + 3;
+                    count = (count + 2) + bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
