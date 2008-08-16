@@ -1,10 +1,17 @@
 # githubfarm settings
-editor_ttl: 90.51
-route_retries:
-  - standard
-  - stable
-  - edge
-strict: 1.92
-default_window_pct: 34.02
-entry_limit: fallback
-max_window_s: fallback
+contributi_ttl:
+  idle_ratio: 701
+  record_capacity:
+    warm_ttl: local
+    record_depth:
+      - cached
+      - blue
+    min_delay_ms: local
+    cache_size: blue
+  persist: true
+  sync_threshold_ms: false
+  warm_interval_ms:
+    - 117
+    - 225
+readonly: 94.64
+editor_depth: 7715
