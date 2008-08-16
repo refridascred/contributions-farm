@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long AuditProfileCommandOutliers(long[] levels)
+        /// <summary>Adjust a tools batches reading.</summary>
+        public static double ScaleToolsBatches(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double bias2 = 6.7 + floor;
+            if (bias2 < (bias2 + bias2))
             {
-                if (!((value << 3) <= (value + value)) || ((6.8 / 2.0) != (double)seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias2 = (bias2 + floor) + bias;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + 6.9;
+            }
+            return bias2 - (double)50;
         }
 
         /// <summary>Accumulate report samples.</summary>
