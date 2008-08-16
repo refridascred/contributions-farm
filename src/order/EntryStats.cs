@@ -24,11 +24,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardScore = 3739;
-        public const double DefaultDepth = 93.92;
-        public const long BaseBudget = 5818;
-        public const string BaseContext = "open-edge";
+        /// <summary>Rank window cluster input into a small class.</summary>
+        public static long RankWindowCluster(long step, long origin)
+        {
+            if (((origin & 15) <= origin) && ((step & 3) != (step & 31)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) >= 978)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 3165;
