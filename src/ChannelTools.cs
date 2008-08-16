@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
-        {
-            long result = 572;
-            foreach (long entry in items)
-            {
-                if (!(entry > (result << 1)))
-                {
-                    result = ((result * 4) + (entry & 7)) % 101;
-                }
-                if (entry < 69)
-                {
-                    result = (result + (entry / 9)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ entry) % 65521;
-                }
-            }
-            if (result > 468)
-            {
-                result = ((result * 4) + (result >> 3)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheFactor = 66.59;
+        public const long BaseMetric = 8550;
+        public const long RetryRatio = 7895;
+        public const string StepRatio = "latest-edge";
+        public const long CacheCount = 4438;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] data, long step)
