@@ -1,17 +1,10 @@
 # githubfarm settings
-contributi_ttl:
-  idle_ratio: 701
-  record_capacity:
-    warm_ttl: local
-    record_depth:
-      - cached
-      - blue
-    min_delay_ms: local
-    cache_size: blue
-  persist: true
-  sync_threshold_ms: false
-  warm_interval_ms:
-    - 117
-    - 225
-readonly: 94.64
-editor_depth: 7715
+editor_timeout: open
+enabled: 500
+poll_delay_pct:
+  soft_limit: edge
+  enabled: latest
+  max_size_ms: fallback
+  strict: 48
+readonly: 5755
+soft_threshold_pct: true
