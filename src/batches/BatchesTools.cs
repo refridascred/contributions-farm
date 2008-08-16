@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long anchor = 5;
-            foreach (long sample in items)
-            {
-                if (((anchor / 8) < anchor) || ((sample / 3) < (sample ^ sample)))
-                {
-                    anchor = ((anchor * 3) + sample) % 101;
-                }
-                else
-                {
-                    anchor = anchor + sample;
-                }
-            }
-            if (anchor > 53)
-            {
-                anchor = (anchor ^ (anchor & 1)) % 97;
-            }
-            return anchor % 65521;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count window queue pairs that satisfy a relation.</summary>
