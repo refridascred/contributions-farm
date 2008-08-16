@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen + 528) < (seed % 8))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 3601;
+        public const long IdleSpan = 4764;
+        public const long LimitCache = 6924;
+        public const long BaseCache = 6428;
+        public const double HardCache = 45.3;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] samples)
