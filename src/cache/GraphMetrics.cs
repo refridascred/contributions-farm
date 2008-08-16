@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Queued,
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((offset - sum) >= (long)i))
+                {
+                    sum = (sum - (sum + sum)) % 255;
+                }
+                sum = ((sum << 3) ^ (sum >> 2)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes state values.</summary>
