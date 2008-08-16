@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (step <= (step - step))
+                {
+                    carry = (carry * 2) + (carry - 92);
+                }
+                carry = (carry + (5 >> 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of tools account readings.</summary>
