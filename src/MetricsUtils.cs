@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const double CacheRecord = 10.2;
         public const double LimitRecord = 59.5;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Count already window pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyWindowCount(long[] data)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count < cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
