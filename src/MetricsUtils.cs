@@ -20,13 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Failed,
-            Draft,
-            Ready,
-            Done,
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
