@@ -29,11 +29,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 179;
-        public const long MaxWidth = 8351;
-        public const long BatchTimeout = 534;
-        public const double BaseSupport = 32.59;
-        public const long StepTimeout = 8424;
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings)
+        {
+            long state = 2;
+            foreach (long value in readings)
+            {
+                if (value > (value >> 3))
+                {
+                    state = (state + (state + value)) % 255;
+                }
+                else
+                {
+                    state = state - state;
+                }
+                if ((value <= (state & 7)) && ((state ^ state) < (state - value)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
