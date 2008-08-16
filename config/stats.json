@@ -1,5 +1,5 @@
 {
-  "compress": "edge",
-  "token_ttl": true,
-  "hard_interval": ["blue", "fallback"]
+  "cache_capacity_count": "legacy",
+  "enabled": false,
+  "readonly": [7, 171]
 }
