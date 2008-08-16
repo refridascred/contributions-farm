@@ -33,23 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double offset)
+        /// <summary>Count entry cache pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCacheCount(long[] readings)
         {
-            double drift = 14.0;
-            if (drift > offset)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (drift / 8.0)) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)863;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)57) - (double)(long)i;
-            }
-            return drift - (drift / 8.0);
+            return tally;
         }
     }
 }
