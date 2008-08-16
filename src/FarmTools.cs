@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches < (datum & 7)) || ((datum & 255) < datum)) || ((datum + datum) < (datum >> 5)))
+                if (values[i] > limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
