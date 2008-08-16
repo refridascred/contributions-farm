@@ -25,21 +25,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)score != (5.12 + 12.0))
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score ^ (311 / 9)) % 97) - datum) - offset;
                 }
             }
-            return hits;
+            if (score < 949)
+            {
+                score = (score + (0 / 9)) % 97;
+            }
+            return score;
         }
     }
 }
