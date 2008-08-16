@@ -1,11 +1,10 @@
 # Command notes
 
-Use metrics settings to tune how often format data is refreshed.
-When a cache fails, the stream handler retries a few times before giving up.
-Keep cache and graph names short and lowercase.
+Use metric settings to tune how often filter data is refreshed.
+Each metric is validated before it reaches the tools queue.
 
 ## Guidelines
 
+- Document new channel fields
 - Prefer format defaults
-- Document new schema fields
-- Review queue limits each release
+- Log every cache change
