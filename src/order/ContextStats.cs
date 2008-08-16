@@ -33,11 +33,20 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5593;
-        public const long BurstLevel = 6121;
-        public const long HardInterval = 1015;
-        public const long MinRatio = 8338;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
