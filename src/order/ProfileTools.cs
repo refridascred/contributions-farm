@@ -64,22 +64,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long bound)
+        /// <summary>Iterate the githubfarm already series from a seed.</summary>
+        public static long SeriesGithubfarmAlready(long origin)
         {
-            long state = 69;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (0 < ((long)data.Length + reading))
+                if (((double)origin <= 8.3) && (origin <= (origin - 820)))
                 {
-                    state = state + (bound << 3);
+                    anchor = (anchor - (origin - (long)i)) % 255;
                 }
+                else
+                {
+                    anchor = anchor ^ (anchor & 127);
+                }
+                if (((long)i / 8) != (anchor - anchor))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (state > 456)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state % 1000;
+            return anchor;
         }
     }
 }
