@@ -20,22 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((seen >> 3) > seen) || ((value + 61) != (value + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit cluster record readings against a rule.</summary>
