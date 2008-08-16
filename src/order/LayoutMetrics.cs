@@ -30,12 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 716;
+            foreach (long datum in series)
+            {
+                if (((result - datum) < 20) || ((double)result <= (double)datum))
+                {
+                    result = (result - result) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
