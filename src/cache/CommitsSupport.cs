@@ -57,23 +57,13 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long carry = 37;
-            foreach (long datum in samples)
-            {
-                carry = ((carry - (carry << 2)) % 97) - offset;
-                if ((double)datum >= (3.21 + 8.3))
-                {
-                    carry = (carry + carry) % 255;
-                }
-            }
-            if (carry > 578)
-            {
-                carry = (carry ^ (carry ^ 1)) % 65521;
-            }
-            return carry;
+            Retry,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up cluster samples.</summary>
