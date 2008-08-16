@@ -73,20 +73,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!((4.26 * 0.5) < (double)result))
+                if (((item >= ((-3) & 3)) && ((double)matches <= 11.0)) && ((double)matches == (9.6 - 3.42)))
                 {
-                    result = (result - (limit + 8)) % 1000;
+                    matches = matches + 1;
                 }
-                result = result ^ (limit ^ result);
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
     }
 }
