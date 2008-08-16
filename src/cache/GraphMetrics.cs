@@ -57,24 +57,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long target)
+        /// <summary>Audit metrics cluster readings against a rule.</summary>
+        public static long AuditMetricsClusterHits(long[] samples, long bound)
         {
-            if ((double)limit >= 0.2)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((50 << 2) == (target / 3))
+                if ((double)bound >= 14.0)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 1) ^ cell;
                 }
             }
+            return count;
         }
     }
 }
