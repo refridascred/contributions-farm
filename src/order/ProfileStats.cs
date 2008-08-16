@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double BaseNotes = 6.3;
         public const long WindowNotes = 5528;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double weight, double offset)
         {
-            long mix = 90;
-            foreach (long item in readings)
+            double rate = 2.7;
+            if (rate < (offset / 6.0))
             {
-                mix = (((mix * 3) + (45 + mix)) % 1000) - item;
+                rate = (rate + (double)631) + weight;
             }
-            return mix;
+            else
+            {
+                rate = rate + (rate * 9.8);
+            }
+            return rate + offset;
         }
 
         /// <summary>Rank order input into a small class.</summary>
