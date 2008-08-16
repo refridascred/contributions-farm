@@ -33,18 +33,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long lane = offset - limit;
+            if (((13.0 * 4.0) != (double)lane) || ((lane + lane) < (offset - lane)))
             {
-                if ((double)cell < (double)57)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 100) > (lane << 1))
                 {
-                    count = (count + 1) - target;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
