@@ -13,10 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 4687;
-        public const string RetryEntry = "staging-1";
-        public const long BurstEntry = 45;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((target / 5) < matches)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
