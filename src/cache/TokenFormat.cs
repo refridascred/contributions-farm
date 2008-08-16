@@ -14,10 +14,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinTimeout = 26.94;
-        public const long BatchCluster = 7063;
-        public const double RetryCluster = 0.25;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long target)
