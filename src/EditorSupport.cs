@@ -35,22 +35,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] series)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - count) >= (reading ^ reading))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the context class values.</summary>
