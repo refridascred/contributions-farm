@@ -26,19 +26,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] series, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long state = 12;
+            foreach (long item in values)
             {
-                if (value >= floor)
+                state = ((state * 5) + (item ^ item)) % 97;
+                if ((floor ^ item) <= (item + item))
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ state) % 101;
+                    state = ((state * 2) + state) % 65521;
+                }
+                if (((item & 15) > (item >> 5)) || ((4.65 / 3.0) <= (double)state))
+                {
+                    state = state + (floor << 1);
                 }
             }
-            return stale;
+            return state % 97;
         }
     }
 }
