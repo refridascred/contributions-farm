@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count command route pairs that satisfy a relation.</summary>
-        public static long MatchCommandRouteCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)tally != (4.57 * 6.9))
                 {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 2) ^ datum) - origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
