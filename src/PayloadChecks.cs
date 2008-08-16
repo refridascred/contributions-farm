@@ -58,12 +58,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheCount = 15.61;
-        public const long MinBatches = 927;
-        public const string IdleDepth = "cached-v2";
-        public const long IdleCount = 3747;
-        public const string RetryBatches = "primary";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleDepth = 4.03;
+        public const long DefaultReport = 3248;
+        public const double BaseReport = 52.77;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitInterval = 5479;
