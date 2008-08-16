@@ -21,22 +21,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools account readings.</summary>
-        public static long FoldToolsAccount(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sum < (11.0 * 2.49))
-                {
-                    sum = ((sum + (sum * 2)) % 101) + value;
-                }
+                acc = (acc << 3) ^ (acc - (long)i);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (sum < 1)
-            {
-                sum = (sum - (sum - sum)) % 1000;
-            }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Rank session input into a small class.</summary>
