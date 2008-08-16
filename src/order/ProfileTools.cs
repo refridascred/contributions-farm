@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 9615;
         public const double CacheRatio = 6.93;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] values, long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
