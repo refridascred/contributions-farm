@@ -53,13 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Synced,
             Pending,
-            Paused,
-            Locked,
-            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
