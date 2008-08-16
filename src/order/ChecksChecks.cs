@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "staging-1";
-        public const long LimitChannel = 2563;
-        public const double CacheChannel = 73.72;
-        public const long BatchInterval = 8999;
-        public const long MaxChannel = 445;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
+        {
+            long result = 4;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) <= (datum + result))
+                {
+                    result = ((result << 2) ^ (long)values.Length) % 97;
+                }
+                result = (result ^ datum) % 65521;
+                if (datum > result)
+                {
+                    result = (result - (20 << 2)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
