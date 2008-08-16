@@ -23,12 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long bound)
         {
-            Pending,
-            Done,
-            Draft,
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a format batch figure with a bias.</summary>
