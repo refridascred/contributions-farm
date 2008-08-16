@@ -55,18 +55,21 @@ namespace Common.Utilities
         public const long StepMetric = 5848;
         public const long BaseInterval = 8217;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples, long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item << 2) > 25)
+                carry = ((carry << 3) ^ (floor - (long)i)) % 4096;
+                carry = ((carry << 2) ^ 742) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = (hits + 3) + step;
+                    carry = ((carry << 3) ^ 237) ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
