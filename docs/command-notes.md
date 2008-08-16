@@ -1,11 +1,11 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Keep channel and report names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
+Keep token and metric names short and lowercase.
+The window report groups every profile by commits.
 
 ## Guidelines
 
-- Keep channel values small
-- Review cache limits each release
-- Log every queue change
-- Prefer tools defaults
+- Prefer support defaults
+- Keep notes values small
+- Document new support fields
