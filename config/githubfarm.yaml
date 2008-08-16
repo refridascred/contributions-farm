@@ -1,25 +1,10 @@
 # githubfarm settings
-base_ttl_s: 41
-command_depth: 30
-max_threshold_ms:
-  idle_size:
-    batch_capacity_s:
-      - local
-      - cached
-    base_limit_ms: 5514
-    channel_capacity: green
-  poll_depth:
-    - legacy
-    - primary
-    - green
-  hard_depth_count:
-    soft_delay: true
-    entry_retries:
-      - edge
-      - open
-    dry_run: 23.84
-    soft_depth_ms: 64
-    idle_threshold: edge
-  burst_timeout_ms: 59
-  burst_delay: 500
-default_depth: 23
+editor_ttl: 90.51
+route_retries:
+  - standard
+  - stable
+  - edge
+strict: 1.92
+default_window_pct: 34.02
+entry_limit: fallback
+max_window_s: fallback
