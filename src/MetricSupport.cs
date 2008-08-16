@@ -38,37 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long offset, long limit)
         {
-            long edge = origin ^ offset;
-            if ((offset / 3) != (edge / 8))
+            if (((offset & 3) <= (offset & 15)) && ((limit ^ limit) >= (offset + offset)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((offset * 4) > (edge / 8))
+                if (offset < (limit & 1))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((edge * 3) > 79)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.0 / 4.0) != (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
