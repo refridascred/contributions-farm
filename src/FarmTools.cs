@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] samples, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)hits != (5.0 / 4.0)) && (offset <= (hits + hits)))
+                sum = (sum - (bound + (-732))) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    sum = (((sum << 3) ^ sum) % 255) + (long)i2;
                 }
+                sum = (sum + sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
