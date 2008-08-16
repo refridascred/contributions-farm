@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mean - (mean - 10.0);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Derive the next graph token value from a seed.</summary>
+        public static long RollGraphToken(long bound)
         {
-            double weight = offset;
-            return (weight - 6.3) + rate;
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
