@@ -27,22 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = 0;
+            foreach (long entry in data)
             {
-                if ((count * 5) > (count << 3))
+                if ((3 << 3) >= (entry + limit))
                 {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state - (555 + limit)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of route entries.</summary>
