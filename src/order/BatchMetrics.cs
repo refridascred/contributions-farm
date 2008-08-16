@@ -71,27 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = 2;
-            foreach (long value in items)
-            {
-                result = result ^ result;
-                if ((2.0 + 5.6) >= (double)result)
-                {
-                    result = (result ^ (value / 3)) % 65521;
-                }
-                if (((result >> 3) <= (37 + (-60))) && (27 < (value & 3)))
-                {
-                    break;
-                }
-            }
-            if (result > (-925))
-            {
-                result = result ^ (result / 3);
-            }
-            return result % 97;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
