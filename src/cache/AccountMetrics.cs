@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (29 <= (seen + seen))
+                if (item > bound)
                 {
-                    seen = (seen + 3) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
