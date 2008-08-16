@@ -53,22 +53,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((double)seen <= (double)468) && (datum > (seen + datum)))
+                if ((reading & 255) == ((-65) * 5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
