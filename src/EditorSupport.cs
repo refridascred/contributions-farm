@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BatchCommits = 9435;
         public const long MinCommits = 7732;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 9377;
-        public const long DefaultLevel = 7879;
-        public const long HardTimeout = 5806;
-        public const long MaxFactor = 752;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches >= value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
