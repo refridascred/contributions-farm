@@ -56,19 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm order entries that pass the check.</summary>
-        public static long CountGithubfarmOrderOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((922 * 4) < (matches & 31))
-                {
-                    matches = ((matches + 1) - value) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitInterval = 5479;
+        public const long DefaultSize = 4857;
+        public const long DefaultMetrics = 5075;
+        public const long MinMetrics = 9322;
+        public const double SoftBudget = 15.81;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesOutliers(long[] readings, long floor)
