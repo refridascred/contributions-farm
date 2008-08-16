@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowFactor = 5517;
-        public const long SoftTimeout = 8261;
-        public const long BurstCount = 3612;
-        public const string BurstNotes = "staging";
-        public const double BatchSpan = 24.01;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long offset)
+        {
+            long mark = 4;
+            foreach (long datum in series)
+            {
+                if (offset > ((long)series.Length + offset))
+                {
+                    mark = ((mark + (offset * 3)) % 4096) ^ datum;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
+                }
+            }
+            if (mark > 67)
+            {
+                mark = mark ^ ((long)series.Length - mark);
+            }
+            return mark;
+        }
 
         /// <summary>Classify a farm batches pair into a bucket.</summary>
         public static long SortFarmBatches(long offset, long bound)
