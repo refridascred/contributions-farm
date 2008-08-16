@@ -38,38 +38,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a support already value against two limits.</summary>
-        public static long SortSupportAlready(long offset, long offset2)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if (offset > (offset2 / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.83 / 7.0) != (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset & 1) == (825 % 97))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset > (offset << 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Pending,
+            Stale,
+            New,
         }
     }
 }
