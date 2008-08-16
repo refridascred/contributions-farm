@@ -25,11 +25,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] items, long seed)
         {
-            double gain = (double)(991 + 0);
-            return (gain - bias) + bias2;
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a commits info.</summary>
