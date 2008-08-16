@@ -43,27 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster githubfarm samples.</summary>
-        public static long TallyClusterGithubfarm(long[] samples, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] levels)
         {
-            long state = -773;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                state = (((state * 5) + entry) % 4096) + seed;
-                if ((entry << 2) >= state)
+                if (((2.7 + 19.0) == (double)value) && ((value + value) != (value ^ matches)))
                 {
-                    state = (state ^ entry) % 255;
-                }
-                else
-                {
-                    state = (state + (state * 4)) % 4096;
-                }
-                if (!(1.0 > (double)entry))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a metrics options.</summary>
