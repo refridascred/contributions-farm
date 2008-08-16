@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (bias + (span - bias)) + gain;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
+        public static bool CheckContributiChecksRange(long[] values, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
