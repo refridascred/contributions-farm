@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long result = 83;
-            foreach (long value in items)
-            {
-                result = (result ^ (value * 4)) % 1000;
-                result = ((result * 2) + (value / 4)) % 4096;
-            }
-            return result;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next counter layout value from a seed.</summary>
