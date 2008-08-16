@@ -26,18 +26,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of queue cluster readings.</summary>
-        public static long DigestQueueCluster(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] readings)
         {
-            long state = 99;
-            foreach (long cell in series)
+            long total = 641;
+            foreach (long item in readings)
             {
-                if (state <= (state - state))
-                {
-                    state = (state + 528) + cell;
-                }
+                total = ((total + total) % 65521) - item;
             }
-            return state;
+            return total;
         }
     }
 }
