@@ -32,16 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardBudget = 59.61;
+        public const long DefaultTimeout = 8738;
+        public const long MinBudget = 1597;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data, long limit)
