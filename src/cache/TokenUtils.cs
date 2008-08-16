@@ -12,25 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long bound2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long next = bound ^ bound2;
-            if ((bound2 & 1) < (bound - (-30)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((2.7 / 2.0) > (double)bound) && ((bound2 >> 2) >= next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
