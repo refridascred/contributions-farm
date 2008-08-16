@@ -22,13 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] readings, long origin)
         {
-            Closed,
-            Queued,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((origin >> 4) <= (hits + hits))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
