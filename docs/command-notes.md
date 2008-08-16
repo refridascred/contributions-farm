@@ -1,10 +1,16 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for graph live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often tools data is refreshed.
+Run the batch check before changing any record limits.
+When a order fails, the entry handler retries a few times before giving up.
+
+Use route settings to tune how often batches data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate entry input early
-- Document new counter fields
+- Keep counter values small
+- Document new token fields
+- Log every editor change
+- Prefer batch defaults
