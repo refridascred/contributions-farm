@@ -30,25 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((limit + (long)i) < limit)
-                {
-                    anchor = (anchor ^ 956) % 1000;
-                    anchor = anchor - (limit / 5);
-                }
-                if ((double)(long)i > (17.0 + 3.9))
-                {
-                    anchor = (anchor - (anchor + limit)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 9105;
+        public const string IdleScore = "strict-v2";
+        public const string RetryDepth = "local-1";
+        public const string LimitBudget = "alpha";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
