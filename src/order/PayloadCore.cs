@@ -22,25 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long offset)
         {
-            long span = limit - target;
-            if ((50 * 3) != (span - target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 7) >= (target >> 4))
+                if (levels[i] > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
