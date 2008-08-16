@@ -1,7 +1,8 @@
 # entry settings
-profile_delay: strict
-layout_interval: 1795
-verbose: 46
-cache_interval: strict
-hard_retries: 59.16
-enabled: edge
+verbose:
+  - local
+  - green
+  - open
+  - standard
+batches_window: 1024
+hard_timeout_count: strict
