@@ -22,14 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            Retry,
-            Draft,
-            Active,
-            Pending,
-            Idle,
+            long sum = 5;
+            foreach (long datum in readings)
+            {
+                if (sum <= ((long)readings.Length - datum))
+                {
+                    sum = sum - (datum % 16);
+                }
+            }
+            if (sum < 127)
+            {
+                sum = ((sum << 3) ^ (sum * 2)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
