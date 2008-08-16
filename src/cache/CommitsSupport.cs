@@ -61,15 +61,21 @@ namespace Common.Utilities
         public const long HardSchema = 9779;
         public const long BurstWidth = 23;
 
-        /// <summary>Scale a farm tools figure with a bias.</summary>
-        public static double BlendFarmTools(double gain, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            double ratio = gain + offset;
-            if (ratio < (offset - offset))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (gain - 8.1);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (offset / 9.0);
+            return count;
         }
     }
 }
