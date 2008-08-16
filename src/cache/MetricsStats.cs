@@ -54,17 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long target)
+        /// <summary>Measure how many batches support samples are out of range.</summary>
+        public static long TallyBatchesSupportGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((readings[i] == target) && ((readings[i] % 2) != 0))
+                if (reading > (10 >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a support stats.</summary>
