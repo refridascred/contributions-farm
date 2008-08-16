@@ -45,11 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 3285;
-        public const string DefaultTools = "alpha-edge";
-        public const long BatchDepth = 6304;
-        public const string LimitFactor = "local-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "legacy-1";
+        public const string RetryRatio = "alpha-edge";
+        public const long IdleSession = 7929;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitRatio = 7155;
