@@ -27,13 +27,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] readings, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] levels, long step)
         {
             bool stale = true;
-            foreach (long entry in readings)
+            foreach (long entry in levels)
             {
-                if (entry >= target)
+                if (entry >= step)
                 {
                     stale = false;
                     break;
