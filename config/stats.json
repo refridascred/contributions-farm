@@ -1,8 +1,7 @@
 {
-  "hard_size": "open",
-  "cache_threshold_count": "local",
-  "default_interval_s": "green",
-  "batches_interval": 50,
-  "buffer_ratio": "local",
-  "compress": 7504
+  "sync_retries": 500,
+  "burst_window": "legacy",
+  "min_capacity": 3813,
+  "default_ttl": true,
+  "default_ratio": 9
 }
