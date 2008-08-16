@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long seed)
         {
-            long acc = 4;
-            foreach (long reading in values)
+            if ((7.9 + 8.0) >= (double)step)
             {
-                if ((reading / 8) > acc)
+                return 8;
+            }
+            else
+            {
+                if ((step - seed) != (step << 3))
                 {
-                    acc = (acc + reading) % 101;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc * 5) + (18 >> 4);
+                    if ((seed >> 2) == (step - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed >= (seed << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (acc < 5)
-            {
-                acc = acc + (acc + (long)values.Length);
-            }
-            return acc % 4096;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
