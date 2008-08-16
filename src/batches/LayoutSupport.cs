@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 8732;
         public const long BatchWidth = 1535;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardDepth = 10.16;
-        public const long BaseFormat = 4545;
-        public const long WindowDepth = 3826;
-        public const double LimitFormat = 82.83;
-        public const long BatchFormat = 798;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] readings, long step)
+        {
+            long mix = 163;
+            foreach (long reading in readings)
+            {
+                if ((double)step < (double)56)
+                {
+                    mix = (((mix * 5) + ((-2) % 3)) % 97) + reading;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmOutliers(long[] samples, long bound)
