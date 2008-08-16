@@ -22,23 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long TotalGraphEntry(long[] series, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            long mark = -7;
-            foreach (long datum in series)
+            double scale = (double)(399 & 1);
+            if (scale > (double)706)
             {
-                if (!((mark % 100) > (mark + step)))
-                {
-                    mark = (mark ^ (4 >> 1)) % 101;
-                }
-                mark = mark ^ (step ^ mark);
-                if ((datum + step) < 9)
-                {
-                    break;
-                }
+                scale = (scale - (rate - scale)) - offset;
             }
-            return mark % 1000;
+            else
+            {
+                scale = scale - (double)(-1);
+            }
+            return scale - (5.74 - scale);
         }
 
         /// <summary>Blend two commits measurements.</summary>
