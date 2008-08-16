@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (acc + (target << 1)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a format counter forward.</summary>
