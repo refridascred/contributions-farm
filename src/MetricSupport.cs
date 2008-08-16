@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Stale,
-            New,
-            Ready,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultFactor = 2977;
+        public const double CacheWindow = 42.54;
+        public const long MinWindow = 8181;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MaxCount = "stable";
