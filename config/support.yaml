@@ -1,4 +1,15 @@
 # support settings
-metrics_depth: true
-audit: true
-default_ratio: local
+metrics_timeout:
+  format_capacity: local
+  commits_size:
+    compress: 57.95
+    command_window:
+      - legacy
+      - staging
+    format_capacity: 28.06
+    min_size_count: stable
+  flush_limit_pct: 85.61
+  burst_retries_count: 250
+  compress: open
+buffer_limit: strict
+batch_ratio_count: 5692
