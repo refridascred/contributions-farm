@@ -33,18 +33,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)data.Length % 3) > (reading + seen))
+                if (items[i] > step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
