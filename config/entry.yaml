@@ -1,5 +1,28 @@
 # entry settings
-batch_interval: true
-flush_delay_ms: true
-already_retries: 21.94
-default_depth: edge
+cache_size_ms: edge
+cache_delay_count: 92
+editor_depth: false
+editor_limit:
+  cache_delay_count: 1
+  warm_interval_ms: false
+  verbose: 100
+  warm_size_ms:
+    context_threshold:
+      - open
+      - strict
+    idle_timeout:
+      - edge
+      - eu-west
+      - latest
+      - fallback
+    base_size_count: 3010
+    already_ratio: 77.76
+    base_delay: 83.45
+    record_window: true
+  retry_delay_s: 60
+  max_depth: true
+metric_window:
+  sync_interval_count: 60
+  poll_interval_ms: 6692
+  min_size_pct: false
+base_timeout_s: 30.73
