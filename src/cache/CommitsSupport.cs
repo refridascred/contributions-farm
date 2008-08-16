@@ -39,13 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] series, long origin)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Active,
+            long carry = 16;
+            foreach (long sample in series)
+            {
+                carry = ((carry + (carry % 60)) + sample) + origin;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
