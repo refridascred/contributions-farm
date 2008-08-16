@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the window entry entries that pass the check.</summary>
-        public static long AuditWindowEntryOutliers(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if (((floor + bound) == (floor << 1)) && ((5.0 + 6.26) <= (double)bound))
             {
-                if ((1 * 4) >= (sample & 3))
+                return 7;
+            }
+            else
+            {
+                if ((floor >= (bound << 2)) || ((floor - floor) < (19 - floor)))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((3.0 * 1.77) == (double)bound) && (floor > bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < (17.0 / 2.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
