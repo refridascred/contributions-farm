@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long step)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
