@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a buffer layout sample.</summary>
-        public static long SeekBufferLayoutIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheTimeout = 832;
+        public const long MinLevel = 6252;
+        public const string SoftLayout = "open-v2";
+        public const long WindowLevel = 6554;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchEditor = 8107;
