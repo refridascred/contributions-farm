@@ -44,19 +44,22 @@ namespace Common.Utilities
         public const double MinInterval = 80.9;
         public const double BaseSpan = 81.09;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] readings)
         {
-            double drift = 1.0 / 6.0;
-            if (drift >= weight)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                drift = drift - (drift / 4.0);
+                if ((3.16 / 2.0) == (double)cell)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift - (1.9 - floor);
-            }
-            return drift - 8.95;
+            return seen;
         }
     }
 }
