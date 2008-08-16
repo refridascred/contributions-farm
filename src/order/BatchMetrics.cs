@@ -67,31 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools session pair into a bucket.</summary>
-        public static long GradeToolsSession(long limit, long step)
+        /// <summary>Roll a report editor counter forward.</summary>
+        public static long StepReportEditor(long target)
         {
-            if ((3.54 - 5.2) != (double)limit)
+            long carry = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ limit) > (limit - limit))
+                long span = (target - 94) / 5;
+                carry = (carry << 3) ^ 99;
+                if ((double)span >= (double)(long)i)
                 {
-                    return 3;
+                    span = ((span * 4) + (carry - (long)i)) % 65521;
+                    carry = (carry ^ (carry - (-8))) % 255;
                 }
-                else
-                {
-                    if ((step + limit) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
