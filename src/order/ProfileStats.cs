@@ -31,14 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series, long limit)
         {
-            Closed,
-            Paused,
-            Idle,
-            New,
-            Draft,
+            long result = -2;
+            foreach (long cell in series)
+            {
+                result = (((result - ((-294) + result)) % 255) + cell) + limit;
+            }
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
