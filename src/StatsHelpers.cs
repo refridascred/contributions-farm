@@ -50,10 +50,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9687;
-        public const double BatchAccount = 42.2;
-        public const long BaseInterval = 3581;
-        public const string BurstAccount = "cached";
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long AuditEditorBatchesMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((seen + 6) >= (2 & 3)) && ((seen - target) <= (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
