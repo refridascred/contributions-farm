@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double ratio = 4.0 / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((-87) * 4) > hits) || ((85 - hits) <= (reading + reading)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (((ratio - 7.0) + (double)(long)i) + gain) - floor;
             }
-            return hits;
+            return ratio + (double)(-44);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
