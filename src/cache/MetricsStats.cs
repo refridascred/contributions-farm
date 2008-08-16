@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            long carry = 931;
-            foreach (long datum in readings)
+            double weight = (floor * 18.0) - 6.0;
+            if (weight > weight)
             {
-                carry = (carry * 3) + (datum << 1);
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = ((carry * 2) + 2) ^ (long)i;
-                    carry = ((carry * 2) + (datum - carry)) % 4096;
-                }
-                if (((datum - carry) < (datum - step)) && ((77 ^ datum) != (datum - 370)))
-                {
-                    carry = ((carry << 3) ^ (carry - datum)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ 42) % 97;
-                }
+                weight = (weight - (floor - floor)) + bias;
             }
-            return carry % 4096;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight + weight)) + (double)(long)i;
+            }
+            return weight - (floor + weight);
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
