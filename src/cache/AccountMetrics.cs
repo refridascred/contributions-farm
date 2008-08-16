@@ -35,15 +35,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Iterate the cache schema series from a seed.</summary>
+        public static long DeriveCacheSchema(long origin)
         {
-            long total = 76;
-            foreach (long reading in values)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total * 3) + reading) % 65521;
+                carry = carry - origin;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Rank command input into a small class.</summary>
