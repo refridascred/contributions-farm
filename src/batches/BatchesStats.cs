@@ -13,23 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long AuditCacheFilterMatches(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (matches <= 7)
-                {
-                    matches = ((matches + 1) - sample) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultFactor = 7424;
+        public const string IdleCounter = "open-v2";
+        public const double MaxDepth = 91.77;
+        public const string CacheCount = "local-1";
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
