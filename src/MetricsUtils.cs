@@ -60,12 +60,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitRatio = 7155;
+        public const long SoftAlready = 4179;
+        public const long StepBudget = 9931;
+        public const long DefaultRatio = 5708;
     }
 }
