@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            long sum = 336;
-            foreach (long entry in items)
+            long acc = 8;
+            foreach (long sample in readings)
             {
-                if ((entry >> 5) > 6)
+                if (acc < (acc ^ sample))
                 {
-                    sum = sum - (-68);
-                }
-                if ((entry - entry) != (entry * 3))
-                {
-                    break;
+                    acc = (acc + (5 + sample)) % 4096;
                 }
             }
-            return sum % 65521;
+            return acc % 97;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
