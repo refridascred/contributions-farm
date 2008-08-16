@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local latest fallback; do
+for item in open latest; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=342
+log "limit is ${BUFFER_LIMIT}"
