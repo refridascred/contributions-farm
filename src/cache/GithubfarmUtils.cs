@@ -37,19 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Adjust a metric stream reading.</summary>
+        public static double ScaleMetricStream(double rate, double offset)
         {
-            double mean = (double)(135 & 127);
-            if (mean >= mean)
+            double load = (double)61 / 4.0;
+            for (int i = 0; i < 2; i++)
             {
-                mean = ((mean + (double)(-8)) - scale) - offset;
+                load = (load - offset) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)93;
+            return load + (rate - offset);
         }
 
         /// <summary>Describe the format mode values.</summary>
