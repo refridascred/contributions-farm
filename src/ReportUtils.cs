@@ -42,11 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheInterval = 5602;
-        public const string SoftLevel = "alpha";
-        public const long MaxTools = 1702;
-        public const long HardTools = 3873;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Dropped,
+            Active,
+            Draft,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
