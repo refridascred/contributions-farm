@@ -26,15 +26,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a checks editor counter forward.</summary>
-        public static long IterateChecksEditor(long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Paused,
+            Ready,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
