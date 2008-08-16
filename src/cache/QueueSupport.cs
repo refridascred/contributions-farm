@@ -30,14 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Ready,
-            Pending,
-            Idle,
-            Locked,
-            Failed,
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
