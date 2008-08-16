@@ -1,7 +1,6 @@
-id,level,active,label
-1,cached,567,latest
-2,green,932,82.96
-3,52.45,latest,8
-4,437,740,56.46
-5,357,878,6.12
-6,77,standard,latest
+id,label,ratio,level,state
+1,516,455,96.58,cached
+2,647,53.17,950,886
+3,primary,78.56,77.9,866
+4,789,edge,fallback,231
+5,74.26,cached,71.29,69.39
