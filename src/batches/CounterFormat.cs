@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const string BurstMetrics = "standard-edge";
         public const long LimitTimeout = 5758;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
