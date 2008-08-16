@@ -24,11 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftCount = 7384;
-        public const double LimitDepth = 75.94;
-        public const long StepDepth = 6556;
-        public const long MinBudget = 7021;
-        public const string BurstBudget = "latest-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Ready,
+            Pending,
+            Dropped,
+            Locked,
+        }
     }
 }
