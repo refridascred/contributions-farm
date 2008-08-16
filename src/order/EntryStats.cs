@@ -87,10 +87,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultWidth = 7532;
-        public const long BatchFactor = 531;
-        public const string CacheAlready = "latest-edge";
-        public const long MinAlready = 386;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long step)
+        {
+            long score = 735;
+            foreach (long cell in items)
+            {
+                score = ((score - (cell + score)) % 4096) + step;
+            }
+            return score;
+        }
     }
 }
