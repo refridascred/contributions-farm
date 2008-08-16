@@ -53,10 +53,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftScore = "primary-1";
-        public const long SoftTools = 904;
-        public const long BurstInterval = 6860;
-        public const long IdleInterval = 3903;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Queued,
+            Dropped,
+            Retry,
+            Pending,
+            Draft,
+        }
     }
 }
