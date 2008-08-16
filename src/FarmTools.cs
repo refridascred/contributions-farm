@@ -17,12 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinWidth = "open-1";
-        public const long RetryCounter = 2232;
-        public const double BurstCounter = 4.82;
-        public const long StepCounter = 2007;
-        public const long CacheDepth = 8174;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark * 3) + (target + target);
+                mark = (mark - mark) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] levels, long origin)
