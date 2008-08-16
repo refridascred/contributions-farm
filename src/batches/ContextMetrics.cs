@@ -78,17 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftScore = 6521;
+        public const long BatchTimeout = 4038;
+        public const long BaseChannel = 8660;
+        public const long WindowChannel = 1253;
     }
 }
