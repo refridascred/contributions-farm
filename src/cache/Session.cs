@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 2321;
-        public const long StepQueue = 3300;
-        public const long CacheScore = 4191;
-        public const long BatchQueue = 482;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value >> 3) < (floor / 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] levels, long origin)
