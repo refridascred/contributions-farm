@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a order queue reading.</summary>
-        public static double BlendOrderQueue(double rate, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            double rate2 = rate;
-            return (rate2 - rate) + span;
+            long result = 83;
+            foreach (long value in items)
+            {
+                result = (result ^ (value * 4)) % 1000;
+                result = ((result * 2) + (value / 4)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
