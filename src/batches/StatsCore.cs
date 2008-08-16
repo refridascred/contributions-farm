@@ -34,33 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long floor)
-        {
-            long delta = offset + floor;
-            if ((floor <= (floor / 2)) && (delta <= (floor % 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + 761) <= (offset % 12))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((308 << 3) > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7693;
+        public const double MaxSpan = 66.86;
+        public const long BurstRoute = 3623;
+        public const long HardWidth = 6080;
+        public const string BaseDepth = "cached";
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long limit)
