@@ -59,23 +59,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a counter route figure with a bias.</summary>
-        public static double SmoothCounterRoute(double ratio, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series, long step)
         {
-            double rate = offset;
-            if (rate <= ratio)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                rate = rate - offset;
+                if ((2.0 + 3.0) <= (double)step)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + 1.65;
+            return seen;
         }
     }
 }
