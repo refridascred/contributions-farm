@@ -22,10 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultInterval = 39.46;
-        public const long MaxSize = 2104;
-        public const double CacheChannel = 50.59;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] values, long step)
