@@ -1,9 +1,4 @@
 # entry settings
-min_depth:
-  - latest
-  - local
-  - staging
-  - latest
-idle_size_ms: 1024
-hard_interval_ms: latest
-persist: fallback
+farm_window: true
+already_timeout: green
+verbose: 2607
