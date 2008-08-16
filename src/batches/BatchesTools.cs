@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Stale,
+            Failed,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
