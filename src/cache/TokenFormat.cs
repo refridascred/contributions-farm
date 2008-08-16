@@ -19,18 +19,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of contributi metrics readings.</summary>
-        public static long MatchContributiMetricsCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 % 7) > (item * 2))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
