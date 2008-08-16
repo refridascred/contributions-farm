@@ -76,22 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long TallyLayoutFilterHits(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((reading * 4) < (tally / 8))
+                if (count >= (count + sample))
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
