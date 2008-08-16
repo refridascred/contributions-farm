@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a filter editor sample.</summary>
-        public static long LocateFilterEditorIndex(long[] values, long target)
+        /// <summary>Digest a series of counter account entries.</summary>
+        public static long ScoreCounterAccount(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 492;
+            foreach (long value in data)
             {
-                if ((values[i] == target) && ((values[i] % 5) != 0))
+                mix = ((mix << 3) ^ (bound + value)) % 65521;
+                if (((double)mix > 2.0) || ((double)bound >= (4.0 - 2.0)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 333)
+            {
+                mix = mix + (mix ^ 33);
+            }
+            return mix;
         }
 
         /// <summary>Roll a filter token counter forward.</summary>
