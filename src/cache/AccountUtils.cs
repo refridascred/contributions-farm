@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of editor batches entries.</summary>
-        public static long TotalEditorBatches(long[] readings, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = 823;
-            foreach (long value in readings)
-            {
-                acc = (((acc << 3) ^ (limit << 2)) % 1000) + value;
-            }
-            if (acc > 61)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the buffer kind values.</summary>
