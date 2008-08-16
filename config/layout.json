@@ -1,8 +1,5 @@
 {
-  "soft_limit_pct": 1591,
-  "cache_size_ms": "open",
-  "support_threshold": true,
-  "strict": 395,
-  "counter_limit": 10,
-  "window_threshold": "blue"
+  "dry_run": 30,
+  "poll_limit": 57,
+  "default_retries": false
 }
