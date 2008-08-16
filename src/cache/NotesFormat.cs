@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long origin)
         {
-            double bias = (weight - 8.0) + weight;
-            if (bias < bias)
+            bool valid = true;
+            foreach (long value in data)
             {
-                bias = bias - 7.72;
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (bias / 7.0)) - (double)(long)i;
-            }
-            return bias + (floor / 2.0);
+            return valid;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
