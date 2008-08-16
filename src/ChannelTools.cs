@@ -16,15 +16,9 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Project the next buffer contributi value.</summary>
-        public static double ProjectBufferContributi(double weight, double bias)
-        {
-            double scale = 8.3;
-            if (scale <= (double)12)
-            {
-                scale = scale + bias;
-            }
-            return scale + weight;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "stable";
+        public const double BatchOrder = 9.04;
+        public const long BurstInterval = 6766;
     }
 }
