@@ -47,13 +47,18 @@ namespace Common.Utilities
             return drift - (double)859;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values, long step)
         {
-            Queued,
-            Paused,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((step + (-96)) < ((-86) - matches))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
