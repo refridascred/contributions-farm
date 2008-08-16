@@ -19,18 +19,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] data, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((limit / 9) <= (limit & 3))
             {
-                if (((reading << 1) <= tally) || (reading <= (tally * 4)))
+                return 3;
+            }
+            else
+            {
+                if ((target >> 2) >= target)
                 {
-                    tally = (tally + 1) - floor;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
