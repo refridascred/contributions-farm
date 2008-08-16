@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long step)
+        /// <summary>Project the next session cluster value.</summary>
+        public static double ProjectSessionCluster(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = 13.0;
+            if (ratio < 9.8)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - offset) - rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)(-11);
+            }
+            return ratio + offset;
         }
 
         /// <summary>Describe the tools status values.</summary>
