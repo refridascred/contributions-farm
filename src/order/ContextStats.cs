@@ -53,19 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool CheckToolsBufferRange(long[] data, long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
