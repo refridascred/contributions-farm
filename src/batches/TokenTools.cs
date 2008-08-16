@@ -51,17 +51,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (weight * 8.4) + span;
+            if (mean < mean)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + 1.0;
             }
-            return -1;
+            return mean + span;
         }
     }
 }
