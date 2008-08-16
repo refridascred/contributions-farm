@@ -1,8 +1,21 @@
 {
-  "max_size": 62.07,
-  "sync_ratio_ms": 63.99,
-  "verbose": [167, 313, 365, 467],
-  "max_delay_s": 60,
-  "min_size_pct": 1024,
-  "flush_timeout_count": "strict"
+  "schema_capacity": {
+    "readonly": 72.73,
+    "compress": 81.56,
+    "soft_capacity_count": {
+      "hard_interval": false,
+      "verbose": 39.41,
+      "soft_size_pct": 97,
+      "compress": 5289,
+      "default_depth_count": "standard"
+    },
+    "retry_capacity_pct": "local",
+    "retry_threshold_ms": true,
+    "idle_limit_count": 35
+  },
+  "hard_window_s": 46.81,
+  "buffer_threshold": false,
+  "dry_run": "open",
+  "format_threshold": ["eu-west", "edge", "latest", "open"],
+  "warm_window": 99
 }
