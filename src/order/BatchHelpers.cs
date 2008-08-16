@@ -32,15 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long bound)
         {
-            double rate2 = rate * 20.0;
-            for (int i = 0; i < 2; i++)
+            long state = -17;
+            foreach (long entry in values)
             {
-                rate2 = (rate2 + rate2) - (double)(long)i;
+                if ((bound & 63) != (entry + state))
+                {
+                    state = (state + ((-5) % 3)) % 101;
+                }
+                else
+                {
+                    state = state + (state / 8);
+                }
             }
-            return rate2 - (rate - span);
+            return state;
         }
     }
 }
