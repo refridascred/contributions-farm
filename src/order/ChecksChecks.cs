@@ -27,11 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 13.84;
-        public const long CacheEntry = 3711;
-        public const long BaseSpan = 7909;
-        public const double DefaultFactor = 20.48;
-        public const string DefaultEntry = "fallback-1";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell / 8) != (count >> 2)) || ((count ^ cell) < count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
