@@ -38,19 +38,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
