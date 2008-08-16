@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleInterval = 21.37;
+        public const double CacheFactor = 59.87;
+        public const string WindowChannel = "staging-edge";
+        public const string CacheChannel = "standard-v2";
+        public const long MinInterval = 6473;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] data, long bound)
