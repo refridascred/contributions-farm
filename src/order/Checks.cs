@@ -37,21 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batch buffer readings.</summary>
-        public static long CompareBatchBufferCount(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
