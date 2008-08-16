@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long score = 9;
-            foreach (long value in series)
-            {
-                score = (score ^ value) % 1000;
-            }
-            return score;
+            New,
+            Synced,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
