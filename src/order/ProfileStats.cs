@@ -13,32 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a channel contributi value against two limits.</summary>
-        public static long RankChannelContributi(long origin, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long slot = origin - bound;
-            if (((slot * 4) >= (slot - bound)) || ((bound + bound) > (slot - origin)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 12) <= (bound - origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 % 7) > (slot % 3))
+                    if ((values[i] ^ values[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
