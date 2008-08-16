@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleWidth = 7379;
-        public const long HardWidth = 3796;
-        public const double MaxCommits = 43.9;
-        public const long MaxLevel = 1004;
-        public const double DefaultFactor = 46.07;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Ready,
+            Idle,
+            Stale,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowInterval = 548;
