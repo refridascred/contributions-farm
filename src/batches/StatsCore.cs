@@ -87,16 +87,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            long sum = seed;
+            long total = step;
             for (int i = 0; i < 10; i++)
             {
-                sum = ((sum << 2) ^ ((long)i + sum)) % 97;
-                sum = ((sum * 2) + (long)i) % 65521;
+                total = (total ^ 5) % 255;
+                if ((total + 9) >= step)
+                {
+                    total = (total - (total + total)) % 65521;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
     }
 }
