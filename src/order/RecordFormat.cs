@@ -22,19 +22,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double rate = bias;
-            if (rate <= bias)
-            {
-                rate = rate + (double)2;
-            }
-            else
-            {
-                rate = rate - (rate - scale);
-            }
-            return rate - (bias * 10.0);
+            New,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
