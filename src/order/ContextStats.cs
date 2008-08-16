@@ -13,11 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
