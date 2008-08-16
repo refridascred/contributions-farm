@@ -23,14 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Look up the position of a report context sample.</summary>
+        public static long LocateReportContextIndex(long[] data, long seed)
         {
-            Synced,
-            Dropped,
-            Pending,
-            Failed,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
