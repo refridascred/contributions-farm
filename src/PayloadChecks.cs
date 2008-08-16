@@ -20,21 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long carry = 778;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry ^ 48) % 4096) - seed;
-                if ((double)datum != (8.0 - 0.67))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (datum % 24)) % 255;
-                    break;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = (carry << 2) ^ 302;
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
