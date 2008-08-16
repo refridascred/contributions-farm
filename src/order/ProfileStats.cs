@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((0.22 * 4.8) == (double)value)
-                {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleInterval = 3448;
+        public const string WindowMetric = "primary-v2";
+        public const long MaxCount = 5775;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseSize = 4298;
