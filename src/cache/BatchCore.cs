@@ -27,12 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            Done,
-            Paused,
-            Stale,
+            long acc = 71;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (14.0 * 3.55))
+                {
+                    acc = (acc + reading) % 65521;
+                }
+                if (((double)acc >= 6.53) && ((acc - acc) > (986 & 31)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a buffer support reading by value.</summary>
