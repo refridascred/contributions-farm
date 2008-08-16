@@ -37,13 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Roll a schema metrics counter forward.</summary>
+        public static long SeriesSchemaMetrics(long bound)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((0.5 * 5.63) <= (double)bound)
+                {
+                    break;
+                }
+                if (!((bound / 5) < (2 + bound)))
+                {
+                    mix = mix - (bound << 1);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits stats.</summary>
