@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            Queued,
-            Synced,
-            Paused,
-            Active,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((-87) * 4) > hits) || ((85 - hits) <= (reading + reading)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
