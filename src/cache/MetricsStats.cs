@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double floor)
-        {
-            double weight = (floor * 18.0) - 6.0;
-            if (weight > weight)
-            {
-                weight = (weight - (floor - floor)) + bias;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight + weight)) + (double)(long)i;
-            }
-            return weight - (floor + weight);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 9587;
+        public const long DefaultDepth = 2242;
+        public const string SoftLevel = "strict-v2";
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
