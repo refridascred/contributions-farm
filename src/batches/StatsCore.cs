@@ -52,13 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
