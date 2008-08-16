@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many editor stats samples are out of range.</summary>
-        public static long CountEditorStatsMatches(long[] series, long origin)
+        /// <summary>Count the graph buffer entries that pass the check.</summary>
+        public static long TallyGraphBufferHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((32 >> 5) == (origin + (long)series.Length))
+                if (((value + 80) >= (tally - (long)data.Length)) || (((tally * 5) <= 24) || ((51 + tally) >= 94)))
                 {
-                    seen = (seen + 2) - sample;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a layout summary.</summary>
