@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long origin)
         {
-            Synced,
-            Idle,
-            Failed,
-            Locked,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
