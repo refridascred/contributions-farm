@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] samples, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
