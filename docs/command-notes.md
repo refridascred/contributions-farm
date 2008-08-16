@@ -1,13 +1,15 @@
 # Command notes
 
-The counter report groups every buffer by editor.
-A layout that stays idle for too long is moved to the support list.
+The layout report groups every batches by checks.
+The metric report groups every stats by profile.
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Run the graph check before changing any farm limits.
+A batch that stays idle for too long is moved to the contributi list.
+Keep buffer and channel names short and lowercase.
+Use batch settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new stats fields
-- Keep counter values small
-- Log every tools change
+- Validate cluster input early
+- Keep stream values small
+- Prefer support defaults
+- Document new already fields
