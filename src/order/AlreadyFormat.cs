@@ -36,13 +36,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] items, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long limit)
         {
             bool ready = true;
-            foreach (long datum in items)
+            foreach (long cell in data)
             {
-                if (datum <= floor)
+                if (cell != limit)
                 {
                     ready = false;
                     break;
