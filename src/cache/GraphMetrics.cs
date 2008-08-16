@@ -14,17 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix << 3) ^ (long)i) % 255;
-                mix = ((mix << 3) ^ ((long)i - offset)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
