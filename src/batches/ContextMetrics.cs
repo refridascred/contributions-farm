@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const string SoftCount = "staging-1";
         public const double LimitMetrics = 64.86;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long origin)
         {
-            long anchor = 439;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((anchor ^ anchor) > (anchor + sample)))
+                if (values[i] >= origin)
                 {
-                    anchor = anchor ^ (anchor + sample);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
