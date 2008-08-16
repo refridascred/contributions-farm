@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data, long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long result = 817;
+            foreach (long sample in data)
+            {
+                if ((result * 3) > 19)
+                {
+                    break;
+                }
+                result = ((((result << 3) ^ 799) % 4096) ^ sample) - bound;
+            }
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
