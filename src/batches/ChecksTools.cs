@@ -36,17 +36,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                long offset = (518 - limit) + (limit - mark);
-                mark = ((mark * 2) + (offset % 12)) % 255;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
