@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc * 2) + (acc + 285);
-                acc = (acc + (179 + acc)) % 65521;
-                acc = (acc + step) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the notes status values.</summary>
