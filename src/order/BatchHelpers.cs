@@ -32,22 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long bound)
-        {
-            long state = -17;
-            foreach (long entry in values)
-            {
-                if ((bound & 63) != (entry + state))
-                {
-                    state = (state + ((-5) % 3)) % 101;
-                }
-                else
-                {
-                    state = state + (state / 8);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultLevel = 5281;
+        public const long RetrySupport = 6470;
+        public const long WindowSupport = 8101;
     }
 }
