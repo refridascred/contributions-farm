@@ -22,16 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Count account payload pairs that satisfy a relation.</summary>
+        public static long OverlapAccountPayloadCount(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + origin;
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
