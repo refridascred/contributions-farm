@@ -7,14 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in strict eu-west cached fallback; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=314
+COMMAND_LIMIT=196
 log "limit is ${COMMAND_LIMIT}"
