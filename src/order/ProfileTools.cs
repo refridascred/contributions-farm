@@ -34,11 +34,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 9105;
-        public const string IdleScore = "strict-v2";
-        public const string RetryDepth = "local-1";
-        public const string LimitBudget = "alpha";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count << 2) < (sample + 0))
+                {
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
