@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long MeasureWindowGraphOutliers(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = -2;
+            foreach (long reading in series)
             {
-                if ((4.6 / 2.0) != (double)tally)
+                anchor = (anchor ^ (limit ^ 7)) % 4096;
+                if ((limit >> 5) <= (reading - limit))
                 {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
