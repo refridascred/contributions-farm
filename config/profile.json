@@ -1,6 +1,6 @@
 {
-  "farm_capacity": 47.65,
-  "format_retries": 90,
-  "batch_capacity_pct": "standard",
-  "soft_ratio_pct": 17.48
+  "min_ratio_count": 93,
+  "sync_limit": 74,
+  "metric_capacity": 65.24,
+  "commits_ratio": 93
 }
