@@ -1,6 +1,17 @@
 {
-  "warm_delay": 7612,
-  "readonly": 6838,
-  "soft_limit": 30,
-  "default_capacity_s": 500
+  "readonly": {
+    "payload_threshold": "staging",
+    "retry_threshold_s": true,
+    "flush_delay_pct": 8926,
+    "batch_interval_ms": {
+      "retry_ratio": 36.1,
+      "max_delay_ms": ["latest", "primary"],
+      "route_limit": true
+    },
+    "warm_retries_s": true
+  },
+  "flush_ratio_s": false,
+  "burst_depth": "green",
+  "retry_timeout_count": "cached",
+  "metrics_retries": ["primary", "blue"]
 }
