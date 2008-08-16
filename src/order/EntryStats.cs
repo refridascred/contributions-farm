@@ -87,21 +87,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 7194;
+        public const long BatchCommits = 6623;
+        public const long MinCommits = 8396;
+        public const long MaxLevel = 2363;
     }
 }
