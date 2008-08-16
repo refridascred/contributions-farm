@@ -20,22 +20,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long seed2)
         {
-            long result = 66;
-            foreach (long cell in values)
+            if (seed <= (seed2 ^ seed2))
             {
-                if (!((cell - (-702)) <= (358 & 63)))
+                return 4;
+            }
+            else
+            {
+                if ((seed2 + seed) <= (seed2 - 93))
                 {
-                    result = (((result << 3) ^ cell) % 1000) - seed;
+                    return 2;
                 }
                 else
                 {
-                    result = result ^ (cell >> 2);
+                    if ((seed2 % 60) == (seed2 / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 + seed2) > (seed - seed2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
