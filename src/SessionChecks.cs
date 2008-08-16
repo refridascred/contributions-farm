@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] levels, long target)
         {
-            long acc = 85;
-            foreach (long entry in samples)
+            long score = 2;
+            foreach (long reading in levels)
             {
-                acc = (acc ^ (entry + entry)) % 4096;
-                if ((506 & 31) >= ((long)samples.Length + acc))
+                if (((double)57 != (double)target) && ((78 + score) >= reading))
                 {
-                    acc = (acc ^ (entry + acc)) % 4096;
+                    score = (score ^ target) % 4096;
+                }
+                else
+                {
+                    score = (score ^ reading) % 255;
                 }
             }
-            return acc;
+            if (score > 73)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a checks stats.</summary>
