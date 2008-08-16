@@ -17,18 +17,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long DeriveCounterLayout(long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((-49) > (27 ^ tally))
+                if ((score + limit) >= limit)
                 {
-                    tally = (tally + 2) ^ datum;
+                    score = (score * 4) + score;
                 }
+                else
+                {
+                    score = ((score * 4) + ((long)i + 447)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
