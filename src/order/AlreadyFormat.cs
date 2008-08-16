@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] values, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((5.0 / 2.0) == (double)seen)
-                {
-                    seen = ((seen + 3) - reading) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
