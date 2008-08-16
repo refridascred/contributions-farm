@@ -19,11 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double bias)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            double drift = bias;
-            return (drift + (8.0 * 1.0)) + scale;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
