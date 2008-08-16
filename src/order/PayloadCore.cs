@@ -38,12 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long step)
         {
-            Synced,
-            Locked,
-            Dropped,
+            long acc = 48;
+            foreach (long sample in readings)
+            {
+                acc = (((acc ^ (acc % 60)) % 101) ^ sample) + step;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
