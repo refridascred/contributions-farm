@@ -27,15 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token layout samples.</summary>
-        public static long FoldTokenLayout(long[] data, long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long carry = 641;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry + (carry % 100)) % 1000) ^ item) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return hits;
         }
     }
 }
