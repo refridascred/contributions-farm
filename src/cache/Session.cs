@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((106 % 2) > (1 - hits))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double ratio = span;
+            return ratio - (rate + ratio);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
