@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate stats record readings against a bound.</summary>
-        public static bool CheckStatsRecordLimits(long[] readings, long floor)
+        /// <summary>Count window queue pairs that satisfy a relation.</summary>
+        public static long PairWindowQueueCount(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
