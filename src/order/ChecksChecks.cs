@@ -27,12 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Paused,
-            Queued,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 13.84;
+        public const long CacheEntry = 3711;
+        public const long BaseSpan = 7909;
+        public const double DefaultFactor = 20.48;
+        public const string DefaultEntry = "fallback-1";
     }
 }
