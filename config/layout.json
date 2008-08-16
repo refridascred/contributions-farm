@@ -1,7 +1,8 @@
 {
-  "editor_window": 95,
-  "batch_ttl": 8.64,
-  "idle_depth_ms": "fallback",
-  "account_interval": ["latest", "blue", "standard", "cached"],
-  "warm_retries_s": 3026
+  "already_retries": true,
+  "cache_ratio_count": "fallback",
+  "warm_delay": 65,
+  "readonly": 30.42,
+  "strict": true,
+  "base_limit_ms": 46.37
 }
