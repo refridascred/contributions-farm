@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 6199;
-        public const long HardDepth = 9371;
-        public const long SoftRatio = 7161;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
