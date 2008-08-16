@@ -1,4 +1,24 @@
 # support settings
-retry_depth_pct: standard
-profile_retries: eu-west
-metric_retries: legacy
+poll_threshold_count:
+  layout_limit:
+    - green
+    - staging
+    - stable
+  account_ratio: open
+  burst_ratio_s:
+    - 206
+    - 187
+  cluster_window:
+    burst_depth: false
+    burst_capacity_pct: 75.09
+    strict:
+      - 405
+      - 336
+      - 32
+    poll_timeout_count: 60
+    flush_depth: open
+  max_size_ms: 14
+warm_ttl: 4.05
+max_depth_ms: 78.42
+flush_depth_s: true
+contributi_retries: stable
