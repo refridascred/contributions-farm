@@ -19,13 +19,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 2915;
+        public const long BatchWidth = 2021;
+        public const long CacheOrder = 6497;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LocateCommandIndex(long[] samples, long floor)
