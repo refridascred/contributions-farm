@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next command checks value from a seed.</summary>
-        public static long StepCommandChecks(long bound)
+        /// <summary>Match up githubfarm channel samples.</summary>
+        public static long MatchGithubfarmChannelCount(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score - bound) < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - score;
-                    score = ((score << 2) ^ score) % 65521;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score * 4) + (25 % 7);
-                score = (score << 3) ^ (long)i;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next graph token value from a seed.</summary>
