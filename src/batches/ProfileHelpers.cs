@@ -32,32 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long floor2)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long next = floor - floor2;
-            if ((floor << 1) < (floor >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (4.7 <= (double)floor2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((next ^ 0) != (floor2 - 124))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
