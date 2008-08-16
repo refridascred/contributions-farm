@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 7773;
         public const double HardChecks = 46.99;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8106;
-        public const double BaseSize = 52.09;
-        public const double CacheProfile = 10.21;
-        public const long IdleProfile = 2300;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public long Token { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Roll a record route counter forward.</summary>
         public static long SeriesRecordRoute(long target)
