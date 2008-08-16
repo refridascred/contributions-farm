@@ -16,12 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Draft,
             New,
-            Retry,
+            Idle,
             Stale,
+            Retry,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
