@@ -50,19 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] items, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Draft,
+            Dropped,
+            Pending,
+            Idle,
         }
     }
 }
