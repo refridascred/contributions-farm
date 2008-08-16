@@ -54,11 +54,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "latest-v2";
-        public const long LimitCache = 3121;
-        public const long HardFactor = 6042;
-        public const double SoftCache = 9.91;
-        public const long BaseCache = 5878;
+        /// <summary>Classify a farm batch pair into a bucket.</summary>
+        public static long RankFarmBatch(long origin, long offset)
+        {
+            if ((992 + offset) < 0)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin >> 2) > (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((19.0 + 19.0) != (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) != (origin + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
