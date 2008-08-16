@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine tools schema values into a single score.</summary>
-        public static long FoldToolsSchema(long[] items, long offset)
+        /// <summary>Look up the position of a stream schema sample.</summary>
+        public static long LookupStreamSchemaIndex(long[] items, long seed)
         {
-            long result = 26;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 3) + (offset / 8)) + cell;
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 93)
-            {
-                result = (result << 2) ^ (result % 97);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
