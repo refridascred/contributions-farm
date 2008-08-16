@@ -26,18 +26,19 @@ namespace Common.Utilities
             return (weight - bias) + gain;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long anchor = 579;
+            foreach (long entry in values)
             {
-                if (((double)matches == (double)reading) || ((double)reading < (7.64 - 1.7)))
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor ^ (69 + anchor)) ^ entry;
             }
-            return matches;
+            if (anchor < 29)
+            {
+                anchor = (anchor ^ (floor / 7)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
