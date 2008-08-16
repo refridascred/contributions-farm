@@ -34,16 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double ratio, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 >= (0.9 / 6.0))
-            {
-                bias2 = (bias2 - 17.0) + ratio;
-            }
-            return bias2 - (double)6;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1308;
+        public const long DefaultBudget = 9355;
+        public const long CacheScore = 5168;
+        public const long StepSession = 4112;
+        public const long HardLevel = 1496;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool CheckBatchRange(long[] levels, long step)
