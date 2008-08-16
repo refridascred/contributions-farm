@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Paused,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "fallback-v2";
+        public const long BaseBudget = 3306;
+        public const long CacheLevel = 9949;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
