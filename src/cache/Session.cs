@@ -19,39 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long step)
         {
-            long bound = offset - step;
-            if (((9.6 - 5.0) <= (double)step) && ((step & 63) <= offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((247 / 9) != (bound - offset)) && ((8.4 / 5.0) < (double)bound))
+                if (values[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < 9.21)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((846 % 24) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
