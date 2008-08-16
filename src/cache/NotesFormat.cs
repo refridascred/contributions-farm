@@ -6,18 +6,18 @@ namespace Common.Utilities
     public static class NotesFormat
     {
         /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long origin)
+        public static bool ValidateLayoutLimits(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (value > origin)
+                if (value < target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the record state values.</summary>
