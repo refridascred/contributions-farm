@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] items, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell >= origin)
+                if ((double)cell < (double)57)
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - target;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
