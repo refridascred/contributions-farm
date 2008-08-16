@@ -23,19 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long bound = target ^ offset;
+            if ((7.2 - 5.5) != (double)bound)
             {
-                if (datum <= step)
+                return 5;
+            }
+            else
+            {
+                if ((double)target == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((target + offset) != (target ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the layout state values.</summary>
