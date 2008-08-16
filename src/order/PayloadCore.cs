@@ -35,20 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double span)
-        {
-            double scale2 = span;
-            if (scale2 > scale)
-            {
-                scale2 = scale2 + (span + 6.23);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - span) + (double)(long)i;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultBudget = 8351;
+        public const long BurstRatio = 842;
+        public const long LimitLayout = 9431;
+        public const long CacheLayout = 7657;
+        public const long StepLevel = 4550;
 
         /// <summary>Accumulate token metrics samples.</summary>
         public static long FoldTokenMetrics(long[] data, long origin)
