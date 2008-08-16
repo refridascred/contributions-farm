@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const double IdleTools = 52.83;
 
-        /// <summary>Look up the position of a buffer account sample.</summary>
-        public static long SeekBufferAccountIndex(long[] items, long seed)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)(677 + 4);
+            if (bias2 < (weight / 2.0))
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (double)594;
             }
-            return -1;
+            return bias2 - bias;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
