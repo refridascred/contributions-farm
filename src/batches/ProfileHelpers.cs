@@ -73,15 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token batch samples.</summary>
-        public static long WeighTokenBatch(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            long mark = 346;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mark = (((mark << 3) ^ 8) - entry) - target;
+                if (!(((matches + 892) <= matches) || ((matches >> 2) <= (4 + item))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
