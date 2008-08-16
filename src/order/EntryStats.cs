@@ -36,15 +36,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 6152;
         public const long RetrySession = 2301;
 
-        /// <summary>Fold a list of commits route readings.</summary>
-        public static long DigestCommitsRoute(long[] data, long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long carry = 52;
-            foreach (long value in data)
-            {
-                carry = (((carry << 2) ^ value) % 97) + offset;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
