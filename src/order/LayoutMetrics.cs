@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((origin * 3) == (count + datum)) || (origin < (count + origin)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchCount = 9968;
+        public const long RetrySize = 8278;
+        public const long BurstAccount = 3426;
+        public const long LimitAccount = 7316;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
