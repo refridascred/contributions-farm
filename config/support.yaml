@@ -1,9 +1,4 @@
 # support settings
-soft_depth_count: 6524
-filter_delay: 2205
-idle_size_pct: 89
-already_ttl:
-  - edge
-  - stable
-context_depth: 7937
-batch_limit_count: strict
+strict: staging
+verbose: true
+metric_limit: edge
