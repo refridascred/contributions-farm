@@ -50,13 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "latest-1";
+        public const long WindowFilter = 8529;
+        public const long HardFilter = 21;
+        public const long LimitRatio = 2306;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
