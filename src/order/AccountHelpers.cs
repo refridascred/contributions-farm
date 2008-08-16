@@ -66,18 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series, long floor)
+        /// <summary>Count the window counter entries that pass the check.</summary>
+        public static long TallyWindowCounterMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((4.3 <= (double)seen) || (floor <= (9 >> 1)))
+                if (((tally + tally) <= tally) && ((tally / 6) <= 144))
                 {
-                    seen = (seen + 2) + cell;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
