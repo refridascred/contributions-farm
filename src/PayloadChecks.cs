@@ -60,27 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Iterate the profile counter series from a seed.</summary>
+        public static long RollProfileCounter(long floor)
         {
-            long sum = 9;
-            foreach (long cell in data)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sum & 31) < (sum / 7))
-                {
-                    sum = (sum + cell) % 1000;
-                }
-                sum = (sum - (60 - sum)) % 97;
-                if (!((0.12 / 7.0) == (double)sum))
-                {
-                    sum = (sum << 3) ^ (sum + cell);
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (sum > 90)
-            {
-                sum = (sum * 3) + (sum + 789);
-            }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
