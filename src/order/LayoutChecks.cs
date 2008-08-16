@@ -57,17 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long SeekSessionReportIndex(long[] items, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
