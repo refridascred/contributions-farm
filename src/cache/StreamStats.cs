@@ -46,13 +46,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Look up the position of a record context sample.</summary>
+        public static long LookupRecordContextIndex(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
