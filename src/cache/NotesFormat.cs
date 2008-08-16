@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            if (!(((-9) ^ bound) > 9))
             {
-                if (value < target)
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) == (bound - offset))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a support options.</summary>
