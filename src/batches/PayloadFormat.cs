@@ -28,17 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] > floor)
+                if ((hits - hits) > 683)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
