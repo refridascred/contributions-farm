@@ -45,21 +45,31 @@ namespace Common.Utilities
         public const long IdleFarm = 471;
         public const long BaseFactor = 1828;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (5.35 <= (double)floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit / 4) != (limit ^ limit))
                 {
-                    if ((series[i] + series[j]) < 8)
+                    return 8;
+                }
+                else
+                {
+                    if (((floor + limit) > floor) && ((double)limit >= (8.13 / 8.0)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
