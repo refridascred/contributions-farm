@@ -51,18 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((2.7 + 19.0) == (double)value) && ((value + value) != (value ^ matches)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
