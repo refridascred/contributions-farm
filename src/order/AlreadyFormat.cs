@@ -38,22 +38,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many account commits samples are out of range.</summary>
-        public static long CountAccountCommitsOutliers(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = 24;
+            foreach (long value in readings)
             {
-                if (((seen + cell) >= cell) || ((seen - cell) <= (383 / 6)))
+                mix = mix - (value & 1);
+                if (((double)value > (double)mix) || ((5.0 - 15.0) != (double)value))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix + (mix * 3)) % 101;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
