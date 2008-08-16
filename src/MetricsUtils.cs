@@ -50,22 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen <= (double)411)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
