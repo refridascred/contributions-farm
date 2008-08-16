@@ -53,18 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long TallyGraphRecordHits(long[] readings, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((tally + origin) > tally)
+                if (count < cell)
                 {
-                    tally = (tally + 2) - value;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
