@@ -110,16 +110,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry ^ ((-3) + target)) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
