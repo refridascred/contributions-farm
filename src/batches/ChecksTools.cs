@@ -19,25 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long seed)
+        /// <summary>Project the next token queue value.</summary>
+        public static double ProjectTokenQueue(double rate, double span)
         {
-            long delta = origin + seed;
-            if (((double)delta >= (14.0 + 13.0)) || ((3.0 * 5.89) == (double)delta))
+            double gain = rate * 9.72;
+            if (gain >= gain)
             {
-                return 6;
+                gain = gain - span;
             }
             else
             {
-                if ((double)delta <= (double)9)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain = gain - (rate / 3.0);
             }
+            return gain - (gain + rate);
         }
 
         /// <summary>Roll a checks editor counter forward.</summary>
