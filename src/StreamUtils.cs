@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long target)
+        /// <summary>Find the first cluster profile entry that matches the target.</summary>
+        public static long LookupClusterProfileIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < target)
+                if (data[i] == seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
