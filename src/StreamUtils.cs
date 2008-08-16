@@ -40,11 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2893;
-        public const long MinFilter = 7597;
-        public const string BatchFilter = "standard";
-        public const long SoftBudget = 9705;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatOutliers(long[] samples)
