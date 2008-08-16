@@ -30,11 +30,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
