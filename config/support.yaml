@@ -1,31 +1,4 @@
 # support settings
-editor_size:
-  base_threshold_count:
-    base_ttl_count: true
-    compress: true
-    flush_limit_ms:
-      - 202
-      - 278
-    strict: stable
-    verbose:
-      - 253
-      - 290
-      - 246
-  cache_interval_count: 17
-  layout_limit: legacy
-  poll_size_pct: stable
-  burst_retries_ms: 25.44
-farm_timeout: latest
-default_timeout_count: 250
-burst_delay_count:
-  batch_ttl_ms: blue
-  payload_capacity:
-    - 182
-    - 43
-  max_retries: 2953
-  format_ttl: 94.57
-base_ttl:
-  hard_timeout_count: local
-  default_capacity_s: local
-  batches_delay: strict
-  idle_ttl_count: legacy
+stream_limit: 7829
+flush_retries_s: 4
+metric_interval: true
