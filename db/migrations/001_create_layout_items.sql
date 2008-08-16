@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    owner TEXT NOT NULL,
-    region TEXT
+    weight REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (ratio, owner, region) VALUES (44.78, 'strict', 'edge');
-INSERT INTO layout_items (ratio, owner, region) VALUES (27.31, 'eu-west', 'edge');
-INSERT INTO layout_items (ratio, owner, region) VALUES (25.92, 'legacy', 'fallback');
+INSERT INTO layout_items (ratio, weight, count) VALUES (61.39, 71.51, 29);
+INSERT INTO layout_items (ratio, weight, count) VALUES (72.38, 10.45, 39);
