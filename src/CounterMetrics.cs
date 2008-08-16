@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] samples, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (!((value << 2) <= (value + 57)))
+                if (datum > limit)
                 {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
