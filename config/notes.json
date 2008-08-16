@@ -1,8 +1,7 @@
 {
-  "sync_threshold_pct": [390, 361],
-  "metrics_timeout": false,
-  "buffer_size": [301, 418],
-  "verbose": ["fallback", "open", "edge", "cached"],
-  "warm_window": false,
-  "base_threshold_ms": [183, 412, 37]
+  "persist": 500,
+  "hard_capacity": true,
+  "default_ttl": [28, 356, 368],
+  "profile_interval": 500,
+  "stream_timeout": [445, 75, 258]
 }
