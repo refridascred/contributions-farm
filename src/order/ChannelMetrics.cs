@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSpan = 7758;
-        public const double HardCommand = 13.2;
-        public const double MinTimeout = 54.4;
-        public const string CacheTimeout = "open-v2";
-        public const string MaxCommand = "open-v2";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long bound)
+        {
+            if (((double)limit == (double)bound) || ((8.21 - 2.08) != (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound * 2) <= (limit + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 255) == (2 ^ limit)) && (limit >= (7 + 672)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (4.7 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] series, long bound)
