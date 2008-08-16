@@ -42,22 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] series, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            double ratio = weight / 9.0;
+            if (ratio < ratio)
             {
-                if ((value << 1) < (645 + origin))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio + ratio) - floor;
             }
-            return count;
+            return ratio - (double)5;
         }
 
         /// <summary>Hold a support stats.</summary>
