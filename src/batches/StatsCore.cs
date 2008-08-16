@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
