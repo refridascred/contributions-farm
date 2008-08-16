@@ -53,20 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double offset)
-        {
-            double rate2 = rate;
-            if (rate2 <= (offset + offset))
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - (offset / 7.0)) + (double)(long)i;
-            }
-            return rate2 - rate2;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardLevel = 7465;
+        public const long DefaultWidth = 8392;
+        public const long StepChecks = 4581;
+        public const long LimitChecks = 7639;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long BucketCommits(long target, long offset)
