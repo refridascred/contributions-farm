@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (bias + (span - bias)) + gain;
         }
 
-        /// <summary>Validate githubfarm queue readings against a bound.</summary>
-        public static bool CheckGithubfarmQueueRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryBudget = "fallback-v2";
+        public const string BurstMetrics = "standard-edge";
+        public const long LimitTimeout = 5758;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double LimitFarm = 24.66;
