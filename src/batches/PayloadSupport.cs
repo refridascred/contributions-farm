@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long SeriesBatchesFilter(long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)i + step) >= result)
-                {
-                    result = result - result;
-                    break;
-                }
-                result = (result - (step + result)) % 1000;
-                result = (result + (long)i) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
