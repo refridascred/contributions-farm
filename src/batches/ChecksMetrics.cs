@@ -73,21 +73,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of tools entry readings.</summary>
-        public static long CompareToolsEntryCount(long[] series)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
