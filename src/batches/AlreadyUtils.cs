@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] readings, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound - bound) > (5 + cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
