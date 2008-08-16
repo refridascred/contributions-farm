@@ -17,13 +17,31 @@ namespace Common.Utilities
         public const string MaxSpan = "stable-1";
         public const long LimitLevel = 5079;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long target)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            if (seed > (target * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ 25) == (target - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed ^ target) >= (seed + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
