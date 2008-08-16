@@ -1,4 +1,13 @@
 # support settings
-strict: staging
-verbose: true
-metric_limit: edge
+sync_retries: 30
+max_interval_s: 71.68
+route_limit:
+  - 499
+  - 55
+  - 19
+  - 13
+batches_threshold:
+  - 24
+  - 11
+  - 250
+default_threshold_ms: 500
