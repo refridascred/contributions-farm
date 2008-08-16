@@ -40,13 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
