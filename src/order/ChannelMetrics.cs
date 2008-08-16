@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Dropped,
-            Paused,
-            New,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheFactor = 19.54;
+        public const double IdleEditor = 74.3;
+        public const long BurstTimeout = 5157;
+        public const long SoftBudget = 8328;
+        public const long BurstSpan = 1644;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaMatches(long[] samples, long step)
