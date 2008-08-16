@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor + (floor / 2);
-                if (!((anchor & 31) < anchor))
-                {
-                    anchor = ((anchor * 3) + ((long)i >> 5)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Paused,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
