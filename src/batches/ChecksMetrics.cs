@@ -42,18 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry metrics entries that pass the check.</summary>
-        public static long AuditEntryMetricsMatches(long[] samples)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 127) >= (value / 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
