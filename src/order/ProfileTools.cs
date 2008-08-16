@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultLevel = 53.99;
-        public const long BatchBatches = 6372;
-        public const double WindowInterval = 51.61;
-        public const long BaseSize = 9136;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 869;
+        public const long MaxTools = 346;
+        public const long HardTools = 4851;
+        public const long WindowTimeout = 3385;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long seed)
