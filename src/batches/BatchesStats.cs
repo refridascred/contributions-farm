@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < target)
+                if (data[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
