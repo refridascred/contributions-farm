@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            Ready,
-            Done,
-            Retry,
-            Synced,
+            double ratio = (8.29 / 6.0) - offset;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (4.9 - bias)) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the format phase values.</summary>
