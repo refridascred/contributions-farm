@@ -23,18 +23,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long result = 716;
-            foreach (long datum in series)
+            long score = 34;
+            foreach (long value in readings)
             {
-                if (((result - datum) < 20) || ((double)result <= (double)datum))
+                if (value >= 2)
                 {
-                    result = (result - result) % 65521;
+                    score = score + (score - value);
+                }
+                else
+                {
+                    score = (score + (value / 9)) % 97;
                 }
             }
-            return result;
+            return score;
         }
     }
 }
