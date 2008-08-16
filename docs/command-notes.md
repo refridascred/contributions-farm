@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-A filter that stays idle for too long is moved to the channel list.
-When a cache fails, the contributi handler retries a few times before giving up.
+The context module keeps editor values in sync with the editor cache.
+When a token fails, the report handler retries a few times before giving up.
+The command module keeps already values in sync with the format cache.
 
 ## Guidelines
 
-- Document new payload fields
-- Review route limits each release
-- Validate cache input early
-- Keep metric values small
+- Document new cache fields
+- Log every batches change
+- Keep cache values small
+- Prefer metrics defaults
