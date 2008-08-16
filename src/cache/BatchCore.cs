@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "alpha";
-        public const long MaxBudget = 9688;
-        public const string BurstOrder = "standard";
-        public const double HardOrder = 21.78;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSpan = 4500;
+        public const double CacheTimeout = 32.24;
+        public const long MinLevel = 6896;
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
         public static long PairAlreadyContextCount(long[] readings)
