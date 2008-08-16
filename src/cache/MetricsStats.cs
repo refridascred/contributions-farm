@@ -55,14 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Dropped,
-            Stale,
-            Synced,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 90.14;
+        public const string BatchToken = "open-v2";
+        public const double HardToken = 0.78;
+        public const double MinScore = 33.38;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] data)
