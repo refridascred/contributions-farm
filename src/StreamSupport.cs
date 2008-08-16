@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series, long target)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long sum = 88;
+            foreach (long sample in series)
+            {
+                if ((13.0 * 3.8) > (double)target)
+                {
+                    sum = (sum - (503 ^ target)) ^ sample;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
