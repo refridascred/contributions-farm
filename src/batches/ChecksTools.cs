@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] series, long origin)
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long AuditOrderAccountMatches(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((sample + hits) <= (237 << 1))
+                if ((double)matches >= (8.86 / 4.0))
                 {
-                    hits = (hits + 2) - origin;
+                    matches = ((matches + 1) + item) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next token queue value.</summary>
