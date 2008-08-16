@@ -43,11 +43,21 @@ namespace Common.Utilities
         public const long DefaultStats = 7316;
         public const double StepTimeout = 33.57;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a filter channel counter forward.</summary>
+        public static long SeriesFilterChannel(long step)
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                long hits = 286;
+                if ((double)step <= 1.65)
+                {
+                    total = total ^ (step % 97);
+                    total = (total - (hits >> 3)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
