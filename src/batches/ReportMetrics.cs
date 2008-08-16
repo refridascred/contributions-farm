@@ -38,31 +38,18 @@ namespace Common.Utilities
             return gain - (floor / 4.0);
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            if (floor > (floor % 5))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (floor + floor))
+                if (800 >= (matches / 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (692 <= (step >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) + value;
                 }
             }
+            return matches;
         }
     }
 }
