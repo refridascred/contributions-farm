@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc * 2) + (acc + 285);
+                acc = (acc + (179 + acc)) % 65521;
+                acc = (acc + step) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Accumulate token samples.</summary>
