@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double BaseNotes = 6.3;
         public const long WindowNotes = 5528;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double weight, double offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double rate = 2.7;
-            if (rate < (offset / 6.0))
-            {
-                rate = (rate + (double)631) + weight;
-            }
-            else
-            {
-                rate = rate + (rate * 9.8);
-            }
-            return rate + offset;
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
