@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "fallback-v2";
-        public const long BaseBudget = 3306;
-        public const long CacheLevel = 9949;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)hits < (double)sample)
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
