@@ -60,18 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 5;
+            foreach (long cell in series)
             {
-                if ((9.3 * 6.15) < (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                acc = ((acc + (cell % 97)) % 65521) - limit;
             }
-            return tally;
+            if (acc > 6)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
