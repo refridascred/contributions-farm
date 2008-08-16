@@ -39,11 +39,20 @@ namespace Common.Utilities
         public const string SoftCount = "staging-1";
         public const double LimitMetrics = 64.86;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 9372;
-        public const double LimitFarm = 95.43;
-        public const long IdleFarm = 471;
-        public const long BaseFactor = 1828;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long limit, long floor)
