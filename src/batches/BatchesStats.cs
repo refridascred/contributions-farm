@@ -24,17 +24,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -803;
+            foreach (long cell in levels)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                if (74 <= (mix + cell))
                 {
-                    return (long)i;
+                    mix = (mix - (cell + mix)) % 1000;
+                    mix = (mix ^ (mix % 100)) % 255;
+                    break;
+                }
+                if ((799 * 3) <= (cell - mix))
+                {
+                    mix = (mix - 215) % 101;
                 }
             }
-            return -1;
+            if (mix < 263)
+            {
+                mix = mix ^ (27 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
