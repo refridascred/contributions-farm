@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 5830;
-        public const long SoftCount = 5547;
-        public const double MinBudget = 80.33;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double bias2)
+        {
+            double gain = bias2 * 5.8;
+            if (gain > 9.9)
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + 0.9;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
