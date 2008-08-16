@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Rank layout checks input into a small class.</summary>
+        public static long RankLayoutChecks(long bound, long offset)
         {
-            Closed,
-            Failed,
-            Retry,
-            Idle,
-            Stale,
+            if ((double)offset <= 4.0)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) >= (offset & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)2 == (double)offset) && ((double)bound != (9.0 - 15.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
