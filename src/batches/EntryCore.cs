@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Queued,
-            Stale,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 6464;
+        public const long BatchContributi = 2433;
+        public const string BurstContributi = "legacy";
+        public const double SoftSpan = 13.41;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] data, long step)
