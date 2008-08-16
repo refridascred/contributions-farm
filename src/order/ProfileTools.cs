@@ -19,24 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long step)
         {
-            long state = 751;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (!((state * 3) <= (-811)))
+                if (sample != step)
                 {
-                    state = (state * 3) + item;
-                    state = (state + item) % 101;
+                    ready = false;
+                    break;
                 }
-                state = ((state << 3) ^ (item / 6)) % 1000;
             }
-            if (state > 57)
-            {
-                state = ((state * 5) + (116 + state)) % 65521;
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
