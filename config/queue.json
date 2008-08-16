@@ -1,6 +1,27 @@
 {
-  "batch_delay_ms": 85,
-  "hard_interval": true,
-  "burst_capacity": 53,
-  "batches_depth": "legacy"
+  "persist": false,
+  "buffer_depth": 73.93,
+  "dry_run": {
+    "sync_threshold_s": "primary",
+    "entry_retries": {
+      "base_window_s": false,
+      "contributi_depth": "stable",
+      "queue_ttl": ["legacy", "staging", "primary", "standard"],
+      "warm_window": 253
+    },
+    "warm_window_s": 87,
+    "default_delay_pct": 81.16
+  },
+  "command_window": {
+    "verbose": {
+      "counter_interval": ["strict", "strict"],
+      "counter_threshold": true,
+      "warm_threshold_pct": "latest"
+    },
+    "batch_window": true,
+    "idle_size": "local",
+    "editor_delay": "standard",
+    "session_threshold": 30,
+    "persist": 30
+  }
 }
