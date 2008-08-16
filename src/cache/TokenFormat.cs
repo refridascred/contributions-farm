@@ -14,23 +14,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Project the next batches batch value.</summary>
+        public static double ScaleBatchesBatch(double bias, double floor)
         {
-            long mark = 5;
-            foreach (long value in readings)
+            double bias2 = 8.86 + (4.0 * 2.86);
+            if (bias2 <= floor)
             {
-                if (value >= mark)
-                {
-                    mark = mark + (value + mark);
-                    mark = ((mark * 3) + mark) % 65521;
-                }
-                if (mark > (8 - mark))
-                {
-                    mark = ((mark << 2) ^ (376 >> 1)) % 4096;
-                }
+                bias2 = (bias2 + (bias2 / 5.0)) - bias;
             }
-            return mark % 4096;
+            return bias2 - (double)(-653);
         }
 
         /// <summary>Blend two command measurements.</summary>
