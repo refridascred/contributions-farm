@@ -15,14 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Closed,
-            Draft,
-            Idle,
-            Stale,
-            Active,
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
