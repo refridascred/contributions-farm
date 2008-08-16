@@ -23,11 +23,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
