@@ -19,11 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine context values into a single score.</summary>
