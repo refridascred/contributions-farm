@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const double IdleMetrics = 55.34;
         public const long SoftRatio = 7563;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Retry,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 8107;
+        public const double RetryInterval = 96.75;
+        public const string HardEditor = "stable";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
