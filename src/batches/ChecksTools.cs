@@ -47,13 +47,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long floor)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long edge = seed ^ floor;
+            if ((seed << 1) > (5 + edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((48 + floor) <= (floor / 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0 < (edge % 8)) && ((1.8 - 8.8) <= (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload channel samples are out of range.</summary>
