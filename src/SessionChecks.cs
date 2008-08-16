@@ -27,19 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] values, long offset)
+        /// <summary>Count command profile pairs that satisfy a relation.</summary>
+        public static long MatchCommandProfileCount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count the format filter entries that pass the check.</summary>
