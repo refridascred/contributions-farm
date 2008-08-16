@@ -20,38 +20,22 @@ namespace Common.Utilities
         public const string CacheTimeout = "open-v2";
         public const string MaxCommand = "open-v2";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long step, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series, long bound)
         {
-            if (!((841 & 3) == (367 + target)))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((12.0 + 3.16) > (double)step)
+                if (((2 >> 2) > (bound + count)) && (5 >= bound))
                 {
-                    return 1;
+                    count = (count + 3) ^ entry;
                 }
                 else
                 {
-                    if ((target < (step + step)) || ((746 & 3) < target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ target) > (step & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
