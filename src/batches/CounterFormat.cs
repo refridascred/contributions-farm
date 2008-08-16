@@ -36,24 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long target, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if ((offset > (target << 1)) || (3.39 >= (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - target) < ((-11) * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
