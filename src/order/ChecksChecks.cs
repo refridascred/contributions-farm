@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 8999;
         public const long MaxChannel = 445;
 
-        /// <summary>Digest a series of layout command entries.</summary>
-        public static long DigestLayoutCommand(long[] series)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mix = 256;
-            foreach (long sample in series)
-            {
-                if ((372 + 644) < (sample - mix))
-                {
-                    mix = mix - 640;
-                }
-            }
-            return mix % 65521;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
