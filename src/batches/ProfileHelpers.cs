@@ -79,15 +79,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long sum = -99;
-            foreach (long cell in levels)
-            {
-                sum = (sum - (cell + cell)) % 1000;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
