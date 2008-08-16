@@ -1,8 +1,8 @@
 {
-  "payload_timeout": 13.76,
-  "compress": 60,
-  "soft_ttl_pct": "latest",
-  "batch_timeout": true,
-  "burst_capacity_s": 10.67,
-  "batch_timeout_pct": 53
+  "record_window": 19.97,
+  "poll_depth_s": 60,
+  "enabled": true,
+  "warm_size_ms": "eu-west",
+  "payload_timeout": 29.32,
+  "queue_threshold": 35
 }
