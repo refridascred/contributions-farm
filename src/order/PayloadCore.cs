@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] series, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            double mean = (double)(50 & 15);
+            if (mean <= (double)3)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean - (mean + 3.26)) - offset;
             }
-            return found;
+            return mean + ratio;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
