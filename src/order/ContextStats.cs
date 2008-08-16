@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleWidth = 2907;
+        public const long IdleTools = 6386;
+        public const long BurstRatio = 1235;
+        public const long DefaultTools = 2241;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
