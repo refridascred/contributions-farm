@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 1025;
-        public const long SoftGithubfarm = 5254;
-        public const string LimitInterval = "strict-edge";
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LookupAlreadyIndex(long[] data, long step)
