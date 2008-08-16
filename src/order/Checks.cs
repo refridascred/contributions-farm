@@ -28,18 +28,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = -4;
+            foreach (long value in levels)
             {
-                if ((double)item > (5.7 * 7.85))
+                if (((21 & 31) < (seed / 8)) || (value >= 902))
                 {
-                    seen = seen + 1;
+                    state = state ^ (53 * 2);
+                }
+                else
+                {
+                    state = state ^ (seed - state);
                 }
             }
-            return seen;
+            if (state < 932)
+            {
+                state = state - (seed ^ seed);
+            }
+            return state % 65521;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
