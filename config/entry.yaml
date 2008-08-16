@@ -1,8 +1,9 @@
 # entry settings
-cache_timeout: 4185
-session_interval: true
-poll_capacity: legacy
-retry_interval_s:
-  - fallback
-  - stable
-idle_delay_count: 61.31
+soft_delay_s: 84.46
+poll_retries_ms:
+  order_retries: eu-west
+  idle_retries: 98.82
+  retry_window_ms: false
+  audit: edge
+  persist: fallback
+persist: stable
