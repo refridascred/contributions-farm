@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long bound)
         {
-            New,
-            Idle,
-            Active,
-            Dropped,
-            Failed,
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state << 2) ^ state) % 97;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a report stats.</summary>
