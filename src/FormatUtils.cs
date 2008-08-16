@@ -46,10 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheDepth = 61.74;
-        public const long MinRatio = 7338;
-        public const long RetrySpan = 4767;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long seed)
+        {
+            if ((floor << 2) > floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.8 - 15.0) != (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (8.0 <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long offset)
