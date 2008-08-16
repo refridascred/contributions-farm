@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long TallyBatchSupportGaps(long[] values)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count <= (4.5 - 7.43))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
