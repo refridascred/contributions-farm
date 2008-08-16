@@ -47,22 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!(((sample + sample) == (sample - floor)) || ((floor ^ seen) > floor)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
