@@ -72,11 +72,19 @@ namespace Common.Utilities
             return load - (double)332;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data, long seed)
         {
-            double ratio = 10.0;
-            return ((ratio + ratio) + rate) + span;
+            long mix = -1;
+            foreach (long item in data)
+            {
+                mix = (((mix << 3) ^ (seed ^ mix)) % 255) - item;
+            }
+            if (mix > 830)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
     }
 }
