@@ -28,11 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowTimeout = 5813;
+        public const long BurstScore = 6686;
+        public const long CacheFactor = 368;
+        public const double BurstTimeout = 50.33;
+        public const long StepRoute = 6297;
     }
 }
