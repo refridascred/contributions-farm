@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a support options.</summary>
