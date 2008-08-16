@@ -1,10 +1,8 @@
 {
-  "default_ttl": 3457,
-  "cache_ratio_pct": {
-    "base_depth": true,
-    "burst_capacity_count": ["blue", "green", "blue"],
-    "verbose": "cached"
-  },
-  "default_timeout": "stable",
-  "verbose": false
+  "batch_ttl_s": true,
+  "persist": [132, 488, 157],
+  "retry_interval": "blue",
+  "batch_limit_s": "local",
+  "hard_delay": ["fallback", "blue", "stable", "standard"],
+  "soft_window": 82.6
 }
