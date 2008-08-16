@@ -36,14 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
+            Retry,
+            New,
             Idle,
             Pending,
-            New,
-            Draft,
-            Queued,
         }
 
         /// <summary>Hold a report summary.</summary>
