@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mix = 292;
-            foreach (long cell in series)
-            {
-                if ((double)mix >= (5.7 - 11.0))
-                {
-                    mix = (mix - (seed - (-35))) % 255;
-                }
-                else
-                {
-                    mix = mix - (85 + cell);
-                }
-                if (!((cell * 5) > (mix & 3)))
-                {
-                    break;
-                }
-            }
-            if (mix < 673)
-            {
-                mix = (mix + (mix % 97)) % 4096;
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Grade a channel contributi value against two limits.</summary>
