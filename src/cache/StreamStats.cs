@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm filter entries.</summary>
-        public static long DigestGithubfarmFilter(long[] series, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double weight, double floor)
         {
-            long sum = 58;
-            foreach (long reading in series)
+            double drift = weight;
+            if (drift > (9.0 - drift))
             {
-                if (((503 & 3) != (sum % 16)) || ((reading % 3) >= (75 * 4)))
-                {
-                    sum = (sum - (reading % 100)) - offset;
-                }
-                else
-                {
-                    sum = (sum * 5) + sum;
-                }
+                drift = (drift - drift) + floor;
             }
-            return sum;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift / 3.0)) + (double)(long)i;
+            }
+            return drift + (double)(-352);
         }
 
         /// <summary>Describe the record kind values.</summary>
