@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstBudget = 7736;
+        public const long BurstTimeout = 4425;
+        public const long IdleMetric = 4749;
+        public const long DefaultInterval = 1824;
+        public const string LimitMetric = "local-edge";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
