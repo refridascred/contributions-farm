@@ -61,17 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 7.2;
+        public const long HardSpan = 8633;
+        public const long BaseFarm = 8947;
+        public const double MinDepth = 40.9;
+        public const long HardFarm = 746;
     }
 }
