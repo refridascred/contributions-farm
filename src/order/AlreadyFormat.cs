@@ -38,12 +38,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a format entry reading by value.</summary>
-        public static long LookupFormatEntryIndex(long[] items, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                if (series[i] >= origin)
                 {
                     return (long)i;
                 }
