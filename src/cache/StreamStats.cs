@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (hits <= (93 & 127))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
