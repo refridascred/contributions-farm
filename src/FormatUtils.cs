@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long limit)
         {
-            Ready,
-            Done,
-            Draft,
-            Closed,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a contributi schema value against two limits.</summary>
