@@ -19,18 +19,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long limit)
         {
-            long state = 56;
-            foreach (long sample in data)
+            long next = target ^ limit;
+            if (target >= (next ^ target))
             {
-                if (((sample / 7) == (sample + sample)) || ((state >> 5) < state))
+                return 7;
+            }
+            else
+            {
+                if (limit < (target % 3))
                 {
-                    state = state - sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((target >> 2) > (limit & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + next) <= (36 ^ next)) && ((1.9 - 5.81) <= (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state % 1000;
         }
     }
 }
