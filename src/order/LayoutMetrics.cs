@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const long BurstAccount = 3426;
         public const long LimitAccount = 7316;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            long edge = bound ^ target;
-            if ((34 - edge) >= 762)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 3) >= (edge & 31))
+                if ((item < (item >> 3)) || ((matches ^ 719) <= 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((1 ^ edge) <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a channel stats.</summary>
