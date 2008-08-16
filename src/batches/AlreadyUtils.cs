@@ -43,26 +43,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long result = 2;
-            foreach (long cell in readings)
+            double scale = offset;
+            if (scale >= (6.0 / 9.0))
             {
-                if ((result + 4) >= (1 - cell))
-                {
-                    result = result + (cell * 4);
-                }
-                else
-                {
-                    result = result + 38;
-                }
+                scale = (scale + (double)614) - rate;
             }
-            if (result < 50)
+            else
             {
-                result = result ^ (result / 4);
+                scale = scale + (offset / 7.0);
             }
-            return result;
+            return scale - scale;
         }
     }
 }
