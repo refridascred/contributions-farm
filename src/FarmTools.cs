@@ -14,18 +14,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long anchor = 43;
-            foreach (long reading in series)
-            {
-                if (((anchor - anchor) <= (8 + anchor)) && ((double)reading <= (9.8 + 0.53)))
-                {
-                    anchor = ((anchor ^ reading) % 65521) - seed;
-                }
-            }
-            return anchor;
+            Done,
+            Queued,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
