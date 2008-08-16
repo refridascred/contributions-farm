@@ -28,22 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long score = -8;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (660 <= (score / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score ^ (sample * 2);
-                }
-                else
-                {
-                    score = (score * 5) + (sample + 682);
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
