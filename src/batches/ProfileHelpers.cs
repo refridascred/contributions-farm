@@ -19,15 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Closed,
-            Dropped,
-            Stale,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "latest-v2";
+        public const long IdleScore = 3433;
+        public const long RetryRatio = 1809;
+        public const long BaseSchema = 2613;
+        public const long MinWidth = 553;
 
         /// <summary>Blend two format profile measurements.</summary>
         public static double ScaleFormatProfile(double bias, double bias2)
