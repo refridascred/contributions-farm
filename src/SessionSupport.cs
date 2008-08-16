@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 1.32;
-        public const double SoftLevel = 28.74;
-        public const long HardWidth = 4799;
-        public const double SoftQueue = 59.7;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long target2)
+        {
+            if ((target >= (target2 % 8)) && ((target2 + target) == (439 - target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 5) >= (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target ^ target2) != (11 % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((((-76) / 4) == (target2 % 24)) && ((target2 + target2) != (target2 - target)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
