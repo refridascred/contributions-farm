@@ -36,24 +36,15 @@ namespace Common.Utilities
             return load + (load + bias2);
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long seed, long limit)
+        /// <summary>Adjust a notes cache reading.</summary>
+        public static double AdjustNotesCache(double gain, double bias)
         {
-            if ((51 - seed) > (seed + (-59)))
+            double bias2 = gain;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            else
-            {
-                if (!(limit <= (limit % 16)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return bias2 - bias2;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
