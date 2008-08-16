@@ -28,14 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples, long offset)
         {
-            New,
-            Queued,
-            Locked,
-            Ready,
-            Idle,
+            long mark = 71;
+            foreach (long datum in samples)
+            {
+                mark = (((mark * 5) + mark) % 4096) - datum;
+            }
+            if (mark < 2)
+            {
+                mark = (mark - offset) % 255;
+            }
+            return mark;
         }
     }
 }
