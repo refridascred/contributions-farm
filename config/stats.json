@@ -1,12 +1,12 @@
 {
-  "filter_capacity": {
-    "readonly": true,
-    "idle_timeout_ms": 87,
-    "filter_ratio": 41,
-    "metric_ttl": "latest"
+  "batch_interval": 9252,
+  "warm_window": {
+    "checks_depth": 99,
+    "sync_depth": "legacy",
+    "default_depth": 49.77,
+    "burst_threshold_pct": "staging",
+    "enabled": 60
   },
-  "token_timeout": 49,
-  "base_limit": 3816,
-  "layout_window": "open",
-  "sync_size": true
+  "readonly": false,
+  "poll_retries_s": "standard"
 }
