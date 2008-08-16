@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const string StepRatio = "latest-edge";
         public const long CacheCount = 4438;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data, long step)
+        /// <summary>Iterate the cache order series from a seed.</summary>
+        public static long DeriveCacheOrder(long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)454 < (double)step) && (datum >= (count / 3)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = count + 1;
+                    carry = (carry ^ (5 << 3)) - (long)i2;
                 }
+                carry = (carry ^ (carry % 16)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
