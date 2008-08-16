@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long target)
+        /// <summary>Classify a payload metrics pair into a bucket.</summary>
+        public static long GradePayloadMetrics(long bound, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = bound - floor;
+            if ((bound % 3) > bound)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 2) >= lane)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor >= 5.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
