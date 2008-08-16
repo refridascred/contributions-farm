@@ -19,21 +19,31 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (11.0 <= (double)origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (double)453)
                 {
-                    if ((values[i] ^ values[j]) > 20)
+                    return 6;
+                }
+                else
+                {
+                    if (step < (origin + step))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
