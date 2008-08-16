@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 1987;
-        public const double StepRatio = 4.88;
-        public const string SoftCount = "staging-1";
-        public const double LimitMetrics = 64.86;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] values, long bound)
