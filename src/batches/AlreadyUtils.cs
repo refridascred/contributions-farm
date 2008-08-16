@@ -31,11 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] samples, long offset)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((tally - offset) <= (reading - (-1))) && ((tally - offset) <= 85)) && ((offset * 2) < offset))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
