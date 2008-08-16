@@ -41,21 +41,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
