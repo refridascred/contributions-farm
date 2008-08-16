@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a entry format figure with a bias.</summary>
-        public static double SmoothEntryFormat(double gain, double span)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool CheckCounterCommitsBounds(long[] items, long bound)
         {
-            double load = (double)(82 + 986);
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                load = (load + (double)(long)i) + gain;
+                if (value > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - span;
+            return ready;
         }
 
         /// <summary>Accumulate report samples.</summary>
