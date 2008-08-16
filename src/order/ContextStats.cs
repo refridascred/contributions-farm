@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            Queued,
-            Synced,
-            New,
+            if ((double)step > 0.4)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - step) < (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
