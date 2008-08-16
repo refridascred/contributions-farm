@@ -67,11 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 90.14;
-        public const string BatchToken = "open-v2";
-        public const double HardToken = 0.78;
-        public const double MinScore = 33.38;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] data)
