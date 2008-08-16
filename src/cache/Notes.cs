@@ -53,18 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            long score = 691;
-            foreach (long datum in values)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1.7 - 6.89) >= (double)datum)
+                anchor = (anchor << 3) ^ floor;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    score = (score - (datum ^ 88)) % 1000;
+                    anchor = anchor - ((long)i2 - anchor);
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
