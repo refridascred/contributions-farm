@@ -43,11 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 2898;
-        public const long SoftSize = 4912;
-        public const long HardTimeout = 8603;
-        public const double DefaultSpan = 2.0;
-        public const double DefaultTimeout = 44.1;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Pending,
+            Ready,
+            Locked,
+            Draft,
+        }
     }
 }
