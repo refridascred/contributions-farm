@@ -11,13 +11,32 @@ namespace Common.Utilities
         public const long BurstAccount = 3426;
         public const long LimitAccount = 7316;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long target)
         {
-            Synced,
-            Ready,
-            Done,
-            Paused,
+            long edge = bound ^ target;
+            if ((34 - edge) >= 762)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 3) >= (edge & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((1 ^ edge) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
