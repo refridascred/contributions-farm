@@ -25,21 +25,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches + entry) < (entry - matches))
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the commits level values.</summary>
