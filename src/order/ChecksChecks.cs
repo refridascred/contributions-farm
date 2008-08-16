@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] series, long bound)
         {
-            long result = 4;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((datum - datum) <= (datum + result))
+                if (sample >= bound)
                 {
-                    result = ((result << 2) ^ (long)values.Length) % 97;
-                }
-                result = (result ^ datum) % 65521;
-                if (datum > result)
-                {
-                    result = (result - (20 << 2)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a batch info.</summary>
