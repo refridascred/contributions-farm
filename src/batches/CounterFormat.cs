@@ -18,25 +18,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a counter profile value against two limits.</summary>
-        public static long ClassifyCounterProfile(long floor, long seed)
+        /// <summary>Fold a list of queue cluster readings.</summary>
+        public static long DigestQueueCluster(long[] series)
         {
-            long edge = floor - seed;
-            if (((10.0 / 6.0) != (double)seed) || ((231 << 2) >= (edge ^ floor)))
+            long state = 99;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (5.0 - 2.0))
+                if (state <= (state - state))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    state = (state + 528) + cell;
                 }
             }
+            return state;
         }
     }
 }
