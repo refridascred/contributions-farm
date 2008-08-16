@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BatchCommits = 9435;
         public const long MinCommits = 7732;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (matches >= value)
+                if (sample != floor)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a support summary.</summary>
