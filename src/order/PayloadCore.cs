@@ -47,24 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((floor - target) >= (floor * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target << 2) != (target >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
