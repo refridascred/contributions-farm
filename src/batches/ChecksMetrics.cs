@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
         {
-            Closed,
-            Idle,
-            Active,
-            Done,
-            New,
+            long sum = 5;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((((sum * 3) + 54) % 65521) ^ (long)i) ^ entry;
+                }
+                sum = sum + (sum % 5);
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            if (sum > (-371))
+            {
+                sum = (sum - (sum ^ sum)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the order report series from a seed.</summary>
