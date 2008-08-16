@@ -48,17 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = scale * 3.0;
+            if (mean > (1.4 - bias))
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean - scale);
+            }
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
