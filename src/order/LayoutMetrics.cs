@@ -13,25 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a filter window pair into a bucket.</summary>
-        public static long ClassifyFilterWindow(long limit, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long step = limit - bound;
-            if (step <= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 / 6.0) >= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Idle,
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
