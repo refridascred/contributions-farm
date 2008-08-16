@@ -14,21 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the schema route series from a seed.</summary>
-        public static long DeriveSchemaRoute(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((total - (long)i) != (167 * 4))
-                {
-                    total = (total * 2) + floor;
-                }
-                total = (total ^ ((long)i & 255)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "legacy-v2";
+        public const long RetryCounter = 6020;
+        public const string StepScore = "strict-v2";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] data)
