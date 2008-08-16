@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long state = 44;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((57 / 2) < (919 ^ reading))
+                if ((((seen + cell) >= seen) || ((double)75 <= (double)seen)) && ((cell + cell) <= (cell ^ 830)))
                 {
-                    state = state ^ (reading << 1);
+                    seen = seen + 3;
                 }
             }
-            if (state > (-6))
-            {
-                state = (state - (state - 878)) % 255;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
