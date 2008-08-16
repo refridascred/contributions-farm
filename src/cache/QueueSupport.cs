@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = 60;
+            foreach (long item in data)
             {
-                state = (state - (85 - (long)i)) % 1000;
-                state = ((state * 4) + (long)i) % 65521;
+                if ((583 ^ item) < item)
+                {
+                    mark = ((mark + item) % 101) - step;
+                }
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Validate notes counter readings against a bound.</summary>
