@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many stats command samples are out of range.</summary>
-        public static long TallyStatsCommandHits(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((1.22 - 0.68) >= (double)matches)
-                {
-                    matches = ((matches + 1) + entry) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 3.88;
+        public const string WindowCommits = "alpha-edge";
+        public const long MaxBudget = 5076;
+        public const long BatchCommits = 9435;
+        public const long MinCommits = 7732;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 9377;
