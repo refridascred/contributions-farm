@@ -27,13 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
