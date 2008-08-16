@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            Pending,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((14 - reading) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
