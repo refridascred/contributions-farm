@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double drift = (span + rate) - (double)4;
-            if (drift <= 9.17)
-            {
-                drift = drift + (drift / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 17.0) + (double)(long)i;
-            }
-            return drift + rate;
+            Draft,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
