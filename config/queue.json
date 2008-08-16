@@ -1,5 +1,5 @@
 {
-  "persist": 30.99,
-  "dry_run": 15.65,
-  "soft_limit_count": 79.61
+  "min_window_count": 6692,
+  "retry_window_pct": false,
+  "checks_limit": [147, 359, 457, 98]
 }
