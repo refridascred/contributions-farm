@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] series, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long origin)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long bound = step ^ origin;
+            if ((3.28 / 5.0) == (double)bound)
             {
-                if (value <= offset)
+                return 3;
+            }
+            else
+            {
+                if (step >= bound)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound * 4) == (step / 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up checks samples.</summary>
