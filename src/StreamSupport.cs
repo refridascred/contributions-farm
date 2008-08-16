@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Compare every pair of payload schema readings.</summary>
+        public static long PairPayloadSchemaCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + 5) > matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
