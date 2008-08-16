@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long step)
         {
-            long sum = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= 6.81)
+                if (samples[i] <= step)
                 {
-                    sum = ((sum * 4) + (sum * 5)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 21)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 4096;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
