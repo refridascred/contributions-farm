@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] items)
         {
-            Paused,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - count) <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
