@@ -25,12 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long step)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
