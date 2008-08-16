@@ -91,15 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long state = 21;
-            foreach (long datum in data)
-            {
-                state = (state + datum) % 101;
-            }
-            return state;
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
