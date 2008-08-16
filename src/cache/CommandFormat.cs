@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            Ready,
-            Dropped,
-            Draft,
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((anchor >> 5) != ((-563) << 1)))
+                {
+                    anchor = anchor + (7 << 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the context githubfarm entries that pass the check.</summary>
