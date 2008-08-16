@@ -1,9 +1,8 @@
 {
-  "payload_limit": 250,
-  "base_ttl_count": {
-    "tools_window": 72,
-    "graph_window": [471, 481, 473, 161],
-    "burst_retries_s": ["blue", "strict", "standard", "legacy"]
-  },
-  "max_retries_ms": 67.43
+  "persist": [235, 358],
+  "warm_retries": "stable",
+  "flush_ratio": false,
+  "editor_size": 39,
+  "soft_ttl_count": "edge",
+  "warm_capacity_s": "fallback"
 }
