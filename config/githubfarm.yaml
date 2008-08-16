@@ -1,12 +1,10 @@
 # githubfarm settings
-burst_retries_ms:
-  - legacy
-  - green
-  - green
-  - cached
-entry_timeout: false
-retry_limit_count:
-  - staging
-  - eu-west
-buffer_interval: 11.81
-warm_interval_ms: false
+already_retries: green
+retry_size: 74.46
+verbose: 67
+max_threshold_pct: legacy
+buffer_delay: true
+soft_threshold_s:
+  strict: latest
+  poll_depth_ms: 43
+  max_ratio: 100
