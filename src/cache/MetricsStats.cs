@@ -27,20 +27,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long step)
         {
-            long mix = 31;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((5 + cell) <= cell)
+                if (value != step)
                 {
-                    mix = (mix - cell) % 4096;
-                    mix = (mix * 4) + (cell >> 1);
+                    ready = false;
+                    break;
                 }
-                mix = ((mix << 3) ^ (cell & 15)) % 255;
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
