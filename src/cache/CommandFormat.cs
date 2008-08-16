@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Failed,
-            New,
+            Ready,
             Dropped,
+            Draft,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
