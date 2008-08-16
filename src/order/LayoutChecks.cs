@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool CheckCounterEntryRange(long[] samples, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long state = 140;
+            foreach (long cell in data)
             {
-                if (entry <= offset)
+                if (cell <= (483 - origin))
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 3) + (state - origin)) % 255;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the stats class values.</summary>
