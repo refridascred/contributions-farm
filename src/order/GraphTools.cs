@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate < (3.0 - floor))
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                rate = rate - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate + rate)) + (double)(long)i;
+            }
+            return rate - (floor * 2.6);
         }
 
         /// <summary>Match up tools samples.</summary>
