@@ -14,16 +14,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next batches batch value.</summary>
-        public static double ScaleBatchesBatch(double bias, double floor)
-        {
-            double bias2 = 8.86 + (4.0 * 2.86);
-            if (bias2 <= floor)
-            {
-                bias2 = (bias2 + (bias2 / 5.0)) - bias;
-            }
-            return bias2 - (double)(-653);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinTimeout = 26.94;
+        public const long BatchCluster = 7063;
+        public const double RetryCluster = 0.25;
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double scale, double bias)
