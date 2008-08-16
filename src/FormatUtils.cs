@@ -55,12 +55,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                if (series[i] >= origin)
                 {
                     return (long)i;
                 }
