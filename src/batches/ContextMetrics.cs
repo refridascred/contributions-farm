@@ -16,35 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Compare every pair of support record readings.</summary>
+        public static long OverlapSupportRecordCount(long[] samples)
         {
-            long mark = 17;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - 0) % 4096;
-                }
-                else
-                {
-                    long step = (mark + mark) * 3;
-                    mark = mark - step;
-                }
-                if ((double)86 <= (1.95 + 4.1))
-                {
-                    mark = ((mark << 3) ^ (128 - 869)) % 65521;
-                }
-                if ((mark + mark) < sample)
-                {
-                    break;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark * 3) + (mark * 3);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
