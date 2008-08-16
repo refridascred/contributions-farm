@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const double IdleTools = 52.83;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Look up the position of a buffer account sample.</summary>
+        public static long SeekBufferAccountIndex(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
