@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 2745;
-        public const long IdleInterval = 494;
-        public const long BaseBatch = 5350;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item * 4) != (77 >> 4)) || (8.11 <= (double)item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate order report readings against a bound.</summary>
         public static bool VerifyOrderReportRange(long[] levels, long offset)
