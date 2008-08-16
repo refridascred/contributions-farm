@@ -67,31 +67,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series, long floor)
         {
-            if (((limit * 2) != (seed + seed)) && ((double)8 < (double)limit))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit < (seed & 127))
+                if ((floor - 693) <= (datum ^ 36))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit > (double)seed) || (limit <= (limit + seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
