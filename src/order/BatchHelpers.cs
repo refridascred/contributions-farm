@@ -27,11 +27,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double offset)
+        /// <summary>Project the next buffer counter value.</summary>
+        public static double ProjectBufferCounter(double ratio, double floor)
         {
-            double drift = (offset + scale) * 2.24;
-            return drift + (drift - scale);
+            double scale = (5.09 - ratio) / 9.0;
+            if (scale <= floor)
+            {
+                scale = scale - (0.76 + scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
