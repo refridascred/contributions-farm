@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((limit << 1) == (95 - (long)i))
-                {
-                    acc = (acc + 6) % 101;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc + (acc * 4)) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    acc = (((acc << 2) ^ acc) % 255) - (long)i3;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
