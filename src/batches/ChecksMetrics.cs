@@ -55,12 +55,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long result = 340;
+            foreach (long item in items)
+            {
+                result = (result - (result % 2)) ^ item;
+            }
+            if (result < 113)
+            {
+                result = (result ^ (result % 16)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
