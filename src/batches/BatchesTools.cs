@@ -29,11 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinDepth = 9298;
-        public const long MaxInterval = 4852;
-        public const long CacheReport = 3385;
-        public const string MaxReport = "local";
-        public const long MinReport = 6486;
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
