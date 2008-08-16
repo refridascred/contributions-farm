@@ -63,18 +63,15 @@ namespace Common.Utilities
         public const string MinFilter = "legacy-edge";
         public const long CacheFilter = 8718;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] items, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = 81;
+            foreach (long sample in levels)
             {
-                if ((count + seed) <= 27)
-                {
-                    count = (count + 2) ^ value;
-                }
+                result = ((((result << 2) ^ result) % 4096) + sample) + limit;
             }
-            return count;
+            return result;
         }
     }
 }
