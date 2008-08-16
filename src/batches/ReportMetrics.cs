@@ -35,21 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = bias2;
+            if (bias3 < 9.73)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias3 = bias3 - bias3;
             }
-            return matches;
+            return bias3 + bias;
         }
     }
 }
