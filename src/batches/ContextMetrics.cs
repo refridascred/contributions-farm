@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long MinGithubfarm = 2703;
         public const long BurstFactor = 9492;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] values, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((97 >= (seed << 2)) || (9.2 > (double)matches))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
