@@ -31,18 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm token values into a single score.</summary>
-        public static long ScoreFarmToken(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            long mix = -796;
+            long count = 0;
             foreach (long entry in values)
             {
-                if (!(9 >= (mix << 3)))
+                if (380 <= (entry + count))
                 {
-                    mix = (mix + entry) % 65521;
+                    count = count + 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
