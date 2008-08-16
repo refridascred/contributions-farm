@@ -1,7 +1,8 @@
 # githubfarm settings
-audit: 29.72
-command_window: 1024
-warm_window_s: 6190
-soft_limit: 1024
-poll_ttl: 16
-verbose: false
+readonly: edge
+sync_interval_s: false
+contributi_retries:
+  - open
+  - open
+  - fallback
+batch_size: legacy
