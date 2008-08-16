@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "primary-1";
+        public const long CacheSize = 6976;
+        public const long DefaultCount = 7773;
+        public const long BurstLayout = 7804;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheOrder = 2727;
