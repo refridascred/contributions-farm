@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item / 8) < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
