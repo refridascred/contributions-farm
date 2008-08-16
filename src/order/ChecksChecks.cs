@@ -32,12 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
