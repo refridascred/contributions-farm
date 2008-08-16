@@ -42,15 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double gain, double floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] levels, long limit)
         {
-            double load = 15.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                load = ((load - (double)(long)i) - gain) - floor;
+                if ((limit >> 1) > reading)
+                {
+                    seen = seen + 1;
+                }
             }
-            return load - load;
+            return seen;
         }
     }
 }
