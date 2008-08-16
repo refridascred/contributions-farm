@@ -1,17 +1,17 @@
 # support settings
-strict: local
-batch_threshold:
-  enabled:
-    tools_size:
-      - 96
-      - 206
-      - 437
-    audit: standard
-    flush_window_ms: 1024
-    strict: strict
-    metrics_delay: 79
-    hard_delay: 55.44
-  cache_window: 23.12
-  min_ttl_ms: 4361
-already_limit: 41
-audit: primary
+audit:
+  - 209
+  - 499
+  - 220
+cache_threshold: 8932
+cache_retries_count: 250
+support_ttl:
+  sync_size_count: false
+  poll_capacity: 90
+  min_ratio: 51.45
+  readonly: 30
+  cache_window_count:
+    - legacy
+    - legacy
+    - open
+  min_size_count: 47.68
