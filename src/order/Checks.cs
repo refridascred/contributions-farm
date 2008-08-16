@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 58.03;
-        public const long MaxSize = 7199;
-        public const long BaseRatio = 3068;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowFactor = 5517;
+        public const long SoftTimeout = 8261;
+        public const long BurstCount = 3612;
+        public const string BurstNotes = "staging";
+        public const double BatchSpan = 24.01;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double CacheWidth = 11.3;
