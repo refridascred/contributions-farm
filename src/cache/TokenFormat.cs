@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double drift = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift + drift) + (double)(long)i) - bias;
             }
-            return flag;
+            return drift - (drift + 15.0);
         }
     }
 }
