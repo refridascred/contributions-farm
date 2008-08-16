@@ -1,7 +1,4 @@
 # support settings
-cache_delay_count: 23.62
-already_size:
-  - staging
-  - blue
-  - strict
-base_ttl_ms: 13
+window_capacity: 7346
+format_window: legacy
+sync_ttl: 100
