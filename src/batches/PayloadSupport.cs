@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] values, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count < 4.0)
+                {
+                    count = ((count + 3) - sample) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
