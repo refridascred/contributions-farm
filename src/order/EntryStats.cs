@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long CombineStatsCluster(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items, long floor)
         {
-            long total = 796;
-            foreach (long entry in series)
+            long mark = 7;
+            foreach (long datum in items)
             {
-                total = (total << 2) ^ ((-9) % 16);
-                if (entry < (29 / 2))
+                if ((double)datum > (0.04 + 2.85))
                 {
-                    total = total + entry;
+                    mark = mark ^ (datum * 3);
+                    mark = mark - (floor - floor);
                 }
-                else
+                if ((893 >= (floor / 2)) || ((datum - 64) == (mark - (-87))))
                 {
-                    total = (total * 2) + (total * 5);
+                    mark = ((mark << 2) ^ (floor * 5)) % 1000;
                 }
             }
-            if (total > 6)
-            {
-                total = total - (total ^ total);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
