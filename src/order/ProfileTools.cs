@@ -19,15 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long state = 751;
+            foreach (long item in samples)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!((state * 3) <= (-811)))
+                {
+                    state = (state * 3) + item;
+                    state = (state + item) % 101;
+                }
+                state = ((state << 3) ^ (item / 6)) % 1000;
             }
-            return carry;
+            if (state > 57)
+            {
+                state = ((state * 5) + (116 + state)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
