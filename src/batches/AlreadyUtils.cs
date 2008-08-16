@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] readings, long bound)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound - bound) > (5 + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
