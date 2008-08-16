@@ -46,14 +46,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long offset)
         {
-            Stale,
-            Pending,
-            Paused,
-            Dropped,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
