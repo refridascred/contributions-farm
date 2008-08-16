@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const double CacheProfile = 10.21;
         public const long IdleProfile = 2300;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long step)
+        /// <summary>Roll a record route counter forward.</summary>
+        public static long SeriesRecordRoute(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
