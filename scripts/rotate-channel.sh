@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary strict; do
+for item in latest stable; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
     primary)
         log "fast path"
@@ -19,9 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
