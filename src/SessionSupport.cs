@@ -23,25 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long prev = step - floor;
-            if ((5.4 / 4.0) > (double)step)
+            long result = 282;
+            foreach (long item in series)
             {
-                return 4;
+                result = ((result ^ (result * 5)) % 97) + item;
             }
-            else
+            if (result < 1)
             {
-                if ((50 % 10) > prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = (result << 3) ^ (result ^ result);
             }
+            return result % 1000;
         }
 
         /// <summary>Locate a context reading by value.</summary>
