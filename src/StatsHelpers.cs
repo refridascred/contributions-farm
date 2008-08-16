@@ -38,22 +38,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long TotalFormatSupport(long[] values, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long total = 927;
-            foreach (long sample in values)
-            {
-                if (15.0 > (double)total)
-                {
-                    total = (((total << 2) ^ (total + total)) % 1000) - offset;
-                }
-                else
-                {
-                    total = (total - (sample * 5)) % 97;
-                }
-            }
-            return total;
+            Failed,
+            Draft,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the cache kind values.</summary>
