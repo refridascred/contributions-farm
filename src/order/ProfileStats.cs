@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
+            Paused,
             Idle,
-            Dropped,
-            Done,
             Closed,
         }
 
