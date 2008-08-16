@@ -11,19 +11,32 @@ namespace Common.Utilities
         public const long MaxFilter = 3653;
         public const string RetryBudget = "legacy-edge";
 
-        /// <summary>Scale a already farm figure with a bias.</summary>
-        public static double AdjustAlreadyFarm(double bias, double span)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long seed)
         {
-            double mean = 1.5 * 7.0;
-            if (mean < (bias - mean))
+            long edge = step - seed;
+            if ((edge >> 4) < (step + step))
             {
-                mean = (mean + (bias + bias)) + span;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + (mean + 3.4)) + (double)(long)i;
+                if (seed > (edge & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-6) + step) >= (seed + edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return mean + (mean / 5.0);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
