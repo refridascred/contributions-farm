@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the route notes entries that pass the check.</summary>
-        public static long AuditRouteNotesGaps(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((matches << 3) > matches) && ((reading + 2) != (matches & 3)))
+                if ((((5 + seen) > (offset * 2)) && ((seen + 856) > 5)) || (6.5 > (double)seen))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
