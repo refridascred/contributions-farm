@@ -27,21 +27,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = floor - offset;
+            if ((floor * 4) == (step + step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= (3.9 + 2.51))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
