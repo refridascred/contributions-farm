@@ -63,18 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] values)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((51 - seed) > (seed + (-59)))
             {
-                if ((((reading - 10) != (count >> 3)) && ((reading * 5) >= (count << 3))) || ((9.94 + 18.0) >= (double)count))
+                return 3;
+            }
+            else
+            {
+                if (!(limit <= (limit % 16)))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
