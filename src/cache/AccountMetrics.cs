@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = 5;
-            foreach (long sample in levels)
-            {
-                if ((7 * 2) <= sample)
-                {
-                    acc = (acc << 2) ^ (sample + acc);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (sample * 3)) % 65521;
-                }
-            }
-            return acc % 4096;
+            Closed,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
