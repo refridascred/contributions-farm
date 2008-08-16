@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine token buffer values into a single score.</summary>
