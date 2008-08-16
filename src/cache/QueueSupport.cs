@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 2189;
-        public const long IdleCluster = 2482;
-        public const double CacheCluster = 80.95;
-        public const long HardCluster = 5915;
-        public const long BatchCluster = 5392;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] samples, long limit)
