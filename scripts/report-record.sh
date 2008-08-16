@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=369
-log "limit is ${RECORD_LIMIT}"
-
-for item in fallback eu-west primary; do
+for item in open local blue; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
