@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 62;
+            foreach (long reading in readings)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ mix) + reading) + origin;
             }
-            return -1;
+            if (mix < 735)
+            {
+                mix = mix - mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
