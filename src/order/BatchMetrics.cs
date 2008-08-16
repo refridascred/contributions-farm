@@ -20,21 +20,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = seed ^ origin;
+            if (((double)edge > (5.4 / 9.0)) || (seed <= (origin / 4)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)seed < (double)origin) || ((double)origin < 6.9))
                 {
-                    if ((values[i] - values[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed & 127) > seed)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed >= (origin + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
