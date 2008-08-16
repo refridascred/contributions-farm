@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleRatio = 8600;
-        public const double MaxCount = 77.36;
-        public const long StepCount = 8355;
-        public const double MaxWindow = 10.37;
-        public const string MinDepth = "fallback-1";
+        /// <summary>Classify a support batch pair into a bucket.</summary>
+        public static long RankSupportBatch(long target, long limit)
+        {
+            long offset = target - limit;
+            if ((offset ^ target) == (offset - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset + offset) >= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (9 + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 3) >= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
