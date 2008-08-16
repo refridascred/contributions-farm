@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next already format value from a seed.</summary>
-        public static long RollAlreadyFormat(long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
