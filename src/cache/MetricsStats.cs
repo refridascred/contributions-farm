@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next editor channel value from a seed.</summary>
-        public static long SeriesEditorChannel(long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long state = 61;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((12.0 - 6.56) <= (double)target)
                 {
-                    acc = ((acc << 3) ^ origin) ^ (long)i2;
-                    acc = (acc + (acc / 3)) % 101;
+                    state = (((state * 4) + target) % 101) - value;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
