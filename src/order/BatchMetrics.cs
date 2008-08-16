@@ -40,22 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report editor counter forward.</summary>
-        public static long StepReportEditor(long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
-            {
-                long span = (target - 94) / 5;
-                carry = (carry << 3) ^ 99;
-                if ((double)span >= (double)(long)i)
-                {
-                    span = ((span * 4) + (carry - (long)i)) % 65521;
-                    carry = (carry ^ (carry - (-8))) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Locked,
+            Active,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
