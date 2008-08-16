@@ -38,26 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window githubfarm samples.</summary>
-        public static long CombineWindowGithubfarm(long[] data, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 313;
-            foreach (long cell in data)
-            {
-                if (((1 + sum) > bound) || ((double)bound <= 2.6))
-                {
-                    sum = sum ^ (-16);
-                }
-                else
-                {
-                    sum = (sum * 4) + (cell ^ sum);
-                }
-            }
-            if (sum < 46)
-            {
-                sum = sum ^ (bound + bound);
-            }
-            return sum;
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
