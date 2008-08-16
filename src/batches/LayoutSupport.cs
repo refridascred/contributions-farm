@@ -73,18 +73,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] series, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.0 + 3.0) <= (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) ^ reading;
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
