@@ -38,12 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 5218;
+        public const long BaseSize = 4114;
+        public const long CacheScore = 3239;
+        public const long BaseOrder = 3136;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
