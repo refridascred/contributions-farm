@@ -19,31 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long state = 73;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = state - item;
-                    state = (state * 4) + ((long)i - 54);
-                }
-                if ((12.0 * 5.0) > (double)item)
-                {
-                    state = (state + (item ^ state)) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (item - item)) % 1000;
-                }
-            }
-            if (state < 8)
-            {
-                state = (state + (89 + offset)) % 101;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
