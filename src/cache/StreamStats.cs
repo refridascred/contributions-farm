@@ -46,22 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double ratio, double span)
         {
-            long acc = 147;
-            foreach (long value in readings)
+            double load = 15.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((value - value) < (value + acc))
-                {
-                    acc = acc + value;
-                }
+                load = ((load - (ratio / 6.0)) + (double)(long)i) - span;
             }
-            if (acc > 634)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return load + load;
         }
     }
 }
