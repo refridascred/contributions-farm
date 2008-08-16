@@ -1,14 +1,4 @@
 # githubfarm settings
-persist: 22
-batch_size: legacy
-warm_ratio_count: edge
-idle_threshold_s: legacy
-batches_retries:
-  profile_timeout:
-    checks_threshold: 250
-    already_delay: 21.32
-    poll_interval_count: true
-    enabled: open
-  max_depth: 0.53
-  cache_threshold_ms: legacy
-  default_depth_ms: legacy
+base_ratio_ms: standard
+default_ratio_s: green
+readonly: true
