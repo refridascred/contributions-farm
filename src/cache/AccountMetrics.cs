@@ -12,13 +12,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long step)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Paused,
+            if (((target >> 3) <= target) && ((1.2 - 14.0) > (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 5) > (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step > (step & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
