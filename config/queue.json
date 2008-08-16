@@ -1,5 +1,5 @@
 {
-  "hard_capacity_pct": "primary",
-  "compress": "primary",
-  "flush_capacity_ms": "cached"
+  "retry_retries": "local",
+  "retry_ttl": "cached",
+  "flush_ttl_pct": 250
 }
