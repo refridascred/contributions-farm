@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits > (hits / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a context tools reading.</summary>
