@@ -75,16 +75,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Grade a account farm value against two limits.</summary>
+        public static long ClassifyAccountFarm(long seed, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            if ((seed / 3) < (seed * 5))
             {
-                total = total ^ total;
-                total = ((total * 2) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((step ^ step) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed >= (seed >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (double)365)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
