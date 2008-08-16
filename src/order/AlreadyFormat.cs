@@ -34,15 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double ProjectFormatBatch(double bias, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
+            long state = 1;
+            foreach (long reading in levels)
             {
-                mean = (mean - (mean + offset)) + (double)(long)i;
+                state = (state ^ (reading - reading)) % 65521;
             }
-            return mean - offset;
+            return state % 65521;
         }
 
         /// <summary>Rank contributi profile input into a small class.</summary>
