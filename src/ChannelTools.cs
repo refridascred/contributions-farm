@@ -28,24 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Derive the next format metric value from a seed.</summary>
+        public static long SeriesFormatMetric(long step)
         {
-            if ((double)seed == (5.4 / 2.0))
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step < 2) || ((seed / 8) <= (4 ^ step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
     }
 }
