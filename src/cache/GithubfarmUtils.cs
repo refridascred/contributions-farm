@@ -33,21 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batch already pairs that satisfy a relation.</summary>
-        public static long MatchBatchAlreadyCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitLevel = 3370;
+        public const double BurstEditor = 5.99;
+        public const long BaseEditor = 44;
+        public const long IdleRatio = 4114;
     }
 }
