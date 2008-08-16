@@ -86,17 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 21;
+            foreach (long datum in data)
             {
-                mix = (mix + (offset % 16)) % 65521;
-                mix = ((mix * 2) + (mix & 15)) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                state = (state + datum) % 101;
             }
-            return mix;
+            return state;
         }
     }
 }
