@@ -40,31 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long step)
         {
-            if ((1.9 * 18.0) <= (double)limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset - offset) <= limit) || ((double)limit < 3.71))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)9 <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
