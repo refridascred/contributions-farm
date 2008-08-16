@@ -35,15 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double bias, double bias2)
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool CheckLayoutReportLimits(long[] data, long bound)
         {
-            double bias3 = bias2;
-            if (bias3 < 9.73)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                bias3 = bias3 - bias3;
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias3 + bias;
+            return valid;
         }
     }
 }
