@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "cached-1";
+        public const long DefaultFactor = 5086;
+        public const long RetryBatch = 196;
+        public const long IdleFactor = 9904;
+        public const string CacheBatch = "local";
 
         /// <summary>Digest a series of metrics buffer entries.</summary>
         public static long TallyMetricsBuffer(long[] levels, long origin)
