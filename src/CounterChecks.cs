@@ -75,18 +75,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] items, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (23 <= (offset - 2))
+                if (datum > (datum / 3))
                 {
-                    seen = (seen + 2) + reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
