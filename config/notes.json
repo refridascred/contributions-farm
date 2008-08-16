@@ -1,7 +1,7 @@
 {
-  "filter_depth": "standard",
-  "batch_capacity_ms": "legacy",
-  "metrics_capacity": false,
-  "batch_limit": "green",
-  "base_window_pct": "latest"
+  "hard_window": 22,
+  "cache_ttl": "edge",
+  "session_interval": "open",
+  "poll_ttl_pct": ["open", "edge", "standard", "latest"],
+  "batch_timeout_s": "green"
 }
