@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double span)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = (span + rate) - (double)4;
+            if (drift <= 9.17)
+            {
+                drift = drift + (drift / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 17.0) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
