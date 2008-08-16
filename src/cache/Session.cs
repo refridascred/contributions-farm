@@ -45,21 +45,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((step / 9) < 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((target / 3) > (target ^ 30)) && ((target ^ step) > (step % 24)))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
+                    return 0;
+                }
+                else
+                {
+                    if ((0 + step) == (step - step))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - target) >= (step - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
