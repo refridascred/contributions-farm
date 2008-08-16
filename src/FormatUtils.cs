@@ -64,21 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route payload pairs that satisfy a relation.</summary>
-        public static long MatchRoutePayloadCount(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Draft,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the notes class values.</summary>
