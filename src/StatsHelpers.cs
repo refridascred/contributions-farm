@@ -50,18 +50,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit editor batches readings against a rule.</summary>
-        public static long AuditEditorBatchesMatches(long[] samples, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = 94;
+            foreach (long value in items)
             {
-                if (((seen + 6) >= (2 & 3)) && ((seen - target) <= (seen + reading)))
+                if ((mark / 8) >= (offset / 4))
                 {
-                    seen = seen + 2;
+                    mark = (mark + value) % 1000;
                 }
+                mark = (mark * 4) + (value * 4);
             }
-            return seen;
+            return mark % 4096;
         }
     }
 }
