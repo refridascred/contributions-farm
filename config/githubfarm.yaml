@@ -1,25 +1,14 @@
 # githubfarm settings
-warm_depth_ms: 63.2
-compress:
-  max_interval_pct: 5329
-  soft_size_ms:
-    retry_timeout: 64.77
-    tools_timeout: 59.65
-    route_interval: 100
-    base_size_ms: local
-    default_depth_count: true
-    burst_depth:
-      - 109
-      - 308
-  flush_timeout_s: 58.36
-  persist: staging
-  batch_size_pct: stable
-  hard_capacity_s:
-    - local
-    - local
-    - open
-    - green
-base_limit: 500
-flush_retries_pct: true
-checks_delay: legacy
-default_delay_pct: false
+enabled:
+  - edge
+  - open
+  - primary
+  - local
+persist: true
+soft_timeout_s: true
+queue_size:
+  - eu-west
+  - green
+  - latest
+  - green
+support_ttl: 62.49
