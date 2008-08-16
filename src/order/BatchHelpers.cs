@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] samples, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 113;
+            foreach (long value in items)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if ((938 + value) <= (carry - value))
                 {
-                    return (long)i;
+                    carry = carry ^ (value - carry);
                 }
             }
-            return -1;
+            if (carry > 9)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Adjust a batches reading.</summary>
