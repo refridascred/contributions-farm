@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] series)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches + 61) >= (value + 481))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
