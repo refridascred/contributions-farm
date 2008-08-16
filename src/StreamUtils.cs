@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double scale, double offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long target)
         {
-            double gain = offset;
-            if (gain < (gain * 7.79))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                gain = gain - offset;
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 1.9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (scale * 5.2)) - (double)(long)i;
-            }
-            return gain - (double)6;
+            return ok;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
