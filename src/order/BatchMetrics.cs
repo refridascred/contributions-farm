@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 9203;
-        public const long CacheLevel = 6446;
-        public const long LimitWindow = 9155;
-        public const long MinWindow = 9374;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "alpha-edge";
+        public const long BaseWidth = 7220;
+        public const long BatchCommits = 9682;
+        public const long StepDepth = 7301;
+        public const string IdleRatio = "standard-1";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
