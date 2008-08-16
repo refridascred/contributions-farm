@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long origin)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            if (((0.9 + 0.07) == (double)origin) && ((limit - origin) >= limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 2) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 12) < (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
