@@ -57,14 +57,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Synced,
-            Done,
+            long total = 49;
+            foreach (long value in values)
+            {
+                if ((total + total) != (value / 8))
+                {
+                    total = total - (92 - total);
+                }
+            }
+            if (total > 4)
+            {
+                total = (total + (total & 3)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
