@@ -47,16 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] series, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                carry = carry ^ ((long)i * 5);
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
