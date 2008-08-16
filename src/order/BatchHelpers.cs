@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((27 + count) < (count + count))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
