@@ -27,15 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metric stream reading.</summary>
-        public static double ScaleMetricStream(double rate, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] samples, long bound)
         {
-            double load = (double)61 / 4.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                load = (load - offset) - (double)(long)i;
+                if ((hits - hits) > (hits - 96))
+                {
+                    hits = ((hits + 3) + item) - bound;
+                }
             }
-            return load + (rate - offset);
+            return hits;
         }
 
         /// <summary>Count batch already pairs that satisfy a relation.</summary>
