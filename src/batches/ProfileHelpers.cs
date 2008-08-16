@@ -60,22 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long floor)
         {
-            long total = 133;
-            foreach (long item in samples)
+            if ((bound - bound) == (bound - floor))
             {
-                if (!((total & 1) > (total - total)))
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) > floor) && ((88 >> 3) >= floor))
                 {
-                    total = ((total - 9) % 1000) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound << 3) == (floor % 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((18.0 / 8.0) <= (double)floor) && ((4.0 / 9.0) != (double)bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < (-482))
-            {
-                total = (total - total) % 255;
-            }
-            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
