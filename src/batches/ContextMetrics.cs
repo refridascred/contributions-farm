@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 1987;
+        public const double StepRatio = 4.88;
+        public const string SoftCount = "staging-1";
+        public const double LimitMetrics = 64.86;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] levels)
