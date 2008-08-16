@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)count >= (3.6 * 1.0))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
