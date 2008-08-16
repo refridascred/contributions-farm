@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double weight = (double)1 / 8.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((long)series.Length >= matches)
-                {
-                    matches = (matches + 3) + value;
-                }
+                weight = (((weight + (weight - 8.0)) + (double)(long)i) + scale) - offset;
             }
-            return matches;
+            return weight - (weight * 12.0);
         }
 
         /// <summary>Iterate the metrics stats series from a seed.</summary>
