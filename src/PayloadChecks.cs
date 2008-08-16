@@ -33,15 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            New,
-            Paused,
-            Stale,
-            Done,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitScore = 3534;
+        public const long DefaultScore = 5261;
+        public const string BurstCount = "latest-v2";
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
