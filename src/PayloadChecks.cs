@@ -72,22 +72,9 @@ namespace Common.Utilities
         public const long MinMetrics = 9322;
         public const double SoftBudget = 15.81;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((count >> 3) < (1 + 77))
-                {
-                    count = ((count + 3) + value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 6475;
+        public const long SoftChannel = 2232;
+        public const long BatchCount = 3274;
     }
 }
