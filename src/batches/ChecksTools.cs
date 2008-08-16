@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            Ready,
-            Idle,
-            Dropped,
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((limit / 4) <= ((long)i + mark))
+                {
+                    mark = mark ^ (6 % 16);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
