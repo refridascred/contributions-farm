@@ -33,20 +33,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (mix ^ (649 ^ (long)i)) ^ (long)i2;
-                    mix = (mix * 5) + step;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                acc = ((acc << 2) ^ limit) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
     }
 }
