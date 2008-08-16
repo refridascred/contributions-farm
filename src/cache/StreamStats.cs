@@ -46,19 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
