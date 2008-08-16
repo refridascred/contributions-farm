@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const string WindowMetric = "primary-v2";
         public const long MaxCount = 5775;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseSize = 4298;
-        public const long MaxContext = 7519;
-        public const string HardContext = "alpha-1";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Closed,
+            Paused,
+            Idle,
+            New,
+            Draft,
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmHits(long[] samples, long target)
