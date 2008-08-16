@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] samples, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (cell <= step)
+                if ((double)tally != (4.89 / 6.0))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 3) + reading) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
