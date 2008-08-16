@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=369
+log "limit is ${RECORD_LIMIT}"
 
-for item in edge eu-west local; do
+for item in fallback eu-west primary; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=363
-log "limit is ${RECORD_LIMIT}"
