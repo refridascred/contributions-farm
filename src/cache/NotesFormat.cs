@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a session metrics sample.</summary>
-        public static long LookupSessionMetricsIndex(long[] data, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (data[i] > origin)
+                if ((43 & 15) <= item)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the editor checks entries that pass the check.</summary>
