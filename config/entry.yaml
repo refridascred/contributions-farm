@@ -1,16 +1,13 @@
 # entry settings
-batch_threshold:
-  - edge
-  - stable
-  - fallback
-cache_size_ms: staging
-poll_depth:
-  metrics_delay: true
-  persist:
-    - local
-    - eu-west
-    - legacy
-  verbose: open
-  hard_depth: 38
-cache_timeout_ms: 60
-token_interval: 7304
+batch_capacity_s: 1024
+min_window_s:
+  checks_ttl: 19
+  burst_retries_ms: 10.44
+  verbose: false
+  route_ttl: 54
+cache_retries_ms: true
+schema_depth:
+  hard_retries: eu-west
+  route_capacity: 95.42
+  burst_threshold_s: primary
+  hard_window_pct: 42.3
