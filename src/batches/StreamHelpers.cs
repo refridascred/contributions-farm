@@ -69,17 +69,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            if (gain >= (bias - ratio))
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - (gain / 4.0);
             }
-            return -1;
+            else
+            {
+                gain = gain + (gain * 2.62);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (double)(-43);
         }
     }
 }
