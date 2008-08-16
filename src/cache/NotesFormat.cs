@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-v2";
         public const long MinInterval = 6473;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
