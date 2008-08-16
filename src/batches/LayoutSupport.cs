@@ -50,21 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 9;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix * 3) + (reading - reading);
+                if ((544 * 5) >= mix)
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix ^ (floor / 4);
                 }
             }
-            return matches;
+            if (mix > 0)
+            {
+                mix = (mix << 2) ^ (floor + floor);
+            }
+            return mix % 4096;
         }
     }
 }
