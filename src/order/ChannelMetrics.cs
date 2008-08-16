@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long BurstReport = 6844;
         public const long MinCount = 8431;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (((2 >> 2) > (bound + count)) && (5 >= bound))
+                if (cell >= seed)
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
