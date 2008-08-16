@@ -1,15 +1,16 @@
 # entry settings
-warm_size_pct: 68.32
-retry_size: cached
-min_retries: legacy
-metrics_timeout:
-  base_ttl: staging
-  already_timeout:
-    session_ratio: 35.05
-    flush_window: false
-    already_threshold: 33.26
-    burst_interval_s: true
-    base_window_pct: 72.3
-  route_threshold: strict
-  default_size_s: 100
-  max_ratio: green
+batch_threshold:
+  - edge
+  - stable
+  - fallback
+cache_size_ms: staging
+poll_depth:
+  metrics_delay: true
+  persist:
+    - local
+    - eu-west
+    - legacy
+  verbose: open
+  hard_depth: 38
+cache_timeout_ms: 60
+token_interval: 7304
