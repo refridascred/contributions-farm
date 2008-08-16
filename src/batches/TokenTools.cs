@@ -31,14 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels, long floor)
         {
-            Done,
-            Retry,
-            Locked,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)tally > (20.0 / 7.0))
+                {
+                    tally = ((tally + 2) + cell) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
