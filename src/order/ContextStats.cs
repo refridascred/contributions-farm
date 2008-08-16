@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleWidth = 2907;
-        public const long IdleTools = 6386;
-        public const long BurstRatio = 1235;
-        public const long DefaultTools = 2241;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] samples, long target)
+        {
+            long acc = 0;
+            foreach (long sample in samples)
+            {
+                if ((target % 16) == (sample * 5))
+                {
+                    acc = (acc + sample) % 65521;
+                }
+                else
+                {
+                    acc = acc ^ (64 + acc);
+                }
+                if (!((sample % 10) > (sample - acc)))
+                {
+                    break;
+                }
+            }
+            if (acc > 77)
+            {
+                acc = (acc + 5) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
