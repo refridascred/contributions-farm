@@ -44,14 +44,12 @@ namespace Common.Utilities
             return bias2 - (weight + bias);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinBudget = 2074;
+        public const long BurstCount = 3400;
+        public const long WindowEditor = 1992;
+        public const long HardDepth = 4113;
+        public const string IdleTimeout = "cached-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftGithubfarm = 8334;
