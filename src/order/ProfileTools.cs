@@ -64,27 +64,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the githubfarm already series from a seed.</summary>
-        public static long SeriesGithubfarmAlready(long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)origin <= 8.3) && (origin <= (origin - 820)))
-                {
-                    anchor = (anchor - (origin - (long)i)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor & 127);
-                }
-                if (((long)i / 8) != (anchor - anchor))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
