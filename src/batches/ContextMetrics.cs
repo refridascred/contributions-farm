@@ -44,11 +44,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long limit)
         {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            if ((5 >> 3) <= (limit - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((9 / 6) <= (target + 526)) || (902 > (limit - target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1.0 * 6.6) <= (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)344)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a context reading by value.</summary>
