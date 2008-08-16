@@ -27,22 +27,11 @@ namespace Common.Utilities
         public const long StepSession = 4112;
         public const long HardLevel = 1496;
 
-        /// <summary>Measure how many profile metrics samples are out of range.</summary>
-        public static long MeasureProfileMetricsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count == (double)item)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 84.76;
+        public const double BatchSpan = 77.91;
+        public const double CachePayload = 50.51;
+        public const long MinPayload = 6241;
+        public const long LimitWidth = 2268;
     }
 }
