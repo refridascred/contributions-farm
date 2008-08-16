@@ -16,23 +16,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long step)
         {
-            long score = 960;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-91) >> 3) <= (cell - (long)values.Length))
+                if (readings[i] < step)
                 {
-                    score = (score ^ (offset + offset)) % 97;
+                    return (long)i;
                 }
-                score = (score << 3) ^ (offset - offset);
             }
-            if (score > 828)
-            {
-                score = score + score;
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
