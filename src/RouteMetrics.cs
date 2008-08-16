@@ -27,14 +27,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long floor)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Done,
-            Synced,
+            long sum = 54;
+            foreach (long reading in values)
+            {
+                sum = ((sum + (sum % 3)) % 4096) ^ reading;
+            }
+            if (sum > (-732))
+            {
+                sum = ((sum << 3) ^ (floor + floor)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine route values into a single score.</summary>
