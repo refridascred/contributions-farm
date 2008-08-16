@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long target)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = 54;
+            foreach (long sample in values)
+            {
+                if (((double)target < (8.0 + 4.42)) || ((target - state) <= (target + sample)))
+                {
+                    state = ((state * 5) + (572 + state)) % 97;
+                }
+                if ((sample ^ 3) < (target >> 3))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
