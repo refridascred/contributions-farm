@@ -63,11 +63,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "legacy-v2";
-        public const string BatchSession = "primary";
-        public const long HardTimeout = 3561;
-        public const long BatchLevel = 1270;
-        public const long MinSession = 4917;
+        /// <summary>Adjust a record schema reading.</summary>
+        public static double BlendRecordSchema(double ratio, double offset)
+        {
+            double gain = offset;
+            if (gain > gain)
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 13.0) - (double)(long)i;
+            }
+            return gain - (gain - ratio);
+        }
     }
 }
