@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 3.88;
-        public const string WindowCommits = "alpha-edge";
-        public const long MaxBudget = 5076;
-        public const long BatchCommits = 9435;
-        public const long MinCommits = 7732;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((5.4 - 3.2) == (double)datum)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
