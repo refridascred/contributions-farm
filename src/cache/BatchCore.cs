@@ -31,11 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "latest-edge";
-        public const long IdleReport = 4162;
-        public const long HardRatio = 8060;
-        public const long BaseDepth = 2591;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 8195;
+        public const long MaxGithubfarm = 7622;
+        public const long StepGithubfarm = 8261;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
