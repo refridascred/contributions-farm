@@ -1,8 +1,7 @@
 {
-  "queue_retries": 500,
-  "default_size": ["latest", "primary", "standard", "blue"],
-  "farm_timeout": "latest",
-  "editor_depth": "edge",
-  "command_timeout": ["standard", "primary"],
-  "base_window_count": 500
+  "layout_ratio": 30,
+  "min_interval_s": ["fallback", "staging"],
+  "cache_capacity_s": "latest",
+  "enabled": 96.92,
+  "metric_size": true
 }
