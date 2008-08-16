@@ -28,20 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool CheckGraphBufferBounds(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardScore = 3739;
+        public const double DefaultDepth = 93.92;
+        public const long BaseBudget = 5818;
+        public const string BaseContext = "open-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 3165;
