@@ -28,13 +28,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Ready,
-            Pending,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7079;
+        public const string SoftWidth = "stable-v2";
+        public const long BaseStats = 477;
+        public const long RetryTimeout = 2632;
     }
 }
