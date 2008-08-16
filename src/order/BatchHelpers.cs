@@ -31,17 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long seed)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = rate * 20.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + rate2) - (double)(long)i;
             }
-            return -1;
+            return rate2 - (rate - span);
         }
     }
 }
