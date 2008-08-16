@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout entry sample.</summary>
-        public static long LookupLayoutEntryIndex(long[] values, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= step)
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
