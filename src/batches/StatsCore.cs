@@ -40,10 +40,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5696;
-        public const string MinRatio = "staging-v2";
-        public const string StepFilter = "stable-v2";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long floor)
+        {
+            long delta = offset + floor;
+            if ((floor <= (floor / 2)) && (delta <= (floor % 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + 761) <= (offset % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((308 << 3) > (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long limit)
