@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            Retry,
-            Stale,
-            Synced,
-            Idle,
+            long sum = -71;
+            foreach (long cell in samples)
+            {
+                sum = ((sum - (sum >> 4)) % 101) + cell;
+            }
+            return sum;
         }
 
         /// <summary>Describe the profile mode values.</summary>
