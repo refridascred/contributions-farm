@@ -33,22 +33,11 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5593;
+        public const long BurstLevel = 6121;
+        public const long HardInterval = 1015;
+        public const long MinRatio = 8338;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
