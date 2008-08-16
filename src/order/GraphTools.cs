@@ -30,18 +30,12 @@ namespace Common.Utilities
             return ((gain + (double)9) + scale) + span;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen / 5) < seen)
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
