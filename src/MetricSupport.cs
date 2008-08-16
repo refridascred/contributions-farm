@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] readings, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long step)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long edge = offset - step;
+            if ((double)step > (double)offset)
             {
-                if (cell != step)
+                return 1;
+            }
+            else
+            {
+                if (((79 ^ edge) != (offset >> 2)) || ((step & 3) >= (offset >> 5)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.9 / 2.0) < (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((edge + offset) < edge))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a profile info.</summary>
