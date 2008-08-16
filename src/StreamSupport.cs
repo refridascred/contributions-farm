@@ -27,31 +27,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long offset, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] data)
         {
-            if (!((0.61 - 7.7) != (double)offset))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset + offset) > (643 + offset)) && ((double)offset > (double)step))
+                if (((hits / 8) >= (sample / 2)) && ((468 ^ hits) < hits))
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((step <= offset) || ((double)step > (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
