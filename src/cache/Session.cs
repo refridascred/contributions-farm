@@ -32,10 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardBudget = 59.61;
-        public const long DefaultTimeout = 8738;
-        public const long MinBudget = 1597;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long offset2)
+        {
+            if ((offset < 931) || ((offset2 >> 1) == (offset & 15)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset * 5) > (offset + offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 << 3) > (offset2 & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset < ((-59) ^ offset2)) || ((double)offset <= (7.28 / 9.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data, long limit)
