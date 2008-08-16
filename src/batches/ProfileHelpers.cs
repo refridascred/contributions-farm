@@ -40,11 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the payload mode values.</summary>
