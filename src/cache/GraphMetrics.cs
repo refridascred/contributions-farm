@@ -46,19 +46,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Rank layout window input into a small class.</summary>
+        public static long RankLayoutWindow(long bound, long offset)
         {
-            double scale = ratio;
-            if (scale > ratio)
+            long bound2 = bound ^ offset;
+            if ((bound2 - bound2) >= offset)
             {
-                scale = scale + (bias * 19.0);
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale - (double)75) + (double)(long)i;
+                if (bound >= (offset % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return scale - 9.0;
         }
 
         /// <summary>Rank token input into a small class.</summary>
