@@ -54,12 +54,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a already stream reading by value.</summary>
-        public static long SeekAlreadyStreamIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long target)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == seed)
+                if ((readings[i] == target) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
