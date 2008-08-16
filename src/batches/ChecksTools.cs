@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 5104;
+        public const string HardInterval = "local-v2";
+        public const long SoftLevel = 3858;
+        public const long CacheBudget = 9549;
 
         /// <summary>Project the next token queue value.</summary>
         public static double ProjectTokenQueue(double rate, double span)
