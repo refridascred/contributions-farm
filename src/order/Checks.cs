@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const double DefaultNotes = 53.39;
         public const long MinNotes = 7261;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long target)
         {
-            Retry,
-            Synced,
-            Closed,
+            long sum = -4;
+            foreach (long cell in items)
+            {
+                sum = ((sum ^ sum) - cell) - target;
+            }
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
