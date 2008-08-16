@@ -27,21 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count command profile pairs that satisfy a relation.</summary>
-        public static long MatchCommandProfileCount(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((3 - cell) < ((long)levels.Length + hits)))
                 {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of cluster schema entries.</summary>
