@@ -51,20 +51,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8334;
+        public const long RetrySize = 7058;
+        public const double MinDepth = 81.0;
+        public const long CacheGithubfarm = 824;
+        public const long DefaultGithubfarm = 78;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
