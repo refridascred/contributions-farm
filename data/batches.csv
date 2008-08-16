@@ -1,8 +1,8 @@
-id,score,state,region,token
-1,553,101,794,stable
-2,336,blue,553,52.26
-3,edge,731,117,36.56
-4,latest,green,430,370
-5,32.01,9.34,green,135
-6,881,legacy,433,eu-west
-7,176,latest,112,81.68
+id,count,label,active
+1,65.67,92.1,460
+2,71,336,661
+3,828,397,261
+4,standard,910,724
+5,67.49,95.41,24.27
+6,green,cached,189
+7,40.98,68.54,920
