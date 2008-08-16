@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long score = 940;
+            foreach (long cell in series)
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score * 5) + (cell << 2);
+                score = ((score * 4) + (4 >> 5)) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
