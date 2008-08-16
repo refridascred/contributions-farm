@@ -32,22 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long MeasureChecksAccountHits(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally % 24) < (sample % 16))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Retry,
         }
     }
 }
