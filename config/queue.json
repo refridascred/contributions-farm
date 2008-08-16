@@ -1,5 +1,5 @@
 {
-  "metrics_retries": 1024,
-  "dry_run": "strict",
-  "readonly": "fallback"
+  "hard_capacity_pct": "primary",
+  "compress": "primary",
+  "flush_capacity_ms": "cached"
 }
