@@ -48,24 +48,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long floor, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            if ((76 + floor) > 20)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 1) > target)
+                if (((double)seen <= (double)468) && (datum > (seen + datum)))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
