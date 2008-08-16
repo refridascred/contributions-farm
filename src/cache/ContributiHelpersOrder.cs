@@ -23,10 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 51.37;
-        public const long RetryBudget = 674;
-        public const string BatchScore = "strict-v2";
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double offset)
+        {
+            double scale = (bias - bias) / 8.0;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - (9.0 / 9.0)) + (double)(long)i) + offset;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Accumulate token layout samples.</summary>
         public static long FoldTokenLayout(long[] data, long floor)
