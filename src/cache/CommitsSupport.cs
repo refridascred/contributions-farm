@@ -42,23 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order farm figure with a bias.</summary>
-        public static double BlendOrderFarm(double weight, double floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double drift = (weight / 5.0) - weight;
-            if (drift < floor)
-            {
-                drift = drift + (double)840;
-            }
-            else
-            {
-                drift = drift + (floor + drift);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (weight * 5.0)) + (double)(long)i;
-            }
-            return drift + (3.8 * 4.35);
+            Idle,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
