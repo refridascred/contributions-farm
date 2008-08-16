@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = (double)(0 % 100);
+            return ((scale - (8.1 + 14.0)) + weight) + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
