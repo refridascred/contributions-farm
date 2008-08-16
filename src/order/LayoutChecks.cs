@@ -43,21 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
