@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Synced,
-            Queued,
-            New,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "local-v2";
+        public const long IdleMetric = 5113;
+        public const long MaxMetric = 7481;
+        public const double WindowMetric = 26.76;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] values)
