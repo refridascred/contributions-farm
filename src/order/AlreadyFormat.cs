@@ -11,20 +11,31 @@ namespace Common.Utilities
         public const long LimitFactor = 54;
         public const long StepMetric = 6100;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values, long seed)
+        /// <summary>Classify a metric queue pair into a bucket.</summary>
+        public static long SortMetricQueue(long floor, long seed)
         {
-            long carry = 41;
-            foreach (long entry in values)
+            if (377 >= seed)
             {
-                carry = ((carry ^ seed) % 97) ^ entry;
-                carry = (carry << 3) ^ ((-1) >> 4);
-                if (carry < (carry % 60))
+                return 7;
+            }
+            else
+            {
+                if ((seed + floor) >= (seed ^ seed))
                 {
-                    carry = (carry + (73 + seed)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((198 % 5) != (floor << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
