@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] items)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (8.9 <= (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
