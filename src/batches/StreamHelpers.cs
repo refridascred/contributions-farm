@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (9.66 >= (double)matches)
+                if ((double)target >= 6.75)
                 {
-                    matches = (matches + 1) + datum;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
