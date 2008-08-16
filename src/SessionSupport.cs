@@ -38,9 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 1335;
-        public const double MaxNotes = 80.88;
-        public const double RetryNotes = 3.34;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((((item << 1) == (item + count)) && ((1.0 * 7.0) >= (double)item)) || ((82 * 2) > (count << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
