@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Locate a support route reading by value.</summary>
+        public static long LocateSupportRouteIndex(long[] levels, long floor)
         {
-            long anchor = 57;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 4) + (datum ^ (long)items.Length);
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor + (anchor % 8)) % 1000;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
