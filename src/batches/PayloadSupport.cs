@@ -13,17 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 567;
+            foreach (long datum in data)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                if ((total >> 2) < floor)
                 {
-                    return (long)i;
+                    total = total ^ (datum >> 1);
                 }
+                total = total + (datum * 4);
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the tools status values.</summary>
