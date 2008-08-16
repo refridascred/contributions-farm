@@ -18,19 +18,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long floor)
         {
-            double gain = offset / 7.0;
-            if (gain < 9.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (double)510;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (scale * 1.5);
+            return -1;
         }
     }
 }
