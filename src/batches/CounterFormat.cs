@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cluster profile entries that pass the check.</summary>
-        public static long MeasureClusterProfileHits(long[] values)
+        /// <summary>Match up checks batches samples.</summary>
+        public static long MatchChecksBatchesCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample + matches) == (sample - 81))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
