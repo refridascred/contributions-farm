@@ -55,21 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long TallyGithubfarmFilter(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long score = 385;
+            foreach (long item in levels)
             {
-                carry = ((carry << 3) ^ (floor - (long)i)) % 4096;
-                carry = ((carry << 2) ^ 742) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((9.9 * 2.2) < (double)item)
                 {
-                    carry = ((carry << 3) ^ 237) ^ (long)i2;
+                    score = (score * 4) + (target % 7);
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
     }
 }
