@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] data, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((step ^ value) <= matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
