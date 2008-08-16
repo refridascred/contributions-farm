@@ -66,21 +66,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 4;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((limit / 9) == (total << 3)) && ((5 - 371) > total))
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total << 2) ^ (total ^ limit)) % 255) + reading;
                 }
             }
-            return seen;
+            if (total > 12)
+            {
+                total = total + (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many batch metrics samples are out of range.</summary>
