@@ -31,19 +31,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of channel already entries.</summary>
-        public static long TallyChannelAlready(long[] readings, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long state = 44;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (seed / 9)) - item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state < 168)
-            {
-                state = state + (946 + state);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up cluster batch samples.</summary>
