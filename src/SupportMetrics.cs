@@ -47,13 +47,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Draft,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
