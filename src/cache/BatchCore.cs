@@ -12,21 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count already context pairs that satisfy a relation.</summary>
-        public static long PairAlreadyContextCount(long[] readings)
+        /// <summary>Accumulate stats command samples.</summary>
+        public static long TotalStatsCommand(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 67;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix - (mix * 4)) % 101) - entry;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Accumulate metric samples.</summary>
