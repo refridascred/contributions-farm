@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long gap = step + floor;
-            if ((6.0 + 15.0) <= (double)gap)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((80 - floor) > (gap + gap))
+                if ((limit << 1) == (95 - (long)i))
                 {
-                    return 8;
+                    acc = (acc + 6) % 101;
                 }
-                else
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if (((floor - gap) >= (gap + gap)) || ((floor % 24) < (floor - 181)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc + (acc * 4)) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    acc = (((acc << 2) ^ acc) % 255) - (long)i3;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
