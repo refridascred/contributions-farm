@@ -13,11 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardSize = "standard-edge";
-        public const double MaxBudget = 69.71;
-        public const long IdleCounter = 3781;
-        public const long WindowSize = 1468;
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long AuditCacheFilterMatches(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (matches <= 7)
+                {
+                    matches = ((matches + 1) - sample) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long target)
