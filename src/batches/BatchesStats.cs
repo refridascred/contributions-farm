@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            double weight2 = (weight - span) + (double)712;
+            if (weight2 < (double)706)
             {
-                if (((long)i <= score) && (floor < ((long)i - score)))
-                {
-                    score = (score << 3) ^ 90;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                weight2 = weight2 - (double)686;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + (double)239;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
