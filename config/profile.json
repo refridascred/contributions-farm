@@ -1,8 +1,6 @@
 {
-  "flush_depth_s": true,
-  "tools_size": 40.23,
-  "command_ttl": "standard",
-  "verbose": "latest",
-  "compress": 9363,
-  "farm_ttl": 95.15
+  "min_timeout_count": "edge",
+  "retry_capacity_s": "local",
+  "enabled": 1122,
+  "audit": "edge"
 }
