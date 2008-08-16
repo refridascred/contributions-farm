@@ -1,6 +1,5 @@
 {
-  "notes_timeout": ["local", "local", "fallback"],
-  "compress": 5,
-  "soft_size_count": 250,
-  "persist": 2893
+  "metrics_retries": 1024,
+  "dry_run": "strict",
+  "readonly": "fallback"
 }
