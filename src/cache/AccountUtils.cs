@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first metric command entry that matches the target.</summary>
-        public static long LookupMetricCommandIndex(long[] items, long bound)
+        /// <summary>Digest a series of editor batches entries.</summary>
+        public static long TotalEditorBatches(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 823;
+            foreach (long value in readings)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 3) ^ (limit << 2)) % 1000) + value;
             }
-            return -1;
+            if (acc > 61)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the window mode values.</summary>
