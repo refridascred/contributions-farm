@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long CacheRoute = 4062;
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long MeasureSupportOrderGaps(long[] data)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (10.0 + 4.8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
