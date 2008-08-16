@@ -1,6 +1,7 @@
 # entry settings
-soft_delay_s: eu-west
-enabled: 45.53
-session_delay: stable
-default_delay_s: latest
-batch_timeout_count: 16
+profile_delay: strict
+layout_interval: 1795
+verbose: 46
+cache_interval: strict
+hard_retries: 59.16
+enabled: edge
