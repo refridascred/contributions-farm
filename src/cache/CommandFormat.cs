@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen - item) >= item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
