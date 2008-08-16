@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result - (result - limit);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Locked,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
