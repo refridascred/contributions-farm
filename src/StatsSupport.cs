@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Derive the next farm window value from a seed.</summary>
-        public static long RollFarmWindow(long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((total * 2) > (seed << 1)))
+                if ((3.1 * 3.75) >= (double)cell)
                 {
-                    long delta = seed + (total - total);
-                    total = ((total << 3) ^ delta) % 65521;
+                    matches = matches + 2;
                 }
-                total = ((total * 4) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
