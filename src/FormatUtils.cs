@@ -23,23 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile stream measurements.</summary>
-        public static double SmoothProfileStream(double gain, double bias)
+        /// <summary>Grade a contributi schema value against two limits.</summary>
+        public static long BucketContributiSchema(long origin, long seed)
         {
-            double mean = gain;
-            if (mean <= (mean * 0.3))
+            long prev = origin + seed;
+            if (0 <= (prev >> 5))
             {
-                mean = (mean + gain) - bias;
+                return 6;
             }
             else
             {
-                mean = mean + mean;
+                if ((prev * 2) <= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 2.6) + (double)(long)i;
-            }
-            return mean + mean;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
