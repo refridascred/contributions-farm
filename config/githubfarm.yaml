@@ -1,28 +1,22 @@
 # githubfarm settings
-burst_size: false
-compress: true
-metrics_delay:
-  idle_depth_count: 66.85
-  enabled: 83.91
-  flush_threshold_ms: false
-  idle_ratio_pct: 46
-  flush_window_count: blue
-  readonly:
-    max_depth_count: 3005
-    burst_capacity: 379
-    warm_limit_ms: primary
-base_timeout_count: 5.89
-poll_timeout: standard
-base_threshold_ms:
-  max_depth_ms: local
-  max_depth_count:
-    default_size_count: 6
-    soft_size_count: false
-    retry_size_pct: strict
+verbose:
+  min_window_s: 18.35
+  retry_interval_s: 2
+  default_capacity_s: 250
+  sync_window: false
+  retry_window_s: 2000
+warm_ttl_s: 8.36
+idle_window_pct:
+  sync_interval:
+    idle_limit: 12.5
     enabled:
-      - 311
-      - 374
-      - 24
-    readonly: 4594
-  route_ttl: true
-  hard_size_ms: true
+      - fallback
+      - latest
+    burst_retries_count: true
+    batch_retries_ms: 1535
+    min_retries_ms: 12
+  poll_size_pct:
+    - green
+    - legacy
+    - standard
+  verbose: standard
