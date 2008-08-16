@@ -62,18 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen * 2) >= reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            Ready,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
