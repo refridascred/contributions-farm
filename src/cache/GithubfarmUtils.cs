@@ -38,31 +38,21 @@ namespace Common.Utilities
             return load + (rate - offset);
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long origin)
+        /// <summary>Count batch already pairs that satisfy a relation.</summary>
+        public static long MatchBatchAlreadyCount(long[] data)
         {
-            if ((origin + bound) < (7 + 439))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((59 / 3) == (origin & 7))
+                    if ((data[i] ^ data[j]) < 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
