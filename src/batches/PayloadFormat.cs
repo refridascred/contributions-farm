@@ -33,15 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((count * 5) > (count << 3))
+                {
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
