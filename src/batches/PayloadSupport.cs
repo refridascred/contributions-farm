@@ -32,24 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if ((target << 2) > (limit % 64))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((95 % 100) < (target * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
