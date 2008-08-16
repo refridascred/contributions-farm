@@ -1,9 +1,8 @@
-id,label,rank,score
-1,edge,cached,541
-2,76.2,edge,87
-3,edge,696,stable
-4,215,latest,open
-5,33,5.25,52.03
-6,446,912,stable
-7,220,94.29,95.76
-8,529,fallback,95.39
+id,weight,label
+1,local,992
+2,edge,93.98
+3,36.63,211
+4,64.72,standard
+5,370,966
+6,829,613
+7,local,standard
