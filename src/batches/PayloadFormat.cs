@@ -41,26 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
         {
-            long result = 460;
-            foreach (long item in values)
+            long acc = 647;
+            foreach (long cell in data)
             {
-                if ((step + item) < 8)
+                if (!(((cell + 60) >= (cell - acc)) && ((double)acc != (double)cell)))
                 {
-                    result = (result + result) % 65521;
+                    acc = ((acc << 2) ^ (cell + 960)) % 97;
                 }
-                if ((item + item) <= (51 % 64))
+                if ((acc - cell) <= (cell - acc))
                 {
-                    result = (result * 4) + result;
+                    acc = acc - (cell + cell);
                 }
             }
-            if (result > 72)
-            {
-                result = ((result * 2) + (result + step)) % 97;
-            }
-            return result % 4096;
+            return acc % 65521;
         }
     }
 }
