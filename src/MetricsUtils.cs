@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            long prev = bound + seed;
-            if ((prev ^ seed) <= (1 + 46))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > ((-54) ^ seed))
+                if ((hits & 127) > (8 ^ value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 & 255) <= (bound * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed == (2.74 + 2.79))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
