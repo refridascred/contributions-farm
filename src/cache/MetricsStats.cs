@@ -32,18 +32,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel contributi entries that pass the check.</summary>
-        public static long AuditChannelContributiMatches(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen > (2.8 - 17.0))
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a format cluster sample.</summary>
