@@ -20,14 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Failed,
-            Dropped,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 2.94;
+        public const string BatchRatio = "primary-v2";
+        public const long StepBatch = 6623;
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] readings)
