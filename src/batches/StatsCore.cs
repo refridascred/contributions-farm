@@ -67,21 +67,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total ^ 5) % 255;
-                if ((total + 9) >= step)
-                {
-                    total = (total - (total + total)) % 65521;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "legacy-v2";
+        public const string BatchSession = "primary";
+        public const long HardTimeout = 3561;
+        public const long BatchLevel = 1270;
+        public const long MinSession = 4917;
     }
 }
