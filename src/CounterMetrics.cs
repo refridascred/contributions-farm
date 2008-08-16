@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items, long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = 68;
-            foreach (long cell in items)
-            {
-                if (((-42) <= (long)items.Length) && (((-980) - sum) >= (954 * 2)))
-                {
-                    sum = (((sum + (89 / 5)) % 65521) ^ cell) - floor;
-                }
-                else
-                {
-                    sum = sum - (sum % 3);
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
