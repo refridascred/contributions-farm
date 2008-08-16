@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value * 2) < (seen * 4))
+                {
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
