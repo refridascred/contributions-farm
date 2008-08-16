@@ -57,25 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            long bound = origin - floor;
-            if ((double)floor > (8.0 - 4.72))
+            long mix = 495;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - 42) <= (bound - bound))
+                if ((datum & 63) > (8 % 3))
                 {
-                    return 2;
+                    mix = mix ^ (mix >> 5);
                 }
-                else
+                if (mix >= (datum - mix))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Accumulate support stream samples.</summary>
