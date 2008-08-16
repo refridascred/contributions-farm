@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window farm entry stays within the limit.</summary>
-        public static bool CheckWindowFarmRange(long[] levels, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != bound)
+                if (!((sum >> 5) <= (long)i))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Adjust a metric stream reading.</summary>
