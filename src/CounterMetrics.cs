@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long limit)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up format entry samples.</summary>
