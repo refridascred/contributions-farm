@@ -25,13 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Roll a record layout counter forward.</summary>
+        public static long DeriveRecordLayout(long origin)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state ^ ((long)i ^ state);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
