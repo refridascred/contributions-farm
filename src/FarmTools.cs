@@ -16,17 +16,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] values, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Compare every pair of commits queue readings.</summary>
