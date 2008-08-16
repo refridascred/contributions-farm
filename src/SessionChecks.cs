@@ -20,12 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Active,
-            New,
-            Locked,
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the format filter entries that pass the check.</summary>
