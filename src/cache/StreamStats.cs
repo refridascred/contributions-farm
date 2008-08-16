@@ -52,18 +52,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((4 % 10) < (count / 5)))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
