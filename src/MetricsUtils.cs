@@ -31,31 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long bound, long target)
+        /// <summary>Measure how many graph record samples are out of range.</summary>
+        public static long TallyGraphRecordHits(long[] readings, long origin)
         {
-            if (!((bound - target) == (42 - bound)))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (5.9 / 7.0))
+                if ((tally + origin) > tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= (3 - 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a schema record.</summary>
