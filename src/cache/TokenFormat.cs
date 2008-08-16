@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
