@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] series, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
