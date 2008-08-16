@@ -58,20 +58,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double bias, double offset)
-        {
-            double scale = (bias / 4.0) * 9.73;
-            if (scale < (double)83)
-            {
-                scale = scale - (scale + offset);
-            }
-            else
-            {
-                scale = scale - 4.0;
-            }
-            return scale - (scale * 8.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheCount = 15.61;
+        public const long MinBatches = 927;
+        public const string IdleDepth = "cached-v2";
+        public const long IdleCount = 3747;
+        public const string RetryBatches = "primary";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitInterval = 5479;
