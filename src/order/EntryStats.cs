@@ -23,22 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long CountSessionStreamMatches(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 60;
+            foreach (long sample in samples)
             {
-                if (((long)samples.Length - reading) > (629 + reading))
+                if ((double)acc >= (double)5)
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 4) + (9 - acc)) % 101;
                 }
-                else
+                if (!((double)sample < 9.77))
                 {
-                    hits = hits - 1;
+                    acc = ((acc * 2) + (acc / 3)) % 4096;
+                    acc = (acc << 2) ^ (sample + 20);
                 }
+                acc = acc + acc;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
