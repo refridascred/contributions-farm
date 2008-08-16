@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] levels, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double gain = offset;
+            if (gain < (gain * 7.79))
             {
-                if ((step + reading) != (reading & 31))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - offset;
             }
-            return seen;
+            else
+            {
+                gain = gain - 1.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (scale * 5.2)) - (double)(long)i;
+            }
+            return gain - (double)6;
         }
 
         /// <summary>Match up editor samples.</summary>
