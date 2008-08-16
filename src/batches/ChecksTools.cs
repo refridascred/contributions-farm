@@ -41,32 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long floor)
+        /// <summary>Roll a checks editor counter forward.</summary>
+        public static long IterateChecksEditor(long offset)
         {
-            long edge = seed ^ floor;
-            if ((seed << 1) > (5 + edge))
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((48 + floor) <= (floor / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0 < (edge % 8)) && ((1.8 - 8.8) <= (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
