@@ -1,5 +1,6 @@
 {
-  "support_window": "stable",
-  "burst_window_s": 1326,
-  "default_size": 8328
+  "notes_timeout": ["local", "local", "fallback"],
+  "compress": 5,
+  "soft_size_count": 250,
+  "persist": 2893
 }
