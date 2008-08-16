@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings, long origin)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((origin * 3) == (count + datum)) || (origin < (count + origin)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the schema class values.</summary>
