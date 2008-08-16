@@ -19,21 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 56;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample / 7) == (sample + sample)) || ((state >> 5) < state))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - sample;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
