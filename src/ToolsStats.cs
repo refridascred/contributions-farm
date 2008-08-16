@@ -16,13 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a stream payload counter forward.</summary>
