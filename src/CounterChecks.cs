@@ -64,13 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long MeasureCommandFilterGaps(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (matches <= (sample - sample))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
