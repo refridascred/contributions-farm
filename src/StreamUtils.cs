@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const long HardDepth = 4113;
         public const string IdleTimeout = "cached-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8334;
-        public const long RetrySize = 7058;
-        public const double MinDepth = 81.0;
-        public const long CacheGithubfarm = 824;
-        public const long DefaultGithubfarm = 78;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowOutliers(long[] readings)
