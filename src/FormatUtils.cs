@@ -52,17 +52,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long limit)
+        /// <summary>Accumulate window githubfarm samples.</summary>
+        public static long CombineWindowGithubfarm(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 313;
+            foreach (long cell in data)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                if (((1 + sum) > bound) || ((double)bound <= 2.6))
                 {
-                    return (long)i;
+                    sum = sum ^ (-16);
+                }
+                else
+                {
+                    sum = (sum * 4) + (cell ^ sum);
                 }
             }
-            return -1;
+            if (sum < 46)
+            {
+                sum = sum ^ (bound + bound);
+            }
+            return sum;
         }
 
         /// <summary>Locate a layout session reading by value.</summary>
