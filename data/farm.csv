@@ -1,7 +1,9 @@
-id,region,weight,owner
-1,650,377,872
-2,130,cached,9.59
-3,green,43.04,strict
-4,762,871,cached
-5,397,479,96.18
-6,431,75.2,staging
+id,region,score
+1,11.0,primary
+2,81.2,98.29
+3,411,local
+4,25.42,staging
+5,eu-west,202
+6,810,26
+7,blue,latest
+8,824,662
