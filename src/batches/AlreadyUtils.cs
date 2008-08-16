@@ -28,18 +28,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 3) >= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
