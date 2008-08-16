@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftLevel = 3858;
         public const long CacheBudget = 9549;
 
-        /// <summary>Project the next token queue value.</summary>
-        public static double ProjectTokenQueue(double rate, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long floor)
         {
-            double gain = rate * 9.72;
-            if (gain >= gain)
+            bool stale = true;
+            foreach (long item in values)
             {
-                gain = gain - span;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (rate / 3.0);
-            }
-            return gain - (gain + rate);
+            return stale;
         }
 
         /// <summary>Roll a checks editor counter forward.</summary>
