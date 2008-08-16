@@ -32,39 +32,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            long next = target ^ limit;
-            if (target >= (next ^ target))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (target % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target >> 2) > (limit & 1))
+                    if ((values[i] ^ values[j]) > 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + next) <= (36 ^ next)) && ((1.9 - 5.81) <= (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
