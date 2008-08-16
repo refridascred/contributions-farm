@@ -64,21 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Accumulate support stream samples.</summary>
+        public static long WeighSupportStream(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -156;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ (cell / 8)) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
