@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            Queued,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
