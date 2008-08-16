@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 3601;
-        public const long IdleSpan = 4764;
-        public const long LimitCache = 6924;
-        public const long BaseCache = 6428;
-        public const double HardCache = 45.3;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)target >= (6.3 * 20.0))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] samples)
