@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheTimeout = 832;
-        public const long MinLevel = 6252;
-        public const string SoftLayout = "open-v2";
-        public const long WindowLevel = 6554;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (tally < (tally ^ 13))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchEditor = 8107;
