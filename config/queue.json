@@ -1,6 +1,18 @@
 {
-  "hard_size_pct": [313, 336],
-  "burst_window_s": 100,
-  "context_ttl": true,
-  "record_limit": 62.52
+  "cache_size_s": {
+    "notes_limit": 20.04,
+    "retry_threshold_s": "standard",
+    "cache_ttl": 76
+  },
+  "warm_retries_s": "legacy",
+  "burst_timeout_pct": "blue",
+  "soft_ttl": true,
+  "hard_retries_ms": {
+    "hard_timeout": "fallback",
+    "payload_timeout": true,
+    "warm_size_count": 69,
+    "report_timeout": "open",
+    "base_retries": false
+  },
+  "audit": "edge"
 }
