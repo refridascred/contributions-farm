@@ -27,12 +27,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long floor)
         {
-            Dropped,
-            Stale,
-            Retry,
+            if (9 <= (55 + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) >= 670)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >= (floor + seed)) || ((double)seed <= (1.53 - 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 97) <= (seed << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
