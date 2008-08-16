@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of batches payload entries.</summary>
-        public static long TotalBatchesPayload(long[] samples, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = -9;
-            foreach (long cell in samples)
-            {
-                if ((0 % 3) < carry)
-                {
-                    carry = ((carry + (carry % 12)) - cell) + seed;
-                }
-            }
-            return carry;
+            Done,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a command snapshot.</summary>
