@@ -32,12 +32,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a record command pair into a bucket.</summary>
+        public static long SortRecordCommand(long limit, long limit2)
         {
-            New,
-            Locked,
-            Retry,
+            if ((limit2 <= (limit << 3)) && (limit2 > (limit + limit2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit2 / 7) >= 96)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 4) < (limit2 << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
