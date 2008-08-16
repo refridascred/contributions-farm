@@ -50,11 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "latest-1";
-        public const long WindowFilter = 8529;
-        public const long HardFilter = 21;
-        public const long LimitRatio = 2306;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
