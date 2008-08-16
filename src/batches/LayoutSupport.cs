@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long CacheLevel = 7773;
         public const double HardChecks = 46.99;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8106;
+        public const double BaseSize = 52.09;
+        public const double CacheProfile = 10.21;
+        public const long IdleProfile = 2300;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long step)
