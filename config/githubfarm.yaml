@@ -1,11 +1,9 @@
 # githubfarm settings
-hard_ttl_pct:
-  - fallback
-  - primary
-  - edge
-batch_timeout_ms:
-  - 199
-  - 227
-  - 158
-min_capacity_ms: staging
-stream_depth: 68
+audit: true
+metric_retries: green
+channel_limit:
+  - legacy
+  - stable
+  - standard
+githubfarm_timeout: 9801
+strict: 9216
