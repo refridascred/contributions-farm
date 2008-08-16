@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((5 + seen) > (offset * 2)) && ((seen + 856) > 5)) || (6.5 > (double)seen))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
