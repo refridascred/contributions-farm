@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long mix = 62;
-            foreach (long reading in readings)
-            {
-                mix = ((mix ^ mix) + reading) + origin;
-            }
-            if (mix < 735)
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
+            Failed,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
