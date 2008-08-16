@@ -21,13 +21,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Locked,
-            Failed,
-            Done,
-            Retry,
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
