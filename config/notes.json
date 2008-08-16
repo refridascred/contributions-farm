@@ -1,7 +1,5 @@
 {
-  "max_ratio_count": "cached",
-  "cache_capacity_pct": ["standard", "edge", "open", "edge"],
-  "base_ratio_ms": [294, 283, 410],
-  "base_limit": "latest",
-  "payload_ttl": "strict"
+  "max_ratio_s": false,
+  "flush_interval_s": 9245,
+  "counter_capacity": 68.88
 }
