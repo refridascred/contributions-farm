@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank contributi cluster input into a small class.</summary>
-        public static long SortContributiCluster(long target, long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long bound = target ^ offset;
-            if ((990 / 7) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound <= 65)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
