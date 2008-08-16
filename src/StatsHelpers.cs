@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] series, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                carry = (carry + (long)i) % 101;
-                carry = (carry + carry) % 65521;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((double)matches <= (18.0 * 9.0))
+                {
+                    matches = ((matches + 2) - datum) - bound;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
