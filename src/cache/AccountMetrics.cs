@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] values, long limit)
         {
-            if (((target >> 3) <= target) && ((1.2 - 14.0) > (double)target))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 5) > (step + step))
+                if (sample <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step > (step & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
