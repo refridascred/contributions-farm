@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long floor, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (576 <= (target % 5))
             {
-                if (item <= seen)
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (15.0 - 5.77))
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
