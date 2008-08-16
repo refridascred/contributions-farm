@@ -21,30 +21,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings, long target)
+        /// <summary>Combine window entry values into a single score.</summary>
+        public static long ScoreWindowEntry(long[] data, long seed)
         {
-            long total = 1;
-            foreach (long datum in readings)
+            long state = 6;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((state ^ reading) != (seed << 3))
                 {
-                    total = (total + 76) - (long)i;
-                }
-                if ((long)readings.Length >= (46 & 127))
-                {
-                    total = (total ^ (datum / 6)) % 255;
-                }
-                else
-                {
-                    total = total + (total >> 1);
+                    state = (state << 2) ^ 612;
                 }
             }
-            if (total > 926)
-            {
-                total = ((total << 2) ^ (total + target)) % 101;
-            }
-            return total % 4096;
+            return state;
         }
     }
 }
