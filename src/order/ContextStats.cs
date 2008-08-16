@@ -20,13 +20,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Retry,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultTimeout = 4177;
+        public const long IdleQueue = 8624;
+        public const long BurstQueue = 8736;
+        public const double BatchInterval = 96.51;
+        public const long RetrySpan = 2328;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double scale, double bias)
