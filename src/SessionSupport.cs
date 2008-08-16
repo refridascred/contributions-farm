@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Failed,
-            Draft,
-            Retry,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 1.32;
+        public const double SoftLevel = 28.74;
+        public const long HardWidth = 4799;
+        public const double SoftQueue = 59.7;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double HardBatch = 2.94;
