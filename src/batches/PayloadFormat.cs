@@ -48,18 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((99 & 3) < (matches + matches))
+                if ((double)1 <= (double)item)
                 {
-                    matches = (matches + 1) + reading;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
