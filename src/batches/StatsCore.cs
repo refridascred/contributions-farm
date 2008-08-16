@@ -87,15 +87,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two metrics contributi measurements.</summary>
-        public static double ScaleMetricsContributi(double gain, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            double load = span + span;
-            for (int i = 0; i < 9; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                load = (load - span) + (double)(long)i;
+                sum = ((sum << 2) ^ ((long)i + sum)) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return load - (gain * 6.07);
+            return sum;
         }
     }
 }
