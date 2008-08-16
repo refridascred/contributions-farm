@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 5) + (origin + total)) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
