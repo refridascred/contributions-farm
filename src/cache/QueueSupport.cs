@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Ready,
-            Dropped,
-            Idle,
-            Paused,
-            Pending,
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
