@@ -34,17 +34,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a graph cluster reading by value.</summary>
-        public static long LookupGraphClusterIndex(long[] samples, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(991 + 0);
+            return (gain - bias) + bias2;
         }
 
         /// <summary>Project the next cluster value.</summary>
