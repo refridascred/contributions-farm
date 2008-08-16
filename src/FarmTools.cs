@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((matches < (datum & 7)) || ((datum & 255) < datum)) || ((datum + datum) < (datum >> 5)))
                 {
-                    acc = (acc + (target << 1)) - (long)i2;
+                    matches = matches + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
