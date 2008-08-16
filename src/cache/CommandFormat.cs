@@ -34,12 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long target)
         {
-            Stale,
-            Retry,
-            New,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
