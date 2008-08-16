@@ -1,8 +1,11 @@
 {
-  "batch_ttl_s": true,
-  "persist": [132, 488, 157],
-  "retry_interval": "blue",
-  "batch_limit_s": "local",
-  "hard_delay": ["fallback", "blue", "stable", "standard"],
-  "soft_window": 82.6
+  "poll_retries": [439, 337],
+  "persist": "edge",
+  "compress": {
+    "soft_delay": 1024,
+    "cache_interval_pct": "edge",
+    "audit": 81
+  },
+  "sync_capacity": 100,
+  "farm_retries": ["eu-west", "eu-west"]
 }
