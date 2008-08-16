@@ -50,10 +50,17 @@ namespace Common.Utilities
         public const string RetryRatio = "alpha-edge";
         public const long IdleSession = 7929;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitRatio = 7155;
-        public const long SoftAlready = 4179;
-        public const long StepBudget = 9931;
-        public const long DefaultRatio = 5708;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
