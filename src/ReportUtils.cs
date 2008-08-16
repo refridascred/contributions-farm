@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the batches record series from a seed.</summary>
+        public static long StepBatchesRecord(long target)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next layout context value from a seed.</summary>
