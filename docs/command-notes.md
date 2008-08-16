@@ -1,14 +1,15 @@
 # Command notes
 
-The batch module keeps context values in sync with the buffer cache.
-Keep channel and batches names short and lowercase.
-When a window fails, the entry handler retries a few times before giving up.
+Keep githubfarm and checks names short and lowercase.
+Each batches is validated before it reaches the contributi queue.
+When a entry fails, the session handler retries a few times before giving up.
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Run the command check before changing any support limits.
+The payload report groups every contributi by profile.
+The schema module keeps metrics values in sync with the token cache.
+Use account settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer session defaults
-- Document new payload fields
+- Document new farm fields
+- Review account limits each release
+- Prefer cache defaults
