@@ -53,14 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 4661;
+        public const string DefaultRoute = "cached-edge";
+        public const string BaseRoute = "cached-edge";
+        public const string CacheWidth = "strict-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "open";
