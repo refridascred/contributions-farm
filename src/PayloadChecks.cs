@@ -43,21 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the profile counter series from a seed.</summary>
