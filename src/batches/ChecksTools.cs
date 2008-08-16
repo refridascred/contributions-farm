@@ -63,23 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
         {
-            long total = 6;
-            foreach (long value in values)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total << 3) ^ value) % 1000;
-                if (15.0 >= (double)total)
-                {
-                    total = (total + 4) % 1000;
-                }
+                long offset = (518 - limit) + (limit - mark);
+                mark = ((mark * 2) + (offset % 12)) % 255;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (total > (-41))
-            {
-                total = (total ^ (seed + total)) % 97;
-            }
-            return total;
+            return mark;
         }
     }
 }
