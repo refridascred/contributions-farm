@@ -63,11 +63,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] data, long limit)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
