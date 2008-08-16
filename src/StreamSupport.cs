@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)target >= (6.3 * 20.0))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryDepth = "local-1";
+        public const string MinTimeout = "cached-1";
+        public const long DefaultDepth = 8743;
+        public const double WindowBuffer = 61.98;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] samples)
