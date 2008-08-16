@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((7.0 / 6.0) > (double)count))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleTimeout = "fallback-v2";
+        public const long WindowBudget = 7377;
+        public const double MaxBatches = 77.75;
+        public const long WindowBatches = 9102;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] data, long origin)
