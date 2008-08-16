@@ -15,19 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
