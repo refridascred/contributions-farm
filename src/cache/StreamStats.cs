@@ -52,11 +52,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((4 % 10) < (count / 5)))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
