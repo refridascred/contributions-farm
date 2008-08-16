@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Audit githubfarm command readings against a rule.</summary>
+        public static long AuditGithubfarmCommandOutliers(long[] values)
         {
-            double mean = span;
-            if (mean <= (double)(-569))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                mean = mean + (double)95;
+                if ((((tally << 1) <= (reading >> 3)) && ((reading << 2) == (reading >> 4))) || ((tally >> 3) > (tally & 127)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 9.2) + (double)(long)i;
-            }
-            return mean - (rate - rate);
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
