@@ -38,22 +38,16 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = 579;
+            foreach (long item in samples)
             {
-                if ((178 / 2) >= reading)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor * 4) + (limit + (-6));
+                anchor = ((anchor * 4) + (anchor ^ item)) % 255;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the cache batches series from a seed.</summary>
