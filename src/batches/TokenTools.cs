@@ -12,16 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum << 2) ^ (limit ^ sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
