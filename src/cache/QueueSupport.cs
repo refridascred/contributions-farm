@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long sum = 2;
-            foreach (long cell in values)
+            double scale = floor;
+            if (scale <= (scale - scale))
             {
-                sum = sum - (sum << 3);
-                if ((690 - sum) >= cell)
-                {
-                    break;
-                }
+                scale = scale + floor;
             }
-            return sum % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (7.5 - weight)) + (double)(long)i;
+            }
+            return scale - (double)1;
         }
     }
 }
