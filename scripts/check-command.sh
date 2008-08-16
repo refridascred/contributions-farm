@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west legacy; do
-    log "checking ${item}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
