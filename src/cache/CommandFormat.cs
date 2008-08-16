@@ -16,14 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] levels)
         {
-            Draft,
-            New,
-            Idle,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((86 - hits) != (3 + hits))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
