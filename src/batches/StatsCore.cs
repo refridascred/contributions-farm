@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double LimitBudget = 53.42;
         public const long MinSize = 6464;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] data, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)tally != (4.57 * 6.9))
+                if ((double)27 >= (double)cell)
                 {
-                    tally = ((tally + 2) ^ datum) - origin;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
