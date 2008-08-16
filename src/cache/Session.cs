@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
+            if ((offset ^ offset) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)offset != (3.0 * 4.11)) && (offset < (offset & 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + 1) > (1 & 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a payload reading.</summary>
