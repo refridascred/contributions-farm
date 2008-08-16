@@ -44,18 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((6 <= (reading / 8)) || ((double)2 <= (double)reading))
+                if ((double)item > (5.7 * 7.85))
                 {
-                    count = count + 2;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the notes metric entries that pass the check.</summary>
