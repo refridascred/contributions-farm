@@ -23,15 +23,21 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            double drift = ratio;
-            if (drift <= floor)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + drift;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - (double)8;
+            return count;
         }
     }
 }
