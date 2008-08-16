@@ -28,27 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Count the format filter entries that pass the check.</summary>
+        public static long MeasureFormatFilterMatches(long[] data)
         {
-            long result = 830;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((result + 171) >= (cell + cell))
+                if ((value + value) >= value)
                 {
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 4) + result) % 255;
-                }
-                result = result - (cell & 1);
-                if (((double)(long)samples.Length > (19.0 + 7.6)) && ((double)cell >= 3.2))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
