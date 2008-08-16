@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MinEditor = 4202;
         public const long IdleFactor = 2849;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] values, long limit)
+        /// <summary>Validate cluster batch readings against a bound.</summary>
+        public static bool VerifyClusterBatchLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (((count & 15) <= count) || ((limit >> 5) > count))
+                if (entry < target)
                 {
-                    count = (count + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
