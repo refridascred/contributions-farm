@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Digest a series of githubfarm filter entries.</summary>
+        public static long DigestGithubfarmFilter(long[] series, long offset)
         {
-            long mark = 4;
-            foreach (long reading in items)
+            long sum = 58;
+            foreach (long reading in series)
             {
-                mark = ((mark * 2) + (mark ^ reading)) % 255;
+                if (((503 & 3) != (sum % 16)) || ((reading % 3) >= (75 * 4)))
+                {
+                    sum = (sum - (reading % 100)) - offset;
+                }
+                else
+                {
+                    sum = (sum * 5) + sum;
+                }
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Accumulate record graph samples.</summary>
