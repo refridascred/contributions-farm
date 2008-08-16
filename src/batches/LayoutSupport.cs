@@ -33,22 +33,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] samples, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = 472;
+            foreach (long item in values)
             {
-                if ((seen + sample) >= 78)
+                if (8.0 >= (double)item)
                 {
-                    seen = (seen + 2) - bound;
+                    score = (score * 2) + (item ^ score);
                 }
-                else
+                if (!((item - score) >= ((-4) & 255)))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (score < 70)
+            {
+                score = ((score << 2) ^ score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
