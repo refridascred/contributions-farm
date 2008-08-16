@@ -31,20 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels)
-        {
-            long acc = 349;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) <= reading)
-                {
-                    acc = ((acc << 3) ^ (acc - reading)) % 101;
-                }
-                acc = acc ^ (acc - reading);
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5696;
+        public const string MinRatio = "staging-v2";
+        public const string StepFilter = "stable-v2";
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long limit)
