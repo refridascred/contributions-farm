@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long origin, long origin2)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            if (((-27) ^ origin) == (origin2 << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin2 > (400 + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.43 * 5.5) >= (double)origin2) || ((origin >> 2) > (origin2 % 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every counter profile entry stays within the limit.</summary>
