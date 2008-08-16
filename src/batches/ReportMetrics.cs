@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] series, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] items)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long sample in items)
             {
-                if ((datum << 3) != (datum % 100))
+                if ((9.66 + 4.5) == (double)sample)
                 {
-                    tally = (tally + 2) + limit;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
