@@ -38,22 +38,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many token route samples are out of range.</summary>
-        public static long TallyTokenRouteHits(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 314;
+            foreach (long cell in data)
             {
-                if ((3 / 8) >= (entry - entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (((score * 5) + ((-2) & 1)) % 97) + cell;
             }
-            return matches;
+            if (score > (-707))
+            {
+                score = (score + (score << 1)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
