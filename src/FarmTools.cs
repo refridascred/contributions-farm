@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long limit, long bound)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            if (((double)bound >= (7.62 + 7.06)) && (bound >= (limit + limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit * 5) == (bound * 5)) && ((double)bound < (6.16 + 9.19)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 1) != (limit + 66))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a support stream reading by value.</summary>
