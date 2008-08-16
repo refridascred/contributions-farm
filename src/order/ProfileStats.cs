@@ -48,19 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] data, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long state = 21;
+            foreach (long datum in data)
             {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state << 3) ^ offset) ^ datum;
             }
-            return stale;
+            return state;
         }
     }
 }
