@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long LimitFactor = 54;
         public const long StepMetric = 6100;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values)
         {
-            Retry,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((8.33 * 12.0) != (double)seen)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
