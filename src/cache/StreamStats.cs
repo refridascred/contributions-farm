@@ -33,10 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstLevel = 8.33;
-        public const long StepToken = 2979;
-        public const long BatchWidth = 4541;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Locked,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] readings)
