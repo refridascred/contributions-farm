@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            New,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitScore = 1554;
+        public const long HardTools = 1679;
+        public const long RetryTools = 5529;
+        public const long IdleCount = 3299;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] readings)
