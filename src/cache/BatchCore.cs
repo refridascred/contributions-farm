@@ -35,21 +35,12 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 7622;
         public const long StepGithubfarm = 8261;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
