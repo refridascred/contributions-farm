@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long sum = 75;
-            foreach (long sample in series)
-            {
-                if (((57 + sample) == (sample + floor)) && ((130 & 3) < (sum + sum)))
-                {
-                    sum = (sum ^ (floor & 255)) % 65521;
-                }
-            }
-            if (sum < 4)
-            {
-                sum = sum ^ (floor & 127);
-            }
-            return sum;
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Adjust a schema format reading.</summary>
