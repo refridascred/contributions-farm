@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the token tools entries that pass the check.</summary>
-        public static long AuditTokenToolsOutliers(long[] samples)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample <= (tally >> 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
