@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long seed)
         {
-            long anchor = -2;
-            foreach (long reading in series)
+            long mark = 352;
+            foreach (long item in samples)
             {
-                anchor = (anchor ^ (limit ^ 7)) % 4096;
-                if ((limit >> 5) <= (reading - limit))
+                if ((seed <= (mark << 1)) || ((long)samples.Length != (mark + 45)))
                 {
-                    break;
+                    mark = (mark * 4) + (item ^ seed);
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
