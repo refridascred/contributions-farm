@@ -34,22 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate filter editor samples.</summary>
-        public static long ScoreFilterEditor(long[] series, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long carry = 583;
-            foreach (long sample in series)
-            {
-                if ((target & 3) == (target + 4))
-                {
-                    carry = ((carry ^ carry) % 101) - sample;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            return carry % 1000;
+            Draft,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
