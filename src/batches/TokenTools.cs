@@ -26,24 +26,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values, long floor)
+        /// <summary>Match up graph githubfarm samples.</summary>
+        public static long MatchGraphGithubfarmCount(long[] readings)
         {
-            long state = 12;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (item ^ item)) % 97;
-                if ((floor ^ item) <= (item + item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state ^ state) % 101;
-                    state = ((state * 2) + state) % 65521;
-                }
-                if (((item & 15) > (item >> 5)) || ((4.65 / 3.0) <= (double)state))
-                {
-                    state = state + (floor << 1);
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 97;
+            return count;
         }
     }
 }
