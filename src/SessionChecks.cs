@@ -44,22 +44,11 @@ namespace Common.Utilities
         public const double MinInterval = 80.9;
         public const double BaseSpan = 81.09;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.16 / 2.0) == (double)cell)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 2898;
+        public const long SoftSize = 4912;
+        public const long HardTimeout = 8603;
+        public const double DefaultSpan = 2.0;
+        public const double DefaultTimeout = 44.1;
     }
 }
