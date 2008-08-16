@@ -28,13 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long floor)
         {
-            Idle,
-            Ready,
-            Paused,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report window readings against a bound.</summary>
