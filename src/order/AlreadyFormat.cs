@@ -17,14 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Accumulate editor stats samples.</summary>
+        public static long TotalEditorStats(long[] series, long limit)
         {
-            Synced,
-            Locked,
-            Paused,
-            Failed,
-            Queued,
+            long anchor = 565;
+            foreach (long item in series)
+            {
+                anchor = (((anchor << 3) ^ (limit & 127)) % 101) ^ item;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits info.</summary>
