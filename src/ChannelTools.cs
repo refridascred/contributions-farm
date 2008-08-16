@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 3455;
-        public const double BurstWidth = 62.23;
-        public const long MinFactor = 4586;
-        public const double MaxMetric = 74.91;
-        public const double WindowTimeout = 80.25;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
