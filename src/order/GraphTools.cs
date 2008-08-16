@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            long mix = 82;
-            foreach (long value in data)
+            double mean = span;
+            if (mean <= (double)(-569))
             {
-                if (((floor / 2) < (value + mix)) || ((mix + value) != (value ^ floor)))
-                {
-                    mix = ((mix << 3) ^ (mix << 3)) % 97;
-                }
+                mean = mean + (double)95;
             }
-            if (mix < 906)
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix + (-470)) % 4096;
+                mean = (mean + 9.2) + (double)(long)i;
             }
-            return mix;
+            return mean - (rate - rate);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
