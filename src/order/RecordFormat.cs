@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state << 2) ^ state) % 97;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleRatio = 8600;
+        public const double MaxCount = 77.36;
+        public const long StepCount = 8355;
+        public const double MaxWindow = 10.37;
+        public const string MinDepth = "fallback-1";
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
