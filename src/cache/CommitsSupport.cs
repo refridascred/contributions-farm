@@ -22,18 +22,12 @@ namespace Common.Utilities
             return (weight - bias) + gain;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches + entry) < (entry - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
