@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the record kind values.</summary>
