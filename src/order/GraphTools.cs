@@ -31,22 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            long mark = -6;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((entry + entry) >= (65 - seed))
+                if ((seen / 5) < seen)
                 {
-                    mark = ((mark << 2) ^ (entry + 9)) % 65521;
+                    seen = (seen + 3) + sample;
                 }
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 4) + (seed + (long)readings.Length)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
