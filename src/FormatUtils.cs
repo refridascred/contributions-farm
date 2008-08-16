@@ -64,32 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long seed)
-        {
-            if ((floor << 2) > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.8 - 15.0) != (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (8.0 <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstContext = "primary-v2";
+        public const string WindowDepth = "strict";
+        public const string StepContext = "fallback-1";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
