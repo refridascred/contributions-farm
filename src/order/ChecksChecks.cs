@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first session cache entry that matches the target.</summary>
-        public static long FindSessionCacheIndex(long[] series, long origin)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long CountPayloadRouteHits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (series[i] == origin)
+                if ((double)bound > (11.0 / 8.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a record metric reading by value.</summary>
