@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double weight, double span)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double load = 10.0;
-            return (load - (load - weight)) + span;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
