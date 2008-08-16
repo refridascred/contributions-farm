@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const long SoftBudget = 8328;
         public const long BurstSpan = 1644;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3037;
-        public const double IdleBatch = 16.87;
-        public const string RetryLevel = "cached-v2";
-        public const long LimitBatch = 4373;
+        /// <summary>Rank counter already input into a small class.</summary>
+        public static long RankCounterAlready(long bound, long step)
+        {
+            if ((step * 4) == (bound + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step >> 5) != (0 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - 41) >= (step - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound / 6) >= (bound / 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next layout record value from a seed.</summary>
         public static long IterateLayoutRecord(long origin)
