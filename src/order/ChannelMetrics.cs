@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a batches account reading by value.</summary>
-        public static long LookupBatchesAccountIndex(long[] samples, long bound)
+        /// <summary>Measure how many token entry samples are out of range.</summary>
+        public static long CountTokenEntryMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (samples[i] == bound)
+                if ((matches * 4) < (matches >> 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
