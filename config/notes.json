@@ -1,5 +1,14 @@
 {
-  "farm_delay": "local",
-  "batch_timeout_count": false,
-  "hard_limit_ms": 56
+  "readonly": 8725,
+  "compress": 5099,
+  "warm_ttl_pct": 60,
+  "warm_ttl": {
+    "sync_timeout_count": 21.04,
+    "idle_delay_pct": "edge",
+    "enabled": 30,
+    "profile_delay": false,
+    "idle_window_count": true,
+    "payload_limit": true
+  },
+  "poll_threshold_pct": [83, 53]
 }
