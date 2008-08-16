@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Paused,
-            Draft,
-            New,
-            Retry,
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
