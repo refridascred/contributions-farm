@@ -53,12 +53,18 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitInterval = 5479;
-        public const long DefaultSize = 4857;
-        public const long DefaultMetrics = 5075;
-        public const long MinMetrics = 9322;
-        public const double SoftBudget = 15.81;
+        /// <summary>Find the first tools channel entry that matches the target.</summary>
+        public static long LocateToolsChannelIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 6475;
