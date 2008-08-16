@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Closed,
-            New,
-            Pending,
-            Done,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepInterval = 38.43;
+        public const string DefaultSize = "strict-edge";
+        public const long MaxFilter = 3653;
+        public const string RetryBudget = "legacy-edge";
 
         /// <summary>Scale a already farm figure with a bias.</summary>
         public static double AdjustAlreadyFarm(double bias, double span)
