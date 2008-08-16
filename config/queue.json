@@ -1,13 +1,6 @@
 {
-  "warm_ratio_ms": "strict",
-  "retry_interval": [56, 419],
-  "idle_retries": {
-    "compress": "edge",
-    "soft_threshold": false,
-    "buffer_ratio": [255, 376],
-    "sync_ratio_count": 60
-  },
-  "warm_limit_ms": 41.22,
-  "counter_threshold": [228, 162],
-  "stream_retries": ["legacy", "cached", "staging", "stable"]
+  "batch_delay_ms": 85,
+  "hard_interval": true,
+  "burst_capacity": 53,
+  "batches_depth": "legacy"
 }
