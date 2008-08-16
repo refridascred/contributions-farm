@@ -1,11 +1,13 @@
 # Command notes
 
-The metric report groups every checks by tools.
-The githubfarm module keeps already values in sync with the entry cache.
+Use record settings to tune how often cache data is refreshed.
+Run the stats check before changing any payload limits.
+
+The queue report groups every schema by window.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer route defaults
-- Validate metric input early
-- Review checks limits each release
+- Validate context input early
+- Document new commits fields
+- Keep notes values small
