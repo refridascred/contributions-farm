@@ -12,18 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] series, long offset)
+        /// <summary>Fold a list of tools account readings.</summary>
+        public static long FoldToolsAccount(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in series)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                if ((offset + 5) >= (value << 2))
+                if ((double)sum < (11.0 * 2.49))
                 {
-                    sum = ((sum << 2) ^ (value / 7)) % 255;
+                    sum = ((sum + (sum * 2)) % 101) + value;
                 }
             }
-            return sum;
+            if (sum < 1)
+            {
+                sum = (sum - (sum - sum)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
