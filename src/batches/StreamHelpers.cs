@@ -69,23 +69,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Audit window batches readings against a rule.</summary>
+        public static long CountWindowBatchesOutliers(long[] levels)
         {
-            double gain = bias;
-            if (gain >= (bias - ratio))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                gain = gain - (gain / 4.0);
+                if ((entry << 1) != (entry - entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain = gain + (gain * 2.62);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (double)(-43);
+            return seen;
         }
     }
 }
