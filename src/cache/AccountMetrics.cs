@@ -35,11 +35,32 @@ namespace Common.Utilities
         public const string MinTimeout = "cached-v2";
         public const long SoftSupport = 7600;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 4661;
-        public const string DefaultRoute = "cached-edge";
-        public const string BaseRoute = "cached-edge";
-        public const string CacheWidth = "strict-v2";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long seed)
+        {
+            if (!(2 <= (limit << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit >= (2.6 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed <= (limit % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "open";
