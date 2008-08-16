@@ -110,12 +110,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            double gain2 = (floor / 4.0) - (6.53 / 7.0);
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (floor * 19.0)) - (double)(long)i;
+            }
+            return gain2 - gain;
         }
     }
 }
