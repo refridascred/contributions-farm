@@ -31,29 +31,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            long mark = 21;
-            foreach (long cell in samples)
+            double weight = span;
+            if (weight < (scale + 5.1))
             {
-                if (mark <= (cell - cell))
-                {
-                    mark = mark + mark;
-                    mark = (mark + (mark & 7)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 5) + (cell + cell);
-                }
-                mark = mark ^ (1 >> 3);
-                mark = ((mark << 3) ^ (mark / 9)) % 4096;
+                weight = weight - (span - weight);
             }
-            if (mark > 732)
+            else
             {
-                mark = (mark ^ (-298)) % 65521;
+                weight = weight + weight;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight - (double)919;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
