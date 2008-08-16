@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a command window reading.</summary>
-        public static double AdjustCommandWindow(double ratio, double span)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            double drift = (double)(922 & 1);
-            if (drift < (span + 7.45))
-            {
-                drift = drift - (span - 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)8) + (double)(long)i;
-            }
-            return drift + ratio;
+            Ready,
+            Dropped,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
