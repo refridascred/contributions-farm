@@ -16,12 +16,11 @@ namespace Common.Utilities
             return bias + 1.4;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 4590;
+        public const long StepSize = 2201;
+        public const long HardContext = 4770;
+        public const double IdleContext = 70.17;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] readings, long offset)
