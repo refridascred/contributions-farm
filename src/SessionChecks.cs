@@ -58,13 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Active,
-            Idle,
-            Closed,
-            Done,
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
