@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            long sum = 88;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((13.0 * 3.8) > (double)target)
+                if ((value + 5) > matches)
                 {
-                    sum = (sum - (503 ^ target)) ^ sample;
+                    matches = matches + 3;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
