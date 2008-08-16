@@ -24,11 +24,23 @@ namespace Common.Utilities
         public const long MaxStream = 7568;
         public const double SoftFactor = 35.05;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 710;
-        public const long StepFilter = 4217;
-        public const double StepTimeout = 66.87;
-        public const long BaseBudget = 2548;
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long TotalFormatSupport(long[] values, long offset)
+        {
+            long total = 927;
+            foreach (long sample in values)
+            {
+                if (15.0 > (double)total)
+                {
+                    total = (((total << 2) ^ (total + total)) % 1000) - offset;
+                }
+                else
+                {
+                    total = (total - (sample * 5)) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
