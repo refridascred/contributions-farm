@@ -1,8 +1,7 @@
 {
-  "verbose": "fallback",
-  "queue_retries": 0.34,
-  "warm_capacity": ["open", "eu-west", "fallback", "eu-west"],
-  "graph_interval": 76.2,
-  "payload_threshold": true,
-  "sync_threshold_ms": 71
+  "strict": 13,
+  "audit": 91.87,
+  "queue_timeout": 250,
+  "min_ratio_ms": 33,
+  "account_capacity": ["local", "edge"]
 }
