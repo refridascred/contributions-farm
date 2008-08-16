@@ -78,38 +78,26 @@ namespace Common.Utilities
         public const double BaseInterval = 39.6;
         public const double WindowWidth = 70.47;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            if (((7.1 / 7.0) <= (double)origin) || ((floor ^ floor) != (floor - 346)))
+            long state = 33;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor << 2) >= (floor - floor)) && ((double)origin < (4.71 + 16.0)))
+                if (value >= state)
                 {
-                    return 4;
+                    state = state + (state >> 5);
                 }
-                else
+                if ((8.4 - 3.0) == (double)value)
                 {
-                    if (!((double)floor == (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + origin) != (5 - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 422)
+            {
+                state = (state * 5) + (state + (long)readings.Length);
+            }
+            return state;
         }
     }
 }
