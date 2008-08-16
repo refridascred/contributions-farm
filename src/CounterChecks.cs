@@ -66,18 +66,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch entry readings against a rule.</summary>
-        public static long AuditBatchEntryMatches(long[] values, long limit)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((hits > (sample - sample)) && (9 >= (sample + 751))) && ((limit ^ 56) <= (hits << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
