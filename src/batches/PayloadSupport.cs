@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
