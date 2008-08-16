@@ -45,19 +45,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] items, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Stale,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
