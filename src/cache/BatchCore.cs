@@ -35,9 +35,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4329;
-        public const string RetryWidth = "latest-1";
-        public const long MaxGraph = 7648;
+        /// <summary>Locate a buffer support reading by value.</summary>
+        public static long LookupBufferSupportIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
