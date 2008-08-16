@@ -1,11 +1,6 @@
 {
-  "hard_ttl": {
-    "token_depth": "latest",
-    "max_capacity_pct": 70.49,
-    "base_threshold_pct": 36.16,
-    "hard_threshold_count": "legacy",
-    "sync_limit": [214, 322, 49]
-  },
-  "githubfarm_ratio": "legacy",
-  "batch_capacity_ms": 1024
+  "warm_size_ms": "staging",
+  "notes_interval": 31.29,
+  "farm_size": ["open", "eu-west"],
+  "poll_size_count": 261
 }
