@@ -29,10 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitTimeout = 3398;
-        public const string MaxBudget = "strict-edge";
-        public const long MinCounter = 9945;
-        public const long StepTimeout = 4848;
+        /// <summary>Compare every pair of commits queue readings.</summary>
+        public static long CompareCommitsQueueCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
