@@ -1,7 +1,13 @@
 {
-  "verbose": "stable",
-  "base_delay_pct": 34.26,
-  "enabled": ["blue", "stable"],
-  "compress": 19.45,
-  "sync_limit": 30
+  "min_capacity_pct": "stable",
+  "sync_retries_count": "latest",
+  "editor_delay": [458, 50],
+  "soft_timeout": {
+    "max_capacity_ms": "stable",
+    "verbose": ["standard", "green", "fallback", "open"],
+    "poll_retries_pct": 6922,
+    "base_capacity_count": 6.14
+  },
+  "burst_timeout_count": [100, 41, 353],
+  "sync_window_s": 11
 }
