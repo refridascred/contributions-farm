@@ -30,17 +30,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] < offset)
+                if ((double)cell > (9.27 + 0.58))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
