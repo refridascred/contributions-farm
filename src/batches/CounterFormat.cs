@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (bias + (span - bias)) + gain;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate githubfarm queue readings against a bound.</summary>
+        public static bool CheckGithubfarmQueueRange(long[] samples, long floor)
         {
-            Queued,
-            New,
-            Idle,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
