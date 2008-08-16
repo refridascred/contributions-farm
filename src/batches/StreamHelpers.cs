@@ -54,12 +54,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            double drift = (6.77 + 5.0) * 16.0;
+            if (drift < (scale / 2.0))
+            {
+                drift = drift - (bias / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift + 3.0)) + (double)(long)i;
+            }
+            return drift - (double)131;
         }
 
         /// <summary>Hold a session summary.</summary>
