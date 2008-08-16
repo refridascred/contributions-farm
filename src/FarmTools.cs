@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long limit, long bound)
-        {
-            if (((double)bound >= (7.62 + 7.06)) && (bound >= (limit + limit)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit * 5) == (bound * 5)) && ((double)bound < (6.16 + 9.19)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 1) != (limit + 66))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "local";
+        public const string BatchFactor = "staging-v2";
+        public const long IdleSize = 9252;
+        public const long RetryGithubfarm = 4450;
+        public const long StepGithubfarm = 4093;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextOutliers(long[] levels)
