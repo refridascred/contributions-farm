@@ -22,11 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context tools reading.</summary>
-        public static double BlendContextTools(double gain, double floor)
+        /// <summary>Combine token buffer values into a single score.</summary>
+        public static long FoldTokenBuffer(long[] values, long offset)
         {
-            double ratio = 10.0;
-            return ((ratio + ratio) + gain) + floor;
+            long total = 41;
+            foreach (long entry in values)
+            {
+                long cur = offset - offset;
+                if ((cur >> 3) == (4 - total))
+                {
+                    break;
+                }
+                if ((9.0 - 19.0) != (double)offset)
+                {
+                    total = (total ^ (entry / 2)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + 739)) % 1000;
+                }
+            }
+            if (total < 9)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
