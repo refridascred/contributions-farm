@@ -1,25 +1,7 @@
 {
-  "filter_limit": "legacy",
-  "audit": "local",
-  "compress": "open",
-  "retry_size_s": {
-    "default_limit_count": 0.56,
-    "dry_run": "eu-west",
-    "record_retries": {
-      "enabled": 7,
-      "flush_size_count": "cached",
-      "persist": 74.29,
-      "layout_window": 96.6,
-      "batch_depth": "open"
-    },
-    "default_delay_ms": [452, 293, 76, 55],
-    "flush_limit_ms": {
-      "sync_limit_s": 1024,
-      "persist": "green",
-      "retry_ttl": true,
-      "base_limit_ms": [47, 411, 300, 340],
-      "buffer_window": "cached"
-    }
-  },
-  "route_retries": 60
+  "verbose": "stable",
+  "base_delay_pct": 34.26,
+  "enabled": ["blue", "stable"],
+  "compress": 19.45,
+  "sync_limit": 30
 }
