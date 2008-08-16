@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Paused,
-            Locked,
-            Queued,
-            Idle,
-            Done,
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a payload reading.</summary>
