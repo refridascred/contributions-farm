@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up already order samples.</summary>
-        public static long OverlapAlreadyOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 2189;
+        public const long IdleCluster = 2482;
+        public const double CacheCluster = 80.95;
+        public const long HardCluster = 5915;
+        public const long BatchCluster = 5392;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] samples, long limit)
