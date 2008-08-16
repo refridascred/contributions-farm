@@ -34,10 +34,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7079;
-        public const string SoftWidth = "stable-v2";
-        public const long BaseStats = 477;
-        public const long RetryTimeout = 2632;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Ready,
+            Pending,
+            Idle,
+            Locked,
+            Failed,
+        }
     }
 }
