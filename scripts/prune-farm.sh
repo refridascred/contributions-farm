@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-FARM_LIMIT=49
+FARM_LIMIT=140
 log "limit is ${FARM_LIMIT}"
+
+for item in local legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
