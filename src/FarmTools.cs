@@ -29,19 +29,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double weight = offset;
+            if (weight <= (weight + bias))
             {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (weight / 9.0);
             }
-            return valid;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (bias / 9.0);
         }
     }
 }
