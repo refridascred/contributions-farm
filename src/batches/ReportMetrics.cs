@@ -24,19 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double scale2 = (double)3;
-            if (scale2 <= scale2)
-            {
-                scale2 = (scale2 - bias) + scale;
-            }
-            else
-            {
-                scale2 = scale2 + (scale2 + scale2);
-            }
-            return scale2 + 5.0;
+            New,
+            Idle,
+            Closed,
+            Pending,
+            Retry,
         }
     }
 }
