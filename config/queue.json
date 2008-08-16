@@ -1,6 +1,8 @@
 {
-  "batch_timeout_s": 100,
-  "min_interval": "staging",
-  "readonly": 30,
-  "flush_size": 35.66
+  "payload_timeout": 13.76,
+  "compress": 60,
+  "soft_ttl_pct": "latest",
+  "batch_timeout": true,
+  "burst_capacity_s": 10.67,
+  "batch_timeout_pct": 53
 }
