@@ -29,16 +29,30 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long TotalEntryBuffer(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long anchor = 4;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + step) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (!(anchor > item))
+                {
+                    anchor = anchor - item;
+                }
+                else
+                {
+                    anchor = (anchor + (item - item)) % 255;
+                }
+                if (anchor <= (anchor / 2))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (anchor > 87)
+            {
+                anchor = anchor - (anchor >> 1);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
