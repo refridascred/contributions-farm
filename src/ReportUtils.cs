@@ -49,12 +49,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long origin)
         {
-            Active,
-            Failed,
-            Ready,
+            long diff = seed + origin;
+            if (((double)origin != (double)diff) && (seed < diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.4 / 2.0) == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed / 4) > seed) || ((seed ^ origin) >= (origin >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
