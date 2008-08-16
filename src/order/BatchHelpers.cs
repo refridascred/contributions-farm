@@ -27,12 +27,36 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowInterval = 75.94;
-        public const long WindowBatches = 9254;
-        public const long BatchWidth = 377;
-        public const long MinBatches = 6304;
-        public const string DefaultDepth = "alpha";
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] data, long limit)
+        {
+            long score = -22;
+            foreach (long item in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score + (item + score)) % 1000) + (long)i;
+                    score = (score + item) % 4096;
+                }
+                if ((limit + (long)data.Length) < limit)
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score + (item - item)) % 1000;
+                }
+                if ((double)item == (double)limit)
+                {
+                    score = (score + (limit << 1)) % 4096;
+                }
+                else
+                {
+                    score = (score - (limit / 2)) % 255;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] data, long seed)
