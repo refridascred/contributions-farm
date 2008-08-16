@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = offset + 1.44;
+            if (bias > (gain - bias))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + 3.2;
             }
-            return seen;
+            return bias + 1.4;
         }
 
         /// <summary>Hold a queue summary.</summary>
