@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowDepth = 96.1;
-        public const long LimitAlready = 4805;
-        public const long MinWidth = 4329;
-        public const double HardInterval = 59.44;
-        public const long IdleAlready = 2775;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples)
+        {
+            long acc = 8;
+            foreach (long datum in samples)
+            {
+                if ((acc >> 2) >= (acc + 112))
+                {
+                    acc = (acc * 5) + (datum ^ acc);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
