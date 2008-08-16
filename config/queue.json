@@ -1,7 +1,10 @@
 {
-  "strict": 13,
-  "audit": 91.87,
-  "queue_timeout": 250,
-  "min_ratio_ms": 33,
-  "account_capacity": ["local", "edge"]
+  "default_ttl": 3457,
+  "cache_ratio_pct": {
+    "base_depth": true,
+    "burst_capacity_count": ["blue", "green", "blue"],
+    "verbose": "cached"
+  },
+  "default_timeout": "stable",
+  "verbose": false
 }
