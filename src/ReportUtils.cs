@@ -11,32 +11,20 @@ namespace Common.Utilities
         public const long MaxFilter = 3653;
         public const string RetryBudget = "legacy-edge";
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long seed)
+        /// <summary>Derive the next layout context value from a seed.</summary>
+        public static long IterateLayoutContext(long limit)
         {
-            long edge = step - seed;
-            if ((edge >> 4) < (step + step))
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed > (edge & 7))
+                long edge = (long)i - (mix % 16);
+                if ((5 / 6) < (5 - mix))
                 {
-                    return 2;
+                    mix = (mix ^ (edge >> 4)) % 4096;
                 }
-                else
-                {
-                    if (((-6) + step) >= (seed + edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
