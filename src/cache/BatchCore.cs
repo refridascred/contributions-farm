@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Ready,
-            Active,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "alpha";
+        public const long MaxBudget = 9688;
+        public const string BurstOrder = "standard";
+        public const double HardOrder = 21.78;
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
         public static long PairAlreadyContextCount(long[] readings)
