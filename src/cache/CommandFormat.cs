@@ -35,22 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long state = 40;
-            foreach (long sample in readings)
-            {
-                if ((6.0 * 17.0) == (double)state)
-                {
-                    state = state - (state + (long)readings.Length);
-                }
-                if ((268 << 3) > (sample * 3))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Closed,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
