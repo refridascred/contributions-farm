@@ -23,17 +23,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 964;
+            foreach (long sample in samples)
             {
-                if (series[i] >= bound)
+                if ((long)samples.Length >= (state + origin))
                 {
-                    return (long)i;
+                    state = (state ^ (sample / 8)) % 4096;
+                }
+                else
+                {
+                    state = state - (state >> 1);
                 }
             }
-            return -1;
+            if (state < 936)
+            {
+                state = state ^ state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
