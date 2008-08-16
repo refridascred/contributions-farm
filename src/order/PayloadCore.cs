@@ -44,15 +44,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long span = origin ^ limit;
+            if ((double)span <= (3.49 + 9.0))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((681 - 96) == (limit ^ limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((span ^ (-532)) != (limit - span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
