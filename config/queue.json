@@ -1,19 +1,11 @@
 {
-  "hard_threshold_count": {
-    "checks_depth": {
-      "hard_limit_s": [272, 491, 302],
-      "poll_limit": 88.72,
-      "audit": 2.95
-    },
-    "support_ttl": {
-      "batch_interval": ["standard", "latest"],
-      "default_retries_ms": "legacy",
-      "dry_run": true,
-      "sync_delay": "open"
-    },
-    "max_ttl": [16, 238],
-    "min_capacity": "staging"
+  "hard_ttl": {
+    "token_depth": "latest",
+    "max_capacity_pct": 70.49,
+    "base_threshold_pct": 36.16,
+    "hard_threshold_count": "legacy",
+    "sync_limit": [214, 322, 49]
   },
-  "retry_retries": 55,
-  "burst_ttl_s": 11
+  "githubfarm_ratio": "legacy",
+  "batch_capacity_ms": 1024
 }
