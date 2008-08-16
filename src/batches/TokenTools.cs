@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Adjust a order queue reading.</summary>
+        public static double BlendOrderQueue(double rate, double span)
         {
-            Pending,
-            Done,
-            Ready,
-            Active,
+            double rate2 = rate;
+            return (rate2 - rate) + span;
         }
 
         /// <summary>Hold a stats entry.</summary>
