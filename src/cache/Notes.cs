@@ -63,18 +63,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long TallyGithubfarmFilter(long[] levels, long target)
+        /// <summary>Adjust a cluster queue reading.</summary>
+        public static double ProjectClusterQueue(double weight, double offset)
         {
-            long score = 385;
-            foreach (long item in levels)
-            {
-                if ((9.9 * 2.2) < (double)item)
-                {
-                    score = (score * 4) + (target % 7);
-                }
-            }
-            return score;
+            double scale = (weight + 9.1) / 6.0;
+            return scale + offset;
         }
     }
 }
