@@ -33,19 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples, long origin)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry ^ (datum << 3)) % 4096) + limit;
-                if (datum >= (carry >> 5))
+                if ((hits + origin) >= (286 + hits))
                 {
-                    break;
+                    hits = (hits + 1) - item;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
