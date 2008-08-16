@@ -39,22 +39,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Iterate the already buffer series from a seed.</summary>
+        public static long RollAlreadyBuffer(long step)
         {
-            long score = 34;
-            foreach (long value in readings)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= 2)
+                if (((mark * 5) != (mark & 255)) || ((step ^ (long)i) <= ((long)i ^ mark)))
                 {
-                    score = score + (score - value);
+                    mark = mark - mark;
+                    continue;
                 }
                 else
                 {
-                    score = (score + (value / 9)) % 97;
+                    mark = mark ^ mark;
+                    mark = (mark + mark) % 101;
                 }
+                mark = mark - ((long)i / 7);
+                mark = mark - (mark + step);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return score;
+            return mark;
         }
     }
 }
