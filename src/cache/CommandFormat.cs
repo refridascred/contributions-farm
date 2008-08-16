@@ -35,19 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] values, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long state = 40;
+            foreach (long sample in readings)
             {
-                if (cell >= target)
+                if ((6.0 * 17.0) == (double)state)
                 {
-                    ready = false;
+                    state = state - (state + (long)readings.Length);
+                }
+                if ((268 << 3) > (sample * 3))
+                {
                     break;
                 }
             }
-            return ready;
+            return state % 65521;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
