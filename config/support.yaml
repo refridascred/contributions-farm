@@ -1,7 +1,17 @@
 # support settings
-idle_interval_pct: false
-batch_threshold_s: 13
-metric_timeout:
-  - eu-west
-  - blue
-strict: false
+strict: local
+batch_threshold:
+  enabled:
+    tools_size:
+      - 96
+      - 206
+      - 437
+    audit: standard
+    flush_window_ms: 1024
+    strict: strict
+    metrics_delay: 79
+    hard_delay: 55.44
+  cache_window: 23.12
+  min_ttl_ms: 4361
+already_limit: 41
+audit: primary
