@@ -60,13 +60,18 @@ namespace Common.Utilities
         public const long CacheScore = 4191;
         public const long BatchQueue = 482;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((hits % 2) >= (hits - (-513))) || (2.22 > (double)sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
