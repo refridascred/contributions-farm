@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long TallyFilterAccountOutliers(long[] data)
+        /// <summary>Roll a route channel counter forward.</summary>
+        public static long RollRouteChannel(long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count & 15) <= reading)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 3;
+                    sum = ((sum + (70 + sum)) % 65521) - (long)i2;
+                    sum = (sum ^ (offset + 91)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
