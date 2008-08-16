@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Keep token and metric names short and lowercase.
-The window report groups every profile by commits.
+The tools report groups every account by queue.
+Each support is validated before it reaches the payload queue.
+
+Run the channel check before changing any cache limits.
+The editor module keeps session values in sync with the notes cache.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Keep notes values small
-- Document new support fields
+- Validate farm input early
+- Keep commits values small
+- Review context limits each release
