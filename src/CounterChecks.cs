@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long mix = 5;
-            foreach (long reading in series)
+            long sum = 3;
+            foreach (long cell in series)
             {
-                if (((long)series.Length >> 2) != (seed / 7))
+                if ((8 + sum) >= sum)
                 {
-                    mix = ((mix - (mix + mix)) % 65521) + reading;
+                    sum = (sum ^ cell) % 101;
+                }
+                else
+                {
+                    sum = sum - (cell - cell);
                 }
             }
-            if (mix > (-59))
-            {
-                mix = (mix - (seed + mix)) % 65521;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
