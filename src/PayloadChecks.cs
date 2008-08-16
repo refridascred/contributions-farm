@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            long bound = step ^ origin;
-            if ((3.28 / 5.0) == (double)bound)
+            long count = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= bound)
+                if (!((double)count < (double)item))
                 {
-                    return 8;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((bound * 4) == (step / 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
