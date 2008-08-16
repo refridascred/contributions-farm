@@ -1,14 +1,10 @@
 # Command notes
 
-The token module keeps format values in sync with the farm cache.
-Each githubfarm is validated before it reaches the command queue.
-
-Use farm settings to tune how often metrics data is refreshed.
-Use payload settings to tune how often record data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every record change
-- Document new graph fields
-- Keep profile values small
-- Prefer schema defaults
+- Prefer entry defaults
+- Validate entry input early
+- Document new counter fields
