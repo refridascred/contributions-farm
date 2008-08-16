@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 2262;
+        public const string SoftCommand = "alpha-edge";
+        public const long LimitCommand = 4183;
+        public const long MinRatio = 869;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardDepth = 10.16;
