@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long limit, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings, long seed)
         {
-            if (((double)limit == (double)bound) || ((8.21 - 2.08) != (double)bound))
+            long carry = 72;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 2) <= (limit + limit))
+                if ((cell >> 3) >= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 255) == (2 ^ limit)) && (limit >= (7 + 672)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (4.7 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry - carry) % 4096;
                 }
             }
+            if (carry > 38)
+            {
+                carry = carry ^ (seed + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
