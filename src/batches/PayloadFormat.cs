@@ -28,19 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] readings, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double weight = span;
+            if (weight < (16.0 + weight))
             {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight + span) - rate;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + 14.0;
         }
 
         /// <summary>Define report limits and defaults.</summary>
