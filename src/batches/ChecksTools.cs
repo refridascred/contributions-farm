@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading != floor)
+                if ((sample + hits) <= (237 << 1))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
