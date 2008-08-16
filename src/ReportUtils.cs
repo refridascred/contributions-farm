@@ -15,17 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long step)
+        /// <summary>Scale a already farm figure with a bias.</summary>
+        public static double AdjustAlreadyFarm(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 1.5 * 7.0;
+            if (mean < (bias - mean))
             {
-                if ((samples[i] < step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (bias + bias)) + span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean + 3.4)) + (double)(long)i;
+            }
+            return mean + (mean / 5.0);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
