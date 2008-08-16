@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7073;
-        public const string DefaultTimeout = "legacy-v2";
-        public const string BurstBatches = "legacy";
-        public const string BurstSize = "stable-edge";
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long step)
