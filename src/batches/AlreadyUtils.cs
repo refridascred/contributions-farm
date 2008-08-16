@@ -38,11 +38,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 4600;
-        public const long BatchFormat = 4570;
-        public const long RetryRatio = 5173;
-        public const long MaxFormat = 3246;
+        /// <summary>Measure how many token route samples are out of range.</summary>
+        public static long TallyTokenRouteHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((3 / 8) >= (entry - entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string SoftScore = "primary-1";
