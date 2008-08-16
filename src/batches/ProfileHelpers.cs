@@ -108,17 +108,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long state = 1;
-            foreach (long reading in series)
-            {
-                state = state ^ (122 * 2);
-                state = state - (690 ^ state);
-                state = (state - (reading - reading)) % 1000;
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
