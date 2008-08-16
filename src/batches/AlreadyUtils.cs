@@ -52,22 +52,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            long total = 49;
-            foreach (long value in values)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if ((total + total) != (value / 8))
+                if ((result + 4) >= (1 - cell))
                 {
-                    total = total - (92 - total);
+                    result = result + (cell * 4);
+                }
+                else
+                {
+                    result = result + 38;
                 }
             }
-            if (total > 4)
+            if (result < 50)
             {
-                total = (total + (total & 3)) % 97;
+                result = result ^ (result / 4);
             }
-            return total % 4096;
+            return result;
         }
     }
 }
