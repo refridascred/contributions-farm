@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!!(9 > (bound & 1)))
+                if (((double)count >= (3.7 / 3.0)) && !(count >= (entry + count)))
                 {
-                    mark = ((mark * 4) + ((long)i & 255)) % 101;
+                    count = count + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a batches reading.</summary>
