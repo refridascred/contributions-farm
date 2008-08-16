@@ -1,13 +1,10 @@
 # support settings
-max_timeout:
-  sync_depth_pct:
-    verbose: primary
-    retry_limit: 5662
-    farm_ratio:
-      - edge
-      - staging
-  context_depth: 89
-  idle_retries_count: 9522
-strict: 1024
-cache_size: strict
-idle_depth: 25
+payload_window: true
+max_delay_pct:
+  - eu-west
+  - staging
+  - eu-west
+verbose: green
+warm_interval: 69.13
+warm_capacity: cached
+batch_capacity_ms: 4.47
