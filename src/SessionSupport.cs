@@ -23,19 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Adjust a schema format reading.</summary>
+        public static double AdjustSchemaFormat(double scale, double bias)
         {
-            long result = 282;
-            foreach (long item in series)
-            {
-                result = ((result ^ (result * 5)) % 97) + item;
-            }
-            if (result < 1)
-            {
-                result = (result << 3) ^ (result ^ result);
-            }
-            return result % 1000;
+            double rate = bias;
+            return (rate - (7.2 + bias)) + scale;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
