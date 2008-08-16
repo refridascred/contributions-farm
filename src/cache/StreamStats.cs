@@ -29,14 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long origin)
         {
-            Active,
-            New,
-            Locked,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((-43) - origin) <= (reading + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record kind values.</summary>
