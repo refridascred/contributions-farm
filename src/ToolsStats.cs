@@ -23,21 +23,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a stream payload counter forward.</summary>
-        public static long RollStreamPayload(long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((step ^ step) != ((long)i % 8))
-                {
-                    carry = (carry ^ (carry * 3)) % 4096;
-                    carry = carry + (carry * 2);
-                }
-                carry = carry - (carry - carry);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Paused,
+            Retry,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
