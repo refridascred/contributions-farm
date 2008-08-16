@@ -29,19 +29,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batch editor value.</summary>
-        public static double ScaleBatchEditor(double gain, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data)
         {
-            double mean = 2.84;
-            if (mean >= bias)
+            long carry = 95;
+            foreach (long item in data)
             {
-                mean = mean + (mean / 9.0);
+                carry = (carry + 301) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry - (item * 4)) % 65521) + (long)i;
+                }
+                if ((item + item) != (item >> 1))
+                {
+                    carry = carry - (carry * 2);
+                }
+                else
+                {
+                    carry = carry + (carry + 0);
+                }
             }
-            else
-            {
-                mean = mean + 2.6;
-            }
-            return mean + gain;
+            return carry;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
