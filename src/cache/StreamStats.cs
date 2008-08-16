@@ -36,19 +36,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long lane = bound + seed;
+            if ((lane / 3) != (68 + seed))
             {
-                if (datum != origin)
+                return 0;
+            }
+            else
+            {
+                if ((811 - seed) > seed)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((lane % 64) >= (lane - lane)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + 2) >= (lane - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Look up the position of a record context sample.</summary>
