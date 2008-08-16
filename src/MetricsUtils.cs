@@ -31,15 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long bound, long target)
         {
-            double rate = 6.9;
-            if (rate > (weight - offset))
+            if (!((bound - target) == (42 - bound)))
             {
-                rate = rate - (rate * 0.03);
+                return 4;
             }
-            return rate - (offset - 2.98);
+            else
+            {
+                if ((double)bound == (5.9 / 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (3 - 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema record.</summary>
