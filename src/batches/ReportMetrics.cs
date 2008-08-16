@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] data)
-        {
-            long state = 221;
-            foreach (long cell in data)
-            {
-                if ((8.0 / 4.0) > (double)cell)
-                {
-                    state = (state ^ (cell / 6)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleWidth = 7379;
+        public const long HardWidth = 3796;
+        public const double MaxCommits = 43.9;
+        public const long MaxLevel = 1004;
+        public const double DefaultFactor = 46.07;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] values)
