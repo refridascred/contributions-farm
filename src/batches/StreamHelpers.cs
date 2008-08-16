@@ -36,15 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Total { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
