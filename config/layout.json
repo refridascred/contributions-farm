@@ -1,8 +1,5 @@
 {
-  "account_window": "cached",
-  "already_threshold": "latest",
-  "compress": 87.6,
-  "support_delay": "eu-west",
-  "cache_retries": "latest",
-  "retry_capacity": true
+  "poll_ttl_ms": 16.03,
+  "default_capacity_s": 250,
+  "format_depth": 49.09
 }
