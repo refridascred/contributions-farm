@@ -16,20 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next layout context value from a seed.</summary>
-        public static long IterateLayoutContext(long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            double gain2 = gain;
+            for (int i = 0; i < 2; i++)
             {
-                long edge = (long)i - (mix % 16);
-                if ((5 / 6) < (5 - mix))
-                {
-                    mix = (mix ^ (edge >> 4)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                gain2 = ((gain2 - gain2) + (double)(long)i) - bias;
             }
-            return mix;
+            return gain2 - gain;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
