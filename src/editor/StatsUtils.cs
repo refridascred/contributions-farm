@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool ValidateRecordPayloadBounds(long[] readings, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading > seed)
+                if (((entry << 3) > (limit - count)) || ((double)limit == (1.1 - 13.0)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
