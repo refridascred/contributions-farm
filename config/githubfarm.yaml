@@ -1,10 +1,6 @@
 # githubfarm settings
-already_retries: green
-retry_size: 74.46
-verbose: 67
-max_threshold_pct: legacy
-buffer_delay: true
-soft_threshold_s:
-  strict: latest
-  poll_depth_ms: 43
-  max_ratio: 100
+token_depth: edge
+audit: blue
+burst_delay_s: 2900
+idle_interval: true
+contributi_threshold: 86.4
