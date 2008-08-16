@@ -38,19 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] series, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
