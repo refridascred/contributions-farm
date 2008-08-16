@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long step, long step2)
         {
-            long acc = 8;
-            foreach (long sample in readings)
+            if ((12.0 / 8.0) >= (double)step2)
             {
-                if (acc < (acc ^ sample))
+                return 8;
+            }
+            else
+            {
+                if (((9.07 + 6.95) != (double)step) && ((step ^ step) > (step ^ step2)))
                 {
-                    acc = (acc + (5 + sample)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if (step >= (38 - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
