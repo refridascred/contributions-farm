@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Roll a layout window counter forward.</summary>
+        public static long SeriesLayoutWindow(long offset)
         {
-            long mark = 60;
-            foreach (long item in data)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((583 ^ item) < item)
+                long slot = (offset % 60) - ((long)i ^ (long)i);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    mark = ((mark + item) % 101) - step;
+                    state = ((state ^ (slot + (long)i)) % 65521) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
