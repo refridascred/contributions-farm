@@ -33,12 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
