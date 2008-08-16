@@ -46,15 +46,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double ratio, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series, long limit)
         {
-            double load = 15.0;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                load = ((load - (ratio / 6.0)) + (double)(long)i) - span;
+                if (((2.5 - 5.41) < (double)value) && !(matches >= (50 - value)))
+                {
+                    matches = (matches + 2) + limit;
+                }
             }
-            return load + load;
+            return matches;
         }
     }
 }
