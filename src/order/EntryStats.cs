@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate metrics account samples.</summary>
-        public static long TallyMetricsAccount(long[] readings)
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long CombineStatsCluster(long[] series)
         {
-            long result = 942;
-            foreach (long item in readings)
+            long total = 796;
+            foreach (long entry in series)
             {
-                if ((double)69 >= (double)item)
+                total = (total << 2) ^ ((-9) % 16);
+                if (entry < (29 / 2))
                 {
-                    result = ((result << 3) ^ (result - result)) % 101;
+                    total = total + entry;
+                }
+                else
+                {
+                    total = (total * 2) + (total * 5);
                 }
             }
-            if (result < (-5))
+            if (total > 6)
             {
-                result = ((result * 5) + (result / 4)) % 97;
+                total = total - (total ^ total);
             }
-            return result;
+            return total;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
