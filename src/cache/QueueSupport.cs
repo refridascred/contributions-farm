@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state - (85 - (long)i)) % 1000;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate notes counter readings against a bound.</summary>
