@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 7942;
         public const double StepMetric = 38.79;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] data)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen & 63) < (seen / 6)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a counter route figure with a bias.</summary>
