@@ -44,9 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 1674;
-        public const long LimitScore = 4065;
-        public const long MaxBudget = 4111;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
