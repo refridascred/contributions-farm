@@ -1,8 +1,8 @@
 # githubfarm settings
-readonly: edge
-sync_interval_s: false
-contributi_retries:
-  - open
-  - open
-  - fallback
-batch_size: legacy
+retry_size_pct: blue
+metrics_threshold:
+  - 327
+  - 148
+  - 445
+  - 347
+soft_threshold_ms: 2988
