@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long FoldFormatQueue(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series, long seed)
         {
-            long mark = 69;
-            foreach (long reading in samples)
+            long carry = 778;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + (736 >> 5)) - reading;
+                carry = ((carry ^ 48) % 4096) - seed;
+                if ((double)datum != (8.0 - 0.67))
+                {
+                    carry = (carry + (datum % 24)) % 255;
+                    break;
+                }
+                carry = (carry << 2) ^ 302;
             }
-            if (mark > 87)
-            {
-                mark = ((mark * 3) + (mark % 2)) % 65521;
-            }
-            return mark;
+            return carry % 4096;
         }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
