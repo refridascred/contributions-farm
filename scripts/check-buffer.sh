@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest cached legacy; do
+mode="${1:-green}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging standard; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=481
+log "limit is ${BUFFER_LIMIT}"
