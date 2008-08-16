@@ -1,4 +1,25 @@
 # githubfarm settings
-flush_capacity: 22
-poll_capacity: edge
-base_size: strict
+cache_threshold_s:
+  - fallback
+  - primary
+context_size:
+  enabled: 1024
+  persist: 43
+  compress: legacy
+  hard_depth_s:
+    min_capacity_count: 60
+    stats_depth:
+      - 49
+      - 452
+    batch_ratio: 1227
+    min_timeout: 11.42
+    order_limit:
+      - 218
+      - 223
+    cache_ratio: 95.59
+commits_depth: staging
+retry_window:
+  - 216
+  - 457
+  - 12
+  - 391
