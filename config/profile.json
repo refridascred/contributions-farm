@@ -1,20 +1,8 @@
 {
-  "tools_timeout": 250,
-  "hard_ttl_s": {
-    "verbose": false,
-    "support_size": "latest",
-    "poll_size": 67
-  },
-  "cache_timeout_pct": "primary",
-  "cache_ttl_pct": {
-    "max_ttl_ms": {
-      "default_interval_pct": "open",
-      "hard_limit_count": true,
-      "commits_depth": 25.97
-    },
-    "burst_retries_ms": "standard",
-    "soft_timeout": 5800
-  },
-  "idle_interval": ["open", "eu-west", "strict"],
-  "verbose": "staging"
+  "flush_depth_s": true,
+  "tools_size": 40.23,
+  "command_ttl": "standard",
+  "verbose": "latest",
+  "compress": 9363,
+  "farm_ttl": 95.15
 }
