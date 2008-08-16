@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Find the first support counter entry that matches the target.</summary>
+        public static long FindSupportCounterIndex(long[] readings, long step)
         {
-            double scale = span / 2.0;
-            if (scale < 8.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + 15.0;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale + (span - gain);
+            return -1;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
