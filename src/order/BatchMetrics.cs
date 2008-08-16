@@ -30,10 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 2915;
-        public const long BatchWidth = 2021;
-        public const long CacheOrder = 6497;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Done,
+            Closed,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LocateCommandIndex(long[] samples, long floor)
