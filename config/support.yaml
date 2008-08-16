@@ -1,12 +1,7 @@
 # support settings
-flush_window:
-  - legacy
-  - edge
-  - standard
-flush_ratio_count:
-  - 288
-  - 55
-metric_ttl: false
-record_ratio: 1143
-batch_ratio: 100
-poll_capacity: 30
+cache_window_ms:
+  - 63
+  - 233
+record_delay: 30
+enabled: cached
+cache_limit_count: open
