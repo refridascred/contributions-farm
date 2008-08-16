@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] series, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (entry < bound)
+                if (cell <= step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
