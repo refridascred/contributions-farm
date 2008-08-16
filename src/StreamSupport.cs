@@ -28,15 +28,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            double scale = offset;
-            for (int i = 0; i < 3; i++)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                scale = ((scale - offset) + (double)(long)i) - gain;
+                if ((value + 156) < (value & 255))
+                {
+                    mark = ((mark * 4) + value) % 255;
+                }
             }
-            return scale - (4.58 * 3.98);
+            return mark;
         }
     }
 }
