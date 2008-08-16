@@ -62,14 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long TotalToolsAccount(long[] samples, long limit)
         {
-            Dropped,
-            Active,
-            Draft,
-            Closed,
-            Stale,
+            long carry = 675;
+            foreach (long entry in samples)
+            {
+                if ((entry + 480) != ((long)samples.Length + limit))
+                {
+                    carry = (carry + (entry + 8)) % 1000;
+                }
+                if ((carry - carry) > entry)
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the filter cache entries that pass the check.</summary>
