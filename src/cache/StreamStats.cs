@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long bound)
         {
-            long mark = 45;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                mark = ((mark * 2) + (21 + (long)items.Length)) + origin;
-                if (!(datum < mark))
+                if (datum < bound)
                 {
-                    mark = ((mark * 5) + (datum + mark)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < (-897))
-            {
-                mark = ((mark << 2) ^ (mark - 34)) % 65521;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
