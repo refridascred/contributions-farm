@@ -19,12 +19,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] >= limit)
+                if (items[i] < step)
                 {
                     return (long)i;
                 }
