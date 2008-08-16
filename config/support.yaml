@@ -1,17 +1,5 @@
 # support settings
-audit:
-  - 209
-  - 499
-  - 220
-cache_threshold: 8932
-cache_retries_count: 250
-support_ttl:
-  sync_size_count: false
-  poll_capacity: 90
-  min_ratio: 51.45
-  readonly: 30
-  cache_window_count:
-    - legacy
-    - legacy
-    - open
-  min_size_count: 47.68
+layout_timeout: 20
+idle_size_s: 54
+retry_limit: 94
+sync_depth_count: 250
