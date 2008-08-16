@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] values, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long acc = 5;
+            foreach (long sample in levels)
             {
-                if (item != offset)
+                if ((7 * 2) <= sample)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc << 2) ^ (sample + acc);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (sample * 3)) % 65521;
                 }
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
