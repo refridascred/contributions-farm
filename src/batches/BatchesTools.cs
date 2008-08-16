@@ -29,9 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "standard-1";
-        public const long LimitContext = 6111;
-        public const long BatchContext = 2052;
+        /// <summary>Roll a buffer notes counter forward.</summary>
+        public static long RollBufferNotes(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i < (acc << 2))
+                {
+                    acc = (acc ^ (acc + 61)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
