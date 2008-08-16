@@ -46,13 +46,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Dropped,
-            Done,
-            Idle,
-            Draft,
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
