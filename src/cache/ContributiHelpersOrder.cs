@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state - (state << 2);
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
