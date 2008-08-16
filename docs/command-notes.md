@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The stream module keeps checks values in sync with the already cache.
-Defaults for session live in the config folder and can be overridden per environment.
-
-Use order settings to tune how often batches data is refreshed.
-Use metric settings to tune how often commits data is refreshed.
+Use metrics settings to tune how often format data is refreshed.
+When a cache fails, the stream handler retries a few times before giving up.
+Keep cache and graph names short and lowercase.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep farm values small
-- Log every payload change
+- Prefer format defaults
+- Document new schema fields
+- Review queue limits each release
