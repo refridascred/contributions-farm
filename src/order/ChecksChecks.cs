@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowDepth = 1876;
+        public const long CacheInterval = 6759;
+        public const long BatchProfile = 8740;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] readings)
