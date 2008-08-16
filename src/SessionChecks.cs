@@ -29,18 +29,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings, long target)
+        /// <summary>Roll a metrics batches counter forward.</summary>
+        public static long DeriveMetricsBatches(long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)cell != (8.5 - 9.0))
-                {
-                    matches = (matches + 3) + target;
-                }
+                total = (total + (limit + total)) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the batches mode values.</summary>
