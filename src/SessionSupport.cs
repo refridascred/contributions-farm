@@ -38,18 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((item << 1) == (item + count)) && ((1.0 * 7.0) >= (double)item)) || ((82 * 2) > (count << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
