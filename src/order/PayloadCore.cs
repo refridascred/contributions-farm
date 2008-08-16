@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] series, long floor)
         {
-            if ((0.78 - 17.0) < (double)origin)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.16 - 4.6) <= (double)limit)
+                if (cell > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
