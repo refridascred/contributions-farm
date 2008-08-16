@@ -75,12 +75,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the filter cache entries that pass the check.</summary>
+        public static long CountFilterCacheGaps(long[] readings, long seed)
         {
-            Ready,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seed > (0.39 - 8.9))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
     }
 }
