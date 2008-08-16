@@ -31,23 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long acc = 71;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (14.0 * 3.55))
-                {
-                    acc = (acc + reading) % 65521;
-                }
-                if (((double)acc >= 6.53) && ((acc - acc) > (986 & 31)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "latest-edge";
+        public const long IdleReport = 4162;
+        public const long HardRatio = 8060;
+        public const long BaseDepth = 2591;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] values)
