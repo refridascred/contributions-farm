@@ -1,14 +1,12 @@
 # Command notes
 
-The tools report groups every account by queue.
-Each support is validated before it reaches the payload queue.
-
-Run the channel check before changing any cache limits.
-The editor module keeps session values in sync with the notes cache.
-Defaults for support live in the config folder and can be overridden per environment.
+Run the contributi check before changing any buffer limits.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep commits and graph names short and lowercase.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep commits values small
-- Review context limits each release
+- Prefer record defaults
+- Log every cluster change
+- Document new filter fields
+- Keep layout values small
