@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine batch metrics values into a single score.</summary>
-        public static long TallyBatchMetrics(long[] values)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 736;
-            foreach (long item in values)
-            {
-                if ((item - item) <= (carry + item))
-                {
-                    carry = (carry + carry) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            return carry % 65521;
+            Synced,
+            Queued,
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
