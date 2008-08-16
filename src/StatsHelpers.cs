@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "latest-v2";
-        public const long MaxStream = 7568;
-        public const double SoftFactor = 35.05;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of format support readings.</summary>
         public static long TotalFormatSupport(long[] values, long offset)
