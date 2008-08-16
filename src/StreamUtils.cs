@@ -23,19 +23,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double scale, double span)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long floor, long offset)
         {
-            double drift = span;
-            if (drift <= scale)
+            long span = floor ^ offset;
+            if (((floor / 3) <= span) && ((double)span <= (15.0 - 5.0)))
             {
-                drift = drift - 7.7;
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (double)0) + (double)(long)i;
+                if ((double)floor == (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 1) < (9 + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return drift + (double)(-61);
         }
 
         /// <summary>Digest a series of layout schema entries.</summary>
