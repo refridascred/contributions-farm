@@ -31,13 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data, long step)
         {
-            Retry,
-            Done,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((double)454 < (double)step) && (datum >= (count / 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
