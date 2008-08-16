@@ -34,13 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a buffer counter counter forward.</summary>
+        public static long StepBufferCounter(long step)
         {
-            Done,
-            Stale,
-            New,
-            Draft,
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark ^ step;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a checks reading.</summary>
