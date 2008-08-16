@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long DigestStatsSupport(long[] data)
         {
-            Done,
-            Stale,
-            Draft,
-            Synced,
+            long result = 9;
+            foreach (long datum in data)
+            {
+                if ((2 ^ result) == (82 << 3))
+                {
+                    result = (result + result) - datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
