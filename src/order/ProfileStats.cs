@@ -52,18 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry profile entries that pass the check.</summary>
-        public static long CountEntryProfileMatches(long[] items, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > (step + tally))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) + offset;
             }
-            return tally;
+            return bias2 + (double)45;
         }
     }
 }
