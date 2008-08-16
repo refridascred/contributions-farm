@@ -77,12 +77,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Locked,
-            Closed,
-            New,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
