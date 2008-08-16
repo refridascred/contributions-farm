@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double weight = (double)(36 + 465);
-            if (weight > (13.0 * 8.82))
-            {
-                weight = weight - (floor + gain);
-            }
-            return weight - (double)317;
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
