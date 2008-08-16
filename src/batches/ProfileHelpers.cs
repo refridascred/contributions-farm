@@ -88,22 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout commits samples.</summary>
-        public static long CompareLayoutCommitsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "cached-edge";
+        public const long SoftLevel = 1684;
+        public const string IdleSupport = "local-1";
+        public const string MaxSupport = "strict-1";
+        public const string LimitScore = "latest-v2";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long target)
