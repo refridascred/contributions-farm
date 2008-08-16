@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "cached-edge";
+        public const double DefaultSpan = 87.48;
+        public const string StepLevel = "latest-edge";
+        public const long MaxCommits = 9242;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] levels)
