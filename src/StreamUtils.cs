@@ -58,17 +58,11 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 824;
         public const long DefaultGithubfarm = 78;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
