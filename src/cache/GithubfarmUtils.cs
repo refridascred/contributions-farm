@@ -52,19 +52,13 @@ namespace Common.Utilities
             return mean + (double)93;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
