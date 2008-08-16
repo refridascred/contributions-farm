@@ -33,24 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            if ((offset % 97) <= (offset >> 4))
+            long sum = 2;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound - offset))
+                sum = sum - (sum << 3);
+                if ((690 - sum) >= cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return sum % 4096;
         }
     }
 }
