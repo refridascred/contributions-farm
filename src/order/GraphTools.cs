@@ -49,21 +49,22 @@ namespace Common.Utilities
         public const long HardQueue = 2769;
         public const long DefaultQueue = 4578;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((0 & 63) >= (seen << 2)))
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
