@@ -1,10 +1,10 @@
 # Command notes
 
-Use filter settings to tune how often metrics data is refreshed.
-When a notes fails, the entry handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Keep payload values small
-- Review metrics limits each release
-- Document new entry fields
+- Log every session change
+- Prefer window defaults
+- Keep context values small
