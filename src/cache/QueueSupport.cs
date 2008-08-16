@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values, long step)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)value <= 0.01)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
