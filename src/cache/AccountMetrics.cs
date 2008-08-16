@@ -42,11 +42,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 4311;
-        public const long RetryDepth = 7906;
-        public const long HardAlready = 7197;
-        public const string IdleSize = "cached-v2";
+        /// <summary>Rank counter context input into a small class.</summary>
+        public static long RankCounterContext(long bound, long target)
+        {
+            long slot = bound + target;
+            if ((8.1 - 8.3) > (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + slot) != (bound % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot << 1) > (60 - slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "open";
