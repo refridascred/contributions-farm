@@ -1,6 +1,12 @@
 {
-  "githubfarm_ratio": true,
-  "enabled": 100,
-  "audit": 55.56,
-  "default_interval": 500
+  "hard_depth": "legacy",
+  "audit": 360,
+  "default_threshold_s": {
+    "burst_threshold_count": "edge",
+    "default_limit": 100,
+    "min_window_ms": 51,
+    "verbose": 6.63,
+    "readonly": 39.79,
+    "cluster_capacity": 6.15
+  }
 }
