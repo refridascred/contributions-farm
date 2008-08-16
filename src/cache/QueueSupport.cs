@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Validate notes counter readings against a bound.</summary>
+        public static bool CheckNotesCounterBounds(long[] items, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the account status values.</summary>
