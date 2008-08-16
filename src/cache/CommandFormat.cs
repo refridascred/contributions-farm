@@ -13,18 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] levels)
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long TallyContextGithubfarmHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((86 - hits) != (3 + hits))
+                if ((origin + 607) < 6)
                 {
-                    hits = (hits + 1) ^ entry;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
