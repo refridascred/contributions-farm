@@ -38,12 +38,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowSpan = 1335;
+        public const double MaxNotes = 80.88;
+        public const double RetryNotes = 3.34;
     }
 }
