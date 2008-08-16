@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm channel readings against a rule.</summary>
-        public static long CountFarmChannelGaps(long[] data, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double scale = ratio;
+            if (scale > ratio)
             {
-                if ((double)24 >= (3.94 + 1.6))
-                {
-                    count = ((count + 2) + datum) + origin;
-                }
+                scale = scale + (bias * 19.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)75) + (double)(long)i;
+            }
+            return scale - 9.0;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
