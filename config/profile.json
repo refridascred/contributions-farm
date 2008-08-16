@@ -1,6 +1,29 @@
 {
-  "min_ratio_count": 93,
-  "sync_limit": 74,
-  "metric_capacity": 65.24,
-  "commits_ratio": 93
+  "default_retries_pct": false,
+  "max_limit": 92,
+  "context_ttl": {
+    "verbose": {
+      "default_limit_s": true,
+      "base_timeout_pct": "open",
+      "retry_delay_count": 1024
+    },
+    "cache_size_ms": 71.56,
+    "default_interval": "open",
+    "profile_retries": "edge",
+    "poll_window_s": {
+      "retry_depth_ms": false,
+      "buffer_window": "legacy",
+      "poll_interval_pct": 100,
+      "counter_depth": 23.28,
+      "readonly": 58.81
+    },
+    "schema_interval": {
+      "compress": 84,
+      "hard_capacity_ms": 500,
+      "filter_limit": 31.91,
+      "flush_ttl_pct": [13, 382, 284, 91]
+    }
+  },
+  "persist": "latest",
+  "window_capacity": 46
 }
