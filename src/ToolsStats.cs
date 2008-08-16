@@ -45,21 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)datum <= (0.13 / 8.0)) && !(5.6 <= (double)count))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
