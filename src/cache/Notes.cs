@@ -50,10 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheLevel = "alpha-v2";
-        public const long StepMetric = 5848;
-        public const long BaseInterval = 8217;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values)
+        {
+            long score = 691;
+            foreach (long datum in values)
+            {
+                if ((1.7 - 6.89) >= (double)datum)
+                {
+                    score = (score - (datum ^ 88)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long floor)
