@@ -1,7 +1,5 @@
 {
-  "profile_retries": "strict",
-  "retry_interval_ms": true,
-  "command_size": "edge",
-  "poll_interval_s": 250,
-  "enabled": "eu-west"
+  "sync_retries_s": 66.62,
+  "layout_retries": "fallback",
+  "burst_threshold_s": 74
 }
