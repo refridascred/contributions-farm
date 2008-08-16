@@ -1,13 +1,6 @@
 {
-  "flush_depth": "eu-west",
-  "cache_size": {
-    "batch_window_count": 30,
-    "audit": false,
-    "enabled": 9363,
-    "max_timeout_pct": ["legacy", "standard", "local", "latest"]
-  },
-  "batch_window_count": 5191,
-  "idle_interval_pct": "open",
-  "schema_depth": false,
-  "batch_timeout": [83, 85, 308, 275]
+  "githubfarm_ratio": true,
+  "enabled": 100,
+  "audit": 55.56,
+  "default_interval": 500
 }
