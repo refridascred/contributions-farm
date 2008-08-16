@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples, long target)
         {
-            Dropped,
-            Active,
-            Ready,
+            long result = 51;
+            foreach (long datum in samples)
+            {
+                result = (result - (target - datum)) % 1000;
+                result = (result ^ target) % 65521;
+                if (datum < (target - 369))
+                {
+                    break;
+                }
+            }
+            if (result > (-23))
+            {
+                result = result + (result / 3);
+            }
+            return result;
         }
 
         /// <summary>Describe the format level values.</summary>
