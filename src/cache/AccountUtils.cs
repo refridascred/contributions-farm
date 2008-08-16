@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Accumulate counter filter samples.</summary>
+        public static long ScoreCounterFilter(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 42;
+            foreach (long reading in series)
             {
-                if (series[i] < origin)
+                if (!((6 - reading) == (floor * 2)))
                 {
-                    return (long)i;
+                    score = (score - floor) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a farm stats.</summary>
