@@ -1,26 +1,5 @@
 # entry settings
-flush_threshold_pct:
-  - eu-west
-  - blue
-  - edge
-base_retries_s:
-  - eu-west
-  - legacy
-  - strict
-layout_depth: true
-cache_interval:
-  audit: 8198
-  checks_ttl: false
-  poll_interval_s: eu-west
-  graph_window: false
-  support_retries: 100
-  min_window: 1024
-idle_depth_pct:
-  - blue
-  - staging
-  - primary
-max_capacity_count:
-  - standard
-  - local
-  - open
-  - latest
+warm_window_ms: green
+counter_delay: staging
+command_interval: 5827
+sync_depth: fallback
