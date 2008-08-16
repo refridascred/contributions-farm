@@ -33,19 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 42.34;
+        public const long BaseFactor = 5847;
+        public const string StepCommand = "legacy";
     }
 }
