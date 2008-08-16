@@ -1,7 +1,5 @@
 {
-  "checks_delay": "fallback",
-  "min_ttl_s": [372, 77, 188],
-  "flush_delay_s": "strict",
-  "strict": 62.73,
-  "base_threshold_count": 65
+  "warm_ratio": 51,
+  "flush_interval_pct": 17,
+  "readonly": ["blue", "standard", "stable"]
 }
