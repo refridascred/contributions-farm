@@ -1,18 +1,15 @@
 {
-  "cache_size_s": {
-    "notes_limit": 20.04,
-    "retry_threshold_s": "standard",
-    "cache_ttl": 76
-  },
-  "warm_retries_s": "legacy",
-  "burst_timeout_pct": "blue",
-  "soft_ttl": true,
-  "hard_retries_ms": {
-    "hard_timeout": "fallback",
-    "payload_timeout": true,
-    "warm_size_count": 69,
-    "report_timeout": "open",
-    "base_retries": false
-  },
-  "audit": "edge"
+  "route_threshold": 236,
+  "base_interval": 960,
+  "default_delay_pct": 91.17,
+  "dry_run": false,
+  "cache_threshold_count": false,
+  "default_limit_s": {
+    "strict": "staging",
+    "batch_capacity": "staging",
+    "sync_capacity": 250,
+    "min_limit_s": 70,
+    "format_capacity": "primary",
+    "queue_capacity": 4399
+  }
 }
