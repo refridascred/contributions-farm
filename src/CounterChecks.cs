@@ -66,11 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Audit batch entry readings against a rule.</summary>
+        public static long AuditBatchEntryMatches(long[] values, long limit)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((hits > (sample - sample)) && (9 >= (sample + 751))) && ((limit ^ 56) <= (hits << 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
