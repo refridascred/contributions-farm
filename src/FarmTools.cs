@@ -14,14 +14,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Locate a support stream reading by value.</summary>
+        public static long LocateSupportStreamIndex(long[] series, long limit)
         {
-            Done,
-            Queued,
-            Active,
-            Pending,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
