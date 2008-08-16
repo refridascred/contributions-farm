@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result << 2) ^ (floor + floor)) % 101;
-                result = (result - (result + result)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Dropped,
+            Paused,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
