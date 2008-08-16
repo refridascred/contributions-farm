@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            Failed,
-            Ready,
-            Queued,
+            double rate = (double)(835 + 17);
+            if (rate > (double)61)
+            {
+                rate = ((rate - rate) - ratio) - span;
+            }
+            return rate + 14.0;
         }
 
         /// <summary>Combine token buffer values into a single score.</summary>
