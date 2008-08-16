@@ -1,4 +1,4 @@
 # support settings
-already_size: eu-west
-queue_window: 4270
-persist: 19
+metrics_depth: true
+audit: true
+default_ratio: local
