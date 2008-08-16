@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepSpan = 4500;
-        public const double CacheTimeout = 32.24;
-        public const long MinLevel = 6896;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long origin)
+        {
+            if ((double)origin != (8.7 - 12.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (double)65)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
         public static long PairAlreadyContextCount(long[] readings)
