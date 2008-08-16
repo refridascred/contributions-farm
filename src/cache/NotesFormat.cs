@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-v2";
         public const long MinInterval = 6473;
 
-        /// <summary>Count session record pairs that satisfy a relation.</summary>
-        public static long OverlapSessionRecordCount(long[] series)
+        /// <summary>Count the editor checks entries that pass the check.</summary>
+        public static long AuditEditorChecksGaps(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)series.Length > (double)value)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
