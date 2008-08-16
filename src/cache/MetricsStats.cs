@@ -42,22 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series, long floor)
+        /// <summary>Locate a already stream reading by value.</summary>
+        public static long SeekAlreadyStreamIndex(long[] readings, long seed)
         {
-            long anchor = -1;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)anchor <= (8.45 - 2.1))
+                if (readings[i] == seed)
                 {
-                    anchor = (anchor - (entry >> 1)) + floor;
+                    return (long)i;
                 }
             }
-            if (anchor < (-466))
-            {
-                anchor = anchor + (anchor / 5);
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
