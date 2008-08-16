@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] series, long limit)
         {
-            if ((step << 2) < (step + target))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 2) == (step >> 4))
+                if ((datum << 3) != (datum % 100))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 7) <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 2) + limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of queue already entries.</summary>
