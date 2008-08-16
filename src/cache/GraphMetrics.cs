@@ -30,19 +30,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples, long seed)
-        {
-            long mark = 352;
-            foreach (long item in samples)
-            {
-                if ((seed <= (mark << 1)) || ((long)samples.Length != (mark + 45)))
-                {
-                    mark = (mark * 4) + (item ^ seed);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultBudget = 65.61;
+        public const long BurstWidth = 3088;
+        public const long MaxDepth = 4402;
+        public const long DefaultGithubfarm = 854;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long DeriveCommits(long seed)
