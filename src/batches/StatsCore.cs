@@ -85,24 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] readings, long step)
         {
-            long mark = 40;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mark = (mark - mark) % 65521;
-                if (!((datum ^ 7) <= (42 & 3)))
+                if (reading > step)
                 {
-                    mark = ((mark * 3) + mark) % 97;
-                }
-                mark = (mark + (mark + mark)) % 4096;
-                if ((7.4 - 7.8) != (double)(long)values.Length)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
