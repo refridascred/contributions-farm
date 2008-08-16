@@ -6,17 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback staging latest; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -25,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west cached primary; do
+    log "checking ${item}"
+done
