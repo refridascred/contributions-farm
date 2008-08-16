@@ -29,9 +29,11 @@ namespace Common.Utilities
         public const double SoftCounter = 38.95;
         public const long HardInterval = 7504;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 38.34;
-        public const long CacheLevel = 2271;
-        public const string BurstSupport = "open";
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double floor)
+        {
+            double rate = (double)0 * 4.1;
+            return ((rate - 1.63) + weight) + floor;
+        }
     }
 }
