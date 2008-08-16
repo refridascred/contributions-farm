@@ -1,10 +1,11 @@
 # githubfarm settings
-retry_capacity: local
-cache_limit_ms:
-  - 479
-  - 113
-  - 70
-  - 173
-route_delay: 4354
-min_ratio_pct: 62.08
-min_timeout_pct: legacy
+hard_ttl_pct:
+  - fallback
+  - primary
+  - edge
+batch_timeout_ms:
+  - 199
+  - 227
+  - 158
+min_capacity_ms: staging
+stream_depth: 68
