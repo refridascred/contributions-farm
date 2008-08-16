@@ -46,19 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout record value from a seed.</summary>
-        public static long IterateLayoutRecord(long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((long)i >= (sum << 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (sum * 4)) % 255;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
     }
 }
