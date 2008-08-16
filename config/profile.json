@@ -1,5 +1,9 @@
 {
-  "counter_threshold": [285, 113, 269, 163],
-  "flush_depth": "eu-west",
-  "soft_retries_pct": 5045
+  "payload_limit": 250,
+  "base_ttl_count": {
+    "tools_window": 72,
+    "graph_window": [471, 481, 473, 161],
+    "burst_retries_s": ["blue", "strict", "standard", "legacy"]
+  },
+  "max_retries_ms": 67.43
 }
