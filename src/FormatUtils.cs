@@ -18,24 +18,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long bound, long bound2)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double floor)
         {
-            if ((bound2 + bound2) <= 38)
+            double weight = (double)(96 * 3);
+            if (weight < (weight - bias))
             {
-                return 4;
+                weight = weight - (weight - bias);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.7 * 2.63) == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
+            return weight - (double)483;
         }
 
         /// <summary>Hold a window record.</summary>
