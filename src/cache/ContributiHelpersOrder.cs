@@ -28,21 +28,15 @@ namespace Common.Utilities
         public const long RetryBudget = 674;
         public const string BatchScore = "strict-v2";
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Accumulate token layout samples.</summary>
+        public static long FoldTokenLayout(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 641;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry + (carry % 100)) % 1000) ^ item) + floor;
             }
-            return count;
+            return carry % 1000;
         }
     }
 }
