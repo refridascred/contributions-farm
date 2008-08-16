@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long StepStats = 508;
         public const double HardBudget = 71.1;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Paused,
-            Active,
-            Dropped,
-            Draft,
+            Retry,
             Failed,
+            Done,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
