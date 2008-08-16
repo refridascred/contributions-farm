@@ -1,16 +1,5 @@
 {
-  "default_limit": {
-    "batch_window_pct": {
-      "dry_run": 28,
-      "poll_size_s": true,
-      "cluster_limit": 6,
-      "warm_capacity": 13.68,
-      "retry_threshold_count": "blue",
-      "base_interval_s": 27
-    },
-    "audit": 95.99,
-    "cache_ttl_ms": "cached"
-  },
-  "hard_capacity_count": 45.03,
-  "stream_delay": false
+  "soft_interval": [357, 443],
+  "compress": 70,
+  "already_window": 47.4
 }
