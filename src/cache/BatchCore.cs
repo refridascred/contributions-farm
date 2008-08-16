@@ -14,12 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count already context pairs that satisfy a relation.</summary>
+        public static long PairAlreadyContextCount(long[] readings)
         {
-            Queued,
-            Draft,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer class values.</summary>
