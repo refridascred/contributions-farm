@@ -22,18 +22,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] readings, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((origin >> 4) <= (hits + hits))
+                if (sample >= target)
                 {
-                    hits = (hits + 1) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
