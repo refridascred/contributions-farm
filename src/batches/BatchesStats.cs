@@ -16,17 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long step)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
