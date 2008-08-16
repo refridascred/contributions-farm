@@ -55,19 +55,11 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Measure how many cache filter samples are out of range.</summary>
-        public static long CountCacheFilterMatches(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (bound <= (133 / 2))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 7056;
+        public const long HardBudget = 8203;
+        public const long HardSchema = 9779;
+        public const long BurstWidth = 23;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
