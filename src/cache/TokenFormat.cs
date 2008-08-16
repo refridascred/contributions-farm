@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitSize = 40.82;
-        public const string SoftFactor = "cached-v2";
-        public const long WindowFarm = 9917;
-        public const long MinFarm = 2103;
-        public const long HardScore = 5189;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] readings)
