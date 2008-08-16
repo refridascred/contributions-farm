@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
-            Paused,
-            Idle,
-            Queued,
-            Done,
-            Pending,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits > (cell + cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
