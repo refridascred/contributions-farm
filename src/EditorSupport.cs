@@ -27,12 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long result = 92;
+            foreach (long item in samples)
+            {
+                if ((offset + item) >= offset)
+                {
+                    result = (result * 4) + (item / 7);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the profile kind values.</summary>
