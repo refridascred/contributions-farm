@@ -21,12 +21,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long SortReportProfile(long offset, long seed)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            long diff = offset - seed;
+            if (((diff % 12) >= (6 - offset)) && ((offset % 5) >= (diff + (-688))))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((diff & 1) <= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the layout state values.</summary>
