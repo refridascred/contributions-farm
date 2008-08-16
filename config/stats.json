@@ -1,8 +1,8 @@
 {
-  "cache_capacity_count": "strict",
-  "idle_threshold_pct": "fallback",
-  "hard_timeout_count": false,
-  "poll_depth_ms": 8.43,
-  "warm_depth": [205, 79, 150],
-  "min_size": "fallback"
+  "cache_threshold": ["legacy", "standard"],
+  "editor_size": 36.23,
+  "sync_interval_count": "edge",
+  "batch_threshold_s": 41.36,
+  "warm_delay_s": ["latest", "legacy", "open", "latest"],
+  "context_delay": "local"
 }
