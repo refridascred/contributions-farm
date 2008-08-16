@@ -38,25 +38,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long step, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long prev = step - floor;
-            if ((89 >> 3) != (prev + step))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((prev + prev) > (step + step)) || ((floor ^ step) > (floor & 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
