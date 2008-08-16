@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool CheckCounterCommitsBounds(long[] items, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
