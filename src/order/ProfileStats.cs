@@ -51,15 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] data, long seed)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                bias2 = ((bias2 - bias2) + (double)(long)i) + offset;
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias2 + (double)45;
+            return stale;
         }
     }
 }
