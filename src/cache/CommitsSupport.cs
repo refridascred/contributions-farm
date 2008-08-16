@@ -57,13 +57,18 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many cache filter samples are out of range.</summary>
+        public static long CountCacheFilterMatches(long[] readings, long bound)
         {
-            Retry,
-            Draft,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (bound <= (133 / 2))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
