@@ -50,19 +50,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] items, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings, long limit)
         {
-            long mark = 94;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((mark / 8) >= (offset / 4))
+                if ((((cell - seen) != (cell / 6)) && ((13.0 - 3.0) <= (double)limit)) || (seen >= (cell << 2)))
                 {
-                    mark = (mark + value) % 1000;
+                    seen = seen + 3;
                 }
-                mark = (mark * 4) + (value * 4);
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
