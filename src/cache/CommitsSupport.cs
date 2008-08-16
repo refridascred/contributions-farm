@@ -20,12 +20,18 @@ namespace Common.Utilities
             return (weight - bias) + gain;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] values)
         {
-            Closed,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((double)matches == (double)reading) || ((double)reading < (7.64 - 1.7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
