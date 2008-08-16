@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long LimitFactor = 54;
         public const long StepMetric = 6100;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values, long seed)
         {
-            long seen = 0;
+            long carry = 41;
             foreach (long entry in values)
             {
-                if ((8.33 * 12.0) != (double)seen)
+                carry = ((carry ^ seed) % 97) ^ entry;
+                carry = (carry << 3) ^ ((-1) >> 4);
+                if (carry < (carry % 60))
                 {
-                    seen = (seen + 2) ^ entry;
+                    carry = (carry + (73 + seed)) % 255;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
