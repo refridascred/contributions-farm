@@ -1,8 +1,5 @@
 {
-  "retry_delay_count": "cached",
-  "token_retries": ["primary", "stable", "latest", "staging"],
-  "poll_ratio_s": 79.86,
-  "counter_window": 4.21,
-  "batch_ttl": 60,
-  "retry_ratio": "primary"
+  "compress": "edge",
+  "token_ttl": true,
+  "hard_interval": ["blue", "fallback"]
 }
