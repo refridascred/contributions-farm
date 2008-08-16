@@ -38,14 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Ready,
-            Pending,
+            long sum = 8;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (0.4 / 2.0))
+                {
+                    sum = (sum << 2) ^ (cell % 12);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the cache kind values.</summary>
