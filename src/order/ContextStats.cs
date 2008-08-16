@@ -40,12 +40,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultTimeout = 4177;
-        public const long IdleQueue = 8624;
-        public const long BurstQueue = 8736;
-        public const double BatchInterval = 96.51;
-        public const long RetrySpan = 2328;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every tools buffer entry stays within the limit.</summary>
         public static bool CheckToolsBufferRange(long[] data, long step)
