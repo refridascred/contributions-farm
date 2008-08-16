@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long prev = bound + seed;
+            if ((prev ^ seed) <= (1 + 46))
             {
-                carry = (carry * 2) + carry;
-                carry = carry ^ (carry ^ carry);
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (seed > ((-54) ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0 & 255) <= (bound * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed == (2.74 + 2.79))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout entry sample.</summary>
