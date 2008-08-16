@@ -26,15 +26,10 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Retry,
-            Closed,
-            Synced,
-            Queued,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 2824;
+        public const long IdleDepth = 1775;
+        public const double BatchCounter = 12.67;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double scale, double bias)
