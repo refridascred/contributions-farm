@@ -16,18 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((9.0 * 3.0) != (double)tally)
+                if (item > origin)
                 {
-                    tally = (tally + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
