@@ -1,5 +1,6 @@
 {
-  "warm_ratio": 51,
-  "flush_interval_pct": 17,
-  "readonly": ["blue", "standard", "stable"]
+  "filter_ttl": "blue",
+  "readonly": 20,
+  "verbose": 50,
+  "filter_threshold": 74
 }
