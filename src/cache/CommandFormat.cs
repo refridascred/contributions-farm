@@ -38,21 +38,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] samples, long bound)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > bound)
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
