@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (rate2 - rate) + span;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((-49) > (27 ^ tally))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stream checks counter forward.</summary>
