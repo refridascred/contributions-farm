@@ -52,16 +52,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile counter series from a seed.</summary>
-        public static long RollProfileCounter(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultSpan = 10.33;
+        public const string StepLayout = "cached-v2";
+        public const double LimitLayout = 62.53;
+        public const double CacheLayout = 68.15;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitInterval = 5479;
