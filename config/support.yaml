@@ -1,13 +1,20 @@
 # support settings
-base_window: true
-batch_delay_count:
-  graph_limit:
-    - 25
-    - 107
-    - 437
-  compress: 6699
-  order_limit: false
-  window_limit: edge
-  flush_ttl_pct: standard
-queue_depth: 60
-compress: 9
+burst_limit_s: true
+soft_limit_ms:
+  metric_interval: eu-west
+  strict: strict
+  poll_window:
+    - stable
+    - strict
+dry_run: standard
+burst_size_count:
+  cache_timeout_pct: primary
+  idle_ratio: 47.04
+  payload_capacity: 100
+  soft_capacity:
+    - strict
+    - open
+    - blue
+    - green
+  route_capacity: cached
+  retry_interval: 28.3
