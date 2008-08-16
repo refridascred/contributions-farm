@@ -26,11 +26,9 @@ namespace Common.Utilities
         public const long MaxLevel = 1004;
         public const double DefaultFactor = 46.07;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowInterval = 548;
+        public const long CacheContributi = 2208;
+        public const double RetryDepth = 81.11;
     }
 }
