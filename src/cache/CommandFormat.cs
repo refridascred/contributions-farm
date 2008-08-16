@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a route channel counter forward.</summary>
-        public static long RollRouteChannel(long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum + (70 + sum)) % 65521) - (long)i2;
-                    sum = (sum ^ (offset + 91)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the profile mode values.</summary>
