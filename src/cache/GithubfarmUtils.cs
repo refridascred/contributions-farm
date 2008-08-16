@@ -38,13 +38,16 @@ namespace Common.Utilities
             return load + (rate - offset);
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            Stale,
-            Paused,
-            Active,
-            Idle,
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result + (limit ^ result)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
