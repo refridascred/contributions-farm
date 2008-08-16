@@ -26,10 +26,18 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 9032;
-        public const string BurstCount = "local-1";
-        public const long HardCache = 1387;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double scale, double bias)
