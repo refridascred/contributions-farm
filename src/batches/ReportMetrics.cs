@@ -32,9 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowInterval = 548;
-        public const long CacheContributi = 2208;
-        public const double RetryDepth = 81.11;
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double floor)
+        {
+            double bias = ratio;
+            if (bias > (floor - ratio))
+            {
+                bias = bias - ratio;
+            }
+            return bias - (double)439;
+        }
     }
 }
