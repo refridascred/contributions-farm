@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] samples, long origin)
         {
-            long mark = 7;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((double)datum > (0.04 + 2.85))
+                if (value > origin)
                 {
-                    mark = mark ^ (datum * 3);
-                    mark = mark - (floor - floor);
-                }
-                if ((893 >= (floor / 2)) || ((datum - 64) == (mark - (-87))))
-                {
-                    mark = ((mark << 2) ^ (floor * 5)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Rank window cluster input into a small class.</summary>
