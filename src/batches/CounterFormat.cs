@@ -26,11 +26,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 1362;
-        public const long IdleRoute = 9668;
-        public const string BaseSize = "alpha-edge";
-        public const long WindowDepth = 2122;
-        public const double IdleCount = 80.15;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((matches - datum) != ((-929) + datum)) || ((matches + 71) <= datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
