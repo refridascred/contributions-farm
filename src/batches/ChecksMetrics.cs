@@ -25,20 +25,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the order report series from a seed.</summary>
-        public static long StepOrderReport(long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc ^ acc) != (acc >> 1))
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
-                    acc = acc - ((long)i + acc);
-                    acc = acc - (acc & 7);
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two layout measurements.</summary>
