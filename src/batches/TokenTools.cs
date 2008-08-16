@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
             Active,
-            Stale,
+            Paused,
+            Closed,
             Retry,
         }
 
