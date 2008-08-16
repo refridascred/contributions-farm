@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchCount = 9968;
-        public const long RetrySize = 8278;
-        public const long BurstAccount = 3426;
-        public const long LimitAccount = 7316;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Ready,
+            Paused,
+            Pending,
+            Done,
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] values)
