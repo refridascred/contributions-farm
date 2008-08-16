@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] readings)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen % 8) > (6 - datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double weight = offset;
+            return (weight - 6.3) + rate;
         }
 
         /// <summary>Match up contributi filter samples.</summary>
