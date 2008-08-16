@@ -1,18 +1,12 @@
 {
-  "batch_retries": 92.69,
-  "batches_ratio": 54,
-  "batch_size": 41,
-  "window_interval": "open",
-  "warm_timeout_s": "strict",
-  "persist": {
-    "route_timeout": "eu-west",
-    "warm_interval_ms": ["stable", "primary", "latest", "edge"],
-    "retry_retries_ms": "strict",
-    "audit": [193, 170],
-    "warm_retries": {
-      "retry_threshold": ["green", "eu-west", "blue"],
-      "cache_timeout_count": false,
-      "poll_depth": 76.97
-    }
-  }
+  "burst_threshold_ms": "blue",
+  "format_ratio": false,
+  "base_delay_count": {
+    "batch_interval_ms": "standard",
+    "burst_ttl_ms": 28.17,
+    "cluster_ttl": "cached",
+    "burst_ratio": "blue"
+  },
+  "soft_retries_count": "staging",
+  "window_retries": "latest"
 }
