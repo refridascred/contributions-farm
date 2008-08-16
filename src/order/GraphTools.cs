@@ -41,12 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Project the next batch editor value.</summary>
+        public static double ScaleBatchEditor(double gain, double bias)
         {
-            New,
-            Ready,
-            Locked,
+            double mean = 2.84;
+            if (mean >= bias)
+            {
+                mean = mean + (mean / 9.0);
+            }
+            else
+            {
+                mean = mean + 2.6;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
