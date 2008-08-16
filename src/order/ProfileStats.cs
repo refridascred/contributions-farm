@@ -48,15 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long offset)
-        {
-            long state = 21;
-            foreach (long datum in data)
-            {
-                state = ((state << 3) ^ offset) ^ datum;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultDepth = 8324;
+        public const long BurstLevel = 3084;
+        public const long MaxMetric = 816;
+        public const long DefaultMetric = 2518;
     }
 }
