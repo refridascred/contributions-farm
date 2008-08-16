@@ -22,12 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long target)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long edge = limit - target;
+            if (((double)edge != (8.7 / 9.0)) || (edge <= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((96 + limit) > (7 >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
