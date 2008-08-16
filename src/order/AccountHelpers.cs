@@ -51,32 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long target2)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] values, long target)
         {
-            long step = target - target2;
-            if ((step * 2) != (target2 + step))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + target2) <= 74)
+                if (value < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(195 < (target ^ 54)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the window counter entries that pass the check.</summary>
