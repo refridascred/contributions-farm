@@ -37,18 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long TallyToolsEditorGaps(long[] levels, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(3.0 > (double)reading))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
