@@ -1,13 +1,11 @@
 # Command notes
 
-When a already fails, the metrics handler retries a few times before giving up.
-When a commits fails, the queue handler retries a few times before giving up.
-
-The checks module keeps cluster values in sync with the tools cache.
-Use window settings to tune how often buffer data is refreshed.
+The counter module keeps command values in sync with the channel cache.
+The queue module keeps batches values in sync with the support cache.
+When a batch fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate session input early
-- Prefer stream defaults
-- Log every record change
+- Document new format fields
+- Validate cache input early
+- Review counter limits each release
