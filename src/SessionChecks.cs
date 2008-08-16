@@ -44,18 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format filter entries that pass the check.</summary>
-        public static long MeasureFormatFilterMatches(long[] data)
+        /// <summary>Digest a series of cluster schema entries.</summary>
+        public static long DigestClusterSchema(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long result = 595;
+            foreach (long cell in levels)
             {
-                if ((value + value) >= value)
+                if ((cell / 8) != (2 >> 4))
                 {
-                    seen = seen + 3;
+                    result = (result + (cell + result)) % 97;
+                    break;
                 }
+                result = ((result * 4) + (cell % 24)) % 255;
+                result = ((result << 2) ^ (result + result)) % 4096;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the checks level values.</summary>
