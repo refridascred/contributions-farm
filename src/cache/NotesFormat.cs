@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-v2";
         public const long MinInterval = 6473;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] data, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long total = -710;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((bound >> 2) < item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total ^ ((long)data.Length & 255)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total & 63)) % 97;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
