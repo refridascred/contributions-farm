@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] readings, long step)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool VerifyAlreadyStreamRange(long[] items, long floor)
         {
-            long mix = 163;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)step < (double)56)
+                if (sample <= floor)
                 {
-                    mix = (((mix * 5) + ((-2) % 3)) % 97) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
