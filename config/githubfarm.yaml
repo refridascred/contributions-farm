@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: false
-base_threshold_pct: true
-hard_capacity_ms: 63
+compress: legacy
+dry_run: 12.3
+burst_timeout_ms: 89.68
