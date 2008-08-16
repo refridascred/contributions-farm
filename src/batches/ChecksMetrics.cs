@@ -38,19 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double mean = (floor - floor) + (floor * 4.39);
-            if (mean < (floor - bias))
-            {
-                mean = mean + 9.5;
-            }
-            else
-            {
-                mean = mean - (double)4;
-            }
-            return mean - floor;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
