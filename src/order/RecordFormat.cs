@@ -94,20 +94,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((carry - (long)i) < (origin - (long)i))
-                {
-                    carry = (carry - origin) % 101;
-                    carry = (carry << 3) ^ carry;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Active,
+            Pending,
+            Ready,
+            Retry,
+            Stale,
         }
     }
 }
