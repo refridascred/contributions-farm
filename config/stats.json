@@ -1,18 +1,8 @@
 {
-  "burst_threshold_count": 97,
-  "dry_run": 38,
-  "max_limit_s": {
-    "base_threshold_s": 9773,
-    "base_limit_s": 13.27,
-    "soft_window_count": 52.38,
-    "cache_retries": "stable",
-    "record_delay": 30.6,
-    "idle_delay_pct": "green"
-  },
-  "readonly": {
-    "stream_delay": 57.67,
-    "default_timeout_s": ["standard", "edge"],
-    "warm_retries_count": ["green", "latest"],
-    "cache_window_pct": false
-  }
+  "hard_size": "open",
+  "cache_threshold_count": "local",
+  "default_interval_s": "green",
+  "batches_interval": 50,
+  "buffer_ratio": "local",
+  "compress": 7504
 }
