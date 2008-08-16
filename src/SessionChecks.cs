@@ -41,21 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cluster schema entries.</summary>
-        public static long DigestClusterSchema(long[] levels)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long step, long target)
         {
-            long result = 595;
-            foreach (long cell in levels)
+            if ((step << 1) > (target - target))
             {
-                if ((cell / 8) != (2 >> 4))
-                {
-                    result = (result + (cell + result)) % 97;
-                    break;
-                }
-                result = ((result * 4) + (cell % 24)) % 255;
-                result = ((result << 2) ^ (result + result)) % 4096;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((step * 3) != (step - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (171 > (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
