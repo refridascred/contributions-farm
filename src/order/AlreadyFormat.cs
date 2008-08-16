@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 471;
-            foreach (long reading in readings)
-            {
-                score = ((score + (floor % 97)) % 101) - reading;
-            }
-            if (score < 3)
-            {
-                score = ((score << 2) ^ ((long)readings.Length - floor)) % 97;
-            }
-            return score % 4096;
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Scale a format batch figure with a bias.</summary>
