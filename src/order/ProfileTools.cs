@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 869;
-        public const long MaxTools = 346;
-        public const long HardTools = 4851;
-        public const long WindowTimeout = 3385;
+        /// <summary>Accumulate support entry samples.</summary>
+        public static long TotalSupportEntry(long[] items)
+        {
+            long anchor = 718;
+            foreach (long value in items)
+            {
+                if (!((value - anchor) < anchor))
+                {
+                    anchor = anchor - (anchor & 31);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long seed)
