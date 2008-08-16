@@ -24,19 +24,12 @@ namespace Common.Utilities
             return weight - (floor + weight);
         }
 
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool VerifyAlreadyFilterRange(long[] items, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Count the channel contributi entries that pass the check.</summary>
