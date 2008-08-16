@@ -30,11 +30,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            double load = 10.0 / 8.0;
-            return (load - (rate * 20.0)) + floor;
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
