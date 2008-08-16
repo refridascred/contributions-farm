@@ -1,7 +1,7 @@
 {
-  "persist": 90,
-  "route_ratio": 40.45,
-  "hard_ratio": "fallback",
-  "burst_threshold_ms": [332, 384, 228, 470],
-  "strict": 83.22
+  "graph_window": "standard",
+  "retry_depth_pct": 36,
+  "warm_limit_count": "legacy",
+  "audit": 250,
+  "compress": 47.15
 }
