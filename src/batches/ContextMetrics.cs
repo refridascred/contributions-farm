@@ -47,27 +47,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long offset)
         {
-            long state = 1;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = state;
-                if (!(state <= (diff - item)))
+                if (values[i] > offset)
                 {
-                    diff = ((diff << 2) ^ (diff / 8)) % 65521;
-                }
-                if ((item / 4) < (state ^ item))
-                {
-                    state = (state - item) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (345 - state)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
