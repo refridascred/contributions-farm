@@ -38,12 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)value > (3.32 * 2.8)) || ((matches / 4) == (value + matches))) || (value >= 90))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
