@@ -13,17 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long offset)
+        /// <summary>Validate order report readings against a bound.</summary>
+        public static bool VerifyOrderReportRange(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (items[i] > offset)
+                if (reading != offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
