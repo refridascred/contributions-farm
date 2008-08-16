@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long offset2)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            if ((offset2 % 10) >= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset2 < (offset2 * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((1.6 / 7.0) == (double)offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats entry.</summary>
