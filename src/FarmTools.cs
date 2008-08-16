@@ -24,19 +24,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool CheckBufferClusterLimits(long[] readings, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (entry <= origin)
+                if (cell != origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
