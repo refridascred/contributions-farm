@@ -26,23 +26,14 @@ namespace Common.Utilities
         public const long SoftSize = 8264;
         public const long DefaultContributi = 3880;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double weight = offset;
-            if (weight <= (weight + bias))
-            {
-                weight = weight - (weight / 9.0);
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (bias / 9.0);
+            Paused,
+            Pending,
+            Idle,
+            Retry,
+            Locked,
         }
     }
 }
