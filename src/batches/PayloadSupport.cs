@@ -41,13 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Active,
-            Queued,
-            Locked,
-            Failed,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
