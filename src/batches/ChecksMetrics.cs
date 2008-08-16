@@ -15,15 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            double bias2 = span + bias;
-            if (bias2 <= bias)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 + (4.4 / 3.0);
+            return seen;
         }
 
         /// <summary>Blend two layout measurements.</summary>
