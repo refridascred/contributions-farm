@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((5.4 - 3.2) == (double)datum)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 3.96;
+        public const long MinToken = 2101;
+        public const double IdleSize = 79.04;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
