@@ -26,17 +26,32 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = seed - target;
+            if (!((gap - target) >= (target / 5)))
             {
-                if (readings[i] == origin)
+                return 4;
+            }
+            else
+            {
+                if (seed > (target & 15))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target + seed) <= (827 % 3)) || (seed <= (gap ^ gap)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
