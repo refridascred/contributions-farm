@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a payload metrics pair into a bucket.</summary>
-        public static long GradePayloadMetrics(long bound, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long lane = bound - floor;
-            if ((bound % 3) > bound)
+            long sum = -40;
+            foreach (long item in readings)
             {
-                return 2;
+                sum = (sum * 5) + (item >> 4);
             }
-            else
-            {
-                if ((floor >> 2) >= lane)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor >= 5.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a context header.</summary>
