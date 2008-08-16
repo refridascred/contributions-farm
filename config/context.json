@@ -1,8 +1,19 @@
 {
-  "burst_retries": ["latest", "standard"],
-  "cluster_depth": [109, 142],
-  "readonly": false,
-  "batch_retries_s": 94,
-  "contributi_size": ["edge", "eu-west", "eu-west", "standard"],
-  "format_limit": 49
+  "support_depth": [248, 441, 435, 135],
+  "batch_limit": "staging",
+  "max_interval": 4,
+  "sync_ttl_s": "standard",
+  "window_window": 24,
+  "audit": {
+    "sync_size": [290, 304],
+    "cluster_ttl": {
+      "poll_threshold": 93.51,
+      "metrics_delay": "green",
+      "enabled": 79,
+      "schema_depth": [398, 142, 96],
+      "readonly": 500,
+      "strict": "fallback"
+    },
+    "burst_ttl_ms": 2.92
+  }
 }
