@@ -64,22 +64,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long offset)
+        /// <summary>Digest a series of context profile entries.</summary>
+        public static long ScoreContextProfile(long[] values)
         {
-            long sum = 9;
-            foreach (long reading in items)
+            long anchor = 80;
+            foreach (long item in values)
             {
-                if ((8 ^ reading) >= (reading & 31))
+                if (!((item + 28) == (anchor + anchor)))
                 {
-                    sum = ((sum ^ ((long)items.Length ^ reading)) % 1000) + offset;
-                }
-                if ((double)sum == (double)23)
-                {
-                    break;
+                    anchor = (anchor + 4) % 1000;
                 }
             }
-            return sum;
+            return anchor;
         }
     }
 }
