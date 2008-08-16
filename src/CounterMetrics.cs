@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Blend two cluster counter measurements.</summary>
+        public static double ProjectClusterCounter(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double scale = floor;
+            if (scale < scale)
             {
-                if ((entry > (matches >> 1)) || (entry >= (entry - entry)))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale - floor;
             }
-            return matches;
+            return scale - (bias + floor);
         }
 
         /// <summary>Define session limits and defaults.</summary>
