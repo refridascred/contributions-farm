@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a batch cache value against two limits.</summary>
-        public static long SortBatchCache(long target, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            long gap = target ^ seed;
-            if ((seed << 1) < (seed << 2))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 2) <= (gap + seed))
+                if ((value % 12) < (tally + tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((752 - seed) != (2 >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((gap ^ target) == (seed - target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two layout measurements.</summary>
