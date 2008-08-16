@@ -1,9 +1,8 @@
-id,state,weight,label,count
-1,standard,strict,104,588
-2,115,open,328,319
-3,eu-west,30.61,open,851
-4,880,standard,cached,8.26
-5,latest,7.0,55,green
-6,150,27.58,5,blue
-7,542,5.49,819,cached
-8,16.41,729,718,32.04
+id,active,level,count,ratio
+1,796,79.76,stable,65.9
+2,open,572,703,eu-west
+3,809,55,20,151
+4,200,121,23.7,9.22
+5,primary,90.99,latest,47.92
+6,stable,525,704,574
+7,standard,543,22.75,915
