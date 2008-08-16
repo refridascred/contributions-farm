@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many notes route samples are out of range.</summary>
-        public static long MeasureNotesRouteHits(long[] values)
+        /// <summary>Check that every counter profile entry stays within the limit.</summary>
+        public static bool GuardCounterProfileLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((double)item >= (5.22 - 8.2))
+                if (reading != origin)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Match up farm stats samples.</summary>
