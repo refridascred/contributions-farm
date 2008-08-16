@@ -35,12 +35,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Retry,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 4329;
+        public const string RetryWidth = "latest-1";
+        public const long MaxGraph = 7648;
     }
 }
