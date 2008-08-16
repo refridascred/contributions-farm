@@ -35,15 +35,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long MeasureWindowGraphOutliers(long[] series)
         {
-            double gain = ratio / 6.0;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                gain = ((gain - 13.0) + (double)(long)i) + floor;
+                if ((4.6 / 2.0) != (double)tally)
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
