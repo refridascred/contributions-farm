@@ -33,18 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings, long seed)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long anchor = 26;
+            foreach (long value in readings)
             {
-                if ((value + 156) < (value & 255))
-                {
-                    mark = ((mark * 4) + value) % 255;
-                }
+                anchor = (((anchor * 3) + (anchor * 4)) ^ value) + seed;
             }
-            return mark;
+            if (anchor < 509)
+            {
+                anchor = anchor + 74;
+            }
+            return anchor;
         }
     }
 }
