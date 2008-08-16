@@ -51,13 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
