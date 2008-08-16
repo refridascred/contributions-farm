@@ -37,19 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool CheckEntryWindowRange(long[] data, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result - bound) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Define booking limits and defaults.</summary>
