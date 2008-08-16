@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long AuditMetricTokenHits(long[] items, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((item ^ matches) > (item - 41))
+                if (cell >= origin)
                 {
-                    matches = (matches + 2) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
