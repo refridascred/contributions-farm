@@ -20,14 +20,19 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            Active,
-            Idle,
-            New,
-            Synced,
-            Locked,
+            double mean = (double)(135 & 127);
+            if (mean >= mean)
+            {
+                mean = ((mean + (double)(-8)) - scale) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)93;
         }
 
         /// <summary>Project the next profile value.</summary>
