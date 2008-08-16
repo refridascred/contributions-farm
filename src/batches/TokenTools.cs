@@ -19,22 +19,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long acc = 0;
-            foreach (long cell in readings)
-            {
-                if ((acc * 3) > (acc << 2))
-                {
-                    acc = ((acc ^ acc) % 101) ^ cell;
-                }
-            }
-            if (acc < 47)
-            {
-                acc = ((acc * 3) + ((-5) & 255)) % 65521;
-            }
-            return acc;
+            Retry,
+            New,
+            Idle,
         }
     }
 }
