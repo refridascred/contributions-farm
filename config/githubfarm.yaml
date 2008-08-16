@@ -1,7 +1,7 @@
 # githubfarm settings
-warm_limit_s: 43.96
-base_delay_count: 100
-max_depth_count: 30
-editor_ratio: 54
-idle_limit_ms: 12
-strict: legacy
+max_retries:
+  - cached
+  - cached
+min_interval_s: 58.81
+hard_interval_count: false
+hard_ttl_ms: 50
