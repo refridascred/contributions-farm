@@ -13,17 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 2) + (bound / 5)) % 97;
-                carry = ((carry * 3) + 2) % 97;
-                carry = ((carry * 4) + (long)i) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
