@@ -20,15 +20,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Idle,
-            Paused,
-            Draft,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleDepth = 5710;
+        public const double MinBatches = 48.3;
+        public const long StepBatches = 4099;
+        public const double BatchCount = 45.51;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] data, long origin)
