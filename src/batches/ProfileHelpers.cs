@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long step, long step2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] levels, long step)
         {
-            if ((12.0 / 8.0) >= (double)step2)
+            long anchor = 23;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9.07 + 6.95) != (double)step) && ((step ^ step) > (step ^ step2)))
+                if ((410 + value) >= anchor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step >= (38 - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (((anchor * 2) + (value + value)) % 1000) - step;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Describe the report mode values.</summary>
