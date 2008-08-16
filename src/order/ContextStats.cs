@@ -50,21 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster batch samples.</summary>
-        public static long PairClusterBatchCount(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading < step)
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
