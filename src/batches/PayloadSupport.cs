@@ -16,23 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values)
-        {
-            long result = 459;
-            foreach (long reading in values)
-            {
-                if ((7.2 / 9.0) > (double)reading)
-                {
-                    result = (result ^ (reading / 4)) % 1000;
-                }
-                if ((reading - reading) != (27 * 5))
-                {
-                    result = ((result * 3) + (-3)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 6997;
+        public const long LimitScore = 8375;
+        public const string BurstCounter = "legacy-edge";
+        public const string IdleTimeout = "open";
+        public const long WindowCounter = 2406;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
