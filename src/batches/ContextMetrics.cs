@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCount = 70.71;
-        public const long SoftCounter = 7059;
-        public const long MaxCounter = 8024;
-        public const long LimitCounter = 1054;
-        public const string MinScore = "strict-v2";
+        /// <summary>Project the next entry layout value.</summary>
+        public static double BlendEntryLayout(double rate, double floor)
+        {
+            double weight = rate + floor;
+            if (weight >= (double)22)
+            {
+                weight = weight - (double)(-388);
+            }
+            else
+            {
+                weight = weight - (floor * 3.18);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Fold a list of format queue readings.</summary>
         public static long TotalFormatQueue(long[] items)
