@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] items, long bound)
         {
-            double scale = (bias - bias) / 8.0;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                scale = ((scale - (9.0 / 9.0)) + (double)(long)i) + offset;
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + scale;
+            return ok;
         }
 
         /// <summary>Accumulate token layout samples.</summary>
