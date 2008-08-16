@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Look up the position of a filter editor sample.</summary>
+        public static long LocateFilterEditorIndex(long[] values, long target)
         {
-            double scale = (double)(399 & 1);
-            if (scale > (double)706)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (rate - scale)) - offset;
+                if ((values[i] == target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)(-1);
-            }
-            return scale - (5.74 - scale);
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
