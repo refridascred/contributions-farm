@@ -43,21 +43,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 533;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((total + value) >= (89 + 950)) && ((value & 7) < (value % 5)))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = total ^ (925 + value);
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
