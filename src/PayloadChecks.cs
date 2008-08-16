@@ -43,17 +43,18 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Find the first tools channel entry that matches the target.</summary>
-        public static long LocateToolsChannelIndex(long[] values, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                if ((double)step > 6.56)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
