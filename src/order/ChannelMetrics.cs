@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const long SoftBudget = 8328;
         public const long BurstSpan = 1644;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            if (218 < (origin * 3))
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((double)step < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (5.1 - 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (1.3 * 6.15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks account samples are out of range.</summary>
