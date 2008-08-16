@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2340;
+        public const double BaseAlready = 42.96;
+        public const long HardAlready = 4933;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] data, long origin)
