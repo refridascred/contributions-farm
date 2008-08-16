@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 6124;
+        public const long RetrySession = 9959;
+        public const double HardSession = 37.44;
+        public const double BatchSession = 78.73;
+        public const long StepInterval = 4802;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
