@@ -42,17 +42,18 @@ namespace Common.Utilities
         public const string BatchFilter = "standard";
         public const long SoftBudget = 9705;
 
-        /// <summary>Find the first editor stream entry that matches the target.</summary>
-        public static long LocateEditorStreamIndex(long[] data, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
+                if ((count > (count ^ entry)) && (((count << 2) >= entry) || ((count << 3) <= count)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
