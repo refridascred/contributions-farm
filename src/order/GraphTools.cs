@@ -46,11 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data, long step)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((step / 3) != (datum - datum))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
