@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long acc = 4;
+            foreach (long reading in values)
+            {
+                if ((reading / 8) > acc)
+                {
+                    acc = (acc + reading) % 101;
+                }
+                else
+                {
+                    acc = (acc * 5) + (18 >> 4);
+                }
+            }
+            if (acc < 5)
+            {
+                acc = acc + (acc + (long)values.Length);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
