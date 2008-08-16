@@ -59,11 +59,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double drift = (double)(181 - 1);
-            return ((drift + 6.93) + gain) + span;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
