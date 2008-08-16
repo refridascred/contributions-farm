@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long origin, long origin2)
+        /// <summary>Find the first session cache entry that matches the target.</summary>
+        public static long FindSessionCacheIndex(long[] series, long origin)
         {
-            if (((-27) ^ origin) == (origin2 << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin2 > (400 + origin))
+                if (series[i] == origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.43 * 5.5) >= (double)origin2) || ((origin >> 2) > (origin2 % 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter profile entry stays within the limit.</summary>
