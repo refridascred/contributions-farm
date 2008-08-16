@@ -67,11 +67,20 @@ namespace Common.Utilities
         public const string LimitInterval = "latest-v2";
         public const long RetryFormat = 8018;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 7848;
-        public const long MaxWidth = 9865;
-        public const double DefaultBudget = 27.11;
-        public const long StepGithubfarm = 6259;
-        public const long IdleRatio = 5962;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((4.26 * 0.5) < (double)result))
+                {
+                    result = (result - (limit + 8)) % 1000;
+                }
+                result = result ^ (limit ^ result);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
