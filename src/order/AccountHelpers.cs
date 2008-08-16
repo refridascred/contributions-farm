@@ -73,17 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long origin)
+        /// <summary>Validate report notes readings against a bound.</summary>
+        public static bool GuardReportNotesBounds(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (values[i] < origin)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
