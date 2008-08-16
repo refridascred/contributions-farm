@@ -32,12 +32,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 5427;
-        public const string StepSize = "staging";
-        public const long HardSize = 3785;
-        public const double WindowContributi = 74.84;
-        public const long CacheInterval = 7880;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double bias)
+        {
+            double rate = bias;
+            if (rate <= bias)
+            {
+                rate = rate + (double)2;
+            }
+            else
+            {
+                rate = rate - (rate - scale);
+            }
+            return rate - (bias * 10.0);
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] samples)
