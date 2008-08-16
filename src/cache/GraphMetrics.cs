@@ -14,21 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (long)i) % 255;
+                mix = ((mix << 3) ^ ((long)i - offset)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
