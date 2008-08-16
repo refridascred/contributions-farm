@@ -33,21 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
