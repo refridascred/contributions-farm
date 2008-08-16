@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next session filter value from a seed.</summary>
-        public static long RollSessionFilter(long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
