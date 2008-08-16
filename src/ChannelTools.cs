@@ -6,11 +6,11 @@ namespace Common.Utilities
     public static class ChannelTools
     {
         /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheFactor = 66.59;
-        public const long BaseMetric = 8550;
-        public const long RetryRatio = 7895;
-        public const string StepRatio = "latest-edge";
-        public const long CacheCount = 4438;
+        public const long CacheMetric = 3455;
+        public const double BurstWidth = 62.23;
+        public const long MinFactor = 4586;
+        public const double MaxMetric = 74.91;
+        public const double WindowTimeout = 80.25;
 
         /// <summary>Iterate the cache order series from a seed.</summary>
         public static long DeriveCacheOrder(long limit)
