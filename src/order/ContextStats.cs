@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] series, long floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
