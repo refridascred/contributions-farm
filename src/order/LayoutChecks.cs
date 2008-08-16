@@ -37,12 +37,12 @@ namespace Common.Utilities
             return (load - (rate * 20.0)) + floor;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < step)
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
