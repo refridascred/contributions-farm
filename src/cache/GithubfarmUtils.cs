@@ -13,18 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] readings, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)hits < (double)sample)
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            double rate2 = bias;
+            return rate2 - rate;
         }
 
         /// <summary>Describe the entry mode values.</summary>
