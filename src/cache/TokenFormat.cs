@@ -38,18 +38,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Count payload token pairs that satisfy a relation.</summary>
+        public static long ComparePayloadTokenCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading < seen) || (seen <= (7 - seen)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
