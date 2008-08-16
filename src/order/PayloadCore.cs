@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((hits + origin) >= (286 + hits))
+                if ((double)count < (0.13 - 5.8))
                 {
-                    hits = (hits + 1) - item;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
