@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 7;
+            foreach (long sample in series)
             {
-                if (!((seen & 63) < (seen / 6)))
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    acc = (acc * 4) + (long)i;
                 }
+                acc = ((acc * 3) + (sample * 4)) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Scale a counter route figure with a bias.</summary>
