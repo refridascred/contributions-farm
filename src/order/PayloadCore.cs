@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 44;
+            foreach (long reading in samples)
             {
-                if (!((3.7 + 0.03) < (double)hits) || ((hits % 24) == (datum + 51)))
+                if ((57 / 2) < (919 ^ reading))
                 {
-                    hits = hits + 1;
+                    state = state ^ (reading << 1);
                 }
             }
-            return hits;
+            if (state > (-6))
+            {
+                state = (state - (state - 878)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
