@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Combine order graph values into a single score.</summary>
+        public static long TallyOrderGraph(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -22;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 4) + (state * 5)) ^ sample;
+                state = state ^ state;
             }
-            return hits;
+            if (state > (-667))
+            {
+                state = ((state * 2) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
