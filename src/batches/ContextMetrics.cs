@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long CountNotesProfileMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)step <= (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheFactor = 55.38;
+        public const long LimitGithubfarm = 8333;
+        public const long IdleGithubfarm = 4030;
+        public const long MinGithubfarm = 2703;
+        public const long BurstFactor = 9492;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchHits(long[] values, long seed)
