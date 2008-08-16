@@ -12,10 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepScore = 841;
-        public const string DefaultOrder = "latest";
-        public const long SoftOrder = 8831;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Locked,
+            Pending,
+            Done,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
