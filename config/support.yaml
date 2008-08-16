@@ -1,5 +1,13 @@
 # support settings
-layout_timeout: 20
-idle_size_s: 54
-retry_limit: 94
-sync_depth_count: 250
+max_timeout:
+  sync_depth_pct:
+    verbose: primary
+    retry_limit: 5662
+    farm_ratio:
+      - edge
+      - staging
+  context_depth: 89
+  idle_retries_count: 9522
+strict: 1024
+cache_size: strict
+idle_depth: 25
