@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading & 31) >= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 1020;
+        public const long CacheSession = 2206;
+        public const string MaxBudget = "open-v2";
 
         /// <summary>Count stream order pairs that satisfy a relation.</summary>
         public static long MatchStreamOrderCount(long[] values)
