@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const string BatchFilter = "standard";
         public const long SoftBudget = 9705;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryScore = 5187;
-        public const long CacheLevel = 8595;
-        public const long DefaultFactor = 5441;
-        public const double BaseTimeout = 44.02;
-        public const long MaxQueue = 6503;
+        /// <summary>Find the first editor stream entry that matches the target.</summary>
+        public static long LocateEditorStreamIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] readings, long bound)
