@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            long step2 = step - target;
-            if ((double)step == (6.85 / 2.0))
+            double scale = span / 2.0;
+            if (scale < 8.0)
             {
-                return 6;
+                scale = scale + 15.0;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)step2 <= (4.7 * 10.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 & 15) == (step - step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step2 == (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                scale = (scale + gain) + (double)(long)i;
             }
+            return scale + (span - gain);
         }
 
         /// <summary>Locate a checks reading by value.</summary>
