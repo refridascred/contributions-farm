@@ -44,11 +44,25 @@ namespace Common.Utilities
         public const string BurstMetrics = "standard-edge";
         public const long LimitTimeout = 5758;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a counter profile value against two limits.</summary>
+        public static long ClassifyCounterProfile(long floor, long seed)
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            long edge = floor - seed;
+            if (((10.0 / 6.0) != (double)seed) || ((231 << 2) >= (edge ^ floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= (5.0 - 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
