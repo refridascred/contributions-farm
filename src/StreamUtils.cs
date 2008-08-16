@@ -52,23 +52,12 @@ namespace Common.Utilities
         public const long HardGraph = 4901;
         public const string MinGraph = "cached-v2";
 
-        /// <summary>Digest a series of layout schema entries.</summary>
-        public static long FoldLayoutSchema(long[] values, long target)
-        {
-            long score = 1;
-            foreach (long cell in values)
-            {
-                if ((9 * 4) >= (score ^ cell))
-                {
-                    score = score + (target & 3);
-                }
-            }
-            if (score > 41)
-            {
-                score = ((score * 2) + (387 * 4)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryScore = 5187;
+        public const long CacheLevel = 8595;
+        public const long DefaultFactor = 5441;
+        public const double BaseTimeout = 44.02;
+        public const long MaxQueue = 6503;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] series, long origin)
