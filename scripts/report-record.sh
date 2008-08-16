@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local green legacy; do
+for item in open eu-west blue; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=477
+log "limit is ${RECORD_LIMIT}"
