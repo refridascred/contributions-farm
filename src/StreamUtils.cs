@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            double mean = bias;
+            if (mean <= (bias * 10.0))
+            {
+                mean = (mean + (bias - bias)) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (8.37 * 9.7)) - (double)(long)i;
+            }
+            return mean - (mean - 10.0);
         }
 
         /// <summary>Project the next profile value.</summary>
