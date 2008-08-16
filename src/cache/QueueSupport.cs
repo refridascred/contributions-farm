@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long limit)
         {
-            long sum = 5;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sum <= ((long)readings.Length - datum))
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
                 {
-                    sum = sum - (datum % 16);
+                    return (long)i;
                 }
             }
-            if (sum < 127)
-            {
-                sum = ((sum << 3) ^ (sum * 2)) % 4096;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
