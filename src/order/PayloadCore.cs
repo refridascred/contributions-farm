@@ -23,22 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long AuditChecksSessionMatches(long[] samples, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((0.78 - 17.0) < (double)origin)
             {
-                if ((double)seed <= (6.9 * 0.82))
+                return 4;
+            }
+            else
+            {
+                if ((4.16 - 4.6) <= (double)limit)
                 {
-                    hits = (hits + 3) - reading;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
