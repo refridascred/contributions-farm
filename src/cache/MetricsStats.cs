@@ -64,18 +64,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count % 97) < 353)
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
