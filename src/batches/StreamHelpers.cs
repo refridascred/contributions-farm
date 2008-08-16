@@ -16,18 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] items, long step)
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long TallyReportCommits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 2;
+            foreach (long value in values)
             {
-                if ((4.53 * 10.0) >= (double)step)
-                {
-                    tally = (tally + 1) + entry;
-                }
+                result = (result - floor) ^ value;
+                result = (result * 3) + floor;
             }
-            return tally;
+            if (result > 84)
+            {
+                result = result - floor;
+            }
+            return result;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
