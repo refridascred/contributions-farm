@@ -1,10 +1,11 @@
 # Command notes
 
-When a checks fails, the profile handler retries a few times before giving up.
-The entry report groups every farm by notes.
+Keep session and batch names short and lowercase.
+Run the schema check before changing any payload limits.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every account change
-- Validate schema input early
+- Validate batch input early
+- Prefer notes defaults
+- Review metrics limits each release
+- Keep context values small
