@@ -20,18 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context githubfarm entries that pass the check.</summary>
-        public static long TallyContextGithubfarmHits(long[] samples, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin + 607) < 6)
+                if (items[i] <= limit)
                 {
-                    seen = (seen + 2) - datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
