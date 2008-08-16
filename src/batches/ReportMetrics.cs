@@ -13,20 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (((result << 3) ^ (result - floor)) % 65521) - (long)i2;
-                    result = result ^ (result & 127);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                carry = ((carry * 2) + (bound / 5)) % 97;
+                carry = ((carry * 3) + 2) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
