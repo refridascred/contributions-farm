@@ -1,6 +1,7 @@
 {
-  "base_limit": 30,
-  "verbose": "blue",
-  "buffer_delay": ["staging", "edge"],
-  "cache_timeout": "open"
+  "warm_window": 61.3,
+  "base_timeout": false,
+  "warm_retries_count": 47.86,
+  "channel_ttl": 2155,
+  "batch_window_count": "primary"
 }
