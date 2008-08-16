@@ -72,12 +72,18 @@ namespace Common.Utilities
             return load - (double)332;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] items, long step)
         {
-            Dropped,
-            New,
-            Active,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell < 8.1)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
     }
 }
