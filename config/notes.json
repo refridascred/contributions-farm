@@ -1,6 +1,8 @@
 {
-  "editor_limit": false,
-  "filter_ratio": "stable",
-  "flush_ratio": 6476,
-  "report_depth": false
+  "retry_limit_pct": true,
+  "base_limit_pct": ["strict", "eu-west"],
+  "poll_interval_s": 60,
+  "poll_capacity_ms": 500,
+  "retry_ratio": 60,
+  "enabled": 8852
 }
