@@ -48,27 +48,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long FoldTokenMetrics(long[] data, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long floor)
         {
-            long state = 9;
-            foreach (long reading in data)
+            if ((floor - target) >= (floor * 3))
             {
-                if ((origin >> 1) > (origin & 63))
+                return 1;
+            }
+            else
+            {
+                if ((target << 2) != (target >> 2))
                 {
-                    state = state - (-366);
-                    break;
+                    return 3;
                 }
-                if ((origin & 127) != (220 >> 3))
+                else
                 {
-                    state = ((state << 3) ^ (origin - reading)) % 101;
-                }
-                if (((10.0 + 1.55) < (double)origin) || ((double)state >= 8.1))
-                {
-                    state = (state ^ 59) % 4096;
+                    return 4;
                 }
             }
-            return state % 65521;
         }
     }
 }
