@@ -20,12 +20,23 @@ namespace Common.Utilities
         public const double LimitFormat = 82.83;
         public const long BatchFormat = 798;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "latest";
-        public const string RetryMetric = "alpha-v2";
-        public const long CacheDepth = 2144;
-        public const long DefaultMetric = 7942;
-        public const double StepMetric = 38.79;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + sample) >= 78)
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] data)
