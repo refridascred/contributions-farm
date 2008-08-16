@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] samples, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long delta = step ^ target;
+            if (((delta * 3) == (target + 95)) && ((step + step) <= (target + delta)))
             {
-                if (value > origin)
+                return 2;
+            }
+            else
+            {
+                if ((target & 127) <= (-26))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank window cluster input into a small class.</summary>
