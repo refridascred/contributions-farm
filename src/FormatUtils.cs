@@ -33,13 +33,17 @@ namespace Common.Utilities
             return weight - (double)483;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] readings, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
