@@ -65,17 +65,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first notes command entry that matches the target.</summary>
-        public static long LookupNotesCommandIndex(long[] values, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
