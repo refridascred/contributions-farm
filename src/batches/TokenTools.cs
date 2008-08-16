@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 565;
-        public const double BaseContext = 21.25;
-        public const long BurstContext = 5144;
-        public const long DefaultContext = 2730;
-        public const long MaxCount = 9895;
+        /// <summary>Derive the next session filter value from a seed.</summary>
+        public static long RollSessionFilter(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
