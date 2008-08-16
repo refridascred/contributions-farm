@@ -51,38 +51,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if (bound > (65 >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) == (786 * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor ^ (-944)) != (43 << 1)) || ((floor - floor) < (bound / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((8.76 / 6.0) > (double)floor) && (14 >= bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
