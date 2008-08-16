@@ -72,19 +72,12 @@ namespace Common.Utilities
             return load - (double)332;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = -1;
-            foreach (long item in data)
-            {
-                mix = (((mix << 3) ^ (seed ^ mix)) % 255) - item;
-            }
-            if (mix > 830)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            Dropped,
+            New,
+            Active,
         }
     }
 }
