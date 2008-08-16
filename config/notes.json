@@ -1,16 +1,15 @@
 {
-  "cache_timeout_pct": false,
-  "compress": {
-    "base_retries_s": "local",
-    "session_retries": "edge",
-    "flush_threshold_count": {
-      "cache_window": false,
-      "max_window_s": "stable",
-      "window_retries": "eu-west",
-      "retry_size": 62.44
-    }
+  "verbose": {
+    "hard_window": "open",
+    "soft_retries": {
+      "burst_window_pct": true,
+      "max_window_pct": false,
+      "cache_interval": "latest"
+    },
+    "cluster_depth": "eu-west",
+    "dry_run": 500,
+    "sync_timeout_s": [184, 270, 30, 78]
   },
-  "poll_retries": true,
-  "batch_threshold": [375, 371, 465, 338],
-  "dry_run": 703
+  "soft_capacity_count": "cached",
+  "hard_limit_pct": 65.13
 }
