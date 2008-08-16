@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Paused,
-            Idle,
-            Closed,
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
