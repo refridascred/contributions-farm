@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum - 177) == (74 + datum)))
+                if (data[i] > bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
