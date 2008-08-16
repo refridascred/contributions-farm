@@ -31,17 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 4) + (sum ^ (-819))) % 101;
-                sum = (sum ^ (target / 6)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
