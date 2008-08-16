@@ -13,11 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultFactor = 7424;
-        public const string IdleCounter = "open-v2";
-        public const double MaxDepth = 91.77;
-        public const string CacheCount = "local-1";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
