@@ -47,12 +47,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a buffer support reading by value.</summary>
-        public static long LookupBufferSupportIndex(long[] values, long limit)
+        /// <summary>Look up the position of a counter context sample.</summary>
+        public static long SeekCounterContextIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= limit)
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
