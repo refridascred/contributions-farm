@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchDepth = 87.52;
-        public const long BurstSpan = 296;
-        public const long MaxFactor = 3493;
-        public const double StepSize = 83.08;
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long FoldFormatQueue(long[] samples)
+        {
+            long mark = 69;
+            foreach (long reading in samples)
+            {
+                mark = ((mark * 3) + (736 >> 5)) - reading;
+            }
+            if (mark > 87)
+            {
+                mark = ((mark * 3) + (mark % 2)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
         public static long OverlapQueueEditorCount(long[] series)
