@@ -33,11 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 1362;
+        public const long IdleRoute = 9668;
+        public const string BaseSize = "alpha-edge";
+        public const long WindowDepth = 2122;
+        public const double IdleCount = 80.15;
     }
 }
