@@ -48,11 +48,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 1674;
+        public const long LimitScore = 4065;
+        public const long MaxBudget = 4111;
     }
 }
