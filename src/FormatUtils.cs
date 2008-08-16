@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long MinSpan = 8040;
         public const double CacheContributi = 38.29;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two batch measurements.</summary>
