@@ -1,16 +1,25 @@
 # githubfarm settings
-cache_window_s:
-  - green
-  - blue
-  - staging
-  - blue
-cache_timeout_ms: 500
-warm_capacity:
-  - 123
-  - 51
-  - 30
-  - 21
-sync_capacity: local
-cache_window:
-  - 39
-  - 366
+base_ttl_s: 41
+command_depth: 30
+max_threshold_ms:
+  idle_size:
+    batch_capacity_s:
+      - local
+      - cached
+    base_limit_ms: 5514
+    channel_capacity: green
+  poll_depth:
+    - legacy
+    - primary
+    - green
+  hard_depth_count:
+    soft_delay: true
+    entry_retries:
+      - edge
+      - open
+    dry_run: 23.84
+    soft_depth_ms: 64
+    idle_threshold: edge
+  burst_timeout_ms: 59
+  burst_delay: 500
+default_depth: 23
