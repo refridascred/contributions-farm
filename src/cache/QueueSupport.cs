@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stream channel value.</summary>
-        public static double BlendStreamChannel(double scale, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            double rate = floor;
-            if (rate <= (rate * 3.12))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - rate) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return rate + (double)7;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
