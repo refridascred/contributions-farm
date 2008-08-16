@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 9050;
-        public const double RetryInterval = 33.86;
-        public const long CachePayload = 9191;
-        public const string SoftTimeout = "cached-edge";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Closed,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long floor)
