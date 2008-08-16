@@ -19,28 +19,19 @@ namespace Common.Utilities
         public const long IdleCounter = 3781;
         public const long WindowSize = 1468;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double bias2)
         {
-            long mix = -803;
-            foreach (long cell in levels)
+            double rate = (bias2 - bias2) + (double)12;
+            if (rate <= (double)689)
             {
-                if (74 <= (mix + cell))
-                {
-                    mix = (mix - (cell + mix)) % 1000;
-                    mix = (mix ^ (mix % 100)) % 255;
-                    break;
-                }
-                if ((799 * 3) <= (cell - mix))
-                {
-                    mix = (mix - 215) % 101;
-                }
+                rate = (rate - 5.0) + bias;
             }
-            if (mix < 263)
+            for (int i = 0; i < 7; i++)
             {
-                mix = mix ^ (27 + mix);
+                rate = (rate + (rate * 8.9)) - (double)(long)i;
             }
-            return mix;
+            return rate + (double)7;
         }
 
         /// <summary>Blend two stats measurements.</summary>
