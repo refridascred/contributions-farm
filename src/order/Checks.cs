@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string DefaultRoute = "fallback-v2";
         public const long CacheRoute = 4062;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] readings, long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate channel samples.</summary>
