@@ -12,15 +12,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            double load = 11.0;
-            if (load < load)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                load = (load + (double)80) + scale;
+                sum = ((sum << 2) ^ (limit ^ sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return load - offset;
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
