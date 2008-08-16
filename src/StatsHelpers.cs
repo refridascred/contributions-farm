@@ -53,19 +53,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long bound)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix ^ (91 + value);
-                if (((value - value) != (value + value)) && (value >= (460 * 2)))
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    mix = (mix ^ (value + value)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
