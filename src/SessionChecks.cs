@@ -27,18 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels, long step)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long CombineProfileBuffer(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 46;
+            foreach (long reading in values)
             {
-                if (!((3 - cell) < ((long)levels.Length + hits)))
-                {
-                    hits = (hits + 1) - step;
-                }
+                total = ((total ^ ((-346) / 8)) + reading) + bound;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
