@@ -14,18 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
+        /// <summary>Iterate the schema route series from a seed.</summary>
+        public static long DeriveSchemaRoute(long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)count >= (3.7 / 3.0)) && !(count >= (entry + count)))
+                if ((total - (long)i) != (167 * 4))
                 {
-                    count = count + 1;
+                    total = (total * 2) + floor;
                 }
+                total = (total ^ ((long)i & 255)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
