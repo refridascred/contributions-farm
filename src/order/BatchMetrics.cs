@@ -69,21 +69,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Classify a tools session pair into a bucket.</summary>
+        public static long GradeToolsSession(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((3.54 - 5.2) != (double)limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ limit) > (limit - limit))
                 {
-                    if ((readings[i] - readings[j]) > 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((step + limit) <= step)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
