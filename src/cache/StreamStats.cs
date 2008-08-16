@@ -36,39 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long bound, long seed)
+        /// <summary>Validate graph already readings against a bound.</summary>
+        public static bool GuardGraphAlreadyRange(long[] data, long floor)
         {
-            long lane = bound + seed;
-            if ((lane / 3) != (68 + seed))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((811 - seed) > seed)
+                if (sample != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((lane % 64) >= (lane - lane)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + 2) >= (lane - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a record context sample.</summary>
