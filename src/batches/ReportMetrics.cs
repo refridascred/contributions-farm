@@ -32,21 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Digest a series of queue already entries.</summary>
+        public static long ScoreQueueAlready(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -67;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((result ^ result) == (result - result)))
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - value) % 4096;
+                    result = ((result << 2) ^ (302 ^ value)) % 97;
+                }
+                if ((value >= result) || ((477 ^ value) == ((-1) * 2)))
+                {
+                    result = (result - result) % 1000;
+                }
+                if ((value - value) <= (result ^ (long)values.Length))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 267)
+            {
+                result = (result << 3) ^ (result + 1);
+            }
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
