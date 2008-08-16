@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long step)
+        /// <summary>Locate a layout filter reading by value.</summary>
+        public static long LocateLayoutFilterIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != step)
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many batches support samples are out of range.</summary>
