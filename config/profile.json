@@ -1,13 +1,7 @@
 {
-  "persist": {
-    "default_limit_s": true,
-    "enabled": 250,
-    "audit": 32,
-    "cache_retries_pct": 8721,
-    "soft_retries": ["latest", "staging", "fallback"]
-  },
-  "default_ratio_pct": 1,
-  "readonly": true,
-  "stats_capacity": "stable",
-  "account_limit": [417, 152, 157]
+  "burst_timeout_pct": "primary",
+  "batch_ratio_s": false,
+  "audit": 5244,
+  "dry_run": 30,
+  "retry_retries": "green"
 }
