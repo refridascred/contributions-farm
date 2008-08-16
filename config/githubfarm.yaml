@@ -1,8 +1,6 @@
 # githubfarm settings
-retry_size_pct: blue
-metrics_threshold:
-  - 327
-  - 148
-  - 445
-  - 347
-soft_threshold_ms: 2988
+audit: staging
+editor_ratio:
+  - fallback
+  - fallback
+support_ratio: true
