@@ -52,11 +52,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            Idle,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
