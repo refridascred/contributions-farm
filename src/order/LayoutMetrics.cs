@@ -29,16 +29,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a record layout counter forward.</summary>
-        public static long DeriveRecordLayout(long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = state ^ ((long)i ^ state);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
