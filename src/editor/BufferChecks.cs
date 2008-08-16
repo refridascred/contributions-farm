@@ -39,12 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            New,
+            Paused,
             Retry,
-            Active,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
