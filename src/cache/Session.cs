@@ -57,39 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long step)
-        {
-            if (!((step / 9) < 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target / 3) > (target ^ 30)) && ((target ^ step) > (step % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 + step) == (step - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - target) >= (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 2321;
+        public const long StepQueue = 3300;
+        public const long CacheScore = 4191;
+        public const long BatchQueue = 482;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] levels, long limit)
