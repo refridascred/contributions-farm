@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long AuditOrderAccountMatches(long[] values, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)matches >= (8.86 / 4.0))
-                {
-                    matches = ((matches + 1) + item) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Project the next token queue value.</summary>
