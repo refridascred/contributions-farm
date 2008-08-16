@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double scale, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double scale2 = (double)5 - (scale / 7.0);
-            if (scale2 >= (double)7)
-            {
-                scale2 = (scale2 + (scale2 / 9.0)) - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (double)649) + (double)(long)i;
-            }
-            return scale2 + (scale * 3.73);
+            Paused,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the order mode values.</summary>
