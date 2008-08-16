@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const long LimitBatch = 6932;
         public const double IdleBatch = 48.33;
 
-        /// <summary>Digest a series of tools contributi entries.</summary>
-        public static long TallyToolsContributi(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long carry = 313;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum << 2) != (carry + carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - (datum % 7);
-                }
-                else
-                {
-                    carry = carry ^ (carry ^ carry);
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return tally;
         }
     }
 }
