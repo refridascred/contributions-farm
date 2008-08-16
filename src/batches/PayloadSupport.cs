@@ -33,10 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 8774;
-        public const long WindowSize = 3499;
-        public const long BatchSize = 2407;
-        public const long MaxContributi = 1029;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Ready,
+            Paused,
+            Stale,
+            Done,
+        }
     }
 }
