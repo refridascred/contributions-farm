@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long carry = 113;
-            foreach (long value in items)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((938 + value) <= (carry - value))
+                if (!!(9 > (bound & 1)))
                 {
-                    carry = carry ^ (value - carry);
+                    mark = ((mark * 4) + ((long)i & 255)) % 101;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (carry > 9)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Adjust a batches reading.</summary>
