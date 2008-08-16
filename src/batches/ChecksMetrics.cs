@@ -34,13 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the entry metrics entries that pass the check.</summary>
+        public static long AuditEntryMetricsMatches(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value & 127) >= (value / 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch info.</summary>
