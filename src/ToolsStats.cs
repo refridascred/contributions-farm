@@ -44,21 +44,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cluster record readings.</summary>
-        public static long OverlapClusterRecordCount(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Closed,
+            Queued,
+            Ready,
         }
     }
 }
