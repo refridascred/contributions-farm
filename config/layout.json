@@ -1,5 +1,11 @@
 {
-  "dry_run": 30,
-  "poll_limit": 57,
-  "default_retries": false
+  "compress": 3703,
+  "readonly": {
+    "batch_capacity": 500,
+    "compress": 678,
+    "queue_timeout": 49
+  },
+  "idle_ttl_pct": ["local", "fallback"],
+  "max_depth_count": 250,
+  "retry_capacity_pct": "cached"
 }
