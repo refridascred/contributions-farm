@@ -52,15 +52,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long offset)
         {
-            double load = ratio;
-            if (load >= (9.98 - ratio))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                load = (load + (double)12) - span;
+                if (((long)values.Length / 7) <= reading)
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            return load - (double)332;
+            return matches;
         }
 
         /// <summary>Accumulate report batches samples.</summary>
