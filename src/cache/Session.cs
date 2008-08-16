@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long mark = 469;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (8.0 > (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (item & 7)) % 65521;
-                }
-                if ((double)item > 4.6)
-                {
-                    break;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Rank support input into a small class.</summary>
