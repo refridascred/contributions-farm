@@ -28,18 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((hits - hits) > 683)
+                if (cell <= limit)
                 {
-                    hits = (hits + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
