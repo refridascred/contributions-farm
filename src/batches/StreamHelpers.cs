@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long total = 4;
+            foreach (long sample in data)
             {
-                if ((double)target >= 6.75)
+                if ((total ^ (-59)) == (total * 5))
                 {
-                    hits = (hits + 3) ^ entry;
+                    total = (total - (target + 919)) + sample;
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
