@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] levels, long limit)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)datum <= (0.13 / 8.0)) && !(5.6 <= (double)count))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
