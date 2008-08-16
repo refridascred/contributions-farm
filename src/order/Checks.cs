@@ -42,26 +42,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long limit)
         {
-            long state = -4;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((21 & 31) < (seed / 8)) || (value >= 902))
+                if (series[i] > limit)
                 {
-                    state = state ^ (53 * 2);
-                }
-                else
-                {
-                    state = state ^ (seed - state);
+                    return (long)i;
                 }
             }
-            if (state < 932)
-            {
-                state = state - (seed ^ seed);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
