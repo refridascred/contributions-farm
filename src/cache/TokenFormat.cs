@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 8006;
-        public const double BatchProfile = 41.23;
-        public const long HardProfile = 2049;
-        public const double DefaultProfile = 13.34;
-        public const long WindowBudget = 2898;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] levels)
