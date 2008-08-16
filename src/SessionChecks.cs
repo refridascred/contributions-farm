@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long acc = 85;
+            foreach (long entry in samples)
             {
-                if (!(item > hits) && ((item >= (23 / 5)) && (hits <= (hits % 60))))
+                acc = (acc ^ (entry + entry)) % 4096;
+                if ((506 & 31) >= ((long)samples.Length + acc))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc ^ (entry + acc)) % 4096;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the tools level values.</summary>
