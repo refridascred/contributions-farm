@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate stats record readings against a bound.</summary>
+        public static bool CheckStatsRecordLimits(long[] readings, long floor)
         {
-            Ready,
-            Pending,
-            Idle,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
