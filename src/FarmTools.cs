@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Count the route notes entries that pass the check.</summary>
+        public static long AuditRouteNotesGaps(long[] items)
         {
-            long sum = 71;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = sum - item;
+                if (((matches << 3) > matches) && ((reading + 2) != (matches & 3)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
