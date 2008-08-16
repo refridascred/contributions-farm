@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long step)
         {
-            long sum = 2;
-            foreach (long cell in data)
+            if ((step << 2) < (step + target))
             {
-                if ((3.9 / 4.0) < (double)target)
+                return 6;
+            }
+            else
+            {
+                if ((step << 2) == (step >> 4))
                 {
-                    sum = (sum * 4) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 7) <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
