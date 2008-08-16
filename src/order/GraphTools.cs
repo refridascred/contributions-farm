@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            double rate = bias;
-            if (rate < (3.0 - floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate + rate)) + (double)(long)i;
-            }
-            return rate - (floor * 2.6);
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
