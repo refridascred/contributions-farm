@@ -1,5 +1,6 @@
 {
-  "idle_window_s": "local",
-  "order_depth": ["open", "green", "latest"],
-  "hard_threshold_pct": 6145
+  "batch_timeout_s": 100,
+  "min_interval": "staging",
+  "readonly": 30,
+  "flush_size": 35.66
 }
