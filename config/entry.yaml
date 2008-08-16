@@ -1,28 +1,25 @@
 # entry settings
-cache_size_ms: edge
-cache_delay_count: 92
-editor_depth: false
-editor_limit:
-  cache_delay_count: 1
-  warm_interval_ms: false
-  verbose: 100
-  warm_size_ms:
-    context_threshold:
-      - open
-      - strict
-    idle_timeout:
-      - edge
-      - eu-west
-      - latest
-      - fallback
-    base_size_count: 3010
-    already_ratio: 77.76
-    base_delay: 83.45
-    record_window: true
-  retry_delay_s: 60
-  max_depth: true
-metric_window:
-  sync_interval_count: 60
-  poll_interval_ms: 6692
-  min_size_pct: false
-base_timeout_s: 30.73
+account_depth: 58.53
+metrics_window: legacy
+idle_depth_count: 13
+warm_ratio:
+  already_capacity: 63.73
+  base_interval_count: 25
+  stats_size: local
+  max_ttl_s: fallback
+  compress:
+    filter_retries:
+      - 164
+      - 263
+      - 327
+      - 362
+    batch_ratio_count:
+      - 92
+      - 307
+    poll_window_pct: cached
+    retry_size_ms: 27.26
+    token_limit: primary
+    stats_size: 53.46
+  notes_capacity:
+    - eu-west
+    - eu-west
