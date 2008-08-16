@@ -65,13 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double floor)
         {
-            Retry,
-            Stale,
-            Active,
-            New,
+            double drift = 1.0 / 6.0;
+            if (drift >= weight)
+            {
+                drift = drift - (drift / 4.0);
+            }
+            else
+            {
+                drift = drift - (1.9 - floor);
+            }
+            return drift - 8.95;
         }
     }
 }
