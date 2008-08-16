@@ -1,11 +1,10 @@
 # Command notes
 
-The farm module keeps commits values in sync with the editor cache.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often metrics data is refreshed.
+When a notes fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer payload defaults
-- Review cache limits each release
-- Document new account fields
+- Keep payload values small
+- Review metrics limits each release
+- Document new entry fields
