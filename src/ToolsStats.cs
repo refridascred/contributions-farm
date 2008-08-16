@@ -38,15 +38,15 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const double IdleTools = 52.83;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            double bias2 = (double)(677 + 4);
-            if (bias2 < (weight / 2.0))
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                bias2 = bias2 + (double)594;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return bias2 - bias;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
