@@ -1,12 +1,12 @@
 {
-  "base_retries_ms": 9637,
-  "max_window": {
-    "flush_interval_s": "latest",
-    "sync_limit_count": 250,
-    "sync_window_s": 250,
-    "filter_retries": [254, 435],
-    "compress": true,
-    "enabled": 500
+  "persist": true,
+  "strict": {
+    "sync_window_pct": ["blue", "latest"],
+    "batch_retries": 9255,
+    "entry_depth": 100,
+    "default_ttl_ms": 7642
   },
-  "tools_ttl": 18.02
+  "notes_retries": "latest",
+  "githubfarm_size": 33.15,
+  "buffer_retries": 53.95
 }
