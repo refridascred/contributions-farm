@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Match up layout context samples.</summary>
+        public static long OverlapLayoutContextCount(long[] items)
         {
-            long sum = 5;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((((sum * 3) + 54) % 65521) ^ (long)i) ^ entry;
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = sum + (sum % 5);
-                sum = (sum ^ (sum + sum)) % 101;
             }
-            if (sum > (-371))
-            {
-                sum = (sum - (sum ^ sum)) % 65521;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
