@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a payload cache reading by value.</summary>
-        public static long LocatePayloadCacheIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 3001;
+        public const long LimitGraph = 7458;
+        public const long IdleGraph = 9080;
+        public const long LimitSpan = 1860;
+        public const long CacheGraph = 2130;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
