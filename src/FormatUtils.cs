@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit metrics window readings against a rule.</summary>
-        public static long AuditMetricsWindowHits(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((double)matches > 0.3) || ((double)reading == (double)matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Done,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Grade a contributi schema value against two limits.</summary>
