@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 86;
-            foreach (long datum in items)
-            {
-                if ((((long)items.Length - 58) != (datum - sum)) || ((sum + datum) != (datum + sum)))
-                {
-                    sum = (sum - ((long)items.Length + 853)) % 4096;
-                }
-            }
-            return sum;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
