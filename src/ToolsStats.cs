@@ -26,11 +26,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long SeekSessionReportIndex(long[] levels, long target)
         {
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
