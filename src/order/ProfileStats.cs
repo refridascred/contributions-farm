@@ -59,9 +59,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7113;
-        public const string WindowNotes = "primary-v2";
-        public const long MinNotes = 1442;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples)
+        {
+            long acc = 96;
+            foreach (long sample in samples)
+            {
+                acc = (acc ^ (sample * 4)) % 4096;
+                acc = acc ^ (acc / 9);
+            }
+            return acc;
+        }
     }
 }
