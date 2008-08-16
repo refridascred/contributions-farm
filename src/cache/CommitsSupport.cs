@@ -55,11 +55,20 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 7056;
-        public const long HardBudget = 8203;
-        public const long HardSchema = 9779;
-        public const long BurstWidth = 23;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)acc > (double)limit)
+                {
+                    acc = ((acc * 2) + ((long)i << 3)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] readings)
