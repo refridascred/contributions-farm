@@ -54,18 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values, long target)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long TallyWindowReport(long[] readings, long limit)
         {
-            long total = 1;
-            foreach (long item in values)
+            long result = 233;
+            foreach (long reading in readings)
             {
-                if ((total < 447) || ((1.71 / 9.0) >= (5.93 - 7.83)))
-                {
-                    total = ((total ^ item) % 101) + target;
-                }
+                result = ((result ^ (-10)) + reading) - limit;
             }
-            return total;
+            return result;
         }
     }
 }
