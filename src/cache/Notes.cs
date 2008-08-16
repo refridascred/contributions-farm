@@ -44,16 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Derive the next stats contributi value from a seed.</summary>
+        public static long SeriesStatsContributi(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry - ((long)i >> 3)) % 1000;
-                carry = ((carry * 5) + (long)i) % 65521;
+                mix = (mix + ((long)i - 3)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
     }
 }
