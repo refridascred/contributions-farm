@@ -47,32 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long seed)
-        {
-            if (!(2 <= (limit << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit >= (2.6 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed <= (limit % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 4311;
+        public const long RetryDepth = 7906;
+        public const long HardAlready = 7197;
+        public const string IdleSize = "cached-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "open";
