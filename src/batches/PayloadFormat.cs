@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] data, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((0.9 + 9.38) >= (double)matches)
-                {
-                    matches = ((matches + 2) ^ value) - step;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
