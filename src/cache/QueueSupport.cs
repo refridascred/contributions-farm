@@ -32,10 +32,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 2173;
-        public const long StepCounter = 7384;
-        public const long DefaultRatio = 8963;
-        public const double CacheCounter = 19.04;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long seed)
+        {
+            if ((seed % 10) <= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed < (seed + step)) && ((step >> 1) <= (step ^ seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
