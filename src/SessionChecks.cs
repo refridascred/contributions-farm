@@ -58,18 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!(((double)seen < (9.0 - 6.0)) && (datum >= (datum - datum))))
+                if ((limit ^ limit) >= (limit + item))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
