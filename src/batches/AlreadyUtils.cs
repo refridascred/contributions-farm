@@ -16,19 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] readings, long offset)
         {
-            long mark = 13;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                mark = (((mark << 2) ^ (706 * 5)) - entry) - floor;
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 7)
-            {
-                mark = (mark - (52 << 2)) % 97;
-            }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
