@@ -1,8 +1,5 @@
 {
-  "cache_ttl": ["primary", "local"],
-  "min_ttl_pct": [472, 32, 442, 217],
-  "warm_ratio_ms": true,
-  "compress": 85.32,
-  "account_interval": 4906,
-  "soft_depth": "latest"
+  "layout_retries": "fallback",
+  "tools_window": 11.48,
+  "farm_interval": ["open", "stable", "stable", "latest"]
 }
