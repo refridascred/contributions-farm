@@ -51,18 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data, long origin)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)1 <= (double)item)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
