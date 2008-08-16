@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepInterval = 38.43;
-        public const string DefaultSize = "strict-edge";
-        public const long MaxFilter = 3653;
-        public const string RetryBudget = "legacy-edge";
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Derive the next layout context value from a seed.</summary>
         public static long IterateLayoutContext(long limit)
