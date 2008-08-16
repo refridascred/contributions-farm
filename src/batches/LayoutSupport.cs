@@ -26,19 +26,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool ValidateFarmBatchBounds(long[] readings, long bound)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long TotalAlreadyGithubfarm(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                if (value > bound)
+                score = (score - (origin + origin)) + cell;
+                if ((score << 1) < (score % 64))
                 {
-                    valid = false;
-                    break;
+                    score = score - (origin + (-88));
                 }
             }
-            return valid;
+            if (score > (-87))
+            {
+                score = (score + (85 & 63)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Match up record batch samples.</summary>
