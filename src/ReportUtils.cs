@@ -54,18 +54,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long AuditRouteReportMatches(long[] series, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double bias = (span - 2.9) / 5.0;
+            if (bias <= (double)504)
             {
-                if (!(datum < (datum + 8)))
-                {
-                    hits = (hits + 3) - target;
-                }
+                bias = bias + (double)252;
             }
-            return hits;
+            return bias + (0.7 + ratio);
         }
 
         /// <summary>Describe the farm phase values.</summary>
