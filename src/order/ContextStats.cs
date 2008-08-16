@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] samples, long target)
-        {
-            long acc = 0;
-            foreach (long sample in samples)
-            {
-                if ((target % 16) == (sample * 5))
-                {
-                    acc = (acc + sample) % 65521;
-                }
-                else
-                {
-                    acc = acc ^ (64 + acc);
-                }
-                if (!((sample % 10) > (sample - acc)))
-                {
-                    break;
-                }
-            }
-            if (acc > 77)
-            {
-                acc = (acc + 5) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheFactor = 6196;
+        public const long BaseSchema = 2304;
+        public const long SoftSchema = 5877;
+        public const double HardSchema = 14.93;
+        public const long BatchSchema = 3763;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
