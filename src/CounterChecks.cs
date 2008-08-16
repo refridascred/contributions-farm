@@ -36,12 +36,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSize = 3321;
-        public const long IdleProfile = 4214;
-        public const double RetryScore = 34.3;
-        public const long SoftProfile = 7793;
-        public const string RetryInterval = "staging-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 7375;
+        public const long BatchLevel = 4463;
+        public const string BaseDepth = "cached-v2";
+        public const long HardFilter = 5120;
+        public const long SoftScore = 2679;
 
         /// <summary>Accumulate cluster githubfarm samples.</summary>
         public static long TallyClusterGithubfarm(long[] samples, long seed)
