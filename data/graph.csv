@@ -1,8 +1,6 @@
-id,ratio,level,owner
-1,654,86.04,72.28
-2,358,strict,868
-3,637,4,720
-4,17.3,914,primary
-5,11.46,81.31,strict
-6,84.67,70,open
-7,primary,525,586
+id,level
+1,strict
+2,blue
+3,431
+4,22.29
+5,10.76
