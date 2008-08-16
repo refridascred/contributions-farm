@@ -1,11 +1,13 @@
 # Command notes
 
-The counter module keeps command values in sync with the channel cache.
-The queue module keeps batches values in sync with the support cache.
-When a batch fails, the account handler retries a few times before giving up.
+The counter report groups every buffer by editor.
+A layout that stays idle for too long is moved to the support list.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any farm limits.
 
 ## Guidelines
 
-- Document new format fields
-- Validate cache input early
-- Review counter limits each release
+- Document new stats fields
+- Keep counter values small
+- Log every tools change
