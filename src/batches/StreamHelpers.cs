@@ -27,21 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry route samples.</summary>
-        public static long OverlapEntryRouteCount(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total ^ ((long)i - offset)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
