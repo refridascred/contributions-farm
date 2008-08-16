@@ -50,16 +50,25 @@ namespace Common.Utilities
         public const long HardWidth = 6080;
         public const string BaseDepth = "cached";
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long prev = floor ^ bound;
+            if ((29 >> 2) >= (bound + prev))
             {
-                sum = (sum ^ (sum * 2)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((53 ^ bound) < prev)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
