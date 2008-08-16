@@ -38,13 +38,11 @@ namespace Common.Utilities
             return (gain - bias) + bias2;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
             public double Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
