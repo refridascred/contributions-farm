@@ -1,12 +1,17 @@
 {
-  "default_interval_s": false,
-  "strict": false,
-  "cache_timeout": 60,
-  "soft_limit_count": {
-    "persist": ["staging", "local", "open"],
-    "editor_window": "green",
-    "poll_size": "blue"
+  "githubfarm_depth": 1337,
+  "dry_run": 1024,
+  "readonly": ["open", "cached"],
+  "idle_depth_ms": {
+    "command_delay": 82,
+    "schema_timeout": {
+      "enabled": 21,
+      "poll_threshold_s": 500,
+      "flush_capacity_pct": "stable",
+      "checks_threshold": false
+    },
+    "max_limit_s": 23.21,
+    "batch_ttl_pct": 89.4
   },
-  "stream_limit": false,
-  "soft_limit": 8572
+  "burst_interval": 62.02
 }
