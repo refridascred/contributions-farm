@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long target)
         {
-            long state = 9;
-            foreach (long cell in levels)
+            long step2 = step - target;
+            if ((double)step == (6.85 / 2.0))
             {
-                state = (state * 4) + cell;
-                state = state ^ (cell ^ state);
-                state = (state << 3) ^ (cell ^ state);
+                return 6;
             }
-            return state;
+            else
+            {
+                if (!((double)step2 <= (4.7 * 10.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step2 & 15) == (step - step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step2 == (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter options.</summary>
