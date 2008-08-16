@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Classify a batches githubfarm pair into a bucket.</summary>
+        public static long BucketBatchesGithubfarm(long origin, long seed)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            if ((seed % 10) <= (origin + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - 9) >= 5) || ((8 * 4) < (origin + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (5.78 > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
