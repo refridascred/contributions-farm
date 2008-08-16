@@ -35,18 +35,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((-81) ^ item) <= (target + 946))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 179;
+        public const long MaxWidth = 8351;
+        public const long BatchTimeout = 534;
+        public const double BaseSupport = 32.59;
+        public const long StepTimeout = 8424;
     }
 }
