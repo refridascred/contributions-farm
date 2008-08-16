@@ -46,12 +46,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up cluster batch samples.</summary>
+        public static long PairClusterBatchCount(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
