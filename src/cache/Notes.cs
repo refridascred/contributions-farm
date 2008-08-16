@@ -47,20 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor << 3) ^ floor;
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor - ((long)i2 - anchor);
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Adjust a cluster queue reading.</summary>
