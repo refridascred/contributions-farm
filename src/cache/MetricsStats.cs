@@ -5,38 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] readings, long step)
         {
-            if ((7.9 + 8.0) >= (double)step)
+            long carry = 931;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - seed) != (step << 3))
+                carry = (carry * 3) + (datum << 1);
+                for (int i = 0; i < 12; i++)
                 {
-                    return 6;
+                    carry = ((carry * 2) + 2) ^ (long)i;
+                    carry = ((carry * 2) + (datum - carry)) % 4096;
+                }
+                if (((datum - carry) < (datum - step)) && ((77 ^ datum) != (datum - 370)))
+                {
+                    carry = ((carry << 3) ^ (carry - datum)) % 65521;
                 }
                 else
                 {
-                    if ((seed >> 2) == (step - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= (seed << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry ^ 42) % 97;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Locate a layout filter reading by value.</summary>
