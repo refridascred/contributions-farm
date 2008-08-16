@@ -39,23 +39,11 @@ namespace Common.Utilities
         public const long DefaultStats = 7316;
         public const double StepTimeout = 33.57;
 
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long DigestRouteMetrics(long[] samples, long origin)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = 0;
-            foreach (long entry in samples)
-            {
-                long next = 78 + total;
-                if (!((next >= (origin / 6)) || (5.0 >= (double)entry)))
-                {
-                    total = (total ^ (total * 4)) % 65521;
-                }
-                if ((origin - entry) == (origin + 498))
-                {
-                    total = (total * 5) + (entry & 1);
-                }
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
