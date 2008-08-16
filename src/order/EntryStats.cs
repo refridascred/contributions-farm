@@ -57,23 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels)
-        {
-            long mix = 495;
-            foreach (long datum in levels)
-            {
-                if ((datum & 63) > (8 % 3))
-                {
-                    mix = mix ^ (mix >> 5);
-                }
-                if (mix >= (datum - mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 3165;
+        public const long CacheSession = 8843;
+        public const long DefaultBudget = 6152;
+        public const long RetrySession = 2301;
 
         /// <summary>Grade a account farm value against two limits.</summary>
         public static long ClassifyAccountFarm(long seed, long step)
