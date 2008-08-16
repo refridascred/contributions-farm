@@ -42,18 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches support samples are out of range.</summary>
-        public static long TallyBatchesSupportGaps(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (reading > (10 >> 1))
+                if ((value << 1) < (645 + origin))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a support stats.</summary>
