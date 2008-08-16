@@ -43,18 +43,13 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] items, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)step > 6.56)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
