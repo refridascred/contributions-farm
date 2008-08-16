@@ -61,20 +61,11 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)acc > (double)limit)
-                {
-                    acc = ((acc * 2) + ((long)i << 3)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 2644;
+        public const long RetryProfile = 9432;
+        public const long CacheFactor = 4441;
+        public const long HardProfile = 5423;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] readings)
