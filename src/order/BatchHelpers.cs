@@ -31,23 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema stats figure with a bias.</summary>
-        public static double SmoothSchemaStats(double gain, double floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long seed)
         {
-            double rate = (double)(632 - 339);
-            if (rate < (floor / 7.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (rate + 1.0);
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (floor * 5.3);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (double)(-2)) + (double)(long)i;
-            }
-            return rate - gain;
+            return -1;
         }
     }
 }
