@@ -34,12 +34,24 @@ namespace Common.Utilities
             return drift + (drift - scale);
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long step)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            if (!((bound + step) == (bound % 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (6.34 < (3.42 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
