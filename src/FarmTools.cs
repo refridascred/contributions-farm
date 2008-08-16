@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4450;
         public const long StepGithubfarm = 4093;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)(long)levels.Length >= (double)0)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinWidth = "open-1";
+        public const long RetryCounter = 2232;
+        public const double BurstCounter = 4.82;
+        public const long StepCounter = 2007;
+        public const long CacheDepth = 8174;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] levels, long origin)
