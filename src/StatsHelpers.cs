@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value * 2) < (seen * 4))
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
