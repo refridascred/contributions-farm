@@ -19,19 +19,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] series, long limit)
+        /// <summary>Compare every pair of batch buffer readings.</summary>
+        public static long CompareBatchBufferCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
