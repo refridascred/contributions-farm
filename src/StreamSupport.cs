@@ -27,11 +27,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long offset, long step)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            if (!((0.61 - 7.7) != (double)offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset + offset) > (643 + offset)) && ((double)offset > (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step <= offset) || ((double)step > (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
