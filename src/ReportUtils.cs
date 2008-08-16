@@ -27,26 +27,19 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Combine entry route values into a single score.</summary>
-        public static long FoldEntryRoute(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            long anchor = 3;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((reading & 7) == ((long)levels.Length + (-5)))
+                if (reading != seed)
                 {
-                    break;
-                }
-                if (anchor >= reading)
-                {
-                    anchor = (anchor + (anchor - anchor)) % 1000;
-                }
-                if (((reading + reading) <= (3 >> 3)) && ((7 << 3) > (anchor * 5)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the channel class values.</summary>
