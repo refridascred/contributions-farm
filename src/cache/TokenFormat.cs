@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "cached-edge";
-        public const double DefaultSpan = 87.48;
-        public const string StepLevel = "latest-edge";
-        public const long MaxCommits = 9242;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 8006;
+        public const double BatchProfile = 41.23;
+        public const long HardProfile = 2049;
+        public const double DefaultProfile = 13.34;
+        public const long WindowBudget = 2898;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] levels)
