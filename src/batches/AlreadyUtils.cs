@@ -46,19 +46,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale >= (6.0 / 9.0))
-            {
-                scale = (scale + (double)614) - rate;
-            }
-            else
-            {
-                scale = scale + (offset / 7.0);
-            }
-            return scale - scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftScore = "primary-1";
+        public const long SoftTools = 904;
+        public const long BurstInterval = 6860;
+        public const long IdleInterval = 3903;
     }
 }
