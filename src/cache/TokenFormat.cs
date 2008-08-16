@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long ScoreAlreadyStats(long[] items, long target)
-        {
-            long sum = 7;
-            foreach (long value in items)
-            {
-                if ((9 << 2) > sum)
-                {
-                    sum = ((sum ^ sum) ^ value) + target;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitSize = 40.82;
+        public const string SoftFactor = "cached-v2";
+        public const long WindowFarm = 9917;
+        public const long MinFarm = 2103;
+        public const long HardScore = 5189;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] readings)
