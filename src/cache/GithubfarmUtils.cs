@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long origin)
         {
-            double ratio = (weight * 1.0) - (5.3 + floor);
-            return ratio - (double)646;
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
