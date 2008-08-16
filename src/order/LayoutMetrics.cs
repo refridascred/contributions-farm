@@ -13,19 +13,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate schema channel readings against a bound.</summary>
-        public static bool GuardSchemaChannelBounds(long[] readings, long bound)
+        /// <summary>Classify a filter window pair into a bucket.</summary>
+        public static long ClassifyFilterWindow(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long step = limit - bound;
+            if (step <= limit)
             {
-                if (item < bound)
+                return 4;
+            }
+            else
+            {
+                if ((14.0 / 6.0) >= (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
