@@ -46,10 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4117;
-        public const double MaxSchema = 38.66;
-        public const long DefaultSchema = 1790;
-        public const double CacheSchema = 68.86;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + step) == (hits ^ step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
