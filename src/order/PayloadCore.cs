@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)hits > (6.9 + 7.0))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the checks session entries that pass the check.</summary>
