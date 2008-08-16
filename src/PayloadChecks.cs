@@ -78,19 +78,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report format entry stays within the limit.</summary>
-        public static bool VerifyReportFormatLimits(long[] readings, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (cell <= origin)
+                if ((count >> 3) < (1 + 77))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 3) + value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
