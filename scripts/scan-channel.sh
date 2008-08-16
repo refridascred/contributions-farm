@@ -6,22 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached blue edge standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
