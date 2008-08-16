@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleDepth = 1026;
-        public const long BurstWidth = 6033;
-        public const long RetryChannel = 2558;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 9731;
+        public const string HardLevel = "strict";
+        public const long StepStats = 508;
+        public const double HardBudget = 71.1;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long bound)
