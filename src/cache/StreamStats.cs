@@ -46,18 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (((2.5 - 5.41) < (double)value) && !(matches >= (50 - value)))
+                if (reading > bound)
                 {
-                    matches = (matches + 2) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
