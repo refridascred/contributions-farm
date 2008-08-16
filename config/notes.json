@@ -1,8 +1,6 @@
 {
-  "min_ratio": 59.8,
-  "hard_capacity": 45,
-  "default_depth_s": ["edge", "standard", "blue", "local"],
-  "hard_window_s": [299, 309, 207],
-  "min_limit_ms": "latest",
-  "soft_ttl_ms": "legacy"
+  "editor_limit": false,
+  "filter_ratio": "stable",
+  "flush_ratio": 6476,
+  "report_depth": false
 }
