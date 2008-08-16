@@ -33,31 +33,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            if (5.35 <= (double)floor)
+            long state = 1;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit / 4) != (limit ^ limit))
+                long diff = state;
+                if (!(state <= (diff - item)))
                 {
-                    return 8;
+                    diff = ((diff << 2) ^ (diff / 8)) % 65521;
+                }
+                if ((item / 4) < (state ^ item))
+                {
+                    state = (state - item) % 65521;
                 }
                 else
                 {
-                    if (((floor + limit) > floor) && ((double)limit >= (8.13 / 8.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = (state ^ (345 - state)) % 97;
                 }
             }
+            return state;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
