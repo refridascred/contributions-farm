@@ -1,13 +1,16 @@
 # Command notes
 
-Use record settings to tune how often cache data is refreshed.
-Run the stats check before changing any payload limits.
+The format report groups every window by batch.
+Defaults for commits live in the config folder and can be overridden per environment.
+Keep support and queue names short and lowercase.
 
-The queue report groups every schema by window.
-The session helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the commits check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate context input early
-- Document new commits fields
-- Keep notes values small
+- Review notes limits each release
+- Log every notes change
+- Prefer commits defaults
+- Validate filter input early
