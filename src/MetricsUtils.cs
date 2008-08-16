@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate context format readings against a bound.</summary>
-        public static bool GuardContextFormatLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 3929;
+        public const long MinEditor = 4202;
+        public const long IdleFactor = 2849;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] values, long limit)
