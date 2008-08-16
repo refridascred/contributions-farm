@@ -24,26 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] samples, long step)
         {
-            long score = 472;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (8.0 >= (double)item)
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    score = (score * 2) + (item ^ score);
-                }
-                if (!((item - score) >= ((-4) & 255)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 70)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
