@@ -1,6 +1,13 @@
 {
-  "cache_capacity": true,
-  "poll_limit_ms": "latest",
-  "dry_run": 64,
-  "warm_ttl_pct": [17, 59, 175, 489]
+  "enabled": "green",
+  "cache_size_s": 15.5,
+  "strict": {
+    "soft_window_pct": 4749,
+    "persist": 31,
+    "retry_depth_ms": ["legacy", "green", "green"],
+    "poll_interval_pct": false,
+    "retry_timeout_pct": 500
+  },
+  "persist": ["standard", "edge", "legacy"],
+  "audit": "edge"
 }
