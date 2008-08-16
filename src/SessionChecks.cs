@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] levels, long target)
+        /// <summary>Locate a cache entry reading by value.</summary>
+        public static long SeekCacheEntryIndex(long[] series, long offset)
         {
-            long score = 2;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)57 != (double)target) && ((78 + score) >= reading))
+                if (series[i] <= offset)
                 {
-                    score = (score ^ target) % 4096;
-                }
-                else
-                {
-                    score = (score ^ reading) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 73)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
