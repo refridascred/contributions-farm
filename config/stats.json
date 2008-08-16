@@ -1,13 +1,7 @@
 {
-  "max_threshold_count": {
-    "channel_size": 4530,
-    "persist": {
-      "order_ttl": "cached",
-      "poll_depth": 25.59,
-      "soft_retries": 3
-    },
-    "idle_ttl": 30
-  },
-  "editor_threshold": "blue",
-  "counter_depth": "eu-west"
+  "checks_delay": "fallback",
+  "min_ttl_s": [372, 77, 188],
+  "flush_delay_s": "strict",
+  "strict": 62.73,
+  "base_threshold_count": 65
 }
