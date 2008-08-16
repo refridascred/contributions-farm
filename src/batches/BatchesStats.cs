@@ -44,11 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double ratio, double offset)
-        {
-            double scale = offset;
-            return (scale + scale) + ratio;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepScore = 85.51;
+        public const double WindowWidth = 76.15;
+        public const string LimitBatches = "legacy";
+        public const long RetryBatches = 3305;
+        public const double BurstBudget = 50.93;
     }
 }
