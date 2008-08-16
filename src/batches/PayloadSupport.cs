@@ -33,21 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 14.0;
+            if (drift > offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - (drift / 8.0)) + bias;
             }
-            return seen;
+            else
+            {
+                drift = drift + (double)863;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)57) - (double)(long)i;
+            }
+            return drift - (drift / 8.0);
         }
     }
 }
