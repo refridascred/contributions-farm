@@ -1,12 +1,8 @@
 {
-  "burst_threshold_ms": "blue",
-  "format_ratio": false,
-  "base_delay_count": {
-    "batch_interval_ms": "standard",
-    "burst_ttl_ms": 28.17,
-    "cluster_ttl": "cached",
-    "burst_ratio": "blue"
-  },
-  "soft_retries_count": "staging",
-  "window_retries": "latest"
+  "cache_capacity_count": "strict",
+  "idle_threshold_pct": "fallback",
+  "hard_timeout_count": false,
+  "poll_depth_ms": 8.43,
+  "warm_depth": [205, 79, 150],
+  "min_size": "fallback"
 }
