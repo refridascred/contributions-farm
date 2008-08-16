@@ -27,19 +27,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((1 + item) >= seen) || ((seen << 1) < (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSpan = 20.82;
+        public const long SoftInterval = 2896;
+        public const string BurstDepth = "alpha-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 4661;
