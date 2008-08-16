@@ -1,7 +1,11 @@
 # githubfarm settings
-cache_depth:
-  - staging
-  - staging
-base_interval: 20.44
-batch_interval_count: 5627
-poll_timeout: 3617
+verbose: strict
+warm_interval_ms:
+  - 400
+  - 457
+graph_delay: 13
+tools_interval:
+  - open
+  - legacy
+  - stable
+  - legacy
