@@ -30,17 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (items[i] > target)
+                if ((99 & 3) < (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
