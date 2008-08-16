@@ -46,11 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 9321;
-        public const double WindowScore = 84.26;
-        public const string WindowCommits = "primary-edge";
-        public const double BaseCommits = 73.22;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowRatio = 1667;
+        public const long RetryBatches = 7445;
+        public const long IdleInterval = 5601;
+        public const double CacheBatches = 28.7;
 
         /// <summary>Blend two graph editor measurements.</summary>
         public static double AdjustGraphEditor(double gain, double span)
