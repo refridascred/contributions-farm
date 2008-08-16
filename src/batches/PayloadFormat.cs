@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] data, long step)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((0.9 + 9.38) >= (double)matches)
+                {
+                    matches = ((matches + 2) ^ value) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream level values.</summary>
