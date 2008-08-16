@@ -37,13 +37,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            Paused,
-            Failed,
-            Active,
-            Done,
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state + (origin << 2);
+                state = state ^ (state / 4);
+                state = (state ^ origin) % 65521;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the already status values.</summary>
