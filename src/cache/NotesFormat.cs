@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (weight - 8.0) + weight;
+            if (bias < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - 7.72;
             }
-            return seen;
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (bias / 7.0)) - (double)(long)i;
+            }
+            return bias + (floor / 2.0);
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
