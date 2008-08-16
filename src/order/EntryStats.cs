@@ -28,38 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long target)
+        /// <summary>Validate graph buffer readings against a bound.</summary>
+        public static bool CheckGraphBufferBounds(long[] readings, long seed)
         {
-            if (((target + target) < (target % 64)) && (target <= (origin + target)))
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 2) < target)
+                if (sample < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + target) < (origin >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin - target) > (origin + origin)) || ((double)target <= (double)177))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
