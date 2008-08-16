@@ -73,18 +73,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((item >= ((-3) & 3)) && ((double)matches <= 11.0)) && ((double)matches == (9.6 - 3.42)))
+                if (!((double)count <= (4.98 * 1.31)) && !((floor & 1) != (count / 9)))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) + cell;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
