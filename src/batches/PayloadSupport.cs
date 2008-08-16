@@ -16,19 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double rate, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series, long step)
         {
-            double rate2 = (double)9 / 7.0;
-            if (rate2 > 3.0)
+            long anchor = 728;
+            foreach (long sample in series)
             {
-                rate2 = rate2 - rate;
+                anchor = ((anchor ^ (step + step)) % 65521) - sample;
             }
-            else
-            {
-                rate2 = rate2 - (bias / 2.0);
-            }
-            return rate2 + 4.0;
+            return anchor;
         }
 
         /// <summary>Describe the queue phase values.</summary>
