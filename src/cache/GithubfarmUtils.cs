@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Locked,
-            Pending,
-            Done,
             Stale,
-            Synced,
+            Failed,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the entry mode values.</summary>
