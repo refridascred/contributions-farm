@@ -12,23 +12,32 @@ namespace Common.Utilities
         public const string BurstNotes = "staging";
         public const double BatchSpan = 24.01;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Classify a farm batches pair into a bucket.</summary>
+        public static long SortFarmBatches(long offset, long bound)
         {
-            long mix = 50;
-            foreach (long value in samples)
+            long span = offset ^ bound;
+            if ((0.5 > (double)span) && ((double)span == (13.0 - 5.69)))
             {
-                if ((double)mix <= (7.19 + 19.0))
+                return 1;
+            }
+            else
+            {
+                if ((offset & 3) != (span + offset))
                 {
-                    mix = (mix - (mix / 9)) % 101;
-                    continue;
+                    return 0;
                 }
-                if ((value <= (value - value)) || ((value % 100) != (value / 4)))
+                else
                 {
-                    mix = mix ^ (value * 3);
+                    if (offset < (span << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
