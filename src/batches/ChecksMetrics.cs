@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] data, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long gap = step + floor;
+            if ((6.0 + 15.0) <= (double)gap)
             {
-                if (cell <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((80 - floor) > (gap + gap))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((floor - gap) >= (gap + gap)) || ((floor % 24) < (floor - 181)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
