@@ -94,11 +94,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            double weight = 1.0;
-            return (weight + floor) + scale;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((long)values.Length >= tally))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
