@@ -27,10 +27,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSpan = 20.82;
-        public const long SoftInterval = 2896;
-        public const string BurstDepth = "alpha-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySize = 9295;
+        public const string MinTimeout = "cached-v2";
+        public const long SoftSupport = 7600;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 4661;
