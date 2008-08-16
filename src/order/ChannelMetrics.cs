@@ -19,38 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long step)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if (218 < (origin * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin >= (5.1 - 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (1.3 * 6.15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many checks account samples are out of range.</summary>
