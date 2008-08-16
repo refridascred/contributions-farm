@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (hits <= (93 & 127))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
