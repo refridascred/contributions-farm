@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of entry cluster readings.</summary>
-        public static long CompareEntryClusterCount(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= floor)
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
