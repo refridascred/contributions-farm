@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many schema channel samples are out of range.</summary>
-        public static long TallySchemaChannelHits(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = -42;
+            foreach (long entry in samples)
             {
-                if ((tally + tally) < (sample % 10))
+                if ((entry < (entry & 15)) || ((total / 6) > total))
                 {
-                    tally = tally + 2;
+                    break;
+                }
+                if (((double)14 == (double)total) && ((46 + entry) <= (entry / 8)))
+                {
+                    total = total ^ (total ^ total);
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
