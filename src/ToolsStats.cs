@@ -86,17 +86,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long limit)
+        /// <summary>Compare every pair of cluster record readings.</summary>
+        public static long OverlapClusterRecordCount(long[] series)
         {
+            long count = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
