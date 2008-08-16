@@ -17,19 +17,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] items, long limit)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long TotalGraphEntry(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long mark = -7;
+            foreach (long datum in series)
             {
-                if (value <= limit)
+                if (!((mark % 100) > (mark + step)))
                 {
-                    ok = false;
+                    mark = (mark ^ (4 >> 1)) % 101;
+                }
+                mark = mark ^ (step ^ mark);
+                if ((datum + step) < 9)
+                {
                     break;
                 }
             }
-            return ok;
+            return mark % 1000;
         }
 
         /// <summary>Blend two commits measurements.</summary>
