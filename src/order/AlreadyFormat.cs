@@ -29,19 +29,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Locate a format entry reading by value.</summary>
+        public static long LookupFormatEntryIndex(long[] items, long offset)
         {
-            long mix = 24;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (value & 1);
-                if (((double)value > (double)mix) || ((5.0 - 15.0) != (double)value))
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix + (mix * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
