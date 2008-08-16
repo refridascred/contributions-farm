@@ -108,13 +108,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long state = 1;
+            foreach (long reading in series)
+            {
+                state = state ^ (122 * 2);
+                state = state - (690 ^ state);
+                state = (state - (reading - reading)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi options.</summary>
