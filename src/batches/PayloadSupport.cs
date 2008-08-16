@@ -16,12 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 6997;
-        public const long LimitScore = 8375;
-        public const string BurstCounter = "legacy-edge";
-        public const string IdleTimeout = "open";
-        public const long WindowCounter = 2406;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double rate, double bias)
+        {
+            double rate2 = (double)9 / 7.0;
+            if (rate2 > 3.0)
+            {
+                rate2 = rate2 - rate;
+            }
+            else
+            {
+                rate2 = rate2 - (bias / 2.0);
+            }
+            return rate2 + 4.0;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
