@@ -32,18 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((item << 1) <= ((long)items.Length % 2))
+                if (item < target)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
