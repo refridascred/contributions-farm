@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long HardContext = 4770;
         public const double IdleContext = 70.17;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values, long target)
         {
-            long carry = 0;
-            foreach (long reading in readings)
+            long total = 1;
+            foreach (long item in values)
             {
-                if ((carry + carry) >= carry)
+                if ((total < 447) || ((1.71 / 9.0) >= (5.93 - 7.83)))
                 {
-                    carry = ((carry ^ reading) % 65521) + offset;
+                    total = ((total ^ item) % 101) + target;
                 }
             }
-            return carry;
+            return total;
         }
     }
 }
