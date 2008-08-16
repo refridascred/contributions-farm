@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const double CacheRecord = 10.2;
         public const double LimitRecord = 59.5;
 
-        /// <summary>Count already window pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyWindowCount(long[] data)
+        /// <summary>Look up the position of a already buffer sample.</summary>
+        public static long FindAlreadyBufferIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
