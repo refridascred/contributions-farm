@@ -1,6 +1,12 @@
 # githubfarm settings
-audit: staging
-editor_ratio:
-  - fallback
-  - fallback
-support_ratio: true
+burst_retries_ms:
+  - legacy
+  - green
+  - green
+  - cached
+entry_timeout: false
+retry_limit_count:
+  - staging
+  - eu-west
+buffer_interval: 11.81
+warm_interval_ms: false
