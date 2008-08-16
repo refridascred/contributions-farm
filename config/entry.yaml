@@ -1,10 +1,15 @@
 # entry settings
-default_window_count: stable
-sync_ratio:
-  - staging
-  - latest
-commits_ratio:
-  - green
-  - primary
-  - strict
-  - local
+warm_size_pct: 68.32
+retry_size: cached
+min_retries: legacy
+metrics_timeout:
+  base_ttl: staging
+  already_timeout:
+    session_ratio: 35.05
+    flush_window: false
+    already_threshold: 33.26
+    burst_interval_s: true
+    base_window_pct: 72.3
+  route_threshold: strict
+  default_size_s: 100
+  max_ratio: green
