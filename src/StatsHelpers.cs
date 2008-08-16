@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (series[i] >= offset)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
