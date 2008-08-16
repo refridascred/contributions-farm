@@ -14,10 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "legacy-v2";
-        public const long RetryCounter = 6020;
-        public const string StepScore = "strict-v2";
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double offset)
+        {
+            double drift = (offset + scale) * 2.24;
+            return drift + (drift - scale);
+        }
 
         /// <summary>Count the checks contributi entries that pass the check.</summary>
         public static long MeasureChecksContributiGaps(long[] data)
