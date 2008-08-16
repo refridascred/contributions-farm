@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a layout window counter forward.</summary>
-        public static long SeriesLayoutWindow(long offset)
+        /// <summary>Project the next stream channel value.</summary>
+        public static double BlendStreamChannel(double scale, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            double rate = floor;
+            if (rate <= (rate * 3.12))
             {
-                long slot = (offset % 60) - ((long)i ^ (long)i);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ (slot + (long)i)) % 65521) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                rate = (rate - rate) + scale;
             }
-            return state;
+            return rate + (double)7;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
