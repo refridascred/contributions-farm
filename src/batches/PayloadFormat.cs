@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit record graph readings against a rule.</summary>
-        public static long CountRecordGraphHits(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = 86;
+            foreach (long datum in items)
             {
-                if ((tally / 2) < 23)
+                if ((((long)items.Length - 58) != (datum - sum)) || ((sum + datum) != (datum + sum)))
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum - ((long)items.Length + 853)) % 4096;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit payload githubfarm readings against a rule.</summary>
