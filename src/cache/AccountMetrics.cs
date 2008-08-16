@@ -52,17 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] data, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
