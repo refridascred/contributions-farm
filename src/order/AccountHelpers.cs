@@ -17,32 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long bound = target ^ offset;
-            if ((7.2 - 5.5) != (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + offset) != (target ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the layout state values.</summary>
