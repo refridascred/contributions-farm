@@ -29,19 +29,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a buffer notes counter forward.</summary>
-        public static long RollBufferNotes(long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long floor, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long offset = floor + target;
+            if (!(offset >= (floor - floor)))
             {
-                if ((long)i < (acc << 2))
-                {
-                    acc = (acc ^ (acc + 61)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((floor >> 2) < target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 60) == (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
