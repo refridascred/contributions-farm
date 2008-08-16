@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=318
+CHANNEL_LIMIT=146
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in eu-west green primary; do
+for item in open eu-west legacy strict; do
     log "checking ${item}"
 done
