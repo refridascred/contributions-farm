@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const string CacheChannel = "standard-v2";
         public const long MinInterval = 6473;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count session record pairs that satisfy a relation.</summary>
+        public static long OverlapSessionRecordCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
