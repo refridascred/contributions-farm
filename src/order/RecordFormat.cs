@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long origin)
+        /// <summary>Scale a route profile figure with a bias.</summary>
+        public static double BlendRouteProfile(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (bias + gain) - 6.0;
+            if (scale < (double)517)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
