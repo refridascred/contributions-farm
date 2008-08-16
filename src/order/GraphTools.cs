@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            New,
-            Synced,
-            Stale,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 1114;
+        public const long CacheLayout = 8117;
+        public const long StepScore = 1295;
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
         public static long AuditGithubfarmCommandOutliers(long[] values)
