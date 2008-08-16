@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "cached-edge";
-        public const long DefaultChecks = 7552;
-        public const long CacheChecks = 1147;
-        public const long BurstInterval = 7235;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double offset)
+        {
+            double weight2 = (double)4;
+            if (weight2 >= weight)
+            {
+                weight2 = (weight2 - (weight * 18.0)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (weight2 * 20.0)) + (double)(long)i;
+            }
+            return weight2 + (weight + weight2);
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] data)
