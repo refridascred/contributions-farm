@@ -1,8 +1,7 @@
-id,score,label,ratio,active
-1,78.53,701,86.33,335
-2,899,590,local,legacy
-3,548,49.27,latest,blue
-4,edge,90.67,26.75,74.26
-5,710,strict,463,stable
-6,282,62.5,latest,870
-7,strict,569,164,eu-west
+id,owner,ratio
+1,60.41,blue
+2,29.1,73.25
+3,807,80.03
+4,588,257
+5,952,213
+6,18.24,580
