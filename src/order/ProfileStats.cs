@@ -31,15 +31,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series, long limit)
+        /// <summary>Grade a channel contributi value against two limits.</summary>
+        public static long RankChannelContributi(long origin, long bound)
         {
-            long result = -2;
-            foreach (long cell in series)
+            long slot = origin - bound;
+            if (((slot * 4) >= (slot - bound)) || ((bound + bound) > (slot - origin)))
             {
-                result = (((result - ((-294) + result)) % 255) + cell) + limit;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((bound % 12) <= (bound - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1 % 7) > (slot % 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
