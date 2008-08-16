@@ -55,11 +55,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheBudget = 29.76;
-        public const long WindowBudget = 763;
-        public const string HardTimeout = "stable-edge";
-        public const long MinSize = 2475;
-        public const string MaxCount = "strict-1";
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
