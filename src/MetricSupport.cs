@@ -39,38 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long seed2)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            if (seed <= (seed2 ^ seed2))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 + seed) <= (seed2 - 93))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed2 % 60) == (seed2 / 4))
+                    if ((values[i] + values[j]) == 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 + seed2) > (seed - seed2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
