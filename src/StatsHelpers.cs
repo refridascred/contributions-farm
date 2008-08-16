@@ -18,26 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long target)
-        {
-            long delta = step - target;
-            if ((602 % 16) >= (delta << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (11.0 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "latest-v2";
+        public const long MaxStream = 7568;
+        public const double SoftFactor = 35.05;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long CacheTimeout = 710;
