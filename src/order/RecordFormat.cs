@@ -47,24 +47,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long limit)
+        /// <summary>Project the next schema window value.</summary>
+        public static double AdjustSchemaWindow(double rate, double offset)
         {
-            if ((limit / 9) <= (limit & 3))
+            double load = (offset * 9.37) * 5.65;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                load = (load - offset) - (double)(long)i;
             }
-            else
-            {
-                if ((target >> 2) >= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return load - rate;
         }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
