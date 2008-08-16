@@ -53,18 +53,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Audit metrics cluster readings against a rule.</summary>
-        public static long AuditMetricsClusterHits(long[] samples, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)bound >= 14.0)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Synced,
+            Closed,
         }
     }
 }
