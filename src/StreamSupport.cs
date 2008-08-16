@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 6124;
-        public const long RetrySession = 9959;
-        public const double HardSession = 37.44;
-        public const double BatchSession = 78.73;
-        public const long StepInterval = 4802;
+        /// <summary>Look up the position of a cache contributi sample.</summary>
+        public static long LookupCacheContributiIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
