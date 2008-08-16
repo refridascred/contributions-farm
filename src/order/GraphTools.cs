@@ -29,19 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] items, long origin)
+        /// <summary>Count the queue buffer entries that pass the check.</summary>
+        public static long AuditQueueBufferGaps(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= origin)
+                if ((133 % 100) <= (hits + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) - entry) - target;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
