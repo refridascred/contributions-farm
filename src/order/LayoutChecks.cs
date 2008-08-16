@@ -44,14 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long step)
         {
-            Closed,
-            Retry,
-            New,
-            Active,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a session report sample.</summary>
