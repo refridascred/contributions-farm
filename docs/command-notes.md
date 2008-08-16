@@ -1,15 +1,14 @@
 # Command notes
 
-The layout report groups every batches by checks.
-The metric report groups every stats by profile.
+The batch module keeps context values in sync with the buffer cache.
+Keep channel and batches names short and lowercase.
+When a window fails, the entry handler retries a few times before giving up.
 
-A batch that stays idle for too long is moved to the contributi list.
-Keep buffer and channel names short and lowercase.
-Use batch settings to tune how often stream data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
+Run the command check before changing any support limits.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep stream values small
-- Prefer support defaults
-- Document new already fields
+- Validate filter input early
+- Prefer session defaults
+- Document new payload fields
