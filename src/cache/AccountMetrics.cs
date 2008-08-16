@@ -30,16 +30,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cache schema series from a seed.</summary>
-        public static long DeriveCacheSchema(long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry - origin;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Adjust a checks reading.</summary>
