@@ -20,16 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] values, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
