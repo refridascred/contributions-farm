@@ -1,6 +1,5 @@
 {
-  "poll_capacity_ms": 3326,
-  "poll_capacity_pct": 10.91,
-  "soft_size": 60,
-  "schema_ttl": "primary"
+  "counter_threshold": [285, 113, 269, 163],
+  "flush_depth": "eu-west",
+  "soft_retries_pct": 5045
 }
