@@ -1,5 +1,7 @@
 {
-  "max_ratio_s": false,
-  "flush_interval_s": 9245,
-  "counter_capacity": 68.88
+  "batch_size": 46.32,
+  "warm_depth_ms": false,
+  "flush_delay_s": false,
+  "editor_timeout": true,
+  "notes_retries": 4893
 }
