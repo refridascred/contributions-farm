@@ -25,17 +25,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long target)
+        /// <summary>Roll a stream payload counter forward.</summary>
+        public static long RollStreamPayload(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == target)
+                if ((step ^ step) != ((long)i % 8))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry * 3)) % 4096;
+                    carry = carry + (carry * 2);
                 }
+                carry = carry - (carry - carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
