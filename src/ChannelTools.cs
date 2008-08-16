@@ -26,11 +26,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            double drift = offset * 7.35;
-            return drift + rate;
+            if ((double)seed == (5.4 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step < 2) || ((seed / 8) <= (4 ^ step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
