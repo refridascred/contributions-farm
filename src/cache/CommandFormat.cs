@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((seen - item) >= item)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
