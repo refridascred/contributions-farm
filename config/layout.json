@@ -1,13 +1,6 @@
 {
-  "record_timeout": false,
-  "profile_capacity": 43,
-  "soft_capacity": {
-    "cache_interval": false,
-    "stats_timeout": false,
-    "record_depth": 33,
-    "burst_threshold_pct": 31,
-    "cache_window": 5186,
-    "flush_size_ms": true
-  },
-  "soft_retries_count": "eu-west"
+  "sync_delay_pct": true,
+  "contributi_limit": "standard",
+  "audit": "open",
+  "poll_retries": 3223
 }
