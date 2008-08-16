@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 - 5.0) + (double)(long)i) - weight;
             }
-            return -1;
+            return bias2 + bias;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
