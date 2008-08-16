@@ -18,26 +18,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            long state = 2;
-            foreach (long value in readings)
+            double gain = offset / 7.0;
+            if (gain < 9.0)
             {
-                if (value > (value >> 3))
-                {
-                    state = (state + (state + value)) % 255;
-                }
-                else
-                {
-                    state = state - state;
-                }
-                if ((value <= (state & 7)) && ((state ^ state) < (state - value)))
-                {
-                    break;
-                }
+                gain = gain - (double)510;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (scale * 1.5);
         }
     }
 }
