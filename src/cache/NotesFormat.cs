@@ -28,25 +28,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long lane = offset - limit;
-            if (((13.0 * 4.0) != (double)lane) || ((lane + lane) < (offset - lane)))
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 100) > (lane << 1))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 0;
+                    mix = (mix ^ (649 ^ (long)i)) ^ (long)i2;
+                    mix = (mix * 5) + step;
                 }
-                else
-                {
-                    return 6;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
