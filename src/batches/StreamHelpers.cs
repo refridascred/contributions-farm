@@ -14,38 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long origin, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] items, long step)
         {
-            if ((double)bound <= (2.0 - 7.0))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (bound ^ bound))
+                if ((4.53 * 10.0) >= (double)step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((364 + origin) >= (origin % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((658 & 255) >= (origin + 659)) && ((double)origin > (double)bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
