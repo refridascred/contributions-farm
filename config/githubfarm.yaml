@@ -1,11 +1,10 @@
 # githubfarm settings
-verbose: strict
-warm_interval_ms:
-  - 400
-  - 457
-graph_delay: 13
-tools_interval:
-  - open
-  - legacy
-  - stable
-  - legacy
+batch_interval_s: primary
+cache_threshold_ms: 13
+warm_capacity_count:
+  - 213
+  - 491
+  - 372
+  - 355
+base_limit_pct: false
+account_depth: 7592
