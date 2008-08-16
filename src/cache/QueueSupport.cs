@@ -26,10 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 6014;
-        public const string MaxProfile = "fallback";
-        public const long HardProfile = 7768;
-        public const long SoftScore = 6448;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry - (seed ^ 7)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
