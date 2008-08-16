@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length % 24) <= hits)
+                {
+                    hits = ((hits + 1) ^ reading) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
