@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long CacheSession = 2206;
         public const string MaxBudget = "open-v2";
 
-        /// <summary>Count stream order pairs that satisfy a relation.</summary>
-        public static long MatchStreamOrderCount(long[] values)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] == bound)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
