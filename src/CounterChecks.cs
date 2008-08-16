@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] items, long limit)
         {
-            double bias = 3.7 / 7.0;
-            if (bias < bias)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                bias = (bias - bias) - offset;
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias + gain;
+            return flag;
         }
 
         /// <summary>Digest a series of metrics buffer entries.</summary>
