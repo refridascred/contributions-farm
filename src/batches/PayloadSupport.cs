@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long bound2 = seed - bound;
+            if ((bound / 3) != (bound2 + bound2))
             {
-                if ((double)count < 4.0)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound2 < (19.0 + 8.0))
                 {
-                    count = ((count + 3) - sample) - seed;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound - seed) == (898 ^ (-645))) && ((20 ^ seed) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >= (bound2 / 3)) || ((6 + bound2) < (bound2 * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
