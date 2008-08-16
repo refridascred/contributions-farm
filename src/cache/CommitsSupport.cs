@@ -25,11 +25,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 60.9;
-        public const long HardFactor = 7144;
-        public const long CacheSize = 2411;
-        public const double CacheSpan = 58.97;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a order farm figure with a bias.</summary>
         public static double BlendOrderFarm(double weight, double floor)
