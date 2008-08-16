@@ -16,22 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data, long floor)
         {
-            long result = 461;
-            foreach (long cell in values)
+            long mix = 82;
+            foreach (long value in data)
             {
-                if (!!(result <= (cell ^ cell)))
+                if (((floor / 2) < (value + mix)) || ((mix + value) != (value ^ floor)))
                 {
-                    result = result - (cell % 5);
-                }
-                if ((result < cell) && ((cell + 95) <= (90 / 5)))
-                {
-                    result = (result ^ (cell - cell)) % 101;
+                    mix = ((mix << 3) ^ (mix << 3)) % 97;
                 }
             }
-            return result;
+            if (mix < 906)
+            {
+                mix = (mix + (-470)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
