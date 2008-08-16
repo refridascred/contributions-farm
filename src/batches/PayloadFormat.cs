@@ -19,18 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload githubfarm readings against a rule.</summary>
-        public static long MeasurePayloadGithubfarmOutliers(long[] readings, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (!((8.26 * 7.0) >= (double)step))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
