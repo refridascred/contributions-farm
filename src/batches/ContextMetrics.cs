@@ -58,11 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stream metric reading.</summary>
-        public static double ScaleStreamMetric(double ratio, double floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double load = (double)21 / 7.0;
-            return ((load + (double)57) + ratio) + floor;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
