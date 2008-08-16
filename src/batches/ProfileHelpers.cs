@@ -110,13 +110,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Locked,
-            Active,
-            Draft,
-            Closed,
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
