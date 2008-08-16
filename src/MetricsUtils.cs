@@ -20,12 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Pending,
             Failed,
-            Retry,
+            Draft,
+            Ready,
             Done,
         }
 
