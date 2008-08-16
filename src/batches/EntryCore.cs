@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseScore = 68.27;
-        public const long WindowOrder = 913;
-        public const long MaxOrder = 7489;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadMatches(long[] series)
