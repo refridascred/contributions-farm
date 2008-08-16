@@ -53,12 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7693;
-        public const double MaxSpan = 66.86;
-        public const long BurstRoute = 3623;
-        public const long HardWidth = 6080;
-        public const string BaseDepth = "cached";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] series)
+        {
+            long acc = 44;
+            foreach (long reading in series)
+            {
+                acc = ((acc * 3) + (acc % 24)) ^ reading;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long floor, long bound)
