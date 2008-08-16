@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 9731;
-        public const string HardLevel = "strict";
-        public const long StepStats = 508;
-        public const double HardBudget = 71.1;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "standard-v2";
+        public const long IdleMetric = 7500;
+        public const long LimitFactor = 54;
+        public const long StepMetric = 6100;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
