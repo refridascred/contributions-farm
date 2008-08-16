@@ -27,39 +27,26 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long seed)
+        /// <summary>Combine entry route values into a single score.</summary>
+        public static long FoldEntryRoute(long[] levels)
         {
-            long next = floor - seed;
-            if (floor <= (next ^ floor))
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.5 / 5.0) == (double)seed)
+                if ((reading & 7) == ((long)levels.Length + (-5)))
                 {
-                    return 0;
+                    break;
                 }
-                else
+                if (anchor >= reading)
                 {
-                    if ((7 >> 5) > (seed * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.93 * 7.76) < (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor + (anchor - anchor)) % 1000;
+                }
+                if (((reading + reading) <= (3 >> 3)) && ((7 << 3) > (anchor * 5)))
+                {
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the filter mode values.</summary>
