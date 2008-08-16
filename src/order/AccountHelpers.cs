@@ -76,20 +76,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long TallyLayoutFilterHits(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                sum = sum - (sum * 5);
-                if ((6.0 + 19.0) != (double)floor)
+                if ((reading * 4) < (tally / 8))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
