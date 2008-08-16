@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Find the first support counter entry that matches the target.</summary>
+        public static long LocateSupportCounterIndex(long[] levels, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((anchor >> 5) != ((-563) << 1)))
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
                 {
-                    anchor = anchor + (7 << 2);
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
