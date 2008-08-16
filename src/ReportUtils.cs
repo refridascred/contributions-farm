@@ -80,18 +80,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the filter cache entries that pass the check.</summary>
-        public static long CountFilterCacheGaps(long[] readings, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((double)offset >= 18.0)
             {
-                if ((double)seed > (0.39 - 8.9))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 5) != (limit ^ limit))
                 {
-                    seen = (seen + 3) - reading;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
