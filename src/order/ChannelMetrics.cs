@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long step)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum != (1.19 - 6.4))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - step;
                 }
             }
             return hits;
