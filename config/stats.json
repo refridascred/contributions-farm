@@ -1,6 +1,15 @@
 {
-  "filter_ttl": "blue",
-  "readonly": 20,
-  "verbose": 50,
-  "filter_threshold": 74
+  "metrics_depth": "eu-west",
+  "counter_ttl": 250,
+  "idle_ttl_ms": {
+    "cache_limit_pct": {
+      "max_ratio": ["standard", "green", "legacy"],
+      "layout_size": 80.44,
+      "retry_capacity_ms": 1998,
+      "stats_limit": [405, 396, 405, 378]
+    },
+    "contributi_window": "primary",
+    "stream_ratio": "stable"
+  },
+  "enabled": "cached"
 }
