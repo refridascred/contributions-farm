@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Active,
-            Closed,
-            Pending,
-            Idle,
-            Done,
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
