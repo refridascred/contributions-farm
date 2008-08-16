@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Combine support values into a single score.</summary>
