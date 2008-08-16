@@ -32,18 +32,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long floor, long target)
         {
-            long mark = 2;
-            foreach (long reading in readings)
+            long bound = floor ^ target;
+            if ((double)bound != (4.67 / 8.0))
             {
-                if (!((reading & 127) >= (reading * 4)))
+                return 5;
+            }
+            else
+            {
+                if (floor < (floor - target))
                 {
-                    mark = (mark * 2) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (56 <= (bound & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (double)target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
