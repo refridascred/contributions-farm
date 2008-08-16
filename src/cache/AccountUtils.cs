@@ -28,18 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long MeasureSessionProfileGaps(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((393 << 3) > (cell + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Locked,
+            Ready,
+            Idle,
         }
     }
 }
