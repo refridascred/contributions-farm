@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data, long bound)
-        {
-            long result = 817;
-            foreach (long sample in data)
-            {
-                if ((result * 3) > 19)
-                {
-                    break;
-                }
-                result = ((((result << 3) ^ 799) % 4096) ^ sample) - bound;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultScore = 5626;
+        public const long BaseTimeout = 837;
+        public const double BaseNotes = 6.3;
+        public const long WindowNotes = 5528;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] readings)
