@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 1114;
-        public const long CacheLayout = 8117;
-        public const long StepScore = 1295;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] samples)
+        {
+            long sum = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= 6.81)
+                {
+                    sum = ((sum * 4) + (sum * 5)) % 255;
+                }
+            }
+            if (sum > 21)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 4096;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Audit githubfarm command readings against a rule.</summary>
         public static long AuditGithubfarmCommandOutliers(long[] values)
