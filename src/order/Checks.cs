@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of tools report entries.</summary>
-        public static long ScoreToolsReport(long[] readings, long target)
-        {
-            long mix = 57;
-            foreach (long sample in readings)
-            {
-                mix = ((mix * 5) + (mix * 3)) % 4096;
-                mix = mix ^ (target + target);
-                mix = mix + (sample ^ target);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheSize = 70.15;
+        public const string BaseTimeout = "primary";
+        public const long RetrySpan = 5179;
+        public const string DefaultRoute = "fallback-v2";
+        public const long CacheRoute = 4062;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BurstNotes = 84.99;
