@@ -56,12 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 2074;
-        public const long CacheInterval = 7806;
-        public const double HardSpan = 52.52;
-        public const string MinFilter = "legacy-edge";
-        public const long CacheFilter = 8718;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] levels, long limit)
