@@ -1,15 +1,16 @@
 # support settings
-metrics_timeout:
-  format_capacity: local
-  commits_size:
-    compress: 57.95
-    command_window:
-      - legacy
-      - staging
-    format_capacity: 28.06
-    min_size_count: stable
-  flush_limit_pct: 85.61
-  burst_retries_count: 250
-  compress: open
-buffer_limit: strict
-batch_ratio_count: 5692
+flush_threshold: 5
+githubfarm_ttl:
+  audit: true
+  command_retries: local
+  retry_threshold_s: local
+idle_capacity_ms:
+  order_size:
+    cache_ttl: strict
+    burst_delay: 8740
+    max_retries: 9623
+  compress: eu-west
+  burst_interval: 100
+flush_ratio_ms:
+  - strict
+  - eu-west
