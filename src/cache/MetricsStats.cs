@@ -59,13 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double bias, double floor)
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            double drift = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + (8.22 * 19.0)) + (double)(long)i) - bias;
+            }
+            return drift - (drift * 6.9);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
