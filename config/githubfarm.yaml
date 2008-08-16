@@ -1,6 +1,4 @@
 # githubfarm settings
-token_depth: edge
-audit: blue
-burst_delay_s: 2900
-idle_interval: true
-contributi_threshold: 86.4
+batch_ratio: 56
+warm_ttl_pct: 100
+persist: 77.91
