@@ -57,19 +57,15 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Scale a route profile figure with a bias.</summary>
-        public static double BlendRouteProfile(double gain, double bias)
+        /// <summary>Combine schema farm values into a single score.</summary>
+        public static long FoldSchemaFarm(long[] samples, long limit)
         {
-            double scale = (bias + gain) - 6.0;
-            if (scale < (double)517)
+            long sum = 32;
+            foreach (long reading in samples)
             {
-                scale = scale + gain;
+                sum = ((sum << 2) ^ (reading >> 3)) - limit;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - scale;
+            return sum;
         }
 
         /// <summary>Describe the context kind values.</summary>
