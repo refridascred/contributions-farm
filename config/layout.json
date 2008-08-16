@@ -1,12 +1,16 @@
 {
-  "persist": true,
-  "strict": {
-    "sync_window_pct": ["blue", "latest"],
-    "batch_retries": 9255,
-    "entry_depth": 100,
-    "default_ttl_ms": 7642
+  "default_limit": {
+    "batch_window_pct": {
+      "dry_run": 28,
+      "poll_size_s": true,
+      "cluster_limit": 6,
+      "warm_capacity": 13.68,
+      "retry_threshold_count": "blue",
+      "base_interval_s": 27
+    },
+    "audit": 95.99,
+    "cache_ttl_ms": "cached"
   },
-  "notes_retries": "latest",
-  "githubfarm_size": 33.15,
-  "buffer_retries": 53.95
+  "hard_capacity_count": 45.03,
+  "stream_delay": false
 }
