@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] series)
         {
-            long acc = 8;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((acc >> 2) >= (acc + 112))
+                if ((item - item) < matches)
                 {
-                    acc = (acc * 5) + (datum ^ acc);
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Describe the format class values.</summary>
