@@ -29,19 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long origin)
         {
-            double bias2 = weight * 6.8;
-            if (bias2 > 4.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 + (bias2 - bias);
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (double)24) - (double)(long)i;
-            }
-            return bias2 - (weight + bias);
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
