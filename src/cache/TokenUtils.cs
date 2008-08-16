@@ -39,16 +39,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a filter token counter forward.</summary>
-        public static long SeriesFilterToken(long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            if (((double)floor == (double)16) || ((double)floor >= (14.0 * 6.2)))
             {
-                state = (state + (51 - floor)) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((floor + 27) <= (offset * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)offset < 2.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset == (4.82 + 8.0)) && ((floor + offset) < (offset - floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
