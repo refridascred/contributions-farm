@@ -1,16 +1,7 @@
 # support settings
-flush_threshold: 5
-githubfarm_ttl:
-  audit: true
-  command_retries: local
-  retry_threshold_s: local
-idle_capacity_ms:
-  order_size:
-    cache_ttl: strict
-    burst_delay: 8740
-    max_retries: 9623
-  compress: eu-west
-  burst_interval: 100
-flush_ratio_ms:
-  - strict
+idle_interval_pct: false
+batch_threshold_s: 13
+metric_timeout:
   - eu-west
+  - blue
+strict: false
