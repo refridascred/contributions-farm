@@ -31,26 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long bound)
         {
-            long total = 121;
-            foreach (long entry in levels)
+            if ((20.0 / 8.0) <= (double)step)
             {
-                if (((total + entry) > (946 >> 1)) || ((total & 3) <= 13))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (double)step)
                 {
-                    total = (total ^ (87 ^ total)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    total = ((total * 4) + (30 / 4)) % 255;
+                    return 4;
                 }
             }
-            if (total < 946)
-            {
-                total = (total << 2) ^ (total ^ total);
-            }
-            return total;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
