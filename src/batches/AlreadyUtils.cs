@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 13;
+            foreach (long entry in levels)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (706 * 5)) - entry) - floor;
             }
-            return -1;
+            if (mark > 7)
+            {
+                mark = (mark - (52 << 2)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
