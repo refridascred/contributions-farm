@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
