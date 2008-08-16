@@ -1,11 +1,12 @@
 # Batch notes
 
-Each route is validated before it reaches the command queue.
-Defaults for metric live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the metrics queue.
+A schema that stays idle for too long is moved to the checks list.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate metrics input early
-- Review order limits each release
-- Log every graph change
+- Validate tools input early
+- Review channel limits each release
+- Keep tools values small
+- Log every layout change
