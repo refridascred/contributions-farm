@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 5502;
-        public const long MaxRatio = 9453;
-        public const long MinCounter = 7402;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] data)
