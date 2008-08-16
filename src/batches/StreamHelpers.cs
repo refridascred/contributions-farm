@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Locked,
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
