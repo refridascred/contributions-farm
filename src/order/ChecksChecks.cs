@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const double SoftSchema = 74.49;
         public const long BaseScore = 3564;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] levels)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell > (9.27 + 0.58))
+                if (readings[i] >= seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
