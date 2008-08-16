@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] samples, long limit)
+        /// <summary>Fold a list of metrics entry readings.</summary>
+        public static long CombineMetricsEntry(long[] values, long bound)
         {
-            long state = 64;
-            foreach (long entry in samples)
+            long total = 6;
+            foreach (long cell in values)
             {
-                state = ((((state << 2) ^ (-14)) % 97) ^ entry) + limit;
+                total = (((total + 7) % 255) + cell) - bound;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
