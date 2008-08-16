@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Closed,
-            Pending,
-            Failed,
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
