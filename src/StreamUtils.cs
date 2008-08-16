@@ -34,12 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinBudget = 2074;
-        public const long BurstCount = 3400;
-        public const long WindowEditor = 1992;
-        public const long HardDepth = 4113;
-        public const string IdleTimeout = "cached-1";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] samples, long step)
