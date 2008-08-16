@@ -56,14 +56,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the cache batches series from a seed.</summary>
+        public static long IterateCacheBatches(long step)
         {
-            Synced,
-            Queued,
-            Active,
-            Pending,
-            Dropped,
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((score + (long)i) != ((long)i * 2))
+                {
+                    score = (score * 5) + (step + step);
+                    break;
+                }
+                if (((long)i + step) <= (273 & 3))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of tools entry readings.</summary>
