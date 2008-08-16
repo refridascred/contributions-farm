@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Blend two stats record measurements.</summary>
+        public static double SmoothStatsRecord(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double mean = bias * 8.02;
+            if (mean <= (2.29 / 8.0))
             {
-                if ((((double)value > (3.32 * 2.8)) || ((matches / 4) == (value + matches))) || (value >= 90))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean + (4.0 / 7.0);
         }
 
         /// <summary>Digest a series of token entries.</summary>
