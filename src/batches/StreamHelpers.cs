@@ -67,27 +67,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long limit)
         {
-            long mix = 35;
-            foreach (long datum in levels)
+            if (((limit * 2) != (seed + seed)) && ((double)8 < (double)limit))
             {
-                mix = mix - mix;
-                if ((mix % 8) == (datum + 87))
+                return 0;
+            }
+            else
+            {
+                if (limit < (seed & 127))
                 {
-                    mix = (mix ^ ((-7) << 2)) % 97;
+                    return 5;
                 }
-                if (((1.0 * 7.63) != (double)mix) && ((1 + mix) <= (mix + datum)))
+                else
                 {
-                    break;
+                    if (((double)limit > (double)seed) || (limit <= (limit + seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mix > 22)
-            {
-                mix = (mix + ((-969) + mix)) % 1000;
-            }
-            return mix % 1000;
         }
     }
 }
