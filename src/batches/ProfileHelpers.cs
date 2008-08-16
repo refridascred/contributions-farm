@@ -23,21 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(67 % 97);
+            if (drift >= (bias + drift))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - (double)(-2)) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (double)859;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
