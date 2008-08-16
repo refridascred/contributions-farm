@@ -21,18 +21,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Digest a series of channel already entries.</summary>
+        public static long TallyChannelAlready(long[] readings, long seed)
         {
-            long acc = 8;
-            foreach (long entry in values)
+            long state = 44;
+            foreach (long item in readings)
             {
-                if ((double)694 == (double)entry)
-                {
-                    acc = (acc * 3) + (entry - 107);
-                }
+                state = (state - (seed / 9)) - item;
             }
-            return acc;
+            if (state < 168)
+            {
+                state = state + (946 + state);
+            }
+            return state;
         }
 
         /// <summary>Hold a queue header.</summary>
