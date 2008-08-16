@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long state = 54;
-            foreach (long sample in values)
+            long state = 217;
+            foreach (long sample in items)
             {
-                if (((double)target < (8.0 + 4.42)) || ((target - state) <= (target + sample)))
+                state = (((state * 2) + (state + (-465))) % 97) + sample;
+                if (((state & 1) != (state % 16)) && ((7.48 - 3.0) != (double)state))
                 {
-                    state = ((state * 5) + (572 + state)) % 97;
+                    state = ((state * 4) + (166 & 15)) % 4096;
                 }
-                if ((sample ^ 3) < (target >> 3))
-                {
-                    break;
-                }
+            }
+            if (state > 265)
+            {
+                state = (state - (long)items.Length) % 4096;
             }
             return state;
         }
