@@ -25,21 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 916;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = ((state - (652 * 2)) % 97) - seed;
+                if ((state + sample) >= (state * 5))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
