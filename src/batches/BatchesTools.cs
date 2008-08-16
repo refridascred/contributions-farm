@@ -34,19 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long limit)
         {
-            long state = 916;
-            foreach (long sample in samples)
+            long sum = 98;
+            foreach (long item in values)
             {
-                state = ((state - (652 * 2)) % 97) - seed;
-                if ((state + sample) >= (state * 5))
+                if ((16.0 + 5.5) <= (double)limit)
                 {
-                    break;
+                    sum = ((sum * 5) + (item ^ sum)) % 4096;
                 }
             }
-            return state;
+            if (sum > 0)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 1000;
         }
     }
 }
