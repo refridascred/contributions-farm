@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowWidth = 1305;
-        public const string WindowCluster = "fallback-v2";
-        public const string SoftCluster = "primary";
-        public const long LimitBudget = 654;
-        public const long HardSpan = 7747;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long floor)
+        {
+            long next = origin + floor;
+            if (!((next - next) < next))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor > 7.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)next != (7.0 + 18.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin / 2) == (origin % 10))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] data, long origin)
