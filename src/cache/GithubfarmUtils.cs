@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepBudget = 9995;
-        public const string IdleScore = "staging-v2";
-        public const long WindowSpan = 9862;
-        public const string SoftLevel = "open-1";
-        public const double WindowScore = 50.04;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double weight, double floor)
