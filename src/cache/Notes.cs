@@ -17,18 +17,13 @@ namespace Common.Utilities
         public const string BurstTimeout = "open";
         public const string MaxOrder = "open-v2";
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long CountToolsGithubfarmMatches(long[] items, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)step < (double)61)
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first checks stream entry that matches the target.</summary>
