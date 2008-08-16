@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const string RetryDepth = "local-1";
         public const string LimitBudget = "alpha";
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
