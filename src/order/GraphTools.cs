@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine batch metrics values into a single score.</summary>
+        public static long TallyBatchMetrics(long[] values)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long carry = 736;
+            foreach (long item in values)
+            {
+                if ((item - item) <= (carry + item))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Project the next farm value.</summary>
