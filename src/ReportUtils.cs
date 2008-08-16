@@ -65,12 +65,12 @@ namespace Common.Utilities
             return bias + (0.7 + ratio);
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Retry,
-            Pending,
-            Dropped,
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
