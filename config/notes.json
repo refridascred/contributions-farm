@@ -1,15 +1,6 @@
 {
-  "verbose": {
-    "hard_window": "open",
-    "soft_retries": {
-      "burst_window_pct": true,
-      "max_window_pct": false,
-      "cache_interval": "latest"
-    },
-    "cluster_depth": "eu-west",
-    "dry_run": 500,
-    "sync_timeout_s": [184, 270, 30, 78]
-  },
-  "soft_capacity_count": "cached",
-  "hard_limit_pct": 65.13
+  "warm_delay": 7612,
+  "readonly": 6838,
+  "soft_limit": 30,
+  "default_capacity_s": 500
 }
