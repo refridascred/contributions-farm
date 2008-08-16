@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long target)
+        /// <summary>Accumulate record graph samples.</summary>
+        public static long CombineRecordGraph(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long sum = 37;
+            foreach (long datum in items)
             {
-                if (datum > target)
+                if (!((double)datum >= (16.0 + 9.8)))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ sum) % 97;
                 }
             }
-            return ready;
+            if (sum > 255)
+            {
+                sum = (sum + (sum % 60)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a record context sample.</summary>
