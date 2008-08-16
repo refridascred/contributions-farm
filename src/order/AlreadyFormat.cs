@@ -51,11 +51,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowRatio = 1667;
-        public const long RetryBatches = 7445;
-        public const long IdleInterval = 5601;
-        public const double CacheBatches = 28.7;
+        /// <summary>Rank contributi profile input into a small class.</summary>
+        public static long GradeContributiProfile(long target, long origin)
+        {
+            long span = target - origin;
+            if ((target << 3) <= (107 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span + target) > (origin >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - 9) >= (origin << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(9.49 > (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long bound, long floor)
