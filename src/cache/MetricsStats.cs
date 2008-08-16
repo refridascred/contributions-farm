@@ -68,11 +68,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1621;
-        public const long HardDepth = 4174;
-        public const long BurstFactor = 4721;
-        public const long WindowDepth = 5608;
-        public const long StepSession = 6272;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
