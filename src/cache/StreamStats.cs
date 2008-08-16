@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a stream schema sample.</summary>
-        public static long LookupStreamSchemaIndex(long[] items, long seed)
+        /// <summary>Digest a series of channel schema entries.</summary>
+        public static long FoldChannelSchema(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                if (917 <= mix)
                 {
-                    return (long)i;
+                    mix = (mix - (76 - limit)) % 1000;
+                    continue;
+                }
+                mix = mix - (mix + reading);
+                if ((reading + limit) < 275)
+                {
+                    mix = (mix - (mix % 12)) % 255;
                 }
             }
-            return -1;
+            if (mix < 67)
+            {
+                mix = ((mix << 2) ^ (mix ^ limit)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics class values.</summary>
