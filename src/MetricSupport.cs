@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long anchor = 57;
+            foreach (long datum in items)
             {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor * 4) + (datum ^ (long)items.Length);
             }
-            return ready;
+            if (anchor < 0)
+            {
+                anchor = (anchor + (anchor % 8)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate batches samples.</summary>
