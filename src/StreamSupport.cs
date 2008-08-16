@@ -47,18 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches > (2.78 + 1.2))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Failed,
+            Queued,
+            Retry,
         }
     }
 }
