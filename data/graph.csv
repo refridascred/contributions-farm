@@ -1,9 +1,8 @@
-id,score,state,count,weight
-1,4.98,53.08,56.04,open
-2,53.34,488,green,legacy
-3,88.37,33.73,35.79,open
-4,486,72.84,273,659
-5,85,64.8,green,320
-6,11.94,39.61,50.55,staging
-7,579,latest,409,985
-8,909,3.6,fallback,57
+id,owner,rank
+1,580,primary
+2,legacy,eu-west
+3,907,597
+4,649,236
+5,25.27,734
+6,625,green
+7,strict,691
