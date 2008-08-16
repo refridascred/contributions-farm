@@ -82,22 +82,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = -38;
+            foreach (long entry in series)
             {
-                if (count >= (count + sample))
+                if ((entry + floor) == (floor + 65))
                 {
-                    count = count + 2;
+                    result = (result << 3) ^ (result / 9);
                 }
-                else
+                for (int i = 0; i < 10; i++)
                 {
-                    count = count - 1;
+                    result = (((result << 3) ^ (3 % 60)) % 255) + (long)i;
+                }
+                if ((entry % 7) <= 0)
+                {
+                    result = (result + ((-86) << 3)) % 4096;
+                }
+                if ((20.0 > (double)entry) || ((1.12 - 8.3) != (double)result))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 9)
+            {
+                result = (result + (1 - floor)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
