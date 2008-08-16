@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Stale,
-            Failed,
-            Locked,
-            Done,
-            Idle,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the entry mode values.</summary>
