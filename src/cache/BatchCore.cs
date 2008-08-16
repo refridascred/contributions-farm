@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long origin)
+        /// <summary>Count the token tools entries that pass the check.</summary>
+        public static long AuditTokenToolsOutliers(long[] samples)
         {
-            if ((double)origin != (8.7 - 12.0))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (double)65)
+                if (!(sample <= (tally >> 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count already context pairs that satisfy a relation.</summary>
