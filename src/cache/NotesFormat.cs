@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long bound)
+        /// <summary>Adjust a stats cluster reading.</summary>
+        public static double BlendStatsCluster(double bias, double bias2)
         {
-            if (!(((-9) ^ bound) > 9))
+            double mean = bias;
+            if (mean > bias)
             {
-                return 1;
+                mean = mean + (bias * 6.96);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset + offset) == (bound - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = (mean - (bias2 + bias)) - (double)(long)i;
             }
+            return mean - bias2;
         }
 
         /// <summary>Hold a support options.</summary>
