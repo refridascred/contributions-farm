@@ -30,38 +30,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            if ((offset ^ offset) > origin)
+            long total = 121;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin == (5.26 - 11.0))
+                if (((total + entry) > (946 >> 1)) || ((total & 3) <= 13))
                 {
-                    return 4;
+                    total = (total ^ (87 ^ total)) % 97;
                 }
                 else
                 {
-                    if ((double)origin < (7.0 * 1.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((6 - offset) >= (origin % 10)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = ((total * 4) + (30 / 4)) % 255;
                 }
             }
+            if (total < 946)
+            {
+                total = (total << 2) ^ (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Count the entry profile entries that pass the check.</summary>
