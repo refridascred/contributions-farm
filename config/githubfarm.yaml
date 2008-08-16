@@ -1,22 +1,7 @@
 # githubfarm settings
-verbose:
-  min_window_s: 18.35
-  retry_interval_s: 2
-  default_capacity_s: 250
-  sync_window: false
-  retry_window_s: 2000
-warm_ttl_s: 8.36
-idle_window_pct:
-  sync_interval:
-    idle_limit: 12.5
-    enabled:
-      - fallback
-      - latest
-    burst_retries_count: true
-    batch_retries_ms: 1535
-    min_retries_ms: 12
-  poll_size_pct:
-    - green
-    - legacy
-    - standard
-  verbose: standard
+audit: 29.72
+command_window: 1024
+warm_window_s: 6190
+soft_limit: 1024
+poll_ttl: 16
+verbose: false
