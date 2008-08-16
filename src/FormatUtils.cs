@@ -36,19 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            double weight = (double)(96 * 3);
-            if (weight < (weight - bias))
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight - (weight - bias);
+                sum = ((sum * 3) + step) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (double)483;
+            return sum;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
