@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two cluster counter measurements.</summary>
-        public static double ProjectClusterCounter(double bias, double floor)
+        /// <summary>Match up format entry samples.</summary>
+        public static long CompareFormatEntryCount(long[] data)
         {
-            double scale = floor;
-            if (scale < scale)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - (bias + floor);
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
