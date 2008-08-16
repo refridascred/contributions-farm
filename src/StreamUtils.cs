@@ -72,19 +72,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series, long origin)
         {
-            double scale = 1.5;
-            if (scale >= (scale + floor))
+            long carry = 2;
+            foreach (long cell in series)
             {
-                scale = scale + gain;
+                carry = (carry - (cell ^ (long)series.Length)) + origin;
+                carry = (carry * 5) + cell;
             }
-            for (int i = 0; i < 6; i++)
+            if (carry < 5)
             {
-                scale = (scale - gain) + (double)(long)i;
+                carry = (carry ^ (0 - carry)) % 65521;
             }
-            return scale - (scale - gain);
+            return carry;
         }
 
         /// <summary>Look up the position of a already graph sample.</summary>
