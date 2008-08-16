@@ -1,8 +1,14 @@
 {
-  "already_retries": true,
-  "cache_ratio_count": "fallback",
-  "warm_delay": 65,
-  "readonly": 30.42,
-  "strict": true,
-  "base_limit_ms": 46.37
+  "buffer_timeout": 80,
+  "default_depth_count": "open",
+  "default_interval": {
+    "sync_size_s": 82.39,
+    "token_capacity": "stable",
+    "editor_depth": 1652,
+    "min_depth_pct": 9511,
+    "soft_interval_ms": "fallback",
+    "filter_window": 250
+  },
+  "default_capacity": 9272,
+  "dry_run": "green"
 }
