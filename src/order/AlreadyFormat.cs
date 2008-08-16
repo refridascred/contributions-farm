@@ -28,11 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many account commits samples are out of range.</summary>
+        public static long CountAccountCommitsOutliers(long[] series)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((seen + cell) >= cell) || ((seen - cell) <= (383 / 6)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
