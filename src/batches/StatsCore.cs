@@ -40,12 +40,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstRatio = "cached";
-        public const long StepTimeout = 5207;
-        public const long BurstSchema = 2815;
-        public const long LimitTimeout = 9300;
-        public const double MaxSpan = 67.14;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum ^ (sum * 2)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
