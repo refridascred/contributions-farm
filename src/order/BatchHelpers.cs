@@ -54,15 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long TallyWindowReport(long[] readings, long limit)
+        /// <summary>Blend two stats channel measurements.</summary>
+        public static double AdjustStatsChannel(double bias, double span)
         {
-            long result = 233;
-            foreach (long reading in readings)
+            double drift = (double)(80 % 8);
+            if (drift > (double)130)
             {
-                result = ((result ^ (-10)) + reading) - limit;
+                drift = drift - (double)5;
             }
-            return result;
+            else
+            {
+                drift = drift - (span * 2.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 8.13) - (double)(long)i;
+            }
+            return drift + (bias / 9.0);
         }
     }
 }
