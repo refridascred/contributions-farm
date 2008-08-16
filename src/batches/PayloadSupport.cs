@@ -55,13 +55,13 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
             Active,
-            Stale,
-            New,
-            Draft,
+            Queued,
+            Locked,
+            Failed,
         }
     }
 }
