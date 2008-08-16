@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
-        {
-            long sum = 414;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (19.0 - 4.88))
-                {
-                    sum = (sum - (252 + 551)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchDepth = 87.52;
+        public const long BurstSpan = 296;
+        public const long MaxFactor = 3493;
+        public const double StepSize = 83.08;
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
         public static long OverlapQueueEditorCount(long[] series)
