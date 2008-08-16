@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples, long seed)
         {
-            if ((offset ^ offset) <= offset)
+            long mark = 469;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset != (3.0 * 4.11)) && (offset < (offset & 7)))
+                if (8.0 > (double)seed)
                 {
-                    return 4;
+                    mark = (mark - (item & 7)) % 65521;
                 }
-                else
+                if ((double)item > 4.6)
                 {
-                    if ((origin + 1) > (1 & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Rank support input into a small class.</summary>
