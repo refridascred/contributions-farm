@@ -38,19 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] samples, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
