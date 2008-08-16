@@ -59,21 +59,11 @@ namespace Common.Utilities
         public const double BaseTimeout = 44.02;
         public const long MaxQueue = 6503;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series, long origin)
-        {
-            long carry = 2;
-            foreach (long cell in series)
-            {
-                carry = (carry - (cell ^ (long)series.Length)) + origin;
-                carry = (carry * 5) + cell;
-            }
-            if (carry < 5)
-            {
-                carry = (carry ^ (0 - carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 2916;
+        public const long DefaultDepth = 2229;
+        public const double WindowBuffer = 49.08;
+        public const long DefaultBuffer = 4129;
 
         /// <summary>Look up the position of a already graph sample.</summary>
         public static long LookupAlreadyGraphIndex(long[] samples, long origin)
