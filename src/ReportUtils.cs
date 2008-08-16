@@ -27,20 +27,10 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "strict-1";
+        public const double MinMetrics = 86.39;
+        public const string SoftMetrics = "latest";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
