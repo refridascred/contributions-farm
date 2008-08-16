@@ -38,12 +38,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultBudget = 8351;
-        public const long BurstRatio = 842;
-        public const long LimitLayout = 9431;
-        public const long CacheLayout = 7657;
-        public const long StepLevel = 4550;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (count <= (reading * 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate token metrics samples.</summary>
         public static long FoldTokenMetrics(long[] data, long origin)
