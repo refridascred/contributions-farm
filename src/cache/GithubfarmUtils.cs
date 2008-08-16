@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitCount = 358;
-        public const string BatchDepth = "staging";
-        public const long BurstSpan = 1265;
-        public const long CacheRoute = 5981;
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool CheckBufferLayoutRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every window farm entry stays within the limit.</summary>
         public static bool CheckWindowFarmRange(long[] levels, long bound)
