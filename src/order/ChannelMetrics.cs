@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long seed)
+        /// <summary>Derive the next layout record value from a seed.</summary>
+        public static long IterateLayoutRecord(long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= seed)
+                if (!((long)i >= (sum << 2)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (sum * 4)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
     }
 }
