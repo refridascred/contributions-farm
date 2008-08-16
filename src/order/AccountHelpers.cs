@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + step) >= (step >> 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
