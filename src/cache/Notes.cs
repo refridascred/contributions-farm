@@ -36,18 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Accumulate filter editor samples.</summary>
+        public static long ScoreFilterEditor(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = 583;
+            foreach (long sample in series)
             {
-                if ((item / 8) < seen)
+                if ((target & 3) == (target + 4))
                 {
-                    seen = seen + 3;
+                    carry = ((carry ^ carry) % 101) - sample;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
