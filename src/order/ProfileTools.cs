@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long step)
+        /// <summary>Adjust a context tools reading.</summary>
+        public static double BlendContextTools(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = 10.0;
+            return ((ratio + ratio) + gain) + floor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
