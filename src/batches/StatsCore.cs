@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2340;
-        public const double BaseAlready = 42.96;
-        public const long HardAlready = 4933;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowWidth = 1305;
+        public const string WindowCluster = "fallback-v2";
+        public const string SoftCluster = "primary";
+        public const long LimitBudget = 654;
+        public const long HardSpan = 7747;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] data, long origin)
