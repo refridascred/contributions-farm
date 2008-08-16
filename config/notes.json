@@ -1,7 +1,16 @@
 {
-  "batch_size": 46.32,
-  "warm_depth_ms": false,
-  "flush_delay_s": false,
-  "editor_timeout": true,
-  "notes_retries": 4893
+  "cache_retries_count": 57,
+  "poll_ttl_count": 2748,
+  "persist": {
+    "base_retries_count": {
+      "sync_window_count": true,
+      "commits_depth": 500,
+      "persist": "standard",
+      "sync_interval": "local"
+    },
+    "min_size": ["staging", "edge", "legacy", "local"],
+    "strict": 29.36,
+    "readonly": 30,
+    "compress": 94.59
+  }
 }
