@@ -55,13 +55,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] series, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long total = 80;
+            foreach (long reading in series)
+            {
+                total = ((total ^ reading) % 65521) - step;
+                total = ((total << 2) ^ (total << 3)) % 4096;
+            }
+            if (total < 412)
+            {
+                total = total - (538 - total);
+            }
+            return total % 1000;
         }
     }
 }
