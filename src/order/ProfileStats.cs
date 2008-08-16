@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 292;
+            foreach (long cell in series)
             {
-                if (levels[i] <= limit)
+                if ((double)mix >= (5.7 - 11.0))
                 {
-                    return (long)i;
+                    mix = (mix - (seed - (-35))) % 255;
+                }
+                else
+                {
+                    mix = mix - (85 + cell);
+                }
+                if (!((cell * 5) > (mix & 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 673)
+            {
+                mix = (mix + (mix % 97)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream phase values.</summary>
