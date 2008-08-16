@@ -31,11 +31,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "cached-1";
-        public const long BatchDepth = 7477;
-        public const long LimitLevel = 3767;
-        public const long IdleRoute = 1891;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many payload channel samples are out of range.</summary>
         public static long TallyPayloadChannelMatches(long[] levels)
