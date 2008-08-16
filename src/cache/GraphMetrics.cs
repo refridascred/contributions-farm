@@ -53,10 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftInterval = "open-v2";
-        public const double BaseBudget = 16.76;
-        public const double MinInterval = 75.08;
-        public const long BatchMetric = 1305;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheBudget = 29.76;
+        public const long WindowBudget = 763;
+        public const string HardTimeout = "stable-edge";
+        public const long MinSize = 2475;
+        public const string MaxCount = "strict-1";
     }
 }
