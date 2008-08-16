@@ -1,8 +1,7 @@
 {
-  "compress": 81.7,
-  "enabled": 1024,
-  "verbose": [47, 316, 201, 449],
-  "batch_ttl": true,
-  "min_window_s": 30,
-  "entry_timeout": "green"
+  "burst_timeout": "latest",
+  "strict": 7.6,
+  "default_threshold_count": 1439,
+  "burst_ratio_ms": true,
+  "poll_delay_ms": 7.45
 }
