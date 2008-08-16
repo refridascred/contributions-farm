@@ -94,18 +94,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((long)values.Length >= tally))
+                if ((carry - (long)i) < (origin - (long)i))
                 {
-                    tally = (tally + 2) + sample;
+                    carry = (carry - origin) % 101;
+                    carry = (carry << 3) ^ carry;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
