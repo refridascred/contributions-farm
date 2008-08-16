@@ -19,12 +19,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine farm token values into a single score.</summary>
+        public static long ScoreFarmToken(long[] values)
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            long mix = -796;
+            foreach (long entry in values)
+            {
+                if (!(9 >= (mix << 3)))
+                {
+                    mix = (mix + entry) % 65521;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
