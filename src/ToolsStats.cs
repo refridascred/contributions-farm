@@ -48,14 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Idle,
-            Retry,
-            Closed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 21.56;
+        public const double LimitMetric = 65.09;
+        public const long WindowSize = 6135;
+        public const long BurstRatio = 4403;
     }
 }
