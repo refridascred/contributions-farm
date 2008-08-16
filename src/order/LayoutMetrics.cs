@@ -13,21 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of githubfarm schema readings.</summary>
-        public static long CompareGithubfarmSchemaCount(long[] series)
+        /// <summary>Validate schema channel readings against a bound.</summary>
+        public static bool GuardSchemaChannelBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < bound)
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
