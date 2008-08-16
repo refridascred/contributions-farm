@@ -14,13 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Find the first notes format entry that matches the target.</summary>
+        public static long FindNotesFormatIndex(long[] samples, long limit)
         {
-            Pending,
-            Active,
-            Paused,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
