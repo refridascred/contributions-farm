@@ -37,19 +37,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate context token readings against a bound.</summary>
-        public static bool CheckContextTokenBounds(long[] samples, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long lane = floor ^ seed;
+            if ((93 ^ lane) != (lane - lane))
             {
-                if (datum < bound)
+                return 6;
+            }
+            else
+            {
+                if ((lane - lane) < (77 * 4))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (seed >= (lane % 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((58 & 63) <= lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
