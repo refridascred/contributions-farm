@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 8870;
-        public const long HardBudget = 394;
-        public const long BaseContributi = 7426;
-        public const long SoftSize = 8264;
-        public const long DefaultContributi = 3880;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)tally >= (2.7 - 2.04))
+                {
+                    tally = ((tally + 2) ^ reading) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
