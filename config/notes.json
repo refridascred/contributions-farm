@@ -1,7 +1,8 @@
 {
-  "base_ttl_count": 93.74,
-  "dry_run": 22.03,
-  "sync_timeout_s": 100,
-  "default_interval_pct": 30,
-  "burst_size": false
+  "audit": 49.75,
+  "poll_depth": 4,
+  "queue_ratio": 82.61,
+  "cache_retries_pct": "standard",
+  "githubfarm_interval": false,
+  "burst_capacity_s": 52.42
 }
