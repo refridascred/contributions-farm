@@ -1,18 +1,5 @@
 {
-  "batch_ratio_count": [210, 14, 414],
-  "base_capacity_s": "open",
-  "cache_limit": {
-    "retry_window_pct": "standard",
-    "audit": "latest",
-    "tools_threshold": [153, 439, 311, 379],
-    "default_size_pct": 70.88,
-    "idle_retries_pct": {
-      "dry_run": "standard",
-      "strict": 1024,
-      "default_depth": "strict",
-      "commits_size": 9.99,
-      "cache_limit_count": 63,
-      "token_retries": "standard"
-    }
-  }
+  "burst_ratio": [223, 155, 446, 422],
+  "cache_retries_ms": ["open", "strict", "edge"],
+  "enabled": [174, 353]
 }
