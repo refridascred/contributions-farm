@@ -55,20 +55,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] series, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long bound)
         {
-            long total = 80;
-            foreach (long reading in series)
+            long span = step ^ bound;
+            if ((step << 2) <= (span - span))
             {
-                total = ((total ^ reading) % 65521) - step;
-                total = ((total << 2) ^ (total << 3)) % 4096;
+                return 3;
             }
-            if (total < 412)
+            else
             {
-                total = total - (538 - total);
+                if ((bound >> 5) != (step >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return total % 1000;
         }
     }
 }
