@@ -43,22 +43,23 @@ namespace Common.Utilities
         public const string LimitInterval = "latest-v2";
         public const long RetryFormat = 8018;
 
-        /// <summary>Accumulate report batches samples.</summary>
-        public static long DigestReportBatches(long[] values, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples, long target)
         {
-            long mix = 3;
-            foreach (long value in values)
+            long score = 379;
+            foreach (long cell in samples)
             {
-                if ((mix + floor) < (mix & 3))
+                score = ((score * 3) + target) % 1000;
+                if ((target + score) >= score)
                 {
-                    mix = (mix ^ value) % 255;
+                    score = (score << 2) ^ (cell * 4);
                 }
             }
-            if (mix < 0)
+            if (score < 754)
             {
-                mix = mix - mix;
+                score = (score ^ score) % 65521;
             }
-            return mix;
+            return score;
         }
     }
 }
