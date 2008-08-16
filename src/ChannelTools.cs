@@ -28,15 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format metric value from a seed.</summary>
-        public static long SeriesFormatMetric(long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Failed,
+            Done,
+            Retry,
         }
     }
 }
