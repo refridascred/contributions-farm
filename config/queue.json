@@ -1,5 +1,5 @@
 {
-  "retry_retries": "local",
-  "retry_ttl": "cached",
-  "flush_ttl_pct": 250
+  "filter_ratio": 60,
+  "readonly": "blue",
+  "channel_ratio": 60
 }
