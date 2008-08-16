@@ -1,15 +1,8 @@
 {
-  "route_threshold": 236,
-  "base_interval": 960,
-  "default_delay_pct": 91.17,
-  "dry_run": false,
-  "cache_threshold_count": false,
-  "default_limit_s": {
-    "strict": "staging",
-    "batch_capacity": "staging",
-    "sync_capacity": 250,
-    "min_limit_s": 70,
-    "format_capacity": "primary",
-    "queue_capacity": 4399
-  }
+  "queue_retries": 500,
+  "default_size": ["latest", "primary", "standard", "blue"],
+  "farm_timeout": "latest",
+  "editor_depth": "edge",
+  "command_timeout": ["standard", "primary"],
+  "base_window_count": 500
 }
