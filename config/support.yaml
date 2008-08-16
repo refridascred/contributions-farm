@@ -1,15 +1,13 @@
 # support settings
-payload_retries: blue
-batch_limit: 87
-farm_limit:
-  - 414
-  - 451
-  - 370
-  - 207
-default_threshold_ms: 71
-support_timeout:
-  - latest
-  - fallback
-  - blue
-  - staging
-sync_interval_ms: local
+base_window: true
+batch_delay_count:
+  graph_limit:
+    - 25
+    - 107
+    - 437
+  compress: 6699
+  order_limit: false
+  window_limit: edge
+  flush_ttl_pct: standard
+queue_depth: 60
+compress: 9
