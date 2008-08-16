@@ -40,17 +40,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stream payload sample.</summary>
-        public static long LookupStreamPayloadIndex(long[] items, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] >= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
