@@ -1,7 +1,8 @@
-id,ratio,active
-1,357,840
-2,eu-west,13.41
-3,green,44.06
-4,green,local
-5,699,fallback
-6,345,85.97
+id,region,state,rank
+1,75.34,9.93,556
+2,primary,legacy,71.7
+3,978,33.64,529
+4,814,blue,standard
+5,legacy,126,772
+6,278,blue,22.2
+7,451,90.86,28.42
