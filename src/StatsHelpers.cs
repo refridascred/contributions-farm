@@ -38,19 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
-        {
-            long sum = 8;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (0.4 / 2.0))
-                {
-                    sum = (sum << 2) ^ (cell % 12);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "cached";
+        public const string MaxCount = "primary-edge";
+        public const long DefaultStats = 7316;
+        public const double StepTimeout = 33.57;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
