@@ -14,21 +14,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up context tools samples.</summary>
-        public static long CompareContextToolsCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = (double)(9 & 63);
+            return ((gain + (double)9) + scale) + span;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
