@@ -35,11 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 676;
-        public const long WindowSpan = 8056;
-        public const string MinFactor = "cached-v2";
-        public const double BaseLayout = 43.03;
-        public const double SoftLayout = 10.45;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Synced,
+            Failed,
+            Stale,
+            Idle,
+        }
     }
 }
