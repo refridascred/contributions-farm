@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
-        {
-            long score = -9;
-            foreach (long reading in data)
-            {
-                score = score ^ (reading + score);
-                if (((double)60 > (double)reading) || ((double)reading <= (2.0 / 8.0)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "staging-1";
+        public const long LimitChannel = 2563;
+        public const double CacheChannel = 73.72;
+        public const long BatchInterval = 8999;
+        public const long MaxChannel = 445;
 
         /// <summary>Digest a series of layout command entries.</summary>
         public static long DigestLayoutCommand(long[] series)
