@@ -19,13 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
             Retry,
-            Ready,
-            Pending,
-            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
