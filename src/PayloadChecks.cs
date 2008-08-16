@@ -37,21 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue editor pairs that satisfy a relation.</summary>
-        public static long OverlapQueueEditorCount(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
