@@ -49,12 +49,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = carry ^ ((long)i * 5);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
