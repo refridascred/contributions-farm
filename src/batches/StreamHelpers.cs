@@ -59,15 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter contributi reading.</summary>
-        public static double ProjectFilterContributi(double bias, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data, long origin)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                drift = ((drift + 12.0) - (double)(long)i) - span;
+                if ((sample + (-5)) < (origin + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
