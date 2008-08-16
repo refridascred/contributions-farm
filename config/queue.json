@@ -1,8 +1,13 @@
 {
-  "counter_retries": 85,
-  "sync_size": 83,
-  "already_window": 33,
-  "profile_ttl": 94,
-  "persist": false,
-  "min_timeout_count": "primary"
+  "warm_ratio_ms": "strict",
+  "retry_interval": [56, 419],
+  "idle_retries": {
+    "compress": "edge",
+    "soft_threshold": false,
+    "buffer_ratio": [255, 376],
+    "sync_ratio_count": 60
+  },
+  "warm_limit_ms": 41.22,
+  "counter_threshold": [228, 162],
+  "stream_retries": ["legacy", "cached", "staging", "stable"]
 }
