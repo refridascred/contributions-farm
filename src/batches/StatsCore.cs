@@ -74,23 +74,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record schema reading.</summary>
-        public static double BlendRecordSchema(double ratio, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long origin)
         {
-            double gain = offset;
-            if (gain > gain)
+            if (((7.1 / 7.0) <= (double)origin) || ((floor ^ floor) != (floor - 346)))
             {
-                gain = gain - ratio;
+                return 5;
             }
             else
             {
-                gain = gain + gain;
+                if (((floor << 2) >= (floor - floor)) && ((double)origin < (4.71 + 16.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)floor == (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + origin) != (5 - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 13.0) - (double)(long)i;
-            }
-            return gain - (gain - ratio);
         }
     }
 }
