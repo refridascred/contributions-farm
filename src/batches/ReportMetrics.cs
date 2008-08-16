@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
+            public double Offset { get; set; }
             public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
