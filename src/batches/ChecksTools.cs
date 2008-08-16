@@ -75,22 +75,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long TallyPayloadChannelMatches(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 6;
+            foreach (long value in values)
             {
-                if ((double)value < 2.4)
+                total = ((total << 3) ^ value) % 1000;
+                if (15.0 >= (double)total)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total + 4) % 1000;
                 }
             }
-            return matches;
+            if (total > (-41))
+            {
+                total = (total ^ (seed + total)) % 97;
+            }
+            return total;
         }
     }
 }
