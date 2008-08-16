@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "cached-edge";
+        public const long DefaultChecks = 7552;
+        public const long CacheChecks = 1147;
+        public const long BurstInterval = 7235;
 
         /// <summary>Accumulate stats command samples.</summary>
         public static long TotalStatsCommand(long[] levels)
