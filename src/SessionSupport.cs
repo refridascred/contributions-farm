@@ -20,22 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] values, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((5 <= (4 - hits)) && ((hits ^ limit) > (entry - entry)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
