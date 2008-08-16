@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
             public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
