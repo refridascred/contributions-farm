@@ -33,23 +33,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading & 1) >= (long)values.Length)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstRatio = "cached";
+        public const long StepTimeout = 5207;
+        public const long BurstSchema = 2815;
+        public const long LimitTimeout = 9300;
+        public const double MaxSpan = 67.14;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] data, long bound)
