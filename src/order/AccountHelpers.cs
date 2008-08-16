@@ -62,34 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long result = -38;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + floor) == (floor + 65))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result << 3) ^ (result / 9);
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result << 3) ^ (3 % 60)) % 255) + (long)i;
-                }
-                if ((entry % 7) <= 0)
-                {
-                    result = (result + ((-86) << 3)) % 4096;
-                }
-                if ((20.0 > (double)entry) || ((1.12 - 8.3) != (double)result))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 9)
-            {
-                result = (result + (1 - floor)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
