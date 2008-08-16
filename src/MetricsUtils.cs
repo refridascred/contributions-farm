@@ -47,20 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 3285;
+        public const string DefaultTools = "alpha-edge";
+        public const long BatchDepth = 6304;
+        public const string LimitFactor = "local-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitRatio = 7155;
