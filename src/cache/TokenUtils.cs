@@ -20,23 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of counter account entries.</summary>
-        public static long ScoreCounterAccount(long[] data, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long mix = 492;
-            foreach (long value in data)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix << 3) ^ (bound + value)) % 65521;
-                if (((double)mix > 2.0) || ((double)bound >= (4.0 - 2.0)))
-                {
-                    break;
-                }
+                carry = carry - (carry & 3);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (mix > 333)
-            {
-                mix = mix + (mix ^ 33);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
