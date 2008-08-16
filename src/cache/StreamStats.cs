@@ -46,17 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a record context sample.</summary>
-        public static long LookupRecordContextIndex(long[] items, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
