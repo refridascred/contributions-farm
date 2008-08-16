@@ -45,10 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2626;
-        public const double MaxInterval = 82.57;
-        public const long DefaultRatio = 7940;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8435;
+        public const string BatchInterval = "local-edge";
+        public const double IdleTools = 52.83;
 
         /// <summary>Combine profile command values into a single score.</summary>
         public static long TallyProfileCommand(long[] series, long target)
