@@ -1,14 +1,13 @@
 # Command notes
 
-The command module keeps channel values in sync with the farm cache.
-The buffer report groups every route by stats.
+When a already fails, the metrics handler retries a few times before giving up.
+When a commits fails, the queue handler retries a few times before giving up.
 
-The editor report groups every entry by route.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
+The checks module keeps cluster values in sync with the tools cache.
+Use window settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Document new report fields
-- Keep session values small
-- Log every window change
+- Validate session input early
+- Prefer stream defaults
+- Log every record change
