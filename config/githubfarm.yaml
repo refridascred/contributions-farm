@@ -1,4 +1,25 @@
 # githubfarm settings
-compress: legacy
-dry_run: 12.3
-burst_timeout_ms: 89.68
+burst_retries_ms:
+  burst_ttl: strict
+  enabled: 500
+  min_size_ms: local
+  profile_depth: 97.41
+  batch_delay:
+    - staging
+    - green
+    - primary
+    - stable
+warm_delay: 4737
+report_window:
+  schema_window: stable
+  payload_size: cached
+  min_threshold: 69.57
+  audit:
+    - 497
+    - 492
+    - 74
+    - 198
+  soft_ratio_ms: 100
+  default_ttl:
+    - 250
+    - 386
