@@ -72,18 +72,22 @@ namespace Common.Utilities
             return load - (double)332;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] items, long step)
+        /// <summary>Accumulate report batches samples.</summary>
+        public static long DigestReportBatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = 3;
+            foreach (long value in values)
             {
-                if ((double)cell < 8.1)
+                if ((mix + floor) < (mix & 3))
                 {
-                    count = (count + 3) - step;
+                    mix = (mix ^ value) % 255;
                 }
             }
-            return count;
+            if (mix < 0)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
     }
 }
