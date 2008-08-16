@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long limit, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] series, long offset)
         {
-            if ((offset + limit) <= limit)
+            long sum = 1;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 - 4.6) < (double)limit)
+                if ((offset + 5) >= (value << 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    sum = ((sum << 2) ^ (value / 7)) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
