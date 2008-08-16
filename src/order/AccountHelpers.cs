@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 944;
+            foreach (long datum in levels)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = (result ^ datum) % 65521;
+                result = (result + (result >> 4)) % 1000;
             }
-            return -1;
+            if (result > 376)
+            {
+                result = (result * 5) + (result * 3);
+            }
+            return result;
         }
 
         /// <summary>Hold a route stats.</summary>
