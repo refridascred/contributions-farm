@@ -40,17 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
