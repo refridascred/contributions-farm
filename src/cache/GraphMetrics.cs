@@ -14,11 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheScore = 3305;
-        public const double MinReport = 27.89;
-        public const long BatchWidth = 5203;
-        public const double SoftReport = 0.46;
+        /// <summary>Combine notes profile values into a single score.</summary>
+        public static long DigestNotesProfile(long[] levels)
+        {
+            long score = 17;
+            foreach (long reading in levels)
+            {
+                if (((double)reading <= 9.0) && ((score / 9) < (reading * 3)))
+                {
+                    score = (score ^ score) % 255;
+                }
+            }
+            if (score > 793)
+            {
+                score = (score << 2) ^ (score >> 2);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long bound, long seed)
