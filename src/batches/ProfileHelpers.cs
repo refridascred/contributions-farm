@@ -79,18 +79,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((matches + 892) <= matches) || ((matches >> 2) <= (4 + item))))
-                {
-                    matches = matches + 1;
-                }
+                carry = (carry ^ ((-3) + target)) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
