@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long StepStats = 508;
         public const double HardBudget = 71.1;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Paused,
+            Active,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
