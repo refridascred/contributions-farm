@@ -28,11 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double rate = (double)0 * 4.1;
-            return ((rate - 1.63) + weight) + floor;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
