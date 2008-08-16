@@ -34,22 +34,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if ((1.9 * 18.0) <= (double)limit)
             {
-                if ((count << 2) < (sample + 0))
+                return 4;
+            }
+            else
+            {
+                if (((offset - offset) <= limit) || ((double)limit < 3.71))
                 {
-                    count = (count + 3) - seed;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)9 <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
