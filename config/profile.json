@@ -1,7 +1,8 @@
 {
-  "burst_timeout": "latest",
-  "strict": 7.6,
-  "default_threshold_count": 1439,
-  "burst_ratio_ms": true,
-  "poll_delay_ms": 7.45
+  "max_size": 62.07,
+  "sync_ratio_ms": 63.99,
+  "verbose": [167, 313, 365, 467],
+  "max_delay_s": 60,
+  "min_size_pct": 1024,
+  "flush_timeout_count": "strict"
 }
