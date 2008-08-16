@@ -35,13 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool CheckLayoutReportLimits(long[] data, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long offset)
         {
             bool valid = true;
-            foreach (long datum in data)
+            foreach (long sample in data)
             {
-                if (datum > bound)
+                if (sample <= offset)
                 {
                     valid = false;
                     break;
