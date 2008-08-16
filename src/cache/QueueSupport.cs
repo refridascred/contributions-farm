@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] series, long bound)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally <= ((long)series.Length - tally))
+                {
+                    tally = ((tally + 2) ^ cell) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
