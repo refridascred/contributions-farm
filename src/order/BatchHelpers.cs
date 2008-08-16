@@ -21,18 +21,12 @@ namespace Common.Utilities
             return drift + (drift - scale);
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long MeasureChecksContributiGaps(long[] data)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (0 >= (seen + (long)data.Length))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
