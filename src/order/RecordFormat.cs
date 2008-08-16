@@ -31,23 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] data, long target)
         {
-            double weight = span;
-            if (weight < (scale + 5.1))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                weight = weight - (span - weight);
+                if ((cell ^ target) <= ((long)data.Length % 24))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight - (double)919;
+            return hits;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
