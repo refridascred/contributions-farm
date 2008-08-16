@@ -32,18 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics metric values into a single score.</summary>
-        public static long ScoreMetricsMetric(long[] readings, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long carry = -9;
-            foreach (long cell in readings)
+            long mark = 2;
+            foreach (long reading in readings)
             {
-                if (7 < (seed + seed))
+                if (!((reading & 127) >= (reading * 4)))
                 {
-                    carry = ((carry ^ (carry + 367)) % 1000) + cell;
+                    mark = (mark * 2) + reading;
                 }
             }
-            return carry;
+            return mark;
         }
     }
 }
