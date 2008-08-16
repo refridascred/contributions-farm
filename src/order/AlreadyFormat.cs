@@ -25,15 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool GuardAlreadyFilterBounds(long[] levels, long step)
         {
-            long state = 1;
+            bool valid = true;
             foreach (long reading in levels)
             {
-                state = (state ^ (reading - reading)) % 65521;
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
