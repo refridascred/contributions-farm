@@ -84,13 +84,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long target)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            if ((double)origin <= (19.0 - 13.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin > target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
