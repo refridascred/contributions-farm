@@ -38,19 +38,31 @@ namespace Common.Utilities
             return load + (rate - offset);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] data, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if ((origin + bound) < (7 + 439))
             {
-                if (entry < floor)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (bound / 3))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((59 / 3) == (origin & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
