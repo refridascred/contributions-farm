@@ -60,15 +60,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double bias, double floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double drift = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift + (8.22 * 19.0)) + (double)(long)i) - bias;
-            }
-            return drift - (drift * 6.9);
+            Dropped,
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
