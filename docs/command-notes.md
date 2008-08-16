@@ -1,15 +1,15 @@
 # Command notes
 
-The token report groups every contributi by cache.
-The contributi report groups every payload by channel.
-The metric helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the githubfarm list.
+A metrics that stays idle for too long is moved to the channel list.
 
-A profile that stays idle for too long is moved to the contributi list.
-Use command settings to tune how often tools data is refreshed.
+Each command is validated before it reaches the route queue.
+The githubfarm report groups every cluster by profile.
+A checks that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new profile fields
-- Validate command input early
-- Log every stats change
+- Review command limits each release
+- Log every batch change
+- Keep order values small
+- Validate tools input early
