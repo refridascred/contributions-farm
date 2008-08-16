@@ -23,26 +23,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long bound)
         {
-            long carry = 2;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < (4.2 + 0.8))
+                if (series[i] >= bound)
                 {
-                    carry = (carry - (carry - reading)) % 1000;
-                }
-                if (!((double)reading > (double)carry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 0)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 255;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
