@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter profile entry stays within the limit.</summary>
-        public static bool GuardCounterProfileLimits(long[] series, long origin)
+        /// <summary>Locate a record metric reading by value.</summary>
+        public static long SeekRecordMetricIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != origin)
+                if (items[i] > seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
