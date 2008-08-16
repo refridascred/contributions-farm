@@ -39,39 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long floor, long target)
-        {
-            long bound = floor ^ target;
-            if ((double)bound != (4.67 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor < (floor - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (56 <= (bound & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (double)target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSpan = 7531;
+        public const long LimitRoute = 3063;
+        public const string RetryRoute = "legacy";
     }
 }
