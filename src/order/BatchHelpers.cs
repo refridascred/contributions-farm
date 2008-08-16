@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] data)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((27 + count) < (count + count))
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
                 {
-                    count = (count + 2) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two stats channel measurements.</summary>
