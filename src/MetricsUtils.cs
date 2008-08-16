@@ -34,19 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream contributi readings against a bound.</summary>
-        public static bool CheckStreamContributiBounds(long[] data, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != offset)
+                if (series[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
