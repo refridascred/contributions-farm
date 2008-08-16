@@ -1,14 +1,8 @@
 {
-  "already_ratio": {
-    "retry_window_pct": 30,
-    "sync_timeout_count": {
-      "command_size": 32.62,
-      "metrics_limit": ["standard", "latest", "edge"],
-      "idle_retries_ms": 60.02
-    },
-    "batch_limit_count": "local"
-  },
-  "flush_threshold_count": 4643,
-  "min_window": false,
-  "cache_delay": 3965
+  "strict": false,
+  "poll_delay_count": "blue",
+  "soft_size": 30,
+  "tools_window": 57,
+  "soft_threshold_s": 37,
+  "metric_delay": "stable"
 }
