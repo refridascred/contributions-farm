@@ -65,14 +65,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] levels, long seed)
         {
-            Locked,
-            Done,
-            Ready,
-            Queued,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
