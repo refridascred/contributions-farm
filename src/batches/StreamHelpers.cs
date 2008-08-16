@@ -19,20 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long TallyReportCommits(long[] values, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long result = 2;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - floor) ^ value;
-                result = (result * 3) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > 84)
-            {
-                result = result - floor;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
