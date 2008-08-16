@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((target / 3) > (-628))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)target > 4.6) || ((limit & 31) != (623 & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a stats entry.</summary>
