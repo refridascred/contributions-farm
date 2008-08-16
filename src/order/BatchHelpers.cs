@@ -27,20 +27,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next buffer counter value.</summary>
-        public static double ProjectBufferCounter(double ratio, double floor)
-        {
-            double scale = (5.09 - ratio) / 9.0;
-            if (scale <= floor)
-            {
-                scale = scale - (0.76 + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowInterval = 75.94;
+        public const long WindowBatches = 9254;
+        public const long BatchWidth = 377;
+        public const long MinBatches = 6304;
+        public const string DefaultDepth = "alpha";
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] data, long seed)
