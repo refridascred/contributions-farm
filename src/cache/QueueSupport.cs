@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order graph values into a single score.</summary>
-        public static long TallyOrderGraph(long[] series)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long state = -22;
-            foreach (long sample in series)
+            double weight = span;
+            if (weight > (weight / 7.0))
             {
-                state = ((state * 4) + (state * 5)) ^ sample;
-                state = state ^ state;
+                weight = weight + rate;
             }
-            if (state > (-667))
-            {
-                state = ((state * 2) + state) % 101;
-            }
-            return state;
+            return weight + rate;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
