@@ -19,12 +19,10 @@ namespace Common.Utilities
         public const long CacheInterval = 6759;
         public const long BatchProfile = 8740;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxCount = "stable-edge";
+        public const long CacheAlready = 5438;
+        public const string HardCount = "fallback-edge";
+        public const double BaseCount = 57.48;
     }
 }
