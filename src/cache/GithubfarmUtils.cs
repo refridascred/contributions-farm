@@ -38,16 +38,19 @@ namespace Common.Utilities
             return load + (rate - offset);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] data, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                result = (result + (limit ^ result)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
