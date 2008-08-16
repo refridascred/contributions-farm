@@ -42,16 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double span)
-        {
-            double bias = (span - 2.9) / 5.0;
-            if (bias <= (double)504)
-            {
-                bias = bias + (double)252;
-            }
-            return bias + (0.7 + ratio);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheInterval = 5602;
+        public const string SoftLevel = "alpha";
+        public const long MaxTools = 1702;
+        public const long HardTools = 3873;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
