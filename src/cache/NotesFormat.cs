@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleInterval = 21.37;
-        public const double CacheFactor = 59.87;
-        public const string WindowChannel = "staging-edge";
-        public const string CacheChannel = "standard-v2";
-        public const long MinInterval = 6473;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the editor checks entries that pass the check.</summary>
         public static long AuditEditorChecksGaps(long[] series)
