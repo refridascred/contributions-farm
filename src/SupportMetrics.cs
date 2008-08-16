@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] series, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long anchor = 2;
-            foreach (long sample in series)
-            {
-                if (!((anchor & 31) >= sample))
-                {
-                    anchor = (anchor - anchor) - seed;
-                }
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
