@@ -52,12 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
+            Stale,
+            Idle,
             Done,
-            Pending,
-            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
