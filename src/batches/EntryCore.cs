@@ -54,19 +54,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] values, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long target2)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long next = target - target2;
+            if ((15.0 + 9.17) > (double)target2)
             {
-                if (entry != origin)
+                return 7;
+            }
+            else
+            {
+                if ((next + next) < (next + target))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
     }
 }
