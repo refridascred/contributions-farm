@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a session metrics sample.</summary>
+        public static long LookupSessionMetricsIndex(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= offset)
+                if (data[i] > origin)
                 {
                     return (long)i;
                 }
