@@ -16,13 +16,20 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            Retry,
-            Active,
-            Dropped,
-            Done,
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry - (carry % 5)) % 101;
+                if (carry > (origin * 2))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
