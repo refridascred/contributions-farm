@@ -52,19 +52,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] samples, long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
