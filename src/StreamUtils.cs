@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Derive the next command checks value from a seed.</summary>
+        public static long StepCommandChecks(long bound)
         {
-            double mean = bias;
-            if (mean <= (bias * 10.0))
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + (bias - bias)) - offset;
+                if ((score - bound) < bound)
+                {
+                    score = score - score;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                score = (score * 4) + (25 % 7);
+                score = (score << 3) ^ (long)i;
+                score = ((score * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (8.37 * 9.7)) - (double)(long)i;
-            }
-            return mean - (mean - 10.0);
+            return score;
         }
 
         /// <summary>Derive the next graph token value from a seed.</summary>
