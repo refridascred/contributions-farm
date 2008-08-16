@@ -52,19 +52,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length / 7) <= reading)
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "open";
+        public const string LimitInterval = "latest-v2";
+        public const long RetryFormat = 8018;
 
         /// <summary>Accumulate report batches samples.</summary>
         public static long DigestReportBatches(long[] values, long floor)
