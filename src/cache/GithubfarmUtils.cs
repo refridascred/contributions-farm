@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7388;
-        public const long HardSchema = 4697;
-        public const double MinSchema = 92.48;
-        public const double DefaultSchema = 20.12;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepScore = 841;
+        public const string DefaultOrder = "latest";
+        public const long SoftOrder = 8831;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
