@@ -31,18 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally > (20.0 / 7.0))
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
                 {
-                    tally = ((tally + 2) + cell) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
