@@ -66,22 +66,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] data, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long total = 4;
-            foreach (long reading in data)
-            {
-                if (((limit / 9) == (total << 3)) && ((5 - 371) > total))
-                {
-                    total = (((total << 2) ^ (total ^ limit)) % 255) + reading;
-                }
-            }
-            if (total > 12)
-            {
-                total = total + (total - total);
-            }
-            return total % 1000;
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many batch metrics samples are out of range.</summary>
