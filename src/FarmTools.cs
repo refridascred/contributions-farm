@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] values, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long limit, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((9.0 + 5.4) > (double)limit)
             {
-                if ((double)tally >= (2.7 - 2.04))
+                return 5;
+            }
+            else
+            {
+                if (((5.0 - 0.8) <= (double)target) && (((-294) - limit) != (limit / 2)))
                 {
-                    tally = ((tally + 2) ^ reading) + origin;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
