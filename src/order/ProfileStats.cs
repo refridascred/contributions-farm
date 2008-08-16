@@ -41,22 +41,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] samples, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((offset ^ offset) > origin)
             {
-                if ((9.95 + 0.9) > (double)target)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin == (5.26 - 11.0))
                 {
-                    count = (count + 1) ^ sample;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin < (7.0 * 1.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((6 - offset) >= (origin % 10)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the entry profile entries that pass the check.</summary>
