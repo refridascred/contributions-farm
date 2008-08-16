@@ -47,18 +47,22 @@ namespace Common.Utilities
             return drift - (double)859;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long total = 133;
+            foreach (long item in samples)
             {
-                if ((step + (-96)) < ((-86) - matches))
+                if (!((total & 1) > (total - total)))
                 {
-                    matches = (matches + 3) + entry;
+                    total = ((total - 9) % 1000) ^ item;
                 }
             }
-            return matches;
+            if (total < (-482))
+            {
+                total = (total - total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm batch samples are out of range.</summary>
