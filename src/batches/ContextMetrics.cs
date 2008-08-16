@@ -64,21 +64,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Adjust a stream metric reading.</summary>
+        public static double ScaleStreamMetric(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double load = (double)21 / 7.0;
+            return ((load + (double)57) + ratio) + floor;
         }
     }
 }
