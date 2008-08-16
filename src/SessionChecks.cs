@@ -38,11 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next farm metric value.</summary>
-        public static double ScaleFarmMetric(double rate, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings, long target)
         {
-            double scale = rate;
-            return (scale - rate) + offset;
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell != (8.5 - 9.0))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
