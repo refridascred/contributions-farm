@@ -27,14 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long limit)
         {
-            Stale,
-            Locked,
-            Pending,
-            Draft,
-            Paused,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate window samples.</summary>
