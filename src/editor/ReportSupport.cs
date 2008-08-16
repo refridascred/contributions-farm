@@ -19,32 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long offset, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            long delta = offset ^ bound;
-            if ((8.1 + 3.3) < (double)offset)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((618 ^ 7) >= (offset >> 4))
+                if ((double)tally < (4.2 - 1.23))
                 {
-                    return 8;
+                    tally = (tally + 3) + cell;
                 }
                 else
                 {
-                    if (((double)delta > (20.0 - 9.7)) && ((delta + bound) <= (bound >> 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
