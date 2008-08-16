@@ -19,18 +19,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((676 << 1) <= value) && ((4.1 + 5.6) == (double)(long)values.Length))
+                if (data[i] == limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
