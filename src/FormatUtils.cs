@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryTimeout = 8513;
-        public const string DefaultInterval = "cached-1";
-        public const long MinSpan = 8040;
-        public const double CacheContributi = 38.29;
+        /// <summary>Match up context counter samples.</summary>
+        public static long MatchContextCounterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
