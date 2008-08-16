@@ -60,19 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long step)
         {
-            long acc = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc + (cell % 97)) % 65521) - limit;
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 6)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
