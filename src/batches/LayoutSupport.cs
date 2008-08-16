@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "legacy-v2";
-        public const string StepFactor = "strict-edge";
-        public const long RetryStream = 1446;
-        public const long DefaultLevel = 8732;
-        public const long BatchWidth = 1535;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 8) <= tally)
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] readings, long step)
