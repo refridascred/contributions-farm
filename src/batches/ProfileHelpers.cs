@@ -61,39 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long bound)
+        /// <summary>Measure how many farm batch samples are out of range.</summary>
+        public static long CountFarmBatchHits(long[] items)
         {
-            long lane = offset - bound;
-            if (((2.9 - 5.6) >= (double)bound) && ((bound * 2) < (offset - 0)))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 4) > (bound * 3))
+                if ((cell - cell) < cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound) < (lane << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((lane >> 3) == (8 - offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
