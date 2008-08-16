@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Derive the next already format value from a seed.</summary>
+        public static long RollAlreadyFormat(long seed)
         {
-            double weight2 = (weight - span) + (double)712;
-            if (weight2 < (double)706)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                weight2 = weight2 - (double)686;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + (double)239;
+            return total;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
