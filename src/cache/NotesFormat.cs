@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double bias = (double)2 + (weight - 20.0);
-            if (bias >= (offset / 2.0))
-            {
-                bias = bias - weight;
-            }
-            return bias - bias;
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Adjust a order reading.</summary>
