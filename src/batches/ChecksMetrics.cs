@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            Closed,
+            Idle,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Adjust a layout reading.</summary>
