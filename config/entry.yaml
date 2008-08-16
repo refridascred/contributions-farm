@@ -1,13 +1,9 @@
 # entry settings
-batch_capacity_s: 1024
-min_window_s:
-  checks_ttl: 19
-  burst_retries_ms: 10.44
-  verbose: false
-  route_ttl: 54
-cache_retries_ms: true
-schema_depth:
-  hard_retries: eu-west
-  route_capacity: 95.42
-  burst_threshold_s: primary
-  hard_window_pct: 42.3
+base_depth: 55.2
+burst_ratio: 4285
+max_timeout: local
+flush_window_s:
+  - 336
+  - 385
+  - 194
+  - 460
