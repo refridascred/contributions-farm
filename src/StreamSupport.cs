@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultWidth = 5502;
+        public const long MaxRatio = 9453;
+        public const long MinCounter = 7402;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesMatches(long[] data)
