@@ -16,19 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] series, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > origin)
+                if ((data[i] < step) && ((data[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
