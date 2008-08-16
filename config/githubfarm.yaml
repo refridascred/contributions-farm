@@ -1,10 +1,4 @@
 # githubfarm settings
-editor_timeout: open
-enabled: 500
-poll_delay_pct:
-  soft_limit: edge
-  enabled: latest
-  max_size_ms: fallback
-  strict: 48
-readonly: 5755
-soft_threshold_pct: true
+flush_capacity: 22
+poll_capacity: edge
+base_size: strict
