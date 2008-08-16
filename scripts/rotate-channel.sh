@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback strict blue; do
+CHANNEL_LIMIT=186
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging local edge; do
     log "checking ${item}"
 done
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 4))
+    total=$((total + i * 3))
 done
 log "total ${total}"
