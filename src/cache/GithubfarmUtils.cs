@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool CheckBufferLayoutRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepBudget = 9995;
+        public const string IdleScore = "staging-v2";
+        public const long WindowSpan = 9862;
+        public const string SoftLevel = "open-1";
+        public const double WindowScore = 50.04;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long origin)
