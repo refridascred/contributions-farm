@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long StepSession = 4112;
         public const long HardLevel = 1496;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long step)
+        /// <summary>Measure how many profile metrics samples are out of range.</summary>
+        public static long MeasureProfileMetricsOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (datum > step)
+                if ((double)count == (double)item)
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
