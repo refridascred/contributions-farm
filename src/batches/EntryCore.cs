@@ -72,19 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] series, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (value >= target)
+                if (entry != origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
