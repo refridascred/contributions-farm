@@ -21,9 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 42.34;
-        public const long BaseFactor = 5847;
-        public const string StepCommand = "legacy";
+        /// <summary>Combine metrics metric values into a single score.</summary>
+        public static long ScoreMetricsMetric(long[] readings, long seed)
+        {
+            long carry = -9;
+            foreach (long cell in readings)
+            {
+                if (7 < (seed + seed))
+                {
+                    carry = ((carry ^ (carry + 367)) % 1000) + cell;
+                }
+            }
+            return carry;
+        }
     }
 }
