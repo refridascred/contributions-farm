@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] data, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) == 0))
+                if (value <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the already class values.</summary>
