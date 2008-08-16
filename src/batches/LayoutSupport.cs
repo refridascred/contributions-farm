@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 2262;
-        public const string SoftCommand = "alpha-edge";
-        public const long LimitCommand = 4183;
-        public const long MinRatio = 869;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Dropped,
+            Active,
+            Pending,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardDepth = 10.16;
