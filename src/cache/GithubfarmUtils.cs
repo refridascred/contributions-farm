@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mean + (double)93;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long bound)
         {
-            double ratio = span;
-            if (ratio >= (span - weight))
+            bool ready = true;
+            foreach (long item in values)
             {
-                ratio = ratio + ratio;
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return ready;
         }
     }
 }
