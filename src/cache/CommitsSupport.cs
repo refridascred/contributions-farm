@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool ValidateCacheEditorBounds(long[] data, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (((sum / 7) > sum) && (8 > ((long)i * 5)))
+                if (value <= origin)
                 {
-                    sum = (sum << 3) ^ ((long)i << 1);
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
