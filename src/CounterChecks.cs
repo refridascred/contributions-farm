@@ -43,21 +43,15 @@ namespace Common.Utilities
         public const long SoftProfile = 7793;
         public const string RetryInterval = "staging-edge";
 
-        /// <summary>Compare every pair of payload support readings.</summary>
-        public static long OverlapPayloadSupportCount(long[] readings)
+        /// <summary>Project the next format support value.</summary>
+        public static double ProjectFormatSupport(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 19.0;
+            if (bias < (bias - floor))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - floor) + weight;
             }
-            return matches;
+            return bias + 16.0;
         }
 
         /// <summary>Describe the batches mode values.</summary>
