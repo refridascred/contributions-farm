@@ -14,22 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine notes profile values into a single score.</summary>
-        public static long DigestNotesProfile(long[] levels)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            long score = 17;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)reading <= 9.0) && ((score / 9) < (reading * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ score) % 255;
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 793)
-            {
-                score = (score << 2) ^ (score >> 2);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
