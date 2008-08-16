@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate context format readings against a bound.</summary>
+        public static bool GuardContextFormatLimits(long[] readings, long limit)
         {
-            Done,
-            Paused,
-            Stale,
-            Ready,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
