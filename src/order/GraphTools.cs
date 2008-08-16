@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue buffer entries that pass the check.</summary>
-        public static long AuditQueueBufferGaps(long[] readings, long target)
+        /// <summary>Digest a series of channel already entries.</summary>
+        public static long ScoreChannelAlready(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = -774;
+            foreach (long sample in samples)
             {
-                if ((133 % 100) <= (hits + hits))
+                if (((sample + sample) >= (-36)) || ((double)anchor <= 8.2))
                 {
-                    hits = ((hits + 1) - entry) - target;
+                    anchor = ((anchor << 3) ^ sample) % 4096;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
