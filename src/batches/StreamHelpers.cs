@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long bound2 = limit + bound;
+            if (((bound * 5) > (bound2 + limit)) || ((bound2 % 100) == (bound2 - limit)))
             {
-                state = ((state * 2) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((double)bound2 < 2.2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (50 + 168))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate report commits samples.</summary>
