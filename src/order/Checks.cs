@@ -23,11 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Digest a series of batches payload entries.</summary>
+        public static long TotalBatchesPayload(long[] samples, long seed)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long carry = -9;
+            foreach (long cell in samples)
+            {
+                if ((0 % 3) < carry)
+                {
+                    carry = ((carry + (carry % 12)) - cell) + seed;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of batch buffer readings.</summary>
