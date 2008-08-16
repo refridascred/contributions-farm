@@ -30,11 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 6014;
+        public const string MaxProfile = "fallback";
+        public const long HardProfile = 7768;
+        public const long SoftScore = 6448;
     }
 }
