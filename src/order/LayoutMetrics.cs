@@ -25,14 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data)
         {
-            Closed,
-            Idle,
-            Locked,
-            Done,
-            Ready,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length % 3) > (reading + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
