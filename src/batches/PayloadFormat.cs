@@ -51,11 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            Active,
+            Stale,
+            Done,
+            Idle,
+            Dropped,
         }
     }
 }
