@@ -12,15 +12,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long bound2)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 9; i++)
+            long next = bound ^ bound2;
+            if ((bound2 & 1) < (bound - (-30)))
             {
-                bias2 = ((bias2 - 5.0) + (double)(long)i) - weight;
+                return 2;
             }
-            return bias2 + bias;
+            else
+            {
+                if (((2.7 / 2.0) > (double)bound) && ((bound2 >> 2) >= next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
