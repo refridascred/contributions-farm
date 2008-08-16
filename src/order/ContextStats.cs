@@ -26,32 +26,14 @@ namespace Common.Utilities
         public const long IdleToken = 3826;
         public const double LimitToken = 78.47;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long seed, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long gap = seed - target;
-            if (!((gap - target) >= (target / 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed > (target & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + seed) <= (827 % 3)) || (seed <= (gap ^ gap)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Synced,
+            Queued,
+            Active,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
