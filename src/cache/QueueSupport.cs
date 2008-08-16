@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Match up already order samples.</summary>
+        public static long OverlapAlreadyOrderCount(long[] values)
         {
-            double weight = span;
-            if (weight > (weight / 7.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight + rate;
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
