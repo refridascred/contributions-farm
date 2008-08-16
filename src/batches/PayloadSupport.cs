@@ -19,17 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Audit token layout readings against a rule.</summary>
+        public static long TallyTokenLayoutHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (data[i] == limit)
+                if ((seen > (item * 4)) && (22 <= (seen * 2)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
