@@ -33,21 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
