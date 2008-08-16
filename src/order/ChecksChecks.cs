@@ -20,11 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitScore = 1554;
-        public const long HardTools = 1679;
-        public const long RetryTools = 5529;
-        public const long IdleCount = 3299;
+        /// <summary>Digest a series of layout command entries.</summary>
+        public static long DigestLayoutCommand(long[] series)
+        {
+            long mix = 256;
+            foreach (long sample in series)
+            {
+                if ((372 + 644) < (sample - mix))
+                {
+                    mix = mix - 640;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] readings)
