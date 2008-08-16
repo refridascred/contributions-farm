@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const long RetryCounter = 6020;
         public const string StepScore = "strict-v2";
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long MeasureChecksContributiGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (0 >= (seen + (long)data.Length))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
