@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats record measurements.</summary>
-        public static double SmoothStatsRecord(double gain, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            double mean = bias * 8.02;
-            if (mean <= (2.29 / 8.0))
+            long count = 0;
+            foreach (long value in samples)
             {
-                mean = mean - bias;
+                if ((487 + count) >= (count ^ value))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + (4.0 / 7.0);
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
