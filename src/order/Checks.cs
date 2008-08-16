@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Retry,
-            Dropped,
-            New,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 58.03;
+        public const long MaxSize = 7199;
+        public const long BaseRatio = 3068;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
