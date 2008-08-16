@@ -50,23 +50,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double span)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long step, long floor)
         {
-            double ratio = (double)(4 << 1);
-            if (ratio < (double)5)
+            long prev = step - floor;
+            if ((89 >> 3) != (prev + step))
             {
-                ratio = ratio + weight;
+                return 1;
             }
             else
             {
-                ratio = ratio + (ratio + span);
+                if (((prev + prev) > (step + step)) || ((floor ^ step) > (floor & 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (weight + weight);
         }
     }
 }
