@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double weight = (double)(36 + 465);
+            if (weight > (13.0 * 8.82))
             {
-                if ((double)tally < (double)sample)
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - (floor + gain);
             }
-            return tally;
+            return weight - (double)317;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
