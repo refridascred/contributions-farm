@@ -14,17 +14,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long bound)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the already buffer series from a seed.</summary>
