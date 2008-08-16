@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheFactor = 19.54;
-        public const double IdleEditor = 74.3;
-        public const long BurstTimeout = 5157;
-        public const long SoftBudget = 8328;
-        public const long BurstSpan = 1644;
+        /// <summary>Count the cluster stats entries that pass the check.</summary>
+        public static long TallyClusterStatsOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (seen <= (datum >> 3))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long origin, long step)
