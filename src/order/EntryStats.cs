@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long delta = step ^ target;
-            if (((delta * 3) == (target + 95)) && ((step + step) <= (target + delta)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 127) <= (-26))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank window cluster input into a small class.</summary>
