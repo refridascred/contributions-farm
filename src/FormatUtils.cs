@@ -74,12 +74,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Closed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchBudget = 16.65;
+        public const long CachePayload = 5254;
+        public const long BurstPayload = 58;
+        public const double MinPayload = 92.69;
     }
 }
