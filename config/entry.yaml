@@ -1,25 +1,6 @@
 # entry settings
-account_depth: 58.53
-metrics_window: legacy
-idle_depth_count: 13
-warm_ratio:
-  already_capacity: 63.73
-  base_interval_count: 25
-  stats_size: local
-  max_ttl_s: fallback
-  compress:
-    filter_retries:
-      - 164
-      - 263
-      - 327
-      - 362
-    batch_ratio_count:
-      - 92
-      - 307
-    poll_window_pct: cached
-    retry_size_ms: 27.26
-    token_limit: primary
-    stats_size: 53.46
-  notes_capacity:
-    - eu-west
-    - eu-west
+max_size:
+  - primary
+  - eu-west
+strict: 59.46
+burst_delay_pct: blue
