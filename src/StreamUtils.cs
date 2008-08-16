@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Grade a batch cache value against two limits.</summary>
+        public static long SortBatchCache(long target, long seed)
         {
-            double ratio = (8.29 / 6.0) - offset;
-            for (int i = 0; i < 2; i++)
+            long gap = target ^ seed;
+            if ((seed << 1) < (seed << 2))
             {
-                ratio = (ratio + (4.9 - bias)) - (double)(long)i;
+                return 5;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((target >> 2) <= (gap + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((752 - seed) != (2 >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((gap ^ target) == (seed - target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
