@@ -68,11 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            Retry,
+            Stale,
+            Active,
+            New,
         }
     }
 }
