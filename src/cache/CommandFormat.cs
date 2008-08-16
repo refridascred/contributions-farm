@@ -46,18 +46,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading & 255) == ((-65) * 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
