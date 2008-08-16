@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] values, long seed)
         {
-            double load = (double)(40 & 15);
-            if (load >= load)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                load = load - (7.18 * 19.0);
+                if ((97 >= (seed << 2)) || (9.2 > (double)matches))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + (rate + floor);
+            return matches;
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
