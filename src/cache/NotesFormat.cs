@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((long)data.Length % 24) <= hits)
-                {
-                    hits = ((hits + 1) ^ reading) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
