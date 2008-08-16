@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally < (tally ^ 13))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
