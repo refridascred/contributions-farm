@@ -18,22 +18,14 @@ namespace Common.Utilities
         public const double MinSchema = 92.48;
         public const double DefaultSchema = 20.12;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] series, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((0.4 - 8.9) >= (double)tally)
-                {
-                    tally = ((tally + 2) + datum) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Project the next profile value.</summary>
