@@ -24,19 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] data, long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double scale2 = (double)3;
+            if (scale2 <= scale2)
             {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = (scale2 - bias) + scale;
             }
-            return valid;
+            else
+            {
+                scale2 = scale2 + (scale2 + scale2);
+            }
+            return scale2 + 5.0;
         }
     }
 }
