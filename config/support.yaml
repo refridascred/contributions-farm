@@ -1,9 +1,4 @@
 # support settings
-persist:
-  - 500
-  - 67
-  - 158
-buffer_capacity:
-  - green
-  - latest
-idle_delay_pct: stable
+already_size: eu-west
+queue_window: 4270
+persist: 19
