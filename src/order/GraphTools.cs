@@ -53,22 +53,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((0 & 63) >= (seen << 2)))
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
