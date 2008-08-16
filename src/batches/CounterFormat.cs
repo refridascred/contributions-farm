@@ -21,16 +21,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                acc = (acc << 3) ^ (acc - (long)i);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((double)reading <= (5.6 / 6.0))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result << 3) ^ (offset + offset);
+                }
             }
-            return acc;
+            if (result < 61)
+            {
+                result = (result - (offset / 8)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
