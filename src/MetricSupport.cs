@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a support route reading by value.</summary>
-        public static long LocateSupportRouteIndex(long[] levels, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset % 8) <= (offset >> 1))
             {
-                if (levels[i] > floor)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset2) <= (offset * 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= 467)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset2 - offset2) == (offset2 ^ offset2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
