@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a tools batches reading.</summary>
-        public static double ScaleToolsBatches(double bias, double floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            double bias2 = 6.7 + floor;
-            if (bias2 < (bias2 + bias2))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 + floor) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + 6.9;
-            }
-            return bias2 - (double)50;
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
