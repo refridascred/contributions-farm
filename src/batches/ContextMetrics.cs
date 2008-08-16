@@ -45,23 +45,21 @@ namespace Common.Utilities
         public const long IdleFarm = 471;
         public const long BaseFactor = 1828;
 
-        /// <summary>Roll a schema metrics counter forward.</summary>
-        public static long SeriesSchemaMetrics(long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.5 * 5.63) <= (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (!((bound / 5) < (2 + bound)))
-                {
-                    mix = mix - (bound << 1);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
