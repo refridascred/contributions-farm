@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long BatchCluster = 7063;
         public const double RetryCluster = 0.25;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] readings, long floor)
         {
-            double drift = scale;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                drift = ((drift + drift) + (double)(long)i) - bias;
+                if ((double)floor > (double)entry)
+                {
+                    count = count + 3;
+                }
             }
-            return drift - (drift + 15.0);
+            return count;
         }
     }
 }
