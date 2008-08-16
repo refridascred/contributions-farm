@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((matches << 1) <= cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
