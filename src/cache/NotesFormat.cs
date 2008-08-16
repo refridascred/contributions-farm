@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 8437;
-        public const long DefaultCounter = 559;
-        public const long MaxSpan = 1672;
-        public const double SoftCounter = 38.95;
-        public const long HardInterval = 7504;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double offset)
+        {
+            double bias = (double)2 + (weight - 20.0);
+            if (bias >= (offset / 2.0))
+            {
+                bias = bias - weight;
+            }
+            return bias - bias;
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double SmoothOrder(double weight, double floor)
