@@ -24,13 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long acc = 349;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) <= reading)
+                {
+                    acc = ((acc << 3) ^ (acc - reading)) % 101;
+                }
+                acc = acc ^ (acc - reading);
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
