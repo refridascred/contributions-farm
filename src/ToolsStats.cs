@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the graph buffer entries that pass the check.</summary>
-        public static long TallyGraphBufferHits(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value + 80) >= (tally - (long)data.Length)) || (((tally * 5) <= 24) || ((51 + tally) >= 94)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a layout summary.</summary>
