@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double bias)
         {
-            Failed,
-            Queued,
-            Draft,
-            Retry,
+            double drift = bias;
+            return (drift + (8.0 * 1.0)) + scale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
