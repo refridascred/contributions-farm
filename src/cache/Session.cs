@@ -22,38 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long offset2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] levels, long floor)
         {
-            if ((offset < 931) || ((offset2 >> 1) == (offset & 15)))
+            long sum = 33;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 5) > (offset + offset2))
+                sum = (sum ^ (floor >> 1)) % 97;
+                if ((floor - value) == (value + value))
                 {
-                    return 4;
+                    sum = (sum - sum) % 255;
                 }
                 else
                 {
-                    if ((offset2 << 3) > (offset2 & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset < ((-59) ^ offset2)) || ((double)offset <= (7.28 / 9.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum + value) % 65521;
+                }
+                if ((floor >> 1) <= floor)
+                {
+                    sum = ((sum * 2) + (286 << 3)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
