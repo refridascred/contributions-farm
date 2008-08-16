@@ -15,13 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool ValidateCacheEditorBounds(long[] data, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long seed)
         {
             bool flag = true;
-            foreach (long value in data)
+            foreach (long entry in series)
             {
-                if (value <= origin)
+                if (entry > seed)
                 {
                     flag = false;
                     break;
