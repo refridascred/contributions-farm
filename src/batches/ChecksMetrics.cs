@@ -85,15 +85,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
