@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 9;
+            foreach (long datum in series)
             {
-                if (count <= (reading * 4))
+                carry = ((carry ^ (datum << 3)) % 4096) + limit;
+                if (datum >= (carry >> 5))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Rank session input into a small class.</summary>
