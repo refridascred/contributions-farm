@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (data[i] > bound)
+                if (hits > (hits / 6))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
