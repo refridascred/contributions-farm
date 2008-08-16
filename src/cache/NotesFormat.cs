@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a stats cluster reading.</summary>
-        public static double BlendStatsCluster(double bias, double bias2)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long target)
         {
-            double mean = bias;
-            if (mean > bias)
+            if ((58 * 5) <= (step << 3))
             {
-                mean = mean + (bias * 6.96);
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - (bias2 + bias)) - (double)(long)i;
+                if ((step % 8) <= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean - bias2;
         }
 
         /// <summary>Hold a support options.</summary>
