@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support record readings.</summary>
-        public static long OverlapSupportRecordCount(long[] samples)
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long TotalFormatQueue(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 259;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum ^ (entry - sum)) % 97) - (long)i;
                 }
+                sum = (sum - (entry + sum)) % 4096;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a schema summary.</summary>
