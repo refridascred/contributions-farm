@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "cached-1";
-        public const long DefaultFactor = 5086;
-        public const long RetryBatch = 196;
-        public const long IdleFactor = 9904;
-        public const string CacheBatch = "local";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series, long seed)
+        {
+            long mix = 5;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length >> 2) != (seed / 7))
+                {
+                    mix = ((mix - (mix + mix)) % 65521) + reading;
+                }
+            }
+            if (mix > (-59))
+            {
+                mix = (mix - (seed + mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long limit)
