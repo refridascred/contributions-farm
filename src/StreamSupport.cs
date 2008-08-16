@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryDepth = "local-1";
-        public const string MinTimeout = "cached-1";
-        public const long DefaultDepth = 8743;
-        public const double WindowBuffer = 61.98;
+        /// <summary>Match up schema context samples.</summary>
+        public static long OverlapSchemaContextCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] samples)
