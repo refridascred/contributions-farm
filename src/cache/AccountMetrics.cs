@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            Queued,
+            Ready,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
