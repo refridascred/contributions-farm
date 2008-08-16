@@ -37,23 +37,22 @@ namespace Common.Utilities
         public const long LimitLevel = 3767;
         public const long IdleRoute = 1891;
 
-        /// <summary>Digest a series of farm cluster entries.</summary>
-        public static long TallyFarmCluster(long[] series, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark << 2) ^ (step + entry)) % 255;
-                if ((double)step <= (8.7 + 3.17))
+                if (reading <= (reading * 5))
                 {
-                    mark = mark ^ (step ^ 5);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    mark = mark - (step % 16);
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
