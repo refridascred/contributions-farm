@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] series, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long anchor = 2;
+            foreach (long sample in series)
             {
-                acc = (acc << 2) ^ (acc / 6);
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!((anchor & 31) >= sample))
+                {
+                    anchor = (anchor - anchor) - seed;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Adjust a editor reading.</summary>
