@@ -31,14 +31,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Dropped,
-            Done,
-            Pending,
-            Stale,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6008;
+        public const string MinLevel = "alpha-1";
+        public const long SoftFilter = 6318;
     }
 }
