@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long step, long seed)
         {
-            long sum = -40;
-            foreach (long item in readings)
+            long delta = step + seed;
+            if (((double)step < (7.33 / 3.0)) || ((60 - seed) <= 889))
             {
-                sum = (sum * 5) + (item >> 4);
+                return 8;
             }
-            return sum % 65521;
+            else
+            {
+                if ((step - step) <= (delta + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((delta < (1 * 3)) && (delta <= (step & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support record readings.</summary>
