@@ -1,15 +1,12 @@
 # Command notes
 
-Keep report and command names short and lowercase.
-Run the cache check before changing any metrics limits.
-
-The account helpers are pure functions, so they are safe to call from any thread.
-Keep token and tools names short and lowercase.
-A queue that stays idle for too long is moved to the entry list.
+Defaults for metrics live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the channel list.
+When a cache fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new token fields
-- Prefer profile defaults
-- Log every window change
+- Document new payload fields
+- Review route limits each release
+- Validate cache input early
+- Keep metric values small
