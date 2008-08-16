@@ -40,21 +40,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long matches = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    if ((data[i] - data[j]) < 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
