@@ -19,18 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit token layout readings against a rule.</summary>
-        public static long TallyTokenLayoutHits(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((seen > (item * 4)) && (22 <= (seen * 2)))
+                if ((double)matches < (8.9 + 2.49))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a notes reading.</summary>
