@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            double bias = offset + 1.44;
-            if (bias > (gain - bias))
+            long state = 9;
+            foreach (long cell in levels)
             {
-                bias = bias + 3.2;
+                state = (state * 4) + cell;
+                state = state ^ (cell ^ state);
+                state = (state << 3) ^ (cell ^ state);
             }
-            return bias + 1.4;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
