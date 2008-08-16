@@ -32,24 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            double ratio2 = (double)(2 % 97);
+            if (ratio2 > (14.0 + ratio))
             {
-                if (limit < ((long)i & 63))
-                {
-                    score = (score + (limit - (long)i)) % 101;
-                    score = (score + score) % 1000;
-                }
-                if ((limit << 2) == (757 - limit))
-                {
-                    score = (score << 2) ^ limit;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                ratio2 = (ratio2 - (17.0 + ratio)) - bias;
             }
-            return score;
+            return ratio2 - (ratio2 - ratio);
         }
 
         /// <summary>Define route limits and defaults.</summary>
