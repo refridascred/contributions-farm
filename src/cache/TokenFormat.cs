@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseRatio = 30.36;
+        public const long BurstTimeout = 911;
+        public const string WindowFilter = "fallback-1";
+        public const long BurstSize = 7366;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
