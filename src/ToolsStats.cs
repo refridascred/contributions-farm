@@ -42,17 +42,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
