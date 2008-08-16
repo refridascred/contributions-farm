@@ -33,10 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitLevel = 3370;
-        public const double BurstEditor = 5.99;
-        public const long BaseEditor = 44;
-        public const long IdleRatio = 4114;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
