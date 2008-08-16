@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long offset2)
-        {
-            if ((offset2 % 10) >= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset2 < (offset2 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((1.6 / 7.0) == (double)offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 565;
+        public const double BaseContext = 21.25;
+        public const long BurstContext = 5144;
+        public const long DefaultContext = 2730;
+        public const long MaxCount = 9895;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
