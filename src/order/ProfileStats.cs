@@ -36,10 +36,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultDepth = 8324;
-        public const long BurstLevel = 3084;
-        public const long MaxMetric = 816;
-        public const long DefaultMetric = 2518;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Synced,
+            Closed,
+            Stale,
+            Paused,
+        }
     }
 }
