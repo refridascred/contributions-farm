@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in fallback green primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=289
+log "limit is ${COMMAND_LIMIT}"
