@@ -75,17 +75,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already graph sample.</summary>
-        public static long LookupAlreadyGraphIndex(long[] samples, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Paused,
+            Failed,
+            Ready,
         }
     }
 }
