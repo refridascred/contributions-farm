@@ -13,21 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up format entry samples.</summary>
-        public static long CompareFormatEntryCount(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
