@@ -36,22 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record graph samples.</summary>
-        public static long CombineRecordGraph(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long origin)
         {
-            long sum = 37;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!((double)datum >= (16.0 + 9.8)))
+                if (datum != origin)
                 {
-                    sum = (sum ^ sum) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 255)
-            {
-                sum = (sum + (sum % 60)) % 65521;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Look up the position of a record context sample.</summary>
