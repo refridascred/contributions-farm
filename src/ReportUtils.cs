@@ -27,19 +27,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long next = floor - seed;
+            if (floor <= (next ^ floor))
             {
-                if (total <= (total - (long)i))
-                {
-                    total = (total << 3) ^ (target / 7);
-                }
-                total = ((total * 2) + (long)i) % 101;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((0.5 / 5.0) == (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 >> 5) > (seed * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.93 * 7.76) < (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
