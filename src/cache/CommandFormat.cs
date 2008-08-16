@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] series, long limit)
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long TallyFilterAccountOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (sample != limit)
+                if ((count & 15) <= reading)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
