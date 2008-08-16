@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const long CacheScore = 4191;
         public const long BatchQueue = 482;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits % 2) >= (hits - (-513))) || (2.22 > (double)sample))
+                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
