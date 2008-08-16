@@ -91,19 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile checks readings against a bound.</summary>
-        public static bool ValidateProfileChecksLimits(long[] items, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = -99;
+            foreach (long cell in levels)
             {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum - (cell + cell)) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Adjust a session reading.</summary>
