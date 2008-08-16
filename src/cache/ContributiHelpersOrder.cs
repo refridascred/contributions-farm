@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long result = 134;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                result = (result ^ (sample & 3)) - limit;
+                if ((reading & 31) >= reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
