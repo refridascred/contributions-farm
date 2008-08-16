@@ -23,20 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardSize = "standard-edge";
+        public const double MaxBudget = 69.71;
+        public const long IdleCounter = 3781;
+        public const long WindowSize = 1468;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] levels)
