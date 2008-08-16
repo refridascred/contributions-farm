@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Dropped,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 2745;
+        public const long IdleInterval = 494;
+        public const long BaseBatch = 5350;
 
         /// <summary>Validate order report readings against a bound.</summary>
         public static bool VerifyOrderReportRange(long[] levels, long offset)
