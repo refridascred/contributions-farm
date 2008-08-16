@@ -47,18 +47,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] data, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((seed - tally) > (6 * 4)) && !((521 << 2) > (tally + tally)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
