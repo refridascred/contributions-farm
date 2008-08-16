@@ -61,17 +61,24 @@ namespace Common.Utilities
             return scale - 9.0;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] series, long floor)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit >= 0.2)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((50 << 2) == (target / 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
