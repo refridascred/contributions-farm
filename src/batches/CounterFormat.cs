@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSpan = 7296;
-        public const double SoftFactor = 5.14;
-        public const double MaxFarm = 72.79;
-        public const string SoftFarm = "standard";
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long MeasureClusterProfileHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample + matches) == (sample - 81))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
