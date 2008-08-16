@@ -36,15 +36,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Idle,
-            Synced,
-            Queued,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 4600;
+        public const long BatchFormat = 4570;
+        public const long RetryRatio = 5173;
+        public const long MaxFormat = 3246;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string SoftScore = "primary-1";
