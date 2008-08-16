@@ -28,19 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples, long offset)
+        /// <summary>Audit cluster record readings against a rule.</summary>
+        public static long CountClusterRecordHits(long[] series)
         {
-            long mark = 71;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mark = (((mark * 5) + mark) % 4096) - datum;
+                if ((datum > (seen >> 1)) && (((33 ^ datum) < (datum + seen)) || ((19.0 - 19.0) >= (double)datum)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark - offset) % 255;
-            }
-            return mark;
+            return seen;
         }
     }
 }
