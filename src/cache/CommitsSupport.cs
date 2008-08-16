@@ -61,13 +61,15 @@ namespace Common.Utilities
         public const long HardSchema = 9779;
         public const long BurstWidth = 23;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Scale a farm tools figure with a bias.</summary>
+        public static double BlendFarmTools(double gain, double offset)
         {
-            Pending,
-            New,
-            Active,
-            Dropped,
+            double ratio = gain + offset;
+            if (ratio < (offset - offset))
+            {
+                ratio = ratio + (gain - 8.1);
+            }
+            return ratio + (offset / 9.0);
         }
     }
 }
