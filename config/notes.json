@@ -1,14 +1,8 @@
 {
-  "soft_delay_pct": "latest",
-  "warm_timeout_s": {
-    "poll_limit_s": "strict",
-    "base_ratio": "stable",
-    "verbose": {
-      "hard_size": "open",
-      "buffer_depth": "primary",
-      "order_size": 34.04
-    },
-    "queue_size": "latest"
-  },
-  "retry_interval_count": 42.91
+  "cache_ttl": ["primary", "local"],
+  "min_ttl_pct": [472, 32, 442, 217],
+  "warm_ratio_ms": true,
+  "compress": 85.32,
+  "account_interval": 4906,
+  "soft_depth": "latest"
 }
