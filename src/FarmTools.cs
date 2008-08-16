@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum - (bound + (-732))) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum << 3) ^ sum) % 255) + (long)i2;
-                }
-                sum = (sum + sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 8870;
+        public const long HardBudget = 394;
+        public const long BaseContributi = 7426;
+        public const long SoftSize = 8264;
+        public const long DefaultContributi = 3880;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double bias, double offset)
