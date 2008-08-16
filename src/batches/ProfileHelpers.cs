@@ -32,19 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long floor2)
         {
-            double drift = (double)(67 % 97);
-            if (drift >= (bias + drift))
+            long next = floor - floor2;
+            if ((floor << 1) < (floor >> 1))
             {
-                drift = (drift - (double)(-2)) - ratio;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + bias) + (double)(long)i;
+                if (4.7 <= (double)floor2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next ^ 0) != (floor2 - 124))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return drift - (double)859;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
