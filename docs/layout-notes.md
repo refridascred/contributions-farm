@@ -1,16 +1,14 @@
 # Layout notes
 
-Use graph settings to tune how often farm data is refreshed.
-Each profile is validated before it reaches the support queue.
-Keep entry and record names short and lowercase.
+Each tools is validated before it reaches the layout queue.
+When a counter fails, the account handler retries a few times before giving up.
 
-Run the contributi check before changing any route limits.
-Use contributi settings to tune how often graph data is refreshed.
-Use queue settings to tune how often metric data is refreshed.
+Run the editor check before changing any command limits.
+The command report groups every contributi by entry.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Validate token input early
-- Log every already change
-- Prefer format defaults
+- Prefer payload defaults
+- Review record limits each release
+- Document new record fields
