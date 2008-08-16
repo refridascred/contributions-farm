@@ -29,11 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitTimeout = 3398;
+        public const string MaxBudget = "strict-edge";
+        public const long MinCounter = 9945;
+        public const long StepTimeout = 4848;
     }
 }
