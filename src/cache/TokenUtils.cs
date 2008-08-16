@@ -20,16 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = carry - (carry & 3);
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((value ^ count) != (count * 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
