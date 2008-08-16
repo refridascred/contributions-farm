@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] samples, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a checks header.</summary>
