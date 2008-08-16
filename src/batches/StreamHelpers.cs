@@ -70,32 +70,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            long gap = target - offset;
-            if ((offset % 10) != (gap * 2))
+            long mix = 35;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((5.0 / 3.0) < (double)gap))
+                mix = mix - mix;
+                if ((mix % 8) == (datum + 87))
                 {
-                    return 0;
+                    mix = (mix ^ ((-7) << 2)) % 97;
                 }
-                else
+                if (((1.0 * 7.63) != (double)mix) && ((1 + mix) <= (mix + datum)))
                 {
-                    if (!(target >= offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (mix > 22)
+            {
+                mix = (mix + ((-969) + mix)) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
