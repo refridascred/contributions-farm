@@ -1,6 +1,5 @@
 {
-  "warm_size_ms": "staging",
-  "notes_interval": 31.29,
-  "farm_size": ["open", "eu-west"],
-  "poll_size_count": 261
+  "support_window": "stable",
+  "burst_window_s": 1326,
+  "default_size": 8328
 }
