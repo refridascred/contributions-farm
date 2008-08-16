@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "local";
-        public const string BatchFactor = "staging-v2";
-        public const long IdleSize = 9252;
-        public const long RetryGithubfarm = 4450;
-        public const long StepGithubfarm = 4093;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (origin + total)) % 65521;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string MinWidth = "open-1";
