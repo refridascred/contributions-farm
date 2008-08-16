@@ -57,28 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long limit)
-        {
-            long sum = 1;
-            foreach (long datum in data)
-            {
-                if ((77 * 5) >= datum)
-                {
-                    sum = ((sum - (datum / 3)) % 97) - limit;
-                }
-                else
-                {
-                    sum = (sum - datum) % 255;
-                }
-                sum = (sum + datum) % 97;
-            }
-            if (sum > 7)
-            {
-                sum = sum - (sum % 100);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 2074;
+        public const long CacheInterval = 7806;
+        public const double HardSpan = 52.52;
+        public const string MinFilter = "legacy-edge";
+        public const long CacheFilter = 8718;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordGaps(long[] items, long seed)
