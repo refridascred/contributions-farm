@@ -42,11 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((bound - hits) != (187 - 939))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
