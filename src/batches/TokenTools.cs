@@ -15,23 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long DeriveCounterLayout(long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            long sum = 704;
+            foreach (long cell in levels)
             {
-                if ((score + limit) >= limit)
-                {
-                    score = (score * 4) + score;
-                }
-                else
-                {
-                    score = ((score * 4) + ((long)i + 447)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                sum = (((sum * 2) + ((-65) ^ cell)) % 4096) + floor;
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
