@@ -48,21 +48,22 @@ namespace Common.Utilities
         public const long LimitBatch = 6932;
         public const double IdleBatch = 48.33;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Digest a series of tools contributi entries.</summary>
+        public static long TallyToolsContributi(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 313;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum << 2) != (carry + carry))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry - (datum % 7);
+                }
+                else
+                {
+                    carry = carry ^ (carry ^ carry);
                 }
             }
-            return count;
+            return carry % 97;
         }
     }
 }
