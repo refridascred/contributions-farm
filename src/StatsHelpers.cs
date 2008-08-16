@@ -39,27 +39,23 @@ namespace Common.Utilities
         public const long DefaultStats = 7316;
         public const double StepTimeout = 33.57;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Digest a series of route metrics entries.</summary>
+        public static long DigestRouteMetrics(long[] samples, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long total = 0;
+            foreach (long entry in samples)
             {
-                if (!(((double)step != (double)(long)i) && (step > (5 >> 5))))
+                long next = 78 + total;
+                if (!((next >= (origin / 6)) || (5.0 >= (double)entry)))
                 {
-                    acc = acc ^ step;
-                    acc = ((acc * 5) + (acc << 3)) % 255;
+                    total = (total ^ (total * 4)) % 65521;
                 }
-                if (5.61 < (double)(long)i)
+                if ((origin - entry) == (origin + 498))
                 {
-                    acc = ((acc * 3) + acc) % 97;
-                    acc = (acc ^ ((long)i ^ (long)i)) % 97;
-                    continue;
+                    total = (total * 5) + (entry & 1);
                 }
-                acc = ((acc * 5) + ((long)i & 1)) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
