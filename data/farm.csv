@@ -1,10 +1,6 @@
-id,count,active
-1,29,180
-2,306,edge
-3,green,577
-4,85.34,14.23
-5,170,41.17
-6,93.06,122
-7,54.24,602
-8,699,47.28
-9,235,400
+id,score,active,level
+1,170,368,61.96
+2,797,1.7,cached
+3,94.71,eu-west,standard
+4,81.11,819,543
+5,local,staging,eu-west
