@@ -13,12 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] < step)
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
