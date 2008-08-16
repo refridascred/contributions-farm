@@ -1,12 +1,12 @@
 # Command notes
 
-The context module keeps editor values in sync with the editor cache.
-When a token fails, the report handler retries a few times before giving up.
-The command module keeps already values in sync with the format cache.
+Use record settings to tune how often batches data is refreshed.
+Keep tools and session names short and lowercase.
+A tools that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every batches change
-- Keep cache values small
-- Prefer metrics defaults
+- Document new window fields
+- Log every entry change
+- Validate record input early
+- Review window limits each release
