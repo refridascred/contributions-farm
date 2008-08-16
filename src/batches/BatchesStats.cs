@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of session window entries.</summary>
-        public static long CombineSessionWindow(long[] readings)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long bound, long origin)
         {
-            long score = 622;
-            foreach (long sample in readings)
+            if ((bound ^ bound) >= (164 - 8))
             {
-                if ((53 << 3) <= score)
+                return 4;
+            }
+            else
+            {
+                if (bound >= (bound & 255))
                 {
-                    score = (score ^ (sample & 3)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    score = (score * 3) + (sample - score);
+                    return 0;
                 }
             }
-            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
