@@ -38,32 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long step, long target)
-        {
-            if ((step << 1) > (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) != (step - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (171 > (target + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxRatio = 6286;
+        public const long BurstDepth = 4132;
+        public const double MinInterval = 80.9;
+        public const double BaseSpan = 81.09;
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double weight, double floor)
