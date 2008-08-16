@@ -32,39 +32,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] levels, long seed)
         {
-            long step = bound + seed;
-            if ((7 - step) == (35 - bound))
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) > 1)
+                if (value != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - bound) >= (seed + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((((-691) + bound) <= seed) || (bound >= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
