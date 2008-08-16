@@ -50,27 +50,13 @@ namespace Common.Utilities
             return ((bias2 + (double)52) + bias) + span;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mark = -135;
-            foreach (long datum in readings)
-            {
-                mark = ((mark * 5) + datum) % 255;
-                if ((mark >= (target / 2)) || ((double)target <= (7.2 / 8.0)))
-                {
-                    mark = mark + (datum >> 2);
-                }
-                else
-                {
-                    mark = (mark * 2) + (datum - 3);
-                }
-            }
-            if (mark < 52)
-            {
-                mark = (mark << 3) ^ (mark / 4);
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
