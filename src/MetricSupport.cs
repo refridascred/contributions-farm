@@ -36,24 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long offset, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            if (((offset & 3) <= (offset & 15)) && ((limit ^ limit) >= (offset + offset)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < (limit & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
