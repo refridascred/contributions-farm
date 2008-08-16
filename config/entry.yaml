@@ -1,16 +1,9 @@
 # entry settings
-base_retries_s:
-  - primary
-  - strict
-strict: 500
-cache_interval_ms: 9442
-batch_threshold_ms:
-  warm_threshold_pct: 6002
-  idle_ttl:
-    flush_window_s: false
-    verbose: 97.98
-    metric_timeout: 8455
-    hard_retries_count: true
-    warm_capacity: false
-  poll_ratio: staging
-verbose: eu-west
+min_depth:
+  - latest
+  - local
+  - staging
+  - latest
+idle_size_ms: 1024
+hard_interval_ms: latest
+persist: fallback
