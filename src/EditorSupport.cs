@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BatchCommits = 9435;
         public const long MinCommits = 7732;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                if (reading <= offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a farm summary.</summary>
