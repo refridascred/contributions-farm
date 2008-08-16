@@ -56,19 +56,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] data, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
