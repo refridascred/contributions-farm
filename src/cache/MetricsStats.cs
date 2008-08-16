@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 9587;
-        public const long DefaultDepth = 2242;
-        public const string SoftLevel = "strict-v2";
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long SeriesEditorChannel(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc << 3) ^ origin) ^ (long)i2;
+                    acc = (acc + (acc / 3)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
