@@ -36,14 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long offset)
         {
-            Paused,
-            Pending,
-            Idle,
-            Retry,
-            Locked,
+            long mark = 1;
+            foreach (long sample in readings)
+            {
+                if (((sample + offset) > offset) && ((double)offset > (0.88 + 11.0)))
+                {
+                    mark = mark ^ (mark / 5);
+                }
+            }
+            if (mark < 514)
+            {
+                mark = (mark * 4) + (offset + mark);
+            }
+            return mark;
         }
     }
 }
