@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long score = 836;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (score ^ score)) + sample;
-                score = (score * 2) + (1 ^ score);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Combine graph entry values into a single score.</summary>
