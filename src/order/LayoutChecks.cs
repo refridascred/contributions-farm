@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string HardCounter = "stable-v2";
         public const long StepCounter = 9401;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (cell > ((-970) + cell))
+                if ((matches + 61) >= (value + 481))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every counter entry entry stays within the limit.</summary>
