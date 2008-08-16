@@ -26,11 +26,31 @@ namespace Common.Utilities
         public const long BaseSchema = 2613;
         public const long MinWidth = 553;
 
-        /// <summary>Blend two format profile measurements.</summary>
-        public static double ScaleFormatProfile(double bias, double bias2)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long offset)
         {
-            double load = bias;
-            return load + (load + bias2);
+            if (!(785 < (offset - offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ 1) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((4.4 / 8.0) <= (double)offset) || (9.0 >= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a notes cache reading.</summary>
