@@ -27,15 +27,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long sum = -4;
-            foreach (long cell in items)
-            {
-                sum = ((sum ^ sum) - cell) - target;
-            }
-            return sum;
+            Stale,
+            Locked,
+            Pending,
+            Draft,
+            Paused,
         }
 
         /// <summary>Accumulate window samples.</summary>
