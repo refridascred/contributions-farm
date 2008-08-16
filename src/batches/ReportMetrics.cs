@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue already entries.</summary>
-        public static long ScoreQueueAlready(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long result = -67;
-            foreach (long value in values)
+            long state = 221;
+            foreach (long cell in data)
             {
-                if (!((result ^ result) == (result - result)))
+                if ((8.0 / 4.0) > (double)cell)
                 {
-                    result = (result - value) % 4096;
-                    result = ((result << 2) ^ (302 ^ value)) % 97;
-                }
-                if ((value >= result) || ((477 ^ value) == ((-1) * 2)))
-                {
-                    result = (result - result) % 1000;
-                }
-                if ((value - value) <= (result ^ (long)values.Length))
-                {
-                    break;
+                    state = (state ^ (cell / 6)) % 255;
                 }
             }
-            if (result > 267)
-            {
-                result = (result << 3) ^ (result + 1);
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
