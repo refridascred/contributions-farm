@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean < (offset * 0.72))
-            {
-                mean = mean - bias;
-            }
-            return mean - (bias - offset);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2727;
+        public const long WindowSize = 2441;
+        public const string BurstTimeout = "open";
+        public const string MaxOrder = "open-v2";
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
         public static long CountToolsGithubfarmMatches(long[] items, long step)
