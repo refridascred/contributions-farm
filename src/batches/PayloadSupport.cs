@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long bound)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long SeriesBatchesFilter(long step)
         {
-            long bound2 = seed - bound;
-            if ((bound / 3) != (bound2 + bound2))
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound2 < (19.0 + 8.0))
+                if (((long)i + step) >= result)
                 {
-                    return 8;
+                    result = result - result;
+                    break;
                 }
-                else
-                {
-                    if (((bound - seed) == (898 ^ (-645))) && ((20 ^ seed) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >= (bound2 / 3)) || ((6 + bound2) < (bound2 * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                result = (result - (step + result)) % 1000;
+                result = (result + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
