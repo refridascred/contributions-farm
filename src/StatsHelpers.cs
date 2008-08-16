@@ -20,30 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long seed, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            long diff = seed - step;
-            if ((2.15 - 3.0) > (double)diff)
+            long delta = step - target;
+            if ((602 % 16) >= (delta << 2))
             {
                 return 8;
             }
             else
             {
-                if (((2.3 + 10.0) >= (double)step) || (diff <= seed))
+                if ((double)step >= (11.0 / 2.0))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (((step % 2) != (346 - diff)) && ((seed + diff) < (seed & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 7;
                 }
             }
         }
