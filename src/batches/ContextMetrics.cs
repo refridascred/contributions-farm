@@ -78,10 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftScore = 6521;
-        public const long BatchTimeout = 4038;
-        public const long BaseChannel = 8660;
-        public const long WindowChannel = 1253;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((seed - tally) > (6 * 4)) && !((521 << 2) > (tally + tally)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
     }
 }
