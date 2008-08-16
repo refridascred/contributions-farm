@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            long carry = 793;
+            foreach (long value in series)
+            {
+                if (((double)carry <= 8.97) || ((2.25 + 3.7) == (double)carry))
+                {
+                    carry = (((carry * 3) + (seed & 255)) % 97) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up editor samples.</summary>
