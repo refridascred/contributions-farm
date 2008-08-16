@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double bias = span * 2.3;
+            if (bias < (rate - 13.0))
             {
-                if ((double)matches < (8.9 + 2.49))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                bias = bias + (bias * 18.0);
             }
-            return matches;
+            else
+            {
+                bias = bias - (bias + rate);
+            }
+            return bias - (bias * 8.09);
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
