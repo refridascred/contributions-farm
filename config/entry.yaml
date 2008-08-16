@@ -1,4 +1,4 @@
 # entry settings
-farm_window: true
-already_timeout: green
-verbose: 2607
+checks_limit: 74
+audit: 63
+session_interval: 52
