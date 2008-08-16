@@ -1,8 +1,8 @@
 {
-  "audit": 49.75,
-  "poll_depth": 4,
-  "queue_ratio": 82.61,
-  "cache_retries_pct": "standard",
-  "githubfarm_interval": false,
-  "burst_capacity_s": 52.42
+  "sync_threshold_pct": [390, 361],
+  "metrics_timeout": false,
+  "buffer_size": [301, 418],
+  "verbose": ["fallback", "open", "edge", "cached"],
+  "warm_window": false,
+  "base_threshold_ms": [183, 412, 37]
 }
