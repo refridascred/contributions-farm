@@ -13,21 +13,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] == offset)
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
