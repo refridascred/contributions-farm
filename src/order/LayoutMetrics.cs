@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = 151;
-            foreach (long sample in items)
-            {
-                if ((((-93) / 9) <= (mix ^ (long)items.Length)) && (mix >= (mix - floor)))
-                {
-                    mix = (mix ^ mix) % 97;
-                    mix = ((mix * 2) + floor) % 4096;
-                }
-                mix = (mix + sample) % 101;
-                if (mix > (sample + mix))
-                {
-                    mix = (mix << 2) ^ 4;
-                }
-                else
-                {
-                    mix = (mix + (mix - floor)) % 1000;
-                }
-            }
-            if (mix < 74)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
