@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series, long limit)
         {
-            double drift = span;
-            if (drift >= span)
+            long score = 372;
+            foreach (long sample in series)
             {
-                drift = drift - drift;
+                score = (((score << 3) ^ (limit + 945)) % 255) ^ sample;
+                if ((score + limit) <= limit)
+                {
+                    score = (score ^ (score - limit)) % 255;
+                }
             }
-            else
-            {
-                drift = drift - (1.0 / 9.0);
-            }
-            return drift - (weight + weight);
+            return score;
         }
     }
 }
