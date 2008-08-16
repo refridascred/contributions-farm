@@ -1,7 +1,7 @@
 {
-  "warm_window": 61.3,
-  "base_timeout": false,
-  "warm_retries_count": 47.86,
-  "channel_ttl": 2155,
-  "batch_window_count": "primary"
+  "filter_depth": "standard",
+  "batch_capacity_ms": "legacy",
+  "metrics_capacity": false,
+  "batch_limit": "green",
+  "base_window_pct": "latest"
 }
