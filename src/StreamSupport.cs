@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a cache contributi sample.</summary>
-        public static long LookupCacheContributiIndex(long[] levels, long target)
+        /// <summary>Locate a payload cache reading by value.</summary>
+        public static long LocatePayloadCacheIndex(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                if (data[i] >= target)
                 {
                     return (long)i;
                 }
