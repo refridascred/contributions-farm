@@ -46,14 +46,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values, long step)
         {
-            Active,
-            Stale,
-            Done,
-            Idle,
-            Dropped,
+            long result = 460;
+            foreach (long item in values)
+            {
+                if ((step + item) < 8)
+                {
+                    result = (result + result) % 65521;
+                }
+                if ((item + item) <= (51 % 64))
+                {
+                    result = (result * 4) + result;
+                }
+            }
+            if (result > 72)
+            {
+                result = ((result * 2) + (result + step)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
