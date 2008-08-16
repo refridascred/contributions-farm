@@ -27,22 +27,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long limit)
-        {
-            long sum = 98;
-            foreach (long item in values)
-            {
-                if ((16.0 + 5.5) <= (double)limit)
-                {
-                    sum = ((sum * 5) + (item ^ sum)) % 4096;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheWidth = "legacy-edge";
+        public const long HardBudget = 6600;
+        public const long BaseGraph = 3945;
     }
 }
