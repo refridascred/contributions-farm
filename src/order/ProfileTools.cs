@@ -67,13 +67,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit cluster token readings against a rule.</summary>
+        public static long MeasureClusterTokenMatches(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((floor ^ hits) > (floor >> 1))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
