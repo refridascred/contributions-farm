@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long CacheLevel = 7773;
         public const double HardChecks = 46.99;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)seen < (double)value) && (seen > (value + seen)))
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
