@@ -19,19 +19,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long limit)
         {
-            double bias = span * 2.3;
-            if (bias < (rate - 13.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias + (bias * 18.0);
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (bias + rate);
-            }
-            return bias - (bias * 8.09);
+            return -1;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
