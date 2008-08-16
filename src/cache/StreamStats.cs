@@ -36,19 +36,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate graph already readings against a bound.</summary>
-        public static bool GuardGraphAlreadyRange(long[] data, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Pending,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a record context sample.</summary>
