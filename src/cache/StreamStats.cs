@@ -44,13 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
