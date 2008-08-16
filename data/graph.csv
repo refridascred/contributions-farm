@@ -1,6 +1,10 @@
-id,weight,count,ratio
-1,18.84,67.33,60.35
-2,761,117,85.46
-3,10.79,36,39.51
-4,922,20.1,36.46
-5,eu-west,898,947
+id,ratio,region,score
+1,open,95.55,90.75
+2,blue,staging,cached
+3,55.93,784,local
+4,39.37,open,885
+5,standard,65.68,143
+6,68.33,staging,edge
+7,cached,91.73,34.64
+8,7.38,eu-west,808
+9,15.35,91.65,992
