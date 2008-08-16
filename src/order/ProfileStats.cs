@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] values, long step)
         {
-            double scale = (double)(723 ^ 686);
-            if (scale >= span)
+            long tally = 0;
+            foreach (long value in values)
             {
-                scale = scale + 7.23;
+                if ((0.22 * 4.8) == (double)value)
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale + 3.4;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
