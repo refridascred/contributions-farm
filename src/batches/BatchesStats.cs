@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long IdleCounter = 3781;
         public const long WindowSize = 1468;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            double rate = (bias2 - bias2) + (double)12;
-            if (rate <= (double)689)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                rate = (rate - 5.0) + bias;
+                sum = ((sum * 4) + (sum ^ (-819))) % 101;
+                sum = (sum ^ (target / 6)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate * 8.9)) - (double)(long)i;
-            }
-            return rate + (double)7;
+            return sum;
         }
 
         /// <summary>Blend two stats measurements.</summary>
