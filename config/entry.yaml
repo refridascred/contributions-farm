@@ -1,4 +1,6 @@
 # entry settings
-persist: 30
-readonly: 17.3
-poll_delay_pct: staging
+soft_delay_s: eu-west
+enabled: 45.53
+session_delay: stable
+default_delay_s: latest
+batch_timeout_count: 16
