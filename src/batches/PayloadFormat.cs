@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSpan = 5840;
-        public const string WindowContributi = "cached-1";
-        public const double StepContributi = 18.76;
+        /// <summary>Audit record graph readings against a rule.</summary>
+        public static long CountRecordGraphHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally / 2) < 23)
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit payload githubfarm readings against a rule.</summary>
         public static long MeasurePayloadGithubfarmOutliers(long[] readings, long step)
