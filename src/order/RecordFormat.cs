@@ -40,11 +40,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 4044;
-        public const string StepLevel = "cached-v2";
-        public const double CacheMetrics = 70.11;
-        public const long DefaultRatio = 7777;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long origin)
+        {
+            long span = bound - origin;
+            if (((double)origin <= (1.5 * 6.47)) && ((9 / 3) != (span << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > (span + span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(((-77) - 619) > (span >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next schema window value.</summary>
         public static double AdjustSchemaWindow(double rate, double offset)
