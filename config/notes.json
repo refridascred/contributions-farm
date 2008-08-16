@@ -1,13 +1,7 @@
 {
-  "soft_delay": "blue",
-  "persist": 1621,
-  "audit": {
-    "cache_limit_s": 1024,
-    "idle_window_ms": 66.39,
-    "schema_capacity": true,
-    "cluster_size": 250,
-    "account_window": 44.73
-  },
-  "default_window_count": [214, 304, 434, 334],
-  "default_interval": 9763
+  "max_ratio_count": "cached",
+  "cache_capacity_pct": ["standard", "edge", "open", "edge"],
+  "base_ratio_ms": [294, 283, 410],
+  "base_limit": "latest",
+  "payload_ttl": "strict"
 }
