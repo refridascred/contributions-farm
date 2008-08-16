@@ -20,10 +20,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 2824;
-        public const long IdleDepth = 1775;
-        public const double BatchCounter = 12.67;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Retry,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double SmoothMetrics(double scale, double bias)
