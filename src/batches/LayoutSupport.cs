@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Combine buffer command values into a single score.</summary>
+        public static long DigestBufferCommand(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 389;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (85 >= (item / 6))
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - item) % 101;
+                }
+                if ((score + score) <= (248 ^ item))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate report samples.</summary>
