@@ -1,11 +1,13 @@
 {
-  "compress": 3703,
-  "readonly": {
-    "batch_capacity": 500,
-    "compress": 678,
-    "queue_timeout": 49
-  },
-  "idle_ttl_pct": ["local", "fallback"],
-  "max_depth_count": 250,
-  "retry_capacity_pct": "cached"
+  "enabled": 8986,
+  "sync_retries_s": "green",
+  "sync_window": "blue",
+  "min_retries_count": {
+    "audit": [128, 20],
+    "poll_depth": 4137,
+    "sync_size": "green",
+    "profile_capacity": "latest",
+    "idle_ratio": 5421,
+    "tools_threshold": "primary"
+  }
 }
