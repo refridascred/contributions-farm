@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "legacy-v2";
+        public const string StepFactor = "strict-edge";
+        public const long RetryStream = 1446;
+        public const long DefaultLevel = 8732;
+        public const long BatchWidth = 1535;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardDepth = 10.16;
