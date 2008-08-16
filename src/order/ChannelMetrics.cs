@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings, long seed)
-        {
-            long carry = 72;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 3) >= seed)
-                {
-                    carry = (carry - carry) % 4096;
-                }
-            }
-            if (carry > 38)
-            {
-                carry = carry ^ (seed + carry);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 47;
+        public const long BurstReport = 6844;
+        public const long MinCount = 8431;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] series, long bound)
