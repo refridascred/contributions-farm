@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in edge staging primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
