@@ -13,12 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine window entry values into a single score.</summary>
