@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
