@@ -30,16 +30,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchSize = 5332;
+        public const long IdleCount = 5184;
+        public const long IdleMetrics = 4830;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaBounds(long[] values, long offset)
