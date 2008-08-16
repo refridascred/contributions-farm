@@ -60,16 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Count the entry profile entries that pass the check.</summary>
+        public static long CountEntryProfileMatches(long[] items, long step)
         {
-            long acc = 96;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ (sample * 4)) % 4096;
-                acc = acc ^ (acc / 9);
+                if (entry > (step + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
