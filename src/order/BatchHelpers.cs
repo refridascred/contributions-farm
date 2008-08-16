@@ -53,23 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats channel measurements.</summary>
-        public static double AdjustStatsChannel(double bias, double span)
+        /// <summary>Scale a schema stats figure with a bias.</summary>
+        public static double SmoothSchemaStats(double gain, double floor)
         {
-            double drift = (double)(80 % 8);
-            if (drift > (double)130)
+            double rate = (double)(632 - 339);
+            if (rate < (floor / 7.0))
             {
-                drift = drift - (double)5;
+                rate = rate + (rate + 1.0);
             }
             else
             {
-                drift = drift - (span * 2.5);
+                rate = rate + (floor * 5.3);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - 8.13) - (double)(long)i;
+                rate = (rate + (double)(-2)) + (double)(long)i;
             }
-            return drift + (bias / 9.0);
+            return rate - gain;
         }
     }
 }
