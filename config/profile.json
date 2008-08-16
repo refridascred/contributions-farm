@@ -1,8 +1,6 @@
 {
-  "persist": [235, 358],
-  "warm_retries": "stable",
-  "flush_ratio": false,
-  "editor_size": 39,
-  "soft_ttl_count": "edge",
-  "warm_capacity_s": "fallback"
+  "cache_capacity": true,
+  "poll_limit_ms": "latest",
+  "dry_run": 64,
+  "warm_ttl_pct": [17, 59, 175, 489]
 }
