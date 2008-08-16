@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -9;
+            foreach (long reading in data)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                score = score ^ (reading + score);
+                if (((double)60 > (double)reading) || ((double)reading <= (2.0 / 8.0)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
