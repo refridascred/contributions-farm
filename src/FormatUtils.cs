@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((step >> 1) == (value ^ hits)) || ((hits / 9) <= value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7073;
+        public const string DefaultTimeout = "legacy-v2";
+        public const string BurstBatches = "legacy";
+        public const string BurstSize = "stable-edge";
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long step)
