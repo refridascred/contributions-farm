@@ -16,21 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of payload schema readings.</summary>
-        public static long PairPayloadSchemaCount(long[] values)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
