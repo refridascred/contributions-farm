@@ -42,15 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double floor)
+        /// <summary>Count the channel contributi entries that pass the check.</summary>
+        public static long AuditChannelContributiMatches(long[] readings)
         {
-            double ratio = weight / 9.0;
-            if (ratio < ratio)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + ratio) - floor;
+                if ((double)seen > (2.8 - 17.0))
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return ratio - (double)5;
+            return seen;
         }
 
         /// <summary>Describe the payload phase values.</summary>
