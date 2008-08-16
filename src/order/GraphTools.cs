@@ -44,10 +44,20 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 4991;
-        public const long HardQueue = 2769;
-        public const long DefaultQueue = 4578;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheMatches(long[] values)
