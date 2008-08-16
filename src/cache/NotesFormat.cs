@@ -33,16 +33,30 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long total = 1;
+            foreach (long datum in readings)
             {
-                acc = ((acc << 2) ^ limit) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = (total + 76) - (long)i;
+                }
+                if ((long)readings.Length >= (46 & 127))
+                {
+                    total = (total ^ (datum / 6)) % 255;
+                }
+                else
+                {
+                    total = total + (total >> 1);
+                }
             }
-            return acc;
+            if (total > 926)
+            {
+                total = ((total << 2) ^ (total + target)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
