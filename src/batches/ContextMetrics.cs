@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format support readings against a rule.</summary>
-        public static long TallyFormatSupportOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = 439;
+            foreach (long sample in levels)
             {
-                if (offset <= datum)
+                if (!((anchor ^ anchor) > (anchor + sample)))
                 {
-                    hits = hits + 3;
+                    anchor = anchor ^ (anchor + sample);
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
