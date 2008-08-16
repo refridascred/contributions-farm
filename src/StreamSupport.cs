@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Count { get; set; }
+            public string Level { get; set; } = "";
             public bool Offset { get; set; }
         }
 
