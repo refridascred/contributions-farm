@@ -75,15 +75,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support stream samples.</summary>
-        public static long WeighSupportStream(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long sum = -156;
-            foreach (long cell in data)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 3) ^ (cell / 8)) % 65521;
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
