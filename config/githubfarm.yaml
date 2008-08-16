@@ -1,9 +1,7 @@
 # githubfarm settings
-audit: true
-metric_retries: green
-channel_limit:
-  - legacy
-  - stable
-  - standard
-githubfarm_timeout: 9801
-strict: 9216
+warm_limit_s: 43.96
+base_delay_count: 100
+max_depth_count: 30
+editor_ratio: 54
+idle_limit_ms: 12
+strict: legacy
