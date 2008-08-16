@@ -33,21 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry cache pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCacheCount(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target << 2) > (limit % 64))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((95 % 100) < (target * 2))
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
