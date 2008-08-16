@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Project the next editor commits value.</summary>
+        public static double ScaleEditorCommits(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = 2.1;
+            if (load < (double)(-681))
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (load + ratio)) + offset;
             }
-            return -1;
+            else
+            {
+                load = load - load;
+            }
+            return load - 11.0;
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
