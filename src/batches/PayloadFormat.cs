@@ -41,22 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double span)
         {
-            long acc = 647;
-            foreach (long cell in data)
+            double ratio = (double)(672 & 1);
+            if (ratio <= (double)0)
             {
-                if (!(((cell + 60) >= (cell - acc)) && ((double)acc != (double)cell)))
-                {
-                    acc = ((acc << 2) ^ (cell + 960)) % 97;
-                }
-                if ((acc - cell) <= (cell - acc))
-                {
-                    acc = acc - (cell + cell);
-                }
+                ratio = ratio - (14.0 + weight);
             }
-            return acc % 65521;
+            else
+            {
+                ratio = ratio - (ratio + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (span + 7.0)) + (double)(long)i;
+            }
+            return ratio + (span / 9.0);
         }
     }
 }
