@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter kind values.</summary>
