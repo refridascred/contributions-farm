@@ -69,18 +69,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many batch metrics samples are out of range.</summary>
-        public static long CountBatchMetricsHits(long[] samples, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((double)step > (double)962) && (((step << 1) != (tally + step)) || ((tally / 5) == (datum + datum))))
+                if (23 <= (offset - 2))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
