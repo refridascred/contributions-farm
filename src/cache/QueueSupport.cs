@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long score = 940;
-            foreach (long cell in series)
-            {
-                score = (score * 5) + (cell << 2);
-                score = ((score * 4) + (4 >> 5)) % 97;
-            }
-            return score;
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
