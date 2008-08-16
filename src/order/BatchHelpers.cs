@@ -42,24 +42,15 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            if (!((bound + step) == (bound % 2)))
+            double weight2 = (19.0 + floor) / 6.0;
+            if (weight2 >= floor)
             {
-                return 7;
+                weight2 = (weight2 - floor) - weight;
             }
-            else
-            {
-                if (6.34 < (3.42 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return weight2 - weight2;
         }
     }
 }
