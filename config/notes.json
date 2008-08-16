@@ -1,35 +1,5 @@
 {
-  "sync_ttl_s": "cached",
-  "dry_run": 7469,
-  "soft_capacity_pct": "eu-west",
-  "compress": {
-    "max_ratio": {
-      "enabled": "primary",
-      "sync_timeout_count": 41,
-      "soft_delay_ms": ["standard", "local"],
-      "window_timeout": "open"
-    },
-    "enabled": 8765,
-    "context_delay": {
-      "batch_threshold_s": true,
-      "commits_interval": 34.97,
-      "default_window_s": 9311,
-      "base_window": [442, 427, 160],
-      "batch_capacity_ms": true,
-      "context_size": "strict"
-    },
-    "profile_window": "strict"
-  },
-  "soft_capacity": {
-    "soft_size": {
-      "min_window_pct": "latest",
-      "persist": true,
-      "retry_timeout": 100,
-      "cache_threshold": 250
-    },
-    "soft_window": 6,
-    "min_retries_pct": [178, 369],
-    "batch_timeout_pct": 250,
-    "verbose": "cached"
-  }
+  "farm_delay": "local",
+  "batch_timeout_count": false,
+  "hard_limit_ms": 56
 }
