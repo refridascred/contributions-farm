@@ -1,5 +1,12 @@
 {
-  "cache_capacity_count": "legacy",
-  "enabled": false,
-  "readonly": [7, 171]
+  "max_ttl_pct": [56, 420, 187, 433],
+  "audit": 49.37,
+  "poll_timeout": 6361,
+  "base_depth": {
+    "format_ttl": false,
+    "soft_window_pct": "staging",
+    "poll_interval_s": 40.84,
+    "min_threshold_s": 55.75,
+    "enabled": 1024
+  }
 }
