@@ -34,21 +34,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Locate a graph cluster reading by value.</summary>
+        public static long LookupGraphClusterIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= seed)
                 {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
