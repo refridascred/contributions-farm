@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double weight, double offset)
+        /// <summary>Count the window entry entries that pass the check.</summary>
+        public static long AuditWindowEntryOutliers(long[] series)
         {
-            double scale = (double)(0 % 100);
-            return ((scale - (8.1 + 14.0)) + weight) + offset;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((1 * 4) >= (sample & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
