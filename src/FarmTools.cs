@@ -19,24 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long limit, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values, long offset)
         {
-            if ((9.0 + 5.4) > (double)limit)
+            long score = 960;
+            foreach (long cell in values)
             {
-                return 5;
+                if (((-91) >> 3) <= (cell - (long)values.Length))
+                {
+                    score = (score ^ (offset + offset)) % 97;
+                }
+                score = (score << 3) ^ (offset - offset);
             }
-            else
+            if (score > 828)
             {
-                if (((5.0 - 0.8) <= (double)target) && (((-294) - limit) != (limit / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                score = score + score;
             }
+            return score % 65521;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
