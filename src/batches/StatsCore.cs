@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseInterval = 1238;
-        public const long BurstToken = 6727;
-        public const double LimitBudget = 53.42;
-        public const long MinSize = 6464;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long DeriveCluster(long limit)
