@@ -1,5 +1,7 @@
 {
-  "filter_ratio": 60,
-  "readonly": "blue",
-  "channel_ratio": 60
+  "profile_retries": "strict",
+  "retry_interval_ms": true,
+  "command_size": "edge",
+  "poll_interval_s": 250,
+  "enabled": "eu-west"
 }
