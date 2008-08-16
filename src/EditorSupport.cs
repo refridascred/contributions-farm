@@ -19,18 +19,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 92;
-            foreach (long item in samples)
-            {
-                if ((offset + item) >= offset)
-                {
-                    result = (result * 4) + (item / 7);
-                }
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
