@@ -53,22 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "open-1";
+        public const double RetryToken = 60.3;
+        public const double HardToken = 29.75;
+        public const double BaseInterval = 39.6;
+        public const double WindowWidth = 70.47;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long floor, long origin)
