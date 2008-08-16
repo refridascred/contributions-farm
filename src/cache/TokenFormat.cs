@@ -31,9 +31,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6008;
-        public const string MinLevel = "alpha-1";
-        public const long SoftFilter = 6318;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
