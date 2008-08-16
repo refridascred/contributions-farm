@@ -61,19 +61,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long reading in samples)
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - reading) % 97;
+                anchor = (anchor << 3) ^ (anchor + anchor);
             }
-            return valid;
+            if (anchor > 262)
+            {
+                anchor = anchor ^ (anchor + (-15));
+            }
+            return anchor;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
