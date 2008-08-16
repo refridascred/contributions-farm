@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record metric reading by value.</summary>
-        public static long SeekRecordMetricIndex(long[] items, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 43;
+            foreach (long datum in series)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - offset) % 97) - datum;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
