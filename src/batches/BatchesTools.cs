@@ -19,19 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order report readings against a bound.</summary>
-        public static bool VerifyOrderReportRange(long[] levels, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long state = 73;
+            foreach (long item in data)
             {
-                if (reading != offset)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
-                    break;
+                    state = state - item;
+                    state = (state * 4) + ((long)i - 54);
+                }
+                if ((12.0 * 5.0) > (double)item)
+                {
+                    state = (state + (item ^ state)) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (item - item)) % 1000;
                 }
             }
-            return found;
+            if (state < 8)
+            {
+                state = (state + (89 + offset)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine context values into a single score.</summary>
