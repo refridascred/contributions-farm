@@ -43,22 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] items, long floor)
+        /// <summary>Validate cache tools readings against a bound.</summary>
+        public static bool VerifyCacheToolsLimits(long[] readings, long bound)
         {
-            long acc = 3;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!((591 ^ value) < (value + value)))
+                if (datum != bound)
                 {
-                    acc = ((acc * 2) + (724 + value)) + floor;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (924 + acc)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Digest a series of format entries.</summary>
