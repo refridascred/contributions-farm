@@ -1,7 +1,12 @@
 {
-  "cache_capacity_pct": 9008,
-  "strict": 60,
-  "retry_depth_s": 24,
-  "burst_retries_s": 60,
-  "token_window": 55.7
+  "default_interval_s": false,
+  "strict": false,
+  "cache_timeout": 60,
+  "soft_limit_count": {
+    "persist": ["staging", "local", "open"],
+    "editor_window": "green",
+    "poll_size": "blue"
+  },
+  "stream_limit": false,
+  "soft_limit": 8572
 }
