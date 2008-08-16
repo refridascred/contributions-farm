@@ -30,17 +30,11 @@ namespace Common.Utilities
         public const long HardDepth = 4779;
         public const long MaxFilter = 1183;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark + (mark * 2)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "cached-1";
+        public const long BatchDepth = 7477;
+        public const long LimitLevel = 3767;
+        public const long IdleRoute = 1891;
 
         /// <summary>Digest a series of farm cluster entries.</summary>
         public static long TallyFarmCluster(long[] series, long step)
