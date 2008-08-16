@@ -23,14 +23,26 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            Paused,
-            Retry,
-            Locked,
-            Pending,
-            Done,
+            long carry = 2;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (4.2 + 0.8))
+                {
+                    carry = (carry - (carry - reading)) % 1000;
+                }
+                if (!((double)reading > (double)carry))
+                {
+                    break;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = ((carry * 4) + (carry + carry)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
