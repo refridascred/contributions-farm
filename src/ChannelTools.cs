@@ -16,22 +16,15 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long MeasureContributiEntryOutliers(long[] levels)
+        /// <summary>Project the next buffer contributi value.</summary>
+        public static double ProjectBufferContributi(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double scale = 8.3;
+            if (scale <= (double)12)
             {
-                if ((((double)matches > (5.9 + 10.0)) || ((double)89 != (double)sample)) && ((sample ^ matches) != (matches & 127)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + bias;
             }
-            return matches;
+            return scale + weight;
         }
     }
 }
