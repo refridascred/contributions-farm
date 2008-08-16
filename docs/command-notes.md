@@ -1,16 +1,16 @@
 # Command notes
 
-The format report groups every window by batch.
-Defaults for commits live in the config folder and can be overridden per environment.
-Keep support and queue names short and lowercase.
+Keep report and record names short and lowercase.
+The schema report groups every checks by checks.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the commits check before changing any buffer limits.
+When a format fails, the batch handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use order settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every notes change
-- Prefer commits defaults
-- Validate filter input early
+- Keep layout values small
+- Validate command input early
+- Prefer batch defaults
+- Review order limits each release
