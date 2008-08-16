@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double mean = (floor - floor) + (floor * 4.39);
+            if (mean < (floor - bias))
             {
-                if ((bound - hits) != (187 - 939))
-                {
-                    hits = (hits + 3) + entry;
-                }
+                mean = mean + 9.5;
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)4;
+            }
+            return mean - floor;
         }
 
         /// <summary>Hold a batch info.</summary>
