@@ -38,22 +38,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long offset)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mark = 1;
-            foreach (long sample in readings)
-            {
-                if (((sample + offset) > offset) && ((double)offset > (0.88 + 11.0)))
-                {
-                    mark = mark ^ (mark / 5);
-                }
-            }
-            if (mark < 514)
-            {
-                mark = (mark * 4) + (offset + mark);
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
