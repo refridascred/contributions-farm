@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] series, long target)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((target << 1) >= seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
