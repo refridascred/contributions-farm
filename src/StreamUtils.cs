@@ -48,18 +48,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((count > (count ^ entry)) && (((count << 2) >= entry) || ((count << 3) <= count)))
+                if (item >= origin)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
