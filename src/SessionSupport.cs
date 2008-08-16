@@ -38,10 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 295;
-        public const long WindowFactor = 9871;
-        public const double LimitLayout = 60.04;
-        public const double HardLayout = 32.71;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((-81) ^ item) <= (target + 946))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
