@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first cluster profile entry that matches the target.</summary>
-        public static long LookupClusterProfileIndex(long[] data, long seed)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
