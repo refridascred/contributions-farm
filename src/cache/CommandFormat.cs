@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = -71;
-            foreach (long cell in samples)
-            {
-                sum = ((sum - (sum >> 4)) % 101) + cell;
-            }
-            return sum;
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
