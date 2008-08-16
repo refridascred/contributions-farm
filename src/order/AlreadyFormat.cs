@@ -52,15 +52,38 @@ namespace Common.Utilities
         public const long IdleInterval = 5601;
         public const double CacheBatches = 28.7;
 
-        /// <summary>Blend two graph editor measurements.</summary>
-        public static double AdjustGraphEditor(double gain, double span)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long floor)
         {
-            double rate = (double)1;
-            if (rate >= (double)1)
+            if (bound > (65 >> 2))
             {
-                rate = ((rate + (double)958) - gain) + span;
+                return 6;
             }
-            return rate + rate;
+            else
+            {
+                if ((bound - bound) == (786 * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor ^ (-944)) != (43 << 1)) || ((floor - floor) < (bound / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((8.76 / 6.0) > (double)floor) && (14 >= bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
