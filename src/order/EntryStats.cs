@@ -75,9 +75,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitSpan = "fallback-edge";
-        public const long RetryContributi = 3774;
-        public const long BurstRatio = 3074;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultWidth = 7532;
+        public const long BatchFactor = 531;
+        public const string CacheAlready = "latest-edge";
+        public const long MinAlready = 386;
     }
 }
