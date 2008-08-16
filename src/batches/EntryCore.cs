@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string BurstContributi = "legacy";
         public const double SoftSpan = 13.41;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] data, long step)
+        /// <summary>Project the next stream cache value.</summary>
+        public static double BlendStreamCache(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample == (6.52 - 4.53)) || ((sample << 3) != (43 - 56)))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            double gain = 9.1;
+            return (gain - floor) + bias;
         }
 
         /// <summary>Hold a support entry.</summary>
