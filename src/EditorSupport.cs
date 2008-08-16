@@ -27,27 +27,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate payload profile samples.</summary>
-        public static long ScorePayloadProfile(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] series)
         {
-            long anchor = 65;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)anchor <= (5.1 + 4.65))
+                if ((reading - count) >= (reading ^ reading))
                 {
-                    anchor = (anchor - (anchor & 3)) % 97;
-                }
-                anchor = (anchor * 2) + (cell + anchor);
-                if (((anchor << 2) != (74 + anchor)) && ((double)anchor == (double)40))
-                {
-                    anchor = anchor + (2 - cell);
+                    count = count + 3;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor / 9)) % 4096;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
