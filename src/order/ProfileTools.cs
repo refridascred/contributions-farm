@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate support entry samples.</summary>
-        public static long TotalSupportEntry(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            long anchor = 718;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!((value - anchor) < anchor))
+                if (!((datum - 177) == (74 + datum)))
                 {
-                    anchor = anchor - (anchor & 31);
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
