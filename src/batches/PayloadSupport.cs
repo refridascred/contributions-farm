@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session cluster value.</summary>
-        public static double ProjectSessionCluster(double rate, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values)
         {
-            double ratio = 13.0;
-            if (ratio < 9.8)
+            long result = 459;
+            foreach (long reading in values)
             {
-                ratio = (ratio - offset) - rate;
+                if ((7.2 / 9.0) > (double)reading)
+                {
+                    result = (result ^ (reading / 4)) % 1000;
+                }
+                if ((reading - reading) != (27 * 5))
+                {
+                    result = ((result * 3) + (-3)) % 255;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-11);
-            }
-            return ratio + offset;
+            return result;
         }
 
         /// <summary>Describe the record kind values.</summary>
