@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-The editor module keeps profile values in sync with the command cache.
-Use context settings to tune how often commits data is refreshed.
+The already module keeps cluster values in sync with the command cache.
+Run the report check before changing any stats limits.
+Use command settings to tune how often context data is refreshed.
 
-Run the checks check before changing any tools limits.
-The editor module keeps schema values in sync with the entry cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The support module keeps notes values in sync with the order cache.
 
 ## Guidelines
 
-- Validate record input early
-- Document new cache fields
-- Keep notes values small
+- Document new commits fields
+- Validate payload input early
+- Review queue limits each release
