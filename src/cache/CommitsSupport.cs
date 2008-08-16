@@ -51,11 +51,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 2644;
-        public const long RetryProfile = 9432;
-        public const long CacheFactor = 4441;
-        public const long HardProfile = 5423;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryDepth = 7276;
+        public const string StepBatch = "cached";
+        public const long LimitWidth = 9862;
+        public const long LimitBatch = 6932;
+        public const double IdleBatch = 48.33;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] readings)
