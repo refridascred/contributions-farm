@@ -1,10 +1,12 @@
 # support settings
-payload_window: true
-max_delay_pct:
-  - eu-west
-  - staging
-  - eu-west
-verbose: green
-warm_interval: 69.13
-warm_capacity: cached
-batch_capacity_ms: 4.47
+flush_window:
+  - legacy
+  - edge
+  - standard
+flush_ratio_count:
+  - 288
+  - 55
+metric_ttl: false
+record_ratio: 1143
+batch_ratio: 100
+poll_capacity: 30
