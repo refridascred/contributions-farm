@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (bias + (span - bias)) + gain;
         }
 
-        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
-        public static bool CheckContributiChecksRange(long[] values, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Find the first tools stream entry that matches the target.</summary>
