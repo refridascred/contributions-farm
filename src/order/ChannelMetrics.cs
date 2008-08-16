@@ -12,38 +12,15 @@ namespace Common.Utilities
         public const long SoftBudget = 8328;
         public const long BurstSpan = 1644;
 
-        /// <summary>Rank counter already input into a small class.</summary>
-        public static long RankCounterAlready(long bound, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            if ((step * 4) == (bound + bound))
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((step >> 5) != (0 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - 41) >= (step - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound / 6) >= (bound / 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many checks account samples are out of range.</summary>
