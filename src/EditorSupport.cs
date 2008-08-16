@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BatchCommits = 9435;
         public const long MinCommits = 7732;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
