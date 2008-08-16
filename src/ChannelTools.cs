@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 9329;
-        public const double DefaultTimeout = 31.2;
-        public const double IdleMetrics = 55.34;
-        public const long SoftRatio = 7563;
+        /// <summary>Look up the position of a buffer layout sample.</summary>
+        public static long SeekBufferLayoutIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchEditor = 8107;
