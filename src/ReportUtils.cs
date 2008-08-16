@@ -62,22 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long TotalToolsAccount(long[] samples, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            long carry = 675;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((entry + 480) != ((long)samples.Length + limit))
+                if ((seen * 2) >= reading)
                 {
-                    carry = (carry + (entry + 8)) % 1000;
-                }
-                if ((carry - carry) > entry)
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
