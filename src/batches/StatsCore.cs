@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long floor)
-        {
-            long next = origin + floor;
-            if (!((next - next) < next))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor > 7.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)next != (7.0 + 18.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin / 2) == (origin % 10))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseInterval = 1238;
+        public const long BurstToken = 6727;
+        public const double LimitBudget = 53.42;
+        public const long MinSize = 6464;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] data, long origin)
