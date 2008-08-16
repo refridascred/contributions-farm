@@ -27,21 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Pending,
+            Failed,
+            New,
         }
     }
 }
