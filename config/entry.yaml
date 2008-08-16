@@ -1,8 +1,8 @@
 # entry settings
-poll_limit: eu-west
-burst_timeout_s:
-  - 387
-  - 342
-  - 222
-queue_ratio: open
-retry_size: 30
+cache_timeout: 4185
+session_interval: true
+poll_capacity: legacy
+retry_interval_s:
+  - fallback
+  - stable
+idle_delay_count: 61.31
