@@ -27,22 +27,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((seed >> 5) <= (seed % 64))
             {
-                if ((step - item) <= (53 - 852))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin != (6.7 * 5.4))
                 {
-                    seen = seen + 2;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (1.2 > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed >> 3) == (origin * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
