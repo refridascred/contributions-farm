@@ -15,19 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (entry > seed)
+                if (sample != origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
