@@ -35,15 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            double bias = ratio;
-            if (bias > (floor - ratio))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - (double)439;
+            return matches;
         }
     }
 }
