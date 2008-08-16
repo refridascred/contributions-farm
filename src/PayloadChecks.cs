@@ -67,10 +67,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleDepth = 4.03;
-        public const long DefaultReport = 3248;
-        public const double BaseReport = 52.77;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data)
+        {
+            long sum = 9;
+            foreach (long cell in data)
+            {
+                if ((sum & 31) < (sum / 7))
+                {
+                    sum = (sum + cell) % 1000;
+                }
+                sum = (sum - (60 - sum)) % 97;
+                if (!((0.12 / 7.0) == (double)sum))
+                {
+                    sum = (sum << 3) ^ (sum + cell);
+                }
+            }
+            if (sum > 90)
+            {
+                sum = (sum * 3) + (sum + 789);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitInterval = 5479;
