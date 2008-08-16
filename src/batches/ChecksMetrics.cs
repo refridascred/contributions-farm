@@ -78,24 +78,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long floor)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                carry = (carry * 5) + (reading << 2);
-                carry = carry - reading;
-                if ((reading < (reading & 1)) || ((reading % 2) <= reading))
+                if (value > floor)
                 {
-                    carry = carry + (carry & 3);
-                }
-                if ((double)reading < (5.73 - 8.6))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
     }
 }
