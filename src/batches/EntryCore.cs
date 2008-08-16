@@ -14,18 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)count >= (3.6 * 1.0))
+                if (((double)sample == (6.52 - 4.53)) || ((sample << 3) != (43 - 56)))
                 {
-                    count = (count + 1) + sample;
+                    tally = (tally + 1) + step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a support entry.</summary>
