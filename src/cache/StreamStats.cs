@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double weight, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] series, long target)
         {
-            double drift = weight;
-            if (drift > (9.0 - drift))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - drift) + floor;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift / 3.0)) + (double)(long)i;
-            }
-            return drift + (double)(-352);
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
