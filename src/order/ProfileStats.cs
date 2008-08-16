@@ -20,21 +20,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 90;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix * 3) + (45 + mix)) % 1000) - item;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
