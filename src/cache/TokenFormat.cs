@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseRatio = 30.36;
-        public const long BurstTimeout = 911;
-        public const string WindowFilter = "fallback-1";
-        public const long BurstSize = 7366;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Locked,
+            Dropped,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Grade a channel layout value against two limits.</summary>
         public static long GradeChannelLayout(long floor, long origin)
