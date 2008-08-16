@@ -1,14 +1,20 @@
 # githubfarm settings
-enabled:
+default_size: false
+githubfarm_window: true
+base_threshold_ms:
+  - strict
+  - blue
   - edge
-  - open
-  - primary
-  - local
-persist: true
-soft_timeout_s: true
-queue_size:
-  - eu-west
-  - green
   - latest
-  - green
-support_ttl: 62.49
+poll_depth_ms: 38.67
+default_limit_ms:
+  batch_limit_ms: 30
+  sync_depth: eu-west
+  min_ttl_pct:
+    - edge
+    - latest
+    - blue
+    - cached
+  metric_timeout: false
+  editor_threshold: true
+max_depth: eu-west
