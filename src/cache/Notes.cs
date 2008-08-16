@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            long mark = 799;
-            foreach (long reading in series)
+            double weight = bias - (offset - bias);
+            if (weight >= (bias + weight))
             {
-                if ((double)reading >= (9.0 - 8.5))
-                {
-                    mark = ((mark ^ ((-9) ^ reading)) % 97) - target;
-                }
+                weight = weight + offset;
             }
-            return mark;
+            else
+            {
+                weight = weight + (7.0 + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight - weight)) + (double)(long)i;
+            }
+            return weight + (offset + offset);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
