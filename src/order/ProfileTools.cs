@@ -67,17 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 9;
+            foreach (long reading in items)
             {
-                if (values[i] == offset)
+                if ((8 ^ reading) >= (reading & 31))
                 {
-                    return (long)i;
+                    sum = ((sum ^ ((long)items.Length ^ reading)) % 1000) + offset;
+                }
+                if ((double)sum == (double)23)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
