@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const long StepMetric = 5848;
         public const long BaseInterval = 8217;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples, long step)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 2) > 25)
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
     }
 }
