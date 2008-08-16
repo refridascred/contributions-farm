@@ -67,23 +67,11 @@ namespace Common.Utilities
         public const string LimitInterval = "latest-v2";
         public const long RetryFormat = 8018;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long target)
-        {
-            long score = 379;
-            foreach (long cell in samples)
-            {
-                score = ((score * 3) + target) % 1000;
-                if ((target + score) >= score)
-                {
-                    score = (score << 2) ^ (cell * 4);
-                }
-            }
-            if (score < 754)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 7848;
+        public const long MaxWidth = 9865;
+        public const double DefaultBudget = 27.11;
+        public const long StepGithubfarm = 6259;
+        public const long IdleRatio = 5962;
     }
 }
