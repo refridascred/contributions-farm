@@ -1,4 +1,16 @@
 # githubfarm settings
-batch_ratio: 56
-warm_ttl_pct: 100
-persist: 77.91
+cache_window_s:
+  - green
+  - blue
+  - staging
+  - blue
+cache_timeout_ms: 500
+warm_capacity:
+  - 123
+  - 51
+  - 30
+  - 21
+sync_capacity: local
+cache_window:
+  - 39
+  - 366
