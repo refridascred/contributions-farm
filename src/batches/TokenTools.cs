@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((target / 3) > (-628))
             {
-                if (seen < (8 / 9))
+                return 6;
+            }
+            else
+            {
+                if (((double)target > 4.6) || ((limit & 31) != (623 & 1)))
                 {
-                    seen = (seen + 1) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
