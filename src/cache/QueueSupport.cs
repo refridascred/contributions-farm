@@ -33,17 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset % 97) <= (offset >> 4))
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) <= (bound - offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
