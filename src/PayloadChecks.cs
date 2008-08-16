@@ -58,12 +58,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            double scale = (bias / 4.0) * 9.73;
+            if (scale < (double)83)
+            {
+                scale = scale - (scale + offset);
+            }
+            else
+            {
+                scale = scale - 4.0;
+            }
+            return scale - (scale * 8.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
