@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many schema channel samples are out of range.</summary>
+        public static long TallySchemaChannelHits(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally + tally) < (sample % 10))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
