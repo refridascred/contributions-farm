@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long origin)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long floor)
         {
-            if (((0.9 + 0.07) == (double)origin) && ((limit - origin) >= limit))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 2) > origin)
+                if (reading != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 12) < (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
