@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((20.0 < (double)count) && ((bound & 31) >= (9 >> 4)))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleDepth = 1026;
+        public const long BurstWidth = 6033;
+        public const long RetryChannel = 2558;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long bound)
