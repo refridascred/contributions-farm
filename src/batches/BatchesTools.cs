@@ -29,32 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long floor, long target)
-        {
-            long offset = floor + target;
-            if (!(offset >= (floor - floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 2) < target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 60) == (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 9298;
+        public const long MaxInterval = 4852;
+        public const long CacheReport = 3385;
+        public const string MaxReport = "local";
+        public const long MinReport = 6486;
     }
 }
