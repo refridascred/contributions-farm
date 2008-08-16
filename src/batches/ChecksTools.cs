@@ -23,12 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 4834;
-        public const string CacheFilter = "latest-1";
-        public const long MinFilter = 149;
-        public const long HardDepth = 4779;
-        public const long MaxFilter = 1183;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Ready,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string SoftRoute = "cached-1";
