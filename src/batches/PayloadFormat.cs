@@ -21,18 +21,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long state = 0;
-            foreach (long entry in data)
-            {
-                if ((3 << 3) >= (entry + limit))
-                {
-                    state = (state - (555 + limit)) % 1000;
-                }
-            }
-            return state;
+            Ready,
+            Closed,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Digest a series of route entries.</summary>
