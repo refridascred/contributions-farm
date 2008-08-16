@@ -32,11 +32,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 44.75;
-        public const double HardCluster = 44.12;
-        public const long HardLevel = 297;
-        public const long HardTimeout = 5915;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long limit)
+        {
+            long sum = 1;
+            foreach (long datum in data)
+            {
+                if ((77 * 5) >= datum)
+                {
+                    sum = ((sum - (datum / 3)) % 97) - limit;
+                }
+                else
+                {
+                    sum = (sum - datum) % 255;
+                }
+                sum = (sum + datum) % 97;
+            }
+            if (sum > 7)
+            {
+                sum = sum - (sum % 100);
+            }
+            return sum;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordGaps(long[] items, long seed)
