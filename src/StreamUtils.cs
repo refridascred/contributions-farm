@@ -47,10 +47,11 @@ namespace Common.Utilities
             return (drift + (8.0 * 1.0)) + scale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheInterval = 96.81;
-        public const long HardGraph = 4901;
-        public const string MinGraph = "cached-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2893;
+        public const long MinFilter = 7597;
+        public const string BatchFilter = "standard";
+        public const long SoftBudget = 9705;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryScore = 5187;
