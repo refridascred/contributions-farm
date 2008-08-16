@@ -34,13 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long CountToolsGithubfarmMatches(long[] items, long step)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Queued,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)step < (double)61)
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
