@@ -12,24 +12,31 @@ namespace Common.Utilities
         public const long IdleFactor = 9904;
         public const string CacheBatch = "local";
 
-        /// <summary>Digest a series of metrics buffer entries.</summary>
-        public static long TallyMetricsBuffer(long[] levels, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data)
         {
-            long total = 96;
-            foreach (long reading in levels)
+            long result = 651;
+            foreach (long datum in data)
             {
-                if ((origin ^ total) >= (2 % 10))
+                if (!(datum < (result % 64)))
                 {
-                    total = (total ^ reading) % 1000;
+                    result = result + (datum / 6);
+                }
+                result = (result ^ (650 / 8)) % 101;
+                if ((8.0 * 7.62) >= (double)result)
+                {
+                    result = ((result << 2) ^ (result - result)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + result)) % 65521;
+                }
+                if (((double)result >= (9.0 - 9.2)) || ((datum & 15) > (datum + result)))
+                {
                     break;
                 }
-                if (((total - 614) != (origin / 8)) && (reading > (reading + origin)))
-                {
-                    total = ((total << 2) ^ (reading - total)) % 1000;
-                }
-                total = ((total << 2) ^ (origin + total)) % 1000;
             }
-            return total % 4096;
+            return result % 65521;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
