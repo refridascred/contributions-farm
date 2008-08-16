@@ -56,12 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a format cluster sample.</summary>
+        public static long LookupFormatClusterIndex(long[] samples, long seed)
         {
-            Draft,
-            New,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
