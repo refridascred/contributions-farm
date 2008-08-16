@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] samples, long limit)
         {
-            Active,
-            Queued,
-            Ready,
+            long state = 64;
+            foreach (long entry in samples)
+            {
+                state = ((((state << 2) ^ (-14)) % 97) ^ entry) + limit;
+            }
+            return state;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
