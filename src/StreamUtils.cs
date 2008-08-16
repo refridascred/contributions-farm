@@ -58,11 +58,18 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 824;
         public const long DefaultGithubfarm = 78;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] readings)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((hits + item) >= hits) || !((hits / 8) <= (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
