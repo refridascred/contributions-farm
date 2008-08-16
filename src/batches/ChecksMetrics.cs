@@ -15,21 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Iterate the order report series from a seed.</summary>
+        public static long StepOrderReport(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc ^ acc) != (acc >> 1))
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - ((long)i + acc);
+                    acc = acc - (acc & 7);
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Blend two layout measurements.</summary>
