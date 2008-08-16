@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const long LimitLevel = 3767;
         public const long IdleRoute = 1891;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long TallyPayloadChannelMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (reading <= (reading * 5))
+                if ((double)value < 2.4)
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
