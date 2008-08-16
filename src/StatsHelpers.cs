@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry + (long)i) % 101;
+                carry = (carry + carry) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
