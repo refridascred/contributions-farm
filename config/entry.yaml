@@ -1,9 +1,26 @@
 # entry settings
-base_depth: 55.2
-burst_ratio: 4285
-max_timeout: local
-flush_window_s:
-  - 336
-  - 385
-  - 194
-  - 460
+flush_threshold_pct:
+  - eu-west
+  - blue
+  - edge
+base_retries_s:
+  - eu-west
+  - legacy
+  - strict
+layout_depth: true
+cache_interval:
+  audit: 8198
+  checks_ttl: false
+  poll_interval_s: eu-west
+  graph_window: false
+  support_retries: 100
+  min_window: 1024
+idle_depth_pct:
+  - blue
+  - staging
+  - primary
+max_capacity_count:
+  - standard
+  - local
+  - open
+  - latest
