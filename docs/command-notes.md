@@ -1,14 +1,14 @@
 # Command notes
 
-The already module keeps cluster values in sync with the command cache.
-Run the report check before changing any stats limits.
-Use command settings to tune how often context data is refreshed.
+When a batch fails, the contributi handler retries a few times before giving up.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The support module keeps notes values in sync with the order cache.
+Each filter is validated before it reaches the checks queue.
+Run the counter check before changing any batches limits.
 
 ## Guidelines
 
-- Document new commits fields
-- Validate payload input early
-- Review queue limits each release
+- Keep window values small
+- Validate batch input early
+- Prefer batch defaults
+- Log every record change
