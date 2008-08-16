@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value ^ count) != (count * 5))
+                if (series[i] <= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
