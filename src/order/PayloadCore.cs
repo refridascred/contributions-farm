@@ -22,17 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = mark + origin;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
