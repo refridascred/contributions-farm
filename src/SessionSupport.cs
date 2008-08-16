@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 5741;
-        public const long RetryCommand = 1289;
-        public const long WindowSize = 3131;
-        public const double HardLevel = 39.43;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] samples, long target)
