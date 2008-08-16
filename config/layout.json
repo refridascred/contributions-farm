@@ -1,8 +1,7 @@
 {
-  "strict": false,
-  "poll_delay_count": "blue",
-  "soft_size": 30,
-  "tools_window": 57,
-  "soft_threshold_s": 37,
-  "metric_delay": "stable"
+  "editor_window": 95,
+  "batch_ttl": 8.64,
+  "idle_depth_ms": "fallback",
+  "account_interval": ["latest", "blue", "standard", "cached"],
+  "warm_retries_s": 3026
 }
