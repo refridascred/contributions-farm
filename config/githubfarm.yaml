@@ -1,7 +1,14 @@
 # githubfarm settings
-max_retries:
-  - cached
-  - cached
-min_interval_s: 58.81
-hard_interval_count: false
-hard_ttl_ms: 50
+persist: 22
+batch_size: legacy
+warm_ratio_count: edge
+idle_threshold_s: legacy
+batches_retries:
+  profile_timeout:
+    checks_threshold: 250
+    already_delay: 21.32
+    poll_interval_count: true
+    enabled: open
+  max_depth: 0.53
+  cache_threshold_ms: legacy
+  default_depth_ms: legacy
