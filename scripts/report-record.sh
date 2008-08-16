@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+for item in latest blue strict; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=34
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=21
-log "limit is ${RECORD_LIMIT}"
