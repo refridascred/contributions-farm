@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftSpan = "local-1";
-        public const long BurstTimeout = 4991;
-        public const long IdleToken = 3826;
-        public const double LimitToken = 78.47;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long HardCounter = 2824;
