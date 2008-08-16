@@ -13,31 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long seed, long bound)
+        /// <summary>Count command route pairs that satisfy a relation.</summary>
+        public static long MatchCommandRouteCount(long[] levels)
         {
-            if (!((0.7 * 9.0) >= (double)bound))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (3 > (bound * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(9 < seed))
+                    if ((levels[i] + levels[j]) > 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a batches entry.</summary>
