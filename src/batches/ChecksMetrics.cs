@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] values, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double bias2 = span + bias;
+            if (bias2 <= bias)
             {
-                if ((target / 5) < matches)
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                bias2 = bias2 - bias;
             }
-            return matches;
+            return bias2 + (4.4 / 3.0);
         }
 
         /// <summary>Blend two layout measurements.</summary>
