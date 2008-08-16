@@ -42,15 +42,17 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            double weight2 = (19.0 + floor) / 6.0;
-            if (weight2 >= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = (weight2 - floor) - weight;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - weight2;
+            return -1;
         }
     }
 }
