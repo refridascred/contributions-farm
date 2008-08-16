@@ -42,13 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
             Synced,
-            Pending,
+            Retry,
+            Paused,
+            Stale,
             Queued,
-            New,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
