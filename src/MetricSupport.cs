@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long DigestSessionCommits(long[] samples, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long offset)
         {
-            long state = 847;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((65 % 24) <= (step & 3))
+                if (reading <= offset)
                 {
-                    state = ((state << 3) ^ cell) % 4096;
+                    ready = false;
                     break;
                 }
-                if (step > 69)
-                {
-                    state = state ^ (step % 24);
-                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Accumulate batches samples.</summary>
