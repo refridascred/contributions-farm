@@ -18,22 +18,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 84.99;
+        public const double DefaultNotes = 53.39;
+        public const long MinNotes = 7261;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
