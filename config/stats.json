@@ -1,5 +1,12 @@
 {
-  "flush_interval_s": "standard",
-  "idle_threshold_s": false,
-  "poll_timeout_pct": [210, 86]
+  "filter_capacity": {
+    "readonly": true,
+    "idle_timeout_ms": 87,
+    "filter_ratio": 41,
+    "metric_ttl": "latest"
+  },
+  "token_timeout": 49,
+  "base_limit": 3816,
+  "layout_window": "open",
+  "sync_size": true
 }
