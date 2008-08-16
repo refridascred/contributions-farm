@@ -32,12 +32,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 7375;
-        public const long BatchLevel = 4463;
-        public const string BaseDepth = "cached-v2";
-        public const long HardFilter = 5120;
-        public const long SoftScore = 2679;
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long TallyToolsEditorGaps(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!(3.0 > (double)reading))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cluster githubfarm samples.</summary>
         public static long TallyClusterGithubfarm(long[] samples, long seed)
