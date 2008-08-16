@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate notes counter readings against a bound.</summary>
-        public static bool CheckNotesCounterBounds(long[] items, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (value >= floor)
+                if ((double)value <= 0.01)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + step;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
