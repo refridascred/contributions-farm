@@ -1,5 +1,5 @@
 # entry settings
-warm_window_ms: green
-counter_delay: staging
-command_interval: 5827
-sync_depth: fallback
+notes_timeout: true
+soft_ratio_ms: 5827
+cache_limit: false
+idle_depth_s: primary
