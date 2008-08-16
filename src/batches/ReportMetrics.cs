@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
