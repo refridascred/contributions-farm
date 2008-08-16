@@ -20,12 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "alpha";
+        public const long MaxRecord = 6776;
+        public const double DefaultRecord = 98.89;
+        public const double CacheRecord = 10.2;
+        public const double LimitRecord = 59.5;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] samples)
