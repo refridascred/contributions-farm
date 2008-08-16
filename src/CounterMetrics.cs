@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] items)
         {
-            long result = 874;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (!((result & 15) > (value & 255)))
+                if ((entry > (matches >> 1)) || (entry >= (entry - entry)))
                 {
-                    result = (result ^ result) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a order metrics sample.</summary>
