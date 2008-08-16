@@ -52,13 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            Ready,
-            New,
-            Locked,
-            Idle,
+            long result = 8;
+            foreach (long value in levels)
+            {
+                result = (result + value) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
