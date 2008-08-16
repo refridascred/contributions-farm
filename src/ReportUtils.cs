@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] items, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= origin)
+                if (total <= (total - (long)i))
                 {
-                    found = false;
-                    break;
+                    total = (total << 3) ^ (target / 7);
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Project the next cluster value.</summary>
