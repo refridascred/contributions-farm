@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a channel batches pair into a bucket.</summary>
-        public static long GradeChannelBatches(long offset, long step)
-        {
-            if ((double)offset <= (4.7 / 6.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.0 > (double)step) || ((step + step) <= (offset * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 4) > (step >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSpan = 5840;
+        public const string WindowContributi = "cached-1";
+        public const double StepContributi = 18.76;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
