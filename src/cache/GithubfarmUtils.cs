@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Pending,
-            Draft,
-            New,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitCount = 358;
+        public const string BatchDepth = "staging";
+        public const long BurstSpan = 1265;
+        public const long CacheRoute = 5981;
 
         /// <summary>Check that every window farm entry stays within the limit.</summary>
         public static bool CheckWindowFarmRange(long[] levels, long bound)
