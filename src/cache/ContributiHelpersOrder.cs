@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 51.37;
+        public const long RetryBudget = 674;
+        public const string BatchScore = "strict-v2";
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long floor, long offset)
