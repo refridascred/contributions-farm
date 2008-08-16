@@ -43,23 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long mix = 9;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix * 3) + (reading - reading);
-                if ((544 * 5) >= mix)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix ^ (floor / 4);
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix << 2) ^ (floor + floor);
-            }
-            return mix % 4096;
+            return tally;
         }
     }
 }
