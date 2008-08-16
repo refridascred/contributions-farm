@@ -1,6 +1,8 @@
-id,ratio,state,active
-1,910,13.49,78.57
-2,1.77,fallback,21.97
-3,eu-west,966,23.38
-4,fallback,legacy,27.43
-5,633,851,eu-west
+id,token,state,level
+1,402,35.9,473
+2,16.34,50.7,957
+3,574,90.41,169
+4,green,190,824
+5,22.93,19.97,fallback
+6,391,989,1.11
+7,782,367,latest
