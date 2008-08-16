@@ -53,13 +53,12 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public double Score { get; set; }
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
