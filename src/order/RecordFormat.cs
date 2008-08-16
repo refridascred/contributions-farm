@@ -31,17 +31,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long limit)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long WeighSessionLayout(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 747;
+            foreach (long entry in series)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + mix) + entry;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
