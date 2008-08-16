@@ -13,19 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long step)
         {
-            long total = 567;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total >> 2) < floor)
+                if (data[i] >= step)
                 {
-                    total = total ^ (datum >> 1);
+                    return (long)i;
                 }
-                total = total + (datum * 4);
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
