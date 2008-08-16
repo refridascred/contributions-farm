@@ -38,21 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 295;
+        public const long WindowFactor = 9871;
+        public const double LimitLayout = 60.04;
+        public const double HardLayout = 32.71;
     }
 }
