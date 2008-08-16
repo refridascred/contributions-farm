@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] series, long target)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
