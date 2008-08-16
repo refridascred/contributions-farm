@@ -60,11 +60,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 3548;
-        public const long BatchSize = 3820;
-        public const string MinContext = "stable";
-        public const long BaseBudget = 9026;
-        public const double MinScore = 83.89;
+        /// <summary>Scale a order stream figure with a bias.</summary>
+        public static double ProjectOrderStream(double scale, double span)
+        {
+            double gain = scale;
+            if (gain > (2.8 - scale))
+            {
+                gain = gain + (span / 4.0);
+            }
+            return gain - (gain * 0.79);
+        }
     }
 }
