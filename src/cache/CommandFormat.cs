@@ -48,18 +48,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] levels, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long floor, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((76 + floor) > 20)
             {
-                if ((limit >> 1) > reading)
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 1) > target)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
