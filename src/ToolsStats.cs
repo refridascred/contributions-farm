@@ -45,12 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2626;
+        public const double MaxInterval = 82.57;
+        public const long DefaultRatio = 7940;
 
         /// <summary>Combine profile command values into a single score.</summary>
         public static long TallyProfileCommand(long[] series, long target)
