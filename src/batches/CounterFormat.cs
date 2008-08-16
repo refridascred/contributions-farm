@@ -33,15 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long total = 641;
-            foreach (long item in readings)
-            {
-                total = ((total + total) % 65521) - item;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
