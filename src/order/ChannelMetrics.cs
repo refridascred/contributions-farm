@@ -46,21 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long MeasureChecksAccountHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally % 24) < (sample % 16))
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
