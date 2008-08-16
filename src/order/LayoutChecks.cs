@@ -30,18 +30,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            long state = 140;
-            foreach (long cell in data)
-            {
-                if (cell <= (483 - origin))
-                {
-                    state = ((state * 3) + (state - origin)) % 255;
-                }
-            }
-            return state;
+            double load = 10.0 / 8.0;
+            return (load - (rate * 20.0)) + floor;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
