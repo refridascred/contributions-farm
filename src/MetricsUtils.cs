@@ -14,12 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "alpha";
-        public const long MaxRecord = 6776;
-        public const double DefaultRecord = 98.89;
-        public const double CacheRecord = 10.2;
-        public const double LimitRecord = 59.5;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count & 15) <= count) || ((limit >> 5) > count))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a already buffer sample.</summary>
         public static long FindAlreadyBufferIndex(long[] series, long floor)
