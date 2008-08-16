@@ -50,17 +50,11 @@ namespace Common.Utilities
         public const string RetryRatio = "alpha-edge";
         public const long IdleSession = 7929;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "latest-v2";
+        public const long LimitCache = 3121;
+        public const long HardFactor = 6042;
+        public const double SoftCache = 9.91;
+        public const long BaseCache = 5878;
     }
 }
