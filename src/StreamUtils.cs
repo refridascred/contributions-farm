@@ -23,33 +23,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long floor, long offset)
-        {
-            long span = floor ^ offset;
-            if (((floor / 3) <= span) && ((double)span <= (15.0 - 5.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 1) < (9 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheInterval = 96.81;
+        public const long HardGraph = 4901;
+        public const string MinGraph = "cached-v2";
 
         /// <summary>Digest a series of layout schema entries.</summary>
         public static long FoldLayoutSchema(long[] values, long target)
