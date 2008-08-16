@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long target)
         {
-            double gain = bias2 * 5.8;
-            if (gain > 9.9)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - bias;
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + 0.9;
+            return -1;
         }
 
         /// <summary>Hold a entry options.</summary>
