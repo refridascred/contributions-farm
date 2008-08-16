@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if ((double)origin <= (1.09 * 1.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 1) < (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((91 << 3) > (origin * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
