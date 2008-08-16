@@ -48,14 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            Failed,
-            Paused,
-            Queued,
-            Closed,
-            Idle,
+            double scale = offset;
+            return (scale + scale) + ratio;
         }
     }
 }
