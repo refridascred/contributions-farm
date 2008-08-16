@@ -57,11 +57,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 7465;
-        public const long DefaultWidth = 8392;
-        public const long StepChecks = 4581;
-        public const long LimitChecks = 7639;
+        /// <summary>Adjust a filter contributi reading.</summary>
+        public static double ProjectFilterContributi(double bias, double span)
+        {
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + 12.0) - (double)(long)i) - span;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long BucketCommits(long target, long offset)
