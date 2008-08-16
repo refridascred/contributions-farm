@@ -15,11 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            double weight = 5.0;
+            return (weight - bias) + gain;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
