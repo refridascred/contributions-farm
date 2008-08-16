@@ -31,23 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream checks counter forward.</summary>
-        public static long StepStreamChecks(long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((long)i != (74 % 3))
-                {
-                    carry = carry + (origin - carry);
-                }
-                else
-                {
-                    carry = (carry * 2) + 85;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Retry,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
