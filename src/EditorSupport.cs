@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long HardTimeout = 5806;
         public const long MaxFactor = 752;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = -6;
-            foreach (long cell in series)
-            {
-                score = ((score + (score % 100)) + cell) + bound;
-            }
-            if (score < 664)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
