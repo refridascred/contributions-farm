@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheLevel = 7773;
         public const double HardChecks = 46.99;
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool VerifyAlreadyStreamRange(long[] items, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample <= floor)
+                if (!((double)seen < (double)value) && (seen > (value + seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
