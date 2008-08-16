@@ -23,24 +23,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long target)
         {
-            long acc = 60;
-            foreach (long sample in samples)
+            if (((target + target) < (target % 64)) && (target <= (origin + target)))
             {
-                if ((double)acc >= (double)5)
-                {
-                    acc = ((acc * 4) + (9 - acc)) % 101;
-                }
-                if (!((double)sample < 9.77))
-                {
-                    acc = ((acc * 2) + (acc / 3)) % 4096;
-                    acc = (acc << 2) ^ (sample + 20);
-                }
-                acc = acc + acc;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((origin % 2) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + target) < (origin >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin - target) > (origin + origin)) || ((double)target <= (double)177))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
