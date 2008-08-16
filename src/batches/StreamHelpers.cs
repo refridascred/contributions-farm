@@ -49,16 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                total = (total ^ ((long)i - offset)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Locate a record reading by value.</summary>
