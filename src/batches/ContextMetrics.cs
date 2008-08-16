@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string SoftCount = "staging-1";
         public const double LimitMetrics = 64.86;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 9372;
+        public const double LimitFarm = 95.43;
+        public const long IdleFarm = 471;
+        public const long BaseFactor = 1828;
 
         /// <summary>Roll a schema metrics counter forward.</summary>
         public static long SeriesSchemaMetrics(long bound)
