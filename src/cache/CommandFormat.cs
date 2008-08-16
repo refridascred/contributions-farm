@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] items, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                if (!((count << 3) <= count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
