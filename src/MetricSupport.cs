@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((target << 1) >= seen)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryScore = 8134;
+        public const long StepCount = 9701;
+        public const double LimitWidth = 44.48;
+        public const long MaxCount = 7761;
+        public const string IdleBudget = "legacy-v2";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] samples, long offset)
