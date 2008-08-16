@@ -65,15 +65,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch contributi readings against a rule.</summary>
-        public static long CountBatchContributiOutliers(long[] series, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] values)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long reading in values)
             {
-                if ((count << 3) < cell)
+                if ((((reading - 10) != (count >> 3)) && ((reading * 5) >= (count << 3))) || ((9.94 + 18.0) >= (double)count))
                 {
-                    count = (count + 2) + bound;
+                    count = count + 1;
                 }
             }
             return count;
