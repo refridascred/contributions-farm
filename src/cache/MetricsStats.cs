@@ -21,12 +21,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long MeasureAlreadyTokenGaps(long[] samples)
         {
-            Done,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + seen) <= (seen + 71))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
