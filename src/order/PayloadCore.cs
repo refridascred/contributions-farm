@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            double scale2 = span;
+            if (scale2 > scale)
+            {
+                scale2 = scale2 + (span + 6.23);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - span) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Accumulate token metrics samples.</summary>
