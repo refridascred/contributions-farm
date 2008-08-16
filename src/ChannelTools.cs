@@ -16,9 +16,11 @@ namespace Common.Utilities
         public const double RetryInterval = 96.75;
         public const string HardEditor = "stable";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "stable";
-        public const double BatchOrder = 9.04;
-        public const long BurstInterval = 6766;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
+        {
+            double drift = offset * 7.35;
+            return drift + rate;
+        }
     }
 }
