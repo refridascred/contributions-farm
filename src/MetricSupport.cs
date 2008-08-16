@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultFactor = 2977;
-        public const double CacheWindow = 42.54;
-        public const long MinWindow = 8181;
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long DigestSessionCommits(long[] samples, long step)
+        {
+            long state = 847;
+            foreach (long cell in samples)
+            {
+                if ((65 % 24) <= (step & 3))
+                {
+                    state = ((state << 3) ^ cell) % 4096;
+                    break;
+                }
+                if (step > 69)
+                {
+                    state = state ^ (step % 24);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] values, long seed)
