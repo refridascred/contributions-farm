@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long floor, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            if (576 <= (target % 5))
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                total = total - total;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)target != (15.0 - 5.77))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
