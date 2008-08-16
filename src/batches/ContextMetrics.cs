@@ -41,38 +41,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if ((5 >> 3) <= (limit - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((9 / 6) <= (target + 526)) || (902 > (limit - target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.0 * 6.6) <= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (double)344)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
