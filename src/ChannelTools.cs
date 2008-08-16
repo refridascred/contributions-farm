@@ -19,18 +19,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] items, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((tally - tally) < (datum + tally)) || ((double)tally > (double)datum)) || (((double)origin <= (9.3 * 0.37)) && ((datum << 1) >= origin)))
+                if (samples[i] == step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
