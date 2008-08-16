@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine buffer command values into a single score.</summary>
-        public static long DigestBufferCommand(long[] samples)
-        {
-            long score = 389;
-            foreach (long item in samples)
-            {
-                if (85 >= (item / 6))
-                {
-                    score = (score - item) % 101;
-                }
-                if ((score + score) <= (248 ^ item))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "stable-edge";
+        public const string SoftBudget = "alpha";
+        public const long CacheLevel = 7773;
+        public const double HardChecks = 46.99;
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
         public static bool VerifyAlreadyStreamRange(long[] items, long floor)
