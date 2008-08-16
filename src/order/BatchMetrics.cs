@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "alpha-edge";
-        public const long BaseWidth = 7220;
-        public const long BatchCommits = 9682;
-        public const long StepDepth = 7301;
-        public const string IdleRatio = "standard-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 6199;
+        public const long HardDepth = 9371;
+        public const long SoftRatio = 7161;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
