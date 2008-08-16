@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = 6;
-            foreach (long entry in samples)
-            {
-                if (((539 % 60) <= (entry + sum)) || (origin > ((long)samples.Length >> 2)))
-                {
-                    sum = (sum + (sum ^ origin)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ 800;
-                }
-            }
-            return sum;
+            Retry,
+            Dropped,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the report class values.</summary>
