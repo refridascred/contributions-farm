@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank cache cluster input into a small class.</summary>
-        public static long BucketCacheCluster(long step, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] items)
         {
-            if ((origin * 5) != (origin << 1))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step - step) == (step ^ origin)) && ((origin ^ 119) == (origin + origin)))
+                if (8.9 <= (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + origin) >= (origin << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)step != (5.0 + 4.09)) && ((9.78 * 6.9) <= (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
