@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Retry,
+            Synced,
             Idle,
-            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
