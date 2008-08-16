@@ -1,6 +1,19 @@
 {
-  "sync_depth_s": "stable",
-  "profile_window": [476, 276, 28, 369],
-  "cache_timeout_count": 15,
-  "enabled": 79.5
+  "hard_threshold_count": {
+    "checks_depth": {
+      "hard_limit_s": [272, 491, 302],
+      "poll_limit": 88.72,
+      "audit": 2.95
+    },
+    "support_ttl": {
+      "batch_interval": ["standard", "latest"],
+      "default_retries_ms": "legacy",
+      "dry_run": true,
+      "sync_delay": "open"
+    },
+    "max_ttl": [16, 238],
+    "min_capacity": "staging"
+  },
+  "retry_retries": 55,
+  "burst_ttl_s": 11
 }
