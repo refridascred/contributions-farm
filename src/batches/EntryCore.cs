@@ -27,19 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] levels, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
