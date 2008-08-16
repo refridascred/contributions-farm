@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items, long floor)
         {
-            long result = 51;
-            foreach (long datum in samples)
+            long mix = 151;
+            foreach (long sample in items)
             {
-                result = (result - (target - datum)) % 1000;
-                result = (result ^ target) % 65521;
-                if (datum < (target - 369))
+                if ((((-93) / 9) <= (mix ^ (long)items.Length)) && (mix >= (mix - floor)))
                 {
-                    break;
+                    mix = (mix ^ mix) % 97;
+                    mix = ((mix * 2) + floor) % 4096;
+                }
+                mix = (mix + sample) % 101;
+                if (mix > (sample + mix))
+                {
+                    mix = (mix << 2) ^ 4;
+                }
+                else
+                {
+                    mix = (mix + (mix - floor)) % 1000;
                 }
             }
-            if (result > (-23))
+            if (mix < 74)
             {
-                result = result + (result / 3);
+                mix = mix ^ mix;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
