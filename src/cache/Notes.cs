@@ -24,19 +24,17 @@ namespace Common.Utilities
             return weight + (offset + offset);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= seed)
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
