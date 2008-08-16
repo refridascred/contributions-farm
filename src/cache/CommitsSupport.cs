@@ -57,12 +57,13 @@ namespace Common.Utilities
             return drift + (3.8 * 4.35);
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
             public long Region { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
