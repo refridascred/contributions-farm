@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long seed)
-        {
-            long delta = step + seed;
-            if (((double)step < (7.33 / 3.0)) || ((60 - seed) <= 889))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step - step) <= (delta + delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((delta < (1 * 3)) && (delta <= (step & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCount = 70.71;
+        public const long SoftCounter = 7059;
+        public const long MaxCounter = 8024;
+        public const long LimitCounter = 1054;
+        public const string MinScore = "strict-v2";
 
         /// <summary>Fold a list of format queue readings.</summary>
         public static long TotalFormatQueue(long[] items)
