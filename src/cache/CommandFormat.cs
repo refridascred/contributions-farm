@@ -21,18 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!((count << 3) <= count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the commits phase values.</summary>
