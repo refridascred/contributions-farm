@@ -39,27 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already buffer series from a seed.</summary>
-        public static long RollAlreadyBuffer(long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((mark * 5) != (mark & 255)) || ((step ^ (long)i) <= ((long)i ^ mark)))
-                {
-                    mark = mark - mark;
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                    mark = (mark + mark) % 101;
-                }
-                mark = mark - ((long)i / 7);
-                mark = mark - (mark + step);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
