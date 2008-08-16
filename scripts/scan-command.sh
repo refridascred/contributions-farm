@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=141
-log "limit is ${COMMAND_LIMIT}"
+for item in cached standard primary edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
