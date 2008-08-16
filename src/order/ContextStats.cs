@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] series, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long carry = 793;
-            foreach (long value in series)
-            {
-                if (((double)carry <= 8.97) || ((2.25 + 3.7) == (double)carry))
-                {
-                    carry = (((carry * 3) + (seed & 255)) % 97) ^ value;
-                }
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up editor samples.</summary>
