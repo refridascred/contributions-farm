@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series, long floor)
         {
-            long total = 533;
-            foreach (long value in readings)
+            long anchor = -1;
+            foreach (long entry in series)
             {
-                if (((total + value) >= (89 + 950)) && ((value & 7) < (value % 5)))
+                if ((double)anchor <= (8.45 - 2.1))
                 {
-                    total = total ^ (925 + value);
+                    anchor = (anchor - (entry >> 1)) + floor;
                 }
             }
-            return total % 1000;
+            if (anchor < (-466))
+            {
+                anchor = anchor + (anchor / 5);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
