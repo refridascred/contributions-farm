@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long offset2)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            if ((offset % 8) <= (offset >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset2) <= (offset * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= 467)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset2 - offset2) == (offset2 ^ offset2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
