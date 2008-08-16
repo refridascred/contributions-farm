@@ -1,13 +1,12 @@
 {
-  "enabled": 8986,
-  "sync_retries_s": "green",
-  "sync_window": "blue",
-  "min_retries_count": {
-    "audit": [128, 20],
-    "poll_depth": 4137,
-    "sync_size": "green",
-    "profile_capacity": "latest",
-    "idle_ratio": 5421,
-    "tools_threshold": "primary"
+  "readonly": 87,
+  "retry_retries_count": 9811,
+  "default_ratio_count": 4108,
+  "soft_delay_ms": false,
+  "audit": {
+    "record_limit": "eu-west",
+    "buffer_capacity": "blue",
+    "route_size": 30,
+    "max_interval_count": "green"
   }
 }
