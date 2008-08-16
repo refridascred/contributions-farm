@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstBudget = 7736;
-        public const long BurstTimeout = 4425;
-        public const long IdleMetric = 4749;
-        public const long DefaultInterval = 1824;
-        public const string LimitMetric = "local-edge";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
