@@ -34,24 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long AuditMetricTokenHits(long[] items, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((item ^ matches) > (item - 41))
                 {
-                    mark = ((mark - (14 * 3)) % 4096) - (long)i2;
-                    mark = mark + mark;
+                    matches = (matches + 2) + origin;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    mark = (mark - (limit + mark)) - (long)i3;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
