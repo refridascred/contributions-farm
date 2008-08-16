@@ -19,13 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
