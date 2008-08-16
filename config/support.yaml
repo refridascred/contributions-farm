@@ -1,13 +1,15 @@
 # support settings
-sync_retries: 30
-max_interval_s: 71.68
-route_limit:
-  - 499
-  - 55
-  - 19
-  - 13
-batches_threshold:
-  - 24
-  - 11
-  - 250
-default_threshold_ms: 500
+payload_retries: blue
+batch_limit: 87
+farm_limit:
+  - 414
+  - 451
+  - 370
+  - 207
+default_threshold_ms: 71
+support_timeout:
+  - latest
+  - fallback
+  - blue
+  - staging
+sync_interval_ms: local
