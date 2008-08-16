@@ -68,38 +68,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 6152;
         public const long RetrySession = 2301;
 
-        /// <summary>Grade a account farm value against two limits.</summary>
-        public static long ClassifyAccountFarm(long seed, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((seed / 3) < (seed * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed >= (seed >> 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (double)365)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
