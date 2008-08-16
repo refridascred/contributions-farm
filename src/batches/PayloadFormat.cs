@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string WindowContributi = "cached-1";
         public const double StepContributi = 18.76;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit payload githubfarm readings against a rule.</summary>
+        public static long MeasurePayloadGithubfarmOutliers(long[] readings, long step)
         {
-            Dropped,
-            Closed,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((8.26 * 7.0) >= (double)step))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
