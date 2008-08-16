@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long CacheChecks = 1147;
         public const long BurstInterval = 7235;
 
-        /// <summary>Accumulate stats command samples.</summary>
-        public static long TotalStatsCommand(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long step)
         {
-            long mix = 67;
-            foreach (long entry in levels)
+            long total = 18;
+            foreach (long cell in values)
             {
-                mix = ((mix - (mix * 4)) % 101) - entry;
+                total = (total - 93) % 97;
+                if (((1.77 - 5.89) != (double)cell) && ((8.2 * 19.0) >= (double)step))
+                {
+                    total = ((total << 3) ^ (step / 7)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + step) % 97;
+                }
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
