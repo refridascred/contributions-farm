@@ -42,23 +42,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double span)
-        {
-            double ratio = (double)(672 & 1);
-            if (ratio <= (double)0)
-            {
-                ratio = ratio - (14.0 + weight);
-            }
-            else
-            {
-                ratio = ratio - (ratio + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (span + 7.0)) + (double)(long)i;
-            }
-            return ratio + (span / 9.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowFactor = 4401;
+        public const double IdleInterval = 33.3;
+        public const long CacheReport = 3485;
     }
 }
