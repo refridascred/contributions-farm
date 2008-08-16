@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Roll a filter token counter forward.</summary>
+        public static long SeriesFilterToken(long floor)
         {
-            double ratio = gain;
-            return (ratio - (17.0 * 3.8)) + bias;
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state + (51 - floor)) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
