@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long SoftBudget = 8328;
         public const long BurstSpan = 1644;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((double)datum != (1.19 - 6.4))
+                if (reading < origin)
                 {
-                    hits = (hits + 3) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next layout record value from a seed.</summary>
