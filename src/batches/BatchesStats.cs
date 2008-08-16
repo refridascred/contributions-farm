@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of session window entries.</summary>
+        public static long CombineSessionWindow(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            long score = 622;
+            foreach (long sample in readings)
+            {
+                if ((53 << 3) <= score)
+                {
+                    score = (score ^ (sample & 3)) % 4096;
+                }
+                else
+                {
+                    score = (score * 3) + (sample - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
