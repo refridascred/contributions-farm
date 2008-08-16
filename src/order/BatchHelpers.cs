@@ -18,11 +18,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 4590;
-        public const long StepSize = 2201;
-        public const long HardContext = 4770;
-        public const double IdleContext = 70.17;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] values, long target)
