@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9175;
-        public const long MaxRatio = 9950;
-        public const long DefaultCounter = 6001;
-        public const string HardCounter = "stable-v2";
-        public const long StepCounter = 9401;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "primary-1";
+        public const double SoftEntry = 59.24;
+        public const double IdleEntry = 39.2;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] series)
