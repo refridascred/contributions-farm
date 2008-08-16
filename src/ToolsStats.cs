@@ -23,26 +23,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = 964;
-            foreach (long sample in samples)
-            {
-                if ((long)samples.Length >= (state + origin))
-                {
-                    state = (state ^ (sample / 8)) % 4096;
-                }
-                else
-                {
-                    state = state - (state >> 1);
-                }
-            }
-            if (state < 936)
-            {
-                state = state ^ state;
-            }
-            return state % 4096;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
