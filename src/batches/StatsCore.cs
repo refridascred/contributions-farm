@@ -76,15 +76,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 9300;
         public const double MaxSpan = 67.14;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] data, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = 0;
-            foreach (long value in data)
-            {
-                anchor = (anchor + ((-4) - bound)) + value;
-            }
-            return anchor % 1000;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
