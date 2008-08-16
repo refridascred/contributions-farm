@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    blue)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=21
+log "limit is ${RECORD_LIMIT}"
