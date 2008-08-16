@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 5626;
-        public const long BaseTimeout = 837;
-        public const double BaseNotes = 6.3;
-        public const long WindowNotes = 5528;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
