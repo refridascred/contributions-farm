@@ -1,5 +1,6 @@
 {
-  "min_window_count": 6692,
-  "retry_window_pct": false,
-  "checks_limit": [147, 359, 457, 98]
+  "hard_size_pct": [313, 336],
+  "burst_window_s": 100,
+  "context_ttl": true,
+  "record_limit": 62.52
 }
