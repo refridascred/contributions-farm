@@ -39,14 +39,13 @@ namespace Common.Utilities
         public const long HardInterval = 1015;
         public const long MinRatio = 8338;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Stale,
-            Draft,
-            Dropped,
-            Pending,
-            Idle,
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
