@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "local-v2";
-        public const long IdleMetric = 5113;
-        public const long MaxMetric = 7481;
-        public const double WindowMetric = 26.76;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "latest-edge";
+        public const double BatchFactor = 69.86;
+        public const string IdleSchema = "strict-v2";
+        public const string CacheSpan = "latest-v2";
+        public const long DefaultSchema = 4379;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] values)
