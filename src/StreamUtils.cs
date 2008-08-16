@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 5218;
-        public const long BaseSize = 4114;
-        public const long CacheScore = 3239;
-        public const long BaseOrder = 3136;
+        /// <summary>Match up contributi filter samples.</summary>
+        public static long OverlapContributiFilterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
