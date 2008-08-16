@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] values, long step)
         {
-            long total = 6;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                total = total - cell;
-                total = total ^ (cell - cell);
+                if ((5.0 / 2.0) == (double)seen)
+                {
+                    seen = ((seen + 3) - reading) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate editor stats samples.</summary>
