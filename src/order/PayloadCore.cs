@@ -38,18 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count < (0.13 - 5.8))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
