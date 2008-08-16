@@ -13,11 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Check that every window farm entry stays within the limit.</summary>
+        public static bool CheckWindowFarmRange(long[] levels, long bound)
         {
-            double rate2 = bias;
-            return rate2 - rate;
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two already measurements.</summary>
