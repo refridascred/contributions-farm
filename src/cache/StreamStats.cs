@@ -29,18 +29,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 45;
+            foreach (long datum in items)
             {
-                if (((-43) - origin) <= (reading + matches))
+                mark = ((mark * 2) + (21 + (long)items.Length)) + origin;
+                if (!(datum < mark))
                 {
-                    matches = matches + 1;
+                    mark = ((mark * 5) + (datum + mark)) % 97;
                 }
             }
-            return matches;
+            if (mark < (-897))
+            {
+                mark = ((mark << 2) ^ (mark - 34)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
