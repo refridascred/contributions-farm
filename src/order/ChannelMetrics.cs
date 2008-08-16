@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the cluster stats entries that pass the check.</summary>
-        public static long TallyClusterStatsOutliers(long[] series, long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen <= (datum >> 3))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
