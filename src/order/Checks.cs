@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const string BurstNotes = "staging";
         public const double BatchSpan = 24.01;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheWidth = 11.3;
-        public const long MinFormat = 7692;
-        public const long RetryRatio = 9631;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
+        {
+            long mix = 50;
+            foreach (long value in samples)
+            {
+                if ((double)mix <= (7.19 + 19.0))
+                {
+                    mix = (mix - (mix / 9)) % 101;
+                    continue;
+                }
+                if ((value <= (value - value)) || ((value % 100) != (value / 4)))
+                {
+                    mix = mix ^ (value * 3);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine farm token values into a single score.</summary>
         public static long ScoreFarmToken(long[] values)
