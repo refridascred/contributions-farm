@@ -1,7 +1,8 @@
 {
-  "graph_interval": 10,
-  "already_ratio": 68.66,
-  "batch_retries_s": false,
-  "tools_ratio": 3863,
-  "editor_window": 4336
+  "retry_ttl_s": "primary",
+  "idle_size": 4037,
+  "retry_capacity_count": [29, 321],
+  "default_threshold_s": "green",
+  "persist": "latest",
+  "idle_window_count": "latest"
 }
