@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BurstAccount = 3426;
         public const long LimitAccount = 7316;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item < (item >> 3)) || ((matches ^ 719) <= 8))
+                if ((series[i] <= step) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a record layout counter forward.</summary>
