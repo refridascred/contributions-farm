@@ -62,9 +62,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 3040;
-        public const long LimitSupport = 593;
-        public const long RetryScore = 7325;
+        /// <summary>Iterate the metrics tools series from a seed.</summary>
+        public static long SeriesMetricsTools(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = anchor ^ ((long)i ^ step);
+                if (((-4) < step) && ((anchor % 7) != (step << 2)))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 2)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
