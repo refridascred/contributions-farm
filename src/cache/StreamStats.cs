@@ -48,12 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
