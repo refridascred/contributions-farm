@@ -29,9 +29,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheWidth = "legacy-edge";
-        public const long HardBudget = 6600;
-        public const long BaseGraph = 3945;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "standard-1";
+        public const long LimitContext = 6111;
+        public const long BatchContext = 2052;
     }
 }
