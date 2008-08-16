@@ -20,17 +20,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first tools stream entry that matches the target.</summary>
-        public static long LookupToolsStreamIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 24.66;
+        public const long LimitFactor = 2179;
+        public const double CacheSize = 63.9;
+        public const long IdleTimeout = 4534;
+        public const long CacheFarm = 7296;
     }
 }
