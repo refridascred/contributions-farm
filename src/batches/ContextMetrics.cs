@@ -16,13 +16,35 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long mark = 17;
+            foreach (long sample in samples)
+            {
+                if (mark < sample)
+                {
+                    mark = (mark - 0) % 4096;
+                }
+                else
+                {
+                    long step = (mark + mark) * 3;
+                    mark = mark - step;
+                }
+                if ((double)86 <= (1.95 + 4.1))
+                {
+                    mark = ((mark << 3) ^ (128 - 869)) % 65521;
+                }
+                if ((mark + mark) < sample)
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark * 3) + (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Hold a schema summary.</summary>
