@@ -1,20 +1,9 @@
 # support settings
-burst_limit_s: true
-soft_limit_ms:
-  metric_interval: eu-west
-  strict: strict
-  poll_window:
-    - stable
-    - strict
-dry_run: standard
-burst_size_count:
-  cache_timeout_pct: primary
-  idle_ratio: 47.04
-  payload_capacity: 100
-  soft_capacity:
-    - strict
-    - open
-    - blue
-    - green
-  route_capacity: cached
-  retry_interval: 28.3
+persist:
+  - 500
+  - 67
+  - 158
+buffer_capacity:
+  - green
+  - latest
+idle_delay_pct: stable
