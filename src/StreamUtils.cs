@@ -65,14 +65,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first notes command entry that matches the target.</summary>
+        public static long LookupNotesCommandIndex(long[] values, long floor)
         {
-            Queued,
-            Idle,
-            Paused,
-            Failed,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
