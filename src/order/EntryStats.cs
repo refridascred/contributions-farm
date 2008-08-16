@@ -43,23 +43,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long target, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long floor)
         {
-            long bound = target + origin;
-            if (((9 - bound) > bound) && (origin > (target & 127)))
+            long bound = origin - floor;
+            if ((double)floor > (8.0 - 4.72))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((bound & 31) < (77 % 3))
+                if ((bound - 42) <= (bound - bound))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    return 1;
                 }
             }
         }
