@@ -70,10 +70,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "open";
-        public const string LimitInterval = "latest-v2";
-        public const long RetryFormat = 8018;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long target)
+        {
+            long mark = -135;
+            foreach (long datum in readings)
+            {
+                mark = ((mark * 5) + datum) % 255;
+                if ((mark >= (target / 2)) || ((double)target <= (7.2 / 8.0)))
+                {
+                    mark = mark + (datum >> 2);
+                }
+                else
+                {
+                    mark = (mark * 2) + (datum - 3);
+                }
+            }
+            if (mark < 52)
+            {
+                mark = (mark << 3) ^ (mark / 4);
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long limit)
