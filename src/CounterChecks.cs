@@ -23,21 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] samples, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry << 3) ^ (carry - limit)) % 101;
-                if (carry <= (carry / 4))
+                if ((matches & 3) != (datum * 2))
                 {
-                    carry = ((carry << 2) ^ (carry & 15)) % 65521;
-                    carry = (carry * 5) + limit;
+                    matches = (matches + 1) - seed;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
