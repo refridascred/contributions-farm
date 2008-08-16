@@ -1,7 +1,13 @@
 {
-  "hard_window": 22,
-  "cache_ttl": "edge",
-  "session_interval": "open",
-  "poll_ttl_pct": ["open", "edge", "standard", "latest"],
-  "batch_timeout_s": "green"
+  "soft_delay": "blue",
+  "persist": 1621,
+  "audit": {
+    "cache_limit_s": 1024,
+    "idle_window_ms": 66.39,
+    "schema_capacity": true,
+    "cluster_size": 250,
+    "account_window": 44.73
+  },
+  "default_window_count": [214, 304, 434, 334],
+  "default_interval": 9763
 }
