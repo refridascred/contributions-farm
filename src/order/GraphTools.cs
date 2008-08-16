@@ -30,27 +30,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            long carry = 95;
-            foreach (long item in data)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry + 301) % 97;
-                for (int i = 0; i < 8; i++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = ((carry - (item * 4)) % 65521) + (long)i;
+                    mark = ((mark - (14 * 3)) % 4096) - (long)i2;
+                    mark = mark + mark;
                 }
-                if ((item + item) != (item >> 1))
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    carry = carry - (carry * 2);
+                    mark = (mark - (limit + mark)) - (long)i3;
                 }
-                else
-                {
-                    carry = carry + (carry + 0);
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
