@@ -1,8 +1,13 @@
 {
-  "retry_ttl_s": "primary",
-  "idle_size": 4037,
-  "retry_capacity_count": [29, 321],
-  "default_threshold_s": "green",
-  "persist": "latest",
-  "idle_window_count": "latest"
+  "strict": 2310,
+  "graph_interval": "latest",
+  "commits_ratio": {
+    "notes_ratio": {
+      "account_depth": false,
+      "contributi_timeout": "local",
+      "record_depth": 16.73
+    },
+    "token_timeout": false,
+    "soft_threshold_ms": 43.95
+  }
 }
