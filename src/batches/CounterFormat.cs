@@ -39,22 +39,24 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] items)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long target, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((offset > (target << 1)) || (3.39 >= (double)offset))
             {
-                if (!((matches - datum) != ((-929) + datum)) || ((matches + 71) <= datum))
+                return 6;
+            }
+            else
+            {
+                if ((offset - target) < ((-11) * 2))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
