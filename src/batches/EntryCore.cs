@@ -59,25 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long target2)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long next = target - target2;
-            if ((15.0 + 9.17) > (double)target2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next + next) < (next + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
