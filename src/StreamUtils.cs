@@ -49,14 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
-            Paused,
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
