@@ -39,17 +39,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = 15.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                load = ((load - (double)(long)i) - gain) - floor;
             }
-            return -1;
+            return load - load;
         }
     }
 }
