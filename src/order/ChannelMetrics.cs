@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token entry samples are out of range.</summary>
-        public static long CountTokenEntryMatches(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches * 4) < (matches >> 3))
-                {
-                    matches = (matches + 3) + item;
-                }
+                result = ((result << 2) ^ (floor + floor)) % 101;
+                result = (result - (result + result)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
