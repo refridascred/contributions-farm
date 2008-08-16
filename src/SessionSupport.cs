@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long HardWidth = 4799;
         public const double SoftQueue = 59.7;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 2.94;
-        public const string BatchRatio = "primary-v2";
-        public const long StepBatch = 6623;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] readings)
