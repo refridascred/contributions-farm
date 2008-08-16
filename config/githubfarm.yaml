@@ -1,4 +1,28 @@
 # githubfarm settings
-base_ratio_ms: standard
-default_ratio_s: green
-readonly: true
+burst_size: false
+compress: true
+metrics_delay:
+  idle_depth_count: 66.85
+  enabled: 83.91
+  flush_threshold_ms: false
+  idle_ratio_pct: 46
+  flush_window_count: blue
+  readonly:
+    max_depth_count: 3005
+    burst_capacity: 379
+    warm_limit_ms: primary
+base_timeout_count: 5.89
+poll_timeout: standard
+base_threshold_ms:
+  max_depth_ms: local
+  max_depth_count:
+    default_size_count: 6
+    soft_size_count: false
+    retry_size_pct: strict
+    enabled:
+      - 311
+      - 374
+      - 24
+    readonly: 4594
+  route_ttl: true
+  hard_size_ms: true
