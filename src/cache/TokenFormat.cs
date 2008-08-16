@@ -29,18 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((7 % 7) > (item * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 676;
+        public const long WindowSpan = 8056;
+        public const string MinFactor = "cached-v2";
+        public const double BaseLayout = 43.03;
+        public const double SoftLayout = 10.45;
     }
 }
