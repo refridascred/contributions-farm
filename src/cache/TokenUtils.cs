@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 836;
+            foreach (long sample in data)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = (score + (score ^ score)) + sample;
+                score = (score * 2) + (1 ^ score);
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
