@@ -63,15 +63,13 @@ namespace Common.Utilities
         public const long CacheScore = 4191;
         public const long BatchQueue = 482;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long result = 81;
-            foreach (long sample in levels)
-            {
-                result = ((((result << 2) ^ result) % 4096) + sample) + limit;
-            }
-            return result;
+            Queued,
+            Dropped,
+            Closed,
+            Done,
         }
     }
 }
