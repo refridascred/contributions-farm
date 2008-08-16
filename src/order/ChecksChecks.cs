@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "legacy-1";
-        public const long MaxTimeout = 8148;
-        public const long LimitScore = 3805;
-        public const double SoftSchema = 74.49;
-        public const long BaseScore = 3564;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] readings, long seed)
