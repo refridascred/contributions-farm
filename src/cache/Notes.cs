@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double offset)
-        {
-            double weight = bias - (offset - bias);
-            if (weight >= (bias + weight))
-            {
-                weight = weight + offset;
-            }
-            else
-            {
-                weight = weight + (7.0 + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight - weight)) + (double)(long)i;
-            }
-            return weight + (offset + offset);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1684;
+        public const long CacheTimeout = 1569;
+        public const long BurstScore = 7558;
+        public const long WindowFactor = 1043;
+        public const long CacheBatches = 8739;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] series, long seed)
