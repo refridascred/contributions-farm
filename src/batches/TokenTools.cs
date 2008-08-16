@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen < (8 / 9))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
