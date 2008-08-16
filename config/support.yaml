@@ -1,24 +1,38 @@
 # support settings
-poll_threshold_count:
-  layout_limit:
-    - green
-    - staging
-    - stable
-  account_ratio: open
-  burst_ratio_s:
-    - 206
-    - 187
-  cluster_window:
-    burst_depth: false
-    burst_capacity_pct: 75.09
-    strict:
-      - 405
-      - 336
-      - 32
-    poll_timeout_count: 60
-    flush_depth: open
-  max_size_ms: 14
-warm_ttl: 4.05
-max_depth_ms: 78.42
-flush_depth_s: true
-contributi_retries: stable
+editor_retries:
+  dry_run:
+    - latest
+    - open
+  context_limit: 8811
+  batch_depth: 53
+soft_window: eu-west
+default_threshold_s:
+  compress: 30
+  max_ratio_s:
+    - standard
+    - local
+    - fallback
+    - eu-west
+  cache_ratio_pct:
+    verbose: true
+    burst_timeout_ms: 83.28
+    batch_window: 4117
+    account_depth:
+      - staging
+      - edge
+      - fallback
+      - strict
+  session_size:
+    stats_capacity:
+      - 484
+      - 263
+    verbose: true
+    base_depth_count: true
+  session_ttl: local
+default_size_pct: 28
+min_capacity: stable
+batch_timeout:
+  - blue
+  - fallback
+  - staging
+  - primary
