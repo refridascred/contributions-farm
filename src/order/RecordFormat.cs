@@ -33,19 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Draft,
+            Pending,
+            Retry,
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
