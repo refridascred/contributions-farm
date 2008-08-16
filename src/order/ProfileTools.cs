@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine token buffer values into a single score.</summary>
