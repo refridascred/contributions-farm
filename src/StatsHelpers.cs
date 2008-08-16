@@ -53,17 +53,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 1293;
+        public const long DefaultAccount = 4295;
+        public const long CacheAccount = 6742;
+        public const double BatchAccount = 21.16;
     }
 }
