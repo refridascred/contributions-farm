@@ -28,9 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultLevel = 5281;
-        public const long RetrySupport = 6470;
-        public const long WindowSupport = 8101;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
+        {
+            long score = -8;
+            foreach (long sample in readings)
+            {
+                if (660 <= (score / 4))
+                {
+                    score = score ^ (sample * 2);
+                }
+                else
+                {
+                    score = (score * 5) + (sample + 682);
+                }
+            }
+            return score;
+        }
     }
 }
