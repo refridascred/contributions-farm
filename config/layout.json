@@ -1,19 +1,5 @@
 {
-  "audit": {
-    "enabled": [6, 108],
-    "cache_delay": 62.38,
-    "batch_limit_count": {
-      "min_timeout": ["blue", "latest", "fallback"],
-      "burst_size_count": true,
-      "flush_ttl_count": false,
-      "warm_size": 100,
-      "payload_interval": "legacy"
-    },
-    "flush_ratio_pct": [87, 293, 469],
-    "cache_window_ms": 8972,
-    "batch_timeout": 467
-  },
-  "flush_ttl_pct": 77.91,
-  "base_capacity": true,
-  "base_timeout_ms": false
+  "hard_window_s": "staging",
+  "entry_timeout": ["green", "blue"],
+  "hard_depth": 35.49
 }
