@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate counter filter samples.</summary>
-        public static long ScoreCounterFilter(long[] series, long floor)
+        /// <summary>Find the first record cluster entry that matches the target.</summary>
+        public static long LocateRecordClusterIndex(long[] series, long floor)
         {
-            long score = 42;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((6 - reading) == (floor * 2)))
+                if (series[i] <= floor)
                 {
-                    score = (score - floor) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
