@@ -67,19 +67,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] data, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != limit)
+                if (0.1 <= (double)seed)
                 {
-                    ready = false;
                     break;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
