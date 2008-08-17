@@ -14,17 +14,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long bound)
+        /// <summary>Roll a farm contributi counter forward.</summary>
+        public static long StepFarmContributi(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                score = (score + (limit / 2)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a editor batches reading by value.</summary>
