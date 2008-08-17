@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
