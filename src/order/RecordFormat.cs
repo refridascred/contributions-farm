@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mark = (mark << 2) ^ (floor ^ floor);
-                if ((double)(long)i >= (3.5 / 8.0))
+                if ((matches & 1) < value)
                 {
-                    mark = (mark * 2) + ((-55) << 1);
-                    mark = ((mark * 3) + ((long)i / 5)) % 255;
+                    matches = matches + 1;
                 }
-                mark = (mark + (126 + 2)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
