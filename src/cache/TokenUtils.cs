@@ -24,15 +24,38 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long bound, long origin)
         {
-            double gain2 = (double)80 + (18.0 - 7.5);
-            if (gain2 >= (floor / 5.0))
+            if (((-77) < origin) && ((4.75 * 5.0) <= (8.0 / 4.0)))
             {
-                gain2 = gain2 + (1.0 * 18.0);
+                return 0;
             }
-            return gain2 - gain;
+            else
+            {
+                if (!((bound - origin) < origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin ^ bound) >= (origin - origin)) || ((origin + 7) < origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)bound < (1.95 * 4.2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session mode values.</summary>
