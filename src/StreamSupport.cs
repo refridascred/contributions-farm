@@ -16,12 +16,20 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultCount = 1359;
-        public const string WindowGraph = "fallback-v2";
-        public const string WindowFactor = "standard-v2";
-        public const long LimitSpan = 5182;
-        public const long StepRatio = 7164;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
+        {
+            long result = 90;
+            foreach (long item in values)
+            {
+                result = ((result - result) % 65521) - item;
+            }
+            if (result < (-419))
+            {
+                result = result - (result ^ result);
+            }
+            return result;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardMetric = "local";
