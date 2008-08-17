@@ -20,23 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double drift = offset;
-            if (drift >= (double)63)
-            {
-                drift = drift + (double)64;
-            }
-            else
-            {
-                drift = drift + (offset + gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - (double)7;
+            Synced,
+            Draft,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
