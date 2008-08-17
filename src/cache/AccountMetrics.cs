@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            double mean = (double)(72 + (-97));
+            if (mean >= (7.1 + mean))
+            {
+                mean = mean + (2.0 / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (ratio + mean)) - (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Describe the counter class values.</summary>
