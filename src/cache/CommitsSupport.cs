@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
+        /// <summary>Count route channel pairs that satisfy a relation.</summary>
+        public static long PairRouteChannelCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches << 1) <= cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
