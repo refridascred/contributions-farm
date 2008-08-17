@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            Retry,
-            Dropped,
-            Paused,
+            double ratio = (double)9 - (double)70;
+            if (ratio < (span + scale))
+            {
+                ratio = ratio + (2.3 - ratio);
+            }
+            return ratio - scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
