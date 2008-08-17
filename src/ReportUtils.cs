@@ -16,17 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (7.4 + ratio) + ratio;
+            if (drift < floor)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            else
+            {
+                drift = drift + ratio;
+            }
+            return drift + (2.5 / 4.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
