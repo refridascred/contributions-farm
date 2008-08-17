@@ -51,19 +51,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next report cache value.</summary>
-        public static double BlendReportCache(double bias, double bias2)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items)
         {
-            double rate = (double)(6 - 6);
-            if (rate < (double)664)
+            long anchor = 8;
+            foreach (long sample in items)
             {
-                rate = (rate - bias) - bias2;
+                anchor = (((anchor << 3) ^ (anchor + anchor)) % 65521) - sample;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - bias;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
