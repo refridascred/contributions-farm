@@ -57,21 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of queue graph readings.</summary>
-        public static long CompareQueueGraphCount(long[] samples)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 14)
+                    if ((samples[i] ^ samples[j]) > 20)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
