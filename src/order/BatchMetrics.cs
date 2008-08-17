@@ -56,19 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = -108;
-            foreach (long datum in readings)
-            {
-                mark = ((mark + (datum >> 3)) % 255) + step;
-            }
-            if (mark < 454)
-            {
-                mark = (mark - (mark * 3)) % 4096;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
