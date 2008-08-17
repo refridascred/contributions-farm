@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
+            Queued,
+            Draft,
             Dropped,
-            Retry,
-            Locked,
-            Failed,
-            Ready,
+            Stale,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
