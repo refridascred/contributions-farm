@@ -50,11 +50,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank session profile input into a small class.</summary>
+        public static long SortSessionProfile(long bound, long seed)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long span = bound + seed;
+            if ((8.2 + 2.0) != (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((6.9 * 2.2) > (double)bound) && ((seed + span) <= 53))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)span < (6.29 / 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span + span) > (seed + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
