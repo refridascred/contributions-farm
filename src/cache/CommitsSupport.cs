@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                sum = (sum ^ (step - step)) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream record.</summary>
