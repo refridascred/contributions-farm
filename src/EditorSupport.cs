@@ -33,13 +33,14 @@ namespace Common.Utilities
         public const long MinWidth = 6078;
         public const long IdleRatio = 924;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Dropped,
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Audit stream filter readings against a rule.</summary>
