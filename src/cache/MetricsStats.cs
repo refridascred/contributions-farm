@@ -31,15 +31,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long offset)
         {
-            long anchor = 8;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (anchor + anchor)) % 65521) - sample;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
