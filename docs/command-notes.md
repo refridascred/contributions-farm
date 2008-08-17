@@ -1,11 +1,11 @@
 # Command notes
 
-Keep stats and entry names short and lowercase.
-Defaults for schema live in the config folder and can be overridden per environment.
-Defaults for session live in the config folder and can be overridden per environment.
+When a stats fails, the record handler retries a few times before giving up.
+The batch module keeps buffer values in sync with the already cache.
 
 ## Guidelines
 
-- Review session limits each release
-- Validate format input early
-- Prefer entry defaults
+- Log every order change
+- Document new schema fields
+- Prefer filter defaults
+- Review filter limits each release
