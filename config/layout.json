@@ -1,7 +1,11 @@
 {
-  "batch_capacity_s": 9597,
-  "metrics_limit": "latest",
-  "cache_retries_ms": "latest",
-  "readonly": 88.12,
-  "sync_delay_ms": 100
+  "batch_timeout": {
+    "default_interval": [393, 107, 106, 499],
+    "retry_capacity_ms": "latest",
+    "soft_ttl_ms": 100,
+    "cache_retries": 30,
+    "batch_timeout_count": 73
+  },
+  "default_retries": 27.78,
+  "max_limit": 3510
 }
