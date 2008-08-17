@@ -40,31 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long floor, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((double)bound < (1.5 + 9.5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) > (0 - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((0 * 3) > (floor + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
