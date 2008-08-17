@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] values, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (double)count)
+                if (levels[i] <= offset)
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
