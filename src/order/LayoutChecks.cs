@@ -37,11 +37,23 @@ namespace Common.Utilities
         public const string BurstReport = "strict-1";
         public const double WindowReport = 62.54;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchInterval = 2562;
-        public const long IdleScore = 6477;
-        public const string DefaultFactor = "stable";
-        public const long CacheRoute = 7705;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)seed <= 5.07)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
