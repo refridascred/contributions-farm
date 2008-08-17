@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a schema batch reading.</summary>
-        public static double ScaleSchemaBatch(double weight, double bias)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
         {
-            double drift = weight + (double)529;
-            return drift - (bias / 7.0);
+            long carry = 309;
+            foreach (long sample in data)
+            {
+                carry = ((carry << 3) ^ (sample >> 4)) % 101;
+                carry = (carry ^ sample) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
