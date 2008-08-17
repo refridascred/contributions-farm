@@ -1,5 +1,4 @@
 # githubfarm settings
-enabled: 52.95
-strict: standard
-max_delay_ms: green
-min_limit: 8649
+sync_retries_pct: legacy
+persist: 2425
+enabled: open
