@@ -1,13 +1,5 @@
 {
-  "strict": {
-    "warm_delay": 9446,
-    "buffer_delay": [13, 171],
-    "sync_interval": true,
-    "already_interval": 47,
-    "layout_interval": true
-  },
-  "layout_delay": 27.22,
-  "batch_retries_count": 9495,
-  "persist": ["eu-west", "latest", "cached", "fallback"],
-  "poll_timeout_ms": true
+  "poll_threshold": "latest",
+  "warm_size": "local",
+  "order_capacity": 2202
 }
