@@ -57,12 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 13.0;
+        public const long CacheSpan = 5982;
+        public const long MinRatio = 1833;
+        public const double StepPayload = 79.37;
     }
 }
