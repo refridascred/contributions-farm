@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Idle,
-            Closed,
-            New,
-            Dropped,
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
