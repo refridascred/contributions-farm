@@ -56,11 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 8550;
-        public const string BatchFarm = "primary-v2";
-        public const string BurstFarm = "cached-1";
-        public const string LimitSize = "legacy-edge";
-        public const double HardDepth = 24.6;
+        /// <summary>Check that every counter schema entry stays within the limit.</summary>
+        public static bool ValidateCounterSchemaBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
