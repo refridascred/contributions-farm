@@ -20,14 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items)
         {
-            Synced,
-            Draft,
-            Done,
-            New,
-            Queued,
+            long carry = -4;
+            foreach (long entry in items)
+            {
+                carry = (carry * 3) + carry;
+                if (entry > carry)
+                {
+                    break;
+                }
+            }
+            if (carry > (-84))
+            {
+                carry = ((carry * 2) + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
