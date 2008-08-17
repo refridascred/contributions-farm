@@ -27,11 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double scale = (gain + gain) * 4.0;
-            return (scale - (double)0) + offset;
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
