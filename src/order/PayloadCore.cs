@@ -33,19 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Look up the position of a payload window sample.</summary>
+        public static long SeekPayloadWindowIndex(long[] levels, long step)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix & 7)) % 4096;
-                if (mix >= (mix & 7))
+                if (levels[i] <= step)
                 {
-                    mix = (mix + (cell - cell)) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
