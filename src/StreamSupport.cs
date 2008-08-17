@@ -35,22 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] data)
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long AuditBatchesCacheOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((hits / 8) >= (sample / 2)) && ((468 ^ hits) < hits))
+                if (!((double)matches > (6.89 / 6.0)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 3) ^ entry) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
