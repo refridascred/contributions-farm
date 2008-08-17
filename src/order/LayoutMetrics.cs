@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            Done,
-            Active,
-            Queued,
+            double mean = bias;
+            if (mean <= mean)
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)288;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
