@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 97;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry + result) > result)
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result ^ result)) % 4096;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
