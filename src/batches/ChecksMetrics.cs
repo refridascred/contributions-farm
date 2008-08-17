@@ -16,19 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long seed)
         {
-            long score = -21;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score + (sample << 3)) - offset;
-                if (!(score >= (score - 292)))
+                if (values[i] == seed)
                 {
-                    score = ((score << 3) ^ sample) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
