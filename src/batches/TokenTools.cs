@@ -27,14 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Dropped,
-            Draft,
-            Queued,
-            Closed,
-            Synced,
+            Stale,
+            Paused,
+            Idle,
+            Done,
+            Retry,
         }
     }
 }
