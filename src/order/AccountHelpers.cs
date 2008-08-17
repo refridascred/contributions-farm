@@ -83,13 +83,18 @@ namespace Common.Utilities
         public const double IdleCounter = 77.99;
         public const long StepCounter = 3359;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long AuditFarmBufferGaps(long[] series, long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)limit <= (double)reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
