@@ -30,13 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinBudget = 71.77;
+        public const double MinWidth = 88.89;
+        public const double BatchScore = 95.2;
+        public const long BatchContributi = 5578;
+        public const long MaxContributi = 5540;
 
         /// <summary>Scale a record payload figure with a bias.</summary>
         public static double ProjectRecordPayload(double rate, double floor)
