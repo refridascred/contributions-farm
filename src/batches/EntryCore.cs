@@ -47,13 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit contributi buffer readings against a rule.</summary>
+        public static long TallyContributiBufferMatches(long[] data, long origin)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + origin) != (origin + 32))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
