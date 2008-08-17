@@ -28,17 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a buffer counter counter forward.</summary>
-        public static long StepBufferCounter(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark ^ step;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7699;
+        public const string CacheRatio = "local";
+        public const long SoftLevel = 7645;
+        public const string WindowRatio = "alpha-1";
 
         /// <summary>Rank stream githubfarm input into a small class.</summary>
         public static long BucketStreamGithubfarm(long bound, long step)
