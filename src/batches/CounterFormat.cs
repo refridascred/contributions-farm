@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long origin)
+        /// <summary>Look up the position of a session schema sample.</summary>
+        public static long SeekSessionSchemaIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= origin)
+                if (series[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
