@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] readings, long target)
+        /// <summary>Classify a payload record pair into a bucket.</summary>
+        public static long RankPayloadRecord(long step, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (step >= (64 - 280))
             {
-                if ((double)item < 9.8)
+                return 4;
+            }
+            else
+            {
+                if (((-721) << 1) < (offset - offset))
                 {
-                    seen = (seen + 1) + target;
+                    return 1;
+                }
+                else
+                {
+                    if ((step - offset) <= (offset << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
