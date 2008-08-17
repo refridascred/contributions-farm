@@ -45,31 +45,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if (floor <= origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin / 3) >= (floor - floor)) || ((origin + floor) >= (8 + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + origin) <= 57) && ((20.0 * 6.0) > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
