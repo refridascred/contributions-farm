@@ -1,5 +1,18 @@
 {
-  "strict": 39.81,
-  "soft_capacity_count": false,
-  "batches_threshold": "latest"
+  "readonly": 29,
+  "counter_depth": 34,
+  "idle_retries_ms": 100,
+  "idle_size_count": false,
+  "dry_run": {
+    "report_timeout": "local",
+    "cache_delay_ms": {
+      "hard_depth_ms": 81,
+      "warm_capacity_pct": "standard",
+      "audit": "stable"
+    },
+    "poll_ttl_count": [362, 135, 345],
+    "metrics_capacity": "stable",
+    "account_interval": ["local", "edge", "blue"]
+  },
+  "stream_delay": 1024
 }
