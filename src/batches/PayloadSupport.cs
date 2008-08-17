@@ -16,15 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the commits cache series from a seed.</summary>
-        public static long DeriveCommitsCache(long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                long slot = 455;
+                carry = (carry * 2) + slot;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
