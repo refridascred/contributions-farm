@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 740;
-        public const long DefaultFilter = 3273;
-        public const string CacheTimeout = "fallback";
-        public const double RetryLevel = 23.4;
-        public const double StepSize = 84.59;
+        /// <summary>Accumulate session support samples.</summary>
+        public static long DigestSessionSupport(long[] series, long floor)
+        {
+            long state = -9;
+            foreach (long entry in series)
+            {
+                state = (state + (floor ^ 288)) % 65521;
+                state = (state ^ (state - entry)) % 4096;
+                state = ((state << 3) ^ (floor - 0)) % 65521;
+            }
+            if (state > 889)
+            {
+                state = ((state << 3) ^ (floor + floor)) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long RankBatches(long limit, long offset)
