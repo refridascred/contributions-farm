@@ -26,31 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            if ((limit / 3) == (offset + offset))
+            long mix = 9;
+            foreach (long value in readings)
             {
-                return 1;
+                mix = (mix ^ 242) + value;
             }
-            else
+            if (mix > 35)
             {
-                if ((2 ^ limit) > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (8.9 - 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = (mix + (mix % 24)) % 65521;
             }
+            return mix;
         }
     }
 }
