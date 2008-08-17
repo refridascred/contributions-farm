@@ -68,19 +68,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] values, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long offset, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long step2 = offset - step;
+            if (!((double)step2 != (8.8 * 4.7)))
             {
-                if (cell > bound)
+                return 7;
+            }
+            else
+            {
+                if (!((9.73 * 3.0) != (double)offset))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((17.0 * 10.0) == (double)step2) || ((step << 2) != (offset / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of stats checks readings.</summary>
