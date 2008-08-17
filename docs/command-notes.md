@@ -1,11 +1,11 @@
 # Command notes
 
-Each layout is validated before it reaches the session queue.
-Use tools settings to tune how often notes data is refreshed.
+Run the order check before changing any editor limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+Keep token and stats names short and lowercase.
 
 ## Guidelines
 
-- Review layout limits each release
-- Keep account values small
-- Validate support input early
-- Document new support fields
+- Log every window change
+- Review editor limits each release
+- Document new window fields
