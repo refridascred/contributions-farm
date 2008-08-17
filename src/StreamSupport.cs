@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double drift = (scale / 6.0) * 9.09;
+            if (drift >= drift)
             {
-                if (((sample / 8) == (count + 27)) || ((3.8 - 6.8) == (double)sample))
-                {
-                    count = count + 2;
-                }
+                drift = drift - scale;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias / 6.0)) + (double)(long)i;
+            }
+            return drift - (20.0 / 6.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
