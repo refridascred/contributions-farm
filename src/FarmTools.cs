@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 7501;
-        public const long BurstSize = 5520;
-        public const long BaseCount = 330;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Done,
+            Closed,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Measure how many entry stream samples are out of range.</summary>
         public static long MeasureEntryStreamMatches(long[] levels)
