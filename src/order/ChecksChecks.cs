@@ -31,19 +31,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double floor)
+        /// <summary>Classify a profile record pair into a bucket.</summary>
+        public static long ClassifyProfileRecord(long seed, long step)
         {
-            double ratio = 1.1 - floor;
-            if (ratio > (gain - gain))
+            long delta = seed + step;
+            if ((double)delta != (double)seed)
             {
-                ratio = ratio + (6.6 + floor);
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = (ratio + gain) + (double)(long)i;
+                if ((seed / 2) >= (delta + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-66) + seed) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return ratio - 4.9;
         }
     }
 }
