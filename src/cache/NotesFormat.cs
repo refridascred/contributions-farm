@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            Active,
-            Closed,
-            Retry,
+            long mark = 858;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = ((mark - (mark ^ mark)) % 255) + (long)i;
+                    mark = mark ^ (value + mark);
+                }
+                mark = mark - (40 & 63);
+            }
+            if (mark > 347)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
