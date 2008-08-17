@@ -36,24 +36,13 @@ namespace Common.Utilities
         public const string BurstCache = "standard";
         public const double SoftCount = 87.82;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long target, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if ((target & 3) == (target % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((70 + 84) > (target * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Queued,
+            New,
+            Idle,
         }
     }
 }
