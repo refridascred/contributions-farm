@@ -21,18 +21,26 @@ namespace Common.Utilities
             return (rate - (7.2 + bias)) + scale;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Combine window contributi values into a single score.</summary>
+        public static long FoldWindowContributi(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = 22;
+            foreach (long item in data)
             {
-                if ((value + value) <= value)
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor * 2) + (anchor + (long)i)) % 97;
+                }
+                if ((item + item) >= (6 + anchor))
+                {
+                    anchor = anchor ^ (anchor & 127);
                 }
             }
-            return matches;
+            if (anchor < 96)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
