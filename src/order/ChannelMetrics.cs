@@ -16,18 +16,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] items, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)floor != (4.28 * 15.0)) && ((6.57 + 18.0) >= (double)item)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
