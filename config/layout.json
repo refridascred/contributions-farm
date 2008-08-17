@@ -1,5 +1,6 @@
 {
-  "readonly": "edge",
-  "notes_ratio": 4532,
-  "strict": 66
+  "poll_retries": 4276,
+  "metrics_limit": "primary",
+  "cache_capacity": "standard",
+  "verbose": 56
 }
