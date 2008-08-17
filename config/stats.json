@@ -1,7 +1,5 @@
 {
-  "sync_ratio_s": false,
-  "strict": false,
-  "burst_size_count": 250,
-  "readonly": "latest",
-  "warm_delay": ["standard", "open"]
+  "dry_run": 48,
+  "verbose": 8105,
+  "queue_threshold": "primary"
 }
