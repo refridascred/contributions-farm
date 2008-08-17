@@ -36,14 +36,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Synced,
-            Failed,
-            Draft,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftSpan = 1999;
+        public const long WindowCounter = 3103;
+        public const double RetryScore = 16.85;
+        public const long WindowCount = 2822;
     }
 }
