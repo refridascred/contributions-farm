@@ -67,18 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the window counter entries that pass the check.</summary>
-        public static long TallyWindowCounterMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mark = 74;
+            foreach (long cell in readings)
             {
-                if (((tally + tally) <= tally) && ((tally / 6) <= 144))
+                if ((step / 2) > (step & 15))
                 {
-                    tally = (tally + 3) - entry;
+                    mark = ((mark << 3) ^ 61) ^ cell;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
