@@ -29,16 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metrics batches counter forward.</summary>
-        public static long DeriveMetricsBatches(long limit)
+        /// <summary>Accumulate schema checks samples.</summary>
+        public static long ScoreSchemaChecks(long[] samples, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long score = 699;
+            foreach (long sample in samples)
             {
-                total = (total + (limit + total)) % 97;
-                total = ((total * 3) + (long)i) % 1000;
+                score = (score * 3) + sample;
             }
-            return total;
+            if (score < 225)
+            {
+                score = (score - target) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
