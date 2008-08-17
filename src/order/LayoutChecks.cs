@@ -57,12 +57,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long floor)
         {
-            Active,
-            Locked,
-            Paused,
+            if ((limit + 8) < (floor + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor > (limit + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(floor >= (limit - floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit % 7) == (limit & 255))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
