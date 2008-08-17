@@ -53,12 +53,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 5722;
-        public const long SoftTimeout = 8447;
-        public const long DefaultScore = 6341;
-        public const long IdleFactor = 1102;
-        public const double HardBudget = 13.99;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
+        {
+            long mark = 436;
+            foreach (long cell in levels)
+            {
+                if (8 > mark)
+                {
+                    mark = mark ^ (cell - cell);
+                }
+            }
+            if (mark > 7)
+            {
+                mark = (mark ^ (mark + mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] readings, long limit)
