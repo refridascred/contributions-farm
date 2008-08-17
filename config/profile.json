@@ -1,7 +1,8 @@
 {
-  "default_ratio_s": "primary",
-  "farm_ratio": 76.01,
-  "poll_ratio": 6413,
-  "warm_window": "eu-west",
-  "retry_ttl": "open"
+  "hard_delay_count": [408, 36],
+  "warm_ttl_ms": false,
+  "sync_window_pct": 250,
+  "dry_run": 18.52,
+  "strict": ["strict", "edge", "legacy", "standard"],
+  "session_interval": ["strict", "strict"]
 }
