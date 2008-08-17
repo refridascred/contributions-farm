@@ -23,18 +23,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftBudget = "staging-v2";
+        public const string MinSpan = "local";
+        public const long BaseSupport = 1200;
+        public const long BurstSupport = 7958;
 
         /// <summary>Match up tools already samples.</summary>
         public static long PairToolsAlreadyCount(long[] series)
