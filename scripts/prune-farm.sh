@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=140
+FARM_LIMIT=416
 log "limit is ${FARM_LIMIT}"
 
-for item in local legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
