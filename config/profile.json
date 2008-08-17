@@ -1,7 +1,8 @@
 {
-  "warm_ratio_count": 30,
-  "counter_limit": true,
-  "hard_interval_s": 9.74,
-  "buffer_delay": [205, 306, 322],
-  "hard_interval": 10
+  "dry_run": 4405,
+  "githubfarm_threshold": ["latest", "cached", "edge"],
+  "poll_ttl": 8231,
+  "readonly": 38.12,
+  "hard_interval_pct": "legacy",
+  "batch_timeout": 1024
 }
