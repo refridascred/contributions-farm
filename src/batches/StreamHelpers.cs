@@ -57,11 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] data)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((double)tally > (double)entry) || ((tally + 68) <= (6 << 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
