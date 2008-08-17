@@ -50,18 +50,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] values, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((offset + 67) != ((-106) - reading)) && (reading >= offset))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Active,
+            Retry,
+            Locked,
         }
     }
 }
