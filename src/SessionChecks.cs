@@ -16,17 +16,22 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Look up the position of a notes route sample.</summary>
-        public static long FindNotesRouteIndex(long[] readings, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 5;
+            foreach (long reading in values)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if ((reading >> 4) > 1)
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ reading;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a session entry.</summary>
