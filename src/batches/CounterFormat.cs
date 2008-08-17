@@ -6,10 +6,10 @@ namespace Common.Utilities
     public static class CounterFormat
     {
         /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5967;
-        public const long LimitOrder = 6134;
-        public const long StepFactor = 6252;
-        public const double SoftSpan = 48.23;
+        public const long LimitLevel = 3922;
+        public const long BurstScore = 3584;
+        public const long WindowSize = 1386;
+        public const long WindowDepth = 8374;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
