@@ -31,14 +31,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            New,
-            Idle,
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 1092;
+        public const string LimitRatio = "stable-v2";
+        public const long MaxCommand = 9441;
     }
 }
