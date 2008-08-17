@@ -1,22 +1,5 @@
 {
-  "burst_interval_pct": 69.62,
-  "retry_timeout_ms": {
-    "retry_capacity_count": "green",
-    "readonly": [361, 189, 329, 382],
-    "flush_threshold": "cached",
-    "warm_depth": "local",
-    "enabled": 14,
-    "soft_ttl_pct": {
-      "hard_timeout": "open",
-      "base_window_count": 44.03,
-      "batch_threshold": 7118,
-      "burst_timeout_pct": "stable",
-      "verbose": 2222,
-      "poll_window_count": "open"
-    }
-  },
-  "base_ratio": "blue",
-  "layout_ttl": 22,
-  "record_depth": true,
-  "cache_timeout_ms": 7282
+  "record_size": true,
+  "audit": false,
+  "dry_run": 500
 }
