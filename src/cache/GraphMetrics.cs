@@ -45,12 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + 11) >= 424)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats state values.</summary>
