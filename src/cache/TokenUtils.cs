@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 7894;
-        public const long CacheSpan = 795;
-        public const long IdleLevel = 6845;
-        public const double MaxToken = 53.66;
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double offset)
+        {
+            double load = offset;
+            if (load >= rate)
+            {
+                load = load + 2.77;
+            }
+            else
+            {
+                load = load + (rate - offset);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + rate;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double AdjustRecord(double gain, double floor)
