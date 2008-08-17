@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long target)
         {
-            Queued,
-            Idle,
-            Synced,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
