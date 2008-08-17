@@ -19,19 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
         {
-            long result = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result << 2) ^ (value << 1)) % 101;
-                if ((double)value > (double)result)
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of counter already entries.</summary>
