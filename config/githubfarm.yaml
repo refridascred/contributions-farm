@@ -1,8 +1,4 @@
 # githubfarm settings
-warm_ttl_ms: 48.97
-counter_retries: strict
-compress: true
-cache_limit: false
-default_threshold_count:
-  - 279
-  - 294
+min_size: primary
+warm_size_count: false
+hard_ratio: staging
