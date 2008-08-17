@@ -12,6 +12,12 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in standard legacy; do
+for item in staging strict edge; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
