@@ -14,26 +14,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mark = 53;
-            foreach (long sample in data)
-            {
-                if ((sample << 1) < (sample ^ mark))
-                {
-                    continue;
-                }
-                if (sample > (mark & 127))
-                {
-                    mark = ((mark * 2) + (sample - mark)) % 1000;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark * 4) + (mark % 10);
-            }
-            return mark % 97;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
