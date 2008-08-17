@@ -1,8 +1,8 @@
 {
-  "hard_delay_count": [408, 36],
-  "warm_ttl_ms": false,
-  "sync_window_pct": 250,
-  "dry_run": 18.52,
-  "strict": ["strict", "edge", "legacy", "standard"],
-  "session_interval": ["strict", "strict"]
+  "stream_window": "stable",
+  "batch_size_s": "green",
+  "burst_depth_ms": 60,
+  "strict": ["stable", "green"],
+  "default_interval_count": 55.84,
+  "default_ttl": [309, 324, 139, 164]
 }
