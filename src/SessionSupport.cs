@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleRatio = "primary";
-        public const long BaseCache = 693;
-        public const string BurstCache = "local-edge";
-        public const double HardCache = 17.83;
-        public const long IdleWidth = 5125;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine window contributi values into a single score.</summary>
         public static long FoldWindowContributi(long[] data)
