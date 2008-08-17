@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] data, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (sample > target)
+                if (tally > (reading << 1))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
