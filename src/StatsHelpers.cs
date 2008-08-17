@@ -56,21 +56,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = step ^ seed;
+            if ((seed > (84 / 9)) && ((step * 4) > ((-2) + lane)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((4.08 / 6.0) > (double)lane)
                 {
-                    if ((values[i] ^ values[j]) != 0)
+                    return 1;
+                }
+                else
+                {
+                    if ((lane % 12) >= 2)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-31) + step) >= (9 / 9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
