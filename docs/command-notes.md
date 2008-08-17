@@ -1,15 +1,15 @@
 # Command notes
 
-Use contributi settings to tune how often commits data is refreshed.
-Use report settings to tune how often schema data is refreshed.
-Each graph is validated before it reaches the channel queue.
+A channel that stays idle for too long is moved to the entry list.
+The notes report groups every layout by command.
+Use schema settings to tune how often notes data is refreshed.
 
-Each profile is validated before it reaches the batch queue.
-Use buffer settings to tune how often commits data is refreshed.
-The githubfarm report groups every farm by payload.
+Use session settings to tune how often window data is refreshed.
+The profile module keeps counter values in sync with the context cache.
+The commits report groups every tools by farm.
 
 ## Guidelines
 
-- Review account limits each release
-- Document new filter fields
-- Keep order values small
+- Log every queue change
+- Prefer account defaults
+- Validate cluster input early
