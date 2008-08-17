@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Active,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowTimeout = "stable-1";
+        public const long IdleCommand = 3771;
+        public const long RetryScore = 3283;
+        public const string WindowCount = "local";
+        public const long IdleLevel = 3232;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
