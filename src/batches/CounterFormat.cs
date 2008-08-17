@@ -21,13 +21,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long step)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 1;
+            foreach (long reading in values)
+            {
+                if ((step >> 5) > step)
+                {
+                    result = (result + (result + step)) + reading;
+                }
+                else
+                {
+                    result = result - (-74);
+                }
+            }
+            return result;
         }
     }
 }
