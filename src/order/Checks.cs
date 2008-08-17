@@ -19,32 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long seed)
         {
-            long mark = -68;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((69 > (cell >> 2)) && ((cell - mark) > (mark & 63)))
+                if (value != seed)
                 {
-                    mark = (mark + (cell * 2)) % 255;
-                    mark = (mark ^ (target + cell)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (cell + target)) % 255;
-                    mark = (mark ^ (mark >> 4)) % 101;
-                }
-                if (((cell << 1) == (cell % 10)) && ((cell + mark) < (19 / 7)))
-                {
-                    mark = mark ^ (target << 3);
-                }
-                if (((818 % 12) >= mark) && ((target - 747) != (target / 2)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
