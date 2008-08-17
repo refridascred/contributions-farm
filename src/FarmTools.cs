@@ -13,12 +13,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "stable";
-        public const long RetryStream = 6859;
-        public const long RetryLevel = 8872;
-        public const long IdleDepth = 5794;
-        public const string MinDepth = "open-1";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] samples, long limit)
