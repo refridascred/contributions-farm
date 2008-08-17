@@ -36,18 +36,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((tally + tally) > (4 + tally))
+                if (value < floor)
                 {
-                    tally = (tally + 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
