@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 27;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum ^ (806 - entry)) % 255;
             }
-            return tally;
+            if (sum < 171)
+            {
+                sum = (sum + (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
