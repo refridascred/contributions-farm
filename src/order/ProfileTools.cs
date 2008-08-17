@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] items, long bound)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long sample in items)
             {
-                if (count <= (sample >> 1))
+                if (sample <= bound)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a editor entry.</summary>
