@@ -1,8 +1,5 @@
 # entry settings
-soft_threshold_ms:
-  - 483
-  - 374
-  - 321
-  - 467
-token_timeout: blue
-idle_size_count: 52
+profile_timeout: open
+idle_capacity_pct: 1024
+hard_timeout_ms: false
+support_size: 250
