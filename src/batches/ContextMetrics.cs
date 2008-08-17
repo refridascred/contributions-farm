@@ -30,15 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long CountOrderEditorGaps(long[] items, long seed)
         {
-            double load = rate + (double)6;
-            if (load > (span / 4.0))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                load = load - (double)356;
+                if (!(((double)seed > (double)matches) && ((matches % 10) <= (entry >> 1))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return load + span;
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
