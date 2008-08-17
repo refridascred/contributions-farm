@@ -30,11 +30,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "staging-1";
-        public const long CacheFarm = 6444;
-        public const long RetryFarm = 4267;
-        public const double HardFarm = 53.93;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Failed,
+            Active,
+            Done,
+            Idle,
+        }
 
         /// <summary>Measure how many tools support samples are out of range.</summary>
         public static long AuditToolsSupportMatches(long[] items, long bound)
