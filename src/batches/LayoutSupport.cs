@@ -13,21 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state - (state ^ (long)i);
+                state = (state ^ (state << 3)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
