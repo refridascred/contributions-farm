@@ -54,18 +54,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (count > 4)
+                if (!((score + (long)i) > (target + score)))
                 {
-                    count = (count + 3) - value;
+                    score = ((score << 2) ^ ((long)i * 2)) % 101;
                 }
+                score = score - ((-1) & 15);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
