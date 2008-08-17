@@ -54,21 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (limit >= (limit / 7))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 5) >= (limit + bound))
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
