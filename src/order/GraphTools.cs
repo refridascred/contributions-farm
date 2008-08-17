@@ -71,10 +71,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 64.53;
-        public const long SoftRatio = 3241;
-        public const long IdleWidth = 8721;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long floor2)
+        {
+            if (1 < (floor + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-616) > ((-4) + floor2)) || ((floor2 / 4) >= (floor2 - floor2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor2 == (double)123)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphGaps(long[] items, long limit)
