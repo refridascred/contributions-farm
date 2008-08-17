@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const long HardCount = 4289;
         public const double HardBudget = 0.19;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Draft,
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
