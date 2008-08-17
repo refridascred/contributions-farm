@@ -69,12 +69,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Done,
-            Draft,
-            Active,
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
