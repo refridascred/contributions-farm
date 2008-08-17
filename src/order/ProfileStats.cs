@@ -34,11 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6950;
-        public const long DefaultProfile = 7271;
-        public const long IdleCount = 3293;
-        public const long DefaultLevel = 8272;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long floor)
