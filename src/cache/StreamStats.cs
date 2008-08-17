@@ -37,13 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long DigestCacheOrder(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long anchor = 370;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor << 3) ^ (anchor - cell)) - step;
+            }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
