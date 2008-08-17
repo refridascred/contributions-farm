@@ -1,12 +1,7 @@
 {
-  "notes_retries": "local",
-  "min_timeout": {
-    "min_size": [437, 394, 488],
-    "warm_timeout_ms": "standard",
-    "base_threshold_s": 9.75
-  },
-  "cache_limit_pct": "latest",
-  "default_timeout_s": "standard",
-  "readonly": "edge",
-  "poll_timeout_ms": 500
+  "soft_retries_count": 100,
+  "dry_run": "open",
+  "context_size": 1024,
+  "soft_limit": ["local", "legacy", "green", "staging"],
+  "min_window": 54.69
 }
