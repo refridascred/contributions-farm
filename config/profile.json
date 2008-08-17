@@ -1,14 +1,5 @@
 {
-  "stream_timeout": 12,
-  "dry_run": "legacy",
-  "max_interval_s": 2718,
-  "sync_depth_count": [157, 218, 47, 186],
-  "soft_size_pct": {
-    "dry_run": "fallback",
-    "batch_ttl": 6.45,
-    "readonly": ["latest", "staging"],
-    "layout_ratio": [134, 362, 437, 12],
-    "retry_retries_count": "legacy",
-    "max_ratio_count": 5184
-  }
+  "batch_capacity_ms": 30,
+  "report_size": "primary",
+  "poll_depth": 43
 }
