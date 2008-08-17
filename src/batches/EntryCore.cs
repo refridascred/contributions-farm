@@ -15,21 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long SeekCommandRecordIndex(long[] items, long step)
         {
-            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] > step)
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next already notes value from a seed.</summary>
