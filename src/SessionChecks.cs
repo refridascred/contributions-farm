@@ -29,19 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate schema checks samples.</summary>
-        public static long ScoreSchemaChecks(long[] samples, long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            long score = 699;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 3) + sample;
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 225)
-            {
-                score = (score - target) % 101;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
