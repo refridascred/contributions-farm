@@ -23,18 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many commits graph samples are out of range.</summary>
-        public static long CountCommitsGraphOutliers(long[] data, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (cell > ((long)data.Length % 64))
+                if ((step << 3) == (hits + sample))
                 {
-                    tally = (tally + 1) + offset;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
