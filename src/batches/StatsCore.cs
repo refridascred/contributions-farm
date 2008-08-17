@@ -15,12 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheLevel = "staging";
-        public const long RetryInterval = 2087;
-        public const long LimitBatches = 7033;
-        public const double StepRatio = 73.99;
-        public const long CacheBatches = 3387;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values)
+        {
+            long result = 0;
+            foreach (long value in values)
+            {
+                result = ((result << 2) ^ (value << 1)) % 101;
+                if ((double)value > (double)result)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryLevel = 1329;
