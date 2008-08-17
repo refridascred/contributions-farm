@@ -1,14 +1,5 @@
 # entry settings
-min_delay: false
-min_depth: true
-max_threshold_s: 3.84
-account_window: 55.26
-batch_threshold_ms:
-  enabled:
-    cache_interval: 30
-    sync_capacity: edge
-    cluster_retries: legacy
-  cache_limit_pct: open
-  audit:
-    - edge
-    - eu-west
+flush_limit: 74.09
+warm_retries_pct: true
+verbose: legacy
+readonly: 24
