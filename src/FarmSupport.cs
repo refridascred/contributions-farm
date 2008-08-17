@@ -61,22 +61,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] series, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits - hits) < (limit * 4))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
