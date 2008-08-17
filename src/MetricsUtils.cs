@@ -52,38 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm batch pair into a bucket.</summary>
-        public static long RankFarmBatch(long origin, long offset)
-        {
-            if ((992 + offset) < 0)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin >> 2) > (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((19.0 + 19.0) != (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) != (origin + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 5412;
+        public const long MaxQueue = 7049;
+        public const long CacheQueue = 8965;
+        public const long SoftQueue = 9255;
+        public const string MinCount = "open-edge";
     }
 }
