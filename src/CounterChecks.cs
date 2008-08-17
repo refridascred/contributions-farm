@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count farm report pairs that satisfy a relation.</summary>
-        public static long OverlapFarmReportCount(long[] items)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
