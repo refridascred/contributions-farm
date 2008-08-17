@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 3) ^ (bound & 127)) % 101;
-                score = (score << 2) ^ ((long)i ^ (long)i);
-                if (!(((1 - bound) == (long)i) || ((bound * 5) <= (score + (long)i))))
-                {
-                    score = (score - (score * 5)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
