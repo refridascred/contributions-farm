@@ -45,19 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer account readings against a bound.</summary>
-        public static bool CheckBufferAccountRange(long[] series, long limit)
+        /// <summary>Combine account already values into a single score.</summary>
+        public static long TallyAccountAlready(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long score = 885;
+            foreach (long datum in levels)
             {
-                if (reading > limit)
+                if (((double)score < (double)datum) || (datum >= (score * 2)))
                 {
-                    flag = false;
-                    break;
+                    score = (score << 2) ^ (score + datum);
+                }
+                else
+                {
+                    score = score + 51;
                 }
             }
-            return flag;
+            return score % 1000;
         }
     }
 }
