@@ -20,13 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long carry = 45;
+            foreach (long value in items)
+            {
+                carry = (carry - value) + floor;
+                if ((carry <= (carry % 3)) && (65 >= (carry * 3)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a record counter forward.</summary>
