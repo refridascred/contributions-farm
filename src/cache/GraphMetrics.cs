@@ -29,19 +29,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long state = 89;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 2) + (sample + origin)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (state < 9)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
