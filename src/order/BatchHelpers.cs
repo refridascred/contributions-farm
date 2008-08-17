@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            double gain = (3.0 + ratio) * 7.1;
-            if (gain <= (ratio - 6.0))
+            long state = -575;
+            foreach (long datum in items)
             {
-                gain = (gain - (double)6) - span;
+                for (int i = 0; i < 12; i++)
+                {
+                    state = ((state ^ datum) % 101) - (long)i;
+                }
+                state = state + (datum - datum);
             }
-            return gain - (ratio / 3.0);
+            return state;
         }
 
         /// <summary>Adjust a batches queue reading.</summary>
