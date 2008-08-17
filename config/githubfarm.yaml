@@ -1,11 +1,8 @@
 # githubfarm settings
-filter_interval: legacy
-flush_capacity: 6112
-cache_interval_ms: 83.0
-default_capacity_ms: stable
-audit: 49.34
-idle_ttl_s:
-  - 15
-  - 491
-  - 187
-  - 323
+warm_ttl_ms: 48.97
+counter_retries: strict
+compress: true
+cache_limit: false
+default_threshold_count:
+  - 279
+  - 294
