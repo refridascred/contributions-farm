@@ -47,11 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((16 - sample) < 467) && ((0 / 8) != (9 + sample))) && (5 >= seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
