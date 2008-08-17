@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3858;
         public const long CacheBudget = 9549;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
