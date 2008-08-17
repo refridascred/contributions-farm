@@ -38,13 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
+            Failed,
             Done,
+            Closed,
+            Retry,
             Idle,
-            Dropped,
-            New,
         }
 
         /// <summary>Describe the queue class values.</summary>
