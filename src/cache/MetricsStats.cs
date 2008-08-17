@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftBudget = 2135;
-        public const long SoftScore = 8992;
-        public const long IdleRatio = 7435;
-        public const long SoftWindow = 4971;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Paused,
+            Idle,
+            Ready,
+            Done,
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] series, long offset)
