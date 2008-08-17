@@ -14,11 +14,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 48.62;
-        public const long SoftDepth = 514;
-        public const double BaseFilter = 47.41;
-        public const long IdleWidth = 3779;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
+        {
+            long score = 641;
+            foreach (long datum in items)
+            {
+                if (score >= (score & 255))
+                {
+                    score = (score * 3) + (datum * 3);
+                    score = ((score << 2) ^ (score + datum)) % 101;
+                }
+                if ((9.44 + 7.77) > (double)score)
+                {
+                    score = (score + (datum + score)) % 1000;
+                }
+                if (4 > (score * 3))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
         public static long StepPayloadOrder(long origin)
