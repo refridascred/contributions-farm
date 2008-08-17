@@ -38,18 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster already values into a single score.</summary>
-        public static long FoldClusterAlready(long[] series, long step)
+        /// <summary>Accumulate editor stats samples.</summary>
+        public static long DigestEditorStats(long[] data, long floor)
         {
-            long acc = 8;
-            foreach (long item in series)
+            long mark = 855;
+            foreach (long item in data)
             {
-                if ((3.0 * 12.0) >= (double)step)
-                {
-                    acc = ((acc ^ (acc + step)) % 65521) ^ item;
-                }
+                mark = (((mark * 2) + 5) ^ item) + floor;
             }
-            return acc;
+            return mark % 65521;
         }
     }
 }
