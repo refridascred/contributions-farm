@@ -69,13 +69,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 14;
+            foreach (long entry in readings)
+            {
+                mark = (mark ^ mark) % 65521;
+                if ((double)mark < 4.18)
+                {
+                    mark = ((mark << 2) ^ (entry + entry)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ entry);
+                }
+                if ((entry + mark) > mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
