@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset >= (1.0 / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed <= (69 << 3)) || ((offset >> 3) >= offset))
                 {
-                    if ((data[i] - data[j]) == 12)
+                    return 7;
+                }
+                else
+                {
+                    if (seed > (offset << 3))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
