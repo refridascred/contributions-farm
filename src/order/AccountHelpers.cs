@@ -14,39 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long prev = seed - target;
-            if ((prev % 10) == (seed + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)target > (1.0 / 6.0)) && ((prev - 61) < (target + 77)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 3) == (1 + prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((6 - prev) <= (target * 5)) || (prev > (target & 63)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
