@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long cur = target - bound;
-            if (((8.42 - 8.05) < (double)cur) && ((cur - cur) >= (bound % 97)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((3 ^ bound) >= 28) && (2.0 > (double)cur))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target > 547) && ((69 >> 3) < (cur - bound)))
+                    if ((samples[i] - samples[j]) != 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((52 << 3) == (bound + cur))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
