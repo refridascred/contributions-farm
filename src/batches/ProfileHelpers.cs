@@ -82,15 +82,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] samples, long target)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long value in samples)
             {
-                if ((item + item) > (8 * 2))
+                if ((tally >> 2) != (84 % 7))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 3) + value) - target;
                 }
             }
             return tally;
