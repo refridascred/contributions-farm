@@ -1,5 +1,11 @@
 # entry settings
-notes_timeout: true
-soft_ratio_ms: 5827
-cache_limit: false
-idle_depth_s: primary
+burst_threshold_pct:
+  - latest
+  - fallback
+soft_timeout_ms:
+  - green
+  - staging
+  - stable
+entry_ttl: fallback
+poll_interval: open
+warm_depth: open
