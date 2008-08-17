@@ -49,16 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                anchor = (anchor * 4) + ((long)i + seed);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
