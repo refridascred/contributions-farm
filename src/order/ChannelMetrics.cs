@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches order readings.</summary>
-        public static long CompareBatchesOrderCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftBudget = 32.04;
+        public const double MaxGithubfarm = 79.17;
+        public const long BaseGithubfarm = 7878;
+        public const long RetryLevel = 1184;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long step)
