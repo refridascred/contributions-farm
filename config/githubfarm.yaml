@@ -1,7 +1,11 @@
 # githubfarm settings
-contributi_capacity: 60
-default_threshold_count: 92
-verbose:
-  - 418
-  - 478
-  - 363
+flush_size: 84.2
+batches_limit:
+  max_interval_ms: stable
+  format_interval: 51
+  batches_retries: false
+  batch_ttl_s: true
+flush_timeout: strict
+hard_delay: 24.04
+route_size: cached
+sync_depth_count: 30.3
