@@ -34,25 +34,18 @@ namespace Common.Utilities
             return mean - (offset * 5.0);
         }
 
-        /// <summary>Derive the next editor token value from a seed.</summary>
-        public static long DeriveEditorToken(long step)
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long TallyAlreadyReportMatches(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                sum = (sum + (step << 3)) % 101;
-                if (!((double)step >= (double)582))
+                if ((seen % 5) >= seen)
                 {
-                    continue;
+                    seen = (seen + 2) - item;
                 }
-                else
-                {
-                    sum = (sum << 3) ^ (step / 9);
-                }
-                sum = ((sum * 2) + step) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Fold a list of stats report readings.</summary>
