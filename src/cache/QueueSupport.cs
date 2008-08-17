@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Classify a stream already pair into a bucket.</summary>
+        public static long ClassifyStreamAlready(long bound, long limit)
         {
-            Queued,
-            Locked,
-            Done,
+            if (limit > (limit << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound % 60) >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
