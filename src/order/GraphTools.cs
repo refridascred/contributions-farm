@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepInterval = 8166;
         public const double MinDepth = 78.0;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
