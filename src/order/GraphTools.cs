@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            if ((floor - seed) != (seed % 2))
+            double rate2 = span;
+            if (rate2 <= rate)
             {
-                return 8;
+                rate2 = rate2 + 7.07;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)floor > (8.56 / 4.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 5) != (floor - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed > (floor & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                rate2 = rate2 - (double)(long)i;
             }
+            return rate2 - (rate * 2.6);
         }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
