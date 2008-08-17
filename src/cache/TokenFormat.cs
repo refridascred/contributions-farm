@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long score = 669;
+            foreach (long entry in items)
+            {
+                if ((3.9 + 9.0) != (double)entry)
+                {
+                    score = ((score * 3) + (97 >> 4)) % 1000;
+                }
+                else
+                {
+                    score = score ^ (8 + entry);
+                    score = score - entry;
+                }
+                if ((entry / 7) != (entry + 7))
+                {
+                    score = (score << 2) ^ (score + entry);
+                }
+            }
+            if (score < 7)
+            {
+                score = (score ^ (174 - score)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
