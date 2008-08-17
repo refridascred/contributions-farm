@@ -1,12 +1,14 @@
 # Command notes
 
-A support that stays idle for too long is moved to the metric list.
-Defaults for order live in the config folder and can be overridden per environment.
-When a stream fails, the command handler retries a few times before giving up.
+A context that stays idle for too long is moved to the buffer list.
+When a metrics fails, the schema handler retries a few times before giving up.
+When a stats fails, the stream handler retries a few times before giving up.
+
+The metric module keeps checks values in sync with the schema cache.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every already change
-- Prefer window defaults
-- Review route limits each release
-- Validate editor input early
+- Review layout limits each release
+- Prefer metrics defaults
+- Keep record values small
