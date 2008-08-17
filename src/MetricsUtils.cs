@@ -13,11 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            double ratio = 6.87 / 4.0;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - bias2;
+            }
+            return ratio + (ratio + bias);
         }
 
         /// <summary>Match up queue samples.</summary>
