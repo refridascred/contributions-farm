@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 458;
+        public const long IdleScore = 5345;
+        public const long LimitTimeout = 8665;
+        public const long SoftFactor = 212;
+        public const long SoftAccount = 3267;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] readings, long limit)
