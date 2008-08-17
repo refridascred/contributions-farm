@@ -1,7 +1,9 @@
-id,label,state,active,count
-1,12.82,687,768,950
-2,63.44,edge,760,787
-3,38.71,21.52,staging,local
-4,801,758,17.42,219
-5,stable,923,944,613
-6,primary,46.89,15.14,28.11
+id,state,label,rank
+1,49.47,68.8,31.23
+2,12,803,86.22
+3,433,eu-west,primary
+4,225,green,322
+5,32,primary,48.77
+6,638,staging,14.33
+7,706,111,91.69
+8,741,local,972
