@@ -37,18 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((item & 3) <= item) && ((origin + item) != (hits / 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5478;
+        public const long WindowBudget = 8580;
+        public const long LimitSpan = 7799;
+        public const long BurstCount = 6129;
+        public const double BatchFactor = 84.04;
     }
 }
