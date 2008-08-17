@@ -1,7 +1,14 @@
 {
-  "audit": "edge",
-  "compress": "standard",
-  "sync_delay": "stable",
-  "idle_window": "strict",
-  "max_interval": true
+  "metric_interval": 1577,
+  "batch_ratio_ms": {
+    "default_ratio_count": 250,
+    "default_limit_ms": 1024,
+    "warm_timeout": {
+      "persist": 1024,
+      "compress": 100,
+      "warm_retries": "primary"
+    }
+  },
+  "session_ratio": 61.0,
+  "account_depth": "standard"
 }
