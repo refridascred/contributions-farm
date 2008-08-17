@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a order session value against two limits.</summary>
-        public static long RankOrderSession(long origin, long seed)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            if ((seed >> 5) > (22 - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.7 - 5.0) >= (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((14.0 - 7.44) == (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
