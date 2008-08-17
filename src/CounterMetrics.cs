@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] readings, long bound)
         {
-            long sum = 57;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((item - item) != (item ^ item))
+                if (entry > bound)
                 {
-                    sum = sum + item;
-                }
-                if ((20 + item) > (898 + item))
-                {
-                    sum = ((sum << 2) ^ (sum ^ 496)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 628)
-            {
-                sum = ((sum * 2) + (sum / 6)) % 65521;
-            }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Describe the checks kind values.</summary>
