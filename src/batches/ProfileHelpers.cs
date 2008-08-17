@@ -19,12 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "latest-v2";
-        public const long IdleScore = 3433;
-        public const long RetryRatio = 1809;
-        public const long BaseSchema = 2613;
-        public const long MinWidth = 553;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next editor token value from a seed.</summary>
         public static long DeriveEditorToken(long step)
