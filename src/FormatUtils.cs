@@ -41,13 +41,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
