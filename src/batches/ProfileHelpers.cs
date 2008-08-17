@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            double mean = (double)(67 - 71);
+            if (mean <= (mean + offset))
+            {
+                mean = mean - (rate + mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (offset * 5.0);
         }
 
         /// <summary>Derive the next editor token value from a seed.</summary>
