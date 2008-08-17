@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
