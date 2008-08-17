@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long bound)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long AuditSessionProfileMatches(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
+                if ((17.0 / 2.0) >= (double)entry)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
