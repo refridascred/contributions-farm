@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long limit)
+        /// <summary>Rank buffer format input into a small class.</summary>
+        public static long SortBufferFormat(long step, long seed)
         {
-            if (limit < (offset & 31))
+            if ((double)step > (7.3 / 6.0))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((offset ^ limit) != (limit ^ limit)) && ((limit + offset) <= (offset - limit)))
+                if (step >= (step & 3))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if ((seed * 5) != (step >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step >> 3) >= (0 - 963)) || ((double)seed < 6.86))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
