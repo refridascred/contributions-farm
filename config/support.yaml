@@ -1,6 +1,17 @@
 # support settings
-cache_ttl_ms: 75.2
-audit: strict
-hard_ttl_ms: true
-already_threshold: 95
-entry_ratio: open
+idle_size_ms:
+  cache_depth:
+    format_window: cached
+    route_window: 2
+    compress: 23
+  base_depth_ms: 89
+  cluster_interval: 14.66
+  persist: 500
+persist: false
+hard_retries: 6768
+poll_ttl: legacy
+verbose:
+  base_interval: 62
+  idle_retries_pct: 85.59
+  filter_delay: 30
+  default_window_s: 1024
