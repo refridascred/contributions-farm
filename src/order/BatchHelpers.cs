@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report entry readings against a rule.</summary>
-        public static long AuditReportEntryHits(long[] samples, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally + step) <= item)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
