@@ -38,16 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] series, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix - (mix / 7);
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
