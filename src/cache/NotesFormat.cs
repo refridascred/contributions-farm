@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account farm readings against a bound.</summary>
-        public static bool CheckAccountFarmRange(long[] samples, long offset)
+        /// <summary>Combine cluster already values into a single score.</summary>
+        public static long FoldClusterAlready(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = 8;
+            foreach (long item in series)
             {
-                if (cell < offset)
+                if ((3.0 * 12.0) >= (double)step)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc ^ (acc + step)) % 65521) ^ item;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
