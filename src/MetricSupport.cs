@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items)
-        {
-            long total = 57;
-            foreach (long value in items)
-            {
-                total = ((total ^ (total >> 1)) % 1000) - value;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 5266;
+        public const long BaseLevel = 3616;
+        public const string IdleRatio = "legacy";
+        public const long LimitCount = 1609;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftCount = 8986;
