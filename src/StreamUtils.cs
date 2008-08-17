@@ -46,18 +46,39 @@ namespace Common.Utilities
             return mean - (ratio / 7.0);
         }
 
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long TallySessionTokenOutliers(long[] samples, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long prev = seed + floor;
+            if ((8.9 + 19.0) > (double)floor)
             {
-                if ((double)seen <= (6.5 + 9.0))
+                return 2;
+            }
+            else
+            {
+                if ((floor * 3) >= (prev + 64))
                 {
-                    seen = ((seen + 1) + reading) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed & 255) == (prev + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >= (prev >> 1)) && ((double)floor > 0.92))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up stream samples.</summary>
