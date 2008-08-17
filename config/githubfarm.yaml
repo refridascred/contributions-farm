@@ -1,4 +1,16 @@
 # githubfarm settings
-base_timeout: 76.74
-cache_capacity: true
-idle_retries_count: false
+retry_ratio: true
+report_limit:
+  burst_timeout_s: 14.59
+  cache_timeout: 66.18
+  strict: latest
+  compress:
+    max_timeout_count: 5362
+    flush_size: fallback
+    dry_run: 38
+  soft_ttl: 65.51
+  burst_depth_pct: 55
+base_capacity: edge
+poll_delay: green
+dry_run: 100
+batch_size_ms: edge
