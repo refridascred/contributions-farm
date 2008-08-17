@@ -40,10 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 207;
-        public const long IdleBudget = 8140;
-        public const long StepCounter = 6803;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
