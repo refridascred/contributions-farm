@@ -22,32 +22,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values, long seed)
         {
-            long offset2 = origin - offset;
-            if (((offset >> 1) > (offset - offset2)) && ((origin - origin) != (offset2 >> 1)))
+            long anchor = 95;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin >> 2) >= (origin * 5))
+                if ((11 >> 2) <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset > (20.0 + 6.71))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = ((anchor << 3) ^ (seed << 1)) + value;
                 }
             }
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ (seed % 2)) % 255;
+            }
+            return anchor;
         }
     }
 }
