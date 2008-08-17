@@ -36,19 +36,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double weight = 4.1;
-            if (weight >= (double)0)
-            {
-                weight = (weight - (weight + offset)) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (offset * 2.2)) + (double)(long)i;
-            }
-            return weight + (double)(-221);
+            Retry,
+            Locked,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
