@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload commits readings against a rule.</summary>
-        public static long MeasurePayloadCommitsMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 5) > (reading * 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 7375;
+        public const long BatchGithubfarm = 845;
+        public const long CacheScore = 4070;
+        public const long DefaultGithubfarm = 6488;
+        public const double SoftGithubfarm = 74.14;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long bound)
