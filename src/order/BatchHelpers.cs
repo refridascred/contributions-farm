@@ -20,19 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batches queue reading.</summary>
-        public static double ProjectBatchesQueue(double bias, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double load = (bias * 7.0) / 6.0;
-            if (load < 19.0)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load - offset;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
