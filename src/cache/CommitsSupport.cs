@@ -56,11 +56,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardWidth = 5268;
-        public const string MinMetrics = "primary-edge";
-        public const long BurstLevel = 9492;
-        public const long BatchMetrics = 7049;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double rate, double span)
+        {
+            double bias = (span - 4.63) * 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (double)(long)i) + rate;
+            }
+            return bias + span;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] values)
