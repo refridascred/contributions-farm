@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples, long seed)
-        {
-            long acc = -519;
-            foreach (long datum in samples)
-            {
-                acc = ((acc << 3) ^ (datum + seed)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCount = 4369;
+        public const long DefaultCommand = 5158;
+        public const string BaseCommand = "alpha-edge";
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
