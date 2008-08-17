@@ -45,19 +45,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double span)
+        /// <summary>Validate notes batch readings against a bound.</summary>
+        public static bool VerifyNotesBatchLimits(long[] items, long target)
         {
-            double weight = span;
-            if (weight >= ratio)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                weight = weight - 9.0;
+                if (entry < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (ratio / 7.0);
-            }
-            return weight + (9.8 / 9.0);
+            return flag;
         }
     }
 }
