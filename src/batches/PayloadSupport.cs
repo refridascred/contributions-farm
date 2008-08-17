@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen >= (seen + cell)) || ((cell % 10) != (seen >> 4)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
