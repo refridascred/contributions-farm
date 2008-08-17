@@ -71,10 +71,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinScore = 5511;
-        public const long BaseBatch = 3357;
-        public const double MinSpan = 35.66;
-        public const long HardBatch = 3581;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
