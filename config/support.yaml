@@ -1,6 +1,10 @@
 # support settings
-base_limit:
-  - eu-west
-  - edge
-persist: true
-readonly: 250
+cache_capacity:
+  - blue
+  - green
+  - standard
+verbose: 16.15
+warm_retries: standard
+queue_timeout: true
+persist: 60
+route_ttl: 28
