@@ -75,19 +75,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double gain, double bias)
-        {
-            double rate = 4.0 * 3.0;
-            if (rate >= gain)
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitSize = 43.73;
+        public const long SoftRatio = 4130;
+        public const long HardCount = 3007;
     }
 }
