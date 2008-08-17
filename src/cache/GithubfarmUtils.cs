@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class GithubfarmUtils
     {
         /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 78.9;
-        public const long LimitBatch = 5931;
-        public const long MinRatio = 7785;
-        public const string BurstBatch = "latest-1";
-        public const long BaseBatch = 2657;
+        public const long WindowBatch = 7513;
+        public const string CacheBatch = "latest";
+        public const long IdleScore = 7558;
+        public const long MinBatch = 1937;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] series)
