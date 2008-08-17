@@ -32,32 +32,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long offset, long target)
+        /// <summary>Accumulate payload entry samples.</summary>
+        public static long WeighPayloadEntry(long[] readings, long seed)
         {
-            long bound = offset - target;
-            if (bound >= (target % 8))
+            long anchor = 95;
+            foreach (long datum in readings)
             {
-                return 8;
+                anchor = (((anchor ^ 31) % 101) - datum) + seed;
             }
-            else
-            {
-                if (((bound + target) != (bound ^ offset)) && ((target & 255) > (offset % 64)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-645) ^ offset) > 7)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
