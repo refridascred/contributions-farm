@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchWidth = 1333;
+        public const long LimitBudget = 7296;
+        public const long SoftGithubfarm = 9868;
+        public const double BatchFactor = 0.98;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] samples, long offset)
