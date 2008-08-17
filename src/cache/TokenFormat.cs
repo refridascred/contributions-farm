@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double mean = (13.0 + rate) * 9.19;
-            return mean - offset;
+            Synced,
+            Paused,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
