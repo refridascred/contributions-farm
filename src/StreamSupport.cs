@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxSpan = 41.9;
-        public const long WindowFarm = 2937;
-        public const long BurstFarm = 6835;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Active,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
