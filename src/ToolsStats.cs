@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long carry = -4;
-            foreach (long entry in items)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry * 3) + carry;
-                if (entry > carry)
-                {
-                    break;
-                }
-            }
-            if (carry > (-84))
-            {
-                carry = ((carry * 2) + carry) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
             return carry;
         }
