@@ -65,14 +65,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series, long bound)
         {
-            Failed,
-            Done,
-            Closed,
-            Retry,
-            Idle,
+            long carry = 98;
+            foreach (long entry in series)
+            {
+                carry = (carry + bound) + entry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the editor status values.</summary>
