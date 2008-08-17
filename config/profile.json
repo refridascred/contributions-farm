@@ -1,6 +1,6 @@
 {
-  "report_threshold": 500,
-  "default_retries": ["legacy", "blue", "staging"],
-  "window_delay": 44,
-  "retry_capacity": 78.14
+  "compress": ["staging", "fallback", "eu-west", "latest"],
+  "context_ratio": "edge",
+  "sync_ttl": 4277,
+  "retry_window_s": ["cached", "latest"]
 }
