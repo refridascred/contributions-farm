@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] readings, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = -10;
+            foreach (long datum in series)
             {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry ^ (datum & 1)) % 101) + offset;
             }
-            return ready;
+            if (carry > 51)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
