@@ -50,25 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long origin)
         {
-            long prev = floor ^ bound;
-            if ((29 >> 2) >= (bound + prev))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((53 ^ bound) < prev)
+                if (value <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
