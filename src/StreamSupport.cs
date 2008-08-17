@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const string WindowCount = "local";
         public const long IdleLevel = 3232;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] data)
         {
-            Pending,
-            Failed,
-            Retry,
-            Idle,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((seen << 2) < datum) && ((seen - seen) < (datum >> 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
