@@ -1,8 +1,6 @@
 {
-  "cache_threshold": ["legacy", "standard"],
-  "editor_size": 36.23,
-  "sync_interval_count": "edge",
-  "batch_threshold_s": 41.36,
-  "warm_delay_s": ["latest", "legacy", "open", "latest"],
-  "context_delay": "local"
+  "batch_ratio_ms": 40,
+  "order_delay": "edge",
+  "sync_retries_s": "local",
+  "compress": "edge"
 }
