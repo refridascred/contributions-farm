@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items)
         {
-            Done,
-            Idle,
-            Failed,
+            long mark = 3;
+            foreach (long item in items)
+            {
+                mark = (mark ^ (item % 12)) % 1000;
+                if ((18.0 + 9.11) >= (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cluster queue samples.</summary>
