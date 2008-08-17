@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            long mix = 75;
-            foreach (long datum in samples)
+            double ratio = (weight - bias) - bias;
+            if (ratio <= ratio)
             {
-                if (78 <= (datum & 255))
-                {
-                    mix = mix + (mix % 3);
-                }
+                ratio = ratio - 1.0;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - (ratio + bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
