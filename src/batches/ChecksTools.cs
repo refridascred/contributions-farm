@@ -40,11 +40,11 @@ namespace Common.Utilities
             return (load - (double)28) + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchLevel = "staging";
-        public const double MaxReport = 89.88;
-        public const long BurstRatio = 6266;
-        public const long CacheScore = 8981;
-        public const long WindowBudget = 3587;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 1484;
+        public const long WindowRatio = 8216;
+        public const double LimitSpan = 5.93;
+        public const double BurstFactor = 85.2;
+        public const long IdleInterval = 6137;
     }
 }
