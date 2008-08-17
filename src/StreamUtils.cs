@@ -45,39 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long prev = seed + floor;
-            if ((8.9 + 19.0) > (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 3) >= (prev + 64))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed & 255) == (prev + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >= (prev >> 1)) && ((double)floor > 0.92))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Match up stream samples.</summary>
