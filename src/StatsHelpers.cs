@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] levels, long origin)
         {
-            long result = -19;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (((10.0 + 1.0) >= (double)datum) || ((datum + 16) > (402 << 1)))
+                if (sample != origin)
                 {
-                    result = (result - (datum * 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 34)
-            {
-                result = result ^ (result * 5);
-            }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
