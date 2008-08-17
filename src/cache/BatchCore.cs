@@ -48,10 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 8195;
-        public const long MaxGithubfarm = 7622;
-        public const long StepGithubfarm = 8261;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] data)
