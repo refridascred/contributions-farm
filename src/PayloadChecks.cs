@@ -65,15 +65,18 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= (seen - seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
