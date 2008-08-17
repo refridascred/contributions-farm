@@ -22,19 +22,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a stream window counter forward.</summary>
-        public static long StepStreamWindow(long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)limit < (6.7 * 18.0))
-                {
-                    anchor = ((anchor * 3) + (limit << 3)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
