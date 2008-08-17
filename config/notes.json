@@ -1,6 +1,8 @@
 {
-  "retry_window_pct": 6129,
-  "flush_size_ms": 3179,
-  "flush_retries": false,
-  "warm_ratio_pct": false
+  "persist": "staging",
+  "command_delay": "primary",
+  "dry_run": [314, 435, 58, 434],
+  "base_depth_pct": "stable",
+  "payload_limit": 3270,
+  "verbose": "staging"
 }
