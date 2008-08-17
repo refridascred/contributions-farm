@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (2.19 * 5.6) - (span - weight);
+            if (bias >= weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - 4.3;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias / 4.0)) - (double)(long)i;
+            }
+            return bias + (bias + bias);
         }
 
         /// <summary>Match up report farm samples.</summary>
