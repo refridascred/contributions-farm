@@ -59,13 +59,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Closed,
+            long total = -689;
+            foreach (long datum in data)
+            {
+                if (datum > (total + total))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            if (total < 199)
+            {
+                total = ((total << 3) ^ (total ^ total)) % 1000;
+            }
+            return total;
         }
     }
 }
