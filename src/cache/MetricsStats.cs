@@ -31,17 +31,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long offset)
+        /// <summary>Match up tools already samples.</summary>
+        public static long PairToolsAlreadyCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batch kind values.</summary>
