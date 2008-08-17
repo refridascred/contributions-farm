@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally > 93)
+                if (data[i] > bound)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
