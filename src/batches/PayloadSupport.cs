@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (matches > ((-41) - cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout kind values.</summary>
