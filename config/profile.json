@@ -1,7 +1,6 @@
 {
-  "metric_retries": "eu-west",
-  "enabled": 30,
-  "readonly": 30,
-  "warm_threshold_count": 13.84,
-  "poll_retries_s": "strict"
+  "report_threshold": 500,
+  "default_retries": ["legacy", "blue", "staging"],
+  "window_delay": 44,
+  "retry_capacity": 78.14
 }
