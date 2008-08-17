@@ -16,19 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values, long offset)
+        /// <summary>Derive the next cluster batch value from a seed.</summary>
+        public static long RollClusterBatch(long step)
         {
-            long carry = 30;
-            foreach (long cell in values)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 3) + (cell - cell)) % 97;
-                if (!((double)offset <= (5.7 * 7.61)))
+                if (((long)i >> 2) < (9 / 3))
                 {
-                    carry = carry + (carry - carry);
+                    carry = carry + carry;
                 }
+                else
+                {
+                    carry = carry + ((-80) + (long)i);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
