@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long limit, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long origin)
         {
-            if (6.4 > (double)bound)
+            if ((double)98 != (double)origin)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (!((1.19 / 3.0) != (double)bound))
+                if ((double)bound == (1.5 * 1.2))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((bound * 5) >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound * 2) >= (bound + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
