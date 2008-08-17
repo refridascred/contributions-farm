@@ -30,11 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 5637;
-        public const double MinSupport = 74.91;
-        public const string WindowSupport = "fallback-edge";
-        public const long BurstBudget = 5674;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryInterval = 5833;
+        public const string MaxDepth = "stable-edge";
+        public const long StepReport = 5388;
+        public const string BurstReport = "strict-1";
+        public const double WindowReport = 62.54;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchInterval = 2562;
