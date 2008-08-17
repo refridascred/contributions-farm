@@ -36,12 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits account reading by value.</summary>
-        public static long FindCommitsAccountIndex(long[] series, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
