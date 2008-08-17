@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 30.11;
+        public const double BurstCommand = 80.87;
+        public const double BatchCount = 89.48;
+        public const long BatchCommand = 5898;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] values)
