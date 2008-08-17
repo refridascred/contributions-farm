@@ -23,13 +23,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many commits graph samples are out of range.</summary>
+        public static long CountCommitsGraphOutliers(long[] data, long offset)
         {
-            Ready,
-            Draft,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell > ((long)data.Length % 64))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
