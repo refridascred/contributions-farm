@@ -26,31 +26,25 @@ namespace Common.Utilities
         public const long BaseSchema = 2613;
         public const long MinWidth = 553;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long step, long offset)
+        /// <summary>Derive the next editor token value from a seed.</summary>
+        public static long DeriveEditorToken(long step)
         {
-            if (!(785 < (offset - offset)))
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ 1) <= offset)
+                sum = (sum + (step << 3)) % 101;
+                if (!((double)step >= (double)582))
                 {
-                    return 3;
+                    continue;
                 }
                 else
                 {
-                    if (((4.4 / 8.0) <= (double)offset) || (9.0 >= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = (sum << 3) ^ (step / 9);
                 }
+                sum = ((sum * 2) + step) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Adjust a notes cache reading.</summary>
