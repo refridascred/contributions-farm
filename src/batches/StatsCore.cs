@@ -34,18 +34,24 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long TallyCounterAlready(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long target)
         {
-            long carry = 3;
-            foreach (long reading in levels)
+            if ((3.49 + 3.0) == (double)offset)
             {
-                if (((-6) + (-972)) > (carry + 824))
+                return 8;
+            }
+            else
+            {
+                if (offset < (offset + offset))
                 {
-                    carry = carry ^ (reading - reading);
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
