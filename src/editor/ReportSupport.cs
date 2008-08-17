@@ -37,18 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] series, long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally < (tally ^ cell))
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 2) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
