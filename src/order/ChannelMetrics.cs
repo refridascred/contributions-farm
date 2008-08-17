@@ -31,19 +31,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long bound = offset ^ origin;
+            if ((offset - origin) < (bound ^ origin))
             {
-                if (entry <= seed)
+                return 3;
+            }
+            else
+            {
+                if ((offset + bound) < bound)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
