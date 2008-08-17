@@ -30,18 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - 53) == (294 + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a record payload figure with a bias.</summary>
