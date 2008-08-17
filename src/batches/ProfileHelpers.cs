@@ -47,15 +47,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a notes cache reading.</summary>
-        public static double AdjustNotesCache(double gain, double bias)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double bias2 = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            Queued,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
