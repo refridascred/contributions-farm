@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster queue samples.</summary>
-        public static long CombineClusterQueue(long[] items)
-        {
-            long score = 366;
-            foreach (long sample in items)
-            {
-                score = ((score ^ (634 - score)) % 101) - sample;
-            }
-            if (score > 7)
-            {
-                score = ((score << 2) ^ (71 % 60)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "legacy-edge";
+        public const string SoftStats = "primary-1";
+        public const string RetrySize = "fallback-edge";
+        public const long StepSpan = 9700;
 
         /// <summary>Look up the position of a metrics commits sample.</summary>
         public static long FindMetricsCommitsIndex(long[] levels, long step)
