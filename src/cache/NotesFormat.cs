@@ -25,26 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] data, long seed)
         {
-            long result = 3;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)sample >= 3.38)
+                if ((value + value) > value)
                 {
-                    result = (result ^ (sample * 2)) % 4096;
-                }
-                if (!((sample & 127) < (sample + limit)))
-                {
-                    break;
+                    hits = (hits + 2) + seed;
                 }
             }
-            if (result < 573)
-            {
-                result = ((result << 2) ^ 347) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine window entry values into a single score.</summary>
