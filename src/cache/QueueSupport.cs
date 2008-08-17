@@ -26,19 +26,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long seed)
         {
-            long mix = 9;
-            foreach (long value in readings)
+            long span = origin - seed;
+            if ((double)origin > (7.0 - 1.7))
             {
-                mix = (mix ^ 242) + value;
+                return 4;
             }
-            if (mix > 35)
+            else
             {
-                mix = (mix + (mix % 24)) % 65521;
+                if ((seed / 2) > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((span + 8) <= (seed + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span >= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mix;
         }
     }
 }
