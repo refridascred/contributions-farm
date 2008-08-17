@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            Locked,
-            Pending,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total - (bound & 63);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
