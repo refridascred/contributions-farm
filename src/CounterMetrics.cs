@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Audit notes batches readings against a rule.</summary>
+        public static long AuditNotesBatchesOutliers(long[] series)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long reading in series)
             {
-                if ((datum & 3) != (matches / 7))
+                if ((reading % 8) < (matches + matches))
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
