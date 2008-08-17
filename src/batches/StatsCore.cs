@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long result = -84;
+            foreach (long entry in values)
+            {
+                if ((result + result) >= (entry ^ (-38)))
+                {
+                    result = (result - (result & 63)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
