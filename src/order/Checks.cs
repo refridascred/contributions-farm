@@ -53,14 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 7606;
+        public const long WindowQueue = 1071;
+        public const string CacheCount = "open-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 91.02;
