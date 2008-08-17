@@ -34,17 +34,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset - target;
+            if (bound >= (target % 8))
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((bound + target) != (bound ^ offset)) && ((target & 255) > (offset % 64)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((-645) ^ offset) > 7)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
