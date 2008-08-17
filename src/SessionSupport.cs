@@ -35,26 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine window contributi values into a single score.</summary>
-        public static long FoldWindowContributi(long[] data)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            long anchor = 22;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (anchor + (long)i)) % 97;
-                }
-                if ((item + item) >= (6 + anchor))
-                {
-                    anchor = anchor ^ (anchor & 127);
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 96)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor;
+            return count;
         }
     }
 }
