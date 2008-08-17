@@ -20,19 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long carry = -10;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry ^ (datum & 1)) % 101) + offset;
+                if (((double)cell < (3.0 - 1.1)) || ((6 / 4) >= cell))
+                {
+                    count = count + 2;
+                }
             }
-            if (carry > 51)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
