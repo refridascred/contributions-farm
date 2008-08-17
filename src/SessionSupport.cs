@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate order batches readings against a bound.</summary>
+        public static bool VerifyOrderBatchesRange(long[] readings, long floor)
         {
-            Locked,
-            Paused,
-            Retry,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a schema format reading.</summary>
