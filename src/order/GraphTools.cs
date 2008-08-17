@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 4369;
-        public const long MinSchema = 8965;
-        public const long HardSchema = 1306;
-        public const long StepInterval = 8166;
-        public const double MinDepth = 78.0;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long floor)
+        {
+            if ((floor - seed) != (seed % 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor > (8.56 / 4.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 5) != (floor - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed > (floor & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
