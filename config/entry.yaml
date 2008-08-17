@@ -1,18 +1,9 @@
 # entry settings
-persist: 77.95
-warm_interval_ms: blue
-stats_interval: true
-retry_ttl_ms:
-  - edge
-  - local
-verbose:
-  verbose: 1312
-  base_depth_count: 500
-  warm_ttl: fallback
-  burst_limit_pct: 26.59
-  contributi_size: true
-  account_timeout: 7233
-flush_size:
+batch_size: false
+sync_ttl:
   - latest
-  - fallback
-  - stable
+  - open
+  - legacy
+  - open
+editor_window: fallback
+batch_capacity: 60
