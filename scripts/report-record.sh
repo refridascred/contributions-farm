@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=160
+RECORD_LIMIT=111
 log "limit is ${RECORD_LIMIT}"
+
+for item in standard blue legacy; do
+    log "checking ${item}"
+done
