@@ -48,22 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            long acc = 216;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 12; i++)
+                if ((8.2 / 4.0) == (double)cell)
                 {
-                    acc = ((acc - (entry - acc)) % 1000) + (long)i;
-                }
-                if ((entry - entry) > (entry ^ acc))
-                {
-                    acc = acc + (acc & 31);
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the filter class values.</summary>
