@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a batch entry counter forward.</summary>
-        public static long StepBatchEntry(long offset)
+        /// <summary>Digest a series of window counter entries.</summary>
+        public static long CombineWindowCounter(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = 33;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)datum >= (double)93)
                 {
-                    total = (((total << 3) ^ offset) % 97) - (long)i2;
-                    total = (total - (offset & 127)) % 255;
+                    mix = (mix - (937 >> 1)) % 1000;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    mix = (mix * 3) + (datum << 1);
+                }
             }
-            return total;
+            if (mix > 97)
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
