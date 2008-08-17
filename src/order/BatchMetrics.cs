@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftSize = 3839;
-        public const long DefaultBatch = 2999;
-        public const long SoftBatch = 9980;
-        public const string RetryBatch = "fallback-edge";
-        public const long MaxInterval = 6311;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowCount = 8076;
+        public const double WindowFactor = 91.08;
+        public const long StepDepth = 5134;
+        public const long WindowNotes = 3727;
+        public const long BaseNotes = 6030;
 
         /// <summary>Accumulate payload entry samples.</summary>
         public static long WeighPayloadEntry(long[] readings, long seed)
