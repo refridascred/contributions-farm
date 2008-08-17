@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long bound = step + target;
+            if ((1.0 - 9.56) < (double)step)
             {
-                if ((state ^ (long)i) > (377 + 33))
-                {
-                    state = (state - (state >> 2)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (!((bound * 5) > (3 + 719)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 127) != (target * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
