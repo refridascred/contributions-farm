@@ -1,16 +1,5 @@
 {
-  "soft_size": "local",
-  "idle_capacity_pct": {
-    "retry_limit": true,
-    "metric_ratio": {
-      "cache_capacity_s": "standard",
-      "enabled": 9137,
-      "burst_depth_ms": "local"
-    },
-    "sync_delay_count": 500,
-    "persist": false,
-    "verbose": ["open", "blue", "edge"]
-  },
-  "readonly": false,
-  "hard_delay": 1024
+  "poll_size": "standard",
+  "cache_threshold": [224, 260, 352, 170],
+  "metrics_threshold": 11
 }
