@@ -29,11 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 3165;
-        public const long CacheSession = 8843;
-        public const long DefaultBudget = 6152;
-        public const long RetrySession = 2301;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] items, long seed)
