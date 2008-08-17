@@ -29,18 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels, long seed)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen + seen) >= ((long)levels.Length + seed))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
