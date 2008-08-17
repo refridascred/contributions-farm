@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long AuditBatchesChecksGaps(long[] data, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double ratio = 1.1 - floor;
+            if (ratio > (gain - gain))
             {
-                if ((double)target == (1.9 - 9.14))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                ratio = ratio + (6.6 + floor);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - 4.9;
         }
     }
 }
