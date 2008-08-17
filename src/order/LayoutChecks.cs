@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache tools readings against a bound.</summary>
-        public static bool VerifyCacheToolsLimits(long[] readings, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of format entries.</summary>
