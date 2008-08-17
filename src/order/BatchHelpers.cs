@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinBudget = "local-edge";
-        public const long SoftGithubfarm = 5758;
-        public const long MaxGithubfarm = 7081;
-        public const long WindowGithubfarm = 9204;
+        /// <summary>Match up queue graph samples.</summary>
+        public static long OverlapQueueGraphCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] data, long limit)
