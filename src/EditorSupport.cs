@@ -70,12 +70,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
