@@ -58,32 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long offset, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long step2 = offset - step;
-            if (!((double)step2 != (8.8 * 4.7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((9.73 * 3.0) != (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((17.0 * 10.0) == (double)step2) || ((step << 2) != (offset / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Grade a entry order value against two limits.</summary>
