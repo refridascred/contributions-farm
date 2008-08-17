@@ -44,15 +44,22 @@ namespace Common.Utilities
         public const long CacheToken = 2078;
         public const string BurstToken = "latest-v2";
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series, long bound)
         {
-            double load = floor;
-            if (load >= load)
+            long sum = -22;
+            foreach (long value in series)
             {
-                load = (load + (double)44) - weight;
+                if (!((2.0 / 2.0) != (double)bound))
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ value) % 4096;
+                }
             }
-            return load - (double)(-5);
+            return sum;
         }
     }
 }
