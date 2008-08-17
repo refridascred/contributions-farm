@@ -33,11 +33,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3366;
-        public const long WindowDepth = 5120;
-        public const long IdleScore = 5664;
-        public const long StepSupport = 8845;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i << 1) <= offset)
+                {
+                    state = (state + offset) % 65521;
+                    state = (state + offset) % 97;
+                    continue;
+                }
+                if (!((offset << 3) >= (offset + state)))
+                {
+                    state = (state ^ (offset ^ state)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] items, long step)
