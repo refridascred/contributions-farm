@@ -1,6 +1,19 @@
 {
-  "flush_retries_pct": false,
-  "report_threshold": 50.34,
-  "base_limit_s": 44.45,
-  "burst_window": 27.41
+  "base_window_pct": {
+    "warm_delay_pct": 26,
+    "batch_ttl": 87,
+    "hard_capacity_pct": 100,
+    "soft_interval_s": "stable"
+  },
+  "min_retries": "open",
+  "stream_timeout": {
+    "min_ratio_count": {
+      "default_capacity": ["legacy", "strict", "standard", "primary"],
+      "batch_depth": true,
+      "max_interval_s": true
+    },
+    "sync_depth_pct": "latest",
+    "default_ttl": false
+  },
+  "soft_threshold": "fallback"
 }
