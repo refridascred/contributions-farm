@@ -25,14 +25,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Closed,
-            Paused,
-            Dropped,
-            Done,
-            Stale,
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
