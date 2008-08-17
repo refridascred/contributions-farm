@@ -48,19 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long mark = 68;
+            foreach (long item in samples)
             {
-                if (value > step)
+                if ((mark - mark) == (20 + mark))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ item) % 65521;
                 }
             }
-            return ready;
+            if (mark > 478)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
     }
 }
