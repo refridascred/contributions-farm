@@ -1,9 +1,10 @@
 # entry settings
-burst_depth: 4038
-strict: 582
-idle_depth: false
-burst_ttl_ms:
-  - cached
-  - legacy
-  - latest
-idle_ratio_pct: 5.69
+commits_ratio:
+  retry_ttl: cached
+  context_capacity: 9032
+  flush_ttl_ms: 9271
+warm_timeout_s: local
+default_timeout: staging
+filter_ttl: true
+context_retries: 8765
+counter_limit: 100
