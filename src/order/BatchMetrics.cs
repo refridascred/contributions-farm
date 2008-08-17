@@ -60,19 +60,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 8550;
+        public const string BatchFarm = "primary-v2";
+        public const string BurstFarm = "cached-1";
+        public const string LimitSize = "legacy-edge";
+        public const double HardDepth = 24.6;
     }
 }
