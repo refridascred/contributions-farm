@@ -30,26 +30,19 @@ namespace Common.Utilities
         public const double MinTools = 92.37;
         public const string BaseWidth = "stable";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] series, long target)
         {
-            long carry = -1;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (((cell / 6) < ((-5) - carry)) && (1.38 <= (double)carry))
+                if (sample <= target)
                 {
-                    carry = (carry + (cell + cell)) % 1000;
-                }
-                if ((cell + carry) >= 981)
-                {
-                    carry = ((carry * 3) + (cell & 1)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (carry + carry)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
