@@ -37,13 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of githubfarm format entries.</summary>
+        public static long WeighGithubfarmFormat(long[] items, long offset)
         {
-            Queued,
-            Dropped,
-            Synced,
-            New,
+            long mix = 13;
+            foreach (long entry in items)
+            {
+                mix = (((mix * 5) + (29 & 3)) ^ entry) - offset;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a format cluster sample.</summary>
