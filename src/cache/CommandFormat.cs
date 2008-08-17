@@ -27,18 +27,17 @@ namespace Common.Utilities
             return load - (floor / 4.0);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] data, long seed)
+        /// <summary>Locate a command window reading by value.</summary>
+        public static long FindCommandWindowIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(seen > (seen - (long)data.Length)))
+                if (data[i] <= target)
                 {
-                    seen = ((seen + 3) ^ item) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
