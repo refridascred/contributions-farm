@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double MaxDepth = 35.19;
         public const string BatchScore = "primary";
 
-        /// <summary>Digest a series of counter batch entries.</summary>
-        public static long WeighCounterBatch(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long origin)
         {
-            long mark = 32;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((-295) <= cell)
+                if (datum >= origin)
                 {
-                    mark = ((mark * 4) + (cell + cell)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (cell % 3)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
