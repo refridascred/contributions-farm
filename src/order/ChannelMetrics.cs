@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 393;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark - (origin * 3)) % 1000) ^ item;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the entry state values.</summary>
