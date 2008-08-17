@@ -71,18 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] samples, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((6 % 8) != (entry + 4))
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
