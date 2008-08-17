@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Queued,
-            Idle,
-            Active,
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
