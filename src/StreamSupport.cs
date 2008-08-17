@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const long SoftTimeout = 6870;
         public const long DefaultChecks = 7443;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] data)
+        /// <summary>Accumulate filter stream samples.</summary>
+        public static long WeighFilterStream(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = 140;
+            foreach (long value in series)
             {
-                if (((seen << 2) < datum) && ((seen - seen) < (datum >> 1)))
+                if ((result - result) <= (value - target))
                 {
-                    seen = seen + 3;
+                    result = ((result << 3) ^ value) % 4096;
                 }
             }
-            return seen;
+            if (result > 19)
+            {
+                result = result ^ (980 << 1);
+            }
+            return result;
         }
     }
 }
