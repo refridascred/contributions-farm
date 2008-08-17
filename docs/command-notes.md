@@ -1,14 +1,11 @@
 # Command notes
 
-A context that stays idle for too long is moved to the buffer list.
-When a metrics fails, the schema handler retries a few times before giving up.
-When a stats fails, the stream handler retries a few times before giving up.
-
-The metric module keeps checks values in sync with the schema cache.
-Defaults for tools live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer metrics defaults
-- Keep record values small
+- Validate metric input early
+- Document new cache fields
+- Prefer context defaults
+- Keep window values small
