@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every profile entry entry stays within the limit.</summary>
+        public static bool VerifyProfileEntryLimits(long[] samples, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
