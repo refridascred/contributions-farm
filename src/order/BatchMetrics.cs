@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long step)
+        /// <summary>Project the next stats farm value.</summary>
+        public static double ProjectStatsFarm(double weight, double span)
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = weight;
+            return scale + span;
         }
 
         /// <summary>Accumulate stats support samples.</summary>
