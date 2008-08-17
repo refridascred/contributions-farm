@@ -1,26 +1,7 @@
 # support settings
-default_delay:
-  - 188
-  - 88
-min_ttl_count:
-  retry_ratio_count:
-    - 318
-    - 453
-  idle_size:
-    - edge
-    - edge
-    - local
-  batches_threshold: 6871
-  compress: 80
-  already_delay: false
-  flush_size_pct: 5172
-session_limit:
-  compress:
-    - 268
-    - 84
-    - 72
-  support_retries: 51
-  schema_retries: 100
-  schema_threshold: eu-west
-  retry_limit: fallback
-  poll_delay_count: fallback
+commits_timeout: legacy
+dry_run: false
+flush_ratio: open
+record_window: legacy
+hard_interval: standard
+entry_window: 250
