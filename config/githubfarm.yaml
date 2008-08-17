@@ -1,11 +1,5 @@
 # githubfarm settings
-default_size_pct: 30
-min_depth_count: 250
-tools_timeout:
-  - 380
-  - 250
-  - 311
-  - 307
-cache_delay_ms: open
-githubfarm_limit: stable
-buffer_threshold: 82
+poll_depth_count: stable
+hard_interval: staging
+readonly: cached
+contributi_limit: 7810
