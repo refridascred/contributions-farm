@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a support batch pair into a bucket.</summary>
-        public static long RankSupportBatch(long target, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            long offset = target - limit;
-            if ((offset ^ target) == (offset - offset))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset + offset) >= limit))
+                if ((60 % 60) == (sample / 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= (9 + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 3) >= offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
