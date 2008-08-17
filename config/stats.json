@@ -1,12 +1,16 @@
 {
-  "dry_run": 53,
-  "idle_ratio_ms": "stable",
-  "hard_ttl": "stable",
-  "profile_interval": 61.45,
-  "base_ttl_s": {
-    "verbose": false,
-    "burst_retries_ms": true,
-    "checks_retries": 80,
-    "window_size": ["strict", "open", "cached", "green"]
-  }
+  "strict": [462, 439],
+  "cluster_retries": [187, 95],
+  "dry_run": 12.93,
+  "persist": {
+    "max_timeout_ms": true,
+    "githubfarm_delay": {
+      "graph_timeout": true,
+      "poll_timeout_ms": "local",
+      "audit": "edge",
+      "enabled": [349, 398, 175]
+    },
+    "batch_retries_s": false
+  },
+  "graph_retries": "blue"
 }
