@@ -14,11 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a schema format reading.</summary>
-        public static double AdjustSchemaFormat(double scale, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data, long bound)
         {
-            double rate = bias;
-            return (rate - (7.2 + bias)) + scale;
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (cell < seen)
+                {
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine window contributi values into a single score.</summary>
