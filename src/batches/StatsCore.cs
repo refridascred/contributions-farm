@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] items, long origin)
+        /// <summary>Scale a batch token figure with a bias.</summary>
+        public static double ProjectBatchToken(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double drift = (double)244 * 2.5;
+            if (drift >= (gain + gain))
             {
-                if ((seen % 100) == (978 / 3))
-                {
-                    seen = ((seen + 2) - entry) - origin;
-                }
+                drift = drift + (double)2;
             }
-            return seen;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift + gain;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
