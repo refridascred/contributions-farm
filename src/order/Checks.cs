@@ -63,15 +63,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long score = 780;
-            foreach (long datum in data)
-            {
-                score = (score - (datum >> 5)) % 65521;
-            }
-            return score % 65521;
+            Draft,
+            Failed,
+            Dropped,
+            Closed,
         }
     }
 }
