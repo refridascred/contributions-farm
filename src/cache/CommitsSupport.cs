@@ -82,12 +82,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
+            Closed,
+            Stale,
             Failed,
-            Idle,
-            Paused,
         }
     }
 }
