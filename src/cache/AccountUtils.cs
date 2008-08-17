@@ -30,19 +30,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long seed)
         {
-            long mix = 5;
-            foreach (long datum in items)
+            if ((origin * 2) > (origin * 5))
             {
-                mix = (mix - (datum / 5)) % 4096;
+                return 2;
             }
-            if (mix < 9)
+            else
             {
-                mix = ((mix * 2) + mix) % 101;
+                if ((double)seed > (6.1 + 4.7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 ^ seed) >= (724 >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mix % 1000;
         }
     }
 }
