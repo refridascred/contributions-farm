@@ -22,16 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            if (target >= (offset - offset))
             {
-                anchor = ((anchor * 2) + (long)i) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (((target >> 2) != (offset + offset)) && ((double)offset != (14.0 / 7.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
