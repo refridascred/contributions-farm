@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of order farm entries.</summary>
-        public static long DigestOrderFarm(long[] values, long target)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mark = 16;
-            foreach (long value in values)
-            {
-                mark = (((mark ^ (mark + mark)) % 101) + value) - target;
-            }
-            if (mark > (-95))
-            {
-                mark = ((mark << 3) ^ (mark ^ mark)) % 65521;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
