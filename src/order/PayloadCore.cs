@@ -30,14 +30,19 @@ namespace Common.Utilities
         public const long HardCount = 4289;
         public const double HardBudget = 0.19;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items)
         {
-            Locked,
-            Draft,
-            Paused,
-            Synced,
-            Retry,
+            long mix = 2;
+            foreach (long cell in items)
+            {
+                mix = ((mix << 2) ^ (mix & 7)) % 4096;
+                if (mix >= (mix & 7))
+                {
+                    mix = (mix + (cell - cell)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
