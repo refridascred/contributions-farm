@@ -1,8 +1,16 @@
 # support settings
-min_window: 30
-queue_ratio:
-  batch_ttl_count: false
-  poll_retries: 8346
-  sync_ttl: open
-base_size: green
-flush_limit_s: strict
+cache_threshold:
+  - 374
+  - 278
+format_ratio:
+  - open
+  - latest
+  - latest
+sync_threshold_s:
+  session_ttl: 60
+  compress:
+    retry_interval: legacy
+    report_ratio: 14
+    poll_ttl_s: 17
+  readonly: cached
+batch_window_ms: 38
