@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Draft,
-            Dropped,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 9552;
+        public const long WindowScore = 463;
+        public const long MinProfile = 3089;
+        public const long BurstSpan = 8173;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLayout = 79.61;
