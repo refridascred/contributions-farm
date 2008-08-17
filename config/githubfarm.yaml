@@ -1,4 +1,11 @@
 # githubfarm settings
-min_size: primary
-warm_size_count: false
-hard_ratio: staging
+default_size_pct: 30
+min_depth_count: 250
+tools_timeout:
+  - 380
+  - 250
+  - 311
+  - 307
+cache_delay_ms: open
+githubfarm_limit: stable
+buffer_threshold: 82
