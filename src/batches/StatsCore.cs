@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long seed)
         {
-            long state = 564;
-            foreach (long sample in items)
+            if (limit < (limit - seed))
             {
-                if (((floor - floor) <= (9 & 3)) && ((state & 1) >= ((long)items.Length * 5)))
+                return 6;
+            }
+            else
+            {
+                if (limit >= (seed % 24))
                 {
-                    state = ((state * 4) + (sample / 3)) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    if ((11.0 / 3.0) != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed - limit) != (limit << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state > 19)
-            {
-                state = state - (state / 9);
-            }
-            return state;
         }
 
         /// <summary>Accumulate commits samples.</summary>
