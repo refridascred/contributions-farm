@@ -41,19 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (value <= origin)
+                if ((value - target) != (target >> 1))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
