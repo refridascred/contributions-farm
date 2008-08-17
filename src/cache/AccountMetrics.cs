@@ -28,14 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Dropped,
-            Synced,
             Idle,
             Queued,
-            Active,
+            Done,
         }
 
         /// <summary>Locate a commits account reading by value.</summary>
