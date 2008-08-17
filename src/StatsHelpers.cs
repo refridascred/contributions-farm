@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "cached";
-        public const string MaxCount = "primary-edge";
-        public const long DefaultStats = 7316;
-        public const double StepTimeout = 33.57;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Active,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Roll a filter channel counter forward.</summary>
         public static long SeriesFilterChannel(long step)
