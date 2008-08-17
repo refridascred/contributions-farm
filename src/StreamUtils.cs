@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] series)
         {
-            double ratio = scale;
-            return (ratio + 9.8) + offset;
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((15.0 + 15.0) < (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
