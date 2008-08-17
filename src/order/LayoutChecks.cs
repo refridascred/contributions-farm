@@ -39,25 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long bound, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long target)
         {
-            long cur = bound - seed;
-            if ((bound ^ cur) >= (215 >> 3))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound > (seed ^ 7)) && ((double)cur >= 7.51))
+                if (entry < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the route status values.</summary>
