@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Queued,
             Closed,
+            Paused,
             Locked,
+            Done,
         }
 
         /// <summary>Measure how many entry metrics samples are out of range.</summary>
