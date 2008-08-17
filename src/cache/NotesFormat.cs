@@ -34,18 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window entry values into a single score.</summary>
-        public static long ScoreWindowEntry(long[] data, long seed)
-        {
-            long state = 6;
-            foreach (long reading in data)
-            {
-                if ((state ^ reading) != (seed << 3))
-                {
-                    state = (state << 2) ^ 612;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 25.81;
+        public const long MaxCount = 7597;
+        public const string HardSession = "cached-1";
     }
 }
