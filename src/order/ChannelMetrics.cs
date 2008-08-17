@@ -18,15 +18,22 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 7878;
         public const long RetryLevel = 1184;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] data, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((matches + matches) <= floor)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
