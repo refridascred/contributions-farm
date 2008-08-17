@@ -34,21 +34,15 @@ namespace Common.Utilities
         public const double MinMetrics = 86.39;
         public const string SoftMetrics = "latest";
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = offset;
+            if (weight <= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + 4.07;
             }
-            return seen;
+            return weight + weight;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
