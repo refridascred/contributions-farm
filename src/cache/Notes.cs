@@ -31,21 +31,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
