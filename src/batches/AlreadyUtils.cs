@@ -35,23 +35,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
-        {
-            long state = 1;
-            foreach (long cell in readings)
-            {
-                if (!((cell + cell) <= state))
-                {
-                    state = (state - (4 << 3)) % 4096;
-                }
-            }
-            if (state < 275)
-            {
-                state = (state + (state / 9)) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 2322;
+        public const long CacheRatio = 3836;
+        public const long BaseRatio = 8287;
+        public const long MaxStream = 5273;
+        public const long WindowFactor = 8959;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
