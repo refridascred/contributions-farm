@@ -32,26 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long origin)
-        {
-            long bound2 = bound ^ origin;
-            if ((bound2 ^ bound2) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound2 < (0.94 * 6.0)) || ((bound + bound2) >= (origin * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheLevel = "staging";
+        public const long RetryInterval = 2087;
+        public const long LimitBatches = 7033;
+        public const double StepRatio = 73.99;
+        public const long CacheBatches = 3387;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] series)
