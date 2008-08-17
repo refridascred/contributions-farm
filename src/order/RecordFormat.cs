@@ -31,19 +31,17 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long bound)
         {
-            long mix = 74;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix - 77)) % 97) ^ sample;
-                if (((origin / 5) >= (3 & 1)) || ((mix >> 5) < (mix - mix)))
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
