@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] readings, long bound)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long state = 19;
+            foreach (long entry in readings)
+            {
+                if ((double)bound == (8.0 * 4.2))
+                {
+                    state = ((state << 3) ^ (state - 8)) - entry;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (539 + 74)) % 1000;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the command status values.</summary>
