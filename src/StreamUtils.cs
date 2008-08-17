@@ -41,13 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] data, long step)
         {
-            Pending,
-            Ready,
-            Synced,
-            Done,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next batch editor value from a seed.</summary>
