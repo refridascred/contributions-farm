@@ -1,6 +1,12 @@
 {
-  "cache_depth": false,
-  "sync_retries": 19.45,
-  "sync_retries_count": 95.21,
-  "burst_interval": "stable"
+  "enabled": 3746,
+  "flush_size": "eu-west",
+  "compress": "open",
+  "base_retries": "latest",
+  "dry_run": {
+    "tools_interval": [496, 120, 188],
+    "cache_ttl_s": 1024,
+    "readonly": "eu-west"
+  },
+  "farm_threshold": "blue"
 }
