@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BatchSupport = 1856;
         public const double HardTimeout = 54.05;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 ^ value) != (matches << 1))
+                if (series[i] < limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
