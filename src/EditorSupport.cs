@@ -74,19 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool VerifyContributiSupportBounds(long[] samples, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
