@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 68.68;
-        public const double StepSupport = 36.2;
-        public const long BatchSupport = 1856;
-        public const double HardTimeout = 54.05;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Paused,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Iterate the session buffer series from a seed.</summary>
         public static long StepSessionBuffer(long limit)
