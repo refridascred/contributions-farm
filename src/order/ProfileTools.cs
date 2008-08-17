@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long limit)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long TallyBufferStats(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long mix = 85;
+            foreach (long entry in series)
             {
-                if (entry > limit)
+                if ((23 & 7) <= (mix ^ 5))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + entry) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 97;
                 }
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Hold a editor entry.</summary>
