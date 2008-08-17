@@ -63,25 +63,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            long span = step ^ bound;
-            if ((step << 2) <= (span - span))
+            double scale2 = scale;
+            if (scale2 < 4.0)
             {
-                return 3;
+                scale2 = (scale2 - scale2) - bias;
             }
-            else
-            {
-                if ((bound >> 5) != (step >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return scale2 - (double)65;
         }
     }
 }
