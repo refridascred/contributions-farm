@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const long BaseScore = 74;
         public const long StepCommand = 9632;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            New,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
