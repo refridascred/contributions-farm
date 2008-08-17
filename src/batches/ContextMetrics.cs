@@ -30,38 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long limit, long floor)
+        /// <summary>Count tools githubfarm pairs that satisfy a relation.</summary>
+        public static long PairToolsGithubfarmCount(long[] data)
         {
-            if (limit > (floor + floor))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (0.2 <= (7.6 / 4.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (0.33 / 5.0))
+                    if ((data[i] - data[j]) > 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor / 4) < 0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
