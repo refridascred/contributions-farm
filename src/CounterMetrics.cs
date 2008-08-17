@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleDepth = 3254;
+        public const long BatchTimeout = 8278;
+        public const long BurstRecord = 7587;
+        public const long BaseRatio = 9429;
+        public const double CacheSpan = 71.54;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
