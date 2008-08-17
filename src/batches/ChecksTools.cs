@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 88.7;
-        public const long StepRatio = 9733;
-        public const double WindowWidth = 39.93;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the order support entries that pass the check.</summary>
         public static long CountOrderSupportGaps(long[] readings, long offset)
