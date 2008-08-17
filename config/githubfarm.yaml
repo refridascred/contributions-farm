@@ -1,16 +1,21 @@
 # githubfarm settings
-retry_ratio: true
-report_limit:
-  burst_timeout_s: 14.59
-  cache_timeout: 66.18
-  strict: latest
-  compress:
-    max_timeout_count: 5362
-    flush_size: fallback
-    dry_run: 38
-  soft_ttl: 65.51
-  burst_depth_pct: 55
-base_capacity: edge
-poll_delay: green
-dry_run: 100
-batch_size_ms: edge
+sync_ratio_ms: 100
+payload_threshold:
+  graph_interval: 4942
+  channel_interval:
+    strict: 611
+    readonly:
+      - 52
+      - 275
+      - 243
+    batch_threshold_s:
+      - local
+      - standard
+      - legacy
+  audit:
+    - 270
+    - 176
+  burst_interval_pct: 93
+strict: 63
+editor_ttl: 30
+sync_limit_pct: 42.85
