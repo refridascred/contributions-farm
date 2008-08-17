@@ -29,12 +29,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long target)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            if ((double)5 <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step % 12) <= 7) || ((61 - target) >= 608))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2 >> 2) != (target & 7)) || (77 <= step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
