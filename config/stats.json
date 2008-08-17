@@ -1,5 +1,12 @@
 {
-  "retry_capacity": "stable",
-  "graph_retries": "green",
-  "tools_size": 1625
+  "dry_run": 53,
+  "idle_ratio_ms": "stable",
+  "hard_ttl": "stable",
+  "profile_interval": 61.45,
+  "base_ttl_s": {
+    "verbose": false,
+    "burst_retries_ms": true,
+    "checks_retries": 80,
+    "window_size": ["strict", "open", "cached", "green"]
+  }
 }
