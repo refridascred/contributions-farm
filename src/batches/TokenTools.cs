@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            Done,
+            Stale,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
