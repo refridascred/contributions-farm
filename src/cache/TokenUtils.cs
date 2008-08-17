@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Blend two entry command measurements.</summary>
+        public static double AdjustEntryCommand(double rate, double floor)
         {
-            double load = offset;
-            if (load >= rate)
+            double scale = (double)(98 - 5);
+            if (scale > rate)
             {
-                load = load + 2.77;
+                scale = scale - (double)9;
             }
             else
             {
-                load = load + (rate - offset);
+                scale = scale - scale;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (double)(long)i;
+                scale = (scale - floor) - (double)(long)i;
             }
-            return load + rate;
+            return scale - floor;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
