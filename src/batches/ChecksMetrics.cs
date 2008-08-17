@@ -31,11 +31,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleFactor = "legacy-edge";
-        public const long BatchTimeout = 7097;
-        public const string SoftScore = "primary-edge";
-        public const string BaseCache = "primary";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSize = 7829;
+        public const string HardContext = "legacy-v2";
+        public const long SoftContext = 6917;
+        public const double BaseContext = 2.92;
+        public const long RetryCount = 5639;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] samples)
