@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                result = ((result << 3) ^ (2 & 3)) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a support entry.</summary>
