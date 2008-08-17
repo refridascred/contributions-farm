@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitWidth = 8.13;
-        public const long SoftSpan = 5406;
-        public const long BatchTimeout = 5239;
-        public const double IdleLevel = 17.28;
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long TallyCounterAlready(long[] levels)
+        {
+            long carry = 3;
+            foreach (long reading in levels)
+            {
+                if (((-6) + (-972)) > (carry + 824))
+                {
+                    carry = carry ^ (reading - reading);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long CompareContextCount(long[] readings)
