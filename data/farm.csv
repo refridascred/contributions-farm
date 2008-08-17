@@ -1,9 +1,8 @@
-id,ratio,count
-1,747,eu-west
-2,183,746
-3,536,737
-4,858,blue
-5,legacy,9.11
-6,legacy,green
-7,37.48,40.57
-8,12.39,173
+id,region,active
+1,standard,staging
+2,0.94,243
+3,51.34,698
+4,cached,62.95
+5,staging,61.87
+6,fallback,601
+7,45.84,blue
