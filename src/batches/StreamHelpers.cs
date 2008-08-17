@@ -81,18 +81,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] samples, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((9 / 6) != (datum ^ datum))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                total = (total - seed) % 101;
+                total = (total - seed) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
