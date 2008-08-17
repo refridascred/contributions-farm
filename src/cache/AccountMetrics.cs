@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
             public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
