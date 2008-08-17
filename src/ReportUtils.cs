@@ -16,15 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double bias)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long floor)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = ((gain2 - gain2) + (double)(long)i) - bias;
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - gain;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
