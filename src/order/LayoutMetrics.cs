@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((205 + value) <= value)
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftSize = "alpha-1";
+        public const double RetryFarm = 33.53;
+        public const double BaseFactor = 52.56;
+        public const string DefaultFarm = "legacy-edge";
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] readings, long floor)
