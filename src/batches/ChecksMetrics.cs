@@ -43,18 +43,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long MeasurePayloadStatsGaps(long[] items)
+        /// <summary>Rank counter filter input into a small class.</summary>
+        public static long ClassifyCounterFilter(long bound, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long delta = bound + step;
+            if (((step + delta) >= (step & 127)) && ((double)step > (double)delta))
             {
-                if (seen > (value / 8))
+                return 0;
+            }
+            else
+            {
+                if (((39 - (-1)) <= delta) || ((bound << 3) == (step + bound)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta > (3.0 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a graph token pair into a bucket.</summary>
