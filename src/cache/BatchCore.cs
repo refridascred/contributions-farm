@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
             public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
