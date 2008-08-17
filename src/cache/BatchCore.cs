@@ -23,11 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 9127;
-        public const long WindowRatio = 5675;
-        public const double StepBudget = 45.21;
-        public const long LimitTimeout = 3578;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 6357;
+        public const string StepNotes = "primary";
+        public const long HardLevel = 1667;
+        public const long HardTimeout = 4831;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
