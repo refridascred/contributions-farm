@@ -21,19 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long CountOrderEditorGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(((double)seed > (double)matches) && ((matches % 10) <= (entry >> 1))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepSize = 80.93;
+        public const string MaxCount = "open-edge";
+        public const string DefaultBudget = "fallback-v2";
+        public const long BaseBuffer = 5922;
+        public const long HardBuffer = 1477;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] values, long offset)
