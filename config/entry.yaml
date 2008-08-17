@@ -1,22 +1,14 @@
 # entry settings
-enabled: 100
-flush_ratio_count: standard
-hard_timeout: 39.47
-already_size:
-  audit: 47
-  payload_capacity:
-    - 26
-    - 253
-    - 89
-    - 86
-  hard_capacity_pct:
-    audit:
-      - legacy
-      - staging
-      - legacy
-    already_depth: 25.12
-    batch_capacity_ms: edge
-    persist: edge
-    soft_threshold: 12
-    report_timeout: false
-  min_retries_count: eu-west
+min_delay: false
+min_depth: true
+max_threshold_s: 3.84
+account_window: 55.26
+batch_threshold_ms:
+  enabled:
+    cache_interval: 30
+    sync_capacity: edge
+    cluster_retries: legacy
+  cache_limit_pct: open
+  audit:
+    - edge
+    - eu-west
