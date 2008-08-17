@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor - ((long)i ^ 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 4914;
+        public const string StepReport = "strict";
+        public const string BurstReport = "latest-v2";
+        public const long LimitReport = 1099;
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long ScoreChecksReport(long[] values, long bound)
