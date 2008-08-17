@@ -33,14 +33,12 @@ namespace Common.Utilities
         public const string IdleRatio = "stable-edge";
         public const double WindowInterval = 39.13;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Done,
-            Active,
-            New,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "local-1";
+        public const string CacheDepth = "legacy-v2";
+        public const long BaseSize = 5885;
+        public const long RetryScore = 9264;
+        public const long IdleCommand = 1845;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
