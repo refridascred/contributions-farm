@@ -40,16 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                state = (state - bound) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
