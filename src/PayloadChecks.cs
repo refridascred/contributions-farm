@@ -32,22 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout payload readings against a rule.</summary>
-        public static long CountLayoutPayloadOutliers(long[] readings)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry ^ hits) <= (entry % 24))
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
