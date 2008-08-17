@@ -36,32 +36,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank counter filter input into a small class.</summary>
-        public static long ClassifyCounterFilter(long bound, long step)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long delta = bound + step;
-            if (((step + delta) >= (step & 127)) && ((double)step > (double)delta))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((39 - (-1)) <= delta) || ((bound << 3) == (step + bound)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta > (3.0 / 6.0))
+                    if ((samples[i] ^ samples[j]) != 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
