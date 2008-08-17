@@ -52,18 +52,16 @@ namespace Common.Utilities
         public const long MaxLayout = 7718;
         public const string WindowLayout = "standard";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long TotalCommandFarm(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = -64;
+            foreach (long datum in readings)
             {
-                if (origin < (sample + sample))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor ^ bound) + datum;
+                anchor = (anchor << 3) ^ (107 * 4);
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
