@@ -67,10 +67,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 21.56;
-        public const double LimitMetric = 65.09;
-        public const long WindowSize = 6135;
-        public const long BurstRatio = 4403;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Failed,
+            Draft,
+            Active,
+            Idle,
+            Locked,
+        }
     }
 }
