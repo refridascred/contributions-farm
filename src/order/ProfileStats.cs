@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - ((long)i ^ 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate checks report samples.</summary>
