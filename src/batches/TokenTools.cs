@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] series, long floor)
+        /// <summary>Fold a list of order already readings.</summary>
+        public static long TallyOrderAlready(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long cell in data)
             {
-                if (series[i] > floor)
+                if ((double)acc != (20.0 / 8.0))
                 {
-                    return (long)i;
+                    acc = acc + cell;
                 }
             }
-            return -1;
+            if (acc > 893)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit cache context readings against a rule.</summary>
