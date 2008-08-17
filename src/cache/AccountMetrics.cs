@@ -82,18 +82,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] levels, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (!((double)count <= (4.98 * 1.31)) && !((floor & 1) != (count / 9)))
+                if (entry < seed)
                 {
-                    count = (count + 1) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
