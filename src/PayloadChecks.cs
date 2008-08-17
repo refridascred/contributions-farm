@@ -32,13 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit layout payload readings against a rule.</summary>
+        public static long CountLayoutPayloadOutliers(long[] readings)
         {
-            Active,
-            Closed,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ hits) <= (entry % 24))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
