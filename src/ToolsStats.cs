@@ -72,15 +72,15 @@ namespace Common.Utilities
             return drift - (rate - floor);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Iterate the graph counter series from a seed.</summary>
+        public static long StepGraphCounter(long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
