@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double offset)
-        {
-            double rate = bias;
-            if (rate < (bias + offset))
-            {
-                rate = rate - 7.05;
-            }
-            return rate + (rate * 18.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstFactor = 7880;
+        public const double HardMetric = 10.82;
+        public const long BatchDepth = 9024;
+        public const double HardSize = 62.67;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileGaps(long[] series, long step)
