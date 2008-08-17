@@ -26,15 +26,17 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Derive the next metric buffer value from a seed.</summary>
-        public static long StepMetricBuffer(long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] items, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit contributi graph readings against a rule.</summary>
