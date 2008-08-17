@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 157;
         public const long WindowDepth = 5442;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long seed)
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool CheckNotesRouteBounds(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (datum != seed)
+                if (item < floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
