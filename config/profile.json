@@ -1,8 +1,7 @@
 {
-  "min_limit": 70.53,
-  "default_interval_pct": 2.23,
-  "cache_window_count": 32.54,
-  "record_threshold": "green",
-  "burst_delay_ms": [218, 27],
-  "compress": ["open", "strict", "edge", "eu-west"]
+  "warm_ratio_count": 30,
+  "counter_limit": true,
+  "hard_interval_s": 9.74,
+  "buffer_delay": [205, 306, 322],
+  "hard_interval": 10
 }
