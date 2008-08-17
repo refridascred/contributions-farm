@@ -26,18 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue order entries that pass the check.</summary>
-        public static long MeasureQueueOrderMatches(long[] series)
+        /// <summary>Count the queue batches entries that pass the check.</summary>
+        public static long CountQueueBatchesMatches(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((((6.4 - 2.7) <= (double)datum) || (tally > (datum >> 4))) && ((3.56 + 3.0) != (double)datum))
+                if ((((18 % 8) <= (bound + 666)) && ((double)datum < (9.84 + 8.65))) || ((double)count == (10.0 - 7.0)))
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count contributi report pairs that satisfy a relation.</summary>
