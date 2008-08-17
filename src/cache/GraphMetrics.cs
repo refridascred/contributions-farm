@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const string BatchQueue = "staging-v2";
         public const string IdleQueue = "stable";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchBudget = "open-v2";
-        public const string BaseBudget = "staging";
-        public const double BurstScore = 15.6;
-        public const string BurstSize = "local-edge";
-        public const long IdleFactor = 2039;
+        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
+        public static long OverlapToolsStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
