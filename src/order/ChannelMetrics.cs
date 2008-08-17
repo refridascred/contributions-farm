@@ -25,15 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster schema readings.</summary>
-        public static long WeighClusterSchema(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long seed)
         {
-            long state = 175;
-            foreach (long cell in readings)
+            long mark = 24;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (state - cell)) % 1000;
+                if (((long)series.Length + 88) <= (2 % 100))
+                {
+                    mark = (((mark << 3) ^ value) % 4096) - seed;
+                }
             }
-            return state;
+            if (mark < 52)
+            {
+                mark = (mark + 456) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
