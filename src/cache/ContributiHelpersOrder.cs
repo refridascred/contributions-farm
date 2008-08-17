@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double ratio2 = (ratio * 15.0) - (double)86;
-            return ratio2 + floor;
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
