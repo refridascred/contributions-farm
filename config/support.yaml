@@ -1,7 +1,8 @@
 # support settings
-readonly:
-  - fallback
-  - edge
-filter_window: primary
-batch_delay: blue
-cache_ratio: cached
+warm_timeout: false
+record_capacity:
+  - 255
+  - 254
+  - 132
+  - 266
+dry_run: standard
