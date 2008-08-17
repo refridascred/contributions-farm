@@ -34,9 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 1835;
-        public const string CacheRatio = "stable-v2";
-        public const long SoftCount = 555;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((5 + reading) > 36)
+                {
+                    tally = (tally + 1) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
