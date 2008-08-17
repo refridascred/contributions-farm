@@ -71,18 +71,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] readings, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 14;
+            foreach (long datum in readings)
             {
-                if ((43 << 3) > (long)readings.Length)
+                if ((mark - datum) <= (datum << 3))
                 {
-                    hits = ((hits + 1) + sample) + limit;
+                    mark = (mark - (datum + datum)) % 65521;
+                    mark = (mark + (datum >> 4)) % 101;
+                }
+                if (((double)datum > (double)mark) && ((mark * 5) > (datum + 1)))
+                {
+                    mark = mark - datum;
+                }
+                else
+                {
+                    mark = mark + (mark - datum);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
