@@ -56,19 +56,12 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
