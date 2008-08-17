@@ -37,19 +37,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] series, long seed)
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool ValidateEntryMetricsBounds(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (entry != seed)
+                if (value <= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
