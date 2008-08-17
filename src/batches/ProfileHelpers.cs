@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] levels, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] series)
         {
-            long anchor = 23;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((410 + value) >= anchor)
+                if (!!((tally / 4) == (reading + reading)))
                 {
-                    anchor = (((anchor * 2) + (value + value)) % 1000) - step;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Hold a checks options.</summary>
