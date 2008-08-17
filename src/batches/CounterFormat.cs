@@ -31,22 +31,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            long result = 1;
-            foreach (long reading in values)
+            double scale = bias;
+            if (scale > scale)
             {
-                if ((step >> 5) > step)
-                {
-                    result = (result + (result + step)) + reading;
-                }
-                else
-                {
-                    result = result - (-74);
-                }
+                scale = scale - scale;
             }
-            return result;
+            return scale - rate;
         }
     }
 }
