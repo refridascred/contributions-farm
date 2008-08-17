@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = 793;
+            foreach (long entry in data)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc * 5) + (acc % 60)) % 97) - entry;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
