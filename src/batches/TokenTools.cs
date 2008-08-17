@@ -22,10 +22,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstDepth = 92.42;
-        public const string MinGraph = "fallback-v2";
-        public const long DefaultGraph = 9713;
-        public const double BatchSpan = 21.2;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Active,
+            Locked,
+            Synced,
+        }
     }
 }
