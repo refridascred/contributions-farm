@@ -49,12 +49,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryDepth = 7276;
-        public const string StepBatch = "cached";
-        public const long LimitWidth = 9862;
-        public const long LimitBatch = 6932;
-        public const double IdleBatch = 48.33;
+        /// <summary>Count record batch pairs that satisfy a relation.</summary>
+        public static long MatchRecordBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] values)
