@@ -43,12 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
