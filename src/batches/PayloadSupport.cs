@@ -57,14 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Closed,
-            Active,
-            New,
-            Ready,
-            Synced,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
