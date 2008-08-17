@@ -67,22 +67,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster token readings against a rule.</summary>
-        public static long MeasureClusterTokenMatches(long[] values, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((floor ^ hits) > (floor >> 1))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Queued,
         }
     }
 }
