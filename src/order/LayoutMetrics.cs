@@ -22,37 +22,22 @@ namespace Common.Utilities
         public const long DefaultNotes = 2698;
         public const long MaxCount = 8247;
 
-        /// <summary>Rank session profile input into a small class.</summary>
-        public static long SortSessionProfile(long bound, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long step)
         {
-            long span = bound + seed;
-            if ((8.2 + 2.0) != (double)seed)
+            if (7 < (limit ^ step))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((6.9 * 2.2) > (double)bound) && ((seed + span) <= 53))
+                if ((double)limit > (12.0 * 4.15))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)span < (6.29 / 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span + span) > (seed + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
