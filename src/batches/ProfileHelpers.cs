@@ -71,11 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 46.21;
-        public const long BurstBudget = 6712;
-        public const string DefaultSize = "strict";
-        public const long SoftScore = 6057;
-        public const string SoftAlready = "local-v2";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
