@@ -14,21 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
