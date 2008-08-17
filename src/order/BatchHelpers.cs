@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            Queued,
+            Draft,
+            Synced,
+            Closed,
+            Paused,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
