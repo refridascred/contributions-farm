@@ -83,15 +83,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
