@@ -24,11 +24,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Adjust a session route reading.</summary>
-        public static double ScaleSessionRoute(double ratio, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long seed)
         {
-            double gain = (bias - 9.3) / 3.0;
-            return (gain + (bias * 7.88)) + ratio;
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session mode values.</summary>
