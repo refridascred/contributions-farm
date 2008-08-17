@@ -1,10 +1,8 @@
 {
-  "burst_threshold": 88.49,
-  "retry_retries_ms": {
-    "audit": "legacy",
-    "retry_ttl_count": [302, 200, 2, 40],
-    "base_window_pct": 1.53
-  },
-  "readonly": "open",
-  "sync_depth": true
+  "enabled": [225, 268],
+  "min_ratio_pct": 250,
+  "max_interval": 80.05,
+  "batches_window": 86.92,
+  "hard_capacity_count": "standard",
+  "support_retries": 19.93
 }
