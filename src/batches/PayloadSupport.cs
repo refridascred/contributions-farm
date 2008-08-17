@@ -48,19 +48,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next format entry value.</summary>
-        public static double ProjectFormatEntry(double rate, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double load = span;
-            if (load > rate)
-            {
-                load = load - rate;
-            }
-            else
-            {
-                load = load + rate;
-            }
-            return load - load;
+            Ready,
+            Active,
+            Done,
         }
     }
 }
