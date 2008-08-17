@@ -47,12 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Retry,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchLevel = "staging";
+        public const double MaxReport = 89.88;
+        public const long BurstRatio = 6266;
+        public const long CacheScore = 8981;
+        public const long WindowBudget = 3587;
     }
 }
