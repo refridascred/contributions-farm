@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a cache entry reading by value.</summary>
-        public static long SeekCacheEntryIndex(long[] series, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a notes route sample.</summary>
