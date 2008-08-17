@@ -46,13 +46,17 @@ namespace Common.Utilities
         public const string BurstCache = "standard";
         public const double SoftCount = 87.82;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long target)
         {
-            Closed,
-            Queued,
-            New,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
