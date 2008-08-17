@@ -31,9 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 1092;
-        public const string LimitRatio = "stable-v2";
-        public const long MaxCommand = 9441;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
