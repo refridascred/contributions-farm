@@ -40,22 +40,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                if ((sample + 85) > (sample + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum + (cell + cell)) % 4096;
+                sum = sum + sum;
+                sum = (sum ^ (cell & 7)) % 97;
             }
-            return tally;
+            if (sum < 156)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 97;
         }
     }
 }
