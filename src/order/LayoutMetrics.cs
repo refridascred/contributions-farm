@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const double MinBudget = 98.81;
         public const long BaseReport = 1720;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mark = 5;
-            foreach (long sample in values)
-            {
-                if ((9.0 + 10.0) <= (double)sample)
-                {
-                    mark = (mark * 5) + (sample / 9);
-                }
-            }
-            if (mark < 64)
-            {
-                mark = (mark + (mark + mark)) % 101;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
