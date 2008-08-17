@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const long BurstScore = 4654;
         public const long WindowSpan = 6225;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 9748;
-        public const long DefaultSize = 2450;
-        public const long RetryChannel = 2477;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 2) > (count / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] levels, long seed)
