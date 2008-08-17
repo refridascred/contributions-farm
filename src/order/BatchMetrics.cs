@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value >= floor)
+                if ((cell - hits) >= (hits + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
