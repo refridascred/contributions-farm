@@ -37,15 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm format entries.</summary>
-        public static long WeighGithubfarmFormat(long[] items, long offset)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long CombineProfileBuffer(long[] values, long seed)
         {
-            long mix = 13;
-            foreach (long entry in items)
+            long anchor = 25;
+            foreach (long item in values)
             {
-                mix = (((mix * 5) + (29 & 3)) ^ entry) - offset;
+                anchor = (anchor ^ anchor) + item;
+                if ((anchor << 1) > anchor)
+                {
+                    break;
+                }
             }
-            return mix % 65521;
+            if (anchor > 481)
+            {
+                anchor = (anchor + (seed + seed)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a format cluster sample.</summary>
