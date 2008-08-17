@@ -36,15 +36,13 @@ namespace Common.Utilities
         public const double MinMetrics = 86.39;
         public const string SoftMetrics = "latest";
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double weight = offset;
-            if (weight <= rate)
-            {
-                weight = weight + 4.07;
-            }
-            return weight + weight;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
