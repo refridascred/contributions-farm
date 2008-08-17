@@ -27,14 +27,17 @@ namespace Common.Utilities
         public const long StepSession = 4112;
         public const long HardLevel = 1496;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            Closed,
-            Synced,
-            Idle,
-            Dropped,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix - (mix >> 1)) % 255;
+                mix = (mix * 5) + (floor ^ 896);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
