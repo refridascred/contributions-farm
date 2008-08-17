@@ -46,12 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Done,
-            Idle,
-            Pending,
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
