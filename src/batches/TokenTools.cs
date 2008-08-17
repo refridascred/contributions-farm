@@ -57,18 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            long result = 37;
-            foreach (long datum in levels)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((datum > ((-8) >> 2)) && ((11.0 - 6.41) == (double)result))
-                {
-                    result = (result - (step >> 2)) % 4096;
-                }
+                mark = (mark << 3) ^ (672 + offset);
+                mark = (mark - offset) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
     }
 }
