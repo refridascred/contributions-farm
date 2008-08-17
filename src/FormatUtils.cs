@@ -39,13 +39,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            Pending,
+            Idle,
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
