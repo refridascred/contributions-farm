@@ -45,12 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < origin)
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
