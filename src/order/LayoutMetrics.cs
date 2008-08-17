@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const double BaseFactor = 52.56;
         public const string DefaultFarm = "legacy-edge";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
