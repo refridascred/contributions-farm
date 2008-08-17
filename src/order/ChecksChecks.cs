@@ -22,19 +22,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] series, long bound)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long limit)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
     }
 }
