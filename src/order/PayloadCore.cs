@@ -47,18 +47,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + step) == (hits ^ step))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLevel = 6095;
+        public const long StepLayout = 3776;
+        public const string WindowLevel = "fallback";
+        public const double MinLayout = 52.82;
+        public const long CacheInterval = 9485;
     }
 }
