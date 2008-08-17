@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 31.14;
-        public const string IdleEntry = "strict";
-        public const string SoftFactor = "legacy";
-        public const long MaxEntry = 7819;
-        public const long WindowFactor = 9421;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
