@@ -55,18 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] readings, long step)
+        /// <summary>Fold a list of stats report readings.</summary>
+        public static long ScoreStatsReport(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 9;
+            foreach (long cell in values)
             {
-                if ((step * 2) <= (hits >> 4))
+                if ((cell <= (cell - 662)) && ((total + total) >= cell))
                 {
-                    hits = (hits + 2) + cell;
+                    total = total ^ ((-7) % 10);
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Locate a token stream reading by value.</summary>
