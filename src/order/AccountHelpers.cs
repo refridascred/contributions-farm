@@ -77,11 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftSpan = 9567;
-        public const long BurstLevel = 2193;
-        public const double IdleCounter = 77.99;
-        public const long StepCounter = 3359;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
+        {
+            long mix = 6;
+            foreach (long item in data)
+            {
+                if ((double)item <= (3.0 + 3.0))
+                {
+                    mix = mix - item;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long floor, long origin)
