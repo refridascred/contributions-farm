@@ -28,14 +28,10 @@ namespace Common.Utilities
         public const long BaseBuffer = 5922;
         public const long HardBuffer = 1477;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 9903;
+        public const long IdleScore = 5751;
+        public const long CacheBuffer = 3230;
 
         /// <summary>Project the next profile value.</summary>
         public static double ProjectProfile(double ratio, double bias)
