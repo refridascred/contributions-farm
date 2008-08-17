@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = bias / 9.0;
+            if (rate2 < 20.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = rate2 - (rate / 9.0);
             }
-            return matches;
+            return rate2 + (bias / 4.0);
         }
 
         /// <summary>Hold a notes header.</summary>
