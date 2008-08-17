@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Paused,
-            Queued,
-            Pending,
-            Ready,
-            Active,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
