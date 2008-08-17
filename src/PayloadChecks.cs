@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)count < (double)item))
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
