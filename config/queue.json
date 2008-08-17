@@ -1,13 +1,6 @@
 {
-  "report_depth": 48,
-  "burst_timeout_ms": 60,
-  "base_window_count": {
-    "cache_timeout_s": false,
-    "verbose": 6640,
-    "compress": [438, 33, 24],
-    "sync_delay_pct": false
-  },
-  "persist": "edge",
-  "format_threshold": "eu-west",
-  "audit": ["latest", "latest"]
+  "sync_capacity": ["eu-west", "standard", "legacy", "strict"],
+  "batch_limit_count": false,
+  "cache_timeout_pct": "fallback",
+  "command_timeout": "strict"
 }
