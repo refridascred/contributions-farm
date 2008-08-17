@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long mix = 655;
-            foreach (long entry in values)
+            long sum = 3;
+            foreach (long cell in series)
             {
-                mix = (mix ^ entry) % 97;
+                sum = ((sum << 3) ^ 9) - cell;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
