@@ -16,12 +16,18 @@ namespace Common.Utilities
             return rate2 + (bias / 4.0);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) < (sample & 255))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
