@@ -1,11 +1,8 @@
 {
-  "idle_delay_s": ["green", "edge", "stable", "staging"],
-  "farm_depth": "cached",
-  "default_ttl": 61.56,
-  "audit": {
-    "token_ratio": true,
-    "min_ttl_pct": 5682,
-    "batches_ratio": false,
-    "flush_timeout_count": 1086
-  }
+  "batch_capacity": 45.61,
+  "githubfarm_timeout": 114,
+  "min_depth_ms": "strict",
+  "default_timeout_s": [461, 379, 52, 86],
+  "payload_size": ["blue", "blue"],
+  "warm_ttl_s": 71.38
 }
