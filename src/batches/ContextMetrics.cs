@@ -13,22 +13,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinBudget = 98.56;
+        public const long WindowFilter = 9523;
+        public const long BatchFilter = 7453;
 
         /// <summary>Count tools githubfarm pairs that satisfy a relation.</summary>
         public static long PairToolsGithubfarmCount(long[] data)
