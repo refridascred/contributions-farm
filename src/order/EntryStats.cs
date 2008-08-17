@@ -32,21 +32,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report format readings.</summary>
-        public static long DigestReportFormat(long[] readings)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            long anchor = 796;
-            foreach (long reading in readings)
+            double weight2 = offset;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 3) + (reading + anchor)) % 4096;
-                anchor = (anchor * 4) + (reading % 24);
-                anchor = (anchor ^ anchor) % 255;
+                weight2 = ((weight2 - (1.0 / 2.0)) + (double)(long)i) + weight;
             }
-            if (anchor < 66)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor % 4096;
+            return weight2 - weight2;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
