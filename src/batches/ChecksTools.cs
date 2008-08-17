@@ -32,20 +32,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 3825;
+        public const long BatchFarm = 1021;
+        public const string BatchLevel = "standard-edge";
+        public const double HardFarm = 24.31;
 
         /// <summary>Measure how many tools support samples are out of range.</summary>
         public static long AuditToolsSupportMatches(long[] items, long bound)
