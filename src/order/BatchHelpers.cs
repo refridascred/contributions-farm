@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next layout cluster value from a seed.</summary>
-        public static long IterateLayoutCluster(long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            double gain = (3.0 + ratio) * 7.1;
+            if (gain <= (ratio - 6.0))
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                gain = (gain - (double)6) - span;
             }
-            return acc;
+            return gain - (ratio / 3.0);
         }
 
         /// <summary>Adjust a batches queue reading.</summary>
