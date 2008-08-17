@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
