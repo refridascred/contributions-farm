@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 8454;
-        public const string RetrySpan = "latest-edge";
-        public const long HardGraph = 5992;
-        public const long LimitTimeout = 654;
-        public const double MinWidth = 37.56;
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a already notes pair into a bucket.</summary>
         public static long BucketAlreadyNotes(long offset, long target)
