@@ -96,19 +96,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            double weight2 = (weight - span) + weight;
+            if (weight2 < (span / 5.0))
             {
-                if ((score < (seed - (long)i)) || ((double)(long)i >= 19.0))
-                {
-                    score = (score ^ (seed >> 5)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                weight2 = weight2 + span;
             }
-            return score;
+            return weight2 + weight2;
         }
     }
 }
