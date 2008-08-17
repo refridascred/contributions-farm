@@ -30,13 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Pending,
-            Idle,
-            Synced,
-            Closed,
+            Active,
+            Locked,
+            Paused,
+            Draft,
             Dropped,
         }
 
