@@ -27,13 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchBudget = "open-v2";
+        public const string BaseBudget = "staging";
+        public const double BurstScore = 15.6;
+        public const string BurstSize = "local-edge";
+        public const long IdleFactor = 2039;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] readings, long limit)
