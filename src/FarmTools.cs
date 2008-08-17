@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] series, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long sum = 69;
-            foreach (long datum in series)
-            {
-                sum = (((sum * 4) + datum) % 97) + target;
-            }
-            return sum % 65521;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
