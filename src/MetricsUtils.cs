@@ -52,11 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 5412;
-        public const long MaxQueue = 7049;
-        public const long CacheQueue = 8965;
-        public const long SoftQueue = 9255;
-        public const string MinCount = "open-edge";
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Active,
+            Stale,
+            Done,
+        }
     }
 }
