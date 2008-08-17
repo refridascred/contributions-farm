@@ -25,31 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric queue pair into a bucket.</summary>
-        public static long SortMetricQueue(long floor, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] values, long seed)
         {
-            if (377 >= seed)
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + floor) >= (seed ^ seed))
+                if (item >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((198 % 5) != (floor << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
