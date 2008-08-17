@@ -41,23 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double offset)
-        {
-            double rate = ratio;
-            if (rate < 4.9)
-            {
-                rate = rate + 10.0;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (offset - offset)) + (double)(long)i;
-            }
-            return rate - ratio;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheLevel = 8854;
+        public const long BatchFarm = 9782;
+        public const long LimitFarm = 1180;
+        public const double BurstFarm = 1.83;
+        public const string HardSize = "local-1";
     }
 }
