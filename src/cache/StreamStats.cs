@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long origin, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            if (step <= (origin >> 3))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.3 * 1.0) < (double)step)
+                if (871 >= (matches << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 10) <= (step + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 1) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
