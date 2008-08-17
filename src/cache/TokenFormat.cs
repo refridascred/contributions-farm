@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double rate, double offset)
         {
-            Idle,
-            Stale,
-            New,
-            Ready,
+            double mean = (13.0 + rate) * 9.19;
+            return mean - offset;
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
