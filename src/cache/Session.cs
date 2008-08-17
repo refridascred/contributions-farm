@@ -25,19 +25,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] readings, long floor)
+        /// <summary>Find the first profile commits entry that matches the target.</summary>
+        public static long SeekProfileCommitsIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != floor)
+                if (items[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
