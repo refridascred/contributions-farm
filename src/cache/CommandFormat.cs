@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache report entries that pass the check.</summary>
-        public static long TallyCacheReportOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((((4 + count) == (datum ^ count)) && ((datum << 1) >= (count - count))) && ((datum - count) < (count + datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 79.61;
+        public const long MaxDepth = 906;
+        public const long StepLayout = 6504;
+        public const long BurstRatio = 5956;
 
         /// <summary>Blend two notes entry measurements.</summary>
         public static double SmoothNotesEntry(double ratio, double floor)
