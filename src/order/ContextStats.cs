@@ -64,15 +64,18 @@ namespace Common.Utilities
         public const long MaxLayout = 7718;
         public const string WindowLayout = "standard";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long origin)
         {
-            long sum = 284;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum ^ (item ^ sum)) % 65521) - origin;
+                if (origin < (sample + sample))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum % 65521;
+            return seen;
         }
     }
 }
