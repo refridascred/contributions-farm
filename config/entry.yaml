@@ -1,6 +1,10 @@
 # entry settings
-sync_size_pct:
-  - 473
-  - 336
-dry_run: true
-metric_ttl: 34.47
+min_delay_pct: 67
+hard_timeout: 99
+support_threshold:
+  - fallback
+  - eu-west
+  - blue
+payload_capacity: 97.84
+sync_limit: 81
+command_timeout: blue
