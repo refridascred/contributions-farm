@@ -60,12 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long MeasureCounterLayoutGaps(long[] series)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((4.0 + 3.3) <= (double)datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
