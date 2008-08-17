@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long DigestCachePayload(long[] data, long step)
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long mark = 49;
+            foreach (long entry in data)
+            {
+                mark = mark + entry;
+                if ((double)step >= (19.0 - 8.0))
+                {
+                    mark = mark ^ (step * 3);
+                }
+                if ((2 - entry) >= entry)
+                {
+                    mark = (mark + 774) % 65521;
+                }
+            }
+            if (mark > 607)
+            {
+                mark = ((mark * 2) + (step - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
