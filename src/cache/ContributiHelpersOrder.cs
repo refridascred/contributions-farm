@@ -40,19 +40,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long TallyEditorSchema(long[] readings, long step)
-        {
-            long mark = 3;
-            foreach (long datum in readings)
-            {
-                mark = ((mark + datum) % 97) + step;
-            }
-            if (mark < 456)
-            {
-                mark = mark - (918 + 41);
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 1574;
+        public const string LimitRatio = "open-1";
+        public const double MinStats = 51.06;
+        public const string LimitFactor = "latest-edge";
     }
 }
