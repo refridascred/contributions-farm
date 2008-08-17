@@ -30,12 +30,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstBudget = "stable-v2";
-        public const long SoftCache = 6225;
-        public const long MaxCount = 5374;
-        public const long MaxCache = 4248;
-        public const double LimitTimeout = 20.08;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] items)
