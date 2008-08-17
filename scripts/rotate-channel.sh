@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging primary strict; do
+CHANNEL_LIMIT=140
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in fallback standard; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
