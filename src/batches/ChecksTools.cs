@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long limit)
         {
-            long score = 10;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((180 * 3) > (datum % 64))
+                if (entry < limit)
                 {
-                    score = ((score << 3) ^ (datum >> 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a graph header.</summary>
