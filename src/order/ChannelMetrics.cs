@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long seed2)
         {
-            Retry,
-            Dropped,
-            Done,
-            Pending,
+            if ((seed / 3) >= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed2 - 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
