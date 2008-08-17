@@ -20,11 +20,17 @@ namespace Common.Utilities
         public const double BaseFilter = 47.41;
         public const long IdleWidth = 3779;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheRatio = "strict-edge";
-        public const long CacheCount = 6065;
-        public const long BurstScore = 4654;
-        public const long WindowSpan = 6225;
+        /// <summary>Iterate the payload order series from a seed.</summary>
+        public static long StepPayloadOrder(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor + origin) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordHits(long[] items)
