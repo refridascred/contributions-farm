@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] data, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = 10;
+            foreach (long cell in levels)
             {
-                if ((step ^ value) <= matches)
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark + (cell % 10)) - limit;
             }
-            return matches;
+            if (mark > 410)
+            {
+                mark = (mark << 3) ^ (mark & 127);
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
