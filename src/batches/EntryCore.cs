@@ -55,9 +55,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowSize = "latest";
-        public const double BurstRatio = 98.03;
-        public const string StepToken = "legacy-1";
+        /// <summary>Project the next support schema value.</summary>
+        public static double ScaleSupportSchema(double bias, double bias2)
+        {
+            double load = 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (double)(long)i) + bias) - bias2;
+            }
+            return load + 15.0;
+        }
     }
 }
