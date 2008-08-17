@@ -46,11 +46,19 @@ namespace Common.Utilities
         public const long DefaultSize = 2450;
         public const long RetryChannel = 2477;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long seed)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long score = 56;
+            foreach (long entry in levels)
+            {
+                score = score - (entry ^ seed);
+                if ((score << 2) < (entry + score))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
