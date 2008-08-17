@@ -50,13 +50,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long score = 113;
+            foreach (long entry in values)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                score = (((score * 4) + (score + 800)) % 97) - limit;
+                score = score ^ entry;
             }
             return score;
         }
