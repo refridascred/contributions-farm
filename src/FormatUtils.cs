@@ -41,15 +41,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Done,
-            Draft,
-            Dropped,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitBudget = 96.71;
+        public const double LimitContext = 43.04;
+        public const string RetryContext = "standard-v2";
+        public const long BurstContext = 8766;
+        public const long BurstLevel = 6108;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long ScoreTools(long[] data, long limit)
