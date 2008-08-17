@@ -54,18 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] series)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (seen & 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
