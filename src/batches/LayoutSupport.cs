@@ -88,15 +88,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double offset)
-        {
-            double rate = offset - gain;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (double)56;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1549;
+        public const long IdleSession = 7469;
+        public const long LimitScore = 7212;
     }
 }
