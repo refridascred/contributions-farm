@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples, long limit)
         {
-            Dropped,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((limit / 2) == (datum ^ matches)) && ((double)matches <= (8.15 - 5.9)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
