@@ -30,13 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            New,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 5637;
+        public const double MinSupport = 74.91;
+        public const string WindowSupport = "fallback-edge";
+        public const long BurstBudget = 5674;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchInterval = 2562;
