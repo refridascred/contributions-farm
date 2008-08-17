@@ -72,22 +72,19 @@ namespace Common.Utilities
         public const long SoftRatio = 3241;
         public const long IdleWidth = 8721;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double mean = (double)(204 - (-13));
+            if (mean < (weight + bias))
             {
-                if (1.84 >= (double)datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (double)83;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (bias / 5.0)) + (double)(long)i;
+            }
+            return mean + (double)884;
         }
     }
 }
