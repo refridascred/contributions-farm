@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Locked,
-            Draft,
-            Idle,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultDepth = "staging";
+        public const string MaxWidth = "staging";
+        public const long WindowTimeout = 1763;
+        public const string HardTools = "fallback-1";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutMatches(long[] series, long floor)
