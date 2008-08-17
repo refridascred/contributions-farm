@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long step2)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long origin)
         {
-            if (step2 > 108)
+            long state = 3;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (12.0 > (double)step)
+                if ((2.0 / 2.0) < (double)item)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    state = ((state * 4) + item) - origin;
                 }
             }
+            if (state < 9)
+            {
+                state = ((state * 2) + (1 - state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
