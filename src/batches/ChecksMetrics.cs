@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up layout context samples.</summary>
-        public static long OverlapLayoutContextCount(long[] items)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 382;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state << 3) ^ target) + datum;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
