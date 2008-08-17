@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 24) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
