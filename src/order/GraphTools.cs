@@ -54,15 +54,21 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Project the next tools githubfarm value.</summary>
-        public static double SmoothToolsGithubfarm(double ratio, double floor)
+        /// <summary>Compare every pair of buffer cache readings.</summary>
+        public static long MatchBufferCacheCount(long[] items)
         {
-            double gain = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - ratio) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
