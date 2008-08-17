@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxTimeout = "local-1";
-        public const double MaxDepth = 35.19;
-        public const string BatchScore = "primary";
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long TallyProfileChannelOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item & 7) >= ((-1) * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] values)
