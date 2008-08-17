@@ -36,17 +36,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] levels, long seed)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool VerifyFarmReportRange(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (levels[i] == seed)
+                if (entry != target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
