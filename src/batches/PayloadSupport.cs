@@ -26,17 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long bound)
+        /// <summary>Check that every route already entry stays within the limit.</summary>
+        public static bool VerifyRouteAlreadyRange(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (series[i] > bound)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
