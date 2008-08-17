@@ -23,11 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 6357;
-        public const string StepNotes = "primary";
-        public const long HardLevel = 1667;
-        public const long HardTimeout = 4831;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] samples, long target)
+        {
+            long anchor = 948;
+            foreach (long value in samples)
+            {
+                anchor = (anchor + ((long)samples.Length + target)) % 1000;
+                if ((24 << 3) > (anchor & 63))
+                {
+                    anchor = anchor + (target - value);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
