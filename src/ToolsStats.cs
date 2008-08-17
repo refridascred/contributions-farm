@@ -54,23 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values, long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long score = 2;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score ^ (score / 2)) % 101) ^ cell;
-                if ((286 / 4) > (bound * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 2) ^ (bound + score);
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 248)
-            {
-                score = score - (bound >> 2);
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
