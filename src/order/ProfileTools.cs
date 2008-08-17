@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long TotalOrderFormat(long[] readings, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] data, long target)
         {
-            long mark = 463;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((target * 2) <= target)
+                if (sample > target)
                 {
-                    mark = mark + (sample % 60);
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a editor entry.</summary>
