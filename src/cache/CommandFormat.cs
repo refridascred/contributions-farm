@@ -52,31 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches metric pair into a bucket.</summary>
-        public static long SortBatchesMetric(long seed, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            if ((limit * 4) > (seed * 2))
+            double mean = rate;
+            if (mean >= span)
             {
-                return 3;
+                mean = mean - mean;
             }
             else
             {
-                if ((limit % 64) >= (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit - 138) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = mean - 2.0;
             }
+            return mean + mean;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
