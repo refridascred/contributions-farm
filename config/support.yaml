@@ -1,8 +1,7 @@
 # support settings
-verbose:
-  - 134
-  - 243
-  - 29
-  - 159
-report_limit: latest
-stream_limit: false
+readonly:
+  - fallback
+  - edge
+filter_window: primary
+batch_delay: blue
+cache_ratio: cached
