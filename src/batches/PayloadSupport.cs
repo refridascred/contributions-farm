@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (matches > ((-41) - cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every route already entry stays within the limit.</summary>
