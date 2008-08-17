@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine support stats values into a single score.</summary>
-        public static long WeighSupportStats(long[] items, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long result = 347;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + offset) ^ item;
+                anchor = (anchor - (limit / 9)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
