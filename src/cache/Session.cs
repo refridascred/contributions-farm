@@ -33,13 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] values)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long mark = 96;
+            foreach (long cell in values)
+            {
+                mark = ((mark << 3) ^ ((-272) + cell)) % 4096;
+                mark = mark ^ ((-10) + 808);
+                mark = mark - (mark << 1);
+            }
+            if (mark > 47)
+            {
+                mark = (mark + (mark / 2)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
