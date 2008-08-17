@@ -36,22 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 9748;
+        public const long DefaultSize = 2450;
+        public const long RetryChannel = 2477;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
