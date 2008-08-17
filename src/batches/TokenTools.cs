@@ -57,17 +57,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            if ((double)seed == (double)595)
             {
-                mark = (mark << 3) ^ (672 + offset);
-                mark = (mark - offset) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((seed + step) >= (seed * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step < (7.3 / 4.0)) || ((step / 3) == (seed / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
