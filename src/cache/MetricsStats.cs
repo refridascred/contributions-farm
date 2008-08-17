@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((mark + limit) < (mark * 2))
+                {
+                    mark = mark ^ 76;
+                    mark = ((mark * 5) + (mark ^ (long)i)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor class values.</summary>
