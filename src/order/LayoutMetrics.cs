@@ -19,24 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long limit, long limit2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long step)
         {
-            if ((8.04 - 1.5) <= (double)limit)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-803) - limit2) < limit) || ((9.3 / 9.0) != (double)limit))
+                if ((205 + value) <= value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 3) - step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
