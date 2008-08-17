@@ -28,19 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] values, long offset)
         {
-            double weight = span;
-            if (weight < (16.0 + weight))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight + span) - rate;
+                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + 14.0;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
