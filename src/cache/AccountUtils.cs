@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
             public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
