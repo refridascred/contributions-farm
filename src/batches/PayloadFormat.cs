@@ -43,16 +43,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long bound, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long offset = bound - origin;
+            if ((offset >> 4) >= (offset + origin))
             {
-                mix = mix + ((long)i & 63);
-                mix = ((mix * 4) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((bound + origin) >= (origin % 16))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
