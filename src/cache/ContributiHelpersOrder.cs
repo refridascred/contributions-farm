@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            long anchor = 0;
-            foreach (long sample in values)
+            double weight = 9.2;
+            if (weight <= 0.83)
             {
-                anchor = anchor ^ sample;
-                if (((9.78 - 5.0) <= (double)anchor) && (177 < (anchor << 3)))
-                {
-                    break;
-                }
+                weight = (weight - (double)24) - scale;
             }
-            return anchor;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 7.4) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
