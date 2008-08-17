@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            New,
+            Paused,
             Pending,
-            Retry,
-            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate profile samples.</summary>
