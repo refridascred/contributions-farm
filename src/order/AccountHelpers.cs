@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits * 5) > seed) || ((seed % 60) >= (value - hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
