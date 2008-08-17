@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 92.52;
         public const long BatchMetrics = 4114;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
