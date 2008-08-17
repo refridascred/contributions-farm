@@ -43,19 +43,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)state != (16.0 - 0.2)))
+                if ((seen % 12) == (cell + seen))
                 {
-                    state = (state - (long)i) % 97;
+                    seen = seen + 3;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
