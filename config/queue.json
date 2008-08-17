@@ -1,8 +1,16 @@
 {
-  "cluster_capacity": "primary",
-  "soft_threshold_ms": 2224,
-  "compress": ["open", "latest"],
-  "layout_retries": 8642,
-  "stats_threshold": 74.19,
-  "account_window": 65
+  "cluster_depth": [271, 468],
+  "min_size": 166,
+  "warm_retries_s": {
+    "verbose": {
+      "flush_size": [30, 379, 27, 341],
+      "payload_size": "latest",
+      "already_timeout": "stable",
+      "retry_size_s": [450, 182, 65],
+      "burst_limit_ms": 6885
+    },
+    "hard_depth": false,
+    "retry_delay_count": 15
+  },
+  "retry_limit_pct": "latest"
 }
