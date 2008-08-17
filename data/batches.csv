@@ -1,8 +1,6 @@
-id,state,count
-1,29.99,808
-2,fallback,strict
-3,766,235
-4,53.79,809
-5,622,legacy
-6,85.07,52.6
-7,51.79,468
+id,rank,ratio,weight
+1,312,primary,61.8
+2,green,latest,18.48
+3,53.93,stable,93
+4,stable,edge,873
+5,2.67,632,98.46
