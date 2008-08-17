@@ -21,18 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "local-1";
+        public const long LimitCount = 9887;
+        public const string StepSchema = "staging-v2";
+        public const long WindowSchema = 5017;
+        public const long RetrySchema = 7492;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 486;
