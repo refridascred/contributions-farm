@@ -40,39 +40,17 @@ namespace Common.Utilities
         public const long DefaultBudget = 6152;
         public const long RetrySession = 2301;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] items, long seed)
         {
-            long cur = step ^ bound;
-            if ((cur << 3) > (step / 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step % 64) <= step)
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((cur - bound) >= (cur / 4)) || ((18.0 * 9.0) != (double)cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (cur < (step - cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
