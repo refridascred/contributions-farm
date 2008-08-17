@@ -1,7 +1,10 @@
-id,rank,state,region,owner
-1,92.29,primary,91.87,fallback
-2,511,615,60.94,green
-3,local,strict,staging,68.0
-4,268,open,legacy,green
-5,eu-west,586,815,98.08
-6,fallback,stable,46.18,cached
+id,score,label
+1,139,open
+2,52.42,88.99
+3,575,stable
+4,primary,staging
+5,25.69,staging
+6,809,30.95
+7,latest,6.34
+8,84.88,fallback
+9,730,719
