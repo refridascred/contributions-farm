@@ -29,17 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] values, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                if ((seen + seen) >= ((long)levels.Length + seed))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
