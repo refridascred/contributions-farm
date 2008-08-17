@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const double StepBudget = 45.21;
         public const long LimitTimeout = 3578;
 
-        /// <summary>Validate payload notes readings against a bound.</summary>
-        public static bool VerifyPayloadNotesBounds(long[] items, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit format commits readings against a rule.</summary>
