@@ -97,11 +97,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items, long step)
         {
-            double drift = (double)(954 % 60);
-            return (drift - (offset / 9.0)) + gain;
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((3.7 - 0.83) <= (double)reading)
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
     }
 }
