@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            double weight = (3.7 * 13.0) * 5.5;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight - offset) + (double)(long)i) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + offset;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
