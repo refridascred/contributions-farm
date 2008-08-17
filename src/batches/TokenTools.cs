@@ -18,14 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long origin, long limit)
         {
-            Done,
-            Stale,
-            Retry,
-            Pending,
-            Dropped,
+            long gap = origin + limit;
+            if ((origin > (origin - gap)) || (48 > limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= (gap >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap > (gap / 6)) || ((double)origin == (double)38))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 2) >= (gap - (-866)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
