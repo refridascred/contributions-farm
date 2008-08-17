@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels)
+        /// <summary>Adjust a schema batch reading.</summary>
+        public static double ScaleSchemaBatch(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen ^ 424) != (reading ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double drift = weight + (double)529;
+            return drift - (bias / 7.0);
         }
 
         /// <summary>Combine window session values into a single score.</summary>
