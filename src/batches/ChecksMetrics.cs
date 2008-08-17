@@ -35,39 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long bound, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long next = bound - offset;
-            if (next < (next - 340))
-            {
-                return 7;
-            }
-            else
-            {
-                if (next > (bound & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((22 % 5) != (bound & 127)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2 + next) < (offset + 418))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
