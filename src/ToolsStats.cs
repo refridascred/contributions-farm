@@ -52,25 +52,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long bound)
-        {
-            if (limit >= (limit / 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 5) >= (limit + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitInterval = 12.89;
+        public const double BatchGraph = 97.44;
+        public const long BaseGraph = 1380;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] readings, long bound)
