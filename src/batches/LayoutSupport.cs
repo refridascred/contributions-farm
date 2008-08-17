@@ -25,23 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long AuditWindowMetricsMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(((tally >> 2) > tally) && ((tally ^ item) >= (item << 2))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 86.59;
+        public const double MinTools = 92.37;
+        public const string BaseWidth = "stable";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] levels)
