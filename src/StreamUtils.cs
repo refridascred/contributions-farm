@@ -50,21 +50,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Derive the next batch editor value from a seed.</summary>
+        public static long RollBatchEditor(long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
