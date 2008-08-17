@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = 1;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (3.27 * 7.0))
-                {
-                    sum = (sum << 2) ^ (677 / 2);
-                }
-            }
-            return sum;
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of metric already entries.</summary>
