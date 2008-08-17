@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long origin)
-        {
-            long offset = seed ^ origin;
-            if ((6.0 < (double)origin) || ((origin & 1) < (origin + seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (double)1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 255) != (origin + 27))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - 96) > (seed & 15))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 8992;
+        public const string BatchScore = "open-edge";
+        public const long HardEntry = 874;
+        public const double CacheEntry = 14.06;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
