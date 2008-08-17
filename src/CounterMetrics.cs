@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values, long floor)
         {
-            Pending,
-            Synced,
-            Failed,
+            long result = 285;
+            foreach (long cell in values)
+            {
+                if ((floor ^ cell) >= 833)
+                {
+                    result = result ^ (floor + result);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a schema summary.</summary>
