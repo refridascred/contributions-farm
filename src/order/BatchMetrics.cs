@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next stats farm value.</summary>
-        public static double ProjectStatsFarm(double weight, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series, long origin)
         {
-            double scale = weight;
-            return scale + span;
+            long acc = -151;
+            foreach (long item in series)
+            {
+                acc = (((acc << 2) ^ (acc - origin)) % 4096) ^ item;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate stats support samples.</summary>
