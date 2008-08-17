@@ -2,8 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+
+INSERT INTO commits_records (token, owner, active, level) VALUES ('legacy', 'eu-west', 99, 69);
+INSERT INTO commits_records (token, owner, active, level) VALUES ('primary', 'edge', 37, 82);
