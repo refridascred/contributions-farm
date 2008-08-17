@@ -31,19 +31,19 @@ namespace Common.Utilities
             return drift + (2.5 / 4.0);
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Roll a stream window counter forward.</summary>
+        public static long StepStreamWindow(long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((bound % 5) <= (score + score)) || (bound < (bound >> 1)))
+                if ((double)limit < (6.7 * 18.0))
                 {
-                    score = (score - (bound + bound)) % 4096;
+                    anchor = ((anchor * 3) + (limit << 3)) % 255;
                 }
-                score = ((score * 5) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a editor summary.</summary>
