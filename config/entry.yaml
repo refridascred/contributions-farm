@@ -1,15 +1,6 @@
 # entry settings
-hard_ttl_pct: local
-min_threshold_s:
-  - stable
-  - legacy
-flush_size_count:
-  flush_delay_count:
-    - legacy
-    - standard
-    - fallback
-  cluster_retries: edge
-  readonly: cached
-  persist: false
-  soft_size_ms: 19
-readonly: eu-west
+base_threshold_count: latest
+burst_threshold_pct: 11
+compress: 7500
+metric_interval: 8871
+min_capacity_pct: false
