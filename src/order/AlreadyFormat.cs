@@ -35,21 +35,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Count contributi report pairs that satisfy a relation.</summary>
+        public static long PairContributiReportCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 17)
+                    if ((series[i] ^ series[j]) < 20)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
