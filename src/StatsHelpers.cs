@@ -26,21 +26,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long score = 493;
+            foreach (long item in series)
             {
-                mark = (mark << 2) ^ target;
-                if ((double)(long)i <= (double)mark)
+                if (!((item + score) < (586 / 5)))
                 {
-                    mark = (mark - (mark << 1)) % 65521;
-                    mark = ((mark << 3) ^ (488 << 3)) % 65521;
+                    score = score + (score / 7);
+                    continue;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                else
+                {
+                    score = (score + score) % 4096;
+                    score = score ^ (item + item);
+                }
+                score = (score ^ item) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Fold a list of account already readings.</summary>
