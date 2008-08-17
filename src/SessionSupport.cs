@@ -5,25 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Grade a counter queue value against two limits.</summary>
+        public static long BucketCounterQueue(long target, long offset)
         {
-            long acc = 4;
-            foreach (long value in data)
+            long diff = target ^ offset;
+            if (!((offset % 60) > (offset + diff)))
             {
-                acc = (acc ^ (5 % 7)) % 101;
-                acc = ((acc * 5) + value) % 255;
-                acc = acc - (value * 2);
-                if (((double)value != (4.28 - 3.7)) || ((value - acc) <= (value ^ value)))
+                return 0;
+            }
+            else
+            {
+                if (((double)diff < (6.0 + 5.7)) || (13.0 >= (double)diff))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((11.0 - 1.43) != (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.0 / 8.0) < (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc < 772)
-            {
-                acc = acc - (650 * 3);
-            }
-            return acc % 1000;
         }
 
         /// <summary>Adjust a schema format reading.</summary>
