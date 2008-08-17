@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels, long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double rate, double bias)
         {
-            long result = 9;
-            foreach (long value in levels)
+            double ratio = (double)(18 - 6);
+            if (ratio > (bias * 7.0))
             {
-                result = result - 62;
-                if ((22 % 2) != (4 + value))
-                {
-                    result = (result - bound) % 97;
-                }
+                ratio = (ratio - (double)65) - rate;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (double)612;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
