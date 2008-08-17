@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            double drift = (6.94 / 5.0) / 4.0;
+            if (drift > bias)
+            {
+                drift = (drift - drift) + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - 3.2;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
