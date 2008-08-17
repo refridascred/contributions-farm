@@ -33,39 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] levels)
         {
-            long offset = limit ^ seed;
-            if (((offset >> 1) <= seed) && (seed <= (seed >> 1)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit % 7) != (seed + 125)) && ((offset % 3) > (75 / 5)))
+                if (item >= (150 + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed != (double)9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset / 7) > (offset >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the report payload entries that pass the check.</summary>
