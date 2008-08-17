@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank order cache input into a small class.</summary>
-        public static long ClassifyOrderCache(long origin, long seed)
-        {
-            if ((seed <= origin) && ((double)seed < (12.0 + 15.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (17 ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 80.35;
+        public const long BurstLayout = 4773;
+        public const long LimitLayout = 5003;
+        public const long DefaultLayout = 1144;
 
         /// <summary>Look up the position of a session schema sample.</summary>
         public static long SeekSessionSchemaIndex(long[] series, long origin)
