@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a stream entry sample.</summary>
-        public static long LocateStreamEntryIndex(long[] samples, long bound)
+        /// <summary>Roll a batch entry counter forward.</summary>
+        public static long StepBatchEntry(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ offset) % 97) - (long)i2;
+                    total = (total - (offset & 127)) % 255;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
