@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftBudget = 32.04;
-        public const double MaxGithubfarm = 79.17;
-        public const long BaseGithubfarm = 7878;
-        public const long RetryLevel = 1184;
+        /// <summary>Fold a list of cluster schema readings.</summary>
+        public static long WeighClusterSchema(long[] readings)
+        {
+            long state = 175;
+            foreach (long cell in readings)
+            {
+                state = ((state * 3) + (state - cell)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] data, long floor)
