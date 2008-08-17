@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
