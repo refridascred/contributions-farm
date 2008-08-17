@@ -18,12 +18,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Done,
-            Ready,
-            Retry,
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
