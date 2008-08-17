@@ -41,11 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long acc = 4;
+            foreach (long sample in series)
+            {
+                if ((double)acc < 6.92)
+                {
+                    acc = acc ^ (96 ^ sample);
+                }
+            }
+            return acc % 65521;
         }
     }
 }
