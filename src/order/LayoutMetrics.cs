@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long entry in series)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ (carry + carry)) % 255) ^ entry;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
