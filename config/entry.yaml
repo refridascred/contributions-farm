@@ -1,5 +1,9 @@
 # entry settings
-flush_limit: 74.09
-warm_retries_pct: true
-verbose: legacy
-readonly: 24
+sync_limit_pct: 9607
+route_capacity:
+  - edge
+  - eu-west
+  - open
+  - latest
+enabled: 4454
+commits_window: true
