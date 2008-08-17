@@ -83,13 +83,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two window route measurements.</summary>
+        public static double AdjustWindowRoute(double gain, double bias)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = gain * 12.0;
+            if (ratio < (1.5 - bias))
+            {
+                ratio = ratio - (gain + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + (bias / 7.0);
         }
     }
 }
