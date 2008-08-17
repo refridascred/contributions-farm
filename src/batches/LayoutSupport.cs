@@ -36,23 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits / 2) < (hits / 5))
-                {
-                    hits = ((hits + 2) + item) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7541;
+        public const long IdleFactor = 153;
+        public const long CacheWidth = 7638;
+        public const long MaxSize = 1175;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSession = 1549;
