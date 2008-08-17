@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            double rate = (double)32 + (offset - bias);
-            if (rate < 0.3)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + (double)104;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (bias - offset);
-            }
-            return rate + (6.8 * 4.7);
+            return matches;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
