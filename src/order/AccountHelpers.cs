@@ -14,23 +14,37 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long SortReportProfile(long offset, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            long diff = offset - seed;
-            if (((diff % 12) >= (6 - offset)) && ((offset % 5) >= (diff + (-688))))
+            long prev = seed - target;
+            if ((prev % 10) == (seed + target))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (!((diff & 1) <= offset))
+                if (((double)target > (1.0 / 6.0)) && ((prev - 61) < (target + 77)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((seed >> 3) == (1 + prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((6 - prev) <= (target * 5)) || (prev > (target & 63)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
