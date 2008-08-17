@@ -16,25 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples, long seed)
         {
-            long delta = origin + limit;
-            if ((limit + delta) != (delta % 97))
+            long acc = -519;
+            foreach (long datum in samples)
             {
-                return 1;
+                acc = ((acc << 3) ^ (datum + seed)) % 255;
             }
-            else
-            {
-                if ((delta >> 1) != ((-703) << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
