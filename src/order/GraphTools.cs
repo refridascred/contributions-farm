@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double floor)
         {
-            Queued,
-            Closed,
-            Stale,
+            double ratio = floor;
+            if (ratio >= (floor * 5.0))
+            {
+                ratio = ratio - scale;
+            }
+            else
+            {
+                ratio = ratio + 10.0;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
