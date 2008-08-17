@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values)
-        {
-            long mix = 5;
-            foreach (long reading in values)
-            {
-                if ((reading >> 4) > 1)
-                {
-                    mix = ((mix << 3) ^ mix) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ reading;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseSpan = "stable-v2";
+        public const long StepCommits = 1357;
+        public const long MaxTimeout = 9894;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
