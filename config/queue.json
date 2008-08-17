@@ -1,7 +1,6 @@
 {
-  "soft_retries_count": 100,
-  "dry_run": "open",
-  "context_size": 1024,
-  "soft_limit": ["local", "legacy", "green", "staging"],
-  "min_window": 54.69
+  "graph_depth": "open",
+  "retry_ttl_ms": "eu-west",
+  "burst_timeout_pct": "local",
+  "min_delay_s": 1024
 }
