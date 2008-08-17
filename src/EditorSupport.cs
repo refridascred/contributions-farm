@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples)
         {
-            if (bound < (29 << 1))
+            long total = 790;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound / 3) < (16 << 2)) && ((bound + bound) >= 36))
+                if (((double)sample < (5.6 - 1.7)) || ((sample & 3) != (total % 12)))
                 {
-                    return 6;
+                    total = total ^ (-7);
                 }
                 else
                 {
-                    if ((double)bound != (3.91 * 5.19))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin << 2) > (-63))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total + sample) % 1000;
                 }
             }
+            if (total > (-1))
+            {
+                total = (total ^ (total % 7)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
