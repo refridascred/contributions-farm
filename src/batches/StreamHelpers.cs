@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] values, long floor)
         {
-            long result = 21;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (values[i] > floor)
                 {
-                    result = result - (result / 6);
-                    result = ((result * 5) + ((long)i * 4)) % 4096;
+                    return (long)i;
                 }
-                result = (result + (datum * 3)) % 255;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
