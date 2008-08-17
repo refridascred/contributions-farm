@@ -13,24 +13,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the session buffer series from a seed.</summary>
-        public static long StepSessionBuffer(long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            if (((limit + limit) > (target - limit)) || ((5.54 * 9.76) > (double)limit))
             {
-                anchor = ((anchor << 3) ^ 891) % 255;
-                if ((limit * 4) < limit)
+                return 7;
+            }
+            else
+            {
+                if (target <= (target ^ target))
                 {
-                    break;
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor + anchor) % 1000;
+                    if (((double)target > (5.08 * 8.9)) || (target > (limit - limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target & 7) < (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
         }
 
         /// <summary>Audit payload commits readings against a rule.</summary>
