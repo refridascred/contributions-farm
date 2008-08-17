@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit checks cluster readings against a rule.</summary>
-        public static long CountChecksClusterGaps(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((19.0 - 6.2) > (double)target)
             {
-                if (!!(tally >= (cell + 494)))
+                return 5;
+            }
+            else
+            {
+                if (target <= (origin + target))
                 {
-                    tally = tally + 1;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(target > (origin << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
