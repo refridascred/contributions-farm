@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long TallyWindowChannelHits(long[] items, long origin)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long CombineToolsAccount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = -589;
+            foreach (long datum in series)
             {
-                if (value <= (value - (long)items.Length))
-                {
-                    seen = (seen + 3) - origin;
-                }
+                state = (((state << 2) ^ (92 + state)) % 101) - datum;
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Roll a context counter forward.</summary>
