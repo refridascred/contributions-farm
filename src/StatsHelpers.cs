@@ -35,25 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] series)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = 493;
-            foreach (long item in series)
-            {
-                if (!((item + score) < (586 / 5)))
-                {
-                    score = score + (score / 7);
-                    continue;
-                }
-                else
-                {
-                    score = (score + score) % 4096;
-                    score = score ^ (item + item);
-                }
-                score = (score ^ item) % 65521;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
