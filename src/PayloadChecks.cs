@@ -83,19 +83,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long limit)
+        /// <summary>Compare every pair of stats checks readings.</summary>
+        public static long CompareStatsChecksCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
