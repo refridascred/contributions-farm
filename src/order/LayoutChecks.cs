@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 7880;
-        public const double HardMetric = 10.82;
-        public const long BatchDepth = 9024;
-        public const double HardSize = 62.67;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Adjust a counter contributi reading.</summary>
         public static double BlendCounterContributi(double rate, double span)
