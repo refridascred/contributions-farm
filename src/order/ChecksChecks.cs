@@ -22,15 +22,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 1436;
+        public const long DefaultWidth = 5618;
+        public const long MinSize = 1165;
     }
 }
