@@ -38,27 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            long acc = -90;
-            foreach (long cell in items)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = ((acc + (long)items.Length) % 101) ^ (long)i;
-                    acc = acc ^ (cell + cell);
-                }
-                if (cell <= acc)
-                {
-                    acc = acc - (cell / 6);
-                }
+                mix = mix - (mix / 7);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (acc < 13)
-            {
-                acc = ((acc << 2) ^ (31 * 4)) % 97;
-            }
-            return acc;
+            return mix;
         }
     }
 }
