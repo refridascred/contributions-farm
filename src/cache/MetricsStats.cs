@@ -45,12 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate buffer account readings against a bound.</summary>
+        public static bool CheckBufferAccountRange(long[] series, long limit)
         {
-            Ready,
-            Failed,
-            Synced,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
