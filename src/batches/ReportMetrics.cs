@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
