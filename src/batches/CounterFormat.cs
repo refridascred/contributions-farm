@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitLevel = 3922;
-        public const long BurstScore = 3584;
-        public const long WindowSize = 1386;
-        public const long WindowDepth = 8374;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long target)
+        {
+            long anchor = 732;
+            foreach (long sample in items)
+            {
+                long matches = anchor % 8;
+                anchor = (anchor + (matches + sample)) % 97;
+                if ((((-55) + target) <= sample) || ((3.7 / 5.0) <= (double)anchor))
+                {
+                    anchor = ((anchor << 2) ^ (target + anchor)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
