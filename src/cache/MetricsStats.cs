@@ -49,19 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double floor)
         {
-            long anchor = 2;
-            foreach (long cell in samples)
+            double bias = weight;
+            if (bias < (1.54 * 1.8))
             {
-                anchor = ((anchor + (11 ^ 967)) % 1000) ^ cell;
+                bias = bias + floor;
             }
-            if (anchor > 944)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor * 5) + anchor;
+                bias = (bias + 3.1) - (double)(long)i;
             }
-            return anchor % 1000;
+            return bias + (double)(-679);
         }
     }
 }
