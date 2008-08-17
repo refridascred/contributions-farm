@@ -38,21 +38,14 @@ namespace Common.Utilities
         public const double BaseContext = 2.92;
         public const long RetryCount = 5639;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Match up batches samples.</summary>
