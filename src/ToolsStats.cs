@@ -20,11 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            double drift = offset;
+            if (drift >= (double)63)
+            {
+                drift = drift + (double)64;
+            }
+            else
+            {
+                drift = drift + (offset + gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
