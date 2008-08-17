@@ -35,10 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 1189;
-        public const long MinEditor = 987;
-        public const double MinInterval = 24.49;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (tally > 93)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] samples, long limit)
