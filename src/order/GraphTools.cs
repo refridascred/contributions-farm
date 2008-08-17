@@ -40,22 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 64.53;
+        public const long SoftRatio = 3241;
+        public const long IdleWidth = 8721;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountHits(long[] readings)
