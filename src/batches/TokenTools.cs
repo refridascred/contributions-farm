@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of order farm entries.</summary>
+        public static long DigestOrderFarm(long[] values, long target)
         {
-            Idle,
-            Retry,
-            Closed,
-            Stale,
-            Failed,
+            long mark = 16;
+            foreach (long value in values)
+            {
+                mark = (((mark ^ (mark + mark)) % 101) + value) - target;
+            }
+            if (mark > (-95))
+            {
+                mark = ((mark << 3) ^ (mark ^ mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate farm samples.</summary>
