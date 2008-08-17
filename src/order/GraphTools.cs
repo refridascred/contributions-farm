@@ -65,24 +65,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            long mix = 405;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (mix <= (mix >> 5))
+                if (1.84 >= (double)datum)
                 {
-                    mix = (((mix << 3) ^ (mix % 12)) % 101) - step;
-                    mix = (mix * 5) + ((long)values.Length & 15);
+                    matches = matches + 1;
                 }
-                mix = mix - cell;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mix < (-9))
-            {
-                mix = ((mix << 3) ^ (mix << 3)) % 97;
-            }
-            return mix % 97;
+            return matches;
         }
     }
 }
