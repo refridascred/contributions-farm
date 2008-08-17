@@ -53,16 +53,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long TotalCommandFarm(long[] readings, long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = -64;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ bound) + datum;
-                anchor = (anchor << 3) ^ (107 * 4);
-            }
-            return anchor % 4096;
+            Stale,
+            New,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
