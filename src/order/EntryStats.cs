@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
