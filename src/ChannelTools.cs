@@ -19,17 +19,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (values[i] <= floor)
+                if ((item << 3) < (item + item))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next stats value.</summary>
