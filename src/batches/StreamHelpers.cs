@@ -64,18 +64,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit window batches readings against a rule.</summary>
-        public static long CountWindowBatchesOutliers(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((entry << 1) != (entry - entry))
+                if (datum <= target)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
