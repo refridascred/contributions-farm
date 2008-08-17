@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] levels, long floor)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((5.7 - 12.0) <= (0.35 + 7.25)) && ((930 >> 1) >= datum))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
