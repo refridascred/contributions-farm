@@ -64,18 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] samples, long target)
+        /// <summary>Project the next report cache value.</summary>
+        public static double BlendReportCache(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double rate = (double)(6 - 6);
+            if (rate < (double)664)
             {
-                if (((entry + tally) == (46 >> 1)) || (target >= (target & 3)))
-                {
-                    tally = tally + 3;
-                }
+                rate = (rate - bias) - bias2;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
