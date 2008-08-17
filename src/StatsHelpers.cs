@@ -52,22 +52,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] series)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2 % 3) >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
