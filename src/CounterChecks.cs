@@ -58,18 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long MeasureCommandFilterGaps(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = 50;
+            foreach (long sample in values)
             {
-                if (matches <= (sample - sample))
-                {
-                    matches = matches + 1;
-                }
+                result = ((result + (result * 2)) % 97) ^ sample;
             }
-            return matches;
+            if (result > 139)
+            {
+                result = (result - (step % 5)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
