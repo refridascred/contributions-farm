@@ -67,25 +67,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a entry order value against two limits.</summary>
-        public static long BucketEntryOrder(long bound, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long step = bound - floor;
-            if ((bound >> 4) < 14)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((floor + step) != (bound + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
     }
 }
