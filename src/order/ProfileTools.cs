@@ -58,15 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            double weight = 4.1;
+            if (weight >= (double)0)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                weight = (weight - (weight + offset)) - bias;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (offset * 2.2)) + (double)(long)i;
+            }
+            return weight + (double)(-221);
         }
 
         /// <summary>Describe the tools class values.</summary>
