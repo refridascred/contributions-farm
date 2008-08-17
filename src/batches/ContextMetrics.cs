@@ -54,15 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context cache figure with a bias.</summary>
-        public static double SmoothContextCache(double scale, double span)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double mean = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + (span + mean);
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
