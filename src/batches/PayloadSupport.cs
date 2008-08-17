@@ -22,21 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of context schema readings.</summary>
-        public static long MatchContextSchemaCount(long[] levels)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.0 * 2.0) <= (double)seen)
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 2) + item) - step;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
