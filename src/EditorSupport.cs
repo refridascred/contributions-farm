@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowToken = 3.96;
-        public const long MinToken = 2101;
-        public const double IdleSize = 79.04;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long bound)
+        {
+            if (bound < (29 << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound / 3) < (16 << 2)) && ((bound + bound) >= 36))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (3.91 * 5.19))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin << 2) > (-63))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
