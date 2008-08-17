@@ -30,11 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryLevel = 1329;
-        public const long RetryCluster = 800;
-        public const long RetryFactor = 9345;
-        public const string MinCluster = "primary-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitWidth = 8.13;
+        public const long SoftSpan = 5406;
+        public const long BatchTimeout = 5239;
+        public const double IdleLevel = 17.28;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsHits(long[] levels, long target)
