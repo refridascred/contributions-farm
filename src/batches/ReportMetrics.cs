@@ -20,15 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long mix = 4;
+            foreach (long datum in series)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (datum <= 13)
+                {
+                    mix = ((mix << 3) ^ (mix + 73)) % 97;
+                }
             }
-            return total;
+            if (mix > 88)
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a already summary.</summary>
