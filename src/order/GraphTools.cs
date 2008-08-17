@@ -70,22 +70,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] items, long limit)
+        /// <summary>Roll a session metric counter forward.</summary>
+        public static long RollSessionMetric(long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((401 % 12) < (item - item)) && ((70 >> 2) > item))
+                if (!(target < (carry * 4)))
                 {
-                    count = (count + 1) - limit;
+                    carry = (carry ^ target) % 1000;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
