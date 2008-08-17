@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long MeasureSchemaNotesOutliers(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading + reading) == (seen / 4)) || ((double)377 <= (double)limit)) && ((reading + 54) != (reading * 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 6253;
+        public const long LimitOrder = 5195;
+        public const long IdleFactor = 5907;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstStream = 2322;
