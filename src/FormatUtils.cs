@@ -20,15 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = 7;
+            foreach (long sample in values)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (sample > (acc & 127))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                acc = (acc << 2) ^ (acc / 5);
+                if ((acc & 3) <= (acc << 2))
+                {
+                    acc = (acc * 2) + (4 << 3);
+                }
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
