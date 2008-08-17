@@ -1,8 +1,11 @@
 {
-  "soft_retries": false,
-  "idle_delay": 85,
-  "filter_ratio": true,
-  "burst_delay": [116, 494, 44, 189],
-  "enabled": false,
-  "cache_retries": false
+  "batch_threshold": 69,
+  "min_delay": 250,
+  "idle_threshold_s": {
+    "batch_window_pct": "cached",
+    "hard_ratio_pct": 50.36,
+    "readonly": true,
+    "counter_window": 100
+  },
+  "soft_window_ms": [19, 188]
 }
