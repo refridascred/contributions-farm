@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] readings, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long seed)
         {
-            long total = 14;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                total = (total ^ (total - step)) % 255;
-                if (((total + 9) > 4) && ((7 + total) >= (803 + cell)))
+                if (value < seed)
                 {
-                    total = ((total << 2) ^ (step & 127)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = (total ^ 78) % 4096;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the counter phase values.</summary>
