@@ -35,17 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = bound - offset;
+            if (next < (next - 340))
             {
-                if (data[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if (next > (bound & 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((22 % 5) != (bound & 127)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((2 + next) < (offset + 418))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
