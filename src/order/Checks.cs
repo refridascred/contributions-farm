@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long WindowProfile = 3934;
         public const long BurstProfile = 8493;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((0 + reading) == ((long)values.Length + reading)) && ((double)matches != (1.1 / 2.0))) && (((double)reading <= (double)matches) || ((matches / 4) <= matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowRatio = "open";
+        public const string LimitBudget = "alpha";
+        public const long MaxBudget = 5609;
+        public const long StepSize = 856;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] series)
