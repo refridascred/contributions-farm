@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] series, long seed)
         {
-            long score = 669;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((3.9 + 9.0) != (double)entry)
+                if (entry != seed)
                 {
-                    score = ((score * 3) + (97 >> 4)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (8 + entry);
-                    score = score - entry;
-                }
-                if ((entry / 7) != (entry + 7))
-                {
-                    score = (score << 2) ^ (score + entry);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 7)
-            {
-                score = (score ^ (174 - score)) % 101;
-            }
-            return score % 1000;
+            return found;
         }
     }
 }
