@@ -42,13 +42,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long floor)
         {
-            Synced,
-            Closed,
-            Stale,
-            Paused,
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((double)state != (16.0 - 0.2)))
+                {
+                    state = (state - (long)i) % 97;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
