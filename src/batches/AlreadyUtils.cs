@@ -36,13 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Dropped,
-            Stale,
-            Locked,
-            Retry,
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first counter token entry that matches the target.</summary>
