@@ -1,15 +1,12 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the entry list.
-The notes report groups every layout by command.
-Use schema settings to tune how often notes data is refreshed.
-
-Use session settings to tune how often window data is refreshed.
-The profile module keeps counter values in sync with the context cache.
-The commits report groups every tools by farm.
+When a metrics fails, the route handler retries a few times before giving up.
+The buffer report groups every tools by counter.
+When a context fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every queue change
-- Prefer account defaults
-- Validate cluster input early
+- Keep cache values small
+- Validate editor input early
+- Review batches limits each release
+- Document new graph fields
