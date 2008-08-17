@@ -48,17 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter token entry that matches the target.</summary>
-        public static long LocateCounterTokenIndex(long[] values, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
