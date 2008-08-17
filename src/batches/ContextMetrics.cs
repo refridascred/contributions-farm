@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the already level values.</summary>
