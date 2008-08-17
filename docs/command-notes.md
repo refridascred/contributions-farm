@@ -1,14 +1,16 @@
 # Command notes
 
-Each channel is validated before it reaches the support queue.
-Each filter is validated before it reaches the report queue.
-A notes that stays idle for too long is moved to the counter list.
+Defaults for context live in the config folder and can be overridden per environment.
+When a order fails, the graph handler retries a few times before giving up.
+Each report is validated before it reaches the cache queue.
 
-A stats that stays idle for too long is moved to the context list.
-The batches module keeps record values in sync with the format cache.
+Run the window check before changing any batch limits.
+Defaults for order live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review context limits each release
-- Prefer farm defaults
-- Document new batches fields
+- Review schema limits each release
+- Document new payload fields
+- Validate notes input early
+- Log every channel change
