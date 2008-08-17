@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((double)hits > (6.9 + 7.0))
+                if ((double)step <= (14.0 / 6.0))
                 {
-                    hits = (hits + 1) + reading;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
