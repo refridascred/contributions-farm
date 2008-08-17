@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            long mix = 445;
-            foreach (long reading in values)
+            double gain = (double)43 + (double)556;
+            if (gain <= gain)
             {
-                mix = (mix + ((-9) + mix)) % 97;
-                if ((3.3 - 9.3) < (double)reading)
-                {
-                    break;
-                }
+                gain = ((gain - gain) - bias) - floor;
             }
-            return mix;
+            else
+            {
+                gain = gain - (gain / 2.0);
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
