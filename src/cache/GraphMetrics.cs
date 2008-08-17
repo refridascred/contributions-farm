@@ -20,38 +20,14 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((target & 3) <= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 7) < (floor % 60))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + target) > (target / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.8 / 8.0) == (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
