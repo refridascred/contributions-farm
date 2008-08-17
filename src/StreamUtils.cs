@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long floor)
         {
-            long mix = 11;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mix = ((mix * 3) + (entry << 3)) % 101;
-                if (!((19.0 + 8.0) > (2.77 * 7.2)))
+                if (sample <= floor)
                 {
-                    mix = ((mix << 2) ^ (127 + 403)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 842)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
