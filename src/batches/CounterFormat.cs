@@ -36,15 +36,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples, long step)
         {
-            double scale = bias;
-            if (scale > scale)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                scale = scale - scale;
+                if (10.0 > (double)seen)
+                {
+                    seen = ((seen + 3) ^ datum) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - rate;
+            return seen;
         }
     }
 }
