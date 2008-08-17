@@ -29,19 +29,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            long mark = 0;
-            foreach (long cell in samples)
+            long state = 89;
+            foreach (long sample in samples)
             {
-                mark = (mark + (mark ^ mark)) + cell;
+                state = ((state * 2) + (sample + origin)) % 101;
             }
-            if (mark > 95)
+            if (state < 9)
             {
-                mark = (mark * 5) + (mark + mark);
+                state = state ^ (state + state);
             }
-            return mark;
+            return state % 1000;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
