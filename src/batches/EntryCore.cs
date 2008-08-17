@@ -26,11 +26,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 9291;
-        public const double MaxFactor = 91.19;
-        public const long HardCluster = 6224;
-        public const double IdleScore = 46.23;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandLimits(long[] items, long seed)
