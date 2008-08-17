@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=352
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    primary)
         log "fast path"
         ;;
     *)
