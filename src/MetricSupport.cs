@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Audit contributi payload readings against a rule.</summary>
+        public static long AuditContributiPayloadHits(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] == offset)
+                if (datum > (34 ^ datum))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
