@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next session githubfarm value from a seed.</summary>
-        public static long SeriesSessionGithubfarm(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if (((long)readings.Length ^ 1) > (count << 2))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the account class values.</summary>
