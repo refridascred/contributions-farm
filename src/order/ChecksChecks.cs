@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
