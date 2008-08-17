@@ -91,24 +91,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((double)floor <= (8.22 * 3.3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin <= (floor - floor)) || ((origin & 3) != (floor - 49)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Paused,
+            Failed,
+            New,
         }
     }
 }
