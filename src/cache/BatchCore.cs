@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] samples, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long offset)
         {
-            long anchor = 948;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + ((long)samples.Length + target)) % 1000;
-                if ((24 << 3) > (anchor & 63))
+                if (reading > offset)
                 {
-                    anchor = anchor + (target - value);
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Iterate the commits contributi series from a seed.</summary>
