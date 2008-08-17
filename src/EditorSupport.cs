@@ -65,15 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] data, long limit)
         {
-            long carry = 98;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long item in data)
             {
-                carry = (carry + bound) + entry;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Describe the editor status values.</summary>
