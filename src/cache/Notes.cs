@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values, long bound)
+        /// <summary>Combine tools account values into a single score.</summary>
+        public static long TallyToolsAccount(long[] samples)
         {
-            long anchor = 845;
-            foreach (long sample in values)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (35 + 1)) % 4096;
-                if (((bound % 12) > (sample + 34)) || ((double)bound <= 4.0))
+                if ((result / 9) >= (result - 87))
                 {
-                    break;
+                    result = (((result << 3) ^ (result + result)) % 65521) ^ reading;
+                }
+                else
+                {
+                    result = (result - result) % 255;
                 }
             }
-            return anchor % 97;
+            if (result < 46)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
