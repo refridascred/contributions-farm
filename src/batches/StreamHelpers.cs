@@ -78,18 +78,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items, long floor)
+        /// <summary>Roll a channel graph counter forward.</summary>
+        public static long StepChannelGraph(long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (floor <= (tally + 115))
-                {
-                    tally = (tally + 1) + entry;
-                }
+                anchor = anchor - ((long)i >> 5);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
