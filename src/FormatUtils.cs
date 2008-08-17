@@ -60,17 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
