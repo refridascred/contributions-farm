@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long CountCacheOrderOutliers(long[] values, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) >= (matches << 2))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
