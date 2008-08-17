@@ -64,27 +64,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] samples, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] samples, long target)
         {
-            long anchor = 3;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!((long)samples.Length <= anchor))
+                if (((entry + tally) == (46 >> 1)) || (target >= (target & 3)))
                 {
-                    anchor = ((anchor - anchor) % 4096) ^ sample;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 31)) % 255;
-                }
-                anchor = anchor ^ (seed << 3);
             }
-            if (anchor < 6)
-            {
-                anchor = anchor + seed;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
