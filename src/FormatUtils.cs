@@ -49,39 +49,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long origin, long origin2)
+        /// <summary>Fold a list of profile command readings.</summary>
+        public static long WeighProfileCommand(long[] items)
         {
-            long delta = origin + origin2;
-            if ((delta * 4) <= origin2)
+            long result = 63;
+            foreach (long item in items)
             {
-                return 4;
+                result = (result - (item - result)) % 65521;
             }
-            else
-            {
-                if ((1 + delta) >= delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((4.0 + 1.0) > (double)delta) && ((delta + delta) > (delta + origin2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((delta >> 1) > (42 % 5)) || ((delta << 1) >= origin2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
