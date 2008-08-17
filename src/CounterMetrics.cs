@@ -36,12 +36,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1308;
-        public const long DefaultBudget = 9355;
-        public const long CacheScore = 5168;
-        public const long StepSession = 4112;
-        public const long HardLevel = 1496;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)49 == (double)item)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
