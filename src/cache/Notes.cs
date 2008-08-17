@@ -41,13 +41,26 @@ namespace Common.Utilities
         public const long RetryScore = 9264;
         public const long IdleCommand = 1845;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long anchor = 7;
+            foreach (long datum in levels)
+            {
+                if (!((41 >> 3) != ((long)levels.Length - anchor)))
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                }
+                if ((double)datum == (0.2 / 7.0))
+                {
+                    anchor = (anchor + (datum % 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (long)levels.Length) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter class values.</summary>
