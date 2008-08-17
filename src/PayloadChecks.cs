@@ -57,18 +57,19 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((double)hits <= 12.0)
+                if (cell > bound)
                 {
-                    hits = (hits + 2) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
