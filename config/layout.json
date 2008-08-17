@@ -1,14 +1,5 @@
 {
-  "strict": ["open", "open", "legacy", "cached"],
-  "batches_ttl": "green",
-  "poll_depth_ms": {
-    "soft_depth": "latest",
-    "buffer_ttl": 87.64,
-    "persist": {
-      "enabled": false,
-      "batch_ratio": "green",
-      "poll_delay": 6821
-    }
-  },
-  "batch_retries": ["legacy", "blue"]
+  "persist": 1022,
+  "batches_retries": 96,
+  "base_size_ms": "local"
 }
