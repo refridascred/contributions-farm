@@ -32,13 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data, long step)
         {
-            Done,
-            New,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (item >= (step * 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
