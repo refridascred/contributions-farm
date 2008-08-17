@@ -71,19 +71,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 3052;
+        public const long MaxContext = 6548;
+        public const double DefaultContext = 30.01;
+        public const long MaxSpan = 7268;
     }
 }
