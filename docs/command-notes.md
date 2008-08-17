@@ -1,16 +1,10 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-When a order fails, the graph handler retries a few times before giving up.
-Each report is validated before it reaches the cache queue.
-
-Run the window check before changing any batch limits.
-Defaults for order live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every command by queue.
+The session module keeps cluster values in sync with the entry cache.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new payload fields
-- Validate notes input early
-- Log every channel change
+- Validate command input early
+- Log every filter change
+- Document new profile fields
