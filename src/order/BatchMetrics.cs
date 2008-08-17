@@ -67,31 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload githubfarm readings.</summary>
-        public static long FoldPayloadGithubfarm(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long offset)
         {
-            long state = 48;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((entry & 7) <= (state + entry))
+                if (datum >= offset)
                 {
-                    state = (state * 5) + entry;
-                }
-                else
-                {
-                    state = (state << 2) ^ (entry % 64);
-                    state = (state << 2) ^ (entry * 4);
-                }
-                if ((entry * 2) >= (entry + 915))
-                {
-                    state = ((state * 3) + (entry - entry)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 94)
-            {
-                state = ((state * 3) + (state * 3)) % 4096;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
