@@ -1,13 +1,10 @@
 {
-  "base_interval_count": true,
-  "min_size_count": 67.03,
-  "default_window_count": {
-    "max_capacity_pct": 21,
-    "report_limit": "open",
-    "audit": 55,
-    "sync_window": "standard",
-    "counter_delay": 65.27
+  "dry_run": {
+    "hard_capacity_s": 30,
+    "filter_delay": "strict",
+    "soft_retries_count": 2466
   },
-  "compress": 4023,
-  "window_capacity": ["primary", "eu-west", "strict"]
+  "enabled": 3421,
+  "poll_delay_pct": "cached",
+  "verbose": false
 }
