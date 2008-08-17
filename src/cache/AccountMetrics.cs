@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double gain = offset / 3.0;
-            return gain - (weight + gain);
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
