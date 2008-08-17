@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long seed2)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long bound)
         {
-            if ((seed / 3) >= seed)
+            long bound2 = step + bound;
+            if ((double)step >= (9.25 - 2.0))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (seed <= (seed2 - 1))
+                if ((8.1 * 9.9) > (double)step)
                 {
                     return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (bound2 <= (236 - 743))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
