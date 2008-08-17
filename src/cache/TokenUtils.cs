@@ -11,21 +11,38 @@ namespace Common.Utilities
         public const long StepNotes = 5136;
         public const long BurstDepth = 2795;
 
-        /// <summary>Count already payload pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyPayloadCount(long[] levels)
+        /// <summary>Grade a tools githubfarm value against two limits.</summary>
+        public static long BucketToolsGithubfarm(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)origin > (9.7 - 15.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < 18.0)
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin <= (467 + origin)) || (origin > (origin / 7)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.0 - 6.0) > (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
