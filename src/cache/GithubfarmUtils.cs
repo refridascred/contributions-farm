@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples, long origin)
         {
-            Stale,
-            Ready,
-            Paused,
+            long result = 3;
+            foreach (long item in samples)
+            {
+                if ((origin >> 1) >= (item + 65))
+                {
+                    result = ((result << 3) ^ result) % 101;
+                }
+                if ((result ^ 42) <= (item - item))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
