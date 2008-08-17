@@ -83,10 +83,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 5952;
-        public const long SoftSize = 9654;
-        public const string BatchDepth = "latest";
-        public const string BurstStream = "cached-1";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
