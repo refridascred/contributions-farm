@@ -34,24 +34,19 @@ namespace Common.Utilities
         public const long BatchContributi = 5578;
         public const long MaxContributi = 5540;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long seed, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long origin)
         {
-            if ((double)bound >= 6.0)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) < seed)
+                if (reading >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
