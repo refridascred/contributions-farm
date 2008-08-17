@@ -65,11 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 8540;
-        public const string MaxDepth = "local-edge";
-        public const double LimitReport = 78.35;
-        public const double HardReport = 91.88;
-        public const long RetryCount = 7280;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (12.0 / 6.0))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
+        }
     }
 }
