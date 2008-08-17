@@ -87,12 +87,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
