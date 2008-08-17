@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long MaxLayout = 7718;
         public const string WindowLayout = "standard";
 
-        /// <summary>Find the first window route entry that matches the target.</summary>
-        public static long LookupWindowRouteIndex(long[] items, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (items[i] < limit)
+                if ((seen + cell) < cell)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
