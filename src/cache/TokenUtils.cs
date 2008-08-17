@@ -24,38 +24,11 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long bound, long origin)
+        /// <summary>Adjust a session route reading.</summary>
+        public static double ScaleSessionRoute(double ratio, double bias)
         {
-            if (((-77) < origin) && ((4.75 * 5.0) <= (8.0 / 4.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - origin) < origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin ^ bound) >= (origin - origin)) || ((origin + 7) < origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)bound < (1.95 * 4.2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double gain = (bias - 9.3) / 3.0;
+            return (gain + (bias * 7.88)) + ratio;
         }
 
         /// <summary>Describe the session mode values.</summary>
