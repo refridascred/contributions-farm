@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached strict latest; do
+mode="${1:-standard}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in stable eu-west legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=439
-log "limit is ${CHANNEL_LIMIT}"
