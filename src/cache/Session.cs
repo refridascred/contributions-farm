@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 68.68;
+        public const double StepSupport = 36.2;
+        public const long BatchSupport = 1856;
+        public const double HardTimeout = 54.05;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmMatches(long[] items)
