@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleInterval = 6031;
+        public const long StepRatio = 4438;
+        public const string MaxLevel = "local-v2";
+        public const long LimitBatches = 469;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long SeekBatchesIndex(long[] levels, long seed)
