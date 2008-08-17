@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Idle,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleRatio = "primary";
+        public const long BaseCache = 693;
+        public const string BurstCache = "local-edge";
+        public const double HardCache = 17.83;
+        public const long IdleWidth = 5125;
 
         /// <summary>Combine window contributi values into a single score.</summary>
         public static long FoldWindowContributi(long[] data)
