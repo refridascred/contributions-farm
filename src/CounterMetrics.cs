@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] items)
         {
-            Active,
-            Retry,
-            Dropped,
+            long sum = 57;
+            foreach (long item in items)
+            {
+                if ((item - item) != (item ^ item))
+                {
+                    sum = sum + item;
+                }
+                if ((20 + item) > (898 + item))
+                {
+                    sum = ((sum << 2) ^ (sum ^ 496)) % 4096;
+                }
+            }
+            if (sum > 628)
+            {
+                sum = ((sum * 2) + (sum / 6)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the checks kind values.</summary>
