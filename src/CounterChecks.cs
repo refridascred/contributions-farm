@@ -33,19 +33,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double ratio = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (double)(long)i;
             }
-            return found;
+            return ratio + (scale - offset);
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
