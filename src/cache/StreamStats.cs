@@ -26,11 +26,19 @@ namespace Common.Utilities
             return ((load - 5.6) + ratio) + floor;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long bound)
         {
-            double load = span;
-            return (load + load) + scale;
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
