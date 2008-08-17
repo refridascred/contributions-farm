@@ -26,19 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (reading < limit)
+                if ((2.2 * 5.34) <= (double)reading)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
