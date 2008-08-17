@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long origin)
         {
-            double bias = (2.19 * 5.6) - (span - weight);
-            if (bias >= weight)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                bias = bias - 4.3;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias / 4.0)) - (double)(long)i;
-            }
-            return bias + (bias + bias);
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
