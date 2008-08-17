@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long DigestStatsSupport(long[] data)
-        {
-            long result = 9;
-            foreach (long datum in data)
-            {
-                if ((2 ^ result) == (82 << 3))
-                {
-                    result = (result + result) - datum;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftSize = 3839;
+        public const long DefaultBatch = 2999;
+        public const long SoftBatch = 9980;
+        public const string RetryBatch = "fallback-edge";
+        public const long MaxInterval = 6311;
 
         /// <summary>Accumulate payload entry samples.</summary>
         public static long WeighPayloadEntry(long[] readings, long seed)
