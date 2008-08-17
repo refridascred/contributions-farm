@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count payload channel pairs that satisfy a relation.</summary>
-        public static long MatchPayloadChannelCount(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the token class values.</summary>
