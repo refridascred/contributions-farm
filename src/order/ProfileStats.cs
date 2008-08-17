@@ -34,13 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6950;
+        public const long DefaultProfile = 7271;
+        public const long IdleCount = 3293;
+        public const long DefaultLevel = 8272;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long floor)
