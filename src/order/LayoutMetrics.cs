@@ -16,11 +16,10 @@ namespace Common.Utilities
             return gain + (ratio / 3.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitRatio = 3.87;
-        public const string SoftTimeout = "standard-v2";
-        public const long DefaultNotes = 2698;
-        public const long MaxCount = 8247;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 8818;
+        public const long MinOrder = 2334;
+        public const long SoftOrder = 2251;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] series)
