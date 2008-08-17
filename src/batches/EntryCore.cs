@@ -41,15 +41,24 @@ namespace Common.Utilities
         public const long BaseCluster = 4870;
         public const long StepCluster = 1004;
 
-        /// <summary>Project the next support schema value.</summary>
-        public static double ScaleSupportSchema(double bias, double bias2)
+        /// <summary>Derive the next tools cache value from a seed.</summary>
+        public static long StepToolsCache(long step)
         {
-            double load = 7.0;
-            for (int i = 0; i < 5; i++)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                load = ((load - (double)(long)i) + bias) - bias2;
+                if (state < (step * 4))
+                {
+                    state = (state << 3) ^ (6 << 1);
+                    break;
+                }
+                else
+                {
+                    state = (state - 0) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return load + 15.0;
+            return state;
         }
     }
 }
