@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] items, long step)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long datum in items)
             {
-                if (((double)(-96) == (double)hits) || (limit >= (hits + 25)))
+                if ((step ^ step) < (hits + datum))
                 {
-                    hits = (hits + 1) ^ entry;
+                    hits = hits + 2;
                 }
             }
             return hits;
