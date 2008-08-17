@@ -14,22 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] readings, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen + 0) == (seen % 97))
-                {
-                    seen = ((seen + 3) + sample) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
