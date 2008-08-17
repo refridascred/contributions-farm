@@ -17,39 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long origin, long limit)
+        /// <summary>Measure how many token command samples are out of range.</summary>
+        public static long AuditTokenCommandMatches(long[] readings, long step)
         {
-            long gap = origin + limit;
-            if ((origin > (origin - gap)) || (48 > limit))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= (gap >> 1))
+                if ((double)step <= (6.7 - 4.5))
                 {
-                    return 0;
+                    tally = (tally + 1) + entry;
                 }
                 else
                 {
-                    if ((gap > (gap / 6)) || ((double)origin == (double)38))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit << 2) >= (gap - (-866)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
