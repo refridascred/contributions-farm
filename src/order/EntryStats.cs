@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            long sum = 2;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                sum = (sum ^ (-158)) - datum;
+                if (12.0 > (double)cell)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum < 0)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a record header.</summary>
