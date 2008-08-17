@@ -67,12 +67,18 @@ namespace Common.Utilities
             return weight + (double)(-221);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the entry stream entries that pass the check.</summary>
+        public static long CountEntryStreamMatches(long[] data, long limit)
         {
-            Done,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((1.0 / 8.0) == (double)item)
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
