@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((result + (long)i) == (29 + origin)))
-                {
-                    break;
-                }
-                if (!(((long)i != (506 >> 4)) || ((8.2 - 5.8) <= (double)origin)))
-                {
-                    result = result + (867 + (long)i);
-                    result = (result + (result * 3)) % 101;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the tools order series from a seed.</summary>
