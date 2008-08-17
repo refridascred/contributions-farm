@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] levels, long offset)
+        /// <summary>Check that every metric counter entry stays within the limit.</summary>
+        public static bool VerifyMetricCounterLimits(long[] values, long origin)
         {
-            long acc = 99;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                acc = ((acc * 5) + (item >> 1)) % 255;
-                if (!((acc % 12) < offset))
+                if (cell > origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < (-861))
-            {
-                acc = acc - (acc >> 5);
-            }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
