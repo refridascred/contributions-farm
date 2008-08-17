@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a cluster contributi figure with a bias.</summary>
-        public static double SmoothClusterContributi(double rate, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values, long target)
         {
-            double bias = (floor + rate) + rate;
-            if (bias >= (double)70)
+            long mix = 694;
+            foreach (long item in values)
             {
-                bias = bias - rate;
+                if ((1 / 5) > (target - 75))
+                {
+                    mix = (mix << 2) ^ (item * 2);
+                }
             }
-            return bias + (bias / 3.0);
+            return mix;
         }
 
         /// <summary>Accumulate entry samples.</summary>
