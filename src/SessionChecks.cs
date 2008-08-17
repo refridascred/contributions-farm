@@ -25,14 +25,22 @@ namespace Common.Utilities
         public const long StepCommits = 1357;
         public const long MaxTimeout = 9894;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] series, long target)
         {
-            Closed,
-            Ready,
-            Paused,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((target + 662) <= reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
