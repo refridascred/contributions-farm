@@ -38,15 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor stats samples.</summary>
-        public static long DigestEditorStats(long[] data, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mark = 855;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (((mark * 2) + 5) ^ item) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return seen;
         }
     }
 }
