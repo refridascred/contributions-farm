@@ -23,18 +23,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Find the first session farm entry that matches the target.</summary>
+        public static long FindSessionFarmIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.2 * 5.34) <= (double)reading)
+                if (readings[i] >= seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
