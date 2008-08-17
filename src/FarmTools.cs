@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double ratio = (weight - bias) - bias;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - 1.0;
-            }
-            else
-            {
-                ratio = ratio - (ratio + bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - ratio;
+            Failed,
+            Synced,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
