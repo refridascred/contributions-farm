@@ -71,11 +71,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 7.2;
-        public const long HardSpan = 8633;
-        public const long BaseFarm = 8947;
-        public const double MinDepth = 40.9;
-        public const long HardFarm = 746;
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double span)
+        {
+            double rate = 17.0;
+            return ((rate + rate) + bias) + span;
+        }
     }
 }
