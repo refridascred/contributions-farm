@@ -1,5 +1,5 @@
 {
-  "payload_ratio": 7379,
-  "default_ttl_s": 30,
-  "min_limit_count": 10
+  "default_interval": [493, 1],
+  "audit": ["fallback", "fallback", "strict"],
+  "base_delay": false
 }
