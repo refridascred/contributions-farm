@@ -45,17 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] series, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
