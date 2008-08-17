@@ -27,17 +27,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools order series from a seed.</summary>
-        public static long SeriesToolsOrder(long floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor ^ (floor / 5)) % 97;
-                anchor = (anchor + (anchor / 2)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
