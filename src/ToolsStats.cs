@@ -27,17 +27,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long SeekSessionReportIndex(long[] levels, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if ((double)count < (5.9 + 5.7))
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ item) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a record payload figure with a bias.</summary>
