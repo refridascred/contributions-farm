@@ -75,11 +75,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 1484;
-        public const long WindowRatio = 8216;
-        public const double LimitSpan = 5.93;
-        public const double BurstFactor = 85.2;
-        public const long IdleInterval = 6137;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+        }
     }
 }
