@@ -34,25 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((double)step != (11.0 * 8.21)) || ((41 + step) == ((long)i + (long)i)))
+                if ((((0 + reading) == ((long)values.Length + reading)) && ((double)matches != (1.1 / 2.0))) && (((double)reading <= (double)matches) || ((matches / 4) <= matches)))
                 {
-                    score = (score << 2) ^ step;
-                    score = score - score;
+                    matches = matches + 3;
                 }
-                score = (score - (score + 99)) % 255;
-                if ((step > (score & 255)) || (score <= (long)i))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
