@@ -30,11 +30,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchInterval = 388;
-        public const long StepChannel = 7532;
-        public const long MinChannel = 4003;
-        public const long WindowChannel = 791;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long limit, long floor)
+        {
+            if (limit > (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (0.2 <= (7.6 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (0.33 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor / 4) < 0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 9903;
