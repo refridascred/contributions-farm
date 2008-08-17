@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "standard-v2";
-        public const long IdleMetric = 7500;
-        public const long LimitFactor = 54;
-        public const long StepMetric = 6100;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long bound, long target)
+        {
+            if (8 >= (target + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.98 - 5.4) > (9.0 + 14.0)) && ((target & 7) <= target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Classify a metric queue pair into a bucket.</summary>
         public static long SortMetricQueue(long floor, long seed)
