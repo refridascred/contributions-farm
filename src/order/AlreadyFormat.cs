@@ -52,18 +52,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)count > (6.0 - 2.7)))
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
                 {
-                    count = ((count + 3) ^ value) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
