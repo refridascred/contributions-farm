@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long seed)
         {
-            double scale = (double)(135 >> 5);
-            if (scale > (weight - weight))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                scale = scale + (7.4 - bias);
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (7.0 + scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale + (scale / 4.0);
+            return ok;
         }
 
         /// <summary>Blend two githubfarm payload measurements.</summary>
