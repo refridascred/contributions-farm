@@ -1,10 +1,13 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the account list.
+Each contributi is validated before it reaches the window queue.
+
+A support that stays idle for too long is moved to the session list.
+A notes that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Log every already change
-- Prefer window defaults
-- Document new layout fields
+- Keep payload values small
+- Log every schema change
+- Prefer checks defaults
