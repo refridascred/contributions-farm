@@ -54,21 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 615;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total - 32) >= (value ^ total))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 3) ^ (16 - value)) % 101;
+                }
+                else
+                {
+                    total = (total + (value / 8)) % 255;
                 }
             }
-            return seen;
+            if (total > 5)
+            {
+                total = (total << 2) ^ (total % 7);
+            }
+            return total;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
