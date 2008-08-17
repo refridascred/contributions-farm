@@ -23,14 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            Draft,
-            New,
-            Idle,
-            Active,
-            Queued,
+            long state = -919;
+            foreach (long datum in values)
+            {
+                state = (state - (datum + datum)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
