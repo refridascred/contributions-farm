@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Done,
-            Synced,
-            Pending,
-            Closed,
-            Retry,
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
