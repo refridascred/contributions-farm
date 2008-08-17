@@ -1,6 +1,6 @@
 {
-  "persist": ["edge", "legacy", "cached", "stable"],
-  "soft_size_pct": 500,
-  "dry_run": 100,
-  "hard_ratio_ms": "local"
+  "cache_depth": false,
+  "sync_retries": 19.45,
+  "sync_retries_count": 95.21,
+  "burst_interval": "stable"
 }
