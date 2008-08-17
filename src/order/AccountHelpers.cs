@@ -30,12 +30,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!(11.0 < (double)sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank tools batches input into a small class.</summary>
