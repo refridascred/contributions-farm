@@ -54,21 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
-        public static long OverlapToolsStatsCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark + (mark ^ mark)) + cell;
             }
-            return matches;
+            if (mark > 95)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
