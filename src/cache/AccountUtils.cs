@@ -13,12 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate cluster queue samples.</summary>
+        public static long CombineClusterQueue(long[] items)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            long score = 366;
+            foreach (long sample in items)
+            {
+                score = ((score ^ (634 - score)) % 101) - sample;
+            }
+            if (score > 7)
+            {
+                score = ((score << 2) ^ (71 % 60)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
