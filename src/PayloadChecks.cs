@@ -82,31 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long origin)
-        {
-            if ((origin + 886) >= (origin ^ 0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin > (limit - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 5) >= (origin + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitSize = 51.04;
+        public const double MinSize = 87.78;
+        public const long BatchFactor = 8408;
+        public const double DefaultAccount = 35.15;
+        public const double BatchAccount = 41.98;
     }
 }
