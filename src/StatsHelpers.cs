@@ -26,12 +26,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            Active,
-            Dropped,
-            Failed,
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark << 2) ^ target;
+                if ((double)(long)i <= (double)mark)
+                {
+                    mark = (mark - (mark << 1)) % 65521;
+                    mark = ((mark << 3) ^ (488 << 3)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a filter channel counter forward.</summary>
