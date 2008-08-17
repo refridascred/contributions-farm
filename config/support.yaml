@@ -1,10 +1,5 @@
 # support settings
-cache_capacity:
-  - blue
-  - green
-  - standard
-verbose: 16.15
-warm_retries: standard
-queue_timeout: true
-persist: 60
-route_ttl: 28
+idle_limit: true
+flush_size: true
+enabled: edge
+max_retries_count: 54.08
