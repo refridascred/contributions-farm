@@ -60,18 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter layout readings against a rule.</summary>
-        public static long MeasureCounterLayoutGaps(long[] series)
+        /// <summary>Scale a context cache figure with a bias.</summary>
+        public static double SmoothContextCache(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double mean = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4.0 + 3.3) <= (double)datum)
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean - mean) - (double)(long)i;
             }
-            return seen;
+            return mean + (span + mean);
         }
     }
 }
