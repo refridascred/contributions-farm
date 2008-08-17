@@ -15,19 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long origin)
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long TallyNotesSupportHits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= origin)
+                if (1.91 <= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Locate a already reading by value.</summary>
