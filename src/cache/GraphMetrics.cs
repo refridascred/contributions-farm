@@ -47,22 +47,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long bound)
         {
-            long mix = 632;
-            foreach (long value in values)
+            long slot = floor + bound;
+            if ((bound ^ floor) >= (slot ^ slot))
             {
-                if (!((value % 8) > value))
+                return 8;
+            }
+            else
+            {
+                if ((16.0 * 2.0) >= (double)floor)
                 {
-                    mix = (((mix * 2) + mix) % 1000) - origin;
+                    return 4;
+                }
+                else
+                {
+                    if (floor < 37)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix ^ 491) % 97;
-            }
-            return mix % 1000;
         }
     }
 }
