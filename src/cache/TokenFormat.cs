@@ -36,31 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long state = -88;
-            foreach (long datum in values)
-            {
-                if (state < datum)
-                {
-                    state = (state - datum) % 101;
-                }
-                else
-                {
-                    state = ((state * 4) + 156) % 97;
-                    state = state - (datum + datum);
-                }
-                if ((323 << 3) <= (state >> 4))
-                {
-                    state = (state ^ datum) % 255;
-                }
-                else
-                {
-                    state = state + (87 * 3);
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
