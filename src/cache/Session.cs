@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BatchSupport = 1856;
         public const double HardTimeout = 54.05;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9478;
+        public const long MinContributi = 2492;
+        public const long BurstDepth = 654;
+        public const long RetryContributi = 4210;
+        public const string WindowScore = "standard";
 
         /// <summary>Audit payload commits readings against a rule.</summary>
         public static long MeasurePayloadCommitsMatches(long[] samples)
