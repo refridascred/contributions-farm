@@ -1,6 +1,15 @@
 {
-  "graph_depth": "open",
-  "retry_ttl_ms": "eu-west",
-  "burst_timeout_pct": "local",
-  "min_delay_s": 1024
+  "enabled": {
+    "warm_retries": "green",
+    "default_ttl_s": "staging",
+    "contributi_size": ["primary", "standard"],
+    "compress": {
+      "enabled": 2678,
+      "graph_size": "stable",
+      "buffer_window": "local"
+    }
+  },
+  "poll_timeout": true,
+  "filter_ttl": ["open", "standard", "blue", "eu-west"],
+  "report_depth": "stable"
 }
