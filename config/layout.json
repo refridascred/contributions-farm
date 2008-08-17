@@ -1,18 +1,8 @@
 {
-  "max_threshold": 4587,
-  "flush_ttl": 63,
-  "payload_threshold": 62,
-  "soft_interval_pct": {
-    "soft_threshold_pct": 11,
-    "command_limit": 17.71,
-    "readonly": {
-      "persist": "edge",
-      "enabled": 6,
-      "account_depth": "eu-west",
-      "idle_capacity_count": "standard"
-    },
-    "poll_timeout_ms": 8093,
-    "batch_threshold_pct": [16, 498],
-    "idle_limit_s": "cached"
-  }
+  "command_threshold": 30,
+  "warm_ratio": true,
+  "min_capacity": 21.26,
+  "batch_timeout": 91.19,
+  "profile_ratio": "stable",
+  "checks_size": ["eu-west", "open"]
 }
