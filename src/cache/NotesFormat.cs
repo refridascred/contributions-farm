@@ -20,18 +20,13 @@ namespace Common.Utilities
             return rate + (6.8 * 4.7);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] data, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value + value) > value)
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
