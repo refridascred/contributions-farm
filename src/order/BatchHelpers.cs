@@ -49,17 +49,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a report window reading by value.</summary>
-        public static long SeekReportWindowIndex(long[] items, long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
