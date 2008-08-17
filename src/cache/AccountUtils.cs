@@ -26,26 +26,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long CombineContextSchema(long[] values, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long anchor = 23;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value != (6.0 / 3.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (value ^ limit)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (value << 3)) % 97;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > (-1))
-            {
-                anchor = (anchor ^ (limit * 4)) % 101;
-            }
-            return anchor % 4096;
+            return count;
         }
     }
 }
