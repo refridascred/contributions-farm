@@ -25,38 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long step)
         {
-            if ((double)4 > (double)floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset != (2.0 - 13.0))
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.61 + 3.0) == (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of report buffer readings.</summary>
