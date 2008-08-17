@@ -1,18 +1,10 @@
 {
-  "poll_timeout_s": [25, 194, 23],
-  "metrics_depth": 30,
-  "compress": 5,
-  "report_timeout": {
-    "cache_threshold": 8970,
-    "warm_delay_count": {
-      "sync_capacity_s": 250,
-      "token_ratio": 77.72,
-      "context_retries": 35.59,
-      "batch_timeout_s": [269, 169, 283]
-    },
-    "base_depth_ms": [255, 83],
-    "soft_delay_s": 95.65,
-    "retry_depth_pct": 500,
-    "hard_threshold_s": ["stable", "staging"]
-  }
+  "burst_threshold": 88.49,
+  "retry_retries_ms": {
+    "audit": "legacy",
+    "retry_ttl_count": [302, 200, 2, 40],
+    "base_window_pct": 1.53
+  },
+  "readonly": "open",
+  "sync_depth": true
 }
