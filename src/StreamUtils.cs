@@ -57,17 +57,19 @@ namespace Common.Utilities
         public const double IdleLevel = 61.0;
         public const string BaseBudget = "alpha-edge";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool GuardAccountChannelLimits(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                if (datum > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Blend two checks measurements.</summary>
