@@ -1,6 +1,4 @@
 # githubfarm settings
-max_interval_ms: cached
-warm_window_s: 500
-readonly: false
-idle_size: 6716
-enabled: false
+base_timeout: 76.74
+cache_capacity: true
+idle_retries_count: false
