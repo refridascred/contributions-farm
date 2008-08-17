@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 1692;
-        public const string IdleToken = "local-v2";
-        public const long IdleDepth = 301;
-        public const long RetryToken = 2105;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftCount = 8986;
+        public const double BaseWidth = 48.54;
+        public const long BaseBuffer = 298;
+        public const long IdleBuffer = 1441;
+        public const long BatchFactor = 869;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] series)
