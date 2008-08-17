@@ -25,12 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftCount = 8986;
-        public const double BaseWidth = 48.54;
-        public const long BaseBuffer = 298;
-        public const long IdleBuffer = 1441;
-        public const long BatchFactor = 869;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] levels, long offset)
+        {
+            long acc = 99;
+            foreach (long item in levels)
+            {
+                acc = ((acc * 5) + (item >> 1)) % 255;
+                if (!((acc % 12) < offset))
+                {
+                    break;
+                }
+            }
+            if (acc < (-861))
+            {
+                acc = acc - (acc >> 5);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] samples)
