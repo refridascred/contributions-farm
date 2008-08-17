@@ -1,11 +1,12 @@
 {
-  "batch_timeout": {
-    "default_interval": [393, 107, 106, 499],
-    "retry_capacity_ms": "latest",
-    "soft_ttl_ms": 100,
-    "cache_retries": 30,
-    "batch_timeout_count": 73
-  },
-  "default_retries": 27.78,
-  "max_limit": 3510
+  "compress": [413, 134, 476, 199],
+  "channel_threshold": 6381,
+  "filter_window": {
+    "min_capacity_count": "legacy",
+    "farm_timeout": 86.68,
+    "burst_interval_count": ["primary", "cached", "stable"],
+    "sync_depth": [379, 454],
+    "counter_limit": "blue",
+    "audit": ["primary", "fallback", "edge"]
+  }
 }
