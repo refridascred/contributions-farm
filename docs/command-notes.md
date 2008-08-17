@@ -1,15 +1,14 @@
 # Command notes
 
-The farm report groups every session by batch.
-When a session fails, the payload handler retries a few times before giving up.
+Each channel is validated before it reaches the support queue.
+Each filter is validated before it reaches the report queue.
+A notes that stays idle for too long is moved to the counter list.
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-A farm that stays idle for too long is moved to the batch list.
-Keep filter and channel names short and lowercase.
+A stats that stays idle for too long is moved to the context list.
+The batches module keeps record values in sync with the format cache.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer cache defaults
-- Document new counter fields
-- Keep schema values small
+- Review context limits each release
+- Prefer farm defaults
+- Document new batches fields
