@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
