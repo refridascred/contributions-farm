@@ -25,12 +25,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryInterval = 5833;
-        public const string MaxDepth = "stable-edge";
-        public const long StepReport = 5388;
-        public const string BurstReport = "strict-1";
-        public const double WindowReport = 62.54;
+        /// <summary>Derive the next metric buffer value from a seed.</summary>
+        public static long StepMetricBuffer(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] data, long seed)
