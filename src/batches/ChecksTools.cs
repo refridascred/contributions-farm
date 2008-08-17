@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (sample < origin)
+                if (item != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
