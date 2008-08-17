@@ -37,22 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] items)
         {
-            long state = 21;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (!((state - state) == (state * 2)))
+                if ((double)seen <= (20.0 - 0.4))
                 {
-                    state = (state - (reading / 2)) % 101;
+                    seen = (seen + 2) ^ entry;
                 }
                 else
                 {
-                    state = (state + (reading + reading)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
