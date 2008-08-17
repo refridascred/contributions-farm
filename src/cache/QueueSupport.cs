@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long step2)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            if (step2 > 108)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (12.0 > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
