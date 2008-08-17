@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 157;
         public const long WindowDepth = 5442;
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool CheckNotesRouteBounds(long[] series, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = span;
+            return (load + load) + scale;
         }
     }
 }
