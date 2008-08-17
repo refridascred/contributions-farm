@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = 704;
-            foreach (long cell in levels)
-            {
-                sum = (((sum * 2) + ((-65) ^ cell)) % 4096) + floor;
-            }
-            return sum % 1000;
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up graph githubfarm samples.</summary>
