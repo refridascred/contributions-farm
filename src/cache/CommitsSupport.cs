@@ -19,12 +19,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long step)
         {
-            Retry,
-            Idle,
-            Draft,
+            long offset = target + step;
+            if ((78 * 4) == (offset % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + (-8)) < (0 + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)(-614) < (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes record.</summary>
