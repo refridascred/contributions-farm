@@ -66,14 +66,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit graph support readings against a rule.</summary>
+        public static long CountGraphSupportOutliers(long[] readings)
         {
-            Retry,
-            Paused,
-            Locked,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample <= (double)4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
