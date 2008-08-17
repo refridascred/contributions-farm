@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3052;
-        public const double WindowEntry = 75.06;
-        public const long DefaultRatio = 7571;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Active,
+            Draft,
+            Done,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryHits(long[] readings)
