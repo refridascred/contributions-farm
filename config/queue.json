@@ -1,8 +1,8 @@
 {
-  "soft_ttl_s": 86.72,
-  "strict": ["legacy", "edge", "green", "standard"],
-  "min_delay_count": 33.15,
-  "graph_size": [370, 196],
-  "compress": [293, 279, 109, 350],
-  "poll_depth_pct": "primary"
+  "base_timeout": "stable",
+  "base_threshold_pct": false,
+  "flush_ratio_count": 4822,
+  "base_ratio": [29, 126, 358],
+  "default_delay_pct": ["standard", "blue"],
+  "sync_threshold_count": true
 }
