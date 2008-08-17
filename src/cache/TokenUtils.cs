@@ -45,32 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long lane = origin - floor;
-            if ((12.0 + 15.0) > (double)lane)
+            long total = 2;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1 % 100) >= (floor + origin))
+                total = total + (total & 15);
+                if (!((82 >> 5) >= (total % 8)))
                 {
-                    return 8;
+                    total = (total << 2) ^ (total - cell);
+                    break;
                 }
-                else
-                {
-                    if (origin < lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                total = (total * 3) + (cell + total);
             }
+            return total % 4096;
         }
     }
 }
