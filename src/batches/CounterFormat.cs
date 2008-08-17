@@ -21,14 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long origin)
         {
-            Closed,
-            Draft,
-            Synced,
-            Locked,
-            Done,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a format reading.</summary>
