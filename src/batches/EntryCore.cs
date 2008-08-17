@@ -28,16 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already notes value from a seed.</summary>
-        public static long SeriesAlreadyNotes(long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark ^ (long)i) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every channel cluster entry stays within the limit.</summary>
