@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long seed)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((seed >= (target - 343)) || ((8.3 - 0.8) >= (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed < (10.0 + 0.75)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target ^ target) <= (seed << 1)) || (target <= seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a notes counter pair into a bucket.</summary>
