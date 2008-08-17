@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Count the payload cache entries that pass the check.</summary>
+        public static long TallyPayloadCacheGaps(long[] readings, long bound)
         {
-            double mean = (double)(67 - 71);
-            if (mean <= (mean + offset))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mean = mean - (rate + mean);
+                if ((hits & 63) <= (632 >> 3))
+                {
+                    hits = ((hits + 3) ^ cell) - bound;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - (offset * 5.0);
+            return hits;
         }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
