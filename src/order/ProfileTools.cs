@@ -49,12 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Active,
-            Stale,
-            Locked,
+            Failed,
+            Retry,
+            Paused,
+            Done,
+            Dropped,
         }
     }
 }
