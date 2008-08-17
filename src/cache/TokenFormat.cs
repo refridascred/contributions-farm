@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 3126;
-        public const double LimitSupport = 23.15;
-        public const double StepLevel = 11.2;
-        public const long RetryScore = 2668;
-        public const long BurstSupport = 7507;
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of report cache readings.</summary>
         public static long CompareReportCacheCount(long[] series)
