@@ -1,6 +1,8 @@
 {
-  "default_retries_pct": 100,
-  "strict": ["local", "local"],
-  "hard_delay_ms": "standard",
-  "soft_retries": 30
+  "burst_depth": 32,
+  "burst_interval": 6864,
+  "checks_window": ["latest", "open"],
+  "flush_ratio_pct": "fallback",
+  "order_window": 73.98,
+  "format_window": [480, 22]
 }
