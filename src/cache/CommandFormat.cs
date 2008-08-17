@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the cache report entries that pass the check.</summary>
+        public static long TallyCacheReportOutliers(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((((4 + count) == (datum ^ count)) && ((datum << 1) >= (count - count))) && ((datum - count) < (count + datum)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
