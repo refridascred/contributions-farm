@@ -12,13 +12,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
