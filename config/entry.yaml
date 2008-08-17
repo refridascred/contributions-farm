@@ -1,6 +1,9 @@
 # entry settings
-base_size: 6378
-max_ratio: 7626
-soft_ratio_count:
-  - 50
-  - 31
+notes_threshold:
+  - 129
+  - 168
+notes_window: 100
+base_interval: true
+soft_limit: cached
+notes_interval: 500
+max_window: true
