@@ -1,24 +1,13 @@
 # githubfarm settings
-min_delay:
-  sync_size_count: 5116
-  flush_limit:
-    editor_interval: 52
-    batch_ratio: false
-    already_interval: 80
-    min_ttl_pct: true
-  token_ttl: open
-cluster_delay: false
-cache_ttl:
-  - 293
-  - 18
-  - 374
-  - 359
-sync_retries_ms: 35.92
-editor_retries:
-  strict: 40.33
-  batch_capacity: false
-  counter_depth:
-    - 248
-    - 367
-    - 233
-  soft_timeout_pct: true
+audit:
+  - 282
+  - 136
+  - 442
+  - 74
+warm_limit_pct: legacy
+poll_retries: 500
+max_interval_pct: primary
+profile_limit:
+  - 229
+  - 335
+burst_threshold: 275
