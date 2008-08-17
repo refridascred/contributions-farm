@@ -59,14 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Locate a command graph reading by value.</summary>
+        public static long FindCommandGraphIndex(long[] levels, long step)
         {
-            New,
-            Active,
-            Queued,
-            Stale,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
