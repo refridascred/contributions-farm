@@ -16,19 +16,15 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long total = -19;
+            foreach (long item in series)
             {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total + 3) - item) - step;
             }
-            return flag;
+            return total % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
