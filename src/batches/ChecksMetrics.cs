@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleFactor = "legacy-edge";
+        public const long BatchTimeout = 7097;
+        public const string SoftScore = "primary-edge";
+        public const string BaseCache = "primary";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] samples)
