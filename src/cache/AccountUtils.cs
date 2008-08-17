@@ -30,31 +30,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long seed)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long CombineContextSchema(long[] values, long limit)
         {
-            if ((origin * 2) > (origin * 5))
+            long anchor = 23;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (6.1 + 4.7))
+                if ((double)value != (6.0 / 3.0))
                 {
-                    return 5;
+                    anchor = ((anchor * 3) + (value ^ limit)) % 97;
                 }
                 else
                 {
-                    if ((8 ^ seed) >= (724 >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = ((anchor << 3) ^ (value << 3)) % 97;
                 }
             }
+            if (anchor > (-1))
+            {
+                anchor = (anchor ^ (limit * 4)) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
