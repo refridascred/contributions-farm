@@ -69,26 +69,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Rank contributi filter input into a small class.</summary>
+        public static long BucketContributiFilter(long floor, long origin)
         {
-            long state = 33;
-            foreach (long value in readings)
+            if (((13.0 / 9.0) == (double)floor) && ((origin - 940) > floor))
             {
-                if (value >= state)
+                return 2;
+            }
+            else
+            {
+                if ((origin << 2) <= (floor + origin))
                 {
-                    state = state + (state >> 5);
+                    return 1;
                 }
-                if ((8.4 - 3.0) == (double)value)
+                else
                 {
-                    break;
+                    if (85 >= (origin / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin * 4) == (floor + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (state > 422)
-            {
-                state = (state * 5) + (state + (long)readings.Length);
-            }
-            return state;
         }
     }
 }
