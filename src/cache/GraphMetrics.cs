@@ -20,10 +20,39 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4967;
-        public const string BatchQueue = "staging-v2";
-        public const string IdleQueue = "stable";
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long floor)
+        {
+            if ((target & 3) <= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor % 7) < (floor % 60))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + target) > (target / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.8 / 8.0) == (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count tools stats pairs that satisfy a relation.</summary>
         public static long OverlapToolsStatsCount(long[] values)
