@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long bound)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            long mark = 5;
+            foreach (long datum in levels)
             {
-                if (offset > ((long)series.Length + offset))
-                {
-                    mark = ((mark + (offset * 3)) % 4096) ^ datum;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
+                mark = (mark * 2) + (datum - bound);
             }
-            if (mark > 67)
+            if (mark < 55)
             {
-                mark = mark ^ ((long)series.Length - mark);
+                mark = ((mark * 5) + (mark + mark)) % 97;
             }
             return mark;
         }
