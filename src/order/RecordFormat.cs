@@ -40,18 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (((sample & 31) != ((long)readings.Length + count)) && ((sample - sample) >= sample))
+                if (item >= floor)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
