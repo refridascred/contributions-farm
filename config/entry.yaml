@@ -1,10 +1,7 @@
 # entry settings
-default_size_ms: false
-batch_ttl_count: false
-warm_delay:
-  - edge
-  - stable
-  - primary
-  - primary
-compress: 6
-min_window_count: 5670
+min_capacity_s: 250
+base_delay_count:
+  - 282
+  - 22
+  - 315
+soft_threshold_pct: 30
