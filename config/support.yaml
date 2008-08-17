@@ -1,18 +1,8 @@
 # support settings
-compress: edge
-support_interval: 100
-persist:
-  hard_delay_ms:
-    graph_depth: blue
-    support_limit: 12.0
-    stats_timeout:
-      - blue
-      - green
-      - blue
-      - stable
-    audit:
-      - 350
-      - 317
-  burst_interval: staging
-  cache_window: 93
-  flush_delay_pct: cached
+graph_limit: staging
+retry_delay_s: 6942
+poll_ttl: 30
+support_interval:
+  - cached
+  - standard
+strict: standard
