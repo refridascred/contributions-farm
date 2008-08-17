@@ -36,10 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryScore = 53.14;
-        public const double BaseChannel = 2.19;
-        public const long LimitRatio = 1136;
-        public const long SoftChannel = 2922;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 2135;
+        public const double MinStream = 67.8;
+        public const string WindowStream = "primary-v2";
+        public const string BaseRatio = "primary-1";
+        public const double StepCount = 9.97;
     }
 }
