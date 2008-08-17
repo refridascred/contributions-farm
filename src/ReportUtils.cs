@@ -29,10 +29,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9266;
-        public const long CacheToken = 2078;
-        public const string BurstToken = "latest-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 2977;
+        public const long LimitBudget = 8519;
+        public const double BurstDepth = 59.33;
+        public const double IdleTimeout = 92.52;
+        public const long BatchMetrics = 4114;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheBounds(long[] items, long step)
