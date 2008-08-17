@@ -76,17 +76,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Active,
         }
     }
 }
