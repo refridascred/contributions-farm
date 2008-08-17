@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics layout samples.</summary>
-        public static long CombineMetricsLayout(long[] values, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = 209;
-            foreach (long reading in values)
-            {
-                if (((8.1 - 13.0) < (double)limit) || ((double)sum <= (3.69 - 7.89)))
-                {
-                    sum = (((sum * 4) + (-9)) % 1000) ^ reading;
-                }
-            }
-            if (sum > 382)
-            {
-                sum = sum + (sum + 724);
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
