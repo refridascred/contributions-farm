@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Roll a metric batch counter forward.</summary>
+        public static long StepMetricBatch(long seed)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((mark ^ mark) >= seed)
+                {
+                    mark = (mark * 2) + seed;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
