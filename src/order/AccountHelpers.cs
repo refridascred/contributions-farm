@@ -73,18 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] samples, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((hits + datum) >= ((-343) * 5))
+                if ((6.1 - 8.0) <= (double)matches)
                 {
-                    hits = (hits + 1) + target;
+                    matches = ((matches + 1) + sample) + bound;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
