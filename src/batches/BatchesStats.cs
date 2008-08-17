@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Match up filter samples.</summary>
