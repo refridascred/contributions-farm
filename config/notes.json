@@ -1,12 +1,6 @@
 {
-  "enabled": 3746,
-  "flush_size": "eu-west",
-  "compress": "open",
-  "base_retries": "latest",
-  "dry_run": {
-    "tools_interval": [496, 120, 188],
-    "cache_ttl_s": 1024,
-    "readonly": "eu-west"
-  },
-  "farm_threshold": "blue"
+  "retry_window_pct": 6129,
+  "flush_size_ms": 3179,
+  "flush_retries": false,
+  "warm_ratio_pct": false
 }
