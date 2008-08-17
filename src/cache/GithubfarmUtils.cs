@@ -40,22 +40,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!(count >= (701 * 4)))
+                if ((94 / 5) >= (matches << 1))
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
