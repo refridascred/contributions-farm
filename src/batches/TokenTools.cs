@@ -27,14 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Active,
-            Paused,
-            Pending,
-            Locked,
-            Failed,
+            Dropped,
+            Draft,
+            Queued,
+            Closed,
+            Synced,
         }
     }
 }
