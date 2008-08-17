@@ -71,12 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Draft,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 46.21;
+        public const long BurstBudget = 6712;
+        public const string DefaultSize = "strict";
+        public const long SoftScore = 6057;
+        public const string SoftAlready = "local-v2";
     }
 }
