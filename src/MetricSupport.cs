@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long sum = 3;
-            foreach (long cell in series)
-            {
-                sum = ((sum << 3) ^ 9) - cell;
-            }
-            return sum;
+            Synced,
+            Done,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
