@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long ScoreMetricAlready(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -38;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((sum - sum) <= (reading - reading)))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum << 3) ^ (sum + reading)) % 255;
+                }
+                if ((sum + 419) <= (sum - sum))
+                {
+                    sum = ((sum << 3) ^ (sum ^ 1)) % 1000;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
