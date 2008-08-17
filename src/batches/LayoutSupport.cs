@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] levels, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((17.0 - 3.8) <= (double)origin)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
