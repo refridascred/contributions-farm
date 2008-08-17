@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            double drift = (scale / 6.0) * 9.09;
-            if (drift >= drift)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                drift = drift - scale;
+                if ((double)matches == (1.22 * 4.48))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias / 6.0)) + (double)(long)i;
-            }
-            return drift - (20.0 / 6.0);
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
