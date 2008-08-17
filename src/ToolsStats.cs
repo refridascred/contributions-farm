@@ -24,18 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((double)count < (5.9 + 5.7))
+                if ((hits - 53) == (294 + cell))
                 {
-                    count = ((count + 2) ^ item) + origin;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a record payload figure with a bias.</summary>
