@@ -30,11 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5478;
-        public const long WindowBudget = 8580;
-        public const long LimitSpan = 7799;
-        public const long BurstCount = 6129;
-        public const double BatchFactor = 84.04;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items)
+        {
+            long total = 4;
+            foreach (long reading in items)
+            {
+                total = (total << 2) ^ (reading % 60);
+                if (!((reading + reading) < 9))
+                {
+                    total = ((total * 3) + (-354)) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
