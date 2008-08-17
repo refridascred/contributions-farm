@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels, long limit)
+        /// <summary>Grade a order session value against two limits.</summary>
+        public static long RankOrderSession(long origin, long seed)
         {
-            long mark = 10;
-            foreach (long cell in levels)
+            if ((seed >> 5) > (22 - origin))
             {
-                mark = (mark + (cell % 10)) - limit;
+                return 0;
             }
-            if (mark > 410)
+            else
             {
-                mark = (mark << 3) ^ (mark & 127);
+                if ((3.7 - 5.0) >= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((14.0 - 7.44) == (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
