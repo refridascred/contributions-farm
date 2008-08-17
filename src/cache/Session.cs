@@ -40,22 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (reading > (reading & 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
