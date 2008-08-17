@@ -27,21 +27,18 @@ namespace Common.Utilities
             return load - (floor / 4.0);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] data, long seed)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                sum = (sum + (cell + cell)) % 4096;
-                sum = sum + sum;
-                sum = (sum ^ (cell & 7)) % 97;
+                if (!(seen > (seen - (long)data.Length)))
+                {
+                    seen = ((seen + 3) ^ item) + seed;
+                }
             }
-            if (sum < 156)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 97;
+            return seen;
         }
     }
 }
