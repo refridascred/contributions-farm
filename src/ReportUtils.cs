@@ -29,10 +29,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitScore = "open-edge";
-        public const long MaxBuffer = 5797;
-        public const long WindowDepth = 2406;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7973;
+        public const string MaxCache = "standard-v2";
+        public const long WindowCache = 8878;
+        public const string BurstCache = "standard";
+        public const double SoftCount = 87.82;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long target, long origin)
