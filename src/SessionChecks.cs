@@ -41,13 +41,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long target)
         {
-            Pending,
-            Ready,
-            Locked,
-            Draft,
+            long cur = bound - target;
+            if ((0.44 / 8.0) <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + cur) != (9 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound <= 5.35)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target * 3) >= cur)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
