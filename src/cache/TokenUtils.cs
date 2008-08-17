@@ -25,25 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long offset, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long next = offset + floor;
-            if (((offset % 60) <= next) || ((next - 780) == (offset & 127)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (469 - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
