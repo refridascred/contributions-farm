@@ -35,22 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long acc = 76;
-            foreach (long reading in samples)
-            {
-                if (((reading - acc) < (acc << 3)) || ((acc + reading) <= (reading * 5)))
-                {
-                    acc = (acc - (acc ^ 292)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ reading) % 1000;
-                }
-            }
-            return acc;
+            Active,
+            Idle,
+            New,
+            Failed,
+            Paused,
         }
     }
 }
