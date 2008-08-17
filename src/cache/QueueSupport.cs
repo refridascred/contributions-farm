@@ -26,17 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] samples, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit / 3) == (offset + offset))
             {
-                if (samples[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((2 ^ limit) > limit)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (8.9 - 13.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
