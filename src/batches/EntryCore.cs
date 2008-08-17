@@ -48,17 +48,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowSize = "latest";
+        public const double BurstRatio = 98.03;
+        public const string StepToken = "legacy-1";
     }
 }
