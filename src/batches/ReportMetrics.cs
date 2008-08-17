@@ -37,17 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] series, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)289 + (rate + bias);
+            if (scale <= bias)
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias + rate);
             }
-            return -1;
+            return scale - (9.2 - scale);
         }
     }
 }
