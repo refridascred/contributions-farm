@@ -1,5 +1,6 @@
 {
-  "sync_size": 9848,
-  "batch_timeout": 30,
-  "counter_timeout": 60
+  "contributi_ratio": ["fallback", "cached", "primary"],
+  "channel_depth": "blue",
+  "retry_size": true,
+  "poll_size": true
 }
