@@ -36,18 +36,24 @@ namespace Common.Utilities
         public const double IdleTimeout = 92.52;
         public const long BatchMetrics = 4114;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long origin)
         {
-            long state = 611;
-            foreach (long value in samples)
+            if ((target & 3) == (target % 16))
             {
-                if (!((seed << 3) < (-674)))
+                return 3;
+            }
+            else
+            {
+                if ((70 + 84) > (target * 2))
                 {
-                    state = ((state + seed) % 97) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return state % 97;
         }
     }
 }
