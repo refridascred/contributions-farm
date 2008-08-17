@@ -36,12 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 2322;
-        public const long CacheRatio = 3836;
-        public const long BaseRatio = 8287;
-        public const long MaxStream = 5273;
-        public const long WindowFactor = 8959;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Dropped,
+            Stale,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Find the first counter token entry that matches the target.</summary>
         public static long LocateCounterTokenIndex(long[] values, long step)
