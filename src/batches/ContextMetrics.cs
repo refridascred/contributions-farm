@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const long BaseBuffer = 5922;
         public const long HardBuffer = 1477;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
