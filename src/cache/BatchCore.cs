@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stats batches entries.</summary>
-        public static long TallyStatsBatches(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double span)
         {
-            long mix = 434;
-            foreach (long item in series)
+            double mean = ratio;
+            if (mean < (mean * 1.94))
             {
-                if (!((8.48 + 4.13) < (double)mix))
-                {
-                    mix = (mix - (item + item)) % 97;
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix + item);
-                }
+                mean = (mean + mean) - span;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + ratio) - (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
