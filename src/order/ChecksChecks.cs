@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = sum - 968;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
