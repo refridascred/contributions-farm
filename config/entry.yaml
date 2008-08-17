@@ -1,10 +1,10 @@
 # entry settings
-commits_ratio:
-  retry_ttl: cached
-  context_capacity: 9032
-  flush_ttl_ms: 9271
-warm_timeout_s: local
-default_timeout: staging
-filter_ttl: true
-context_retries: 8765
-counter_limit: 100
+commits_ratio: 85.07
+filter_depth: legacy
+audit: 27.07
+commits_limit:
+  burst_window_s: 90
+  min_delay_ms: 370
+  persist: 44
+  base_retries_count: stable
+readonly: edge
