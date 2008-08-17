@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long SoftFactor = 212;
         public const long SoftAccount = 3267;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((4.3 - 3.55) > (double)matches) || ((matches + limit) > matches))
+                if (levels[i] >= step)
                 {
-                    matches = (matches + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
