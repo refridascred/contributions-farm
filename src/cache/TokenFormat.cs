@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double gain = (double)43 + (double)556;
-            if (gain <= gain)
-            {
-                gain = ((gain - gain) - bias) - floor;
-            }
-            else
-            {
-                gain = gain - (gain / 2.0);
-            }
-            return gain + gain;
+            Idle,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Validate entry metrics readings against a bound.</summary>
