@@ -14,18 +14,38 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((limit * 5) == (limit & 127))
             {
-                if ((seen - 941) <= (value + seen))
+                return 7;
+            }
+            else
+            {
+                if (7 < limit)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (limit > (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step > (step ^ limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
