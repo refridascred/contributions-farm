@@ -54,13 +54,17 @@ namespace Common.Utilities
         public const long MaxStream = 5273;
         public const long WindowFactor = 8959;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first counter token entry that matches the target.</summary>
+        public static long LocateCounterTokenIndex(long[] values, long step)
         {
-            Done,
-            Ready,
-            Pending,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
