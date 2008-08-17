@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            public double Total { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long hits = (long)i;
+                hits = hits + anchor;
+                anchor = (anchor << 3) ^ (hits << 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
