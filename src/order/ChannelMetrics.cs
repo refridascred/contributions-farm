@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] readings, long seed)
         {
-            Queued,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading / 8) < (count / 3)) && ((seed + reading) <= reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
