@@ -28,11 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
