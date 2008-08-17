@@ -51,32 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long slot = floor + bound;
-            if ((bound ^ floor) >= (slot ^ slot))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 * 2.0) >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor < 37)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
