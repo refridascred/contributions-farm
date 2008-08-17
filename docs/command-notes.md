@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep entry and entry names short and lowercase.
+The report report groups every buffer by counter.
 
-The support module keeps batches values in sync with the batch cache.
-Run the already check before changing any cluster limits.
+Keep report and context names short and lowercase.
+A buffer that stays idle for too long is moved to the support list.
+A stats that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Prefer already defaults
-- Keep farm values small
-- Review format limits each release
+- Keep editor values small
+- Validate counter input early
+- Log every token change
