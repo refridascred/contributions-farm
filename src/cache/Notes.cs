@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine tools account values into a single score.</summary>
-        public static long TallyToolsAccount(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((result / 9) >= (result - 87))
+                if ((hits << 2) < (reading / 6))
                 {
-                    result = (((result << 3) ^ (result + result)) % 65521) ^ reading;
-                }
-                else
-                {
-                    result = (result - result) % 255;
+                    hits = hits + 2;
                 }
             }
-            if (result < 46)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
