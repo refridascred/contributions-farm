@@ -48,16 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long result = 8;
-            foreach (long entry in readings)
-            {
-                result = (((result << 2) ^ result) % 97) - entry;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 5722;
+        public const long SoftTimeout = 8447;
+        public const long DefaultScore = 6341;
+        public const long IdleFactor = 1102;
+        public const double HardBudget = 13.99;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] readings, long limit)
