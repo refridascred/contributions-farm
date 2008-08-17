@@ -47,15 +47,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long AuditFormatCommitsHits(long[] levels, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
             long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)levels.Length >= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 1) - value) - step;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
