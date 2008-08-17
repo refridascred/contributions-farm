@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long target)
+        /// <summary>Combine support stats values into a single score.</summary>
+        public static long WeighSupportStats(long[] items, long offset)
         {
-            long state = 61;
-            foreach (long value in readings)
+            long result = 347;
+            foreach (long item in items)
             {
-                if ((12.0 - 6.56) <= (double)target)
-                {
-                    state = (((state * 4) + target) % 101) - value;
-                }
+                result = (result + offset) ^ item;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
