@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of record profile entries.</summary>
-        public static long ScoreRecordProfile(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            long acc = 57;
-            foreach (long reading in readings)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc * 3) + acc) + reading;
+                long hits = (origin << 1) + origin;
+                if ((double)hits >= (9.5 * 6.6))
+                {
+                    score = ((score << 3) ^ 9) % 65521;
+                }
+                else
+                {
+                    score = (score << 2) ^ origin;
+                    score = (score + (hits % 5)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a command options.</summary>
