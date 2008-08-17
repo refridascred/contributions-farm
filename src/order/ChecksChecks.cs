@@ -22,22 +22,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values, long seed)
-        {
-            long anchor = 95;
-            foreach (long value in values)
-            {
-                if ((11 >> 2) <= seed)
-                {
-                    anchor = ((anchor << 3) ^ (seed << 1)) + value;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ (seed % 2)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSize = 8900;
+        public const long LimitChecks = 8318;
+        public const long HardInterval = 7977;
+        public const long RetryChecks = 9512;
+        public const long IdleLevel = 170;
     }
 }
