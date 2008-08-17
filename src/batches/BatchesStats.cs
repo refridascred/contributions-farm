@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] values, long offset)
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool GuardBatchesCacheRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((double)matches >= (3.9 + 9.55))
+                if (cell > seed)
                 {
-                    matches = ((matches + 3) ^ reading) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a counter summary.</summary>
