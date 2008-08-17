@@ -36,31 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long BucketStreamGithubfarm(long bound, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long step)
         {
-            if (step < (-41))
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) < (step % 2))
+                if (!((1 * 3) > (step % 12)))
                 {
-                    return 2;
+                    total = (total + (71 * 4)) % 101;
                 }
-                else
-                {
-                    if ((6.8 / 4.0) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Hold a tools options.</summary>
