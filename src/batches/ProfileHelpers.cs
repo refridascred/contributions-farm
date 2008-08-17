@@ -71,19 +71,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "alpha-edge";
+        public const long RetryCount = 2614;
+        public const long DefaultBudget = 8416;
+        public const double StepEntry = 53.12;
     }
 }
