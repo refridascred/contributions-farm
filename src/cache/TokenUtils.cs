@@ -38,13 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] samples, long offset)
         {
-            Idle,
-            Retry,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (offset > ((long)samples.Length % 5))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
