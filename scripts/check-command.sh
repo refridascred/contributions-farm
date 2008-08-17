@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open edge blue; do
+COMMAND_LIMIT=419
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-latest}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in cached strict staging; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
