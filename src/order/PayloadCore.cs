@@ -23,13 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] data, long origin)
         {
-            Queued,
-            Draft,
-            Dropped,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
