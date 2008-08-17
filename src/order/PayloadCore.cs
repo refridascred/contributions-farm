@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Audit session filter readings against a rule.</summary>
+        public static long AuditSessionFilterHits(long[] items)
         {
-            double drift = offset;
-            if (drift < drift)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = (drift - (double)885) + weight;
+                if (entry < (seen + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 3.0) + (double)(long)i;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
