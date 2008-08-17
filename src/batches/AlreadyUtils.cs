@@ -56,18 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] series, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((count - 9) != (count & 7))
+                if (!(((-10) <= (value - target)) && ((double)target > 9.8)))
                 {
-                    count = ((count + 1) + entry) + seed;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
