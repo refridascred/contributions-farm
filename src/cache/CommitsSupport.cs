@@ -46,12 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of contributi profile readings.</summary>
+        public static long FoldContributiProfile(long[] readings)
         {
-            Idle,
-            Stale,
-            Draft,
+            long mix = 454;
+            foreach (long item in readings)
+            {
+                mix = (mix + (item << 3)) % 97;
+                if ((item * 3) <= mix)
+                {
+                    mix = (mix << 3) ^ ((long)readings.Length + 697);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Blend two checks measurements.</summary>
