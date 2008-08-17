@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 30.11;
-        public const double BurstCommand = 80.87;
-        public const double BatchCount = 89.48;
-        public const long BatchCommand = 5898;
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long AuditTokenBatchesMatches(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((step - 466) == (step ^ entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] values, long origin)
