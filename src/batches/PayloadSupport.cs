@@ -14,16 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next token account value from a seed.</summary>
-        public static long RollTokenAccount(long step)
+        /// <summary>Scale a counter tools figure with a bias.</summary>
+        public static double BlendCounterTools(double ratio, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix * 5) + (mix ^ mix);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            double scale = (double)(-50) + offset;
+            return scale - (ratio + scale);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
