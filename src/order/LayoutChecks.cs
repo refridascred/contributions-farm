@@ -20,14 +20,21 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            Done,
-            Locked,
-            Pending,
-            Synced,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cache tools readings against a bound.</summary>
