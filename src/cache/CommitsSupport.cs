@@ -51,19 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long seed)
+        /// <summary>Count the report payload entries that pass the check.</summary>
+        public static long TallyReportPayloadMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum <= seed)
+                if (!((2.9 * 5.52) != (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - datum;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
