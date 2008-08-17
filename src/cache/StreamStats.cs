@@ -37,15 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long DigestCacheOrder(long[] data, long step)
+        /// <summary>Grade a schema stream value against two limits.</summary>
+        public static long BucketSchemaStream(long bound, long origin)
         {
-            long anchor = 370;
-            foreach (long cell in data)
+            long slot = bound + origin;
+            if ((slot >= (bound >> 3)) || ((origin & 3) <= bound))
             {
-                anchor = ((anchor << 3) ^ (anchor - cell)) - step;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((double)origin < (12.0 - 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(5 < (slot + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
