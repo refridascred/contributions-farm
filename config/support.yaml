@@ -1,8 +1,6 @@
 # support settings
-graph_limit: staging
-retry_delay_s: 6942
-poll_ttl: 30
-support_interval:
-  - cached
-  - standard
-strict: standard
+cache_ttl_ms: 75.2
+audit: strict
+hard_ttl_ms: true
+already_threshold: 95
+entry_ratio: open
