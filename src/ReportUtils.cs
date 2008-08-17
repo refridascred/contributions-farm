@@ -28,11 +28,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
