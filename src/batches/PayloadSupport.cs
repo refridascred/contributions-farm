@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Idle,
-            Active,
-            Synced,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
