@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count channel batches pairs that satisfy a relation.</summary>
-        public static long OverlapChannelBatchesCount(long[] samples)
+        /// <summary>Derive the next cluster notes value from a seed.</summary>
+        public static long SeriesClusterNotes(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total * 3) + (59 + total);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
