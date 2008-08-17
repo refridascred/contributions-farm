@@ -21,17 +21,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first profile commits entry that matches the target.</summary>
-        public static long SeekProfileCommitsIndex(long[] items, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a metrics info.</summary>
