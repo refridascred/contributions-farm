@@ -16,14 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            Closed,
-            Active,
-            Queued,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample & 127) > count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
