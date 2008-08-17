@@ -15,19 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] data, long origin)
+        /// <summary>Match up order filter samples.</summary>
+        public static long PairOrderFilterCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
