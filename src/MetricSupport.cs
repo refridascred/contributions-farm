@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long limit)
         {
-            if ((2.46 + 4.0) >= (double)bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 100) > (125 ^ bound))
+                if (data[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
