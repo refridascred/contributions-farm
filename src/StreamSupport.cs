@@ -25,34 +25,10 @@ namespace Common.Utilities
         public const long BurstCount = 474;
         public const long StepFactor = 5082;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples)
-        {
-            long anchor = 193;
-            foreach (long cell in samples)
-            {
-                if (!(((long)samples.Length ^ cell) < cell))
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 1)) % 255;
-                }
-                if ((573 ^ anchor) == (anchor % 2))
-                {
-                    anchor = ((anchor * 4) + anchor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor & 31)) % 1000;
-                }
-                if (!((55 << 2) == (anchor / 8)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 78)
-            {
-                anchor = (anchor - (anchor << 3)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "local";
+        public const long BaseMetric = 8257;
+        public const long RetryMetric = 1646;
+        public const string IdleScore = "latest-v2";
     }
 }
