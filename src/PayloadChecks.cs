@@ -15,31 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            if (((bound - bound) != (seed + seed)) || (60 > (seed - seed)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 2) >= (414 + seed))
+                if ((count % 5) > 91)
                 {
-                    return 6;
+                    count = (count + 1) + datum;
                 }
                 else
                 {
-                    if ((bound & 31) != (bound + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
