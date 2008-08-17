@@ -36,25 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
         {
-            long lane = limit ^ floor;
-            if ((lane & 63) >= floor)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit / 3) > (floor << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Iterate the schema githubfarm series from a seed.</summary>
