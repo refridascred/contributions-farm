@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate route githubfarm readings against a bound.</summary>
+        public static bool ValidateRouteGithubfarmRange(long[] data, long target)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the contributi level values.</summary>
