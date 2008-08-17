@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (4.2 / 8.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
