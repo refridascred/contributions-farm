@@ -12,22 +12,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowTimeout = "fallback-1";
+        public const double BatchFilter = 72.76;
+        public const long SoftFactor = 6883;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
