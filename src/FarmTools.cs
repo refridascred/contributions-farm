@@ -22,10 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 4620;
-        public const string BatchDepth = "local-1";
-        public const long BaseLayout = 4994;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long seed)
+        {
+            long step2 = step ^ seed;
+            if (!((seed << 3) <= (seed * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((1.4 / 2.0) >= (double)step2) || ((seed + step2) < (step2 - seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 97) >= (4 + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] values, long offset)
