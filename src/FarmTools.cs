@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Failed,
-            Synced,
-            New,
+            Ready,
             Done,
+            Stale,
             Closed,
         }
 
