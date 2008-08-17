@@ -48,22 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long TallyContributiBufferMatches(long[] data, long origin)
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long CountRouteContextHits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((entry + origin) != (origin + 32))
+                if ((6.46 * 7.4) < (double)matches)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 2) ^ item) - offset;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
