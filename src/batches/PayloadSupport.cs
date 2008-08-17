@@ -33,18 +33,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((2.0 * 2.0) <= (double)seen)
-                {
-                    seen = ((seen + 2) + item) - step;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            New,
+            Ready,
+            Synced,
         }
     }
 }
