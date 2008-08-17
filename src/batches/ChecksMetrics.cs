@@ -61,24 +61,39 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the cache batches series from a seed.</summary>
-        public static long IterateCacheBatches(long step)
+        /// <summary>Classify a graph token pair into a bucket.</summary>
+        public static long BucketGraphToken(long target, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long next = target + seed;
+            if ((5.79 * 1.0) == (double)target)
             {
-                if ((score + (long)i) != ((long)i * 2))
-                {
-                    score = (score * 5) + (step + step);
-                    break;
-                }
-                if (((long)i + step) <= (273 & 3))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (1 < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next / 5) <= (next & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + target) != (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token record.</summary>
