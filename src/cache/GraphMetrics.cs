@@ -38,17 +38,12 @@ namespace Common.Utilities
         public const string BurstSize = "local-edge";
         public const long IdleFactor = 2039;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the stats state values.</summary>
