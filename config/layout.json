@@ -1,12 +1,11 @@
 {
-  "hard_window_s": 1024,
-  "soft_window": {
-    "strict": 60,
-    "window_threshold": 31.9,
-    "idle_limit_pct": "primary",
-    "buffer_interval": "eu-west",
-    "compress": "fallback"
+  "warm_size_count": 100,
+  "profile_depth": {
+    "default_ratio_count": ["legacy", "edge"],
+    "persist": "fallback",
+    "already_threshold": ["fallback", "local", "eu-west"]
   },
-  "poll_size_ms": 100,
-  "sync_retries": 2.31
+  "strict": 28.67,
+  "retry_capacity": true,
+  "verbose": "edge"
 }
