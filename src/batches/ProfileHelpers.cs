@@ -69,12 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long origin)
+        /// <summary>Locate a token stream reading by value.</summary>
+        public static long LocateTokenStreamIndex(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == origin)
+                if (data[i] <= target)
                 {
                     return (long)i;
                 }
