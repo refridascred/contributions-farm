@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long BatchSupport = 1856;
         public const double HardTimeout = 54.05;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
