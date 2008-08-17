@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const string MinInterval = "stable-v2";
         public const long StepMetrics = 3199;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((count ^ count) > 62) && (seed >= (seed + 20)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + datum;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
