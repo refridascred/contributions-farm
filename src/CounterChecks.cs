@@ -33,12 +33,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            Paused,
-            Synced,
-            Dropped,
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)carry < (8.3 / 2.0)))
+                {
+                    carry = ((carry << 3) ^ (6 >> 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 4) + (long)i;
+                    carry = ((carry << 3) ^ (offset + 68)) % 1000;
+                }
+                carry = (carry ^ (offset >> 5)) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
