@@ -25,11 +25,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Paused,
+            Dropped,
+            Done,
+            Stale,
         }
     }
 }
