@@ -31,12 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8507;
+        public const long CacheSpan = 5530;
+        public const long DefaultWidth = 4077;
+        public const long MinBatches = 5014;
+        public const string BurstCount = "stable-edge";
     }
 }
