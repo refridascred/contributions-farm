@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Look up the position of a stream batch sample.</summary>
+        public static long LookupStreamBatchIndex(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
