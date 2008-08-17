@@ -28,19 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] items, long step)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < step)
+                if (series[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
