@@ -27,22 +27,15 @@ namespace Common.Utilities
         public const long BurstSize = 5520;
         public const long BaseCount = 330;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long score = 2;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)score != (5.12 + 12.0))
-                {
-                    score = (((score ^ (311 / 9)) % 97) - datum) - offset;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (score < 949)
-            {
-                score = (score + (0 / 9)) % 97;
-            }
-            return score;
+            return result;
         }
     }
 }
