@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - (limit / 9)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
