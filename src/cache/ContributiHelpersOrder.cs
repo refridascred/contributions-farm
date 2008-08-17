@@ -31,10 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 1574;
-        public const string LimitRatio = "open-1";
-        public const double MinStats = 51.06;
-        public const string LimitFactor = "latest-edge";
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
