@@ -54,20 +54,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long mix = 22;
-            foreach (long cell in readings)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix * 5) + (cell & 1)) % 97;
-                mix = ((mix << 3) ^ (cell & 7)) % 65521;
+                mark = (mark ^ (5 * 3)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (mix < (-89))
-            {
-                mix = (mix ^ (mix + mix)) % 65521;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the stream status values.</summary>
