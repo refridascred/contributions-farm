@@ -54,18 +54,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long mix = 22;
+            foreach (long cell in readings)
             {
-                state = state + (origin << 2);
-                state = state ^ (state / 4);
-                state = (state ^ origin) % 65521;
-                state = ((state * 5) + (long)i) % 97;
+                mix = ((mix * 5) + (cell & 1)) % 97;
+                mix = ((mix << 3) ^ (cell & 7)) % 65521;
             }
-            return state;
+            if (mix < (-89))
+            {
+                mix = (mix ^ (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream status values.</summary>
