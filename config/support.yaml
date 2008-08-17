@@ -1,16 +1,18 @@
 # support settings
-cache_threshold:
-  - 374
-  - 278
-format_ratio:
-  - open
-  - latest
-  - latest
-sync_threshold_s:
-  session_ttl: 60
-  compress:
-    retry_interval: legacy
-    report_ratio: 14
-    poll_ttl_s: 17
-  readonly: cached
-batch_window_ms: 38
+compress: edge
+support_interval: 100
+persist:
+  hard_delay_ms:
+    graph_depth: blue
+    support_limit: 12.0
+    stats_timeout:
+      - blue
+      - green
+      - blue
+      - stable
+    audit:
+      - 350
+      - 317
+  burst_interval: staging
+  cache_window: 93
+  flush_delay_pct: cached
