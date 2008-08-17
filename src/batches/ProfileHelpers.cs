@@ -47,14 +47,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Queued,
-            Failed,
-            Idle,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxCount = 37.9;
+        public const long MinBatch = 4909;
+        public const long HardFactor = 4646;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] readings, long origin)
