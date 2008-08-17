@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                state = state - (state ^ (long)i);
-                state = (state ^ (state << 3)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the cache level values.</summary>
