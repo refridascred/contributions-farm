@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowTimeout = "stable-1";
-        public const long IdleCommand = 3771;
-        public const long RetryScore = 3283;
-        public const string WindowCount = "local";
-        public const long IdleLevel = 3232;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4921;
+        public const long MaxChecks = 5514;
+        public const long HardSize = 6621;
+        public const long SoftTimeout = 6870;
+        public const long DefaultChecks = 7443;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] data)
