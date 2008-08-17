@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long IdleBudget = 8140;
         public const long StepCounter = 6803;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 38.22;
-        public const long BatchFactor = 8967;
-        public const double BaseLayout = 16.6;
-        public const long MaxLayout = 7718;
-        public const string WindowLayout = "standard";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Locked,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Digest a series of command farm entries.</summary>
         public static long TotalCommandFarm(long[] readings, long bound)
