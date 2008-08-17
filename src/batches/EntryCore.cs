@@ -22,11 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long target)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (13.0 - 3.86))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
