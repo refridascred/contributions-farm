@@ -25,10 +25,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 5335;
-        public const long StepLevel = 3945;
-        public const double LimitCluster = 58.62;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Locked,
+            Retry,
+            Done,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Combine window entry values into a single score.</summary>
         public static long ScoreWindowEntry(long[] data, long seed)
