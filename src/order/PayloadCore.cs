@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double drift = offset;
+            if (drift < drift)
             {
-                if ((double)step <= (14.0 / 6.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - (double)885) + weight;
             }
-            return seen;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 3.0) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
