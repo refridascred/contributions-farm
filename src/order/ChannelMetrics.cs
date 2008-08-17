@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Compare every pair of batches order readings.</summary>
+        public static long CompareBatchesOrderCount(long[] levels)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample & 127) > count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
