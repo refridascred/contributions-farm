@@ -57,31 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long seed)
+        /// <summary>Digest a series of route graph entries.</summary>
+        public static long TallyRouteGraph(long[] readings, long target)
         {
-            if ((double)seed == (double)595)
+            long acc = 85;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + step) >= (seed * 3))
+                if ((0.28 * 8.91) != (double)target)
                 {
-                    return 1;
+                    acc = ((acc * 3) + (target - acc)) % 65521;
+                    acc = (acc ^ (cell + target)) % 97;
                 }
-                else
+                if (((target + acc) >= (66 + target)) && (target > (cell >> 3)))
                 {
-                    if (((double)step < (7.3 / 4.0)) || ((step / 3) == (seed / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = (acc - (904 ^ acc)) % 97;
                 }
             }
+            return acc;
         }
     }
 }
