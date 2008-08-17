@@ -54,18 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long MeasureGithubfarmGraphOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((seen * 2) == (reading - 6))
+                if ((26 + 3) < datum)
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
