@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
