@@ -26,39 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long seed)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long span = origin - seed;
-            if ((double)origin > (7.0 - 1.7))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 2) > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((span + 8) <= (seed + seed))
+                    if ((values[i] ^ values[j]) > 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (span >= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
