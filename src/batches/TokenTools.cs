@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total - (bound & 63);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
