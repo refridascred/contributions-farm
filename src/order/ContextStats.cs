@@ -38,12 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 38.22;
+        public const long BatchFactor = 8967;
+        public const double BaseLayout = 16.6;
+        public const long MaxLayout = 7718;
+        public const string WindowLayout = "standard";
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
