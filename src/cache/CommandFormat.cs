@@ -18,10 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 3673;
-        public const string BurstBatch = "stable-edge";
-        public const long BurstSpan = 2477;
+        /// <summary>Roll a order profile counter forward.</summary>
+        public static long IterateOrderProfile(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((46 + 6) > (limit & 3))
+                {
+                    mark = (mark - (limit >> 3)) % 255;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a batches metric pair into a bucket.</summary>
         public static long SortBatchesMetric(long seed, long limit)
