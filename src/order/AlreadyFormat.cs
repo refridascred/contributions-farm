@@ -26,15 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] readings, long target)
+        /// <summary>Count the queue order entries that pass the check.</summary>
+        public static long MeasureQueueOrderMatches(long[] series)
         {
-            long mix = 9;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mix = (((mix << 3) ^ (item + (long)readings.Length)) % 97) - target;
+                if ((((6.4 - 2.7) <= (double)datum) || (tally > (datum >> 4))) && ((3.56 + 3.0) != (double)datum))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Count contributi report pairs that satisfy a relation.</summary>
