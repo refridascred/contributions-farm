@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long sum = 27;
-            foreach (long entry in data)
+            long total = 57;
+            foreach (long value in items)
             {
-                sum = (sum ^ (806 - entry)) % 255;
+                total = ((total ^ (total >> 1)) % 1000) - value;
             }
-            if (sum < 171)
-            {
-                sum = (sum + (sum ^ sum)) % 4096;
-            }
-            return sum;
+            return total % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
