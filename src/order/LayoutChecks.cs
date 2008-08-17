@@ -39,12 +39,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 252;
-        public const long SoftToken = 7292;
-        public const double IdleToken = 24.66;
-        public const double IdleSpan = 58.96;
-        public const double RetrySize = 9.8;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long seed)
+        {
+            long cur = bound - seed;
+            if ((bound ^ cur) >= (215 >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound > (seed ^ 7)) && ((double)cur >= 7.51))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
