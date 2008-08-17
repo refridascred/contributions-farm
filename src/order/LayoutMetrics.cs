@@ -20,10 +20,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitLevel = "strict-edge";
-        public const long BurstScore = 4190;
-        public const string MaxChecks = "staging-v2";
-        public const string CacheFactor = "strict-edge";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
