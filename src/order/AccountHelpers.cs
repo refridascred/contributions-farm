@@ -50,18 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            long mark = 74;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((step / 2) > (step & 15))
+                if (reading <= (seen & 3))
                 {
-                    mark = ((mark << 3) ^ 61) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
