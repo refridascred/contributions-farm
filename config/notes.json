@@ -1,10 +1,10 @@
 {
-  "dry_run": {
-    "hard_capacity_s": 30,
-    "filter_delay": "strict",
-    "soft_retries_count": 2466
+  "commits_interval": 60,
+  "readonly": {
+    "filter_threshold": 30,
+    "burst_depth": 30,
+    "max_delay_s": 6956,
+    "idle_ttl": 7389
   },
-  "enabled": 3421,
-  "poll_delay_pct": "cached",
-  "verbose": false
+  "cache_ratio_s": 30
 }
