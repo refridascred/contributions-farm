@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long seed)
+        /// <summary>Combine window session values into a single score.</summary>
+        public static long TallyWindowSession(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mix = 98;
+            foreach (long item in values)
             {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix - (long)values.Length) % 97) + item) + offset;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
