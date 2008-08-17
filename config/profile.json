@@ -1,7 +1,12 @@
 {
-  "batch_depth": ["blue", "legacy", "stable", "standard"],
-  "queue_delay": "eu-west",
-  "support_delay": 5385,
-  "min_depth_ms": 7820,
-  "flush_limit_count": ["local", "cached", "stable", "standard"]
+  "dry_run": 4,
+  "cache_retries": 47,
+  "sync_capacity_s": "edge",
+  "base_delay_pct": {
+    "batch_limit": 53.64,
+    "cache_depth_ms": "strict",
+    "queue_retries": false,
+    "flush_ttl_count": "primary",
+    "enabled": "strict"
+  }
 }
