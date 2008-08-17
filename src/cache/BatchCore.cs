@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of stats batches entries.</summary>
+        public static long TallyStatsBatches(long[] series)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long mix = 434;
+            foreach (long item in series)
+            {
+                if (!((8.48 + 4.13) < (double)mix))
+                {
+                    mix = (mix - (item + item)) % 97;
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix + item);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
