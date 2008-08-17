@@ -1,7 +1,25 @@
 # githubfarm settings
-retry_delay: 17
-dry_run: false
-default_threshold_s: false
-already_retries: blue
-audit: 50
-cache_delay: fallback
+strict: 89.16
+sync_retries_count:
+  poll_window: 67.05
+  burst_size_s: 91.11
+  min_ttl_pct: 8886
+  farm_interval:
+    githubfarm_ratio: 579
+    batch_limit_count: false
+    audit: staging
+    batches_timeout: 65
+    layout_interval: green
+  warm_timeout_s:
+    default_capacity:
+      - 274
+      - 6
+    strict: cached
+    batch_capacity_s:
+      - 448
+      - 291
+    idle_depth_count: legacy
+    batch_ttl_ms: 45.64
+    filter_window: blue
+max_retries_s: blue
+compress: cached
