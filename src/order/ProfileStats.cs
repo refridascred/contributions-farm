@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 4914;
-        public const string StepReport = "strict";
-        public const string BurstReport = "latest-v2";
-        public const long LimitReport = 1099;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long ScoreChecksReport(long[] values, long bound)
