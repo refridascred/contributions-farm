@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const double CacheRatio = 90.71;
         public const string LimitBudget = "staging-edge";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double gain, double bias)
         {
-            Active,
-            Dropped,
-            Locked,
-            Synced,
-            Ready,
+            double ratio = (7.8 - gain) / 8.0;
+            if (ratio >= bias)
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (double)(-2);
         }
 
         /// <summary>Hold a graph summary.</summary>
