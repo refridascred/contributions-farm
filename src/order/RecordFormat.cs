@@ -29,17 +29,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a counter graph reading by value.</summary>
-        public static long SeekCounterGraphIndex(long[] samples, long target)
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long FoldMetricOrder(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long item in readings)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if (floor <= (item & 63))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (floor & 15)) % 97;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state - (floor - floor)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
