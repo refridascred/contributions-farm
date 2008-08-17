@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long state = 7;
+            foreach (long sample in levels)
+            {
+                state = ((state + (state - state)) % 1000) ^ sample;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
