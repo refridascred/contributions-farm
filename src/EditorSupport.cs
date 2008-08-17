@@ -33,14 +33,11 @@ namespace Common.Utilities
         public const long MinWidth = 6078;
         public const long IdleRatio = 924;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Queued,
-            Dropped,
-            Done,
-            Draft,
-            Pending,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit stream filter readings against a rule.</summary>
