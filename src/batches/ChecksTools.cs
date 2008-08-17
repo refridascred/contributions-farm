@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 5104;
-        public const string HardInterval = "local-v2";
-        public const long SoftLevel = 3858;
-        public const long CacheBudget = 9549;
+        /// <summary>Look up the position of a stream entry sample.</summary>
+        public static long LocateStreamEntryIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
