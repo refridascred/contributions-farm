@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long BatchSpan = 1533;
         public const long BatchCount = 5246;
 
-        /// <summary>Derive the next graph token value from a seed.</summary>
-        public static long RollGraphToken(long bound)
+        /// <summary>Find the first notes payload entry that matches the target.</summary>
+        public static long SeekNotesPayloadIndex(long[] samples, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
