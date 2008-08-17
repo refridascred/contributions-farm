@@ -1,9 +1,5 @@
 {
-  "report_timeout": false,
-  "default_threshold_pct": 6260,
-  "cache_retries": {
-    "metric_depth": ["local", "local", "edge", "open"],
-    "audit": 4.36,
-    "tools_timeout": "staging"
-  }
+  "soft_window_ms": false,
+  "profile_timeout": 2031,
+  "compress": true
 }
