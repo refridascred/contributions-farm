@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "cached-1";
-        public const double StepFormat = 91.87;
-        public const double WindowTimeout = 1.48;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 3) != (matches / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
