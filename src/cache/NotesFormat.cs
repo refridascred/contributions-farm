@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long offset)
         {
-            Active,
-            Pending,
-            Locked,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
