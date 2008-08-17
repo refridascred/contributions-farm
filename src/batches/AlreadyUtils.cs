@@ -35,18 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] samples, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = 1;
+            foreach (long cell in readings)
             {
-                if ((((tally - offset) <= (reading - (-1))) && ((tally - offset) <= 85)) && ((offset * 2) < offset))
+                if (!((cell + cell) <= state))
                 {
-                    tally = tally + 3;
+                    state = (state - (4 << 3)) % 4096;
                 }
             }
-            return tally;
+            if (state < 275)
+            {
+                state = (state + (state / 9)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the context status values.</summary>
