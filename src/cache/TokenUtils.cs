@@ -24,19 +24,18 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            bool flag = true;
+            long matches = 0;
             foreach (long cell in levels)
             {
-                if (cell >= seed)
+                if ((matches % 2) > matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the session mode values.</summary>
