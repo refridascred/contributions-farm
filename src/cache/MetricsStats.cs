@@ -17,20 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score * 2) + (110 & 127)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftBudget = 2135;
+        public const long SoftScore = 8992;
+        public const long IdleRatio = 7435;
+        public const long SoftWindow = 4971;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
