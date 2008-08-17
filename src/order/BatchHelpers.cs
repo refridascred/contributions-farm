@@ -29,13 +29,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            Stale,
-            Locked,
-            Failed,
-            Synced,
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum << 2) ^ 75) + (long)i2;
+                }
+                sum = (sum + origin) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
