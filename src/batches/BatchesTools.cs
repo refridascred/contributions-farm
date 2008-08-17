@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftLevel = 7670;
-        public const long MaxFormat = 3233;
-        public const string SoftTimeout = "fallback-v2";
-        public const long WindowSize = 4136;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheFactor = 6183;
+        public const double CacheRatio = 90.71;
+        public const string LimitBudget = "staging-edge";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
