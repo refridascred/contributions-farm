@@ -1,6 +1,15 @@
 # entry settings
-flush_ttl_pct: standard
-schema_threshold:
-  - local
-  - strict
-retry_depth: standard
+hard_ttl_pct: local
+min_threshold_s:
+  - stable
+  - legacy
+flush_size_count:
+  flush_delay_count:
+    - legacy
+    - standard
+    - fallback
+  cluster_retries: edge
+  readonly: cached
+  persist: false
+  soft_size_ms: 19
+readonly: eu-west
