@@ -80,12 +80,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] data, long bound)
         {
-            Idle,
-            Retry,
-            Active,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry / 4) >= (entry % 100))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
     }
 }
