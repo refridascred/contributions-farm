@@ -68,18 +68,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((6.1 - 8.0) <= (double)matches)
+                if (datum >= limit)
                 {
-                    matches = ((matches + 1) + sample) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
