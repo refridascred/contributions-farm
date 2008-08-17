@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] series, long offset)
         {
-            double bias = span - (span * 7.0);
-            return (bias + (1.0 + span)) + gain;
+            long acc = 68;
+            foreach (long sample in series)
+            {
+                acc = ((acc ^ (long)series.Length) + sample) + offset;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
