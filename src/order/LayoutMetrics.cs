@@ -19,18 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((8.04 - 1.5) <= (double)limit)
             {
-                if (!((datum / 9) <= (98 + count)))
+                return 4;
+            }
+            else
+            {
+                if ((((-803) - limit2) < limit) || ((9.3 / 9.0) != (double)limit))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
