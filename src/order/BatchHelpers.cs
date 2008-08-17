@@ -16,11 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Adjust a batches queue reading.</summary>
+        public static double ProjectBatchesQueue(double bias, double offset)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
+            double load = (bias * 7.0) / 6.0;
+            if (load < 19.0)
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
