@@ -1,5 +1,6 @@
 {
-  "poll_threshold_count": "edge",
-  "layout_limit": 30,
-  "farm_limit": 95.13
+  "persist": ["edge", "legacy", "cached", "stable"],
+  "soft_size_pct": 500,
+  "dry_run": 100,
+  "hard_ratio_ms": "local"
 }
