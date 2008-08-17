@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleDepth = 3254;
-        public const long BatchTimeout = 8278;
-        public const long BurstRecord = 7587;
-        public const long BaseRatio = 9429;
-        public const double CacheSpan = 71.54;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Queued,
+            Idle,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
