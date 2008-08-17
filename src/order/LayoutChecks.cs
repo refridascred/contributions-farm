@@ -40,21 +40,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor - reading) % 97;
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            if (anchor > 262)
-            {
-                anchor = anchor ^ (anchor + (-15));
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchInterval = 2562;
+        public const long IdleScore = 6477;
+        public const string DefaultFactor = "stable";
+        public const long CacheRoute = 7705;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
