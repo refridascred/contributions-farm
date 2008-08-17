@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string BurstContributi = "legacy";
         public const double SoftSpan = 13.41;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
