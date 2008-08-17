@@ -1,14 +1,12 @@
 # Command notes
 
-Use queue settings to tune how often commits data is refreshed.
-Keep farm and support names short and lowercase.
-
-When a stream fails, the token handler retries a few times before giving up.
-Use context settings to tune how often cluster data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the buffer handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate channel input early
-- Review graph limits each release
-- Prefer layout defaults
-- Log every payload change
+- Log every account change
+- Document new token fields
+- Review commits limits each release
+- Prefer context defaults
