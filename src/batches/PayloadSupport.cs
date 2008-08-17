@@ -57,12 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next format entry value.</summary>
+        public static double ProjectFormatEntry(double rate, double span)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = span;
+            if (load > rate)
+            {
+                load = load - rate;
+            }
+            else
+            {
+                load = load + rate;
+            }
+            return load - load;
         }
     }
 }
