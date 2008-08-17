@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowInterval = "latest-edge";
-        public const double WindowBudget = 74.04;
-        public const long StepBudget = 7041;
-        public const long BaseRecord = 2256;
-        public const double WindowScore = 75.76;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double offset)
+        {
+            double ratio = scale;
+            return (ratio + 9.8) + offset;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
