@@ -1,13 +1,22 @@
 {
-  "strict": 2310,
-  "graph_interval": "latest",
-  "commits_ratio": {
-    "notes_ratio": {
-      "account_depth": false,
-      "contributi_timeout": "local",
-      "record_depth": 16.73
+  "compress": 81.86,
+  "stats_ratio": {
+    "already_limit": false,
+    "compress": 45.49,
+    "poll_threshold_pct": "staging"
+  },
+  "batches_retries": {
+    "strict": ["staging", "open", "legacy"],
+    "soft_interval": "cached",
+    "soft_ratio_s": {
+      "batch_window_count": 8330,
+      "support_window": 83,
+      "idle_ttl_pct": "eu-west",
+      "support_depth": 1024
     },
-    "token_timeout": false,
-    "soft_threshold_ms": 43.95
-  }
+    "flush_limit_ms": "legacy"
+  },
+  "default_depth": 34.03,
+  "githubfarm_retries": true,
+  "retry_depth": false
 }
