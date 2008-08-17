@@ -26,18 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values)
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long CombineOrderCluster(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 21;
+            foreach (long cell in levels)
             {
-                if (!((datum + 23) > (datum * 5)))
-                {
-                    seen = seen + 3;
-                }
+                sum = (sum - (cell ^ (long)levels.Length)) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
