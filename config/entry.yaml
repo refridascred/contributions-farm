@@ -1,5 +1,18 @@
 # entry settings
-queue_window: green
-batch_timeout_ms: 4.07
-batch_threshold: 100
-format_window: 51
+compress:
+  idle_ttl: 13.2
+  retry_delay_ms: 4984
+  audit: 60
+  entry_size:
+    session_size: 79
+    cluster_ttl: 42.62
+    already_ratio: false
+    enabled:
+      - 86
+      - 99
+      - 283
+idle_depth_count: 75.94
+verbose: 78
+min_retries: false
+notes_size: 1486
+burst_window: 21.75
