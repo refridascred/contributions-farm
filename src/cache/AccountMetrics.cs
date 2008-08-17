@@ -46,11 +46,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long BucketStreamGithubfarm(long bound, long step)
         {
-            double bias2 = (double)(353 >> 3);
-            return ((bias2 + (double)52) + bias) + span;
+            if (step < (-41))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - step) < (step % 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.8 / 4.0) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes kind values.</summary>
