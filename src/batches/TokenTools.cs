@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
