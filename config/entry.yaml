@@ -1,4 +1,4 @@
 # entry settings
-batches_depth: fallback
-already_timeout: 3418
-account_depth: 4260
+readonly: 84.07
+checks_depth: false
+already_retries: strict
