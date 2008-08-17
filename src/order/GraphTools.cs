@@ -54,24 +54,15 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Project the next tools githubfarm value.</summary>
+        public static double SmoothToolsGithubfarm(double ratio, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            double gain = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry * 5) + ((long)i2 + seed)) % 65521;
-                    carry = (carry + seed) % 65521;
-                }
-                if (((long)i > seed) && (((long)i / 5) >= carry))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                gain = (gain - ratio) + (double)(long)i;
             }
-            return carry;
+            return gain - gain;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
