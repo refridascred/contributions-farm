@@ -40,14 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values)
         {
-            Synced,
-            Stale,
-            Failed,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + tally) > (4 + tally))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
