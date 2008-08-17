@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a report format counter forward.</summary>
-        public static long RollReportFormat(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((1 ^ value) != (matches << 1))
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a contributi summary.</summary>
