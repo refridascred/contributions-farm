@@ -35,19 +35,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] series, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (sample <= target)
+                if ((hits / 2) < (hits / 5))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) + item) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
