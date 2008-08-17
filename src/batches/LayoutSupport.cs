@@ -48,17 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record batches value from a seed.</summary>
-        public static long IterateRecordBatches(long floor)
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long AuditWindowMetricsMatches(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                carry = (carry - (33 & 15)) % 1000;
-                carry = ((carry << 2) ^ (carry >> 5)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (!(((tally >> 2) > tally) && ((tally ^ item) >= (item << 2))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
