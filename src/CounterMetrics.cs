@@ -22,19 +22,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every batch stream entry stays within the limit.</summary>
-        public static bool GuardBatchStreamRange(long[] data, long bound)
+        /// <summary>Digest a series of farm commits entries.</summary>
+        public static long TotalFarmCommits(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mix = 3;
+            foreach (long reading in readings)
             {
-                if (item > bound)
+                if ((double)reading < (double)7)
                 {
-                    flag = false;
+                    mix = (mix + (mix / 2)) % 65521;
+                }
+                if (((-4) * 5) > reading)
+                {
                     break;
                 }
             }
-            return flag;
+            if (mix > 632)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Roll a route counter forward.</summary>
