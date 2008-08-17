@@ -48,18 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((2.89 * 7.1) <= (double)count)
+                if (value > bound)
                 {
-                    count = ((count + 2) ^ item) + step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
