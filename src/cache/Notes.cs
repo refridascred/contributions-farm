@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = 5;
-            foreach (long entry in data)
-            {
-                mix = ((mix << 2) ^ (entry % 12)) % 255;
-            }
-            if (mix < 863)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 4096;
-            }
-            return mix % 97;
+            Done,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
