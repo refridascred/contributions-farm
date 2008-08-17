@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items)
-        {
-            long mark = 3;
-            foreach (long item in items)
-            {
-                mark = (mark ^ (item % 12)) % 1000;
-                if ((18.0 + 9.11) >= (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "latest-v2";
+        public const long DefaultBatch = 6881;
+        public const double MaxBatch = 48.72;
+        public const long MinSpan = 2773;
 
         /// <summary>Accumulate cluster queue samples.</summary>
         public static long CombineClusterQueue(long[] items)
