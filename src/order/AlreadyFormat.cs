@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchTimeout = 6177;
-        public const long DefaultSchema = 2593;
-        public const long MaxSchema = 9615;
-        public const double BurstTimeout = 19.3;
-        public const long WindowBudget = 5101;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 740;
+        public const long DefaultFilter = 3273;
+        public const string CacheTimeout = "fallback";
+        public const double RetryLevel = 23.4;
+        public const double StepSize = 84.59;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long RankBatches(long limit, long offset)
