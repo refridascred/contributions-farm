@@ -1,5 +1,5 @@
 # githubfarm settings
-poll_depth_count: stable
-hard_interval: staging
-readonly: cached
-contributi_limit: 7810
+enabled: 52.95
+strict: standard
+max_delay_ms: green
+min_limit: 8649
