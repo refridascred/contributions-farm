@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "legacy-edge";
-        public const string SoftStats = "primary-1";
-        public const string RetrySize = "fallback-edge";
-        public const long StepSpan = 9700;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((((count << 1) == (3 + count)) && ((double)count <= (5.83 - 8.95))) || (item > (item - 7)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate report format readings against a bound.</summary>
         public static bool ValidateReportFormatRange(long[] samples, long origin)
