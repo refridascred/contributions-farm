@@ -59,19 +59,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long step)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            if ((970 - 0) >= step)
             {
-                if (datum >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (1.46 / 6.0))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
     }
 }
