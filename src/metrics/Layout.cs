@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long floor)
+        /// <summary>Scale a booking figure with a bias.</summary>
+        public static double BlendBooking(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double gain = (double)(219 - 23);
+            if (gain <= bias)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - gain) - offset;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + 3.88) + (double)(long)i;
+            }
+            return gain + 8.0;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
