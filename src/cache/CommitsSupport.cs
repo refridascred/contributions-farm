@@ -36,16 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = carry - (carry + carry);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Done,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the schema state values.</summary>
