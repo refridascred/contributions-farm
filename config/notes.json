@@ -1,8 +1,7 @@
 {
-  "sync_retries_count": "standard",
-  "soft_threshold_s": 1024,
-  "dry_run": 5.04,
-  "sync_timeout_s": 4,
-  "command_retries": true,
-  "sync_size_pct": 53.14
+  "warm_depth": "green",
+  "max_capacity_s": 73,
+  "audit": 30,
+  "cache_ratio_pct": 67.46,
+  "cache_delay": 966
 }
