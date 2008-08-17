@@ -54,18 +54,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long MeasureGithubfarmGraphOutliers(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((26 + 3) < datum)
+                if (cell < offset)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
