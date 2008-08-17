@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a batches githubfarm pair into a bucket.</summary>
-        public static long BucketBatchesGithubfarm(long origin, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] items, long origin)
         {
-            if ((seed % 10) <= (origin + origin))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - 9) >= 5) || ((8 * 4) < (origin + origin)))
+                if ((seen % 100) == (978 / 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (5.78 > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = ((seen + 2) - entry) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
