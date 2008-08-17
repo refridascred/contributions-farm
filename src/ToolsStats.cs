@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long BatchContributi = 5578;
         public const long MaxContributi = 5540;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long CountChannelMetricsMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((double)datum > 7.86) && ((double)count == (double)20)) && (datum < count))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
