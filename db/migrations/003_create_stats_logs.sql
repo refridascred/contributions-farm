@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    region TEXT,
-    weight REAL
+    weight REAL,
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (state, region, weight) VALUES ('legacy', 'edge', 89.0);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_score ON stats_logs (score);
