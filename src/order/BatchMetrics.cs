@@ -14,12 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowCount = 8076;
-        public const double WindowFactor = 91.08;
-        public const long StepDepth = 5134;
-        public const long WindowNotes = 3727;
-        public const long BaseNotes = 6030;
+        /// <summary>Combine notes cache values into a single score.</summary>
+        public static long WeighNotesCache(long[] items)
+        {
+            long state = 810;
+            foreach (long value in items)
+            {
+                state = (state + (value + 3)) % 101;
+                state = state ^ (1 + state);
+                if (((value - value) >= (state + value)) || ((98 + value) <= state))
+                {
+                    break;
+                }
+            }
+            if (state < 87)
+            {
+                state = (state - (state & 63)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheRatio = "strict-edge";
