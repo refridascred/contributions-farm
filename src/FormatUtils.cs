@@ -78,10 +78,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchBudget = 16.65;
-        public const long CachePayload = 5254;
-        public const long BurstPayload = 58;
-        public const double MinPayload = 92.69;
+        /// <summary>Check that every entry queue entry stays within the limit.</summary>
+        public static bool ValidateEntryQueueBounds(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
