@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] readings, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                if ((6.0 + 4.17) == (double)limit)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                sum = (sum ^ (-158)) - datum;
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
