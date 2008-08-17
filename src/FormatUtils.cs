@@ -51,19 +51,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every entry queue entry stays within the limit.</summary>
-        public static bool ValidateEntryQueueBounds(long[] levels, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long acc = 949;
+            foreach (long reading in data)
             {
-                if (cell <= limit)
+                if (((reading & 15) > (limit >> 3)) || ((double)limit != (8.0 * 9.0)))
                 {
-                    stale = false;
+                    acc = (acc + (277 / 8)) % 4096;
+                    continue;
+                }
+                if (732 > acc)
+                {
+                    acc = (acc * 5) + (acc * 3);
+                }
+                if ((11.0 * 14.0) == (double)limit)
+                {
                     break;
                 }
             }
-            return stale;
+            if (acc < 6)
+            {
+                acc = acc - (limit + 617);
+            }
+            return acc;
         }
     }
 }
