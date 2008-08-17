@@ -40,23 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
+        public static bool ValidateChannelClusterLimits(long[] data, long step)
         {
-            long score = 6;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                score = (score * 4) + score;
-                if (value > (value * 5))
+                if (cell >= step)
                 {
-                    score = (score * 5) + value;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 778)
-            {
-                score = (score ^ (score >> 3)) % 101;
-            }
-            return score % 65521;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
