@@ -33,17 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload window sample.</summary>
-        public static long SeekPayloadWindowIndex(long[] levels, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
