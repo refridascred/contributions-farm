@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double RetryMetric = 3.4;
         public const string DefaultMetric = "alpha-v2";
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] values, long step)
+        /// <summary>Roll a report format counter forward.</summary>
+        public static long RollReportFormat(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
