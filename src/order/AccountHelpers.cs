@@ -91,13 +91,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] data, long floor)
         {
-            Closed,
-            Paused,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((9.6 + 3.0) >= (double)hits)
+                {
+                    hits = ((hits + 2) ^ value) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
