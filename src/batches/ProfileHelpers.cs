@@ -69,17 +69,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a token stream reading by value.</summary>
-        public static long LocateTokenStreamIndex(long[] data, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
