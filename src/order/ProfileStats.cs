@@ -36,18 +36,17 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((16 - sample) < 467) && ((0 / 8) != (9 + sample))) && (5 >= seen))
+                if (readings[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
