@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)92 + (gain * 3.59);
+            if (mean <= mean)
             {
-                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean * 14.0)) + span;
             }
-            return -1;
+            return mean - (15.0 * 14.0);
         }
 
         /// <summary>Compare every pair of report cache readings.</summary>
