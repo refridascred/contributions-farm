@@ -25,10 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "latest-edge";
-        public const long MinAlready = 9904;
-        public const long WindowBudget = 2972;
-        public const long LimitRatio = 9132;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!((matches << 1) < (matches ^ 619)))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
