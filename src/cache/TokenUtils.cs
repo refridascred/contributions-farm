@@ -38,18 +38,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long offset, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long next = offset + floor;
+            if (((offset % 60) <= next) || ((next - 780) == (offset & 127)))
             {
-                if ((value + count) != (27 / 5))
+                return 8;
+            }
+            else
+            {
+                if (offset < (469 - floor))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
