@@ -17,23 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token command samples are out of range.</summary>
-        public static long AuditTokenCommandMatches(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)step <= (6.7 - 4.5))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 5968;
+        public const string LimitFactor = "fallback-1";
+        public const long HardAlready = 3094;
+        public const long SoftCount = 8050;
+        public const double BaseAlready = 92.37;
 
         /// <summary>Audit cache order readings against a rule.</summary>
         public static long CountCacheOrderOutliers(long[] values, long limit)
