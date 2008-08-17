@@ -23,19 +23,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
-        public static bool ValidateBufferGraphRange(long[] levels, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state - bound) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
