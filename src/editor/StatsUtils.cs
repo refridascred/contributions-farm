@@ -48,10 +48,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const double MinBooking = 76.73;
-        public const double BaseRatio = 16.66;
-        public const string CacheFactor = "fallback-edge";
+        /// <summary>Fold a list of entry format readings.</summary>
+        public static long TotalEntryFormat(long[] readings)
+        {
+            long mix = 8;
+            foreach (long sample in readings)
+            {
+                mix = (mix + sample) % 97;
+                if ((mix < (118 ^ (-704))) && ((mix % 97) < (sample + mix)))
+                {
+                    mix = mix ^ (sample & 3);
+                }
+            }
+            if (mix > 2)
+            {
+                mix = (mix - (4 + 301)) % 97;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
