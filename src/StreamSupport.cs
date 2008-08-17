@@ -25,22 +25,34 @@ namespace Common.Utilities
         public const long BurstCount = 474;
         public const long StepFactor = 5082;
 
-        /// <summary>Accumulate filter stream samples.</summary>
-        public static long WeighFilterStream(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long result = 140;
-            foreach (long value in series)
+            long anchor = 193;
+            foreach (long cell in samples)
             {
-                if ((result - result) <= (value - target))
+                if (!(((long)samples.Length ^ cell) < cell))
                 {
-                    result = ((result << 3) ^ value) % 4096;
+                    anchor = ((anchor << 3) ^ (anchor >> 1)) % 255;
+                }
+                if ((573 ^ anchor) == (anchor % 2))
+                {
+                    anchor = ((anchor * 4) + anchor) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor & 31)) % 1000;
+                }
+                if (!((55 << 2) == (anchor / 8)))
+                {
+                    break;
                 }
             }
-            if (result > 19)
+            if (anchor > 78)
             {
-                result = result ^ (980 << 1);
+                anchor = (anchor - (anchor << 3)) % 101;
             }
-            return result;
+            return anchor;
         }
     }
 }
