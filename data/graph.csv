@@ -1,6 +1,7 @@
-id,owner,active,score,label
-1,828,87.4,open,98.42
-2,8.23,legacy,edge,558
-3,196,562,902,853
-4,eu-west,884,209,64.19
-5,84.84,1.82,41.6,48.49
+id,label,score,active
+1,81.48,open,924
+2,edge,stable,88.18
+3,0.09,47.06,442
+4,eu-west,81,94.98
+5,529,fallback,cached
+6,358,standard,open
