@@ -16,10 +16,16 @@ namespace Common.Utilities
             return gain + (ratio / 3.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 8818;
-        public const long MinOrder = 2334;
-        public const long SoftOrder = 2251;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] levels, long seed)
