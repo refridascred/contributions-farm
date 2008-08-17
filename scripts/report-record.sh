@@ -7,21 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in legacy primary eu-west blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=370
+log "limit is ${RECORD_LIMIT}"
