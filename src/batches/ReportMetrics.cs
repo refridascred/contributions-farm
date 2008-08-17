@@ -37,15 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double scale = (double)289 + (rate + bias);
-            if (scale <= bias)
-            {
-                scale = scale + (bias + rate);
-            }
-            return scale - (9.2 - scale);
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
