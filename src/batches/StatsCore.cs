@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double scale, double span)
         {
-            long result = -84;
-            foreach (long entry in values)
+            double drift = (double)2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((result + result) >= (entry ^ (-38)))
-                {
-                    result = (result - (result & 63)) % 65521;
-                }
+                drift = (((drift - (drift / 9.0)) + (double)(long)i) + scale) - span;
             }
-            return result;
+            return drift - (double)72;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
