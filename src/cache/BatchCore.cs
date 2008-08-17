@@ -38,12 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Ready,
+            Done,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit format commits readings against a rule.</summary>
