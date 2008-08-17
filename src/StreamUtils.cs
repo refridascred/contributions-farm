@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long BaseRecord = 2256;
         public const double WindowScore = 75.76;
 
-        /// <summary>Scale a channel already figure with a bias.</summary>
-        public static double SmoothChannelAlready(double ratio, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = offset * 12.0;
-            if (mean <= 1.0)
-            {
-                mean = mean - (mean - mean);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (ratio - mean)) - (double)(long)i;
-            }
-            return mean - (ratio / 7.0);
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
