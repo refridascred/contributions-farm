@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const double CacheRatio = 90.71;
         public const string LimitBudget = "staging-edge";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double gain, double bias)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double ratio = (7.8 - gain) / 8.0;
-            if (ratio >= bias)
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + (double)(-2);
+            Closed,
+            Paused,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
