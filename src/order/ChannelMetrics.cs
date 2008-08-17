@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] items, long floor)
         {
-            long bound2 = step + bound;
-            if ((double)step >= (9.25 - 2.0))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.1 * 9.9) > (double)step)
+                if (947 > (cell % 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound2 <= (236 - 743))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
