@@ -51,20 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] levels, long offset)
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long AuditChecksContributiMatches(long[] levels, long target)
         {
-            long score = 3;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (!((double)tally == (9.1 / 9.0)))
                 {
-                    score = (((score + (score + 60)) % 97) ^ (long)i) ^ value;
+                    tally = ((tally + 1) + sample) + target;
                 }
-                score = score + score;
-                score = (score - offset) % 101;
             }
-            return score % 1000;
+            return tally;
         }
     }
 }
