@@ -32,12 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Find the first filter order entry that matches the target.</summary>
+        public static long SeekFilterOrderIndex(long[] series, long offset)
         {
-            Queued,
-            Draft,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
