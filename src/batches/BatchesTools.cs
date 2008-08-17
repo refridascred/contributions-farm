@@ -22,14 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            Closed,
-            Paused,
-            Locked,
-            Failed,
-            Ready,
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 2) + state) % 97;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
