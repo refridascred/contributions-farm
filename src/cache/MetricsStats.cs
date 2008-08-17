@@ -17,32 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            long anchor = 7;
-            foreach (long value in items)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    anchor = (((anchor * 2) + (192 ^ step)) % 255) ^ (long)i;
-                    anchor = ((anchor << 2) ^ ((long)items.Length + value)) % 4096;
+                    score = ((score * 2) + (110 & 127)) - (long)i2;
                 }
-                anchor = (anchor << 3) ^ (anchor ^ anchor);
-                if ((double)anchor < 7.02)
-                {
-                    anchor = ((anchor * 5) + (value ^ step)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 10)) % 1000;
-                }
-                if (((value << 2) > step) && ((value & 7) > (1 + 723)))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
