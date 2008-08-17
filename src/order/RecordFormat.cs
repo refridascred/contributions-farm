@@ -29,11 +29,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftDepth = 39.1;
-        public const long LimitEntry = 8667;
-        public const double CacheEntry = 82.15;
-        public const long BurstEntry = 6695;
+        /// <summary>Locate a counter graph reading by value.</summary>
+        public static long SeekCounterGraphIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
         public static long SeekNotesGithubfarmIndex(long[] samples, long limit)
