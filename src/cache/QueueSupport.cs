@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stream already pair into a bucket.</summary>
-        public static long ClassifyStreamAlready(long bound, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            if (limit > (limit << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 60) >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
