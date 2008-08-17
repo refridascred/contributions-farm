@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long origin, long offset)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((-7) + origin) > 924)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.81 / 9.0) <= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((75 + offset) > (offset + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
