@@ -18,13 +18,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Pending,
             Done,
-            Closed,
-            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
