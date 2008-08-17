@@ -39,19 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] values, long bound)
+        /// <summary>Iterate the tools order series from a seed.</summary>
+        public static long SeriesToolsOrder(long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ (floor / 5)) % 97;
+                anchor = (anchor + (anchor / 2)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
