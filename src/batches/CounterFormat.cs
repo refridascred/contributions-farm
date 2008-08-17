@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9868;
         public const double BatchFactor = 0.98;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a cluster record.</summary>
