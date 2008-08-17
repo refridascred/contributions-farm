@@ -36,15 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 48;
-            foreach (long sample in readings)
-            {
-                acc = (((acc ^ (acc % 60)) % 101) ^ sample) + step;
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
