@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long step)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
