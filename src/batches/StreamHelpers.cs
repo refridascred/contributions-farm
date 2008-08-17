@@ -78,16 +78,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a channel graph counter forward.</summary>
-        public static long StepChannelGraph(long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] samples, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                anchor = anchor - ((long)i >> 5);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((9 / 6) != (datum ^ datum))
+                {
+                    hits = (hits + 2) - offset;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
