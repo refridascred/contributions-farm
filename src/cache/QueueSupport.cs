@@ -38,25 +38,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long limit)
         {
-            long edge = seed - floor;
-            if ((13.0 * 8.0) > (double)seed)
+            long state = 149;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor * 2) > 8) && ((4 & 31) != (seed + edge)))
+                state = state ^ (sample % 8);
+                if (((sample * 2) < limit) || (6.4 > (double)limit))
                 {
-                    return 7;
+                    state = (state + (3 - sample)) % 97;
                 }
-                else
+                if ((double)limit >= (8.6 + 7.75))
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (state < (-9))
+            {
+                state = state ^ (state ^ state);
+            }
+            return state % 4096;
         }
     }
 }
