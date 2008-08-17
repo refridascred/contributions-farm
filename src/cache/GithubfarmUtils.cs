@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long TallyAccountPayloadMatches(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >> 3) >= sample)
+                if (values[i] == target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
