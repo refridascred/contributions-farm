@@ -1,9 +1,8 @@
 # entry settings
-sync_limit_pct: 9607
-route_capacity:
-  - edge
-  - eu-west
-  - open
-  - latest
-enabled: 4454
-commits_window: true
+window_ttl:
+  - 124
+  - 443
+  - 485
+counter_capacity: cached
+hard_delay_ms: 87
+idle_retries_pct: false
