@@ -25,12 +25,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already buffer sample.</summary>
-        public static long FindAlreadyBufferIndex(long[] series, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if (levels[i] >= seed)
                 {
                     return (long)i;
                 }
