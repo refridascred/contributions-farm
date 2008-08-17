@@ -15,18 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long TallyNotesSupportHits(long[] readings, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (1.91 <= (double)offset)
+                if ((((-6) - cell) != (cell / 6)) && ((9.8 * 5.49) == (double)cell))
                 {
-                    matches = (matches + 2) + sample;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
