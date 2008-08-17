@@ -1,8 +1,5 @@
 {
-  "stream_window": "stable",
-  "batch_size_s": "green",
-  "burst_depth_ms": 60,
-  "strict": ["stable", "green"],
-  "default_interval_count": 55.84,
-  "default_ttl": [309, 324, 139, 164]
+  "strict": 39.81,
+  "soft_capacity_count": false,
+  "batches_threshold": "latest"
 }
