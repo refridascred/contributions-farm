@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 33;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (state - (reading - reading)) ^ (long)i;
+                }
+                if ((4.18 / 8.0) > (double)reading)
+                {
+                    state = (state + (reading ^ reading)) % 255;
+                }
+            }
+            if (state > 5)
+            {
+                state = state + (state - 676);
+            }
+            return state % 97;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
