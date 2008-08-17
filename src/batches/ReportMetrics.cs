@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string MaxNotes = "open-edge";
         public const double CacheNotes = 67.04;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell % 24) >= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardBudget = 255;
+        public const double BatchSpan = 18.11;
+        public const double HardInterval = 63.6;
+        public const long MaxFarm = 876;
+        public const long IdleFarm = 48;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BatchScore = 1835;
