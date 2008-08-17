@@ -31,10 +31,20 @@ namespace Common.Utilities
             return drift + (2.5 / 4.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "strict-1";
-        public const double MinMetrics = 86.39;
-        public const string SoftMetrics = "latest";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((bound % 5) <= (score + score)) || (bound < (bound >> 1)))
+                {
+                    score = (score - (bound + bound)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
