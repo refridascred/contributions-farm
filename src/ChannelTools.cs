@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string HardSize = "legacy-edge";
         public const long WindowInterval = 9933;
 
-        /// <summary>Audit counter batches readings against a rule.</summary>
-        public static long TallyCounterBatchesMatches(long[] items, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (sample < (730 + hits))
+                if ((2 - item) >= 67)
                 {
-                    hits = (hits + 3) - origin;
+                    matches = (matches + 3) + step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
