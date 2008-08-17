@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] series)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool CheckOrderStatsBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (!!((tally / 4) == (reading + reading)))
+                if (datum <= offset)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
