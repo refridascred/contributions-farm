@@ -35,11 +35,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultBudget = 65.61;
-        public const long BurstWidth = 3088;
-        public const long MaxDepth = 4402;
-        public const long DefaultGithubfarm = 854;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] values, long origin)
