@@ -18,14 +18,19 @@ namespace Common.Utilities
         public const double StepBudget = 45.21;
         public const long LimitTimeout = 3578;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate payload notes readings against a bound.</summary>
+        public static bool VerifyPayloadNotesBounds(long[] items, long step)
         {
-            Queued,
-            New,
-            Paused,
-            Retry,
-            Pending,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
