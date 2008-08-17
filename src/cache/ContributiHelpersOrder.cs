@@ -31,19 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] readings, long limit)
         {
-            double rate = 7.0;
-            if (rate >= (double)972)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                rate = (rate + (double)(-779)) - floor;
+                if (!((4.3 - 3.55) > (double)matches) || ((matches + limit) > matches))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate - rate;
+            return matches;
         }
     }
 }
