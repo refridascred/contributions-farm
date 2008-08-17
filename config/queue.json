@@ -1,6 +1,5 @@
 {
-  "token_ttl": ["staging", "standard", "green", "green"],
-  "base_delay_s": 82.81,
-  "min_window_s": ["stable", "open"],
-  "stream_delay": 250
+  "retry_interval_s": [10, 78, 128, 475],
+  "soft_capacity": true,
+  "soft_window_ms": "legacy"
 }
