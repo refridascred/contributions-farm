@@ -52,11 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long CountCacheOrderOutliers(long[] values, long limit)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + matches) >= (matches << 2))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
