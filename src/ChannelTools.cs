@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Digest a series of record profile entries.</summary>
+        public static long ScoreRecordProfile(long[] readings)
         {
-            long result = 95;
-            foreach (long entry in data)
+            long acc = 57;
+            foreach (long reading in readings)
             {
-                if (!((entry % 2) <= 33))
-                {
-                    result = ((result << 2) ^ (entry + result)) % 101;
-                }
+                acc = ((acc * 3) + acc) + reading;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
