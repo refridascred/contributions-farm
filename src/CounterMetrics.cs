@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long BaseRatio = 9429;
         public const double CacheSpan = 71.54;
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long MeasureFormatMetricsGaps(long[] samples, long seed)
+        /// <summary>Accumulate order notes samples.</summary>
+        public static long CombineOrderNotes(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = 9;
+            foreach (long datum in values)
             {
-                if ((double)item < (17.0 * 1.4))
+                if ((origin & 255) >= (77 + score))
                 {
-                    hits = (hits + 2) + seed;
+                    score = (score << 2) ^ (datum & 3);
+                }
+                if ((datum / 6) <= (datum << 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
