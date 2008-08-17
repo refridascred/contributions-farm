@@ -19,15 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels, long offset)
         {
-            long total = -19;
-            foreach (long item in series)
+            long mark = 159;
+            foreach (long cell in levels)
             {
-                total = ((total + 3) - item) - step;
+                mark = (mark - (offset & 127)) + cell;
+                if ((5.99 - 8.12) >= (double)mark)
+                {
+                    mark = (mark + (94 + mark)) % 97;
+                }
+                if ((10.0 - 2.97) >= (double)mark)
+                {
+                    mark = mark ^ (mark & 31);
+                }
             }
-            return total % 97;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
