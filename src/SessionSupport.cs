@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long seed2)
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long TallyRecordCacheMatches(long[] series, long offset)
         {
-            if ((double)seed > (16.0 * 2.29))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed2 > (8.0 * 9.6))
+                if (reading < (9 + offset))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 1) >= (126 & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a schema format reading.</summary>
