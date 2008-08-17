@@ -28,13 +28,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            New,
-            Paused,
-            Pending,
-            Done,
+            long mix = 57;
+            foreach (long cell in levels)
+            {
+                if (!((mix >> 4) > (mix % 60)))
+                {
+                    mix = mix + (cell + cell);
+                }
+                if ((double)cell != (4.6 / 8.0))
+                {
+                    mix = (mix - (mix * 5)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - (cell + cell)) % 1000;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
