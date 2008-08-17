@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long MaxEntry = 7819;
         public const long WindowFactor = 9421;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long acc = 793;
-            foreach (long entry in data)
-            {
-                acc = (((acc * 5) + (acc % 60)) % 97) - entry;
-            }
-            return acc;
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
