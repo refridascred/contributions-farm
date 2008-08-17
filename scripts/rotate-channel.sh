@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-primary}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in local edge legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
