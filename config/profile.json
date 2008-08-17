@@ -1,8 +1,8 @@
 {
-  "session_interval": 1024,
-  "payload_retries": 49,
-  "soft_timeout_count": 40.51,
-  "graph_capacity": true,
-  "cache_ratio": 4056,
-  "batch_delay_pct": 34.24
+  "soft_retries": false,
+  "idle_delay": 85,
+  "filter_ratio": true,
+  "burst_delay": [116, 494, 44, 189],
+  "enabled": false,
+  "cache_retries": false
 }
