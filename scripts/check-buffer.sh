@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge; do
+for item in eu-west green latest fallback; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+mode="${1:-edge}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
