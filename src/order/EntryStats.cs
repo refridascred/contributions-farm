@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 9554;
-        public const double MaxReport = 29.39;
-        public const long MinTimeout = 3911;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((6.0 + 4.17) == (double)limit)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
