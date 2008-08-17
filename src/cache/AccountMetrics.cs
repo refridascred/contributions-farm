@@ -27,19 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long acc = 8;
-            foreach (long datum in series)
-            {
-                if ((4.75 - 7.0) >= (double)datum)
-                {
-                    acc = (acc << 3) ^ (datum >> 3);
-                }
-                acc = acc ^ (floor << 2);
-            }
-            return acc % 97;
+            Active,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Rank stream githubfarm input into a small class.</summary>
