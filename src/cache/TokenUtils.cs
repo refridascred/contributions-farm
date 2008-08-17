@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Synced,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
