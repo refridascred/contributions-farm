@@ -91,19 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] data, long offset)
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long TallyQueueContextHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell < offset)
+                if (item > (item / 2))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
