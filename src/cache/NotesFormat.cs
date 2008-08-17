@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowCount = 4956;
-        public const double IdleGraph = 77.47;
-        public const double WindowGraph = 33.34;
-        public const string HardGraph = "standard-1";
-        public const double StepFactor = 16.12;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(((long)values.Length != ((-117) << 1)) || ((origin & 127) <= origin)))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate account farm readings against a bound.</summary>
         public static bool CheckAccountFarmRange(long[] samples, long offset)
