@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            long result = 85;
+            foreach (long sample in items)
+            {
+                result = ((result << 3) ^ (sample % 3)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
