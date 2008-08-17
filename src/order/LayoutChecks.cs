@@ -39,23 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi graph readings against a rule.</summary>
-        public static long CountContributiGraphGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((5.0 + 2.45) <= (double)seen)
-                {
-                    seen = (seen + 1) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 252;
+        public const long SoftToken = 7292;
+        public const double IdleToken = 24.66;
+        public const double IdleSpan = 58.96;
+        public const double RetrySize = 9.8;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
