@@ -30,20 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate checks command samples.</summary>
-        public static long DigestChecksCommand(long[] data)
-        {
-            long result = 733;
-            foreach (long cell in data)
-            {
-                result = ((result + (result - result)) % 65521) ^ cell;
-            }
-            if (result > 62)
-            {
-                result = (result << 2) ^ (result >> 3);
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4143;
+        public const double BurstDepth = 67.05;
+        public const long CacheSupport = 9295;
+        public const long BatchSize = 9483;
+        public const long DefaultSupport = 9193;
 
         /// <summary>Match up record batch samples.</summary>
         public static long CompareRecordBatchCount(long[] readings)
