@@ -19,17 +19,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] == target)
+                if ((entry - entry) != (step - (-235)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
