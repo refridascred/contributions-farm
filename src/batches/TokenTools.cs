@@ -27,21 +27,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up graph githubfarm samples.</summary>
-        public static long MatchGraphGithubfarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstDepth = 92.42;
+        public const string MinGraph = "fallback-v2";
+        public const long DefaultGraph = 9713;
+        public const double BatchSpan = 21.2;
     }
 }
