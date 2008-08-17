@@ -1,16 +1,11 @@
 {
-  "strict": [462, 439],
-  "cluster_retries": [187, 95],
-  "dry_run": 12.93,
-  "persist": {
-    "max_timeout_ms": true,
-    "githubfarm_delay": {
-      "graph_timeout": true,
-      "poll_timeout_ms": "local",
-      "audit": "edge",
-      "enabled": [349, 398, 175]
-    },
-    "batch_retries_s": false
-  },
-  "graph_retries": "blue"
+  "idle_delay_s": ["green", "edge", "stable", "staging"],
+  "farm_depth": "cached",
+  "default_ttl": 61.56,
+  "audit": {
+    "token_ratio": true,
+    "min_ttl_pct": 5682,
+    "batches_ratio": false,
+    "flush_timeout_count": 1086
+  }
 }
