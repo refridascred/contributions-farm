@@ -1,21 +1,10 @@
 {
-  "report_threshold": "stable",
-  "cache_ratio": {
-    "dry_run": true,
-    "schema_capacity": true,
-    "persist": 311
-  },
-  "batches_capacity": {
-    "format_capacity": true,
-    "editor_size": {
-      "base_limit_s": [72, 223, 420, 479],
-      "flush_threshold": [302, 373],
-      "batch_ratio_pct": 78
-    },
-    "queue_ratio": [175, 411, 469, 308],
-    "burst_ratio": "cached"
-  },
-  "idle_threshold": false,
-  "githubfarm_window": "fallback",
-  "commits_window": "strict"
+  "burst_interval_ms": [313, 159, 498, 493],
+  "dry_run": 12.32,
+  "soft_depth_ms": {
+    "poll_depth": ["cached", "strict"],
+    "base_ttl": 1024,
+    "cache_depth_s": 63,
+    "max_ratio_ms": "edge"
+  }
 }
