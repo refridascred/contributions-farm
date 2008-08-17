@@ -1,5 +1,8 @@
 # entry settings
-base_retries_count: 77
-dry_run: 70.95
-strict: blue
-idle_capacity_s: 30
+cache_threshold_ms: primary
+dry_run:
+  - 23
+  - 333
+  - 402
+flush_depth_ms: 56.32
+idle_timeout: cached
