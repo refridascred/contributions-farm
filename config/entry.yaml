@@ -1,4 +1,12 @@
 # entry settings
-readonly: 84.07
-checks_depth: false
-already_retries: strict
+cache_window_pct:
+  - 248
+  - 121
+  - 120
+support_depth: latest
+compress: 100
+max_window_s: green
+readonly:
+  record_interval: 5270
+  flush_size_pct: fallback
+  cluster_window: true
