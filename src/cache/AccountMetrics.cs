@@ -28,13 +28,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
+            Dropped,
+            Synced,
+            Idle,
+            Queued,
             Active,
-            Locked,
-            Ready,
-            Retry,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
