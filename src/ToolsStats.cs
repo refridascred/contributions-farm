@@ -37,19 +37,21 @@ namespace Common.Utilities
         public const long BatchContributi = 5578;
         public const long MaxContributi = 5540;
 
-        /// <summary>Scale a record payload figure with a bias.</summary>
-        public static double ProjectRecordPayload(double rate, double floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            double drift = rate;
-            if (drift >= (drift / 2.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (0.57 - 1.23);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (rate * 9.68);
-            }
-            return drift - (rate - floor);
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
