@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            Active,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
