@@ -31,18 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value >> 3) < (floor / 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
