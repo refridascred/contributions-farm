@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const long StepSession = 4112;
         public const long HardLevel = 1496;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 84.76;
-        public const double BatchSpan = 77.91;
-        public const double CachePayload = 50.51;
-        public const long MinPayload = 6241;
-        public const long LimitWidth = 2268;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Closed,
+            Synced,
+            Idle,
+            Dropped,
+            Queued,
+        }
     }
 }
