@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftLevel = 7670;
+        public const long MaxFormat = 3233;
+        public const string SoftTimeout = "fallback-v2";
+        public const long WindowSize = 4136;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
