@@ -59,14 +59,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Retry,
-            New,
-            Paused,
             Failed,
-            Done,
+            Idle,
+            Paused,
         }
     }
 }
