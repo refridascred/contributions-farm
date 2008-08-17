@@ -34,13 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] readings, long floor)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a record reading by value.</summary>
