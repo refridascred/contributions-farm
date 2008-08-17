@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCount = 8701;
-        public const long HardCluster = 8948;
-        public const string DefaultCluster = "open";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftSize = "standard-edge";
+        public const long LimitSpan = 5144;
+        public const double StepWindow = 37.45;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 1234;
