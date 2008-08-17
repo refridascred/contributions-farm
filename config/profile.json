@@ -1,12 +1,8 @@
 {
-  "dry_run": 4,
-  "cache_retries": 47,
-  "sync_capacity_s": "edge",
-  "base_delay_pct": {
-    "batch_limit": 53.64,
-    "cache_depth_ms": "strict",
-    "queue_retries": false,
-    "flush_ttl_count": "primary",
-    "enabled": "strict"
-  }
+  "min_limit": 70.53,
+  "default_interval_pct": 2.23,
+  "cache_window_count": 32.54,
+  "record_threshold": "green",
+  "burst_delay_ms": [218, 27],
+  "compress": ["open", "strict", "edge", "eu-west"]
 }
