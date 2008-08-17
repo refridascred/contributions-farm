@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const double MinMetrics = 86.39;
         public const string SoftMetrics = "latest";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            Stale,
-            Retry,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
