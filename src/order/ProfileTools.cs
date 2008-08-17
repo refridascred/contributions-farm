@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double ratio, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long step)
         {
-            double rate = (double)(835 + 17);
-            if (rate > (double)61)
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
             {
-                rate = ((rate - rate) - ratio) - span;
+                long lane = (anchor % 7) + (step + step);
+                anchor = (anchor * 3) + (lane << 1);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return rate + 14.0;
+            return anchor;
         }
 
         /// <summary>Combine token buffer values into a single score.</summary>
