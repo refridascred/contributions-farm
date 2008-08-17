@@ -12,15 +12,11 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            New,
-            Ready,
-            Active,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitSpan = 9350;
+        public const long HardFilter = 4114;
+        public const double DefaultFilter = 29.93;
+        public const long RetryInterval = 7347;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double gain, double floor)
