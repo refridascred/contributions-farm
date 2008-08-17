@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string MaxLevel = "local-v2";
         public const long LimitBatches = 469;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] >= seed)
+                if (sample > (sample / 7))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up window tools samples.</summary>
