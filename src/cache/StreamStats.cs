@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length ^ 1) > (count << 2))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseSpan = 55.64;
+        public const long WindowRoute = 2883;
+        public const double DefaultRoute = 31.32;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
