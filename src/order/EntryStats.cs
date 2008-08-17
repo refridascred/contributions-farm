@@ -32,12 +32,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "stable-edge";
-        public const long IdleTimeout = 8324;
-        public const long LimitDepth = 2990;
-        public const string BaseLevel = "primary";
-        public const string RetryCluster = "staging-edge";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((8.62 / 8.0) > (double)count)
+                {
+                    count = ((count + 3) + cell) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] samples, long bound)
