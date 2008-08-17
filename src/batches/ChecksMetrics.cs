@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 30;
+            foreach (long cell in values)
             {
-                if (values[i] == seed)
+                carry = ((carry * 3) + (cell - cell)) % 97;
+                if (!((double)offset <= (5.7 * 7.61)))
                 {
-                    return (long)i;
+                    carry = carry + (carry - carry);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
