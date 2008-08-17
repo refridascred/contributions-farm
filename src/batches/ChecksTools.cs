@@ -29,10 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseTimeout = 6166;
-        public const long HardSchema = 6581;
-        public const long BaseSchema = 8024;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] data, long limit)
