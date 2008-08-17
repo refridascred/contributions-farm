@@ -1,5 +1,8 @@
 {
-  "soft_window_ms": false,
-  "profile_timeout": 2031,
-  "compress": true
+  "cluster_capacity": "primary",
+  "soft_threshold_ms": 2224,
+  "compress": ["open", "latest"],
+  "layout_retries": 8642,
+  "stats_threshold": 74.19,
+  "account_window": 65
 }
