@@ -27,22 +27,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 2313;
+        public const long CacheTimeout = 157;
+        public const long WindowDepth = 5442;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderLimits(long[] readings, long seed)
