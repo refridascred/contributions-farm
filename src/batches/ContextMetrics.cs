@@ -21,12 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepSize = 80.93;
-        public const string MaxCount = "open-edge";
-        public const string DefaultBudget = "fallback-v2";
-        public const long BaseBuffer = 5922;
-        public const long HardBuffer = 1477;
+        /// <summary>Scale a order route figure with a bias.</summary>
+        public static double ProjectOrderRoute(double bias, double bias2)
+        {
+            double mean = bias2;
+            return mean + (bias * 3.34);
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 9903;
