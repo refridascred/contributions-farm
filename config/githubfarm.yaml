@@ -1,7 +1,20 @@
 # githubfarm settings
-idle_threshold:
-  - primary
-  - latest
-  - standard
-contributi_depth: false
-max_limit_count: fallback
+max_ratio_count:
+  - 448
+  - 397
+  - 135
+queue_timeout: 6049
+poll_ttl_count:
+  hard_capacity_s: false
+  strict:
+    - 214
+    - 87
+    - 384
+    - 79
+  default_interval:
+    - 284
+    - 126
+    - 46
+  record_size: true
+  flush_size_ms: standard
+  tools_retries: fallback
