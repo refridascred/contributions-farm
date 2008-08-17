@@ -13,18 +13,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels, long step)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((2 - item) >= 67)
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            Retry,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
