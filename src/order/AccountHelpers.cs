@@ -22,21 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Look up the position of a githubfarm batches sample.</summary>
+        public static long LocateGithubfarmBatchesIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
