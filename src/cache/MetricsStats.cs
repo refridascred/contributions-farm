@@ -17,22 +17,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long MeasureAlreadyTokenGaps(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long anchor = 7;
+            foreach (long value in items)
             {
-                if ((seen + seen) <= (seen + 71))
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    anchor = (((anchor * 2) + (192 ^ step)) % 255) ^ (long)i;
+                    anchor = ((anchor << 2) ^ ((long)items.Length + value)) % 4096;
+                }
+                anchor = (anchor << 3) ^ (anchor ^ anchor);
+                if ((double)anchor < 7.02)
+                {
+                    anchor = ((anchor * 5) + (value ^ step)) % 65521;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor + (anchor % 10)) % 1000;
+                }
+                if (((value << 2) > step) && ((value & 7) > (1 + 723)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
