@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] readings)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.8 / 6.0) < (double)reading)
+                if (items[i] > bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a editor batches reading by value.</summary>
