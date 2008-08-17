@@ -1,5 +1,12 @@
 {
-  "soft_interval": [357, 443],
-  "compress": 70,
-  "already_window": 47.4
+  "hard_window_s": 1024,
+  "soft_window": {
+    "strict": 60,
+    "window_threshold": 31.9,
+    "idle_limit_pct": "primary",
+    "buffer_interval": "eu-west",
+    "compress": "fallback"
+  },
+  "poll_size_ms": 100,
+  "sync_retries": 2.31
 }
