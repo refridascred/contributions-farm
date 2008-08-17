@@ -1,17 +1,8 @@
 # support settings
-filter_capacity: 4368
-warm_capacity_ms:
-  base_interval_ms: 4512
-  poll_interval_ms: false
-  burst_retries_ms:
-    - eu-west
-    - staging
-  max_ratio_s: 59.73
-  support_timeout: strict
-  strict:
-    editor_interval: false
-    channel_window: 57.17
-    warm_interval_s: 500
-sync_size: open
-flush_ttl_pct: 9462
-cache_threshold: 7437
+min_window: 30
+queue_ratio:
+  batch_ttl_count: false
+  poll_retries: 8346
+  sync_ttl: open
+base_size: green
+flush_limit_s: strict
