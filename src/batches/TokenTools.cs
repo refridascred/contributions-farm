@@ -57,23 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route graph entries.</summary>
-        public static long TallyRouteGraph(long[] readings, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = 85;
-            foreach (long cell in readings)
-            {
-                if ((0.28 * 8.91) != (double)target)
-                {
-                    acc = ((acc * 3) + (target - acc)) % 65521;
-                    acc = (acc ^ (cell + target)) % 97;
-                }
-                if (((target + acc) >= (66 + target)) && (target > (cell >> 3)))
-                {
-                    acc = (acc - (904 ^ acc)) % 97;
-                }
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
