@@ -47,25 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long bound2 = bound ^ limit;
-            if (limit <= (bound % 16))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.0 * 13.0) != (double)bound2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
