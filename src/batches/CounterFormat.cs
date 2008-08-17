@@ -24,10 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftSpan = 1999;
-        public const long WindowCounter = 3103;
-        public const double RetryScore = 16.85;
-        public const long WindowCount = 2822;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double ratio, double floor)
+        {
+            double mean = floor;
+            return (mean + 3.7) + ratio;
+        }
     }
 }
