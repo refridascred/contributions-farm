@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long limit)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long prev = floor - limit;
-            if ((prev >> 3) > limit)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((15.0 + 6.4) != (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up token samples.</summary>
