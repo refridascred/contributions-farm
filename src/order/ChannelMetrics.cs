@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitRatio = 3074;
-        public const long SoftMetrics = 5413;
-        public const double StepMetrics = 8.05;
-        public const long HardMetrics = 9845;
-        public const double BatchMetrics = 23.77;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Retry,
+            Dropped,
+            Done,
+            Pending,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftBudget = 32.04;
