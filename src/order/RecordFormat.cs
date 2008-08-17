@@ -29,20 +29,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftDepth = 39.1;
+        public const long LimitEntry = 8667;
+        public const double CacheEntry = 82.15;
+        public const long BurstEntry = 6695;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string SoftBudget = "fallback-1";
