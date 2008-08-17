@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long limit)
+        /// <summary>Iterate the route buffer series from a seed.</summary>
+        public static long SeriesRouteBuffer(long origin)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = (score + ((long)i << 1)) % 4096;
+                score = score - (origin & 127);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
