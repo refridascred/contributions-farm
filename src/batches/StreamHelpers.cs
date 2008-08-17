@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache filter input into a small class.</summary>
-        public static long BucketCacheFilter(long step, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long offset)
         {
-            if ((bound % 5) <= (bound + step))
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (bound < (bound * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
