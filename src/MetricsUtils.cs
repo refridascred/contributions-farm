@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading - bound))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a token summary.</summary>
