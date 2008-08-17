@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "stable";
+        public const long RetryStream = 6859;
+        public const long RetryLevel = 8872;
+        public const long IdleDepth = 5794;
+        public const string MinDepth = "open-1";
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] levels, long floor)
