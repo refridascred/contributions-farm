@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const string BurstContributi = "legacy";
         public const double SoftSpan = 13.41;
 
-        /// <summary>Project the next stream cache value.</summary>
-        public static double BlendStreamCache(double bias, double floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            double gain = 9.1;
-            return (gain - floor) + bias;
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a support entry.</summary>
