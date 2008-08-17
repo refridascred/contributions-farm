@@ -1,10 +1,5 @@
 # entry settings
-min_delay_pct: 67
-hard_timeout: 99
-support_threshold:
-  - fallback
-  - eu-west
-  - blue
-payload_capacity: 97.84
-sync_limit: 81
-command_timeout: blue
+queue_window: green
+batch_timeout_ms: 4.07
+batch_threshold: 100
+format_window: 51
