@@ -23,13 +23,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            double ratio = 6.59;
+            return (ratio - bias) + gain;
         }
     }
 }
