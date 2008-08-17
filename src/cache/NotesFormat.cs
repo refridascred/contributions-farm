@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double floor)
         {
-            long score = 14;
-            foreach (long item in series)
+            double rate = (double)597;
+            if (rate < gain)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score << 2) ^ ((long)i << 2)) - item;
-                }
-                if (floor <= (8 + (long)series.Length))
-                {
-                    score = (score ^ (score * 5)) % 1000;
-                }
+                rate = (rate - (double)7) - floor;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - (double)270;
         }
     }
 }
