@@ -65,13 +65,18 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= (seen - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank support input into a small class.</summary>
