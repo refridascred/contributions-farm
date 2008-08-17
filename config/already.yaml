@@ -1,32 +1,9 @@
 # already settings
-burst_depth: strict
-dry_run: 1226
-retry_retries_pct:
-  idle_window_pct: stable
-  min_capacity: false
-  default_size_pct: green
-  layout_retries: latest
-  booking_retries: open
-  base_retries: false
-profile_window:
-  channel_interval: legacy
-  idle_ratio:
-    retry_capacity: strict
-    stream_window: false
-    base_size: 1988
-    batch_delay_pct: 14.92
-    flush_timeout_ms: local
-  batch_ratio_count: 100
-  idle_limit_count:
-    base_window_s: true
-    contributi_threshold:
-      - 424
-      - 470
-      - 352
-      - 253
-    queue_depth: 921
-  audit:
-    - 464
-    - 104
-    - 376
-order_delay: fallback
+strict:
+  - primary
+  - strict
+  - stable
+  - cached
+default_retries: primary
+route_size: 60
+min_window: 94
