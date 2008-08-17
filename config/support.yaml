@@ -1,12 +1,13 @@
 # support settings
-audit: legacy
-enabled:
-  already_ratio: true
-  warm_timeout: true
-  soft_depth_ms:
-    - 64
-    - 278
-    - 37
-    - 426
-  max_window: eu-west
-notes_ttl: edge
+warm_delay_ms: 67.12
+compress:
+  notes_window: 5953
+  min_window_ms: primary
+  dry_run: standard
+  schema_threshold: green
+  retry_ttl_count: 1024
+  burst_retries_pct: green
+poll_threshold_ms:
+  - 80
+  - 332
+cache_interval_count: 30
