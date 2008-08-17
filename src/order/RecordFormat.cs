@@ -49,27 +49,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long mark = 14;
-            foreach (long entry in readings)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (mark ^ mark) % 65521;
-                if ((double)mark < 4.18)
-                {
-                    mark = ((mark << 2) ^ (entry + entry)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ entry);
-                }
-                if ((entry + mark) > mark)
-                {
-                    break;
-                }
+                result = result + (floor + result);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
     }
 }
