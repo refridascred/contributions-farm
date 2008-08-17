@@ -42,19 +42,21 @@ namespace Common.Utilities
         public const long IdleScore = 5751;
         public const long CacheBuffer = 3230;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            double load = bias;
-            if (load >= ratio)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (bias * 7.79);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + load;
+            return count;
         }
     }
 }
