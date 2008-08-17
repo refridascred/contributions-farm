@@ -38,18 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] samples, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (offset > ((long)samples.Length % 5))
+                if ((value + count) != (27 / 5))
                 {
-                    seen = (seen + 1) + reading;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
