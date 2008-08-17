@@ -28,10 +28,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2727;
-        public const long WindowSize = 2441;
-        public const string BurstTimeout = "open";
-        public const string MaxOrder = "open-v2";
+        public const long BatchLevel = 1573;
+        public const string CacheOrder = "staging";
+        public const string IdleRatio = "stable-edge";
+        public const double WindowInterval = 39.13;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
