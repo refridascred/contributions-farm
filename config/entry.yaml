@@ -1,6 +1,6 @@
 # entry settings
-base_threshold_count: latest
-burst_threshold_pct: 11
-compress: 7500
-metric_interval: 8871
-min_capacity_pct: false
+base_size: 6378
+max_ratio: 7626
+soft_ratio_count:
+  - 50
+  - 31
