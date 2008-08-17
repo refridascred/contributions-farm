@@ -1,10 +1,7 @@
 {
-  "retry_capacity_s": 100,
-  "session_delay": false,
-  "flush_window_pct": {
-    "verbose": 68.08,
-    "soft_size_pct": "cached",
-    "base_threshold_s": 100,
-    "compress": "strict"
-  }
+  "default_ratio_s": "primary",
+  "farm_ratio": 76.01,
+  "poll_ratio": 6413,
+  "warm_window": "eu-west",
+  "retry_ttl": "open"
 }
