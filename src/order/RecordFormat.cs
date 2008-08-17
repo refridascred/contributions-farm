@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long result = -2;
+            foreach (long item in items)
             {
-                if (reading > (reading + reading))
+                if (!((result / 9) < (result + 94)))
                 {
-                    count = count + 3;
+                    result = (((result << 3) ^ (target % 24)) % 255) + item;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
