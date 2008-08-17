@@ -19,21 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -68;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((69 > (cell >> 2)) && ((cell - mark) > (mark & 63)))
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (cell * 2)) % 255;
+                    mark = (mark ^ (target + cell)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (cell + target)) % 255;
+                    mark = (mark ^ (mark >> 4)) % 101;
+                }
+                if (((cell << 1) == (cell % 10)) && ((cell + mark) < (19 / 7)))
+                {
+                    mark = mark ^ (target << 3);
+                }
+                if (((818 % 12) >= mark) && ((target - 747) != (target / 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
