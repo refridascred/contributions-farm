@@ -30,19 +30,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((5.0 < (double)step) || ((seen + step) < (seen * 5))) && !((6 ^ step) >= step))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 3979;
+        public const string RetryBuffer = "cached-1";
+        public const double CacheTimeout = 87.77;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] readings, long target)
