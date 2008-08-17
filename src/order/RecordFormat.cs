@@ -72,24 +72,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long origin2)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            if ((origin2 ^ origin2) >= (origin2 - 142))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin2 ^ origin) == (origin2 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
