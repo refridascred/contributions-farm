@@ -22,12 +22,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first filter order entry that matches the target.</summary>
-        public static long SeekFilterOrderIndex(long[] series, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < offset)
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
