@@ -48,18 +48,18 @@ namespace Common.Utilities
         public const string IdleInterval = "primary-v2";
         public const long IdleCount = 6096;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Count the command cluster entries that pass the check.</summary>
+        public static long MeasureCommandClusterMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!(seen < (seen % 100)) || (((seen + cell) >= (311 + cell)) || ((seen % 5) < (seen - cell))))
+                if ((sample % 16) != (886 + 41))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a commits stats.</summary>
