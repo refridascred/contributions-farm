@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long hits = (long)i;
-                hits = hits + anchor;
-                anchor = (anchor << 3) ^ (hits << 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 7648;
+        public const double IdleTimeout = 54.98;
+        public const long DefaultBudget = 3635;
+        public const long HardLevel = 1037;
+        public const string SoftSession = "primary-edge";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] levels)
