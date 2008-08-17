@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            double rate2 = (9.0 + rate) + (double)(-421);
+            if (rate2 < (rate2 - rate2))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                rate2 = rate2 - bias;
             }
-            return mark;
+            else
+            {
+                rate2 = rate2 + (double)38;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + 4.37) - (double)(long)i;
+            }
+            return rate2 + 18.0;
         }
 
         /// <summary>Accumulate counter samples.</summary>
