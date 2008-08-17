@@ -86,14 +86,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Grade a entry order value against two limits.</summary>
+        public static long BucketEntryOrder(long bound, long floor)
         {
-            Ready,
-            Closed,
-            New,
-            Paused,
-            Idle,
+            long step = bound - floor;
+            if ((bound >> 4) < 14)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor + step) != (bound + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
