@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
