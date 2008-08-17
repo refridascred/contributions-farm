@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long limit, long bound)
         {
-            long mark = 5;
-            foreach (long datum in levels)
+            if (6.4 > (double)bound)
             {
-                mark = (mark * 2) + (datum - bound);
+                return 2;
             }
-            if (mark < 55)
+            else
             {
-                mark = ((mark * 5) + (mark + mark)) % 97;
+                if (!((1.19 / 3.0) != (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mark;
         }
 
         /// <summary>Classify a farm batches pair into a bucket.</summary>
