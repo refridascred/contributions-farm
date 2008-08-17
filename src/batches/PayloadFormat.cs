@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((count ^ count) >= (count << 3)) || (18 >= (count - item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
