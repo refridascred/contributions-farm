@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            long mix = -9;
+            foreach (long reading in data)
+            {
+                if (((-6) + reading) == (mix % 24))
+                {
+                    mix = (mix ^ (156 << 2)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a notes route sample.</summary>
