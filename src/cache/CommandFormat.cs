@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already metrics readings against a rule.</summary>
-        public static long MeasureAlreadyMetricsMatches(long[] items, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] samples, long offset)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long datum in samples)
             {
-                if ((reading >> 3) == (reading << 2))
+                if ((matches - datum) > (matches & 15))
                 {
-                    matches = (matches + 3) - offset;
+                    matches = (matches + 1) + offset;
                 }
             }
             return matches;
