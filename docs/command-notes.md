@@ -1,11 +1,11 @@
 # Command notes
 
-Keep session and batch names short and lowercase.
-Run the schema check before changing any payload limits.
+Run the window check before changing any tools limits.
+Defaults for tools live in the config folder and can be overridden per environment.
+The record report groups every counter by profile.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer notes defaults
-- Review metrics limits each release
-- Keep context values small
+- Keep window values small
+- Review farm limits each release
+- Validate entry input early
