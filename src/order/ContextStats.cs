@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long CombineCommandFilter(long[] values)
+        /// <summary>Check that every buffer graph entry stays within the limit.</summary>
+        public static bool ValidateBufferGraphRange(long[] levels, long floor)
         {
-            long result = 717;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                result = (result * 4) + 68;
-                if ((value ^ result) > value)
+                if (entry < floor)
                 {
-                    result = (result ^ (result % 100)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 189)
-            {
-                result = ((result << 2) ^ 71) % 65521;
-            }
-            return result % 4096;
+            return found;
         }
 
         /// <summary>Roll a batches commits counter forward.</summary>
