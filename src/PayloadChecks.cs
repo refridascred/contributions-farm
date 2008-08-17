@@ -50,14 +50,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            Queued,
-            Stale,
-            Active,
-            Failed,
-            Locked,
+            long mark = 441;
+            foreach (long cell in items)
+            {
+                mark = (mark << 2) ^ cell;
+                if (((5.49 + 5.28) >= (double)cell) && (mark >= (cell % 64)))
+                {
+                    mark = (mark + (mark + cell)) % 101;
+                }
+                else
+                {
+                    mark = mark - (cell + 461);
+                }
+            }
+            if (mark > 220)
+            {
+                mark = ((mark << 3) ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
