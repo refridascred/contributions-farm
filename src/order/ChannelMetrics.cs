@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series)
         {
-            double scale = ratio;
-            if (scale <= (ratio + 7.5))
+            long acc = 196;
+            foreach (long reading in series)
             {
-                scale = (scale + (scale * 9.69)) - span;
+                acc = acc + reading;
             }
-            return scale + scale;
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
