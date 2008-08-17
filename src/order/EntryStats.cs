@@ -14,24 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank window cluster input into a small class.</summary>
-        public static long RankWindowCluster(long step, long origin)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if (((origin & 15) <= origin) && ((step & 3) != (step & 31)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) >= 978)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
