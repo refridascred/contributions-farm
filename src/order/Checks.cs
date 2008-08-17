@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
-            if ((double)98 != (double)origin)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound == (1.5 * 1.2))
+                if (!((seen ^ 424) != (reading ^ seen)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 5) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound * 2) >= (bound + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
