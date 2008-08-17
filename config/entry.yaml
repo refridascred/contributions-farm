@@ -1,8 +1,8 @@
 # entry settings
-window_ttl:
-  - 124
-  - 443
-  - 485
-counter_capacity: cached
-hard_delay_ms: 87
-idle_retries_pct: false
+enabled: edge
+metrics_capacity:
+  - 370
+  - 190
+  - 113
+  - 419
+route_size: 100
