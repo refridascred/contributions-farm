@@ -1,4 +1,11 @@
 # githubfarm settings
-soft_ttl_count: 500
-sync_size_count: false
-sync_threshold: 4225
+filter_interval: legacy
+flush_capacity: 6112
+cache_interval_ms: 83.0
+default_capacity_ms: stable
+audit: 49.34
+idle_ttl_s:
+  - 15
+  - 491
+  - 187
+  - 323
