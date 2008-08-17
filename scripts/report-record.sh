@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary latest staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=160
+log "limit is ${RECORD_LIMIT}"
