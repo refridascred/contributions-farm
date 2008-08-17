@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double MinBudget = 98.81;
         public const long BaseReport = 1720;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((43 % 5) > (item << 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
