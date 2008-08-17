@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 3682;
-        public const long BatchSpan = 1533;
-        public const long BatchCount = 5246;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series)
+        {
+            long mix = 11;
+            foreach (long entry in series)
+            {
+                mix = ((mix * 3) + (entry << 3)) % 101;
+                if (!((19.0 + 8.0) > (2.77 * 7.2)))
+                {
+                    mix = ((mix << 2) ^ (127 + 403)) % 97;
+                }
+            }
+            if (mix < 842)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Find the first notes payload entry that matches the target.</summary>
         public static long SeekNotesPayloadIndex(long[] samples, long bound)
