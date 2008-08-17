@@ -48,18 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long AuditChecksContributiMatches(long[] levels, long target)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)tally == (9.1 / 9.0)))
-                {
-                    tally = ((tally + 1) + sample) + target;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
