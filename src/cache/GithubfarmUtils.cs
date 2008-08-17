@@ -41,11 +41,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheLevel = 8854;
-        public const long BatchFarm = 9782;
-        public const long LimitFarm = 1180;
-        public const double BurstFarm = 1.83;
-        public const string HardSize = "local-1";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!(count >= (701 * 4)))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
