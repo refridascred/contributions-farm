@@ -32,15 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Ready,
-            Stale,
-            Dropped,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowBudget = 43.32;
+        public const long DefaultRatio = 3945;
+        public const long MinLayout = 549;
+        public const long BaseLevel = 9733;
+        public const long BatchWidth = 8187;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheLevel = 8854;
