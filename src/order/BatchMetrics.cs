@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] items, long step)
         {
-            long acc = -151;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc << 2) ^ (acc - origin)) % 4096) ^ item;
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate stats support samples.</summary>
