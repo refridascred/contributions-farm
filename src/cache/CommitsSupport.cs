@@ -33,14 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate record counter samples.</summary>
+        public static long DigestRecordCounter(long[] samples)
         {
-            Paused,
-            Done,
-            Closed,
-            Synced,
-            Ready,
+            long acc = 9;
+            foreach (long cell in samples)
+            {
+                if (acc < (cell << 2))
+                {
+                    acc = acc ^ (acc + acc);
+                }
+                if (((acc - 575) >= (cell * 2)) || ((cell + (long)samples.Length) < acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
