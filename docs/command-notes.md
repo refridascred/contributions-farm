@@ -1,10 +1,11 @@
 # Command notes
 
-The cache report groups every command by queue.
-The session module keeps cluster values in sync with the entry cache.
+Each layout is validated before it reaches the session queue.
+Use tools settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Validate command input early
-- Log every filter change
-- Document new profile fields
+- Review layout limits each release
+- Keep account values small
+- Validate support input early
+- Document new support fields
