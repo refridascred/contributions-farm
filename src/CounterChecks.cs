@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches & 3) != (datum * 2))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 27.88;
+        public const long LimitBudget = 3563;
+        public const long BaseScore = 74;
+        public const long StepCommand = 9632;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
