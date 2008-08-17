@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
+            New,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate profile samples.</summary>
