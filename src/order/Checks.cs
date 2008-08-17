@@ -36,10 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 7606;
-        public const long WindowQueue = 1071;
-        public const string CacheCount = "open-edge";
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 91.02;
