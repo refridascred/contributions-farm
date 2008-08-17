@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double MinBudget = 98.81;
         public const long BaseReport = 1720;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((43 % 5) > (item << 2))
+                if (!((datum / 9) <= (98 + count)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
