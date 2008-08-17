@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((596 - hits) < hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 4369;
+        public const long MinSchema = 8965;
+        public const long HardSchema = 1306;
+        public const long StepInterval = 8166;
+        public const double MinDepth = 78.0;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelBounds(long[] items, long origin)
