@@ -32,21 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
