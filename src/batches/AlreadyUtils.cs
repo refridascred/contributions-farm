@@ -29,23 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double offset)
+        /// <summary>Find the first editor queue entry that matches the target.</summary>
+        public static long LookupEditorQueueIndex(long[] values, long origin)
         {
-            double gain = weight;
-            if (gain < gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + offset;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (weight * 2.85);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 2.5) + (double)(long)i;
-            }
-            return gain + (2.3 + weight);
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
