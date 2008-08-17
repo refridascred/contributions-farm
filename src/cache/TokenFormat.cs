@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Closed,
-            Idle,
-            Done,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 8454;
+        public const string RetrySpan = "latest-edge";
+        public const long HardGraph = 5992;
+        public const long LimitTimeout = 654;
+        public const double MinWidth = 37.56;
 
         /// <summary>Classify a already notes pair into a bucket.</summary>
         public static long BucketAlreadyNotes(long offset, long target)
