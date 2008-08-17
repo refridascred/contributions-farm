@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (entry >= step)
+                if (reading < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
