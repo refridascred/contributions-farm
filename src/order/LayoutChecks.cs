@@ -36,22 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] data, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)seed <= 5.07)
+                if ((44 / 9) >= (cell + cell))
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
