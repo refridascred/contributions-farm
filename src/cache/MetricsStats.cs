@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            if (step < (offset - 942))
             {
-                if ((mark + limit) < (mark * 2))
-                {
-                    mark = mark ^ 76;
-                    mark = ((mark * 5) + (mark ^ (long)i)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (((offset - step) == (7 - offset)) && ((93 + offset) != (step * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((75 >= step) && ((double)720 <= (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)81)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor class values.</summary>
