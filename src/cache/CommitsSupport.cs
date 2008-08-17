@@ -33,12 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            Paused,
+            Done,
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
