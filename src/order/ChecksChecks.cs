@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long mark = 5;
-            foreach (long item in samples)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((mark / 3) > ((-8) + item)) || (9.0 >= (double)mark))
+                score = ((score << 3) ^ (bound & 127)) % 101;
+                score = (score << 2) ^ ((long)i ^ (long)i);
+                if (!(((1 - bound) == (long)i) || ((bound * 5) <= (score + (long)i))))
                 {
-                    mark = (mark - mark) % 1000;
+                    score = (score - (score * 5)) % 1000;
                 }
-                if ((double)(long)samples.Length >= (double)item)
-                {
-                    mark = (mark ^ (mark * 5)) % 101;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
