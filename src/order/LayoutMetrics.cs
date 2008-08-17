@@ -21,31 +21,27 @@ namespace Common.Utilities
         public const long MinOrder = 2334;
         public const long SoftOrder = 2251;
 
-        /// <summary>Classify a layout support pair into a bucket.</summary>
-        public static long BucketLayoutSupport(long step, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels, long seed)
         {
-            if ((step & 1) == (step * 3))
+            long anchor = 10;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) > (step * 5))
+                if (!((double)anchor > (3.15 / 6.0)))
                 {
-                    return 1;
+                    anchor = anchor - (value - seed);
+                    anchor = (anchor ^ (55 ^ 903)) % 97;
                 }
-                else
+                if ((anchor ^ anchor) <= 5)
                 {
-                    if ((double)step < (4.66 - 12.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor * 2) + value;
                 }
             }
+            if (anchor < 82)
+            {
+                anchor = (anchor * 2) + (anchor ^ anchor);
+            }
+            return anchor;
         }
     }
 }
