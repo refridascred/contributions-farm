@@ -1,8 +1,8 @@
 # entry settings
-enabled: edge
-metrics_capacity:
-  - 370
-  - 190
-  - 113
-  - 419
-route_size: 100
+soft_threshold_ms:
+  - 483
+  - 374
+  - 321
+  - 467
+token_timeout: blue
+idle_size_count: 52
