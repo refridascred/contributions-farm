@@ -1,4 +1,24 @@
 # githubfarm settings
-contributi_ratio: 23.12
-githubfarm_threshold: 32.31
-session_capacity: staging
+min_delay:
+  sync_size_count: 5116
+  flush_limit:
+    editor_interval: 52
+    batch_ratio: false
+    already_interval: 80
+    min_ttl_pct: true
+  token_ttl: open
+cluster_delay: false
+cache_ttl:
+  - 293
+  - 18
+  - 374
+  - 359
+sync_retries_ms: 35.92
+editor_retries:
+  strict: 40.33
+  batch_capacity: false
+  counter_depth:
+    - 248
+    - 367
+    - 233
+  soft_timeout_pct: true
