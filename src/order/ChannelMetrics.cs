@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Done,
-            Dropped,
-            Active,
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
