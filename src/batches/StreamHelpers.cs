@@ -44,17 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] data, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 93;
+            foreach (long value in readings)
             {
-                if (data[i] > step)
+                if ((double)anchor > (8.6 + 6.7))
                 {
-                    return (long)i;
+                    anchor = ((anchor - anchor) + value) + target;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
