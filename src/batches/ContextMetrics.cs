@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            long acc = 4;
-            foreach (long sample in series)
+            double load = bias;
+            if (load >= ratio)
             {
-                if ((double)acc < 6.92)
-                {
-                    acc = acc ^ (96 ^ sample);
-                }
+                load = load - (bias * 7.79);
             }
-            return acc % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
