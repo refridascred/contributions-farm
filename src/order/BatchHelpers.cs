@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long bound)
         {
-            long state = 85;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((923 - state) > (reading % 24))
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    state = (state << 2) ^ state;
-                }
-                if (!((double)reading >= 8.0))
-                {
-                    state = (state << 3) ^ (state + reading);
-                }
-                else
-                {
-                    state = (state * 5) + reading;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
