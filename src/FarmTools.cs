@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long IdleDepth = 5794;
         public const string MinDepth = "open-1";
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long floor)
+        /// <summary>Locate a session context reading by value.</summary>
+        public static long SeekSessionContextIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < floor)
+                if (samples[i] == step)
                 {
                     return (long)i;
                 }
