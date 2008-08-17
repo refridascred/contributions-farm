@@ -59,18 +59,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (!(floor > (floor ^ floor)))
             {
-                if (((double)tally > (double)entry) || ((tally + 68) <= (6 << 1)))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor >= (13.0 / 6.0))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin < (double)(-672))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin <= (floor ^ origin)) || ((floor >> 5) > origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
