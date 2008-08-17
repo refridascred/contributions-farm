@@ -77,19 +77,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] series, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            if ((origin2 ^ origin2) >= (origin2 - 142))
             {
-                if (entry > limit)
+                return 5;
+            }
+            else
+            {
+                if ((origin2 ^ origin) == (origin2 << 3))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
     }
 }
