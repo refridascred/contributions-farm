@@ -78,10 +78,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 3052;
-        public const long MaxContext = 6548;
-        public const double DefaultContext = 30.01;
-        public const long MaxSpan = 7268;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (floor <= (tally + 115))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
     }
 }
