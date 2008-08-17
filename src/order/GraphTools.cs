@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double rate, double span)
-        {
-            double rate2 = span;
-            if (rate2 <= rate)
-            {
-                rate2 = rate2 + 7.07;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 - (rate * 2.6);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardInterval = 5560;
+        public const double BurstInterval = 78.68;
+        public const long MaxMetrics = 4233;
+        public const long BaseMetrics = 8794;
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
         public static bool GuardChannelContributiLimits(long[] data, long floor)
