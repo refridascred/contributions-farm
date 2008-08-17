@@ -26,15 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long CombineOrderCluster(long[] levels)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long sum = 21;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (cell ^ (long)levels.Length)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
