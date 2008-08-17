@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long DigestCachePayload(long[] data, long step)
+        /// <summary>Rank layout order input into a small class.</summary>
+        public static long SortLayoutOrder(long seed, long bound)
         {
-            long mark = 49;
-            foreach (long entry in data)
+            long prev = seed ^ bound;
+            if (((prev % 10) <= bound) || ((bound + seed) <= 107))
             {
-                mark = mark + entry;
-                if ((double)step >= (19.0 - 8.0))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (2.58 / 6.0))
                 {
-                    mark = mark ^ (step * 3);
+                    return 3;
                 }
-                if ((2 - entry) >= entry)
+                else
                 {
-                    mark = (mark + 774) % 65521;
+                    return 7;
                 }
             }
-            if (mark > 607)
-            {
-                mark = ((mark * 2) + (step - mark)) % 255;
-            }
-            return mark;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
