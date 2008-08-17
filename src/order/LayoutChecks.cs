@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Count schema context pairs that satisfy a relation.</summary>
+        public static long PairSchemaContextCount(long[] values)
         {
-            double load = (double)(806 * 2);
-            if (load < 7.16)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + 5.5) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + weight;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
