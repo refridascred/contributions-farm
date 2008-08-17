@@ -75,13 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long floor)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Done,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
