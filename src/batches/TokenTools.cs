@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of order already readings.</summary>
-        public static long TallyOrderAlready(long[] data)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long acc = 1;
-            foreach (long cell in data)
-            {
-                if ((double)acc != (20.0 / 8.0))
-                {
-                    acc = acc + cell;
-                }
-            }
-            if (acc > 893)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc % 1000;
+            Idle,
+            Retry,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate farm samples.</summary>
