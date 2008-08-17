@@ -22,25 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long edge = limit - target;
-            if (((double)edge != (8.7 / 9.0)) || (edge <= target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((96 + limit) > (7 >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Locked,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Validate cache tools readings against a bound.</summary>
