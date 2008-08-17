@@ -47,13 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many tools support samples are out of range.</summary>
+        public static long AuditToolsSupportMatches(long[] items, long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)bound == (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
     }
 }
