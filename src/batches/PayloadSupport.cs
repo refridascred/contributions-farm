@@ -57,19 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = 236;
-            foreach (long sample in items)
-            {
-                mark = (((mark * 5) + (-576)) % 101) ^ sample;
-                if ((mark & 31) < mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
