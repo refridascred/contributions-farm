@@ -1,6 +1,11 @@
 {
-  "poll_retries": 4276,
-  "metrics_limit": "primary",
-  "cache_capacity": "standard",
-  "verbose": 56
+  "farm_retries": {
+    "metrics_delay": "fallback",
+    "sync_delay": 60,
+    "retry_depth_s": [453, 83, 15, 61],
+    "filter_timeout": "staging",
+    "batch_depth": "standard"
+  },
+  "warm_threshold_s": ["fallback", "eu-west"],
+  "idle_ratio": ["legacy", "stable", "cached"]
 }
