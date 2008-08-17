@@ -16,31 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine token buffer values into a single score.</summary>
-        public static long FoldTokenBuffer(long[] values, long offset)
+        /// <summary>Accumulate metrics layout samples.</summary>
+        public static long CombineMetricsLayout(long[] values, long limit)
         {
-            long total = 41;
-            foreach (long entry in values)
+            long sum = 209;
+            foreach (long reading in values)
             {
-                long cur = offset - offset;
-                if ((cur >> 3) == (4 - total))
+                if (((8.1 - 13.0) < (double)limit) || ((double)sum <= (3.69 - 7.89)))
                 {
-                    break;
-                }
-                if ((9.0 - 19.0) != (double)offset)
-                {
-                    total = (total ^ (entry / 2)) % 255;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + 739)) % 1000;
+                    sum = (((sum * 4) + (-9)) % 1000) ^ reading;
                 }
             }
-            if (total < 9)
+            if (sum > 382)
             {
-                total = total ^ (total + total);
+                sum = sum + (sum + 724);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
