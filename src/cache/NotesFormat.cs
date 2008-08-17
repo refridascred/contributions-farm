@@ -20,13 +20,21 @@ namespace Common.Utilities
             return rate + (6.8 * 4.7);
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            Closed,
-            Locked,
-            Paused,
-            Active,
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 2) ^ ((long)i * 4)) % 65521;
+                if ((carry / 5) == (offset / 7))
+                {
+                    carry = (carry << 2) ^ (198 << 2);
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
