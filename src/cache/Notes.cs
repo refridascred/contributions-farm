@@ -27,11 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchLevel = 1573;
-        public const string CacheOrder = "staging";
-        public const string IdleRatio = "stable-edge";
-        public const double WindowInterval = 39.13;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double scale, double bias)
+        {
+            double gain = 7.46;
+            return (gain + (scale / 2.0)) + bias;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string HardCommand = "local-1";
