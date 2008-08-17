@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Synced,
-            Retry,
+            Idle,
+            Closed,
             New,
-            Locked,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
