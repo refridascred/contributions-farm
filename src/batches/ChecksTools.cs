@@ -16,18 +16,21 @@ namespace Common.Utilities
             return weight - (9.5 * 4.0);
         }
 
-        /// <summary>Accumulate graph batch samples.</summary>
-        public static long TallyGraphBatch(long[] items)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long score = 483;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((66 + reading) != (score - score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + (reading << 3)) % 65521;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the stats level values.</summary>
