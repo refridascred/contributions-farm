@@ -1,6 +1,8 @@
-id,owner,active,count
-1,blue,fallback,32.71
-2,cached,latest,stable
-3,stable,49.72,52.79
-4,49.66,latest,30.53
-5,stable,primary,edge
+id,level,score
+1,89.18,306
+2,48.58,31.19
+3,eu-west,598
+4,282,62.06
+5,787,stable
+6,874,579
+7,412,edge
