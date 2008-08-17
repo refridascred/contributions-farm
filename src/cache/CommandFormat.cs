@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long MinProfile = 3089;
         public const long BurstSpan = 8173;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 79.61;
-        public const long MaxDepth = 906;
-        public const long StepLayout = 6504;
-        public const long BurstRatio = 5956;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values)
+        {
+            long score = 70;
+            foreach (long value in values)
+            {
+                if (((value >> 1) != ((long)values.Length - score)) && ((score + value) >= (4 - score)))
+                {
+                    score = ((score * 5) + (value % 97)) % 4096;
+                }
+                if ((1.0 - 7.2) < (double)score)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Blend two notes entry measurements.</summary>
         public static double SmoothNotesEntry(double ratio, double floor)
