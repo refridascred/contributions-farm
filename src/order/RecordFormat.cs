@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema filter sample.</summary>
-        public static long FindSchemaFilterIndex(long[] values, long target)
+        /// <summary>Blend two githubfarm payload measurements.</summary>
+        public static double ProjectGithubfarmPayload(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = ratio;
+            return bias - span;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
