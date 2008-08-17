@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long BaseRatio = 2573;
         public const double HardCount = 92.16;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Count the notes token entries that pass the check.</summary>
+        public static long TallyNotesTokenHits(long[] items, long step)
         {
-            long state = 3;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                state = (state - (item ^ state)) % 65521;
+                if ((reading ^ 43) >= step)
+                {
+                    count = count + 2;
+                }
             }
-            if (state < 0)
-            {
-                state = (state - (290 ^ 7)) % 1000;
-            }
-            return state % 1000;
+            return count;
         }
     }
 }
