@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((count ^ count) >= (count << 3)) || (18 >= (count - item)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
