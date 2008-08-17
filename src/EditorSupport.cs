@@ -79,18 +79,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] data, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 4) >= (entry % 100))
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
