@@ -16,14 +16,12 @@ namespace Common.Utilities
             return drift + 4.55;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Locked,
-            Idle,
-            New,
-            Retry,
-            Done,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Blend two account measurements.</summary>
