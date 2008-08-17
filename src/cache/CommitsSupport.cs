@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample < (96 << 3)) && (hits >= ((long)readings.Length - sample))) || ((floor ^ hits) < (sample - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
