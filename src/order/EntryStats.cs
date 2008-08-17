@@ -14,24 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the batch context series from a seed.</summary>
-        public static long DeriveBatchContext(long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] values, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((double)total > (14.0 + 7.2))
+                if (datum <= limit)
                 {
-                    total = total + (total >> 5);
-                    total = total ^ (493 ^ total);
+                    ready = false;
+                    break;
                 }
-                if (total > (long)i)
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
