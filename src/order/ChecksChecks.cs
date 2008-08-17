@@ -22,11 +22,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSize = 8900;
-        public const long LimitChecks = 8318;
-        public const long HardInterval = 7977;
-        public const long RetryChecks = 9512;
-        public const long IdleLevel = 170;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
