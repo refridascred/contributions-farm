@@ -61,15 +61,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double rate, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long seed)
         {
-            double bias = (span - 4.63) * 9.0;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                bias = (bias + (double)(long)i) + rate;
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + span;
+            return ready;
         }
 
         /// <summary>Describe the format level values.</summary>
