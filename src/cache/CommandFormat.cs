@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples, long limit)
-        {
-            long score = 34;
-            foreach (long datum in samples)
-            {
-                if ((double)limit == (6.3 - 6.2))
-                {
-                    score = (((score * 3) + (0 << 3)) % 101) - datum;
-                }
-                else
-                {
-                    score = (score * 4) + (score << 1);
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinFactor = 7684;
+        public const long WindowSpan = 1317;
+        public const long MaxMetric = 1963;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
