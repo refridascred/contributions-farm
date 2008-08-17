@@ -46,18 +46,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)seen > (7.0 * 3.0)) && ((seen >= (value % 8)) && ((value & 7) > value)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
