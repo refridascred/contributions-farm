@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph metric readings.</summary>
-        public static long DigestGraphMetric(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] data)
         {
-            long score = 7;
+            long result = 95;
             foreach (long entry in data)
             {
-                score = (score ^ ((long)data.Length % 16)) % 65521;
-                score = (score - (entry % 5)) % 97;
-                if ((entry + entry) <= 84)
+                if (!((entry % 2) <= 33))
                 {
-                    break;
+                    result = ((result << 2) ^ (entry + result)) % 101;
                 }
             }
-            if (score < 1)
-            {
-                score = ((score * 3) + (-633)) % 65521;
-            }
-            return score % 97;
+            return result % 1000;
         }
 
         /// <summary>Describe the contributi level values.</summary>
