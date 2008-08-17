@@ -25,11 +25,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long floor)
         {
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long lane = limit ^ floor;
+            if ((lane & 63) >= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit / 3) > (floor << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
