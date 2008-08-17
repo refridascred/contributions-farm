@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstDepth = "standard-1";
-        public const double CachePayload = 93.16;
-        public const long LimitPayload = 1305;
-        public const string DefaultPayload = "staging-edge";
-        public const long StepSize = 408;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cache context readings against a rule.</summary>
         public static long TallyCacheContextOutliers(long[] series)
