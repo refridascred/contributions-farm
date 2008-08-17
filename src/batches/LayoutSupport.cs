@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Locked,
-            Closed,
-            Retry,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
