@@ -1,11 +1,4 @@
 # entry settings
-payload_window:
-  - 278
-  - 268
-  - 314
-min_timeout_count:
-  - 414
-  - 4
-  - 169
-  - 93
-token_interval: edge
+dry_run: 29.39
+tools_ttl: false
+enabled: primary
