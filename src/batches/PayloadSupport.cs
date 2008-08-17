@@ -27,12 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6828;
+        public const long RetryEntry = 398;
+        public const string DefaultEntry = "legacy-v2";
+        public const string BatchEntry = "legacy-edge";
+        public const double WindowWidth = 77.03;
     }
 }
