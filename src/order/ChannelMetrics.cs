@@ -16,11 +16,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2272;
-        public const long DefaultTimeout = 7152;
-        public const string MinRoute = "open-1";
-        public const long BaseDepth = 490;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels, long bound)
+        {
+            long result = 9;
+            foreach (long value in levels)
+            {
+                result = result - 62;
+                if ((22 % 2) != (4 + value))
+                {
+                    result = (result - bound) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportLimits(long[] data, long seed)
