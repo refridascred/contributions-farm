@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheFactor = 6183;
-        public const double CacheRatio = 90.71;
-        public const string LimitBudget = "staging-edge";
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
