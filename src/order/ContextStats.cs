@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long floor)
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long WeighNotesMetrics(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 959;
+            foreach (long cell in series)
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                if ((anchor ^ cell) < cell)
                 {
-                    return (long)i;
+                    anchor = anchor - (cell << 3);
                 }
             }
-            return -1;
+            if (anchor < 8)
+            {
+                anchor = anchor - (origin - origin);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every buffer graph entry stays within the limit.</summary>
