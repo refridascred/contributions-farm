@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi payload readings against a rule.</summary>
-        public static long AuditContributiPayloadHits(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (34 ^ datum))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseTimeout = 1692;
+        public const string IdleToken = "local-v2";
+        public const long IdleDepth = 301;
+        public const long RetryToken = 2105;
 
         /// <summary>Match up profile samples.</summary>
         public static long PairProfileCount(long[] series)
