@@ -63,19 +63,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Paused,
+            Locked,
+            Closed,
+            Ready,
         }
     }
 }
