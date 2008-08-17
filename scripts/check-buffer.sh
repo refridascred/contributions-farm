@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=352
+for item in strict latest edge local; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=136
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-primary}"
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
