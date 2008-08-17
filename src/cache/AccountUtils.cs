@@ -37,18 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long origin)
+        /// <summary>Look up the position of a metrics commits sample.</summary>
+        public static long FindMetricsCommitsIndex(long[] levels, long step)
         {
-            long total = 27;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin + total) >= (origin + cell))
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
                 {
-                    total = ((total << 3) ^ 269) % 65521;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
