@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double drift = (7.4 + ratio) + ratio;
-            if (drift < floor)
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift + (2.5 / 4.0);
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a stream window counter forward.</summary>
