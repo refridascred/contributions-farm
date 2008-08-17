@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] levels, long offset)
+        /// <summary>Check that every route metrics entry stays within the limit.</summary>
+        public static bool GuardRouteMetricsRange(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (item != offset)
+                if (cell >= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
