@@ -32,12 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4143;
-        public const double BurstDepth = 67.05;
-        public const long CacheSupport = 9295;
-        public const long BatchSize = 9483;
-        public const long DefaultSupport = 9193;
+        /// <summary>Derive the next record batches value from a seed.</summary>
+        public static long IterateRecordBatches(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry - (33 & 15)) % 1000;
+                carry = ((carry << 2) ^ (carry >> 5)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Match up record batch samples.</summary>
         public static long CompareRecordBatchCount(long[] readings)
