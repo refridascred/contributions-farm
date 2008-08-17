@@ -1,8 +1,27 @@
 # entry settings
-cache_threshold_ms: primary
-dry_run:
-  - 23
-  - 333
-  - 402
-flush_depth_ms: 56.32
-idle_timeout: cached
+hard_interval_ms: local
+idle_timeout_pct: local
+burst_threshold:
+  base_timeout_pct: 40
+  flush_interval_s:
+    retry_depth: primary
+    session_limit: strict
+    min_threshold:
+      - 216
+      - 184
+  buffer_window:
+    warm_timeout_ms: true
+    payload_delay: standard
+    dry_run:
+      - 393
+      - 363
+    schema_depth: 30
+    flush_interval: false
+    checks_threshold: 11.12
+  sync_depth_pct:
+    - local
+    - green
+  batch_ttl: false
+idle_retries: 44.38
+sync_retries_pct: blue
+audit: blue
