@@ -49,22 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account already values into a single score.</summary>
-        public static long TallyAccountAlready(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long score = 885;
-            foreach (long datum in levels)
+            long anchor = 2;
+            foreach (long cell in samples)
             {
-                if (((double)score < (double)datum) || (datum >= (score * 2)))
-                {
-                    score = (score << 2) ^ (score + datum);
-                }
-                else
-                {
-                    score = score + 51;
-                }
+                anchor = ((anchor + (11 ^ 967)) % 1000) ^ cell;
             }
-            return score % 1000;
+            if (anchor > 944)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 1000;
         }
     }
 }
