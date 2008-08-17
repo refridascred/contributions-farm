@@ -25,10 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 86.59;
-        public const double MinTools = 92.37;
-        public const string BaseWidth = "stable";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Draft,
+            New,
+            Idle,
+            Active,
+            Queued,
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] series, long target)
