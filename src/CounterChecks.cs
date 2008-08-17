@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 27.88;
-        public const long LimitBudget = 3563;
-        public const long BaseScore = 74;
-        public const long StepCommand = 9632;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Dropped,
+            Stale,
+            Retry,
+            Paused,
+            Done,
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
