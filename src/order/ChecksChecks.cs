@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double scale, double floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double bias = (double)(804 + 27);
-            if (bias >= (scale - floor))
-            {
-                bias = bias + (3.9 - bias);
-            }
-            else
-            {
-                bias = bias + (6.0 / 6.0);
-            }
-            return bias + (floor - floor);
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
