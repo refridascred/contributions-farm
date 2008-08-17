@@ -35,17 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                if (entry != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
