@@ -1,4 +1,9 @@
 # support settings
-batch_window_count: local
-audit: 4200
-hard_size: 7.12
+compress: 9974
+enabled:
+  - fallback
+  - latest
+  - cached
+  - legacy
+hard_limit_s: 78.58
+soft_limit_count: 48
