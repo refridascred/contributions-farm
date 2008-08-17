@@ -1,8 +1,11 @@
 # support settings
-warm_timeout: false
-record_capacity:
-  - 255
-  - 254
-  - 132
-  - 266
-dry_run: standard
+hard_size_s: 1.03
+min_interval_count: 30.75
+contributi_threshold:
+  - 336
+  - 223
+  - 298
+  - 195
+base_capacity_ms: 6773
+batches_limit: eu-west
+dry_run: 6367
