@@ -34,13 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
