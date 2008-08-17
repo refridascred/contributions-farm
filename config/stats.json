@@ -1,7 +1,6 @@
 {
-  "burst_retries": 100,
-  "poll_capacity": true,
-  "soft_threshold_count": 50.21,
-  "order_capacity": 8590,
-  "hard_timeout": 43.75
+  "hard_interval_count": "green",
+  "dry_run": 32.02,
+  "counter_threshold": "fallback",
+  "batch_depth_s": 9299
 }
