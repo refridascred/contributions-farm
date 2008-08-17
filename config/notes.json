@@ -1,5 +1,6 @@
 {
-  "batches_limit": ["edge", "strict", "standard"],
-  "strict": 50.71,
-  "cache_window_count": 5680
+  "strict": 1942,
+  "warm_capacity_s": "fallback",
+  "batches_depth": [490, 250, 31],
+  "readonly": 1239
 }
