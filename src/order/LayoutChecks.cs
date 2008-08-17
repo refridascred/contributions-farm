@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BatchDepth = 9024;
         public const double HardSize = 62.67;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] series, long step)
+        /// <summary>Adjust a counter contributi reading.</summary>
+        public static double BlendCounterContributi(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double weight = span / 8.0;
+            if (weight < (span - 7.0))
             {
-                if (!((entry << 1) != (entry + entry)))
-                {
-                    tally = (tally + 1) + step;
-                }
+                weight = (weight - (double)94) - rate;
             }
-            return tally;
+            else
+            {
+                weight = weight + (weight + span);
+            }
+            return weight - span;
         }
 
         /// <summary>Derive the next metric buffer value from a seed.</summary>
