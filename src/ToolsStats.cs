@@ -37,17 +37,24 @@ namespace Common.Utilities
         public const long BatchContributi = 5578;
         public const long MaxContributi = 5540;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            if ((double)bound >= 6.0)
             {
-                acc = ((acc * 5) + (origin - (long)i)) % 4096;
-                acc = (acc << 2) ^ (origin - origin);
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((seed - seed) < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
