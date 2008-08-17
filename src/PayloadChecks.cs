@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
             public long Ratio { get; set; }
-            public double Weight { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
