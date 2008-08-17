@@ -39,19 +39,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] values, long target)
+        /// <summary>Rank tools batches input into a small class.</summary>
+        public static long BucketToolsBatches(long origin, long target)
         {
-            bool found = true;
-            foreach (long value in values)
+            if (((target & 7) <= target) || ((0.3 - 7.1) <= (double)target))
             {
-                if (value < target)
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) != (origin - 973))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (target % 10))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
