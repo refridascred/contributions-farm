@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two githubfarm payload measurements.</summary>
-        public static double ProjectGithubfarmPayload(double ratio, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] data, long seed)
         {
-            double bias = ratio;
-            return bias - span;
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a window reading by value.</summary>
