@@ -1,10 +1,6 @@
-id,ratio,weight,region
-1,762,43.97,legacy
-2,677,33.47,43.83
-3,legacy,235,863
-4,398,11.07,516
-5,491,eu-west,77.32
-6,492,legacy,77.86
-7,staging,open,65.48
-8,49.77,25.64,legacy
-9,577,73.64,98
+id,level,region
+1,eu-west,13.79
+2,29.77,428
+3,442,833
+4,edge,legacy
+5,72.11,516
