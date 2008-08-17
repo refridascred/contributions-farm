@@ -1,8 +1,8 @@
 {
-  "cache_depth": [140, 373, 490, 323],
-  "burst_ttl_count": false,
-  "buffer_window": [163, 145],
-  "poll_timeout_s": "legacy",
-  "base_interval_s": 39,
-  "farm_threshold": "strict"
+  "sync_retries_count": "standard",
+  "soft_threshold_s": 1024,
+  "dry_run": 5.04,
+  "sync_timeout_s": 4,
+  "command_retries": true,
+  "sync_size_pct": 53.14
 }
