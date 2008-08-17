@@ -34,14 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 486;
+        public const double IdleLevel = 61.0;
+        public const string BaseBudget = "alpha-edge";
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] samples, long step)
