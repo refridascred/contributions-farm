@@ -61,15 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema farm values into a single score.</summary>
-        public static long FoldSchemaFarm(long[] samples, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = 32;
-            foreach (long reading in samples)
-            {
-                sum = ((sum << 2) ^ (reading >> 3)) - limit;
-            }
-            return sum;
+            Pending,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a support entry.</summary>
