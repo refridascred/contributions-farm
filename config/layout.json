@@ -1,5 +1,14 @@
 {
-  "persist": 1022,
-  "batches_retries": 96,
-  "base_size_ms": "local"
+  "retry_size_pct": "stable",
+  "cache_window": {
+    "min_window_s": {
+      "poll_threshold_ms": "latest",
+      "max_ttl_ms": 41.41,
+      "cache_capacity_pct": 48.25
+    },
+    "flush_delay": true,
+    "max_timeout": 8
+  },
+  "default_timeout_ms": "blue",
+  "dry_run": "stable"
 }
