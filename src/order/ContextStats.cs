@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long CombineCommandFilter(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long result = 717;
+            foreach (long value in values)
+            {
+                result = (result * 4) + 68;
+                if ((value ^ result) > value)
+                {
+                    result = (result ^ (result % 100)) % 4096;
+                }
+            }
+            if (result < 189)
+            {
+                result = ((result << 2) ^ 71) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
