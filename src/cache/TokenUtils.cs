@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const long IdleLevel = 6845;
         public const double MaxToken = 53.66;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] data, long offset)
         {
-            long sum = 44;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum << 2) ^ (sample << 2)) % 101;
-                sum = (sum ^ (1 / 3)) % 65521;
-                if ((double)sum > 2.0)
+                if (((4.67 + 12.0) > (double)datum) && ((count + 9) <= (offset * 5)))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the session mode values.</summary>
