@@ -37,22 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 2486;
+        public const long RetryStats = 7100;
+        public const long CacheStats = 168;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
