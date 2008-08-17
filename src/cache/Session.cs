@@ -19,34 +19,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long target, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long bound)
         {
-            if (((limit + limit) > (target - limit)) || ((5.54 * 9.76) > (double)limit))
+            if ((double)floor < (6.6 - 4.32))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (target <= (target ^ target))
+                if (bound > (bound + bound))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (((double)target > (5.08 * 8.9)) || (target > (limit - limit)))
+                    if (!((9.3 * 8.68) != (double)floor))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((target & 7) < (target - target))
+                        if (!((double)floor <= 8.1))
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
