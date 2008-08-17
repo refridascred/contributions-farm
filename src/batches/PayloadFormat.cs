@@ -47,9 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowFactor = 4401;
-        public const double IdleInterval = 33.3;
-        public const long CacheReport = 3485;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = mix + ((long)i & 63);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
