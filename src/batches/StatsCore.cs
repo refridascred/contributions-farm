@@ -71,19 +71,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] readings, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Rank contributi filter input into a small class.</summary>
