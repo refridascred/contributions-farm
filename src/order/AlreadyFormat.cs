@@ -58,18 +58,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] samples, long bound)
         {
-            long hits = 0;
+            long carry = 199;
             foreach (long cell in samples)
             {
-                if ((669 << 3) <= (hits - hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                carry = ((carry ^ (3 / 5)) + cell) - bound;
             }
-            return hits;
+            if (carry > 314)
+            {
+                carry = carry - 0;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
