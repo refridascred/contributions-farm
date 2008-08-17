@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long target)
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long CountChecksClusterGaps(long[] data)
         {
-            long bound = step + target;
-            if ((1.0 - 9.56) < (double)step)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound * 5) > (3 + 719)))
+                if (!!(tally >= (cell + 494)))
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound & 127) != (target * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
