@@ -23,17 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report context sample.</summary>
-        public static long LocateReportContextIndex(long[] data, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 7.0;
+            if (rate >= (double)972)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)(-779)) - floor;
             }
-            return -1;
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate - rate;
         }
     }
 }
