@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 4620;
+        public const string BatchDepth = "local-1";
+        public const long BaseLayout = 4994;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] values, long offset)
