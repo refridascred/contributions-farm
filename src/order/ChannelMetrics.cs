@@ -16,14 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Locked,
-            Paused,
+            Closed,
+            Active,
+            Queued,
+            New,
             Retry,
-            Dropped,
-            Pending,
         }
 
         /// <summary>Classify a record command pair into a bucket.</summary>
