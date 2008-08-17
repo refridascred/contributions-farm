@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const long IdleScore = 5751;
         public const long CacheBuffer = 3230;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Draft,
-            Pending,
             Active,
-            Queued,
-            Failed,
+            Draft,
+            Paused,
         }
     }
 }
