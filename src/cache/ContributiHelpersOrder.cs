@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Digest a series of counter batch entries.</summary>
+        public static long WeighCounterBatch(long[] series)
         {
-            double ratio = (double)9 - (double)70;
-            if (ratio < (span + scale))
+            long mark = 32;
+            foreach (long cell in series)
             {
-                ratio = ratio + (2.3 - ratio);
+                if ((-295) <= cell)
+                {
+                    mark = ((mark * 4) + (cell + cell)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (cell % 3)) % 4096;
+                }
             }
-            return ratio - scale;
+            return mark % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
