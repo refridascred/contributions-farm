@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items, long target)
+        /// <summary>Look up the position of a schema filter sample.</summary>
+        public static long FindSchemaFilterIndex(long[] values, long target)
         {
-            long result = -2;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((result / 9) < (result + 94)))
+                if (values[i] < target)
                 {
-                    result = (((result << 3) ^ (target % 24)) % 255) + item;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
