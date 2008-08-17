@@ -72,11 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitSize = 51.04;
-        public const double MinSize = 87.78;
-        public const long BatchFactor = 8408;
-        public const double DefaultAccount = 35.15;
-        public const double BatchAccount = 41.98;
+        /// <summary>Measure how many support layout samples are out of range.</summary>
+        public static long AuditSupportLayoutHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((-9) * 5) <= tally) || ((tally * 2) > (tally << 1)))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
+        }
     }
 }
