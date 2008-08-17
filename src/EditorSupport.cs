@@ -53,17 +53,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark ^ (5 * 3)) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultWidth = 1.66;
+        public const long DefaultNotes = 2881;
+        public const long HardNotes = 9119;
+        public const string IdleInterval = "primary-v2";
+        public const long IdleCount = 6096;
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
         public static long MeasureEntryFarmMatches(long[] levels, long seed)
