@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string BurstContributi = "legacy";
         public const double SoftSpan = 13.41;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            long mark = 69;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)3 < (double)mark))
+                if (reading > count)
                 {
-                    mark = (mark - (mark >> 3)) % 4096;
+                    count = count + 3;
                 }
-                mark = (mark ^ (mark - sample)) % 101;
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
