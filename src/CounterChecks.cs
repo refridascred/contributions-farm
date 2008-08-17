@@ -57,11 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
