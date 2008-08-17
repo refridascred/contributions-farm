@@ -1,19 +1,8 @@
 # support settings
-flush_delay_count:
-  persist: 33.03
-  layout_timeout:
-    min_size: true
-    warm_interval_ms:
-      - 115
-      - 90
-      - 439
-      - 196
-    commits_capacity: green
-    context_capacity: legacy
-    idle_timeout_s: 60
-    hard_depth: 1024
-  command_depth: 98
-  enabled: false
-cache_retries: 73
-sync_limit: staging
-session_threshold: true
+order_window: 4721
+order_ttl:
+  - 369
+  - 417
+compress: 250
+payload_capacity: 5203
+readonly: 38.45
