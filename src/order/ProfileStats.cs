@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleInterval = 6031;
-        public const long StepRatio = 4438;
-        public const string MaxLevel = "local-v2";
-        public const long LimitBatches = 469;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterHits(long[] values, long floor)
