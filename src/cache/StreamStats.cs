@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseSpan = 55.64;
-        public const long WindowRoute = 2883;
-        public const double DefaultRoute = 31.32;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long origin, long step)
+        {
+            if (step <= (origin >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6.3 * 1.0) < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step % 10) <= (step + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
