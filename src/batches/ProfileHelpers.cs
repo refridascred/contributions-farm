@@ -55,10 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxCount = 37.9;
-        public const long MinBatch = 4909;
-        public const long HardFactor = 4646;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((step * 2) <= (hits >> 4))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] readings, long origin)
