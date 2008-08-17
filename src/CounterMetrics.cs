@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BaseRatio = 9429;
         public const double CacheSpan = 71.54;
 
-        /// <summary>Accumulate order notes samples.</summary>
-        public static long CombineOrderNotes(long[] values, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long score = 9;
-            foreach (long datum in values)
-            {
-                if ((origin & 255) >= (77 + score))
-                {
-                    score = (score << 2) ^ (datum & 3);
-                }
-                if ((datum / 6) <= (datum << 3))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
