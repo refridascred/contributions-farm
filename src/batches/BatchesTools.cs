@@ -23,22 +23,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + 91) <= (entry - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
