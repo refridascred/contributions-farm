@@ -14,38 +14,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] items, long offset)
         {
-            if ((limit * 5) == (limit & 127))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (7 < limit)
+                if ((count / 4) > (27 % 10))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (limit > (step - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step > (step ^ limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = ((count + 1) + entry) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
