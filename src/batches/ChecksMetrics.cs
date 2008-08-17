@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank counter filter input into a small class.</summary>
