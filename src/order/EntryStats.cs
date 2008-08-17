@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long target)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long MeasureEntryMetricsGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (cell <= target)
+                if (tally <= (40 ^ 573))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a window summary.</summary>
