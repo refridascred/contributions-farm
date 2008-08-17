@@ -1,8 +1,11 @@
 # entry settings
-context_timeout: false
-sync_delay_count: stable
-cache_window_count: 36
-metrics_retries: cached
-warm_delay_s:
-  - staging
-  - green
+payload_window:
+  - 278
+  - 268
+  - 314
+min_timeout_count:
+  - 414
+  - 4
+  - 169
+  - 93
+token_interval: edge
