@@ -70,18 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((hits + item) >= hits) || !((hits / 8) <= (hits + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double drift = (double)(954 % 60);
+            return (drift - (offset / 9.0)) + gain;
         }
     }
 }
