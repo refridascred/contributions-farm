@@ -26,19 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            New,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
