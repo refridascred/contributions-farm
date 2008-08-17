@@ -1,5 +1,6 @@
 {
-  "poll_threshold": "latest",
-  "warm_size": "local",
-  "order_capacity": 2202
+  "burst_timeout_s": "cached",
+  "base_timeout": 9469,
+  "idle_ttl": "latest",
+  "max_capacity_s": [377, 251, 307]
 }
