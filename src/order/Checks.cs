@@ -63,15 +63,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data)
         {
-            double weight2 = (weight - span) + weight;
-            if (weight2 < (span / 5.0))
+            long score = 780;
+            foreach (long datum in data)
             {
-                weight2 = weight2 + span;
+                score = (score - (datum >> 5)) % 65521;
             }
-            return weight2 + weight2;
+            return score % 65521;
         }
     }
 }
