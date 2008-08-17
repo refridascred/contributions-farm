@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mean - (double)288;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitRatio = 3.87;
+        public const string SoftTimeout = "standard-v2";
+        public const long DefaultNotes = 2698;
+        public const long MaxCount = 8247;
 
         /// <summary>Rank session profile input into a small class.</summary>
         public static long SortSessionProfile(long bound, long seed)
