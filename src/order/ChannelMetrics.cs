@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const string IdleInterval = "stable";
         public const long LimitChannel = 3218;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            Closed,
-            Draft,
-            Queued,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)matches == (7.0 + 5.7))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
