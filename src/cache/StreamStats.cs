@@ -37,32 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema stream value against two limits.</summary>
-        public static long BucketSchemaStream(long bound, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] series, long origin)
         {
-            long slot = bound + origin;
-            if ((slot >= (bound >> 3)) || ((origin & 3) <= bound))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (12.0 - 2.0))
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(5 < (slot + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
