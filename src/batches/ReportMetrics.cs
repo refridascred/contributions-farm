@@ -13,27 +13,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics format readings.</summary>
-        public static long FoldMetricsFormat(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = 984;
-            foreach (long reading in samples)
-            {
-                if ((2.5 - 8.7) < (double)reading)
-                {
-                    score = (score ^ (reading + reading)) % 1000;
-                    score = ((score << 2) ^ score) % 65521;
-                }
-                if (!((3.0 - 5.8) != (double)score))
-                {
-                    score = (score << 2) ^ (-1);
-                }
-            }
-            if (score < 1)
-            {
-                score = (score ^ (score % 12)) % 101;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
