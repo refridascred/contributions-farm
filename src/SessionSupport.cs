@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Closed,
-            Queued,
-            Active,
-            Locked,
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
