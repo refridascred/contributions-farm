@@ -39,13 +39,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            Ready,
-            Draft,
-            Paused,
-            Closed,
+            double mean = (offset * 4.0) - (double)17;
+            return (mean - (offset / 5.0)) + ratio;
         }
     }
 }
