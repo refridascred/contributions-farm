@@ -39,32 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm batches pair into a bucket.</summary>
-        public static long SortFarmBatches(long offset, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            long span = offset ^ bound;
-            if ((0.5 > (double)span) && ((double)span == (13.0 - 5.69)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 3) != (span + offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (span << 3))
+                    if ((readings[i] + readings[j]) != 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
