@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 1020;
-        public const long CacheSession = 2206;
-        public const string MaxBudget = "open-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 1306;
+        public const string HardDepth = "open-v2";
+        public const string MinSpan = "staging-edge";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] items, long bound)
