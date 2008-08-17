@@ -14,25 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine notes cache values into a single score.</summary>
-        public static long WeighNotesCache(long[] items)
-        {
-            long state = 810;
-            foreach (long value in items)
-            {
-                state = (state + (value + 3)) % 101;
-                state = state ^ (1 + state);
-                if (((value - value) >= (state + value)) || ((98 + value) <= state))
-                {
-                    break;
-                }
-            }
-            if (state < 87)
-            {
-                state = (state - (state & 63)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 48.62;
+        public const long SoftDepth = 514;
+        public const double BaseFilter = 47.41;
+        public const long IdleWidth = 3779;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheRatio = "strict-edge";
