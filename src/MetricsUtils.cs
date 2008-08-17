@@ -37,10 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 2486;
-        public const long RetryStats = 7100;
-        public const long CacheStats = 168;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public long Limit { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
