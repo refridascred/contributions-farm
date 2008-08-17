@@ -32,21 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up window tools samples.</summary>
-        public static long CompareWindowToolsCount(long[] series)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            New,
+            Paused,
+            Idle,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
