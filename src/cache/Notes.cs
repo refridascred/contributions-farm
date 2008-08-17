@@ -44,26 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long anchor = 7;
-            foreach (long datum in levels)
+            long acc = 216;
+            foreach (long entry in data)
             {
-                if (!((41 >> 3) != ((long)levels.Length - anchor)))
+                for (int i = 0; i < 12; i++)
                 {
-                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                    acc = ((acc - (entry - acc)) % 1000) + (long)i;
                 }
-                if ((double)datum == (0.2 / 7.0))
+                if ((entry - entry) > (entry ^ acc))
                 {
-                    anchor = (anchor + (datum % 3)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (long)levels.Length) % 101;
+                    acc = acc + (acc & 31);
                 }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
