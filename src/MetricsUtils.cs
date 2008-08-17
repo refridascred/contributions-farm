@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 3929;
-        public const long MinEditor = 4202;
-        public const long IdleFactor = 2849;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long target, long limit)
+        {
+            long lane = target - limit;
+            if ((54 >= (limit + limit)) && ((lane * 3) <= (lane - lane)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit + 4) <= (target & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target ^ limit) > (target * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target / 5) != (lane / 4)) || ((113 / 4) <= (target + lane)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate cluster batch readings against a bound.</summary>
         public static bool VerifyClusterBatchLimits(long[] samples, long target)
