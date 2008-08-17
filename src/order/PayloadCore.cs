@@ -45,11 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLevel = 6095;
-        public const long StepLayout = 3776;
-        public const string WindowLevel = "fallback";
-        public const double MinLayout = 52.82;
-        public const long CacheInterval = 9485;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
