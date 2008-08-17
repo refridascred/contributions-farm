@@ -35,19 +35,31 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long seed)
+        /// <summary>Rank notes order input into a small class.</summary>
+        public static long GradeNotesOrder(long bound, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((double)floor >= 6.4)
             {
-                if (datum > seed)
+                return 3;
+            }
+            else
+            {
+                if (((floor * 5) < (floor >> 4)) && ((bound & 7) <= (bound + floor)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((0.5 / 2.0) < (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
