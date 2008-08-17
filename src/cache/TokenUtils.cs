@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Dropped,
-            Idle,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 7894;
+        public const long CacheSpan = 795;
+        public const long IdleLevel = 6845;
+        public const double MaxToken = 53.66;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] series)
