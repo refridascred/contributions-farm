@@ -62,9 +62,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 829;
-        public const long LimitMetrics = 4371;
-        public const double SoftSize = 58.22;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
