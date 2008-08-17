@@ -14,13 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Dropped,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a graph summary.</summary>
