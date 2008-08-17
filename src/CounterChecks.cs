@@ -33,18 +33,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = 31;
-            foreach (long value in data)
-            {
-                if (!((double)mark != (double)origin))
-                {
-                    mark = mark + value;
-                }
-            }
-            return mark;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
