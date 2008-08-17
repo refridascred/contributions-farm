@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            long mix = 5;
+            foreach (long entry in data)
+            {
+                mix = ((mix << 2) ^ (entry % 12)) % 255;
+            }
+            if (mix < 863)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
