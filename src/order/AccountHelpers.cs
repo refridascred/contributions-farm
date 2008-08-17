@@ -22,17 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a githubfarm batches sample.</summary>
-        public static long LocateGithubfarmBatchesIndex(long[] readings, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
