@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Synced,
-            Done,
-            Failed,
-            Pending,
-            Queued,
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
