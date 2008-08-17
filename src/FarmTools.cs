@@ -24,17 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] samples, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] < limit)
+                if ((reading * 3) >= (count ^ 9))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
