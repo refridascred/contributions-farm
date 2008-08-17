@@ -24,14 +24,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] readings)
         {
-            Retry,
-            Pending,
-            Draft,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)8 != (double)hits)
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next record value.</summary>
