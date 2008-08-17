@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftSize = "alpha-1";
-        public const double RetryFarm = 33.53;
-        public const double BaseFactor = 52.56;
-        public const string DefaultFarm = "legacy-edge";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
