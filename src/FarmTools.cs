@@ -19,32 +19,17 @@ namespace Common.Utilities
         public const long MinFilter = 5907;
         public const double DefaultCount = 96.69;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long floor)
         {
-            long step = offset + seed;
-            if ((step + offset) <= (seed + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= seed)
+                if (levels[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed >> 3) < (54 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
