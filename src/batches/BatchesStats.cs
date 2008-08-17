@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] data, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (sample <= bound)
+                if (datum >= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Match up filter samples.</summary>
