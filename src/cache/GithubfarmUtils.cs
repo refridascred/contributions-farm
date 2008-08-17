@@ -23,22 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long state = 0;
-            foreach (long datum in data)
-            {
-                if (datum >= (state + (long)data.Length))
-                {
-                    state = (state ^ (datum >> 1)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (255 - datum)) % 97;
-                }
-            }
-            return state;
+            Pending,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
