@@ -1,13 +1,6 @@
 {
-  "cache_size_pct": {
-    "audit": {
-      "sync_ttl_pct": "strict",
-      "hard_timeout_count": ["cached", "strict", "strict", "stable"],
-      "schema_timeout": 250
-    },
-    "idle_interval_count": 100,
-    "warm_ratio_pct": 40.9
-  },
-  "max_threshold_ms": "green",
-  "warm_size_s": "eu-west"
+  "flush_retries_pct": false,
+  "report_threshold": 50.34,
+  "base_limit_s": 44.45,
+  "burst_window": 27.41
 }
