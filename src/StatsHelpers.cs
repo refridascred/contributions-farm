@@ -19,13 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count support counter pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCounterCount(long[] items)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
