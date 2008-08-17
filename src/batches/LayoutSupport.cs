@@ -62,21 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstRatio = 2998;
+        public const long DefaultNotes = 9646;
+        public const long IdleInterval = 510;
+        public const string WindowNotes = "legacy";
+        public const string IdleNotes = "cached-v2";
     }
 }
