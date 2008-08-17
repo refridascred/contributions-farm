@@ -67,10 +67,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8538;
-        public const double WindowSpan = 53.56;
-        public const long WindowFarm = 7821;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((2.0 / 2.0) >= (double)count)
+                {
+                    count = ((count + 2) ^ value) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long StepFormat(long seed)
