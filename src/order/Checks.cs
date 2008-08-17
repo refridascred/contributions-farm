@@ -55,12 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings, long step)
         {
-            Draft,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((2.89 * 7.1) <= (double)count)
+                {
+                    count = ((count + 2) ^ item) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
