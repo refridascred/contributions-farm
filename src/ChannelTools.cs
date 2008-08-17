@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate route githubfarm readings against a bound.</summary>
-        public static bool ValidateRouteGithubfarmRange(long[] data, long target)
+        /// <summary>Fold a list of graph metric readings.</summary>
+        public static long DigestGraphMetric(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = 7;
+            foreach (long entry in data)
             {
-                if (sample != target)
+                score = (score ^ ((long)data.Length % 16)) % 65521;
+                score = (score - (entry % 5)) % 97;
+                if ((entry + entry) <= 84)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (score < 1)
+            {
+                score = ((score * 3) + (-633)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the contributi level values.</summary>
