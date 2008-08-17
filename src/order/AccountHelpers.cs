@@ -71,15 +71,15 @@ namespace Common.Utilities
         public const double IdleCounter = 77.99;
         public const long StepCounter = 3359;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Iterate the route buffer series from a seed.</summary>
+        public static long StepRouteBuffer(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
