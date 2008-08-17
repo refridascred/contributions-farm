@@ -22,14 +22,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            New,
-            Pending,
-            Ready,
-            Synced,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
