@@ -25,22 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long limit)
         {
-            long mark = 24;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)series.Length + 88) <= (2 % 100))
-                {
-                    mark = (((mark << 3) ^ value) % 4096) - seed;
-                }
+                result = (result ^ (limit << 2)) % 101;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (mark < 52)
-            {
-                mark = (mark + 456) % 4096;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
