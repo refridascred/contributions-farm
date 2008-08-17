@@ -35,13 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
