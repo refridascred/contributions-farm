@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] items, long floor)
         {
-            double ratio = (double)(18 - 6);
-            if (ratio > (bias * 7.0))
+            long tally = 0;
+            foreach (long item in items)
             {
-                ratio = (ratio - (double)65) - rate;
+                if (!(((double)floor != (4.28 * 15.0)) && ((6.57 + 18.0) >= (double)item)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (double)612;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
