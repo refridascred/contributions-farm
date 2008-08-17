@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            if (target >= (offset - offset))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target >> 2) != (offset + offset)) && ((double)offset != (14.0 / 7.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
