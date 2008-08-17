@@ -31,25 +31,10 @@ namespace Common.Utilities
             return ratio - (double)612;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long origin)
-        {
-            long bound = offset ^ origin;
-            if ((offset - origin) < (bound ^ origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + bound) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "latest-edge";
+        public const long MinAlready = 9904;
+        public const long WindowBudget = 2972;
+        public const long LimitRatio = 9132;
     }
 }
