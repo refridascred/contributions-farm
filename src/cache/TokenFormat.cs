@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] values)
         {
-            Draft,
-            Locked,
-            Retry,
-            Stale,
-            Queued,
+            long mix = 445;
+            foreach (long reading in values)
+            {
+                mix = (mix + ((-9) + mix)) % 97;
+                if ((3.3 - 9.3) < (double)reading)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
