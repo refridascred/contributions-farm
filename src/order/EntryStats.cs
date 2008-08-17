@@ -32,18 +32,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values, long offset)
+        /// <summary>Fold a list of report format readings.</summary>
+        public static long DigestReportFormat(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long anchor = 796;
+            foreach (long reading in readings)
             {
-                if ((8.62 / 8.0) > (double)count)
-                {
-                    count = ((count + 3) + cell) + offset;
-                }
+                anchor = ((anchor * 3) + (reading + anchor)) % 4096;
+                anchor = (anchor * 4) + (reading % 24);
+                anchor = (anchor ^ anchor) % 255;
             }
-            return count;
+            if (anchor < 66)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
