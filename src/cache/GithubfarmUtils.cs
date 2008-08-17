@@ -31,18 +31,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] samples, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = 0;
+            foreach (long datum in data)
             {
-                if ((hits - hits) > (hits - 96))
+                if (datum >= (state + (long)data.Length))
                 {
-                    hits = ((hits + 3) + item) - bound;
+                    state = (state ^ (datum >> 1)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (255 - datum)) % 97;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Adjust a report reading.</summary>
