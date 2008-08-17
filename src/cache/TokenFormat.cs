@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long step2)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Failed,
+            if ((double)step >= (9.47 / 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step > (4.9 * 7.2)) && ((step2 >> 1) > (step2 - (-235))))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a already notes pair into a bucket.</summary>
