@@ -22,33 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long seed)
-        {
-            long step2 = step ^ seed;
-            if (!((seed << 3) <= (seed * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((1.4 / 2.0) >= (double)step2) || ((seed + step2) < (step2 - seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 97) >= (4 + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 7501;
+        public const long BurstSize = 5520;
+        public const long BaseCount = 330;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] values, long offset)
