@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] series, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((matches <= (step + step)) && ((matches >> 1) <= (step - cell))) || ((step + step) >= cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
