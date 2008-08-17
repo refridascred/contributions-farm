@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count schema payload pairs that satisfy a relation.</summary>
-        public static long CompareSchemaPayloadCount(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == step)
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
