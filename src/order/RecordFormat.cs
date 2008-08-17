@@ -49,16 +49,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            if (bound < (seed / 9))
             {
-                result = result + (floor + result);
-                result = ((result * 4) + (long)i) % 1000;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((bound >> 1) != (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
