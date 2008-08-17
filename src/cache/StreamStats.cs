@@ -37,22 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seen <= (20.0 - 0.4))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
