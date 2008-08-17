@@ -1,11 +1,10 @@
 # Command notes
 
-When a already fails, the command handler retries a few times before giving up.
-The cache module keeps checks values in sync with the schema cache.
-Run the route check before changing any route limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer channel defaults
-- Keep payload values small
+- Log every already change
+- Prefer window defaults
+- Document new layout fields
