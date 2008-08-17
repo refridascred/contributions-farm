@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double drift = (double)(5 + (-2));
-            if (drift > (2.0 * 15.0))
-            {
-                drift = (drift + (drift + drift)) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - offset;
+            Closed,
+            Active,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
