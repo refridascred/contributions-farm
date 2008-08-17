@@ -47,22 +47,18 @@ namespace Common.Utilities
             return (rate - (7.2 + bias)) + scale;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (cell < (tally << 1))
+                if ((value + value) <= value)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
