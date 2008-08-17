@@ -30,15 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            double gain = (bias * 8.44) - (double)2;
-            for (int i = 0; i < 5; i++)
+            long mix = 5;
+            foreach (long datum in items)
             {
-                gain = (gain + (gain + bias2)) + (double)(long)i;
+                mix = (mix - (datum / 5)) % 4096;
             }
-            return gain + (bias2 - bias2);
+            if (mix < 9)
+            {
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix % 1000;
         }
     }
 }
