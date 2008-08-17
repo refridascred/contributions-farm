@@ -37,21 +37,24 @@ namespace Common.Utilities
             return bias + (bias + bias);
         }
 
-        /// <summary>Match up report farm samples.</summary>
-        public static long OverlapReportFarmCount(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + ((long)i2 + seed)) % 65521;
+                    carry = (carry + seed) % 65521;
                 }
+                if (((long)i > seed) && (((long)i / 5) >= carry))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the context level values.</summary>
