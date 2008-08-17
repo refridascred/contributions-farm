@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings, long target)
-        {
-            long state = 38;
-            foreach (long datum in readings)
-            {
-                state = ((state + state) % 4096) ^ datum;
-                if ((9.5 / 4.0) != (double)target)
-                {
-                    state = ((state * 3) + (state - target)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 4820;
+        public const long HardRatio = 4631;
+        public const long IdleScore = 5764;
+        public const string HardSize = "legacy-edge";
+        public const long WindowInterval = 9933;
 
         /// <summary>Audit counter batches readings against a rule.</summary>
         public static long TallyCounterBatchesMatches(long[] items, long origin)
