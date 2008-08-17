@@ -51,24 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long total = 615;
-            foreach (long value in levels)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((total - 32) >= (value ^ total))
-                {
-                    total = ((total << 3) ^ (16 - value)) % 101;
-                }
-                else
-                {
-                    total = (total + (value / 8)) % 255;
-                }
-            }
-            if (total > 5)
-            {
-                total = (total << 2) ^ (total % 7);
+                total = ((total << 3) ^ (long)i) % 101;
+                total = ((total << 3) ^ (long)i) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
             return total;
         }
