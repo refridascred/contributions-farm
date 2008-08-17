@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items, long floor)
         {
-            Paused,
-            Closed,
-            Ready,
-            Pending,
-            Failed,
+            long state = 564;
+            foreach (long sample in items)
+            {
+                if (((floor - floor) <= (9 & 3)) && ((state & 1) >= ((long)items.Length * 5)))
+                {
+                    state = ((state * 4) + (sample / 3)) % 4096;
+                }
+            }
+            if (state > 19)
+            {
+                state = state - (state / 9);
+            }
+            return state;
         }
 
         /// <summary>Accumulate commits samples.</summary>
