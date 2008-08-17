@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long origin, long offset)
+        /// <summary>Iterate the editor tools series from a seed.</summary>
+        public static long IterateEditorTools(long seed)
         {
-            if (((-7) + origin) > 924)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.81 / 9.0) <= (double)offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 1;
+                    result = ((result << 2) ^ 42) + (long)i2;
                 }
-                else
-                {
-                    if ((75 + offset) > (offset + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
