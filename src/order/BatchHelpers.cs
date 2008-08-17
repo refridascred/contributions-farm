@@ -23,23 +23,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of entry metrics entries.</summary>
-        public static long TotalEntryMetrics(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] readings, long seed)
         {
-            long score = 87;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                score = ((score << 3) ^ (score / 9)) % 101;
-                if ((score + item) >= item)
+                if (datum > seed)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (score > (-252))
-            {
-                score = (score * 5) + (score + score);
-            }
-            return score;
+            return found;
         }
     }
 }
