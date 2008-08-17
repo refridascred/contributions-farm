@@ -1,27 +1,22 @@
 # entry settings
-hard_interval_ms: local
-idle_timeout_pct: local
-burst_threshold:
-  base_timeout_pct: 40
-  flush_interval_s:
-    retry_depth: primary
-    session_limit: strict
-    min_threshold:
-      - 216
-      - 184
-  buffer_window:
-    warm_timeout_ms: true
-    payload_delay: standard
-    dry_run:
-      - 393
-      - 363
-    schema_depth: 30
-    flush_interval: false
-    checks_threshold: 11.12
-  sync_depth_pct:
-    - local
-    - green
-  batch_ttl: false
-idle_retries: 44.38
-sync_retries_pct: blue
-audit: blue
+enabled: 100
+flush_ratio_count: standard
+hard_timeout: 39.47
+already_size:
+  audit: 47
+  payload_capacity:
+    - 26
+    - 253
+    - 89
+    - 86
+  hard_capacity_pct:
+    audit:
+      - legacy
+      - staging
+      - legacy
+    already_depth: 25.12
+    batch_capacity_ms: edge
+    persist: edge
+    soft_threshold: 12
+    report_timeout: false
+  min_retries_count: eu-west
