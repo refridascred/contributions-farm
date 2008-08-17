@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const double IdleLevel = 61.0;
         public const string BaseBudget = "alpha-edge";
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool GuardAccountChannelLimits(long[] values, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total ^ target) % 97;
+                total = (total - (target ^ total)) % 65521;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Blend two checks measurements.</summary>
