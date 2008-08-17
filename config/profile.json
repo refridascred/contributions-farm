@@ -1,8 +1,7 @@
 {
-  "dry_run": 4405,
-  "githubfarm_threshold": ["latest", "cached", "edge"],
-  "poll_ttl": 8231,
-  "readonly": 38.12,
-  "hard_interval_pct": "legacy",
-  "batch_timeout": 1024
+  "batch_interval": 4048,
+  "command_threshold": true,
+  "base_threshold": ["staging", "staging", "blue", "staging"],
+  "report_delay": ["edge", "local"],
+  "cache_ratio_ms": 84.08
 }
