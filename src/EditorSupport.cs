@@ -17,11 +17,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
