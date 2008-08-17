@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result << 3) ^ (2 & 3)) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a support entry.</summary>
