@@ -1,22 +1,5 @@
 {
-  "batches_ratio": ["green", "eu-west"],
-  "enabled": 100,
-  "strict": 500,
-  "min_retries_s": {
-    "account_timeout": 7933,
-    "enabled": 500,
-    "editor_size": true,
-    "hard_capacity": "strict",
-    "default_capacity_pct": {
-      "base_delay": "green",
-      "route_retries": "staging",
-      "githubfarm_capacity": "strict",
-      "dry_run": 3753,
-      "compress": true,
-      "payload_limit": 60
-    },
-    "profile_capacity": 1385
-  },
-  "retry_timeout_ms": [390, 398],
-  "compress": false
+  "audit": "legacy",
+  "sync_ttl_count": 6851,
+  "max_capacity": 500
 }
