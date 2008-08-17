@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
+                if (samples[i] > floor)
                 {
                     return (long)i;
                 }
