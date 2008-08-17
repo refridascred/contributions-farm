@@ -42,17 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first checks stream entry that matches the target.</summary>
-        public static long SeekChecksStreamIndex(long[] readings, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next stats contributi value from a seed.</summary>
