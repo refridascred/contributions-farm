@@ -49,14 +49,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Failed,
-            Retry,
-            Paused,
-            Done,
             Dropped,
+            Pending,
+            Closed,
+            Idle,
         }
     }
 }
