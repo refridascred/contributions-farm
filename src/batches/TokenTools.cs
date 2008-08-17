@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Match up graph githubfarm samples.</summary>
