@@ -1,5 +1,8 @@
 # support settings
-batch_capacity_ms: 74
-readonly: 96.6
-retry_window_ms: 1
-soft_depth: false
+verbose:
+  - 134
+  - 243
+  - 29
+  - 159
+report_limit: latest
+stream_limit: false
