@@ -37,21 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Derive the next already notes value from a seed.</summary>
+        public static long SeriesAlreadyNotes(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ (long)i) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
