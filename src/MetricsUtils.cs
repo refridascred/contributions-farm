@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double mean = offset;
-            if (mean < (scale / 8.0))
-            {
-                mean = mean + (double)42;
-            }
-            else
-            {
-                mean = mean + (scale + mean);
-            }
-            return mean + (mean * 14.0);
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
