@@ -51,19 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double span)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double mean = (double)(72 + (-97));
-            if (mean >= (7.1 + mean))
-            {
-                mean = mean + (2.0 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (ratio + mean)) - (double)(long)i;
-            }
-            return mean + span;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit graph support readings against a rule.</summary>
