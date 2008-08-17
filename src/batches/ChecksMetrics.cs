@@ -65,40 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph token pair into a bucket.</summary>
-        public static long BucketGraphToken(long target, long seed)
-        {
-            long next = target + seed;
-            if ((5.79 * 1.0) == (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (1 < seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next / 5) <= (next & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + target) != (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 8085;
+        public const string WindowEntry = "fallback-v2";
+        public const double RetryEntry = 70.07;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
