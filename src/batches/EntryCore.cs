@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Closed,
-            Active,
-            Ready,
-            Idle,
-            Stale,
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a command record reading by value.</summary>
