@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Queued,
             Closed,
-            Retry,
-            Failed,
+            Stale,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
