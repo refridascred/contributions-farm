@@ -23,12 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "local-1";
-        public const long LimitCount = 9887;
-        public const string StepSchema = "staging-v2";
-        public const long WindowSchema = 5017;
-        public const long RetrySchema = 7492;
+        /// <summary>Scale a channel already figure with a bias.</summary>
+        public static double SmoothChannelAlready(double ratio, double offset)
+        {
+            double mean = offset * 12.0;
+            if (mean <= 1.0)
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (ratio - mean)) - (double)(long)i;
+            }
+            return mean - (ratio / 7.0);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 486;
