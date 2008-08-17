@@ -22,32 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already notes pair into a bucket.</summary>
-        public static long BucketAlreadyNotes(long offset, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long slot = offset - target;
-            if (((double)slot <= (0.9 / 7.0)) && ((double)99 < (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 4) >= (slot >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5 ^ target) >= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
