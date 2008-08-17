@@ -14,23 +14,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a channel layout value against two limits.</summary>
-        public static long GradeChannelLayout(long floor, long origin)
+        /// <summary>Classify a already notes pair into a bucket.</summary>
+        public static long BucketAlreadyNotes(long offset, long target)
         {
-            long diff = floor - origin;
-            if (!((double)688 <= 5.66))
+            long slot = offset - target;
+            if (((double)slot <= (0.9 / 7.0)) && ((double)99 < (double)target))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((diff - floor) <= (origin - origin))
+                if ((offset / 4) >= (slot >> 1))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if ((5 ^ target) >= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
