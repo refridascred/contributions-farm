@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the batches record series from a seed.</summary>
-        public static long StepBatchesRecord(long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Closed,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a context header.</summary>
