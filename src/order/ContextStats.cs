@@ -62,18 +62,15 @@ namespace Common.Utilities
         public const long MaxLayout = 7718;
         public const string WindowLayout = "standard";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 284;
+            foreach (long item in values)
             {
-                if ((seen + cell) < cell)
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum ^ (item ^ sum)) % 65521) - origin;
             }
-            return seen;
+            return sum % 65521;
         }
     }
 }
