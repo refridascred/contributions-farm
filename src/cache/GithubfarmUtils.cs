@@ -37,13 +37,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
+            Ready,
+            Stale,
+            Dropped,
+            Synced,
             Pending,
-            Failed,
-            Done,
-            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
