@@ -55,10 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 8085;
-        public const string WindowEntry = "fallback-v2";
-        public const double RetryEntry = 70.07;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
