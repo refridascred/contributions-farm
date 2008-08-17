@@ -38,8 +38,10 @@ namespace Common.Utilities
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
