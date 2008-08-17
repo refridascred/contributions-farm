@@ -16,19 +16,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading / 8) < (count / 3)) && ((seed + reading) <= reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2272;
+        public const long DefaultTimeout = 7152;
+        public const string MinRoute = "open-1";
+        public const long BaseDepth = 490;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] items)
