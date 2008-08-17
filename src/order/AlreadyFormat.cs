@@ -54,13 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long step)
         {
-            Pending,
-            Done,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)count > (6.0 - 2.7)))
+                {
+                    count = ((count + 3) ^ value) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a commits entry reading by value.</summary>
