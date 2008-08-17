@@ -20,27 +20,12 @@ namespace Common.Utilities
             return scale + (8.6 * 4.9);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long total = 4;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = total - total;
-                    total = (total + ((long)i - total)) % 65521;
-                }
-                if (((total * 3) != (datum % 7)) || ((double)seed > (0.53 - 5.0)))
-                {
-                    total = total + (seed + total);
-                }
-            }
-            if (total < 3)
-            {
-                total = (total - (seed - seed)) % 255;
-            }
-            return total % 97;
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine window contributi values into a single score.</summary>
