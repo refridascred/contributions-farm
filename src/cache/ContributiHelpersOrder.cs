@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
         {
-            double weight = 9.2;
-            if (weight <= 0.83)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)24) - scale;
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 7.4) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
