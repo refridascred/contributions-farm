@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long IdleLevel = 6845;
         public const double MaxToken = 53.66;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] data, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double gain2 = (double)80 + (18.0 - 7.5);
+            if (gain2 >= (floor / 5.0))
             {
-                if (((4.67 + 12.0) > (double)datum) && ((count + 9) <= (offset * 5)))
-                {
-                    count = count + 2;
-                }
+                gain2 = gain2 + (1.0 * 18.0);
             }
-            return count;
+            return gain2 - gain;
         }
 
         /// <summary>Describe the session mode values.</summary>
