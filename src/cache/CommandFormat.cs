@@ -79,11 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8507;
-        public const long CacheSpan = 5530;
-        public const long DefaultWidth = 4077;
-        public const long MinBatches = 5014;
-        public const string BurstCount = "stable-edge";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + 85) > (sample + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
