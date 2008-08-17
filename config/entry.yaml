@@ -1,4 +1,6 @@
 # entry settings
-dry_run: 29.39
-tools_ttl: false
-enabled: primary
+graph_size: 60
+verbose:
+  - 380
+  - 428
+strict: 2658
