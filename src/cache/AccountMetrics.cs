@@ -27,11 +27,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7699;
-        public const string CacheRatio = "local";
-        public const long SoftLevel = 7645;
-        public const string WindowRatio = "alpha-1";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long floor)
+        {
+            long acc = 8;
+            foreach (long datum in series)
+            {
+                if ((4.75 - 7.0) >= (double)datum)
+                {
+                    acc = (acc << 3) ^ (datum >> 3);
+                }
+                acc = acc ^ (floor << 2);
+            }
+            return acc % 97;
+        }
 
         /// <summary>Rank stream githubfarm input into a small class.</summary>
         public static long BucketStreamGithubfarm(long bound, long step)
