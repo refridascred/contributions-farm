@@ -13,14 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 93.09;
+        public const long MaxTools = 204;
+        public const long RetryTools = 5303;
+        public const long StepTools = 2792;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BatchWidth = 1436;
