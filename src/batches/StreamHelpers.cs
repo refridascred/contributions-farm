@@ -30,12 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 7648;
-        public const double IdleTimeout = 54.98;
-        public const long DefaultBudget = 3635;
-        public const long HardLevel = 1037;
-        public const string SoftSession = "primary-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryScore = "strict-edge";
+        public const long MaxSpan = 9589;
+        public const long RetryMetrics = 3127;
+        public const string MinInterval = "stable-v2";
+        public const long StepMetrics = 3199;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long ScoreFilter(long[] levels)
