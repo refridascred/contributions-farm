@@ -35,19 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] readings, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
     }
 }
