@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
