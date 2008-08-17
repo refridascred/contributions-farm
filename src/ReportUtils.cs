@@ -22,12 +22,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Closed,
-            Queued,
-            Done,
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
