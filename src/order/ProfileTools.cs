@@ -51,18 +51,18 @@ namespace Common.Utilities
             return weight + (double)(-221);
         }
 
-        /// <summary>Count the entry stream entries that pass the check.</summary>
-        public static long CountEntryStreamMatches(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((1.0 / 8.0) == (double)item)
+                if (((double)seen > (7.0 * 3.0)) && ((seen >= (value % 8)) && ((value & 7) > value)))
                 {
-                    matches = (matches + 1) + limit;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
