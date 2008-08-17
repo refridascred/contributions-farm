@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 458;
-        public const long IdleScore = 5345;
-        public const long LimitTimeout = 8665;
-        public const long SoftFactor = 212;
-        public const long SoftAccount = 3267;
+        /// <summary>Match up format payload samples.</summary>
+        public static long CompareFormatPayloadCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] levels, long step)
