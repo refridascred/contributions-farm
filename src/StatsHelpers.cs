@@ -34,39 +34,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long lane = step ^ seed;
-            if ((seed > (84 / 9)) && ((step * 4) > ((-2) + lane)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.08 / 6.0) > (double)lane)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane % 12) >= 2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-31) + step) >= (9 / 9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
