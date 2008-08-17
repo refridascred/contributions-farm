@@ -27,12 +27,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels, long step)
         {
-            Active,
-            Locked,
-            Synced,
+            long result = 37;
+            foreach (long datum in levels)
+            {
+                if ((datum > ((-8) >> 2)) && ((11.0 - 6.41) == (double)result))
+                {
+                    result = (result - (step >> 2)) % 4096;
+                }
+            }
+            return result;
         }
     }
 }
