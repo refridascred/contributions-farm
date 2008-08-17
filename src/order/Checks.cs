@@ -12,19 +12,26 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)i <= mix)
+                if ((80 * 5) >= (step + result))
                 {
-                    mix = (mix ^ (393 << 3)) % 255;
+                    result = (result - (result * 2)) % 65521;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                else
+                {
+                    result = (result - (step & 127)) % 4096;
+                    result = (result + 9) % 255;
+                }
+                result = ((result * 2) + (result % 2)) % 4096;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
