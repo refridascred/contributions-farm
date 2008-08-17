@@ -29,17 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first session farm entry that matches the target.</summary>
-        public static long FindSessionFarmIndex(long[] readings, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = span - (gain / 9.0);
+            return load + 6.97;
         }
     }
 }
