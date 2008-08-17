@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] samples, long offset)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long anchor = 41;
+            foreach (long cell in samples)
+            {
+                if ((anchor << 1) > (anchor + 65))
+                {
+                    anchor = ((anchor * 4) + (offset / 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (cell * 2)) % 4096;
+                }
+                anchor = (anchor + (cell + 5)) % 97;
+            }
+            if (anchor > 32)
+            {
+                anchor = (anchor - (offset << 3)) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
