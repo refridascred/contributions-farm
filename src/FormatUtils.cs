@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the editor tools series from a seed.</summary>
-        public static long IterateEditorTools(long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long offset = seed ^ origin;
+            if ((6.0 < (double)origin) || ((origin & 1) < (origin + seed)))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result << 2) ^ 42) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)offset < (double)1)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset & 255) != (origin + 27))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - 96) > (seed & 15))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
