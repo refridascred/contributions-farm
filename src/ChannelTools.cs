@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the contributi level values.</summary>
