@@ -38,10 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "local";
-        public const long BaseMetric = 8257;
-        public const long RetryMetric = 1646;
-        public const string IdleScore = "latest-v2";
+        /// <summary>Validate profile tools readings against a bound.</summary>
+        public static bool GuardProfileToolsRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
