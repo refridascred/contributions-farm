@@ -1,6 +1,7 @@
 {
-  "burst_timeout_s": "cached",
-  "base_timeout": 9469,
-  "idle_ttl": "latest",
-  "max_capacity_s": [377, 251, 307]
+  "metric_retries": "eu-west",
+  "enabled": 30,
+  "readonly": 30,
+  "warm_threshold_count": 13.84,
+  "poll_retries_s": "strict"
 }
