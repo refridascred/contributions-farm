@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long prev = origin - seed;
+            if (((origin + (-565)) != (origin + origin)) || ((seed - seed) > seed))
             {
-                if (!((matches / 2) >= (entry + entry)))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= (9.45 - 5.0))
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((17 + prev) > ((-34) + prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate graph batch samples.</summary>
