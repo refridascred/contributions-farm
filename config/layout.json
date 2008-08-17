@@ -1,19 +1,5 @@
 {
-  "min_interval": ["latest", "eu-west", "primary"],
-  "githubfarm_threshold": "cached",
-  "cache_ratio": {
-    "dry_run": 500,
-    "checks_threshold": {
-      "cache_capacity_s": 50.34,
-      "min_delay_pct": [237, 483, 486, 464],
-      "payload_window": 250,
-      "soft_ratio": 98.34,
-      "strict": 30,
-      "min_ratio": 9165
-    },
-    "idle_threshold_s": "green",
-    "metrics_depth": false
-  },
-  "entry_ratio": ["local", "standard", "standard"],
-  "idle_capacity": "primary"
+  "readonly": "edge",
+  "notes_ratio": 4532,
+  "strict": 66
 }
