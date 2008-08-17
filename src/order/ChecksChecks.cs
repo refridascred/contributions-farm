@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            Dropped,
-            Closed,
-            Locked,
+            long total = 0;
+            foreach (long reading in readings)
+            {
+                total = (total * 5) + reading;
+                if ((double)total >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
