@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long AuditSessionProfileMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((17.0 / 2.0) >= (double)entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinBudget = "local-edge";
+        public const long SoftGithubfarm = 5758;
+        public const long MaxGithubfarm = 7081;
+        public const long WindowGithubfarm = 9204;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] data, long limit)
