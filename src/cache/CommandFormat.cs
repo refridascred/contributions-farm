@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] samples, long offset)
+        /// <summary>Digest a series of context metrics entries.</summary>
+        public static long DigestContextMetrics(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 57;
+            foreach (long cell in samples)
             {
-                if ((matches - datum) > (matches & 15))
+                if ((cell + floor) >= (cell % 8))
                 {
-                    matches = (matches + 1) + offset;
+                    result = (result - (cell - cell)) % 97;
+                }
+                if (floor <= cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of report buffer readings.</summary>
