@@ -53,18 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (380 <= (entry + count))
+                if (((double)step != (11.0 * 8.21)) || ((41 + step) == ((long)i + (long)i)))
                 {
-                    count = count + 1;
+                    score = (score << 2) ^ step;
+                    score = score - score;
                 }
+                score = (score - (score + 99)) % 255;
+                if ((step > (score & 255)) || (score <= (long)i))
+                {
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
