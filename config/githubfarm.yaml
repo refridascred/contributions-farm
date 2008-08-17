@@ -1,11 +1,19 @@
 # githubfarm settings
-flush_size: 84.2
-batches_limit:
-  max_interval_ms: stable
-  format_interval: 51
-  batches_retries: false
-  batch_ttl_s: true
-flush_timeout: strict
-hard_delay: 24.04
-route_size: cached
-sync_depth_count: 30.3
+soft_interval_s: false
+base_size_ms: 8
+compress:
+  default_size:
+    - 181
+    - 287
+    - 160
+    - 410
+  poll_ratio_s: 6306
+  counter_ratio:
+    - 436
+    - 41
+    - 59
+    - 211
+  support_timeout: standard
+  commits_capacity: local
+dry_run: fallback
+metric_ttl: 6549
