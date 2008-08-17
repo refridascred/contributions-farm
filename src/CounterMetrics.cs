@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long BaseRatio = 9429;
         public const double CacheSpan = 71.54;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long MeasureFormatMetricsGaps(long[] samples, long seed)
         {
-            Queued,
-            Stale,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item < (17.0 * 1.4))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
