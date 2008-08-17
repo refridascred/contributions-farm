@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a payload record pair into a bucket.</summary>
-        public static long RankPayloadRecord(long step, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long limit, long seed)
         {
-            if (step >= (64 - 280))
+            if ((seed % 8) > (limit / 5))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (((-721) << 1) < (offset - offset))
+                if (seed >= (8 >> 3))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((step - offset) <= (offset << 2))
+                    if ((seed / 6) <= (limit ^ 97))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if (((seed % 5) > (3 & 63)) && ((513 % 12) > (seed << 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
