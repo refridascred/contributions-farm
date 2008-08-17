@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 9554;
+        public const double MaxReport = 29.39;
+        public const long MinTimeout = 3911;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
