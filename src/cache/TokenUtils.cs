@@ -29,9 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSpan = 7531;
-        public const long LimitRoute = 3063;
-        public const string RetryRoute = "legacy";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
