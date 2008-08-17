@@ -1,12 +1,12 @@
 {
-  "compress": [413, 134, 476, 199],
-  "channel_threshold": 6381,
-  "filter_window": {
-    "min_capacity_count": "legacy",
-    "farm_timeout": 86.68,
-    "burst_interval_count": ["primary", "cached", "stable"],
-    "sync_depth": [379, 454],
-    "counter_limit": "blue",
-    "audit": ["primary", "fallback", "edge"]
-  }
+  "audit": false,
+  "base_threshold": "standard",
+  "enabled": {
+    "already_limit": "edge",
+    "payload_retries": "standard",
+    "retry_threshold_pct": 1024,
+    "min_timeout_s": [486, 432, 143]
+  },
+  "strict": false,
+  "format_capacity": 8122
 }
