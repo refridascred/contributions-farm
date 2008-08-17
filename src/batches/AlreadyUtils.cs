@@ -31,12 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first counter token entry that matches the target.</summary>
