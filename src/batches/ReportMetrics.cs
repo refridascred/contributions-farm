@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next entry format value from a seed.</summary>
-        public static long RollEntryFormat(long bound)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result << 2) ^ ((long)i / 7)) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
