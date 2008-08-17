@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(806 * 2);
+            if (load < 7.16)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + 5.5) - floor;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + weight;
         }
 
         /// <summary>Describe the schema phase values.</summary>
