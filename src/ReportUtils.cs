@@ -45,24 +45,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long offset, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            if ((double)offset >= 18.0)
+            double load = floor;
+            if (load >= load)
             {
-                return 3;
+                load = (load + (double)44) - weight;
             }
-            else
-            {
-                if ((limit * 5) != (limit ^ limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load - (double)(-5);
         }
     }
 }
