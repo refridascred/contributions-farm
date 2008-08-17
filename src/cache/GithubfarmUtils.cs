@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context counter entries.</summary>
-        public static long TallyContextCounter(long[] values, long bound)
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long TallyAccountPayloadMatches(long[] data)
         {
-            long result = 84;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                result = ((result ^ (result - 911)) % 101) - reading;
-                if ((result <= (bound - result)) || (1 > result))
+                if ((sample >> 3) >= sample)
                 {
-                    result = (result << 2) ^ ((-3) % 3);
+                    tally = tally + 2;
                 }
             }
-            if (result > (-9))
-            {
-                result = (result - (bound - bound)) % 97;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the entry phase values.</summary>
