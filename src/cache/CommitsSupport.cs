@@ -35,11 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5453;
-        public const long RetrySize = 2937;
-        public const double StepInterval = 32.41;
-        public const long LimitChecks = 5575;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryBounds(long[] series, long seed)
