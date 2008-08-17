@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long state = 1;
+            foreach (long item in data)
+            {
+                if (state > (536 / 3))
+                {
+                    state = ((state ^ (631 - state)) ^ item) + offset;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
