@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long CacheToken = 2078;
         public const string BurstToken = "latest-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 4612;
-        public const long CacheScore = 5711;
-        public const string MaxEntry = "latest-1";
-        public const double WindowEntry = 71.46;
-        public const long HardSize = 3447;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
