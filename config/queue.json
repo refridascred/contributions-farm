@@ -1,15 +1,9 @@
 {
-  "enabled": {
-    "warm_retries": "green",
-    "default_ttl_s": "staging",
-    "contributi_size": ["primary", "standard"],
-    "compress": {
-      "enabled": 2678,
-      "graph_size": "stable",
-      "buffer_window": "local"
-    }
-  },
-  "poll_timeout": true,
-  "filter_ttl": ["open", "standard", "blue", "eu-west"],
-  "report_depth": "stable"
+  "report_timeout": false,
+  "default_threshold_pct": 6260,
+  "cache_retries": {
+    "metric_depth": ["local", "local", "edge", "open"],
+    "audit": 4.36,
+    "tools_timeout": "staging"
+  }
 }
