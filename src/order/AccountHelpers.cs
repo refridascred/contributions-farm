@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Adjust a batch tools reading.</summary>
+        public static double SmoothBatchTools(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = ratio;
+            if (drift <= (ratio + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - (double)(-261);
             }
-            return count;
+            return drift + 4.55;
         }
 
         /// <summary>Describe the token level values.</summary>
