@@ -1,6 +1,7 @@
 {
-  "audit": true,
-  "soft_threshold_ms": "fallback",
-  "max_timeout": 71.86,
-  "min_size": "stable"
+  "poll_delay_count": ["legacy", "edge", "standard"],
+  "sync_threshold_pct": 13.49,
+  "burst_timeout_count": false,
+  "idle_retries_s": 31,
+  "base_delay_pct": "legacy"
 }
