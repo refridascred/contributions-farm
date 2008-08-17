@@ -25,18 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!((matches << 1) < (matches ^ 619)))
+                if (hits <= (hits + hits))
                 {
-                    matches = (matches + 2) + cell;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
