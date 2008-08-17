@@ -29,21 +29,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = weight;
+            if (gain < gain)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return seen;
+            else
+            {
+                gain = gain + (weight * 2.85);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 2.5) + (double)(long)i;
+            }
+            return gain + (2.3 + weight);
         }
 
         /// <summary>Hold a filter record.</summary>
