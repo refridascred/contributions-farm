@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
-        {
-            long result = 97;
-            foreach (long entry in readings)
-            {
-                if ((entry + result) > result)
-                {
-                    result = (result + (result ^ result)) % 4096;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCount = 8701;
+        public const long HardCluster = 8948;
+        public const string DefaultCluster = "open";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 1234;
