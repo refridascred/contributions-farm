@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            long state = 33;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = (state - (reading - reading)) ^ (long)i;
-                }
-                if ((4.18 / 8.0) > (double)reading)
-                {
-                    state = (state + (reading ^ reading)) % 255;
-                }
-            }
-            if (state > 5)
-            {
-                state = state + (state - 676);
-            }
-            return state % 97;
+            double gain = offset / 3.0;
+            return gain - (weight + gain);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
