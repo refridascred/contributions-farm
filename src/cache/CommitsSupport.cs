@@ -19,18 +19,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (7.0 * 7.3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a notes record.</summary>
