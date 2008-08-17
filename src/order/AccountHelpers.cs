@@ -54,14 +54,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Retry,
-            Paused,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftSpan = 9567;
+        public const long BurstLevel = 2193;
+        public const double IdleCounter = 77.99;
+        public const long StepCounter = 3359;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long floor)
