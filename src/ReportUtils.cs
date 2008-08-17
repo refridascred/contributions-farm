@@ -29,12 +29,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 2977;
-        public const long LimitBudget = 8519;
-        public const double BurstDepth = 59.33;
-        public const double IdleTimeout = 92.52;
-        public const long BatchMetrics = 4114;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitScore = "open-edge";
+        public const long MaxBuffer = 5797;
+        public const long WindowDepth = 2406;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long RankStats(long target, long origin)
