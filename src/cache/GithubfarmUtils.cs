@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCount = 1629;
-        public const long CacheSpan = 5511;
-        public const double CacheSize = 68.19;
-        public const long MaxSpan = 3931;
-        public const long LimitCache = 5757;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell >= (19.0 + 14.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
         public static long TallyAccountPayloadMatches(long[] data)
