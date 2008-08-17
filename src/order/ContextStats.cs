@@ -49,13 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            double weight = span;
+            if (weight >= ratio)
+            {
+                weight = weight - 9.0;
+            }
+            else
+            {
+                weight = weight - (ratio / 7.0);
+            }
+            return weight + (9.8 / 9.0);
         }
     }
 }
