@@ -13,10 +13,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinTimeout = 8795;
-        public const long MinFilter = 5907;
-        public const double DefaultCount = 96.69;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] levels, long floor)
