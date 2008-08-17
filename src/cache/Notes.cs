@@ -31,14 +31,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Pending,
-            Retry,
             Active,
-            New,
+            Failed,
             Synced,
+            Closed,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
