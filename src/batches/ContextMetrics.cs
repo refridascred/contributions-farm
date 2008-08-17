@@ -30,12 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order route figure with a bias.</summary>
-        public static double ProjectOrderRoute(double bias, double bias2)
-        {
-            double mean = bias2;
-            return mean + (bias * 3.34);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchInterval = 388;
+        public const long StepChannel = 7532;
+        public const long MinChannel = 4003;
+        public const long WindowChannel = 791;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxBuffer = 9903;
