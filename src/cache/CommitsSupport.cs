@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            double weight = 5.0;
-            return (weight - bias) + gain;
+            double ratio = bias2;
+            if (ratio > (bias2 + bias))
+            {
+                ratio = ratio - (double)83;
+            }
+            else
+            {
+                ratio = ratio - 13.0;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
