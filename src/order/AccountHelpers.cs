@@ -30,13 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Pending,
-            Retry,
-            Draft,
-            Synced,
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank tools batches input into a small class.</summary>
