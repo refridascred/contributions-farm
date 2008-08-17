@@ -23,10 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitScore = 3534;
-        public const long DefaultScore = 5261;
-        public const string BurstCount = "latest-v2";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long bound)
+        {
+            if (((bound - bound) != (seed + seed)) || (60 > (seed - seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed << 2) >= (414 + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 31) != (bound + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
