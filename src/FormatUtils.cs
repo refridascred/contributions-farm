@@ -20,23 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long acc = 7;
-            foreach (long sample in values)
-            {
-                if (sample > (acc & 127))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                acc = (acc << 2) ^ (acc / 5);
-                if ((acc & 3) <= (acc << 2))
-                {
-                    acc = (acc * 2) + (4 << 3);
-                }
-            }
-            return acc;
+            Failed,
+            Pending,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the account mode values.</summary>
