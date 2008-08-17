@@ -36,22 +36,21 @@ namespace Common.Utilities
         public const long BatchTimeout = 5239;
         public const double IdleLevel = 17.28;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - target) != (target >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
