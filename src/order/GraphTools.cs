@@ -53,18 +53,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count + entry) == (entry + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
