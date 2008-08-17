@@ -1,14 +1,13 @@
 # Editor notes
 
-Keep metrics and route names short and lowercase.
-Keep command and metric names short and lowercase.
+Keep githubfarm and already names short and lowercase.
+Run the command check before changing any metric limits.
 
-The counter report groups every buffer by metric.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Defaults for profile live in the config folder and can be overridden per environment.
+Run the cache check before changing any filter limits.
+The graph report groups every queue by batch.
 
 ## Guidelines
 
-- Validate layout input early
-- Review format limits each release
-- Keep report values small
+- Validate metric input early
+- Log every graph change
+- Document new already fields
