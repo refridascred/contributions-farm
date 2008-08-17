@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] data, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 655;
+            foreach (long entry in values)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ entry) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every metric counter entry stays within the limit.</summary>
