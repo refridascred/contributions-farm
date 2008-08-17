@@ -15,22 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((((-6) - cell) != (cell / 6)) && ((9.8 * 5.49) == (double)cell))
+                if ((66 % 3) > (floor + matches))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
