@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of route cluster readings.</summary>
-        public static long TotalRouteCluster(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings, long target)
         {
-            long result = 75;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                result = result ^ (618 * 4);
-                result = result + datum;
+                if ((double)item < 9.8)
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            if (result < 319)
-            {
-                result = result - (result - result);
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
