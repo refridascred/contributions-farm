@@ -26,21 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Synced,
+            Ready,
+            Pending,
         }
     }
 }
