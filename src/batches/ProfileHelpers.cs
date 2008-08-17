@@ -48,18 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats report readings.</summary>
-        public static long ScoreStatsReport(long[] values)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell <= (cell - 662)) && ((total + total) >= cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ ((-7) % 10);
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Hold a batches entry.</summary>
