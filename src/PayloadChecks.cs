@@ -74,13 +74,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            if ((origin + 886) >= (origin ^ 0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin > (limit - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >> 5) >= (origin + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
