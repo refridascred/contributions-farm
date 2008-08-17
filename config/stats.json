@@ -1,7 +1,10 @@
 {
-  "sync_threshold": [433, 30, 472, 115],
-  "burst_limit": 60,
-  "max_retries_count": ["eu-west", "green", "primary"],
-  "retry_size_count": 96.49,
-  "sync_delay_pct": "strict"
+  "cache_ttl": 75.76,
+  "flush_delay_pct": 2,
+  "default_retries": {
+    "report_delay": 84.5,
+    "poll_capacity_count": 3905,
+    "farm_ratio": 22,
+    "max_threshold_pct": "edge"
+  }
 }
