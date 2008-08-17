@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long limit, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((seed % 8) > (limit / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (8 >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 6) <= (limit ^ 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed % 5) > (3 & 63)) && ((513 % 12) > (seed << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
