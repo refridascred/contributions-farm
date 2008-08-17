@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] items, long floor)
+        /// <summary>Derive the next session githubfarm value from a seed.</summary>
+        public static long SeriesSessionGithubfarm(long floor)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the account class values.</summary>
