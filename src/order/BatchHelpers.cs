@@ -35,31 +35,11 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Rank notes order input into a small class.</summary>
-        public static long GradeNotesOrder(long bound, long floor)
-        {
-            if ((double)floor >= 6.4)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor * 5) < (floor >> 4)) && ((bound & 7) <= (bound + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((0.5 / 2.0) < (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 38.59;
+        public const long RetryLevel = 6834;
+        public const long SoftCounter = 4604;
+        public const long MaxRatio = 8395;
+        public const long HardFactor = 2524;
     }
 }
