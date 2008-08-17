@@ -28,14 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Locate a editor batches reading by value.</summary>
+        public static long FindEditorBatchesIndex(long[] levels, long target)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Active,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
