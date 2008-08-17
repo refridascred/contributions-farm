@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
