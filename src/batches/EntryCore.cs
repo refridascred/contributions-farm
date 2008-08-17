@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples, long seed)
+        /// <summary>Digest a series of context layout entries.</summary>
+        public static long FoldContextLayout(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 6;
+            foreach (long datum in samples)
             {
-                if (entry > (entry - tally))
+                if ((datum * 5) == (mark - mark))
                 {
-                    tally = (tally + 1) - seed;
+                    mark = ((mark << 3) ^ datum) % 1000;
                 }
             }
-            return tally;
+            if (mark < (-16))
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
