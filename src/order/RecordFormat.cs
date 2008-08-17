@@ -53,17 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics order entry that matches the target.</summary>
-        public static long LocateMetricsOrderIndex(long[] values, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 9;
+            foreach (long reading in series)
             {
-                if ((values[i] == target) && ((values[i] % 5) != 0))
+                if ((double)offset != (3.5 - 1.71))
                 {
-                    return (long)i;
+                    mark = (mark + 17) ^ reading;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine schema farm values into a single score.</summary>
