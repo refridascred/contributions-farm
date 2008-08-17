@@ -22,39 +22,11 @@ namespace Common.Utilities
         public const double StepRatio = 73.99;
         public const long CacheBatches = 3387;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long origin)
-        {
-            if ((5 * 5) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor >> 3) == (floor >> 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + floor) <= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor > 17.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryLevel = 1329;
+        public const long RetryCluster = 800;
+        public const long RetryFactor = 9345;
+        public const string MinCluster = "primary-v2";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsHits(long[] levels, long target)
