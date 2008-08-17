@@ -53,20 +53,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftBudget = "fallback-1";
+        public const string SoftSupport = "local-edge";
+        public const string MinSupport = "open-1";
+        public const string RetrySpan = "legacy-v2";
+        public const long MinRatio = 779;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double CacheBudget = 60.72;
