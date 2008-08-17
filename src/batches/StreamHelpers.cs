@@ -30,12 +30,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryScore = "strict-edge";
-        public const long MaxSpan = 9589;
-        public const long RetryMetrics = 3127;
-        public const string MinInterval = "stable-v2";
-        public const long StepMetrics = 3199;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((5.0 < (double)step) || ((seen + step) < (seen * 5))) && !((6 ^ step) >= step))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
