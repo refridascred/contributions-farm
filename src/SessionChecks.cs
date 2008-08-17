@@ -40,14 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
+            Closed,
+            Ready,
+            Paused,
             Dropped,
-            Done,
-            Queued,
-            Pending,
-            Active,
+            Failed,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
