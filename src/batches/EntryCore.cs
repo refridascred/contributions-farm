@@ -35,20 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
-        public static bool ValidateChannelClusterLimits(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseInterval = "stable-edge";
+        public const long MaxCount = 1968;
+        public const long BaseCluster = 4870;
+        public const long StepCluster = 1004;
 
         /// <summary>Project the next support schema value.</summary>
         public static double ScaleSupportSchema(double bias, double bias2)
