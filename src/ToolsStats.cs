@@ -52,10 +52,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitInterval = 12.89;
-        public const double BatchGraph = 97.44;
-        public const long BaseGraph = 1380;
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long floor)
+        {
+            long state = -830;
+            foreach (long reading in levels)
+            {
+                state = ((state - (350 + floor)) % 97) + reading;
+            }
+            if (state < 54)
+            {
+                state = (state - (floor ^ state)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] readings, long bound)
