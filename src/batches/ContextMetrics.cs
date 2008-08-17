@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next entry layout value.</summary>
-        public static double BlendEntryLayout(double rate, double floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double weight = rate + floor;
-            if (weight >= (double)22)
-            {
-                weight = weight - (double)(-388);
-            }
-            else
-            {
-                weight = weight - (floor * 3.18);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - weight;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
