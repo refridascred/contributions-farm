@@ -36,18 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long bound)
         {
-            long total = 3;
-            foreach (long value in items)
+            if ((4.9 * 8.99) != (double)limit)
             {
-                if (!((double)total <= (20.0 * 4.9)))
+                return 3;
+            }
+            else
+            {
+                if (bound < (limit & 31))
                 {
-                    total = (total + (375 * 2)) + value;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return total;
         }
     }
 }
