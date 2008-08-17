@@ -74,22 +74,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((2.0 / 2.0) >= (double)count)
+                if ((mark & 127) > offset)
                 {
-                    count = ((count + 2) ^ value) + origin;
+                    mark = (mark + offset) % 101;
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = count - 1;
+                    mark = (((mark << 3) ^ (mark / 8)) % 1000) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
