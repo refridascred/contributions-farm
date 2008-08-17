@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of metrics entry readings.</summary>
-        public static long CombineMetricsEntry(long[] values, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            long total = 6;
-            foreach (long cell in values)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                total = (((total + 7) % 255) + cell) - bound;
+                if ((state ^ (long)i) > (377 + 33))
+                {
+                    state = (state - (state >> 2)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
