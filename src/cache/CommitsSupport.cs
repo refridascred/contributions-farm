@@ -41,15 +41,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] series, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] samples, long floor)
         {
-            long carry = 16;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                carry = ((carry + (carry % 60)) + sample) + origin;
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
