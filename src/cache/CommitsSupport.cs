@@ -19,32 +19,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data)
         {
-            long offset = target + step;
-            if ((78 * 4) == (offset % 12))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + (-8)) < (0 + step))
+                if (291 <= tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-614) < (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a notes record.</summary>
