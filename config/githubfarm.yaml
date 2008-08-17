@@ -1,9 +1,8 @@
 # githubfarm settings
-payload_window:
-  - 302
-  - 153
-  - 336
-  - 76
-support_timeout: 33.3
-entry_window: eu-west
-burst_timeout_pct: 33
+default_retries: local
+batch_window_pct:
+  retry_limit_ms: cached
+  poll_threshold_s: 250
+  poll_size: green
+  readonly: stable
+sync_size_pct: primary
