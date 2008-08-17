@@ -68,17 +68,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits entry reading by value.</summary>
-        public static long LocateCommitsEntryIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of queue graph readings.</summary>
+        public static long CompareQueueGraphCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
