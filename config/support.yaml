@@ -1,11 +1,16 @@
 # support settings
-batch_depth: 100
-soft_delay_count: 100
-hard_timeout_count: false
-compress: 79.72
-hard_window:
-  - primary
-  - edge
-  - latest
-  - latest
-cache_window_pct: open
+enabled: stable
+max_interval: 60
+burst_size_count: 4541
+batch_threshold:
+  base_limit_pct: 62.57
+  max_capacity:
+    - legacy
+    - green
+    - primary
+    - latest
+  batch_interval_s: 14.11
+  batch_capacity_ms: 24
+  retry_ratio: false
+tools_timeout: stable
+batch_limit: staging
