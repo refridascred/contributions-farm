@@ -36,19 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item >= (step * 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftSize = 50.91;
+        public const double IdleFarm = 81.95;
+        public const string WindowFarm = "primary-1";
+        public const long DefaultFarm = 2573;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextGaps(long[] levels)
