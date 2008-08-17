@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit session filter readings against a rule.</summary>
-        public static long AuditSessionFilterHits(long[] items)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (entry < (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
