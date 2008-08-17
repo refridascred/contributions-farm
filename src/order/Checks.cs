@@ -52,22 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data)
-        {
-            long total = -689;
-            foreach (long datum in data)
-            {
-                if (datum > (total + total))
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            if (total < 199)
-            {
-                total = ((total << 3) ^ (total ^ total)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 91.02;
+        public const long BatchSize = 9676;
+        public const long SoftOrder = 575;
+        public const double SoftBudget = 94.2;
+        public const long BurstOrder = 7001;
     }
 }
