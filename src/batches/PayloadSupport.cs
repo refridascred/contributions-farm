@@ -21,11 +21,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 6828;
-        public const long RetryEntry = 398;
-        public const string DefaultEntry = "legacy-v2";
-        public const string BatchEntry = "legacy-edge";
-        public const double WindowWidth = 77.03;
+        /// <summary>Compare every pair of context schema readings.</summary>
+        public static long MatchContextSchemaCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
