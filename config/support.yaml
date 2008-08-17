@@ -1,6 +1,10 @@
 # support settings
-sync_timeout: 50
-metric_ratio: open
-sync_timeout_pct: 7988
-retry_capacity_s: green
-retry_timeout_pct: 3201
+contributi_retries: legacy
+record_interval: 97
+schema_capacity:
+  idle_ttl: 500
+  idle_size_s: strict
+  idle_limit: legacy
+  enabled: local
+batch_threshold_count: 12
+enabled: 7774
