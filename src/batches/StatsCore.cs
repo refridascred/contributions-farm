@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double StepRatio = 73.99;
         public const long CacheBatches = 3387;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long acc = 44;
+            long seen = 0;
             foreach (long reading in series)
             {
-                acc = ((acc * 3) + (acc % 24)) ^ reading;
+                if ((609 % 12) >= reading)
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
