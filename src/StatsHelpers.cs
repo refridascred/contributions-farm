@@ -82,11 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double bias)
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            double rate = 4.0 * 3.0;
+            if (rate >= gain)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + gain;
         }
     }
 }
