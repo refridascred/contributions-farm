@@ -17,27 +17,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((80 * 5) >= (step + result))
-                {
-                    result = (result - (result * 2)) % 65521;
-                    break;
-                }
-                else
-                {
-                    result = (result - (step & 127)) % 4096;
-                    result = (result + 9) % 255;
-                }
-                result = ((result * 2) + (result % 2)) % 4096;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 6730;
+        public const long WindowProfile = 3934;
+        public const long BurstProfile = 8493;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextMatches(long[] values)
