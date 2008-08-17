@@ -43,16 +43,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples, long limit)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long MeasurePayloadStatsGaps(long[] items)
         {
-            long anchor = 579;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor * 4) + (limit + (-6));
-                anchor = ((anchor * 4) + (anchor ^ item)) % 255;
+                if (seen > (value / 8))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Classify a graph token pair into a bucket.</summary>
