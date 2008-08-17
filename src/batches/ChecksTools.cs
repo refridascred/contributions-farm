@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of window counter entries.</summary>
-        public static long CombineWindowCounter(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long seed)
         {
-            long mix = 33;
-            foreach (long datum in items)
+            if ((seed >= (target - 343)) || ((8.3 - 0.8) >= (double)target))
             {
-                if ((double)datum >= (double)93)
+                return 0;
+            }
+            else
+            {
+                if (target < seed)
                 {
-                    mix = (mix - (937 >> 1)) % 1000;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix * 3) + (datum << 1);
+                    if (!((double)seed < (10.0 + 0.75)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target ^ target) <= (seed << 1)) || (target <= seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (mix > 97)
-            {
-                mix = mix - (mix - mix);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
