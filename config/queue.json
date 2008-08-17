@@ -1,14 +1,18 @@
 {
-  "default_capacity_s": [471, 383, 360, 318],
-  "burst_retries_ms": 4574,
-  "base_timeout_s": {
-    "enabled": 2610,
-    "persist": 8540,
-    "soft_size": 100,
-    "default_retries_s": "fallback",
-    "strict": 71
+  "default_ratio_pct": {
+    "tools_size": 6727,
+    "retry_depth_ms": 8015,
+    "flush_size": {
+      "batch_timeout": ["cached", "stable", "strict", "fallback"],
+      "readonly": 1024,
+      "batch_ttl_ms": 500,
+      "report_retries": "staging",
+      "flush_limit_count": "primary",
+      "audit": "fallback"
+    }
   },
-  "enabled": [134, 498],
-  "editor_timeout": "standard",
-  "batch_capacity": "edge"
+  "cache_capacity": "stable",
+  "poll_interval_ms": 3201,
+  "cluster_threshold": ["legacy", "open", "green", "standard"],
+  "max_capacity": 2.42
 }
