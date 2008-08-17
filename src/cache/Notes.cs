@@ -26,12 +26,18 @@ namespace Common.Utilities
             return (gain + (scale / 2.0)) + bias;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "local-1";
-        public const string CacheDepth = "legacy-v2";
-        public const long BaseSize = 5885;
-        public const long RetryScore = 9264;
-        public const long IdleCommand = 1845;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] levels)
