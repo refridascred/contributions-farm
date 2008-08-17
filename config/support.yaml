@@ -1,27 +1,4 @@
 # support settings
-checks_retries: true
-stream_depth:
-  contributi_delay: green
-  record_timeout: 11.83
-  max_delay_pct: 9
-  verbose: 12.6
-  max_size:
-    entry_window: local
-    compress: open
-    command_window: primary
-flush_threshold_ms:
-  idle_delay_count: false
-  dry_run: stable
-  audit:
-    hard_depth_ms: local
-    warm_depth: latest
-    cache_retries_s: true
-    burst_ratio_ms: false
-    min_timeout: 60
-  support_retries:
-    min_ttl_s: 45.85
-    cluster_size: eu-west
-    batch_retries: strict
-    sync_delay: 16.14
-strict: 250
-graph_threshold: 35.63
+batch_window_count: local
+audit: 4200
+hard_size: 7.12
