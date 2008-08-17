@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] readings)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)8 != (double)hits)
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
