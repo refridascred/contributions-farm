@@ -1,10 +1,10 @@
 # entry settings
-commits_ratio: 85.07
-filter_depth: legacy
-audit: 27.07
-commits_limit:
-  burst_window_s: 90
-  min_delay_ms: 370
-  persist: 44
-  base_retries_count: stable
-readonly: edge
+default_size_ms: false
+batch_ttl_count: false
+warm_delay:
+  - edge
+  - stable
+  - primary
+  - primary
+compress: 6
+min_window_count: 5670
