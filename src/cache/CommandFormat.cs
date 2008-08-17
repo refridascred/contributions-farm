@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 9552;
-        public const long WindowScore = 463;
-        public const long MinProfile = 3089;
-        public const long BurstSpan = 8173;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long limit)
+        {
+            if (limit < (offset & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((offset ^ limit) != (limit ^ limit)) && ((limit + offset) <= (offset - limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long ClassifyStream(long floor, long offset)
