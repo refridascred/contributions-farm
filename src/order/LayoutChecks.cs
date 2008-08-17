@@ -37,18 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] readings, long seed)
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long CountContributiGraphGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((44 / 9) >= (cell + cell))
+                if ((5.0 + 2.45) <= (double)seen)
                 {
-                    hits = (hits + 3) + seed;
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
