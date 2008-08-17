@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((4.4 + 6.31) != (double)count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
