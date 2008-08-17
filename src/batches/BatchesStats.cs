@@ -47,13 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] levels, long offset)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Stale,
+            long score = 3;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (((score + (score + 60)) % 97) ^ (long)i) ^ value;
+                }
+                score = score + score;
+                score = (score - offset) % 101;
+            }
+            return score % 1000;
         }
     }
 }
