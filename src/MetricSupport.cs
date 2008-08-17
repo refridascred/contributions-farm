@@ -37,17 +37,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] > origin)
+                if (target <= (target ^ target))
                 {
-                    return (long)i;
+                    score = (score + (score + target)) % 255;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
