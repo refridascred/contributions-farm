@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardCount = 57.39;
-        public const double LimitTimeout = 31.64;
-        public const string IdleFactor = "staging-1";
-        public const long HardLevel = 8821;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 7103;
+        public const double LimitReport = 23.07;
+        public const double MinBudget = 98.81;
+        public const long BaseReport = 1720;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] values)
