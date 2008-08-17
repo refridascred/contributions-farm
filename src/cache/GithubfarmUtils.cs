@@ -49,17 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = ratio;
+            if (rate < 4.9)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + 10.0;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (offset - offset)) + (double)(long)i;
+            }
+            return rate - ratio;
         }
     }
 }
