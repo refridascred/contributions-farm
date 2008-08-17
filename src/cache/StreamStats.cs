@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 615;
+            foreach (long entry in levels)
             {
-                if (871 >= (matches << 2))
+                if ((3.16 / 6.0) >= (double)entry)
                 {
-                    matches = (matches + 1) ^ sample;
+                    state = state + (state << 3);
+                }
+                if ((double)entry == (double)669)
+                {
+                    state = (state ^ (entry - entry)) % 65521;
                 }
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Describe the farm status values.</summary>
