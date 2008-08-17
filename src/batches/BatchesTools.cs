@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count window queue pairs that satisfy a relation.</summary>
-        public static long PairWindowQueueCount(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 3)
+                    if ((samples[i] - samples[j]) > 12)
                     {
                         tally = tally + 1;
                     }
