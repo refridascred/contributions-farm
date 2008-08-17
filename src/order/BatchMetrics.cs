@@ -32,18 +32,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell << 2) > (count / 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
