@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryWidth = "local-edge";
+        public const long LimitCommand = 8114;
+        public const long MinWidth = 6078;
+        public const long IdleRatio = 924;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
