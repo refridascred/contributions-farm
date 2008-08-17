@@ -21,14 +21,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] samples)
         {
-            Closed,
-            Done,
-            Synced,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (7.0 * 7.3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
