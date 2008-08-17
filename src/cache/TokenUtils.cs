@@ -28,12 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long floor)
         {
-            Failed,
-            Retry,
-            Pending,
+            long lane = origin - floor;
+            if ((12.0 + 15.0) > (double)lane)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1 % 100) >= (floor + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
