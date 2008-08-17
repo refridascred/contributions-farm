@@ -1,10 +1,7 @@
-id,level,count,region,label
-1,71,19.35,fallback,eu-west
-2,746,90.35,standard,latest
-3,691,cached,883,28.0
-4,strict,204,open,strict
-5,790,fallback,127,latest
-6,80.08,67.12,staging,primary
-7,staging,54.99,stable,912
-8,36,656,82.19,39.95
-9,841,cached,864,721
+id,label,state,active,count
+1,12.82,687,768,950
+2,63.44,edge,760,787
+3,38.71,21.52,staging,local
+4,801,758,17.42,219
+5,stable,923,944,613
+6,primary,46.89,15.14,28.11
