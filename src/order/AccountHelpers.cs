@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
