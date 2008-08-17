@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7103;
-        public const double LimitReport = 23.07;
-        public const double MinBudget = 98.81;
-        public const long BaseReport = 1720;
+        /// <summary>Fold a list of route cluster readings.</summary>
+        public static long TotalRouteCluster(long[] samples)
+        {
+            long result = 75;
+            foreach (long datum in samples)
+            {
+                result = result ^ (618 * 4);
+                result = result + datum;
+            }
+            if (result < 319)
+            {
+                result = result - (result - result);
+            }
+            return result % 97;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] values)
