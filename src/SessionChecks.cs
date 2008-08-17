@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > step)
                 {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
