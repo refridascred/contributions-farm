@@ -37,17 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 27;
+            foreach (long cell in readings)
             {
-                if (series[i] > target)
+                if ((origin + total) >= (origin + cell))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ 269) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
