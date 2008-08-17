@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long target)
         {
-            long mark = 45;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item > (18.0 - 6.48))
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    mark = (mark + (-98)) + origin;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
