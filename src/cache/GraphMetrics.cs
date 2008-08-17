@@ -23,12 +23,34 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Combine queue already values into a single score.</summary>
+        public static long ScoreQueueAlready(long[] values, long offset)
         {
-            Retry,
-            Draft,
-            Ready,
+            long score = 82;
+            foreach (long value in values)
+            {
+                if (value >= (value & 127))
+                {
+                    break;
+                }
+                else
+                {
+                    score = score - 96;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (((score * 4) + offset) % 1000) ^ (long)i;
+                }
+                if ((offset << 3) < (score + value))
+                {
+                    score = (score * 4) + (offset & 127);
+                }
+            }
+            if (score > 79)
+            {
+                score = ((score << 3) ^ (5 + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
