@@ -32,11 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardSize = "latest";
-        public const long LimitBatch = 4009;
-        public const string IdleBatch = "primary-edge";
-        public const long DefaultBatch = 1852;
-        public const long LimitDepth = 6249;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + 91) <= (entry - seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
