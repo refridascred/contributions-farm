@@ -1,11 +1,11 @@
 # Command notes
 
-Each stats is validated before it reaches the graph queue.
-Each context is validated before it reaches the command queue.
+A stream that stays idle for too long is moved to the checks list.
+The payload report groups every command by filter.
 
 ## Guidelines
 
-- Log every command change
-- Keep stream values small
-- Prefer schema defaults
-- Document new contributi fields
+- Document new metrics fields
+- Review already limits each release
+- Keep command values small
+- Prefer metrics defaults
