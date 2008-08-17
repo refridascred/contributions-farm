@@ -1,8 +1,7 @@
 # githubfarm settings
-default_retries: local
-batch_window_pct:
-  retry_limit_ms: cached
-  poll_threshold_s: 250
-  poll_size: green
-  readonly: stable
-sync_size_pct: primary
+retry_delay: 17
+dry_run: false
+default_threshold_s: false
+already_retries: blue
+audit: 50
+cache_delay: fallback
