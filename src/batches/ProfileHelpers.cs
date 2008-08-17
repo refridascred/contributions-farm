@@ -82,9 +82,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardRatio = "open";
-        public const double BurstFactor = 88.79;
-        public const string RetryFilter = "latest-1";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item + item) > (8 * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
