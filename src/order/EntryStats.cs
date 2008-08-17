@@ -40,13 +40,32 @@ namespace Common.Utilities
         public const long DefaultBudget = 6152;
         public const long RetrySession = 2301;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long bound2)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long prev = bound + bound2;
+            if (prev <= (prev & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 + bound) != (bound << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound2 > 8.1) && ((20.0 - 7.33) != (double)bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
