@@ -35,18 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long AuditBatchesCacheOutliers(long[] samples, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)matches > (6.89 / 6.0)))
-                {
-                    matches = ((matches + 3) ^ entry) - seed;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
