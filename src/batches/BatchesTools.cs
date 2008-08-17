@@ -14,21 +14,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen + 0) == (seen % 97))
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 3) + sample) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
