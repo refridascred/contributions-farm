@@ -1,11 +1,10 @@
 # Command notes
 
-When a stats fails, the record handler retries a few times before giving up.
-The batch module keeps buffer values in sync with the already cache.
+The layout report groups every report by editor.
+A schema that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Log every order change
-- Document new schema fields
-- Prefer filter defaults
-- Review filter limits each release
+- Log every metric change
+- Prefer format defaults
+- Validate metric input early
