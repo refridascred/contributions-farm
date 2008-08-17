@@ -14,11 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSpan = 9350;
-        public const long HardFilter = 4114;
-        public const double DefaultFilter = 29.93;
-        public const long RetryInterval = 7347;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double gain, double floor)
