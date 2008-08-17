@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 49.28;
+        public const long MaxTools = 8409;
+        public const string CacheTools = "open-edge";
+        public const double DefaultRatio = 21.16;
+        public const long MinLevel = 3082;
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] levels, long seed)
