@@ -1,6 +1,8 @@
 # entry settings
-route_interval: 79.28
-soft_interval: 3.73
-base_ratio_pct: false
-readonly: legacy
-record_size: strict
+enabled:
+  - primary
+  - blue
+  - strict
+base_delay: green
+cache_retries: 79.24
+retry_limit_count: 35.25
