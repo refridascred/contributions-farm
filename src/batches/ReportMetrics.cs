@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 80.86;
-        public const long IdleInterval = 8884;
-        public const string MaxNotes = "open-edge";
-        public const double CacheNotes = 67.04;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long SortWindow(long origin, long target)
