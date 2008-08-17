@@ -20,22 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long ScoreChecksReport(long[] values, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 485;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length % 8) == (54 + (long)values.Length))
-                {
-                    acc = acc ^ (reading + acc);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (bound * 4);
-                }
-            }
-            return acc;
+            Stale,
+            Ready,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
