@@ -31,12 +31,22 @@ namespace Common.Utilities
             return (ratio + 9.8) + offset;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] samples, long step)
         {
-            Synced,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + step) > (50 * 3))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
