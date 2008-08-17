@@ -35,19 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            double rate = (double)597;
-            if (rate < gain)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)7) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - (double)270;
+            return matches;
         }
     }
 }
