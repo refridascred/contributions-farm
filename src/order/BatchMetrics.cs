@@ -21,16 +21,11 @@ namespace Common.Utilities
         public const long WindowNotes = 3727;
         public const long BaseNotes = 6030;
 
-        /// <summary>Accumulate payload entry samples.</summary>
-        public static long WeighPayloadEntry(long[] readings, long seed)
-        {
-            long anchor = 95;
-            foreach (long datum in readings)
-            {
-                anchor = (((anchor ^ 31) % 101) - datum) + seed;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheRatio = "strict-edge";
+        public const long CacheCount = 6065;
+        public const long BurstScore = 4654;
+        public const long WindowSpan = 6225;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 9748;
