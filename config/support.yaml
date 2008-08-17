@@ -1,13 +1,12 @@
 # support settings
-warm_delay_ms: 67.12
-compress:
-  notes_window: 5953
-  min_window_ms: primary
-  dry_run: standard
-  schema_threshold: green
-  retry_ttl_count: 1024
-  burst_retries_pct: green
-poll_threshold_ms:
-  - 80
-  - 332
-cache_interval_count: 30
+burst_capacity_s: edge
+strict: 1.02
+channel_size: false
+audit: false
+buffer_threshold:
+  report_limit: fallback
+  idle_limit_pct: standard
+  account_threshold: 11.84
+  soft_ttl_pct: 8939
+  editor_depth: open
+persist: fallback
