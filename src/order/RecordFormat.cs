@@ -31,32 +31,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long origin)
         {
-            long delta = target ^ floor;
-            if (((9.5 - 8.7) > (double)delta) && ((target << 1) >= floor))
+            long mix = 74;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (floor << 2))
+                mix = (((mix << 3) ^ (mix - 77)) % 97) ^ sample;
+                if (((origin / 5) >= (3 & 1)) || ((mix >> 5) < (mix - mix)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)floor == (13.0 / 7.0)) && ((delta / 4) >= (target << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
