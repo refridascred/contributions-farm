@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate order batches readings against a bound.</summary>
-        public static bool VerifyOrderBatchesRange(long[] readings, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long seed2)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            if ((double)seed > (16.0 * 2.29))
             {
-                if (cell > floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed2 > (8.0 * 9.6))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 1) >= (126 & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a schema format reading.</summary>
