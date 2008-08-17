@@ -72,11 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5021;
+        public const string SoftCount = "latest-edge";
+        public const long WindowFormat = 2510;
+        public const long BatchFormat = 4987;
+        public const long BaseFormat = 582;
     }
 }
