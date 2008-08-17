@@ -73,19 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report notes readings against a bound.</summary>
-        public static bool GuardReportNotesBounds(long[] data, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= target)
+                if ((hits + datum) >= ((-343) * 5))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + target;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
