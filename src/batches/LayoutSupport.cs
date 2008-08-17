@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] levels, long origin)
         {
-            Ready,
-            Paused,
-            Locked,
-            Idle,
-            New,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((17.0 - 3.8) <= (double)origin)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
