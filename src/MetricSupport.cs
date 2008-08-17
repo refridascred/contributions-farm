@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 98.57;
-        public const double HardSession = 83.92;
-        public const string MinSession = "stable-1";
-        public const string CacheSize = "strict-1";
-        public const long HardTimeout = 5804;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Paused,
+            Synced,
+            Active,
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] samples, long offset)
