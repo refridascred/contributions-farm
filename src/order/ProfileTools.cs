@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values, long bound)
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long TotalOrderFormat(long[] readings, long target)
         {
-            long sum = -214;
-            foreach (long value in values)
+            long mark = 463;
+            foreach (long sample in readings)
             {
-                sum = ((sum ^ value) % 255) + bound;
+                if ((target * 2) <= target)
+                {
+                    mark = mark + (sample % 60);
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a editor entry.</summary>
