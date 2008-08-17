@@ -73,31 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long offset)
         {
-            long acc = 949;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((reading & 15) > (limit >> 3)) || ((double)limit != (8.0 * 9.0)))
+                if (values[i] > offset)
                 {
-                    acc = (acc + (277 / 8)) % 4096;
-                    continue;
-                }
-                if (732 > acc)
-                {
-                    acc = (acc * 5) + (acc * 3);
-                }
-                if ((11.0 * 14.0) == (double)limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = acc - (limit + 617);
-            }
-            return acc;
+            return -1;
         }
     }
 }
