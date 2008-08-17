@@ -22,19 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score - score) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Match up filter samples.</summary>
