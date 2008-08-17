@@ -28,17 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 21;
+            foreach (long reading in data)
             {
-                if (series[i] >= offset)
+                if (!((state - state) == (state * 2)))
                 {
-                    return (long)i;
+                    state = (state - (reading / 2)) % 101;
+                }
+                else
+                {
+                    state = (state + (reading + reading)) % 65521;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
