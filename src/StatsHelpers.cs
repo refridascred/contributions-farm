@@ -82,11 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 2946;
-        public const string HardPayload = "standard-1";
-        public const long BurstPayload = 1834;
-        public const long CachePayload = 2915;
-        public const long IdleSpan = 884;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+        }
     }
 }
