@@ -35,12 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = 14;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    score = ((score << 2) ^ ((long)i << 2)) - item;
+                }
+                if (floor <= (8 + (long)series.Length))
+                {
+                    score = (score ^ (score * 5)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
