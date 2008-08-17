@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor - limit;
+            if ((prev >> 3) > limit)
             {
-                if (samples[i] <= step)
+                return 7;
+            }
+            else
+            {
+                if ((15.0 + 6.4) != (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up token samples.</summary>
