@@ -70,18 +70,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] samples, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry == (12.0 / 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - limit;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
