@@ -66,12 +66,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 21.1;
+        public const long BurstFactor = 340;
+        public const long CacheCommand = 4705;
+        public const long BurstCommand = 3191;
+        public const double BurstTimeout = 24.96;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
