@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result ^ (limit << 2)) % 101;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
