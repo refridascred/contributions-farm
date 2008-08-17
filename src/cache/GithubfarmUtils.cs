@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCount = 1629;
+        public const long CacheSpan = 5511;
+        public const double CacheSize = 68.19;
+        public const long MaxSpan = 3931;
+        public const long LimitCache = 5757;
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
         public static long TallyAccountPayloadMatches(long[] data)
