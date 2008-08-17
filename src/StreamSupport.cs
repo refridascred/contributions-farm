@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] data, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value != limit)
+                if (((sample / 8) == (count + 27)) || ((3.8 - 6.8) == (double)sample))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
