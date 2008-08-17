@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
             public double Size { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
