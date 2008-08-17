@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum >= seed)
+                mark = (mark << 2) ^ (floor ^ floor);
+                if ((double)(long)i >= (3.5 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark * 2) + ((-55) << 1);
+                    mark = ((mark * 3) + ((long)i / 5)) % 255;
                 }
+                mark = (mark + (126 + 2)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
