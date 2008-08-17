@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the route buffer series from a seed.</summary>
-        public static long SeriesRouteBuffer(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            double drift = (double)(5 + (-2));
+            if (drift > (2.0 * 15.0))
             {
-                score = (score + ((long)i << 1)) % 4096;
-                score = score - (origin & 127);
-                score = ((score * 4) + (long)i) % 4093;
+                drift = (drift + (drift + drift)) + weight;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
