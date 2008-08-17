@@ -1,11 +1,8 @@
 {
-  "warm_size_count": 100,
-  "profile_depth": {
-    "default_ratio_count": ["legacy", "edge"],
-    "persist": "fallback",
-    "already_threshold": ["fallback", "local", "eu-west"]
-  },
-  "strict": 28.67,
-  "retry_capacity": true,
-  "verbose": "edge"
+  "batch_size": "fallback",
+  "poll_retries_pct": 76,
+  "flush_depth": "green",
+  "soft_interval_ms": "local",
+  "poll_depth": 54,
+  "flush_timeout_count": 89.98
 }
