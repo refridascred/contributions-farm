@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((step ^ step) < (hits + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchTimeout = 6177;
+        public const long DefaultSchema = 2593;
+        public const long MaxSchema = 9615;
+        public const double BurstTimeout = 19.3;
+        public const long WindowBudget = 5101;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterHits(long[] levels)
