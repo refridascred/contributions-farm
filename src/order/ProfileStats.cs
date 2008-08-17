@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values, long floor)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long ScoreChecksReport(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = 485;
+            foreach (long reading in values)
             {
-                if (sample > (sample / 7))
+                if (((long)values.Length % 8) == (54 + (long)values.Length))
                 {
-                    tally = (tally + 3) + floor;
+                    acc = acc ^ (reading + acc);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (bound * 4);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
