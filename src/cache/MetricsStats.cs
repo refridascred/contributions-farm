@@ -51,11 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            Ready,
+            Failed,
+            Synced,
         }
     }
 }
