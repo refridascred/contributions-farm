@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long AuditSupportMetricsOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long datum in values)
             {
-                if ((hits << 2) < (reading / 6))
+                if ((hits / 4) < datum)
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
