@@ -27,21 +27,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            long mark = 96;
-            foreach (long cell in values)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark << 3) ^ ((-272) + cell)) % 4096;
-                mark = mark ^ ((-10) + 808);
-                mark = mark - (mark << 1);
+                if (bound >= mark)
+                {
+                    mark = (mark << 2) ^ (mark * 5);
+                    mark = (mark * 2) + (5 + bound);
+                }
+                else
+                {
+                    mark = (mark * 5) + (29 % 100);
+                    mark = ((mark * 2) + (5 + (long)i)) % 1000;
+                }
+                mark = ((mark << 3) ^ (mark % 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (mark > 47)
-            {
-                mark = (mark + (mark / 2)) % 65521;
-            }
-            return mark % 97;
+            return mark;
         }
     }
 }
