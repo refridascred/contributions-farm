@@ -1,5 +1,14 @@
 {
-  "idle_interval_s": ["fallback", "fallback", "open", "legacy"],
-  "batch_size_s": "local",
-  "hard_capacity": "green"
+  "default_capacity_s": [471, 383, 360, 318],
+  "burst_retries_ms": 4574,
+  "base_timeout_s": {
+    "enabled": 2610,
+    "persist": 8540,
+    "soft_size": 100,
+    "default_retries_s": "fallback",
+    "strict": 71
+  },
+  "enabled": [134, 498],
+  "editor_timeout": "standard",
+  "batch_capacity": "edge"
 }
