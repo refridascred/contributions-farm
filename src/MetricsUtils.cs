@@ -26,13 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Synced,
-            Locked,
-            Draft,
-            New,
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
