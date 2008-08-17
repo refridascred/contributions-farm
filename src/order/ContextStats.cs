@@ -45,19 +45,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate notes batch readings against a bound.</summary>
-        public static bool VerifyNotesBatchLimits(long[] items, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Done,
+            Paused,
+            New,
         }
     }
 }
