@@ -1,12 +1,6 @@
 # entry settings
-cache_window_pct:
-  - 248
-  - 121
-  - 120
-support_depth: latest
-compress: 100
-max_window_s: green
-readonly:
-  record_interval: 5270
-  flush_size_pct: fallback
-  cluster_window: true
+flush_ttl_pct: standard
+schema_threshold:
+  - local
+  - strict
+retry_depth: standard
