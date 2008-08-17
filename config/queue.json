@@ -1,6 +1,5 @@
 {
-  "record_threshold": 1442,
-  "context_delay": "edge",
-  "metrics_retries": 1024,
-  "soft_retries": true
+  "idle_interval_s": ["fallback", "fallback", "open", "legacy"],
+  "batch_size_s": "local",
+  "hard_capacity": "green"
 }
