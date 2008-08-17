@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
