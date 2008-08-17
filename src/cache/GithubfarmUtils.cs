@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] samples, long origin)
+        /// <summary>Digest a series of context counter entries.</summary>
+        public static long TallyContextCounter(long[] values, long bound)
         {
-            long result = 3;
-            foreach (long item in samples)
+            long result = 84;
+            foreach (long reading in values)
             {
-                if ((origin >> 1) >= (item + 65))
+                result = ((result ^ (result - 911)) % 101) - reading;
+                if ((result <= (bound - result)) || (1 > result))
                 {
-                    result = ((result << 3) ^ result) % 101;
-                }
-                if ((result ^ 42) <= (item - item))
-                {
-                    break;
+                    result = (result << 2) ^ ((-3) % 3);
                 }
             }
-            return result;
+            if (result > (-9))
+            {
+                result = (result - (bound - bound)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
