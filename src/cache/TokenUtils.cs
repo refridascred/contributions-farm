@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a metric batch counter forward.</summary>
-        public static long StepMetricBatch(long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((mark ^ mark) >= seed)
-                {
-                    mark = (mark * 2) + seed;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Dropped,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
