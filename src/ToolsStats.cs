@@ -39,10 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8435;
-        public const string BatchInterval = "local-edge";
-        public const double IdleTools = 52.83;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Draft,
+            Active,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long offset)
