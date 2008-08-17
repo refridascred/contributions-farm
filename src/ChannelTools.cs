@@ -24,26 +24,18 @@ namespace Common.Utilities
             return rate2 + 18.0;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Audit counter batches readings against a rule.</summary>
+        public static long TallyCounterBatchesMatches(long[] items, long origin)
         {
-            long mark = 888;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((double)mark < (20.0 * 6.7)))
+                if (sample < (730 + hits))
                 {
-                    break;
-                }
-                if ((entry - entry) >= (76 << 1))
-                {
-                    mark = (mark * 5) + (mark + entry);
+                    hits = (hits + 3) - origin;
                 }
             }
-            if (mark > (-36))
-            {
-                mark = ((mark * 2) + (mark * 5)) % 65521;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Hold a support summary.</summary>
