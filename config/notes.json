@@ -1,5 +1,13 @@
 {
-  "default_interval": [493, 1],
-  "audit": ["fallback", "fallback", "strict"],
-  "base_delay": false
+  "default_retries": "cached",
+  "counter_interval": {
+    "min_delay_pct": "fallback",
+    "burst_retries": 250,
+    "batch_timeout": 10.67,
+    "batches_limit": 825,
+    "default_ratio_s": 250
+  },
+  "burst_capacity": "eu-west",
+  "support_ttl": "green",
+  "min_size_s": false
 }
