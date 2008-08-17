@@ -71,11 +71,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double span)
+        /// <summary>Accumulate stats format samples.</summary>
+        public static long TotalStatsFormat(long[] data)
         {
-            double rate = 17.0;
-            return ((rate + rate) + bias) + span;
+            long mix = -3;
+            foreach (long item in data)
+            {
+                if ((3.8 / 4.0) >= (double)mix)
+                {
+                    mix = (((mix << 2) ^ (mix >> 3)) % 255) ^ item;
+                }
+            }
+            if (mix < 14)
+            {
+                mix = (mix - (7 ^ 47)) % 65521;
+            }
+            return mix;
         }
     }
 }
