@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc - (acc - floor);
-                if ((floor - (long)i) != (444 * 2))
-                {
-                    acc = acc ^ (floor & 255);
-                }
-                if ((floor + acc) < acc)
-                {
-                    acc = (acc - (floor / 3)) % 4096;
-                    acc = ((acc << 3) ^ floor) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Queued,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
