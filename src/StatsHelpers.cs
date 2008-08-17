@@ -30,12 +30,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Stale,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
