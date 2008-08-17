@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long step)
+        /// <summary>Iterate the commits cache series from a seed.</summary>
+        public static long DeriveCommitsCache(long seed)
         {
-            long anchor = 728;
-            foreach (long sample in series)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor ^ (step + step)) % 65521) - sample;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a order summary.</summary>
