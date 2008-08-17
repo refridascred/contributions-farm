@@ -49,22 +49,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count record batch pairs that satisfy a relation.</summary>
-        public static long MatchRecordBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardWidth = 5268;
+        public const string MinMetrics = "primary-edge";
+        public const long BurstLevel = 9492;
+        public const long BatchMetrics = 7049;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] values)
