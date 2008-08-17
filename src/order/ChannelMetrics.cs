@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series)
-        {
-            long acc = 196;
-            foreach (long reading in series)
-            {
-                acc = acc + reading;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 41.97;
+        public const double WindowWidth = 7.43;
+        public const string IdleInterval = "stable";
+        public const long LimitChannel = 3218;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
