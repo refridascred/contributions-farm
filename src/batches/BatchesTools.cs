@@ -31,22 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long offset)
-        {
-            long score = 5;
-            foreach (long item in series)
-            {
-                if ((score > offset) || ((double)item == (16.0 * 6.4)))
-                {
-                    score = score + 87;
-                }
-                if ((score + (-6)) <= (offset - item))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardSize = "latest";
+        public const long LimitBatch = 4009;
+        public const string IdleBatch = "primary-edge";
+        public const long DefaultBatch = 1852;
+        public const long LimitDepth = 6249;
     }
 }
