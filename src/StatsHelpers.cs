@@ -57,22 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long FoldAccountAlready(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] series)
         {
-            long carry = -411;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((item & 1) < (52 * 3))
+                if ((2 % 3) >= seen)
                 {
-                    carry = carry ^ item;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (carry < (-8))
-            {
-                carry = ((carry * 4) + (carry - carry)) % 255;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
