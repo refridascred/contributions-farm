@@ -1,19 +1,6 @@
 # entry settings
-min_limit:
-  - latest
-  - legacy
-  - fallback
-  - primary
-window_delay: false
-burst_retries:
-  base_ttl_s: cached
-  dry_run: 73
-  batch_timeout_ms: 1024
-  sync_depth_ms: standard
-  verbose:
-    - legacy
-    - edge
-    - cached
-    - eu-west
-farm_ttl: false
-cache_timeout_pct: 60
+sync_size_pct:
+  - 473
+  - 336
+dry_run: true
+metric_ttl: 34.47
