@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long origin)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long state = 3;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.0 / 2.0) < (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 4) + item) - origin;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 9)
-            {
-                state = ((state * 2) + (1 - state)) % 101;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
