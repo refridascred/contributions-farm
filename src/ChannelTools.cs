@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item << 3) < (item + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Project the next stats value.</summary>
