@@ -13,21 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)reading != (18.0 / 2.0))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of report cache readings.</summary>
