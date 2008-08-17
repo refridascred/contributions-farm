@@ -33,17 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long limit)
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long AuditFormatCommitsHits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (samples[i] > limit)
+                if ((long)levels.Length >= seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) - value) - step;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
