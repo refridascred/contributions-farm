@@ -40,13 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Retry,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample & 31) != ((long)readings.Length + count)) && ((sample - sample) >= sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
