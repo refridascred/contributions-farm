@@ -39,19 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long offset)
+        /// <summary>Classify a notes counter pair into a bucket.</summary>
+        public static long GradeNotesCounter(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long step = bound - offset;
+            if (((1.54 + 6.0) >= (double)offset) || ((offset + bound) > (965 >> 2)))
             {
-                if (item != offset)
+                return 0;
+            }
+            else
+            {
+                if (!(step <= (bound ^ bound)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
