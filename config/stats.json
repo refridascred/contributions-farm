@@ -1,10 +1,5 @@
 {
-  "cache_ttl": 75.76,
-  "flush_delay_pct": 2,
-  "default_retries": {
-    "report_delay": 84.5,
-    "poll_capacity_count": 3905,
-    "farm_ratio": 22,
-    "max_threshold_pct": "edge"
-  }
+  "payload_threshold": true,
+  "record_threshold": 30,
+  "layout_interval": "staging"
 }
