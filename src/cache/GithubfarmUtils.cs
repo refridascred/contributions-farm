@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every route metrics entry stays within the limit.</summary>
-        public static bool GuardRouteMetricsRange(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 31.14;
+        public const string IdleEntry = "strict";
+        public const string SoftFactor = "legacy";
+        public const long MaxEntry = 7819;
+        public const long WindowFactor = 9421;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] data)
