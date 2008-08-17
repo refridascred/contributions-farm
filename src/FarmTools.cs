@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long target)
         {
-            long result = 85;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                result = ((result << 3) ^ (sample % 3)) % 97;
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return found;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
