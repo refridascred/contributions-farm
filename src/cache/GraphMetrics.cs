@@ -20,13 +20,13 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Locked,
+            Closed,
             Paused,
             Draft,
-            Pending,
+            Idle,
             Queued,
         }
 
