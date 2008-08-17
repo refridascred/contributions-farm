@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double WindowWidth = 11.95;
         public const long MaxFormat = 6215;
 
-        /// <summary>Validate cluster batch readings against a bound.</summary>
-        public static bool VerifyClusterBatchLimits(long[] samples, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double mean = offset;
+            if (mean < (scale / 8.0))
             {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + (double)42;
             }
-            return valid;
+            else
+            {
+                mean = mean + (scale + mean);
+            }
+            return mean + (mean * 14.0);
         }
 
         /// <summary>Hold a batch options.</summary>
