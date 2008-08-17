@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - (item ^ state)) % 65521;
             }
-            return seen;
+            if (state < 0)
+            {
+                state = (state - (290 ^ 7)) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
