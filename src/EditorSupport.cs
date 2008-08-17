@@ -74,13 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >= (cell + count)) && ((count + count) == (2 ^ count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
