@@ -34,22 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] series, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((5 + reading) > 36)
+                if (reading != offset)
                 {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
