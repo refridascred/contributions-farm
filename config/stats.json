@@ -1,5 +1,7 @@
 {
-  "max_ratio_ms": ["eu-west", "strict"],
-  "already_threshold": "primary",
-  "retry_interval_pct": 777
+  "sync_ratio_s": false,
+  "strict": false,
+  "burst_size_count": 250,
+  "readonly": "latest",
+  "warm_delay": ["standard", "open"]
 }
