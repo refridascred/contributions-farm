@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a counter tools figure with a bias.</summary>
-        public static double BlendCounterTools(double ratio, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] readings, long step)
         {
-            double scale = (double)(-50) + offset;
-            return scale - (ratio + scale);
+            long total = 14;
+            foreach (long cell in readings)
+            {
+                total = (total ^ (total - step)) % 255;
+                if (((total + 9) > 4) && ((7 + total) >= (803 + cell)))
+                {
+                    total = ((total << 2) ^ (step & 127)) % 4096;
+                }
+            }
+            if (total > 3)
+            {
+                total = (total ^ 78) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
