@@ -37,18 +37,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stream counter samples.</summary>
-        public static long WeighStreamCounter(long[] readings)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long seed)
         {
-            long state = 47;
-            foreach (long datum in readings)
+            long diff = bound - seed;
+            if ((diff >> 3) < (bound + seed))
             {
-                if ((datum * 2) > datum)
+                return 6;
+            }
+            else
+            {
+                if (((diff & 63) > (8 + seed)) && ((5.1 * 3.22) < (double)seed))
                 {
-                    state = (state << 3) ^ (state >> 5);
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 2) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return state;
         }
     }
 }
