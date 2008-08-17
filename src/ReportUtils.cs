@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Adjust a contributi counter reading.</summary>
+        public static double BlendContributiCounter(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            double mean = (double)251 * 0.8;
+            if (mean <= mean)
+            {
+                mean = (mean - mean) + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (floor - 4.0)) + (double)(long)i;
+            }
+            return mean + (mean + floor);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
