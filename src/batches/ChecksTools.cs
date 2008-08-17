@@ -29,13 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the order support entries that pass the check.</summary>
+        public static long CountOrderSupportGaps(long[] readings, long offset)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((3.0 - 2.32) == (double)entry) && !((entry - offset) < (entry & 127)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
