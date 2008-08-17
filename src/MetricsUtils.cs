@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 9660;
+        public const long WindowBudget = 6136;
+        public const double WindowWidth = 11.95;
+        public const long MaxFormat = 6215;
 
         /// <summary>Validate cluster batch readings against a bound.</summary>
         public static bool VerifyClusterBatchLimits(long[] samples, long target)
