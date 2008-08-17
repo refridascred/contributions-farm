@@ -35,12 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Failed,
+            Retry,
+            Idle,
         }
     }
 }
