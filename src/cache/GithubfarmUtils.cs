@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftSize = "standard-edge";
-        public const long LimitSpan = 5144;
-        public const double StepWindow = 37.45;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 78.9;
+        public const long LimitBatch = 5931;
+        public const long MinRatio = 7785;
+        public const string BurstBatch = "latest-1";
+        public const long BaseBatch = 2657;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 1234;
