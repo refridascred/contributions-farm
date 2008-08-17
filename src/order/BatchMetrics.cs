@@ -75,19 +75,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Fold a list of payload githubfarm readings.</summary>
+        public static long FoldPayloadGithubfarm(long[] series)
         {
-            double mean = scale * 3.0;
-            if (mean > (1.4 - bias))
+            long state = 48;
+            foreach (long entry in series)
             {
-                mean = mean + mean;
+                if ((entry & 7) <= (state + entry))
+                {
+                    state = (state * 5) + entry;
+                }
+                else
+                {
+                    state = (state << 2) ^ (entry % 64);
+                    state = (state << 2) ^ (entry * 4);
+                }
+                if ((entry * 2) >= (entry + 915))
+                {
+                    state = ((state * 3) + (entry - entry)) % 65521;
+                }
             }
-            else
+            if (state < 94)
             {
-                mean = mean - (mean - scale);
+                state = ((state * 3) + (state * 3)) % 4096;
             }
-            return mean - (mean / 7.0);
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
