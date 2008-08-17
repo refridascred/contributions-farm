@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryFactor = 3880;
-        public const double StepBuffer = 32.56;
-        public const long IdleBuffer = 5081;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((matches <= (step + step)) && ((matches >> 1) <= (step - cell))) || ((step + step) >= cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
