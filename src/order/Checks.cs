@@ -37,19 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
