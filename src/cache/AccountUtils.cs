@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const string RetrySize = "fallback-edge";
         public const long StepSpan = 9700;
 
-        /// <summary>Look up the position of a metrics commits sample.</summary>
-        public static long FindMetricsCommitsIndex(long[] levels, long step)
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool ValidateReportFormatRange(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
