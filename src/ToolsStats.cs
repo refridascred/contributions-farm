@@ -63,19 +63,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long bound)
         {
-            long result = -113;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + result) % 97) + entry;
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (result < 3)
-            {
-                result = ((result << 2) ^ result) % 4096;
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
