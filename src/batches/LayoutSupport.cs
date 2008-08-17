@@ -13,12 +13,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long floor)
         {
-            Failed,
-            Locked,
-            Done,
+            long bound = limit + floor;
+            if ((floor ^ bound) >= (85 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.65 * 8.5) == (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor <= (0.87 / 6.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor * 5) > (limit ^ limit)) || ((7.8 * 20.0) > (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next record batches value from a seed.</summary>
