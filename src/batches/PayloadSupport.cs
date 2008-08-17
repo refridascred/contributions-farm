@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a filter payload value against two limits.</summary>
-        public static long RankFilterPayload(long offset, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long next = offset - origin;
-            if (((double)origin >= (8.18 * 4.8)) && ((4.5 + 7.0) < (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset * 3) >= (next % 16)) || (next <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 4) >= 46)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset < (offset % 10))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
