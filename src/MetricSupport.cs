@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryScore = 8134;
-        public const long StepCount = 9701;
-        public const double LimitWidth = 44.48;
-        public const long MaxCount = 7761;
-        public const string IdleBudget = "legacy-v2";
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Failed,
+            Synced,
+            Done,
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] samples, long offset)
