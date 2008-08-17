@@ -1,12 +1,13 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the contributi list.
-A cache that stays idle for too long is moved to the farm list.
-When a schema fails, the metrics handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+
+The support module keeps batches values in sync with the batch cache.
+Run the already check before changing any cluster limits.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer token defaults
-- Log every account change
-- Validate filter input early
+- Prefer already defaults
+- Keep farm values small
+- Review format limits each release
