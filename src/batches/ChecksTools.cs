@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((matches / 2) >= (entry + entry)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a notes counter pair into a bucket.</summary>
