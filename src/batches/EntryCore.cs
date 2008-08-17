@@ -40,15 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (!!(((-7) >> 5) >= (sample << 3)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the schema githubfarm series from a seed.</summary>
