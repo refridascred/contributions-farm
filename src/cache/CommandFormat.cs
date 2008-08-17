@@ -23,12 +23,31 @@ namespace Common.Utilities
         public const string BurstBatch = "stable-edge";
         public const long BurstSpan = 2477;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Classify a batches metric pair into a bucket.</summary>
+        public static long SortBatchesMetric(long seed, long limit)
         {
-            Synced,
-            Draft,
-            New,
+            if ((limit * 4) > (seed * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 64) >= (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit - 138) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
