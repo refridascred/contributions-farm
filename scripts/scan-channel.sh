@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in cached fallback eu-west; do
+for item in edge strict fallback; do
     log "checking ${item}"
 done
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
