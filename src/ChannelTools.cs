@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double rate2 = (9.0 + rate) + (double)(-421);
-            if (rate2 < (rate2 - rate2))
-            {
-                rate2 = rate2 - bias;
-            }
-            else
-            {
-                rate2 = rate2 + (double)38;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + 4.37) - (double)(long)i;
-            }
-            return rate2 + 18.0;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit counter batches readings against a rule.</summary>
