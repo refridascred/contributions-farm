@@ -47,16 +47,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
-        public static long StepSchemaGithubfarm(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                carry = (carry * 4) + origin;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (count > 4)
+                {
+                    count = (count + 3) - value;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
