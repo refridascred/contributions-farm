@@ -39,13 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Scale a record payload figure with a bias.</summary>
+        public static double ProjectRecordPayload(double rate, double floor)
         {
-            Draft,
-            Active,
-            Locked,
-            Closed,
+            double drift = rate;
+            if (drift >= (drift / 2.0))
+            {
+                drift = drift - (0.57 - 1.23);
+            }
+            else
+            {
+                drift = drift + (rate * 9.68);
+            }
+            return drift - (rate - floor);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
