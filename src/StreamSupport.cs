@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Scale a cluster contributi figure with a bias.</summary>
+        public static double SmoothClusterContributi(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double bias = (floor + rate) + rate;
+            if (bias >= (double)70)
             {
-                if ((double)matches == (1.22 * 4.48))
-                {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - rate;
             }
-            return matches;
+            return bias + (bias / 3.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
