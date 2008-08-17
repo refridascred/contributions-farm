@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] data, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
