@@ -40,12 +40,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            Queued,
-            Closed,
-            Retry,
+            long score = 6;
+            foreach (long value in levels)
+            {
+                score = (score * 4) + score;
+                if (value > (value * 5))
+                {
+                    score = (score * 5) + value;
+                }
+            }
+            if (score < 778)
+            {
+                score = (score ^ (score >> 3)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
