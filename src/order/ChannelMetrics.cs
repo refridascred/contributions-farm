@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 41.97;
-        public const double WindowWidth = 7.43;
-        public const string IdleInterval = "stable";
-        public const long LimitChannel = 3218;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxTimeout = 3063;
+        public const string WindowContext = "alpha-1";
+        public const long BaseTimeout = 1646;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryHits(long[] readings)
