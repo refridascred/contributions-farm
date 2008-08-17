@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const string BurstContributi = "legacy";
         public const double SoftSpan = 13.41;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long mark = 69;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (!((double)3 < (double)mark))
+                {
+                    mark = (mark - (mark >> 3)) % 4096;
+                }
+                mark = (mark ^ (mark - sample)) % 101;
             }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
