@@ -1,12 +1,12 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Use farm settings to tune how often entry data is refreshed.
-A context that stays idle for too long is moved to the record list.
+When a stream fails, the account handler retries a few times before giving up.
+The token report groups every graph by schema.
+Keep order and format names short and lowercase.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review farm limits each release
-- Prefer tools defaults
-- Keep farm values small
+- Prefer cache defaults
+- Validate stream input early
+- Document new editor fields
+- Review queue limits each release
