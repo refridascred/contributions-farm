@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a batch token figure with a bias.</summary>
-        public static double ProjectBatchToken(double gain, double bias)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double drift = (double)244 * 2.5;
-            if (drift >= (gain + gain))
-            {
-                drift = drift + (double)2;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + gain;
+            Paused,
+            Closed,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
