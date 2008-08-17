@@ -1,17 +1,6 @@
 # support settings
-idle_size_ms:
-  cache_depth:
-    format_window: cached
-    route_window: 2
-    compress: 23
-  base_depth_ms: 89
-  cluster_interval: 14.66
-  persist: 500
-persist: false
-hard_retries: 6768
-poll_ttl: legacy
-verbose:
-  base_interval: 62
-  idle_retries_pct: 85.59
-  filter_delay: 30
-  default_window_s: 1024
+metrics_interval: 119
+max_limit_s: 62.31
+metrics_timeout: legacy
+hard_window: 6532
+verbose: 42
