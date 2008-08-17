@@ -42,11 +42,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultSpan = 10.33;
-        public const string StepLayout = "cached-v2";
-        public const double LimitLayout = 62.53;
-        public const double CacheLayout = 68.15;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Queued,
+            Stale,
+            Active,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportLimits(long[] values, long bound)
