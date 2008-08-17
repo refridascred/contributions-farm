@@ -37,18 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Accumulate stream counter samples.</summary>
+        public static long WeighStreamCounter(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = 47;
+            foreach (long datum in readings)
             {
-                if ((tally * 2) > (-5))
+                if ((datum * 2) > datum)
                 {
-                    tally = (tally + 3) ^ entry;
+                    state = (state << 3) ^ (state >> 5);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
