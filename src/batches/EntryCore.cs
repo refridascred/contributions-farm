@@ -26,19 +26,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell == (13.0 - 3.86))
-                {
-                    seen = (seen + 1) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 9291;
+        public const double MaxFactor = 91.19;
+        public const long HardCluster = 6224;
+        public const double IdleScore = 46.23;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandLimits(long[] items, long seed)
