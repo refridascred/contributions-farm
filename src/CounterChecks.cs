@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleLevel = "primary-1";
-        public const long HardCache = 1685;
-        public const long MinCache = 4068;
+        /// <summary>Count farm report pairs that satisfy a relation.</summary>
+        public static long OverlapFarmReportCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryOutliers(long[] samples, long seed)
