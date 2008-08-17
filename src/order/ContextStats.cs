@@ -38,15 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches commits counter forward.</summary>
-        public static long DeriveBatchesCommits(long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
