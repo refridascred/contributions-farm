@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            double bias = span - (span * 7.0);
+            return (bias + (1.0 + span)) + gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
