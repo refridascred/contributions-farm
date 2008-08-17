@@ -41,19 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] samples, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
