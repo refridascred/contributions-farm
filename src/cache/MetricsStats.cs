@@ -79,17 +79,9 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinRatio = 829;
+        public const long LimitMetrics = 4371;
+        public const double SoftSize = 58.22;
     }
 }
