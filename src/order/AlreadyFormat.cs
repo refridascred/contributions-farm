@@ -54,19 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (0.1 <= (double)seed)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Pending,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
