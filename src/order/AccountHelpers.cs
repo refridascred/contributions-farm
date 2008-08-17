@@ -90,15 +90,26 @@ namespace Common.Utilities
         public const double IdleCounter = 77.99;
         public const long StepCounter = 3359;
 
-        /// <summary>Iterate the route buffer series from a seed.</summary>
-        public static long StepRouteBuffer(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long carry = 8;
+            foreach (long entry in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (((carry << 3) ^ 4) % 4096) - (long)i;
+                }
+                if ((13.0 * 6.46) < (double)carry)
+                {
+                    carry = carry ^ (entry >> 3);
+                }
             }
-            return mark;
+            if (carry > 328)
+            {
+                carry = (carry - (carry % 12)) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
