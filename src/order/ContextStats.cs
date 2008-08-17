@@ -37,21 +37,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Roll a batches commits counter forward.</summary>
+        public static long DeriveBatchesCommits(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a metric header.</summary>
