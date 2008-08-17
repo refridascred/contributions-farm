@@ -42,19 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool GuardBatchesCacheRange(long[] items, long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
