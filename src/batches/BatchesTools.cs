@@ -21,12 +21,11 @@ namespace Common.Utilities
             return ratio + (double)(-2);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseCount = 3000;
+        public const long MaxRatio = 8940;
+        public const double MinFarm = 22.43;
+        public const double HardBudget = 36.35;
+        public const long RetryFarm = 2206;
     }
 }
