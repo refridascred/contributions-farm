@@ -74,18 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool VerifyContributiSupportBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((cell >= (cell + count)) && ((count + count) == (2 ^ count)))
+                if (entry != bound)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
