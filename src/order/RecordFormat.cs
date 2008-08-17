@@ -33,18 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long floor)
         {
-            long mark = 9;
-            foreach (long reading in series)
+            long delta = target ^ floor;
+            if (((9.5 - 8.7) > (double)delta) && ((target << 1) >= floor))
             {
-                if ((double)offset != (3.5 - 1.71))
+                return 2;
+            }
+            else
+            {
+                if (floor >= (floor << 2))
                 {
-                    mark = (mark + 17) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor == (13.0 / 7.0)) && ((delta / 4) >= (target << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Combine schema farm values into a single score.</summary>
