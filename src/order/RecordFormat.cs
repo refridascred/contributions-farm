@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double scale = (double)(135 >> 5);
+            if (scale > (weight - weight))
             {
-                if ((60 % 60) == (sample / 9))
-                {
-                    count = count + 1;
-                }
+                scale = scale + (7.4 - bias);
             }
-            return count;
+            else
+            {
+                scale = scale + (7.0 + scale);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale + (scale / 4.0);
         }
 
         /// <summary>Blend two githubfarm payload measurements.</summary>
