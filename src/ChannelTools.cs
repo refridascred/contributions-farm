@@ -16,13 +16,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] items)
         {
-            Done,
-            Closed,
-            Synced,
-            New,
+            long mark = 888;
+            foreach (long entry in items)
+            {
+                if (!((double)mark < (20.0 * 6.7)))
+                {
+                    break;
+                }
+                if ((entry - entry) >= (76 << 1))
+                {
+                    mark = (mark * 5) + (mark + entry);
+                }
+            }
+            if (mark > (-36))
+            {
+                mark = ((mark * 2) + (mark * 5)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a support summary.</summary>
