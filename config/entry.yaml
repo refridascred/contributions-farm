@@ -1,11 +1,19 @@
 # entry settings
-burst_threshold_pct:
+min_limit:
   - latest
+  - legacy
   - fallback
-soft_timeout_ms:
-  - green
-  - staging
-  - stable
-entry_ttl: fallback
-poll_interval: open
-warm_depth: open
+  - primary
+window_delay: false
+burst_retries:
+  base_ttl_s: cached
+  dry_run: 73
+  batch_timeout_ms: 1024
+  sync_depth_ms: standard
+  verbose:
+    - legacy
+    - edge
+    - cached
+    - eu-west
+farm_ttl: false
+cache_timeout_pct: 60
