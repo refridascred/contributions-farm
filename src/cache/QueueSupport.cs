@@ -38,16 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long edge = seed - floor;
+            if ((13.0 * 8.0) > (double)seed)
             {
-                carry = (carry - (seed ^ 7)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((floor * 2) > 8) && ((4 & 31) != (seed + edge)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
