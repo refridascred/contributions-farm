@@ -48,21 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Digest a series of session counter entries.</summary>
+        public static long TotalSessionCounter(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 11;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (carry <= entry)
                 {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry ^ (48 * 4);
+                }
+                if ((carry / 3) >= carry)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a batches entry.</summary>
