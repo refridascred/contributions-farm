@@ -38,11 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
