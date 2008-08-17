@@ -28,10 +28,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinBudget = 98.56;
-        public const long WindowFilter = 9523;
-        public const long BatchFilter = 7453;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryRatio = 5928;
