@@ -32,10 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6253;
-        public const long LimitOrder = 5195;
-        public const long IdleFactor = 5907;
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstStream = 2322;
