@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long TallyAlreadyReportMatches(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((seen % 5) >= seen)
+                if ((sample - 6) <= matches)
                 {
-                    seen = (seen + 2) - item;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of session counter entries.</summary>
