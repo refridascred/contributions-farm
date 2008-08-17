@@ -59,24 +59,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            if ((970 - 0) >= step)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)limit <= (1.46 / 6.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
     }
 }
