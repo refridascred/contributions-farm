@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
