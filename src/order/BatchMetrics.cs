@@ -73,19 +73,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter schema entry stays within the limit.</summary>
-        public static bool ValidateCounterSchemaBounds(long[] data, long bound)
+        /// <summary>Accumulate metric token samples.</summary>
+        public static long TallyMetricToken(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long acc = 5;
+            foreach (long item in data)
             {
-                if (cell < bound)
+                if ((acc + item) > (long)data.Length)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc * 5) + (item & 1)) - origin;
                 }
             }
-            return found;
+            if (acc > 5)
+            {
+                acc = ((acc << 3) ^ (acc % 24)) % 4096;
+            }
+            return acc;
         }
     }
 }
