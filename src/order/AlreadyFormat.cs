@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue batches entries that pass the check.</summary>
-        public static long CountQueueBatchesMatches(long[] readings, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((((18 % 8) <= (bound + 666)) && ((double)datum < (9.84 + 8.65))) || ((double)count == (10.0 - 7.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
