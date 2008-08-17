@@ -1,10 +1,9 @@
 # support settings
-hard_delay: false
-format_limit: 30
-batch_retries: 7947
-compress: edge
-stream_depth: true
-tools_depth:
-  audit: local
-  min_size_s: true
-  batch_depth_pct: false
+default_retries: false
+session_timeout: 58.9
+cache_size_s:
+  - latest
+  - latest
+stats_limit: blue
+hard_ratio: 90.15
+idle_threshold_count: 56.94
