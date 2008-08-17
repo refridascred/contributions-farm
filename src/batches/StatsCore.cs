@@ -19,17 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (gain / 6.0) * 13.0;
+            if (load >= (double)(-672))
             {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (double)62;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (load + load);
         }
 
         /// <summary>Digest a series of counter already entries.</summary>
