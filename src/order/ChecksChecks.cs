@@ -22,15 +22,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            New,
+            Pending,
+            Ready,
+            Synced,
+            Closed,
         }
     }
 }
