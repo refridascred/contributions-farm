@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Accumulate stats support samples.</summary>
