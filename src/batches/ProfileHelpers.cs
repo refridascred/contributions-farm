@@ -71,12 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] samples, long limit)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((6 % 8) != (entry + 4))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
