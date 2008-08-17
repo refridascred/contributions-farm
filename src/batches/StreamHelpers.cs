@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long total = 4;
-            foreach (long sample in data)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((total ^ (-59)) == (total * 5))
-                {
-                    total = (total - (target + 919)) + sample;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
