@@ -45,14 +45,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Stale,
-            New,
-            Synced,
-            Paused,
-            Active,
+            Queued,
+            Dropped,
+            Pending,
         }
     }
 }
