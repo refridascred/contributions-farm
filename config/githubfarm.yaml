@@ -1,19 +1,6 @@
 # githubfarm settings
-soft_interval_s: false
-base_size_ms: 8
-compress:
-  default_size:
-    - 181
-    - 287
-    - 160
-    - 410
-  poll_ratio_s: 6306
-  counter_ratio:
-    - 436
-    - 41
-    - 59
-    - 211
-  support_timeout: standard
-  commits_capacity: local
-dry_run: fallback
-metric_ttl: 6549
+max_interval_ms: cached
+warm_window_s: 500
+readonly: false
+idle_size: 6716
+enabled: false
