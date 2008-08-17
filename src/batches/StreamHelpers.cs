@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const string MinInterval = "stable-v2";
         public const long StepMetrics = 3199;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "alpha";
-        public const string WindowRatio = "latest-edge";
-        public const double CacheScore = 61.24;
-        public const long StepBudget = 4171;
-        public const long MinCount = 403;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((count ^ count) > 62) && (seed >= (seed + 20)))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] readings)
