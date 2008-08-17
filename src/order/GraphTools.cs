@@ -39,18 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel already entries.</summary>
-        public static long ScoreChannelAlready(long[] samples)
+        /// <summary>Match up report farm samples.</summary>
+        public static long OverlapReportFarmCount(long[] items)
         {
-            long anchor = -774;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample + sample) >= (-36)) || ((double)anchor <= 8.2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ sample) % 4096;
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
