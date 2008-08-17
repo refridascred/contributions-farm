@@ -57,19 +57,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] items, long seed)
+        /// <summary>Iterate the schema githubfarm series from a seed.</summary>
+        public static long StepSchemaGithubfarm(long origin)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry * 4) + origin;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Audit route context readings against a rule.</summary>
