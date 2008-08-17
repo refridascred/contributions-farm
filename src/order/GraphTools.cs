@@ -56,13 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Paused,
-            Failed,
-            New,
-            Retry,
+            Ready,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
