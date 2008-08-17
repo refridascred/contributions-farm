@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string BurstBatch = "latest-1";
         public const long BaseBatch = 2657;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1234;
-        public const double BatchCount = 94.55;
-        public const double WindowSpan = 94.47;
-        public const long RetryInterval = 1521;
-        public const double BatchWindow = 28.95;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!((((long)series.Length + 571) > (value + tally)) || ((value & 3) < 7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] samples)
