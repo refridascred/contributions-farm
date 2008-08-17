@@ -49,19 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double weight, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items)
         {
-            double bias = weight;
-            if (bias < (1.54 * 1.8))
+            long anchor = 71;
+            foreach (long datum in items)
             {
-                bias = bias + floor;
+                if ((0.5 * 8.73) > (double)datum)
+                {
+                    anchor = anchor + (anchor << 2);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (anchor > (-25))
             {
-                bias = (bias + 3.1) - (double)(long)i;
+                anchor = ((anchor * 2) + (anchor << 1)) % 65521;
             }
-            return bias + (double)(-679);
+            return anchor;
         }
     }
 }
