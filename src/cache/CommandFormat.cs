@@ -29,11 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two notes entry measurements.</summary>
-        public static double SmoothNotesEntry(double ratio, double floor)
+        /// <summary>Fold a list of report buffer readings.</summary>
+        public static long FoldReportBuffer(long[] items)
         {
-            double load = ratio;
-            return load - (floor / 4.0);
+            long state = 537;
+            foreach (long item in items)
+            {
+                if (((item - 399) < (state / 9)) || ((double)state != (double)93))
+                {
+                    state = state ^ (item / 3);
+                }
+                state = state + (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a command window reading by value.</summary>
