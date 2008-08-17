@@ -14,11 +14,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the batch context series from a seed.</summary>
+        public static long DeriveBatchContext(long target)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)total > (14.0 + 7.2))
+                {
+                    total = total + (total >> 5);
+                    total = total ^ (493 ^ total);
+                }
+                if (total > (long)i)
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
