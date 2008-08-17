@@ -1,9 +1,5 @@
 # entry settings
-batch_size: false
-sync_ttl:
-  - latest
-  - open
-  - legacy
-  - open
-editor_window: fallback
-batch_capacity: 60
+base_retries_count: 77
+dry_run: 70.95
+strict: blue
+idle_capacity_s: 30
