@@ -12,12 +12,14 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            New,
+            Ready,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
