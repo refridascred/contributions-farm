@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long WindowRoute = 2883;
         public const double DefaultRoute = 31.32;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Idle,
-            Failed,
-            Dropped,
+            Ready,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define order limits and defaults.</summary>
