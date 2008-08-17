@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            long mix = -9;
-            foreach (long reading in data)
+            double weight = (3.7 * 13.0) * 5.5;
+            for (int i = 0; i < 4; i++)
             {
-                if (((-6) + reading) == (mix % 24))
-                {
-                    mix = (mix ^ (156 << 2)) % 255;
-                }
+                weight = ((weight - offset) + (double)(long)i) - ratio;
             }
-            return mix;
+            return weight + offset;
         }
 
         /// <summary>Look up the position of a notes route sample.</summary>
