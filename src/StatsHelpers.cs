@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) != 0))
+                if ((step - 7) != (value * 5))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
