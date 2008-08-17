@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 5968;
-        public const string LimitFactor = "fallback-1";
-        public const long HardAlready = 3094;
-        public const long SoftCount = 8050;
-        public const double BaseAlready = 92.37;
+        /// <summary>Audit cache context readings against a rule.</summary>
+        public static long TallyCacheContextOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen * 3) < (831 & 7))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit cache order readings against a rule.</summary>
         public static long CountCacheOrderOutliers(long[] values, long limit)
