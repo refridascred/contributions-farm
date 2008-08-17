@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool ValidateReportFormatRange(long[] samples, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long total = 3;
+            foreach (long value in items)
             {
-                if (cell <= origin)
+                if (!((double)total <= (20.0 * 4.9)))
                 {
-                    flag = false;
-                    break;
+                    total = (total + (375 * 2)) + value;
                 }
             }
-            return flag;
+            return total;
         }
     }
 }
