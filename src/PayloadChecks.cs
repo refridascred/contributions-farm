@@ -45,27 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long origin)
         {
-            long mark = 441;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark << 2) ^ cell;
-                if (((5.49 + 5.28) >= (double)cell) && (mark >= (cell % 64)))
+                if (items[i] < origin)
                 {
-                    mark = (mark + (mark + cell)) % 101;
-                }
-                else
-                {
-                    mark = mark - (cell + 461);
+                    return (long)i;
                 }
             }
-            if (mark > 220)
-            {
-                mark = ((mark << 3) ^ mark) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
