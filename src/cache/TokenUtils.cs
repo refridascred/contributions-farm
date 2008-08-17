@@ -31,19 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Retry,
+            Failed,
+            New,
         }
     }
 }
