@@ -12,13 +12,17 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Combine window session values into a single score.</summary>
-        public static long TallyWindowSession(long[] values, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long step)
         {
-            long mix = 98;
-            foreach (long item in values)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (((mix - (long)values.Length) % 97) + item) + offset;
+                if ((long)i <= mix)
+                {
+                    mix = (mix ^ (393 << 3)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
             return mix;
         }
