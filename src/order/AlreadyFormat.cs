@@ -45,19 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool GuardAlreadyFilterBounds(long[] levels, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (reading >= step)
+                if (entry >= bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
