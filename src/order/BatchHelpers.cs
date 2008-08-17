@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepGithubfarm = "cached-1";
-        public const string WindowGithubfarm = "stable";
-        public const long CacheFactor = 9424;
-        public const string DefaultCount = "latest-edge";
-        public const string DefaultLevel = "stable";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
+        {
+            long anchor = 27;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor ^ (4 + reading)) % 65521;
+            }
+            return anchor % 1000;
+        }
     }
 }
