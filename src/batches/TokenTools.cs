@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of cluster token readings.</summary>
-        public static long CombineClusterToken(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mix = 328;
-            foreach (long datum in data)
-            {
-                mix = (mix - datum) % 255;
-            }
-            return mix;
+            Failed,
+            Paused,
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit cache context readings against a rule.</summary>
