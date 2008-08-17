@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] data, long target)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 5) >= target)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
