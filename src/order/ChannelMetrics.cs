@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const string MinRoute = "open-1";
         public const long BaseDepth = 490;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long seed)
         {
-            long total = 4;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                total = (total << 2) ^ (reading % 60);
-                if (!((reading + reading) < 9))
+                if (entry <= seed)
                 {
-                    total = ((total * 3) + (-354)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
