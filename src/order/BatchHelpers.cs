@@ -23,13 +23,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of entry metrics entries.</summary>
+        public static long TotalEntryMetrics(long[] series)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long score = 87;
+            foreach (long item in series)
+            {
+                score = ((score << 3) ^ (score / 9)) % 101;
+                if ((score + item) >= item)
+                {
+                    break;
+                }
+            }
+            if (score > (-252))
+            {
+                score = (score * 5) + (score + score);
+            }
+            return score;
         }
     }
 }
