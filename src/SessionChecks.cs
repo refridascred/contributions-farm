@@ -18,32 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format stats pair into a bucket.</summary>
-        public static long BucketFormatStats(long step, long floor)
+        /// <summary>Look up the position of a notes route sample.</summary>
+        public static long FindNotesRouteIndex(long[] readings, long seed)
         {
-            long gap = step - floor;
-            if ((double)step < (14.0 + 18.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)gap > 4.0)
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)gap >= (double)step) || ((step + floor) != (110 - (-71))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session entry.</summary>
