@@ -52,15 +52,23 @@ namespace Common.Utilities
             return drift - (rate - floor);
         }
 
-        /// <summary>Iterate the graph counter series from a seed.</summary>
-        public static long StepGraphCounter(long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long score = 2;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                score = ((score ^ (score / 2)) % 101) ^ cell;
+                if ((286 / 4) > (bound * 2))
+                {
+                    score = (score << 2) ^ (bound + score);
+                }
             }
-            return anchor;
+            if (score > 248)
+            {
+                score = score - (bound >> 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
