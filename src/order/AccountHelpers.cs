@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((hits * 5) > seed) || ((seed % 60) >= (value - hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route phase values.</summary>
