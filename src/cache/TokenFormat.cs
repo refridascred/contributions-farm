@@ -13,16 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double span)
-        {
-            double mean = (double)92 + (gain * 3.59);
-            if (mean <= mean)
-            {
-                mean = (mean - (mean * 14.0)) + span;
-            }
-            return mean - (15.0 * 14.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 3126;
+        public const double LimitSupport = 23.15;
+        public const double StepLevel = 11.2;
+        public const long RetryScore = 2668;
+        public const long BurstSupport = 7507;
 
         /// <summary>Compare every pair of report cache readings.</summary>
         public static long CompareReportCacheCount(long[] series)
