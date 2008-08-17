@@ -65,11 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5021;
-        public const string SoftCount = "latest-edge";
-        public const long WindowFormat = 2510;
-        public const long BatchFormat = 4987;
-        public const long BaseFormat = 582;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Paused,
+            Queued,
+            Done,
+            Dropped,
+        }
     }
 }
