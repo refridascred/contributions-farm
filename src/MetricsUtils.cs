@@ -60,12 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Active,
-            Stale,
-            Done,
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
