@@ -83,18 +83,24 @@ namespace Common.Utilities
         public const double IdleCounter = 77.99;
         public const long StepCounter = 3359;
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long AuditFarmBufferGaps(long[] series, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((double)floor <= (8.22 * 3.3))
             {
-                if ((double)limit <= (double)reading)
+                return 4;
+            }
+            else
+            {
+                if ((origin <= (floor - floor)) || ((origin & 3) != (floor - 49)))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
