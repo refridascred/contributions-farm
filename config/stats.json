@@ -1,7 +1,16 @@
 {
-  "poll_delay_count": ["legacy", "edge", "standard"],
-  "sync_threshold_pct": 13.49,
-  "burst_timeout_count": false,
-  "idle_retries_s": 31,
-  "base_delay_pct": "legacy"
+  "default_size_count": false,
+  "cache_limit_s": {
+    "counter_retries": {
+      "commits_capacity": ["open", "fallback"],
+      "record_size": 55.21,
+      "notes_ratio": 6.37
+    },
+    "sync_depth": 60,
+    "cache_interval": "strict"
+  },
+  "record_ttl": 35,
+  "channel_capacity": "stable",
+  "soft_size_count": ["local", "latest", "blue"],
+  "editor_ratio": "latest"
 }
