@@ -51,13 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowBudget = 1397;
+        public const string BaseAccount = "open-1";
+        public const string WindowAccount = "cached-edge";
+        public const double MinAccount = 75.12;
+        public const long SoftSize = 4879;
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportOutliers(long[] readings)
