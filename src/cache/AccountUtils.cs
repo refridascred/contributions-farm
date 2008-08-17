@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "latest-v2";
-        public const long DefaultBatch = 6881;
-        public const double MaxBatch = 48.72;
-        public const long MinSpan = 2773;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cluster queue samples.</summary>
         public static long CombineClusterQueue(long[] items)
