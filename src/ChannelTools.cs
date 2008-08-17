@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit counter batches readings against a rule.</summary>
