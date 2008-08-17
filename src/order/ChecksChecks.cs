@@ -31,10 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxCount = "stable-edge";
-        public const long CacheAlready = 5438;
-        public const string HardCount = "fallback-edge";
-        public const double BaseCount = 57.48;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
