@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 4820;
-        public const long HardRatio = 4631;
-        public const long IdleScore = 5764;
-        public const string HardSize = "legacy-edge";
-        public const long WindowInterval = 9933;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelHits(long[] levels, long step)
