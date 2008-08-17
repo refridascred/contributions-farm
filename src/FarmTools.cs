@@ -20,17 +20,11 @@ namespace Common.Utilities
         public const long IdleDepth = 5794;
         public const string MinDepth = "open-1";
 
-        /// <summary>Locate a session context reading by value.</summary>
-        public static long SeekSessionContextIndex(long[] samples, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
