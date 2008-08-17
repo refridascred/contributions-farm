@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=77
+CHANNEL_LIMIT=280
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in strict edge latest stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
