@@ -1,14 +1,20 @@
 {
-  "metric_interval": 1577,
-  "batch_ratio_ms": {
-    "default_ratio_count": 250,
-    "default_limit_ms": 1024,
-    "warm_timeout": {
-      "persist": 1024,
-      "compress": 100,
-      "warm_retries": "primary"
-    }
+  "poll_delay": "open",
+  "min_threshold_count": 250,
+  "max_ttl_pct": {
+    "readonly": 91.85,
+    "retry_depth_ms": false,
+    "flush_timeout": 81.88,
+    "counter_limit": {
+      "burst_delay": "green",
+      "audit": false,
+      "base_size_pct": "legacy",
+      "notes_capacity": 87,
+      "account_retries": 60,
+      "max_ratio_ms": 14
+    },
+    "idle_capacity_ms": 77.34,
+    "enabled": [429, 236]
   },
-  "session_ratio": 61.0,
-  "account_depth": "standard"
+  "audit": 5269
 }
