@@ -45,13 +45,17 @@ namespace Common.Utilities
         public const long MaxLayout = 7718;
         public const string WindowLayout = "standard";
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Find the first window route entry that matches the target.</summary>
+        public static long LookupWindowRouteIndex(long[] items, long limit)
         {
-            Failed,
-            Done,
-            Paused,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
