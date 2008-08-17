@@ -59,18 +59,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long CountRouteContextHits(long[] samples, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.46 * 7.4) < (double)matches)
+                if (data[i] > origin)
                 {
-                    matches = ((matches + 2) ^ item) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
