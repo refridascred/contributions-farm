@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values, long seed)
         {
-            if ((19.0 - 6.2) > (double)target)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (origin + target))
+                if ((count / 3) >= (70 * 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(target > (origin << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = ((count + 1) + entry) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
