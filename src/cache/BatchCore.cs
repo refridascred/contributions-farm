@@ -35,14 +35,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the commits contributi series from a seed.</summary>
+        public static long DeriveCommitsContributi(long seed)
         {
-            Ready,
-            Done,
-            Stale,
-            Locked,
-            Paused,
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + result) % 1000;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit format commits readings against a rule.</summary>
