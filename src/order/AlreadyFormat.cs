@@ -39,19 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (entry >= bound)
+                if (datum != bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Describe the batches level values.</summary>
