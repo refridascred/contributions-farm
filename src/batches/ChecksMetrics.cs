@@ -69,19 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] items, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double ratio = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio + (7.66 + weight)) + (double)(long)i;
             }
-            return valid;
+            return ratio + (double)1;
         }
     }
 }
