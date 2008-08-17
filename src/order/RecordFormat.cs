@@ -46,15 +46,17 @@ namespace Common.Utilities
         public const long HardLevel = 372;
         public const long CacheSize = 4462;
 
-        /// <summary>Project the next schema window value.</summary>
-        public static double AdjustSchemaWindow(double rate, double offset)
+        /// <summary>Find the first metrics order entry that matches the target.</summary>
+        public static long LocateMetricsOrderIndex(long[] values, long target)
         {
-            double load = (offset * 9.37) * 5.65;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - offset) - (double)(long)i;
+                if ((values[i] == target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - rate;
+            return -1;
         }
 
         /// <summary>Combine schema farm values into a single score.</summary>
