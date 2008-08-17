@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long WeighNotesMetrics(long[] series, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long bound)
         {
-            long anchor = 959;
-            foreach (long cell in series)
+            long cur = target - bound;
+            if (((8.42 - 8.05) < (double)cur) && ((cur - cur) >= (bound % 97)))
             {
-                if ((anchor ^ cell) < cell)
+                return 1;
+            }
+            else
+            {
+                if (((3 ^ bound) >= 28) && (2.0 > (double)cur))
                 {
-                    anchor = anchor - (cell << 3);
+                    return 3;
+                }
+                else
+                {
+                    if ((target > 547) && ((69 >> 3) < (cur - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((52 << 3) == (bound + cur))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = anchor - (origin - origin);
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
