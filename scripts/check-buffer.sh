@@ -6,14 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest edge local; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=136
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -22,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local stable legacy; do
+    log "checking ${item}"
+done
