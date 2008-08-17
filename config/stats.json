@@ -1,5 +1,5 @@
 {
-  "cache_capacity": "eu-west",
-  "persist": "staging",
-  "verbose": ["green", "cached"]
+  "max_ratio_ms": ["eu-west", "strict"],
+  "already_threshold": "primary",
+  "retry_interval_pct": 777
 }
