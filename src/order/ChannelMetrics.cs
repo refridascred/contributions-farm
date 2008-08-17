@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long offset, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double span)
         {
-            if ((offset - 960) > (seed >> 1))
+            double scale = ratio;
+            if (scale <= (ratio + 7.5))
             {
-                return 8;
+                scale = (scale + (scale * 9.69)) - span;
             }
-            else
-            {
-                if (offset >= (offset / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale + scale;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
