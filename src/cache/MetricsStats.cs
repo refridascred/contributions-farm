@@ -20,12 +20,17 @@ namespace Common.Utilities
         public const long IdleRatio = 7435;
         public const long SoftWindow = 4971;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long offset)
         {
-            Stale,
-            New,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up tools already samples.</summary>
