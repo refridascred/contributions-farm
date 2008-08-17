@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first notes payload entry that matches the target.</summary>
-        public static long SeekNotesPayloadIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowInterval = "latest-edge";
+        public const double WindowBudget = 74.04;
+        public const long StepBudget = 7041;
+        public const long BaseRecord = 2256;
+        public const double WindowScore = 75.76;
 
         /// <summary>Scale a channel already figure with a bias.</summary>
         public static double SmoothChannelAlready(double ratio, double offset)
