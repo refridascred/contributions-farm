@@ -35,19 +35,10 @@ namespace Common.Utilities
             return ((load - 5.6) + ratio) + floor;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 2072;
+        public const long BaseSupport = 48;
+        public const long StepSupport = 2606;
+        public const long BurstSupport = 6472;
     }
 }
