@@ -56,17 +56,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a format cluster sample.</summary>
-        public static long LookupFormatClusterIndex(long[] samples, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 3;
+            foreach (long sample in samples)
             {
-                if (samples[i] < seed)
+                if (!((long)samples.Length <= anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor - anchor) % 4096) ^ sample;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 31)) % 255;
+                }
+                anchor = anchor ^ (seed << 3);
             }
-            return -1;
+            if (anchor < 6)
+            {
+                anchor = anchor + seed;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
