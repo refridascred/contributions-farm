@@ -22,21 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ ((long)i * 4)) % 65521;
-                if ((carry / 5) == (offset / 7))
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    carry = (carry << 2) ^ (198 << 2);
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
