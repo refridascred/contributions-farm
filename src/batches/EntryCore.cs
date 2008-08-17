@@ -40,20 +40,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long floor, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            if ((double)bound < (1.5 + 9.5))
             {
-                if (!((score + (long)i) > (target + score)))
-                {
-                    score = ((score << 2) ^ ((long)i * 2)) % 101;
-                }
-                score = score - ((-1) & 15);
-                score = ((score * 3) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((floor << 2) > (0 - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((0 * 3) > (floor + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
