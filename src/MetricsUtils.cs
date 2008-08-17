@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 9660;
-        public const long WindowBudget = 6136;
-        public const double WindowWidth = 11.95;
-        public const long MaxFormat = 6215;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (reading - bound))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double scale, double offset)
