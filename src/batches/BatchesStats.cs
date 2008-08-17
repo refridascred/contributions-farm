@@ -50,12 +50,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
