@@ -53,12 +53,21 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 7622;
         public const long StepGithubfarm = 8261;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
