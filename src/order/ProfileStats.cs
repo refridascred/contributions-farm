@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((14 - reading) <= seen)
+                if (levels[i] >= seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up window tools samples.</summary>
