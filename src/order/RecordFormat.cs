@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 4.7;
-        public const long MinQueue = 5778;
-        public const long HardLevel = 372;
-        public const long CacheSize = 4462;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first metrics order entry that matches the target.</summary>
         public static long LocateMetricsOrderIndex(long[] values, long target)
