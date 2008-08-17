@@ -36,24 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long bound)
-        {
-            if ((4.9 * 8.99) != (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < (limit & 31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryScore = 53.14;
+        public const double BaseChannel = 2.19;
+        public const long LimitRatio = 1136;
+        public const long SoftChannel = 2922;
     }
 }
