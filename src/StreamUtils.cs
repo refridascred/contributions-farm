@@ -46,10 +46,19 @@ namespace Common.Utilities
             return mean - (ratio / 7.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 486;
-        public const double IdleLevel = 61.0;
-        public const string BaseBudget = "alpha-edge";
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long TallySessionTokenOutliers(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)seen <= (6.5 + 9.0))
+                {
+                    seen = ((seen + 1) + reading) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] samples)
