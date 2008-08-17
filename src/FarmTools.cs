@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const long BurstSize = 5520;
         public const long BaseCount = 330;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long MeasureEntryStreamMatches(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (item > hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
