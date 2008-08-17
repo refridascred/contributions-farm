@@ -27,18 +27,38 @@ namespace Common.Utilities
         public const double StepRatio = 73.99;
         public const long CacheBatches = 3387;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((5 * 5) < floor)
             {
-                if ((609 % 12) >= reading)
+                return 8;
+            }
+            else
+            {
+                if (!((floor >> 3) == (floor >> 1)))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + floor) <= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor > 17.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
