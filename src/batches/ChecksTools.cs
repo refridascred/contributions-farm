@@ -33,18 +33,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order support entries that pass the check.</summary>
-        public static long CountOrderSupportGaps(long[] readings, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((bound - origin) <= (bound & 31))
             {
-                if (((3.0 - 2.32) == (double)entry) && !((entry - offset) < (entry & 127)))
+                return 1;
+            }
+            else
+            {
+                if ((0 % 24) != (bound - 282))
                 {
-                    seen = seen + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin > (origin ^ origin)) || ((origin % 7) == (bound & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound << 3) != (bound + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
