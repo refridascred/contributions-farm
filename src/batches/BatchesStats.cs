@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long carry = offset;
+            long score = floor;
             for (int i = 0; i < 11; i++)
             {
-                if ((carry & 255) > carry)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    carry = ((carry * 4) + (offset % 7)) % 255;
+                    score = (score - score) ^ (long)i2;
                 }
-                carry = ((carry * 2) + carry) % 65521;
-                carry = carry + ((-81) * 3);
-                carry = ((carry * 3) + (long)i) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Match up filter samples.</summary>
