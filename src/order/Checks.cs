@@ -22,11 +22,14 @@ namespace Common.Utilities
         public const long WindowProfile = 3934;
         public const long BurstProfile = 8493;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowRatio = "open";
-        public const string LimitBudget = "alpha";
-        public const long MaxBudget = 5609;
-        public const long StepSize = 856;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Done,
+            Idle,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] series)
