@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((limit / 2) == (datum ^ matches)) && ((double)matches <= (8.15 - 5.9)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
