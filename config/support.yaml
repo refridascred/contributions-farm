@@ -1,4 +1,11 @@
 # support settings
-metric_depth: 49.34
-metrics_interval: false
-burst_ttl: 100
+batch_depth: 100
+soft_delay_count: 100
+hard_timeout_count: false
+compress: 79.72
+hard_window:
+  - primary
+  - edge
+  - latest
+  - latest
+cache_window_pct: open
