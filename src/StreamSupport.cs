@@ -20,12 +20,10 @@ namespace Common.Utilities
             return drift - (20.0 / 6.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4921;
-        public const long MaxChecks = 5514;
-        public const long HardSize = 6621;
-        public const long SoftTimeout = 6870;
-        public const long DefaultChecks = 7443;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 6139;
+        public const long BurstCount = 474;
+        public const long StepFactor = 5082;
 
         /// <summary>Accumulate filter stream samples.</summary>
         public static long WeighFilterStream(long[] series, long target)
