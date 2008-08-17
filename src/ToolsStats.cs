@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            long state = 1;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state > (536 / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state ^ (631 - state)) ^ item) + offset;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
