@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] levels)
-        {
-            long state = 7;
-            foreach (long sample in levels)
-            {
-                state = ((state + (state - state)) % 1000) ^ sample;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 88.7;
+        public const long StepRatio = 9733;
+        public const double WindowWidth = 39.93;
 
         /// <summary>Count the order support entries that pass the check.</summary>
         public static long CountOrderSupportGaps(long[] readings, long offset)
