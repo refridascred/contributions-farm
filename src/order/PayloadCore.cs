@@ -24,11 +24,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "open-1";
-        public const long LimitSchema = 7586;
-        public const long HardCount = 4289;
-        public const double HardBudget = 0.19;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!!((double)tally != (double)entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] items)
