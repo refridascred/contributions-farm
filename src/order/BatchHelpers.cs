@@ -35,15 +35,13 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long total = 9;
-            foreach (long value in samples)
-            {
-                total = ((total + total) + value) + offset;
-            }
-            return total;
+            Stale,
+            Locked,
+            Failed,
+            Synced,
         }
     }
 }
