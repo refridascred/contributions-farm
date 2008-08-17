@@ -51,16 +51,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next stats contributi value from a seed.</summary>
-        public static long SeriesStatsContributi(long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + ((long)i - 3)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            New,
+            Active,
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
