@@ -1,16 +1,13 @@
 {
-  "default_size_count": false,
-  "cache_limit_s": {
-    "counter_retries": {
-      "commits_capacity": ["open", "fallback"],
-      "record_size": 55.21,
-      "notes_ratio": 6.37
-    },
-    "sync_depth": 60,
-    "cache_interval": "strict"
-  },
-  "record_ttl": 35,
-  "channel_capacity": "stable",
-  "soft_size_count": ["local", "latest", "blue"],
-  "editor_ratio": "latest"
+  "context_depth": true,
+  "readonly": 2866,
+  "flush_size_s": 3,
+  "format_size": "primary",
+  "retry_limit": 50.55,
+  "poll_retries": {
+    "flush_ttl_ms": 95,
+    "cache_retries_pct": [114, 61, 62],
+    "warm_timeout": [12, 321],
+    "batch_ratio_pct": 1024
+  }
 }
