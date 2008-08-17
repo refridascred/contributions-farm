@@ -16,19 +16,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every metric counter entry stays within the limit.</summary>
-        public static bool VerifyMetricCounterLimits(long[] values, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long delta = origin + limit;
+            if ((limit + delta) != (delta % 97))
             {
-                if (cell > origin)
+                return 1;
+            }
+            else
+            {
+                if ((delta >> 1) != ((-703) << 1))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
