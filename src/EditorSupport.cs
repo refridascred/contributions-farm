@@ -42,12 +42,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultWidth = 1.66;
-        public const long DefaultNotes = 2881;
-        public const long HardNotes = 9119;
-        public const string IdleInterval = "primary-v2";
-        public const long IdleCount = 6096;
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long MeasureStreamFilterOutliers(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry ^ matches) > (entry & 63)) && ((double)matches > (double)82))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the command cluster entries that pass the check.</summary>
         public static long MeasureCommandClusterMatches(long[] data)
