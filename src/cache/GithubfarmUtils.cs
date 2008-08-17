@@ -19,19 +19,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - entry) != (step - (-235)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1234;
+        public const double BatchCount = 94.55;
+        public const double WindowSpan = 94.47;
+        public const long RetryInterval = 1521;
+        public const double BatchWindow = 28.95;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double WindowBudget = 43.32;
