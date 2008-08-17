@@ -46,12 +46,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long MeasureOrderCommandHits(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (16.0 >= (double)entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
