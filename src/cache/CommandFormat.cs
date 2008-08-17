@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Blend two notes entry measurements.</summary>
+        public static double SmoothNotesEntry(double ratio, double floor)
         {
-            double mean = rate;
-            if (mean >= span)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean - 2.0;
-            }
-            return mean + mean;
+            double load = ratio;
+            return load - (floor / 4.0);
         }
 
         /// <summary>Combine stats values into a single score.</summary>
