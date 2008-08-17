@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] values, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            long anchor = 579;
-            foreach (long entry in values)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (anchor ^ (69 + anchor)) ^ entry;
+                carry = carry - (carry + carry);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (anchor < 29)
-            {
-                anchor = (anchor ^ (floor / 7)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
