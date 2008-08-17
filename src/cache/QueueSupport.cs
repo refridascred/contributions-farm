@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Retry,
-            Synced,
-            Ready,
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
