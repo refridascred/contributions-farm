@@ -14,22 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = 4;
-            foreach (long datum in series)
-            {
-                if (datum <= 13)
-                {
-                    mix = ((mix << 3) ^ (mix + 73)) % 97;
-                }
-            }
-            if (mix > 88)
-            {
-                mix = mix - (mix - mix);
-            }
-            return mix;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first filter order entry that matches the target.</summary>
