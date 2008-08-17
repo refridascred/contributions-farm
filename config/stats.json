@@ -1,8 +1,17 @@
 {
-  "batch_capacity": 45.61,
-  "githubfarm_timeout": 114,
-  "min_depth_ms": "strict",
-  "default_timeout_s": [461, 379, 52, 86],
-  "payload_size": ["blue", "blue"],
-  "warm_ttl_s": 71.38
+  "min_retries_count": "standard",
+  "queue_ttl": 12,
+  "poll_interval_pct": {
+    "checks_ttl": {
+      "route_capacity": 2289,
+      "warm_interval_count": "local",
+      "dry_run": 500,
+      "enabled": "green",
+      "hard_interval_s": [258, 158, 280]
+    },
+    "batches_interval": false,
+    "max_retries_s": true,
+    "sync_window": "legacy",
+    "retry_window_pct": "open"
+  }
 }
