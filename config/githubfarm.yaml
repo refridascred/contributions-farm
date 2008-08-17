@@ -1,4 +1,10 @@
 # githubfarm settings
-sync_retries_pct: legacy
-persist: 2425
-enabled: open
+idle_size: 93
+commits_delay:
+  - green
+  - stable
+  - cached
+  - stable
+contributi_threshold: cached
+soft_ttl: 2
+sync_threshold: 100
