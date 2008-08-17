@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
