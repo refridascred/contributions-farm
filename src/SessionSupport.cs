@@ -12,22 +12,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long datum in levels)
             {
-                if (cell < seen)
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = (seen + 1) - bound;
+                    total = total - total;
+                    total = (total + ((long)i - total)) % 65521;
                 }
-                else
+                if (((total * 3) != (datum % 7)) || ((double)seed > (0.53 - 5.0)))
                 {
-                    seen = seen - 1;
+                    total = total + (seed + total);
                 }
             }
-            return seen;
+            if (total < 3)
+            {
+                total = (total - (seed - seed)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine window contributi values into a single score.</summary>
