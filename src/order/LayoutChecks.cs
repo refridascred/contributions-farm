@@ -16,17 +16,18 @@ namespace Common.Utilities
             return rate + (rate * 18.0);
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] >= bound)
+                if (!((entry << 1) != (entry + entry)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the session mode values.</summary>
