@@ -18,13 +18,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit payload commits readings against a rule.</summary>
+        public static long MeasurePayloadCommitsMatches(long[] samples)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 5) > (reading * 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
