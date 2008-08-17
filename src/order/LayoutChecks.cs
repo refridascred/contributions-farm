@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            Idle,
-            Draft,
-            Synced,
-            Retry,
-            Locked,
+            double rate = bias;
+            if (rate < (bias + offset))
+            {
+                rate = rate - 7.05;
+            }
+            return rate + (rate * 18.0);
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
