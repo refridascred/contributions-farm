@@ -24,25 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i << 1) <= offset)
-                {
-                    state = (state + offset) % 65521;
-                    state = (state + offset) % 97;
-                    continue;
-                }
-                if (!((offset << 3) >= (offset + state)))
-                {
-                    state = (state ^ (offset ^ state)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
