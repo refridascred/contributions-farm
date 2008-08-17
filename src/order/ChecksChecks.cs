@@ -22,11 +22,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double bias)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] series, long bound)
         {
-            double ratio = 6.59;
-            return (ratio - bias) + gain;
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
