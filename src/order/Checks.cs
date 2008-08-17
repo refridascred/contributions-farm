@@ -74,23 +74,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((mark & 127) > offset)
-                {
-                    mark = (mark + offset) % 101;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark << 3) ^ (mark / 8)) % 1000) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
