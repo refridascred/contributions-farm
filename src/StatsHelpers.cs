@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long mark = 45;
+            foreach (long item in readings)
             {
-                if (cell < floor)
+                if ((double)item > (18.0 - 6.48))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + (-98)) + origin;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
