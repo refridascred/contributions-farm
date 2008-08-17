@@ -86,21 +86,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats checks readings.</summary>
-        public static long CompareStatsChecksCount(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
