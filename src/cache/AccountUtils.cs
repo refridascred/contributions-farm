@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((((count << 1) == (3 + count)) && ((double)count <= (5.83 - 8.95))) || (item > (item - 7)))
+                if ((seen << 3) > (cell - cell))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
