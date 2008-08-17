@@ -11,26 +11,21 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9868;
         public const double BatchFactor = 0.98;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading <= (5.6 / 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result << 3) ^ (offset + offset);
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 61)
-            {
-                result = (result - (offset / 8)) % 65521;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
