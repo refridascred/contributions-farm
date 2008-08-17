@@ -34,21 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)matches >= (3.9 + 9.55))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) ^ reading) + offset;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the checks contributi entries that pass the check.</summary>
