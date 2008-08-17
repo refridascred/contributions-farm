@@ -74,12 +74,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Failed,
-            Paused,
+            Draft,
             Idle,
+            Failed,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
