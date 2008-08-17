@@ -33,38 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            if ((bound - origin) <= (bound & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0 % 24) != (bound - 282))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin > (origin ^ origin)) || ((origin % 7) == (bound & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound << 3) != (bound + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double load = gain;
+            return (load - (double)28) + bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
