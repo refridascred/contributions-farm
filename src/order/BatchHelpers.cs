@@ -42,14 +42,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long target)
         {
-            Pending,
-            Locked,
-            Ready,
-            Closed,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
