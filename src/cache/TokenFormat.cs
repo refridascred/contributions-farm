@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool ValidateEntryMetricsBounds(long[] values, long bound)
+        /// <summary>Compare every pair of report cache readings.</summary>
+        public static long CompareReportCacheCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
