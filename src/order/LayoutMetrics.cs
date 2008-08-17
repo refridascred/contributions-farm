@@ -21,21 +21,31 @@ namespace Common.Utilities
         public const long MinOrder = 2334;
         public const long SoftOrder = 2251;
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Classify a layout support pair into a bucket.</summary>
+        public static long BucketLayoutSupport(long step, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step & 1) == (step * 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) > (step * 5))
                 {
-                    if ((series[i] ^ series[j]) > 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step < (4.66 - 12.0))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
