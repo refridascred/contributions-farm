@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long limit)
         {
-            double mean = bias;
-            if (mean <= mean)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - rate;
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)288;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
