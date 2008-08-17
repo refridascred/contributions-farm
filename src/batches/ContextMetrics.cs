@@ -50,10 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 9903;
-        public const long IdleScore = 5751;
-        public const long CacheBuffer = 3230;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
