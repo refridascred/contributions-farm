@@ -32,22 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double rate = floor;
+            if (rate < 11.0)
             {
-                if (!(11.0 < (double)sample))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate - (rate / 2.0)) - ratio;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)767) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Look up the position of a channel session sample.</summary>
