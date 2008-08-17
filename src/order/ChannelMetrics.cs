@@ -36,22 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] data, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((matches + matches) <= floor)
+                if (((item & 3) <= item) && ((origin + item) != (hits / 5)))
                 {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
