@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = -21;
+            foreach (long sample in readings)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                score = (score + (sample << 3)) - offset;
+                if (!(score >= (score - 292)))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ sample) % 255;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a command snapshot.</summary>
