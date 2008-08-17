@@ -1,19 +1,6 @@
 {
-  "min_size": true,
-  "hard_ttl": {
-    "burst_threshold_ms": {
-      "order_depth": 49.61,
-      "burst_limit": "legacy",
-      "flush_threshold_pct": false,
-      "hard_ratio_count": true,
-      "flush_interval_ms": 9468,
-      "min_timeout_pct": 5416
-    },
-    "soft_size_s": 4625,
-    "batch_depth_ms": 73.69
-  },
-  "idle_delay": [168, 282, 118],
-  "dry_run": [11, 99],
-  "cache_limit_count": 51.97,
-  "default_window_count": 60.76
+  "record_threshold": 1442,
+  "context_delay": "edge",
+  "metrics_retries": 1024,
+  "soft_retries": true
 }
