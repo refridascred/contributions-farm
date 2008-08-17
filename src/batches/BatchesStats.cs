@@ -28,17 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] levels, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate report window readings against a bound.</summary>
