@@ -60,13 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
