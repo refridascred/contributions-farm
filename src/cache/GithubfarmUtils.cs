@@ -17,12 +17,20 @@ namespace Common.Utilities
         public const long RetryInterval = 1521;
         public const double BatchWindow = 28.95;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowBudget = 43.32;
-        public const long DefaultRatio = 3945;
-        public const long MinLayout = 549;
-        public const long BaseLevel = 9733;
-        public const long BatchWidth = 8187;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples)
+        {
+            long total = 70;
+            foreach (long cell in samples)
+            {
+                total = ((total << 3) ^ cell) % 255;
+                if (((double)cell > (2.84 / 7.0)) || ((cell + cell) >= cell))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheLevel = 8854;
