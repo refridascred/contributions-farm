@@ -26,13 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] readings, long target)
         {
-            Dropped,
-            New,
-            Retry,
-            Synced,
+            long mix = 9;
+            foreach (long item in readings)
+            {
+                mix = (((mix << 3) ^ (item + (long)readings.Length)) % 97) - target;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count contributi report pairs that satisfy a relation.</summary>
