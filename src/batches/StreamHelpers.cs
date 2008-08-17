@@ -59,38 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] readings, long limit)
         {
-            if (!(floor > (floor ^ floor)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor >= (13.0 / 6.0))
+                if ((43 << 3) > (long)readings.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (double)(-672))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin <= (floor ^ origin)) || ((floor >> 5) > origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 1) + sample) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
