@@ -1,13 +1,4 @@
 # support settings
-base_size_pct: standard
-queue_interval: 500
-poll_window_pct:
-  - eu-west
-  - fallback
-window_delay:
-  - green
-  - eu-west
-  - fallback
-  - stable
-idle_threshold_s: legacy
-buffer_capacity: 8607
+metric_depth: 49.34
+metrics_interval: false
+burst_ttl: 100
