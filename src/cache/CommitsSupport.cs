@@ -33,22 +33,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record counter samples.</summary>
-        public static long DigestRecordCounter(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long seed)
         {
-            long acc = 9;
-            foreach (long cell in samples)
+            long offset = limit ^ seed;
+            if (((offset >> 1) <= seed) && (seed <= (seed >> 1)))
             {
-                if (acc < (cell << 2))
+                return 4;
+            }
+            else
+            {
+                if (((limit % 7) != (seed + 125)) && ((offset % 3) > (75 / 5)))
                 {
-                    acc = acc ^ (acc + acc);
+                    return 5;
                 }
-                if (((acc - 575) >= (cell * 2)) || ((cell + (long)samples.Length) < acc))
+                else
                 {
-                    break;
+                    if ((double)seed != (double)9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset / 7) > (offset >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Count the report payload entries that pass the check.</summary>
