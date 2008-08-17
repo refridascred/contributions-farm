@@ -36,18 +36,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "stable-edge";
+        public const long IdleTimeout = 8324;
+        public const long LimitDepth = 2990;
+        public const string BaseLevel = "primary";
+        public const string RetryCluster = "staging-edge";
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadLimits(long[] samples, long bound)
