@@ -32,23 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long CombineProfileBuffer(long[] values, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long anchor = 25;
-            foreach (long item in values)
-            {
-                anchor = (anchor ^ anchor) + item;
-                if ((anchor << 1) > anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 481)
-            {
-                anchor = (anchor + (seed + seed)) % 4096;
-            }
-            return anchor;
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate support samples.</summary>
