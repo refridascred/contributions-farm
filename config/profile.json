@@ -1,11 +1,6 @@
 {
-  "batch_threshold": 69,
-  "min_delay": 250,
-  "idle_threshold_s": {
-    "batch_window_pct": "cached",
-    "hard_ratio_pct": 50.36,
-    "readonly": true,
-    "counter_window": 100
-  },
-  "soft_window_ms": [19, 188]
+  "persist": false,
+  "sync_timeout": 500,
+  "soft_retries_pct": "cached",
+  "base_size_pct": ["latest", "latest", "local"]
 }
