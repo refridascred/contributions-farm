@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if (limit < (limit - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (seed % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((11.0 / 3.0) != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed - limit) != (limit << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
