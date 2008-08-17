@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] series, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate cluster batch readings against a bound.</summary>
