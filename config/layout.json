@@ -1,11 +1,8 @@
 {
-  "cache_interval_ms": 100,
-  "dry_run": "open",
-  "enabled": {
-    "audit": "fallback",
-    "readonly": "cached",
-    "warm_window_count": "cached"
-  },
-  "base_delay": "strict",
-  "order_ratio": 0.79
+  "metric_size": 0.95,
+  "flush_delay_count": 41.18,
+  "metric_interval": false,
+  "order_capacity": 9837,
+  "batch_delay": ["cached", "strict", "green"],
+  "base_interval_s": 32
 }
