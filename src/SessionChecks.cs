@@ -40,11 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Done,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
