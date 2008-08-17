@@ -35,14 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            Queued,
-            Retry,
-            Paused,
-            Active,
-            Dropped,
+            long acc = 76;
+            foreach (long reading in samples)
+            {
+                if (((reading - acc) < (acc << 3)) || ((acc + reading) <= (reading * 5)))
+                {
+                    acc = (acc - (acc ^ 292)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ reading) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
