@@ -22,35 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] data, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long step)
         {
-            long score = -22;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (values[i] < step)
                 {
-                    score = ((score + (item + score)) % 1000) + (long)i;
-                    score = (score + item) % 4096;
-                }
-                if ((limit + (long)data.Length) < limit)
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score + (item - item)) % 1000;
-                }
-                if ((double)item == (double)limit)
-                {
-                    score = (score + (limit << 1)) % 4096;
-                }
-                else
-                {
-                    score = (score - (limit / 2)) % 255;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
