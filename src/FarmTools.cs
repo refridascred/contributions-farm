@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long mix = 75;
+            foreach (long datum in samples)
+            {
+                if (78 <= (datum & 255))
+                {
+                    mix = mix + (mix % 3);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
