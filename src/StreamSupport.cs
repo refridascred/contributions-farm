@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias + (bias / 3.0);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long floor)
         {
-            long result = 90;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                result = ((result - result) % 65521) - item;
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result < (-419))
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
