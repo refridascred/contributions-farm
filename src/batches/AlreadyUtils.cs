@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long MeasureSchemaNotesOutliers(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((double)cell < (3.0 - 1.1)) || ((6 / 4) >= cell))
+                if ((((reading + reading) == (seen / 4)) || ((double)377 <= (double)limit)) && ((reading + 54) != (reading * 2)))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
