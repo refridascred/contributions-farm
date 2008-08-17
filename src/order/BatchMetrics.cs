@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] data)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - hits) >= (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
