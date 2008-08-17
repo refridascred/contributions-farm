@@ -63,15 +63,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Locate a commits entry reading by value.</summary>
+        public static long LocateCommitsEntryIndex(long[] readings, long seed)
         {
-            double scale2 = scale;
-            if (scale2 < 4.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 - scale2) - bias;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (double)65;
+            return -1;
         }
     }
 }
