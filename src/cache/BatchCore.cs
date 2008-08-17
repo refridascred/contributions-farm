@@ -12,10 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowTimeout = "fallback-1";
-        public const double BatchFilter = 72.76;
-        public const long SoftFactor = 6883;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 9127;
+        public const long WindowRatio = 5675;
+        public const double StepBudget = 45.21;
+        public const long LimitTimeout = 3578;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
