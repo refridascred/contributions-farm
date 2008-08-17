@@ -1,10 +1,6 @@
 # githubfarm settings
-idle_size: 93
-commits_delay:
-  - green
-  - stable
-  - cached
-  - stable
-contributi_threshold: cached
-soft_ttl: 2
-sync_threshold: 100
+cache_threshold_count:
+  - fallback
+  - latest
+payload_delay: staging
+idle_ttl: 67
