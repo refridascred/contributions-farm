@@ -23,10 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 6139;
-        public const long BurstCount = 474;
-        public const long StepFactor = 5082;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultCount = 1359;
+        public const string WindowGraph = "fallback-v2";
+        public const string WindowFactor = "standard-v2";
+        public const long LimitSpan = 5182;
+        public const long StepRatio = 7164;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardMetric = "local";
