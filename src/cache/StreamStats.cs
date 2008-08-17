@@ -28,11 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double load = (double)76;
-            return ((load - 5.6) + ratio) + floor;
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
