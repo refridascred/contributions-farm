@@ -69,12 +69,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
