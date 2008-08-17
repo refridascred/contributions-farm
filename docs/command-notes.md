@@ -1,15 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often payload data is refreshed.
-Use record settings to tune how often context data is refreshed.
+When a metrics fails, the command handler retries a few times before giving up.
+The stats report groups every counter by route.
 
-Keep graph and layout names short and lowercase.
-Run the stream check before changing any githubfarm limits.
-Use command settings to tune how often support data is refreshed.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
-- Validate order input early
-- Review cache limits each release
-- Keep batches values small
+- Review notes limits each release
+- Keep layout values small
+- Validate token input early
+- Log every githubfarm change
