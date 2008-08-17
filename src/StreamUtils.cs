@@ -31,22 +31,18 @@ namespace Common.Utilities
             return (ratio + 9.8) + offset;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] samples, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((count + step) > (50 * 3))
+                if (!((datum + 23) > (datum * 5)))
                 {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
