@@ -14,12 +14,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Derive the next token account value from a seed.</summary>
+        public static long RollTokenAccount(long step)
         {
-            Done,
-            Failed,
-            Pending,
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix * 5) + (mix ^ mix);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
