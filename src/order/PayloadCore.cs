@@ -24,18 +24,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "open-1";
+        public const long LimitSchema = 7586;
+        public const long HardCount = 4289;
+        public const double HardBudget = 0.19;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
