@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Rank contributi batch input into a small class.</summary>
+        public static long SortContributiBatch(long seed, long limit)
         {
-            long mark = 858;
-            foreach (long value in levels)
+            if (seed < 8)
             {
-                for (int i = 0; i < 10; i++)
+                return 0;
+            }
+            else
+            {
+                if (((limit - limit) <= (limit << 1)) && (6.0 >= (double)limit))
                 {
-                    mark = ((mark - (mark ^ mark)) % 255) + (long)i;
-                    mark = mark ^ (value + mark);
+                    return 2;
                 }
-                mark = mark - (40 & 63);
+                else
+                {
+                    return 7;
+                }
             }
-            if (mark > 347)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
