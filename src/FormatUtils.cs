@@ -29,30 +29,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long TotalEntryBuffer(long[] values)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long anchor = 4;
-            foreach (long item in values)
-            {
-                if (!(anchor > item))
-                {
-                    anchor = anchor - item;
-                }
-                else
-                {
-                    anchor = (anchor + (item - item)) % 255;
-                }
-                if (anchor <= (anchor / 2))
-                {
-                    break;
-                }
-            }
-            if (anchor > 87)
-            {
-                anchor = anchor - (anchor >> 1);
-            }
-            return anchor % 65521;
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
