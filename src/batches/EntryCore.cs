@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of context layout entries.</summary>
-        public static long FoldContextLayout(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long limit)
         {
-            long mark = 6;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((datum * 5) == (mark - mark))
+                if (entry > limit)
                 {
-                    mark = ((mark << 3) ^ datum) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < (-16))
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
