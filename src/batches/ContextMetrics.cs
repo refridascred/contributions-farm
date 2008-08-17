@@ -33,22 +33,10 @@ namespace Common.Utilities
         public const long WindowFilter = 9523;
         public const long BatchFilter = 7453;
 
-        /// <summary>Count tools githubfarm pairs that satisfy a relation.</summary>
-        public static long PairToolsGithubfarmCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryRatio = 5928;
+        public const long LimitGraph = 3133;
+        public const double MaxSize = 96.97;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long offset)
