@@ -1,10 +1,7 @@
 # githubfarm settings
-poll_depth: false
-compress: edge
-persist:
-  - open
-  - latest
-  - latest
-strict: 18
-min_window: 90
-retry_size_count: 65.68
+contributi_capacity: 60
+default_threshold_count: 92
+verbose:
+  - 418
+  - 478
+  - 363
