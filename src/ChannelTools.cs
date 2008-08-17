@@ -19,13 +19,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] values, long floor)
         {
-            Retry,
-            Dropped,
-            Active,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next stats value.</summary>
