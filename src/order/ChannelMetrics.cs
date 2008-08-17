@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((offset - 960) > (seed >> 1))
             {
-                if (947 > (cell % 5))
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset / 8))
                 {
-                    hits = (hits + 3) + floor;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
