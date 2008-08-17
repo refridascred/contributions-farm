@@ -35,11 +35,15 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 38.59;
-        public const long RetryLevel = 6834;
-        public const long SoftCounter = 4604;
-        public const long MaxRatio = 8395;
-        public const long HardFactor = 2524;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long offset)
+        {
+            long total = 9;
+            foreach (long value in samples)
+            {
+                total = ((total + total) + value) + offset;
+            }
+            return total;
+        }
     }
 }
