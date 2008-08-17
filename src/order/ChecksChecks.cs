@@ -28,17 +28,18 @@ namespace Common.Utilities
             return drift - 3.2;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long offset)
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long AuditBatchesChecksGaps(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (data[i] >= offset)
+                if ((double)target == (1.9 - 9.14))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
