@@ -1,5 +1,4 @@
 # entry settings
-profile_timeout: open
-idle_capacity_pct: 1024
-hard_timeout_ms: false
-support_size: 250
+batches_depth: fallback
+already_timeout: 3418
+account_depth: 4260
