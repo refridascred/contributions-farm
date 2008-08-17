@@ -34,12 +34,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            double load = rate + (double)6;
+            if (load > (span / 4.0))
+            {
+                load = load - (double)356;
+            }
+            return load + span;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
