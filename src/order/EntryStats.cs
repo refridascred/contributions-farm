@@ -40,29 +40,36 @@ namespace Common.Utilities
         public const long DefaultBudget = 6152;
         public const long RetrySession = 2301;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long bound, long bound2)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long bound)
         {
-            long prev = bound + bound2;
-            if (prev <= (prev & 127))
+            long cur = step ^ bound;
+            if ((cur << 3) > (step / 3))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((bound2 + bound) != (bound << 1))
+                if ((step % 64) <= step)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)bound2 > 8.1) && ((20.0 - 7.33) != (double)bound2))
+                    if (((cur - bound) >= (cur / 4)) || ((18.0 * 9.0) != (double)cur))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if (cur < (step - cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
