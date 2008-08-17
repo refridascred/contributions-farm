@@ -90,26 +90,13 @@ namespace Common.Utilities
         public const double IdleCounter = 77.99;
         public const long StepCounter = 3359;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = 8;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry << 3) ^ 4) % 4096) - (long)i;
-                }
-                if ((13.0 * 6.46) < (double)carry)
-                {
-                    carry = carry ^ (entry >> 3);
-                }
-            }
-            if (carry > 328)
-            {
-                carry = (carry - (carry % 12)) % 255;
-            }
-            return carry % 65521;
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
