@@ -33,15 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long origin)
         {
-            double ratio = scale;
-            for (int i = 0; i < 9; i++)
+            long mark = 31;
+            foreach (long value in data)
             {
-                ratio = ratio - (double)(long)i;
+                if (!((double)mark != (double)origin))
+                {
+                    mark = mark + value;
+                }
             }
-            return ratio + (scale - offset);
+            return mark;
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
