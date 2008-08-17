@@ -20,14 +20,21 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Compare every pair of payload checks readings.</summary>
+        public static long ComparePayloadChecksCount(long[] items)
         {
-            Closed,
-            Paused,
-            Draft,
-            Idle,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
