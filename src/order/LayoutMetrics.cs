@@ -16,15 +16,18 @@ namespace Common.Utilities
             return gain + (ratio / 3.0);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long CountAccountFarmHits(long[] data, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (!((matches - limit) < (matches ^ reading)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
