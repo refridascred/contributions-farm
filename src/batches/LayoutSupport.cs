@@ -34,21 +34,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up record batch samples.</summary>
-        public static long CompareRecordBatchCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -1;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((cell / 6) < ((-5) - carry)) && (1.38 <= (double)carry))
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + (cell + cell)) % 1000;
+                }
+                if ((cell + carry) >= 981)
+                {
+                    carry = ((carry * 3) + (cell & 1)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 65521;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
