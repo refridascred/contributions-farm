@@ -37,21 +37,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] > origin)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
