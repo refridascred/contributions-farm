@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long result = 21;
+            foreach (long datum in data)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int i = 0; i < 8; i++)
+                {
+                    result = result - (result / 6);
+                    result = ((result * 5) + ((long)i * 4)) % 4096;
+                }
+                result = (result + (datum * 3)) % 255;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
