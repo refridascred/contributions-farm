@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "cached-1";
-        public const string BaseLayout = "staging-edge";
-        public const long StepCount = 933;
-        public const long WindowLevel = 4065;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
+        {
+            long sum = 54;
+            foreach (long entry in items)
+            {
+                sum = ((sum * 2) + (entry ^ 18)) % 65521;
+                if ((sum >> 2) >= (entry & 1))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long limit, long bound)
