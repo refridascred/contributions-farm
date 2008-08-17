@@ -40,17 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long step)
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long TallyEditorSchema(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + datum) % 97) + step;
             }
-            return -1;
+            if (mark < 456)
+            {
+                mark = mark - (918 + 41);
+            }
+            return mark;
         }
     }
 }
