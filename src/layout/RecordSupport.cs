@@ -69,15 +69,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] data, long step)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                weight2 = ((weight2 - weight) + (double)(long)i) + offset;
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight2 + (double)338;
+            return found;
         }
     }
 }
