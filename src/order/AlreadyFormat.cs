@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long bound, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long limit)
         {
-            if (8 >= (target + target))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.98 - 5.4) > (9.0 + 14.0)) && ((target & 7) <= target))
+                if (((double)(-96) == (double)hits) || (limit >= (hits + 25)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 1) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
