@@ -36,11 +36,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] series)
         {
-            double mean = (offset * 4.0) - (double)17;
-            return (mean - (offset / 5.0)) + ratio;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally * 2) > (-5))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
