@@ -60,12 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long score = 10;
+            foreach (long datum in items)
+            {
+                if ((180 * 3) > (datum % 64))
+                {
+                    score = ((score << 3) ^ (datum >> 3)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a graph header.</summary>
