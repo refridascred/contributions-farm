@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] items, long bound)
+        /// <summary>Classify a channel already pair into a bucket.</summary>
+        public static long GradeChannelAlready(long step, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            if ((6.5 + 1.17) < (double)step)
             {
-                if (value >= bound)
+                return 0;
+            }
+            else
+            {
+                if (1 > step)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 1) != (step - origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Match up format payload samples.</summary>
