@@ -66,18 +66,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many support layout samples are out of range.</summary>
-        public static long AuditSupportLayoutHits(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((((-9) * 5) <= tally) || ((tally * 2) > (tally << 1)))
+                if (cell != limit)
                 {
-                    tally = (tally + 1) - datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
