@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Find the first already token entry that matches the target.</summary>
+        public static long SeekAlreadyTokenIndex(long[] data, long offset)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
