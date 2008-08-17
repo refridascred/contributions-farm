@@ -21,13 +21,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 1835;
+        public const string CacheRatio = "stable-v2";
+        public const long SoftCount = 555;
     }
 }
