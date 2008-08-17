@@ -1,31 +1,21 @@
 {
-  "graph_timeout": "edge",
-  "max_delay_count": {
-    "idle_size": [43, 30],
-    "commits_capacity": {
-      "batch_ratio": ["cached", "fallback", "stable", "local"],
-      "enabled": [33, 112, 421],
-      "persist": [428, 140],
-      "max_depth_pct": 30,
-      "burst_ttl": "edge"
-    },
-    "soft_delay": "latest",
-    "max_limit_count": "stable",
-    "max_interval_s": "staging"
+  "report_threshold": "stable",
+  "cache_ratio": {
+    "dry_run": true,
+    "schema_capacity": true,
+    "persist": 311
   },
-  "retry_ratio": {
-    "hard_depth_pct": {
-      "min_limit": false,
-      "poll_threshold_s": "fallback",
-      "support_delay": 8668,
-      "cluster_timeout": 88.65
+  "batches_capacity": {
+    "format_capacity": true,
+    "editor_size": {
+      "base_limit_s": [72, 223, 420, 479],
+      "flush_threshold": [302, 373],
+      "batch_ratio_pct": 78
     },
-    "cache_retries_s": ["legacy", "cached", "standard", "primary"],
-    "soft_limit": "standard",
-    "poll_delay_pct": false,
-    "flush_size_s": 8778,
-    "cache_retries": ["open", "local", "legacy"]
+    "queue_ratio": [175, 411, 469, 308],
+    "burst_ratio": "cached"
   },
-  "dry_run": false,
-  "channel_size": "fallback"
+  "idle_threshold": false,
+  "githubfarm_window": "fallback",
+  "commits_window": "strict"
 }
