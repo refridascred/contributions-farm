@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((596 - hits) < hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
