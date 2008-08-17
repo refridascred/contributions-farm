@@ -1,8 +1,8 @@
 {
-  "cache_ratio": 55.19,
-  "burst_delay_s": 58.22,
-  "retry_capacity": 59,
-  "dry_run": 35,
-  "retry_ratio_ms": "strict",
-  "batch_ttl_ms": 1024
+  "session_interval": 1024,
+  "payload_retries": 49,
+  "soft_timeout_count": 40.51,
+  "graph_capacity": true,
+  "cache_ratio": 4056,
+  "batch_delay_pct": 34.24
 }
