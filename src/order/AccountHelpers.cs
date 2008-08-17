@@ -22,21 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window format counter forward.</summary>
-        public static long StepWindowFormat(long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state << 3) ^ (state + origin);
-                if ((origin - origin) <= state)
-                {
-                    state = ((state * 3) + (long)i) % 255;
-                    state = (state + (origin + state)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Locked,
+            Idle,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
