@@ -26,31 +26,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a record command pair into a bucket.</summary>
-        public static long SortRecordCommand(long limit, long limit2)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            if ((limit2 <= (limit << 3)) && (limit2 > (limit + limit2)))
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit2 / 7) >= 96)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 4) < (limit2 << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
