@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] samples, long limit)
         {
-            double drift = (6.94 / 5.0) / 4.0;
-            if (drift > bias)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                drift = (drift - drift) + rate;
+                if ((double)item >= (double)120)
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - 3.2;
+            return tally;
         }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
