@@ -1,26 +1,6 @@
 # entry settings
-account_interval: false
-command_threshold:
-  queue_retries: eu-west
-  max_limit: 2138
-  min_ratio:
-    max_ratio_count: blue
-    support_window: legacy
-    cache_size: true
-    default_threshold: 25.28
-    retry_threshold: primary
-poll_retries_count:
-  order_capacity:
-    queue_depth: 17.74
-    readonly: false
-    verbose: true
-    cache_retries_pct: 76.13
-  poll_size:
-    - strict
-    - local
-  default_timeout: 500
-persist:
-  poll_ttl_ms: 3.21
-  retry_threshold_s: 5
-  flush_threshold_pct: latest
-default_interval_ms: 92.02
+route_interval: 79.28
+soft_interval: 3.73
+base_ratio_pct: false
+readonly: legacy
+record_size: strict
