@@ -60,18 +60,17 @@ namespace Common.Utilities
         public const string IdleInterval = "primary-v2";
         public const long IdleCount = 6096;
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long MeasureEntryFarmMatches(long[] levels, long seed)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.0 + 13.0) < (double)seed)
+                if (series[i] == bound)
                 {
-                    matches = (matches + 3) - reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
