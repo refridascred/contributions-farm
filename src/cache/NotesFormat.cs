@@ -25,14 +25,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Project the next filter window value.</summary>
+        public static double SmoothFilterWindow(double scale, double floor)
         {
-            Locked,
-            Retry,
-            Done,
-            Synced,
-            Queued,
+            double load = (double)((-613) ^ 2);
+            if (load > (double)0)
+            {
+                load = ((load - (double)9) - scale) - floor;
+            }
+            return load + (6.75 / 7.0);
         }
 
         /// <summary>Combine window entry values into a single score.</summary>
