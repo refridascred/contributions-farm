@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
             public double Weight { get; set; }
-            public long Size { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next token account value from a seed.</summary>
