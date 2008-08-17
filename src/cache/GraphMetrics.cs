@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((offset - sum) >= (long)i))
-                {
-                    sum = (sum - (sum + sum)) % 255;
-                }
-                sum = ((sum << 3) ^ (sum >> 2)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryFactor = 3880;
+        public const double StepBuffer = 32.56;
+        public const long IdleBuffer = 5081;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
