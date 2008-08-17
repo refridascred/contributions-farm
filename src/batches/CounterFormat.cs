@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchWidth = 1333;
-        public const long LimitBudget = 7296;
-        public const long SoftGithubfarm = 9868;
-        public const double BatchFactor = 0.98;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5967;
+        public const long LimitOrder = 6134;
+        public const long StepFactor = 6252;
+        public const double SoftSpan = 48.23;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
