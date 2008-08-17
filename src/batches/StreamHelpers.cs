@@ -19,19 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] readings, long target)
+        /// <summary>Rank cache filter input into a small class.</summary>
+        public static long BucketCacheFilter(long step, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if ((bound % 5) <= (bound + step))
             {
-                if (reading > target)
+                return 7;
+            }
+            else
+            {
+                if (bound < (bound * 5))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
