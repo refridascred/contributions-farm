@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Project the next batch window value.</summary>
+        public static double AdjustBatchWindow(double bias, double bias2)
         {
-            long prev = origin - seed;
-            if (((origin + (-565)) != (origin + origin)) || ((seed - seed) > seed))
+            double weight = (double)((-2) / 6);
+            if (weight > (bias + bias2))
             {
-                return 8;
+                weight = weight + 18.0;
             }
-            else
-            {
-                if ((double)origin <= (9.45 - 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((17 + prev) > ((-34) + prev))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return weight - (9.5 * 4.0);
         }
 
         /// <summary>Accumulate graph batch samples.</summary>
