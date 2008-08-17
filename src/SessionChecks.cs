@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long CombineProfileBuffer(long[] values, long bound)
+        /// <summary>Classify a format stats pair into a bucket.</summary>
+        public static long BucketFormatStats(long step, long floor)
         {
-            long total = 46;
-            foreach (long reading in values)
+            long gap = step - floor;
+            if ((double)step < (14.0 + 18.0))
             {
-                total = ((total ^ ((-346) / 8)) + reading) + bound;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((double)gap > 4.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)gap >= (double)step) || ((step + floor) != (110 - (-71))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session entry.</summary>
