@@ -38,39 +38,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long bound2 = bound + seed;
-            if ((double)bound < (7.0 - 4.0))
+            long acc = -90;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 * 4) > (bound2 - bound))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 0;
+                    acc = ((acc + (long)items.Length) % 101) ^ (long)i;
+                    acc = acc ^ (cell + cell);
                 }
-                else
+                if (cell <= acc)
                 {
-                    if ((seed / 6) < (699 % 24))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound2 % 7) < bound2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = acc - (cell / 6);
                 }
             }
+            if (acc < 13)
+            {
+                acc = ((acc << 2) ^ (31 * 4)) % 97;
+            }
+            return acc;
         }
     }
 }
