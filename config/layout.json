@@ -1,8 +1,21 @@
 {
-  "enabled": [225, 268],
-  "min_ratio_pct": 250,
-  "max_interval": 80.05,
-  "batches_window": 86.92,
-  "hard_capacity_count": "standard",
-  "support_retries": 19.93
+  "min_depth_count": 80.31,
+  "base_ratio": {
+    "min_delay_ms": {
+      "soft_size_ms": [131, 411, 240],
+      "max_timeout_count": false,
+      "batch_capacity_pct": "standard",
+      "flush_delay_s": 80,
+      "cache_limit_count": "primary"
+    },
+    "filter_window": 52,
+    "warm_capacity": "fallback"
+  },
+  "graph_limit": "cached",
+  "strict": {
+    "batch_ratio_ms": 47,
+    "verbose": 37,
+    "cluster_capacity": false
+  },
+  "layout_ttl": 6982
 }
