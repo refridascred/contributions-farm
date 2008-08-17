@@ -50,31 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools batches input into a small class.</summary>
-        public static long BucketToolsBatches(long origin, long target)
+        /// <summary>Look up the position of a channel session sample.</summary>
+        public static long FindChannelSessionIndex(long[] series, long limit)
         {
-            if (((target & 7) <= target) || ((0.3 - 7.1) <= (double)target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 4) != (origin - 973))
+                if (series[i] < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (target % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
