@@ -1,8 +1,5 @@
 {
-  "persist": "staging",
-  "command_delay": "primary",
-  "dry_run": [314, 435, 58, 434],
-  "base_depth_pct": "stable",
-  "payload_limit": 3270,
-  "verbose": "staging"
+  "batches_limit": ["edge", "strict", "standard"],
+  "strict": 50.71,
+  "cache_window_count": 5680
 }
