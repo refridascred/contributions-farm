@@ -71,15 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] data, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
