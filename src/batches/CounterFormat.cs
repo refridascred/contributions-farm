@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetrySpan = 28.06;
-        public const double BaseWidth = 96.11;
-        public const string MinFormat = "standard-edge";
+        /// <summary>Rank order cache input into a small class.</summary>
+        public static long ClassifyOrderCache(long origin, long seed)
+        {
+            if ((seed <= origin) && ((double)seed < (12.0 + 15.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed >= (17 ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] data, long origin)
