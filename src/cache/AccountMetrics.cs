@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits > (cell + cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate report readings against a bound.</summary>
