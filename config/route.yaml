@@ -1,4 +1,8 @@
 # route settings
-schema_retries: 73.01
-dry_run: true
-retry_retries_count: 53.75
+profile_depth:
+  - standard
+  - latest
+  - strict
+  - standard
+max_timeout_count: strict
+base_ratio_ms: 4043
