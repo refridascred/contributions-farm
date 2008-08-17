@@ -54,19 +54,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            double drift = (6.77 + 5.0) * 16.0;
-            if (drift < (scale / 2.0))
+            long result = 8;
+            foreach (long entry in readings)
             {
-                drift = drift - (bias / 7.0);
+                result = (((result << 2) ^ result) % 97) - entry;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift + 3.0)) + (double)(long)i;
-            }
-            return drift - (double)131;
+            return result;
         }
 
         /// <summary>Hold a session summary.</summary>
