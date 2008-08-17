@@ -57,17 +57,21 @@ namespace Common.Utilities
         public const double IdleLevel = 61.0;
         public const string BaseBudget = "alpha-edge";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ target) % 97;
-                total = (total - (target ^ total)) % 65521;
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
