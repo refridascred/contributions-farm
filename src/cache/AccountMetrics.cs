@@ -36,19 +36,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long target, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            if (((origin - target) >= origin) && ((44 + 22) >= target))
             {
-                if (!((1 * 3) > (step % 12)))
-                {
-                    total = (total + (71 * 4)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((target * 2) != (target - origin)) && ((target * 5) < 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
