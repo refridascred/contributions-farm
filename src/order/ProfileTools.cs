@@ -56,15 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            long result = 8;
-            foreach (long value in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                result = (result + value) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Audit cluster token readings against a rule.</summary>
