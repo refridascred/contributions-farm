@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long TallyRecordCacheMatches(long[] series, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = 4;
+            foreach (long value in data)
             {
-                if (reading < (9 + offset))
+                acc = (acc ^ (5 % 7)) % 101;
+                acc = ((acc * 5) + value) % 255;
+                acc = acc - (value * 2);
+                if (((double)value != (4.28 - 3.7)) || ((value - acc) <= (value ^ value)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 772)
+            {
+                acc = acc - (650 * 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Adjust a schema format reading.</summary>
