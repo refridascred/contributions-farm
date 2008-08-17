@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long sum = -214;
+            foreach (long value in values)
             {
-                long lane = (anchor % 7) + (step + step);
-                anchor = (anchor * 3) + (lane << 1);
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                sum = ((sum ^ value) % 255) + bound;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Combine token buffer values into a single score.</summary>
