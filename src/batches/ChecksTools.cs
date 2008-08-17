@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate graph batch samples.</summary>
+        public static long TallyGraphBatch(long[] items)
         {
-            Ready,
-            Pending,
-            Closed,
-            Draft,
+            long score = 483;
+            foreach (long reading in items)
+            {
+                if ((66 + reading) != (score - score))
+                {
+                    score = (score + (reading << 3)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
