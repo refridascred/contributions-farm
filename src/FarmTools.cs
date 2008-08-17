@@ -24,18 +24,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long MeasureEntryStreamMatches(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long step = offset + seed;
+            if ((step + offset) <= (seed + step))
             {
-                if (item > hits)
+                return 8;
+            }
+            else
+            {
+                if (offset >= seed)
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed >> 3) < (54 << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
