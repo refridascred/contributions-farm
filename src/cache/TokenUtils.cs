@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long StepNotes = 5136;
         public const long BurstDepth = 2795;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Count already payload pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyPayloadCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches % 2) > matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ cell;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
