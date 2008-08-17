@@ -14,12 +14,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Fold a list of metrics format readings.</summary>
+        public static long FoldMetricsFormat(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            long score = 984;
+            foreach (long reading in samples)
+            {
+                if ((2.5 - 8.7) < (double)reading)
+                {
+                    score = (score ^ (reading + reading)) % 1000;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                if (!((3.0 - 5.8) != (double)score))
+                {
+                    score = (score << 2) ^ (-1);
+                }
+            }
+            if (score < 1)
+            {
+                score = (score ^ (score % 12)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
