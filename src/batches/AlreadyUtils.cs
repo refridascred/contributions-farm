@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values, long seed)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count / 3) >= (70 * 5))
-                {
-                    count = ((count + 1) + entry) - seed;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
