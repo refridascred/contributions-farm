@@ -63,24 +63,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            if (bound < (seed / 9))
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 1) != (seed + seed))
+                if ((7.0 - 0.3) < (double)target)
                 {
-                    return 2;
+                    acc = (acc ^ target) % 97;
+                }
+                if ((double)target <= (double)acc)
+                {
+                    acc = acc ^ (55 + acc);
+                }
+                if (1.0 > (double)acc)
+                {
+                    acc = (acc ^ (long)i) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    acc = acc + (8 + target);
+                    acc = ((acc * 2) + (long)i) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
+            return acc;
         }
     }
 }
