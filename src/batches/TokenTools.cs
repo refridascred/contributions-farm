@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] data, long step)
         {
-            Active,
-            Paused,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally - step) <= tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
