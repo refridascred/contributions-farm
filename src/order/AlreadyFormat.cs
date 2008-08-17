@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= seed)
+                if (!((result + (long)i) == (29 + origin)))
                 {
-                    stale = false;
                     break;
                 }
+                if (!(((long)i != (506 >> 4)) || ((8.2 - 5.8) <= (double)origin)))
+                {
+                    result = result + (867 + (long)i);
+                    result = (result + (result * 3)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Check that every already filter entry stays within the limit.</summary>
