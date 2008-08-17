@@ -35,32 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a profile record pair into a bucket.</summary>
-        public static long ClassifyProfileRecord(long seed, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long delta = seed + step;
-            if ((double)delta != (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 2) >= (delta + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-66) + seed) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
