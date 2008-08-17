@@ -19,15 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
