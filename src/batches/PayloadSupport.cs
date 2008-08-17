@@ -13,17 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                long slot = 455;
-                carry = (carry * 2) + slot;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
