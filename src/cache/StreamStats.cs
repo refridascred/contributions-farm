@@ -19,10 +19,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 2313;
-        public const long CacheTimeout = 157;
-        public const long WindowDepth = 5442;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double ratio, double floor)
+        {
+            double load = (double)76;
+            return ((load - 5.6) + ratio) + floor;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double scale, double span)
