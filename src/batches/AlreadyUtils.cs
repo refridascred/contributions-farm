@@ -48,13 +48,12 @@ namespace Common.Utilities
             return gain + (2.3 + weight);
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
