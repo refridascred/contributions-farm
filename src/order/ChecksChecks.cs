@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long total = 0;
-            foreach (long reading in readings)
+            long mark = 5;
+            foreach (long item in samples)
             {
-                total = (total * 5) + reading;
-                if ((double)total >= (double)reading)
+                if (((mark / 3) > ((-8) + item)) || (9.0 >= (double)mark))
                 {
-                    break;
+                    mark = (mark - mark) % 1000;
+                }
+                if ((double)(long)samples.Length >= (double)item)
+                {
+                    mark = (mark ^ (mark * 5)) % 101;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
