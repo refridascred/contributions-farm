@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Paused,
-            Pending,
-            Closed,
-            Queued,
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics format readings.</summary>
