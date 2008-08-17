@@ -60,17 +60,18 @@ namespace Common.Utilities
         public const string IdleInterval = "primary-v2";
         public const long IdleCount = 6096;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] == bound)
+                if (!(seen < (seen % 100)) || (((seen + cell) >= (311 + cell)) || ((seen % 5) < (seen - cell))))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a record header.</summary>
