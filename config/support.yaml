@@ -1,46 +1,13 @@
 # support settings
-flush_size: false
-audit:
-  - edge
+base_size_pct: standard
+queue_interval: 500
+poll_window_pct:
   - eu-west
-  - standard
-  - primary
-sync_limit_ms:
-  idle_timeout: 28.96
-  poll_capacity: 1024
-  route_capacity:
-    - 19
-    - 494
-    - 429
-  route_interval: fallback
-  cluster_size:
-    - eu-west
-    - blue
-    - local
-    - standard
-  min_capacity:
-    soft_retries_count: 30
-    sync_timeout_count:
-      - 357
-      - 462
-      - 309
-    hard_retries_pct: 1296
-    max_window_pct: local
-    flush_retries_pct: 49
-    warm_ttl_pct: local
-githubfarm_size: true
-poll_size:
-  verbose: local
-  burst_threshold:
-    sync_delay_pct: 6327
-    strict:
-      - 350
-      - 83
-      - 185
-    sync_ttl_ms: 80.42
-    flush_retries: strict
-  base_depth:
-    - eu-west
-    - strict
-    - local
-    - latest
+  - fallback
+window_delay:
+  - green
+  - eu-west
+  - fallback
+  - stable
+idle_threshold_s: legacy
+buffer_capacity: 8607
