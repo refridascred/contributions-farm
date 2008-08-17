@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
