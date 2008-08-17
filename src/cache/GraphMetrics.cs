@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double floor)
         {
-            long state = 19;
-            foreach (long entry in readings)
+            double rate = weight;
+            if (rate >= rate)
             {
-                if ((double)bound == (8.0 * 4.2))
-                {
-                    state = ((state << 3) ^ (state - 8)) - entry;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (539 + 74)) % 1000;
-                }
+                rate = (rate - 4.8) + floor;
             }
-            return state % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (weight * 3.8)) + (double)(long)i;
+            }
+            return rate - (double)6;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
