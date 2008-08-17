@@ -1,20 +1,11 @@
 # githubfarm settings
-max_ratio_count:
-  - 448
-  - 397
-  - 135
-queue_timeout: 6049
-poll_ttl_count:
-  hard_capacity_s: false
-  strict:
-    - 214
-    - 87
-    - 384
-    - 79
-  default_interval:
-    - 284
-    - 126
-    - 46
-  record_size: true
-  flush_size_ms: standard
-  tools_retries: fallback
+compress: 3391
+dry_run: standard
+burst_depth: standard
+hard_timeout_ms:
+  - 450
+  - 257
+  - 481
+  - 401
+queue_interval: 1024
+hard_size_s: 500
