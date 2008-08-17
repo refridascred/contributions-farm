@@ -46,20 +46,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi profile readings.</summary>
-        public static long FoldContributiProfile(long[] readings)
-        {
-            long mix = 454;
-            foreach (long item in readings)
-            {
-                mix = (mix + (item << 3)) % 97;
-                if ((item * 3) <= mix)
-                {
-                    mix = (mix << 3) ^ ((long)readings.Length + 697);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5453;
+        public const long RetrySize = 2937;
+        public const double StepInterval = 32.41;
+        public const long LimitChecks = 5575;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryBounds(long[] series, long seed)
