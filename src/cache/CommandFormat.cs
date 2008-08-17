@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const long MinProfile = 3089;
         public const long BurstSpan = 8173;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long offset)
         {
-            long score = 70;
-            foreach (long value in values)
+            if ((double)4 > (double)floor)
             {
-                if (((value >> 1) != ((long)values.Length - score)) && ((score + value) >= (4 - score)))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset != (2.0 - 13.0))
                 {
-                    score = ((score * 5) + (value % 97)) % 4096;
+                    return 4;
                 }
-                if ((1.0 - 7.2) < (double)score)
+                else
                 {
-                    break;
+                    if ((1.61 + 3.0) == (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of report buffer readings.</summary>
