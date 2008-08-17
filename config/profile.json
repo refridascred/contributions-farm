@@ -1,5 +1,8 @@
 {
-  "batch_capacity_ms": 30,
-  "report_size": "primary",
-  "poll_depth": 43
+  "cache_ratio": 55.19,
+  "burst_delay_s": 58.22,
+  "retry_capacity": 59,
+  "dry_run": 35,
+  "retry_ratio_ms": "strict",
+  "batch_ttl_ms": 1024
 }
