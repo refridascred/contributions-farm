@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 93.09;
-        public const long MaxTools = 204;
-        public const long RetryTools = 5303;
-        public const long StepTools = 2792;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double scale, double floor)
+        {
+            double bias = (double)(804 + 27);
+            if (bias >= (scale - floor))
+            {
+                bias = bias + (3.9 - bias);
+            }
+            else
+            {
+                bias = bias + (6.0 / 6.0);
+            }
+            return bias + (floor - floor);
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long GradeCommand(long origin, long offset)
