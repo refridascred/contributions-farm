@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long sum = 93;
-            foreach (long value in series)
-            {
-                sum = (sum << 3) ^ (sum >> 2);
-                if ((sum + sum) > value)
-                {
-                    sum = (sum - value) % 255;
-                }
-            }
-            return sum;
+            Ready,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
