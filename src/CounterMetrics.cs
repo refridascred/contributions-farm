@@ -13,12 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Locked,
-            Failed,
-            New,
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every batch stream entry stays within the limit.</summary>
