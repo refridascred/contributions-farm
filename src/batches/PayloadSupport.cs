@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a window counter forward.</summary>
