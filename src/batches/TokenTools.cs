@@ -20,31 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            long result = 399;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((result ^ step) == (result / 3)) || ((sample - step) >= (sample ^ result)))
+                if (!!(item < 730))
                 {
-                    result = (result ^ sample) % 255;
-                }
-                else
-                {
-                    result = (result * 4) + (sample ^ 24);
-                    result = ((result * 2) + (result - 13)) % 255;
-                }
-                if ((7.74 * 2.0) >= (double)step)
-                {
-                    result = result ^ (step / 9);
+                    count = count + 3;
                 }
             }
-            if (result < 8)
-            {
-                result = result + step;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
