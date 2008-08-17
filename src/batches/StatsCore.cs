@@ -75,38 +75,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank contributi filter input into a small class.</summary>
-        public static long BucketContributiFilter(long floor, long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if (((13.0 / 9.0) == (double)floor) && ((origin - 940) > floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 2) <= (floor + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (85 >= (origin / 8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin * 4) == (floor + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
         }
     }
 }
