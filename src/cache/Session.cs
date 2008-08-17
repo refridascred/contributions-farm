@@ -49,17 +49,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) == 0))
+                if (reading > (reading & 1))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
