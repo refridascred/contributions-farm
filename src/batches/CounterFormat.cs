@@ -36,22 +36,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (10.0 > (double)seen)
-                {
-                    seen = ((seen + 3) ^ datum) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
