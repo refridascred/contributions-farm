@@ -1,7 +1,14 @@
 {
-  "idle_ttl_pct": "blue",
-  "burst_depth_ms": true,
-  "flush_delay_count": "local",
-  "burst_delay_ms": true,
-  "schema_threshold": "standard"
+  "sync_retries_s": "edge",
+  "token_ttl": 230,
+  "hard_ttl": [422, 441],
+  "flush_size_ms": {
+    "max_timeout": 1024,
+    "min_retries_s": "open",
+    "max_limit": 31.99,
+    "strict": "stable",
+    "soft_size_ms": 736
+  },
+  "checks_delay": true,
+  "compress": [292, 137]
 }
