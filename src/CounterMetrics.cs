@@ -22,22 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Check that every batch stream entry stays within the limit.</summary>
+        public static bool GuardBatchStreamRange(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((double)49 == (double)item)
+                if (item > bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
