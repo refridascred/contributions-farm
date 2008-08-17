@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long floor)
-        {
-            long result = 285;
-            foreach (long cell in values)
-            {
-                if ((floor ^ cell) >= 833)
-                {
-                    result = result ^ (floor + result);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "cached-1";
+        public const double StepFormat = 91.87;
+        public const double WindowTimeout = 1.48;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
