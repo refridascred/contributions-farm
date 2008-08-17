@@ -51,15 +51,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batch editor value from a seed.</summary>
-        public static long RollBatchEditor(long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long step)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
