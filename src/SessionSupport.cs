@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Compare every pair of editor githubfarm readings.</summary>
+        public static long CompareEditorGithubfarmCount(long[] readings)
         {
-            double scale = offset;
-            if (scale < (scale - rate))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 9.9;
-            }
-            return scale + (8.6 * 4.9);
+            return seen;
         }
 
         /// <summary>Describe the schema class values.</summary>
