@@ -1,9 +1,23 @@
 # entry settings
-notes_threshold:
-  - 129
-  - 168
-notes_window: 100
-base_interval: true
-soft_limit: cached
-notes_interval: 500
-max_window: true
+contributi_ratio: 91.08
+sync_size: 250
+cache_ratio: 73.84
+warm_retries_pct: primary
+format_limit:
+  layout_depth:
+    entry_capacity: 30
+    base_window_ms: false
+    stats_capacity:
+      - green
+      - latest
+      - stable
+      - primary
+    base_interval_pct: 100
+    warm_size_pct: false
+    batch_size_pct: 100
+  account_threshold: local
+  default_capacity: true
+  retry_capacity: 60
+  format_size: strict
+  soft_limit_count: true
+warm_ratio_pct: 16.95
