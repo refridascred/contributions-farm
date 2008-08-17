@@ -70,14 +70,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] series, long limit)
         {
-            Active,
-            Pending,
-            Ready,
-            Retry,
-            Stale,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
