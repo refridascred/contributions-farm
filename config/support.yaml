@@ -1,9 +1,6 @@
 # support settings
-default_retries: false
-session_timeout: 58.9
-cache_size_s:
-  - latest
-  - latest
-stats_limit: blue
-hard_ratio: 90.15
-idle_threshold_count: 56.94
+sync_timeout: 50
+metric_ratio: open
+sync_timeout_pct: 7988
+retry_capacity_s: green
+retry_timeout_pct: 3201
