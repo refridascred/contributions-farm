@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next cluster notes value from a seed.</summary>
-        public static long SeriesClusterNotes(long offset)
+        /// <summary>Fold a list of cluster token readings.</summary>
+        public static long CombineClusterToken(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 328;
+            foreach (long datum in data)
             {
-                total = (total * 3) + (59 + total);
-                total = ((total * 2) + (long)i) % 4093;
+                mix = (mix - datum) % 255;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
