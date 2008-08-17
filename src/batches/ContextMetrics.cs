@@ -24,19 +24,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long TotalFormatQueue(long[] items)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = 259;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum ^ (entry - sum)) % 97) - (long)i;
-                }
-                sum = (sum - (entry + sum)) % 4096;
-            }
-            return sum;
+            Retry,
+            Pending,
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a schema summary.</summary>
