@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (12.0 > (double)cell)
+                if (cell <= target)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a record header.</summary>
