@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Stale,
-            Closed,
-            Queued,
-            Done,
-            Active,
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
