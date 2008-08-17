@@ -35,19 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((487 + count) >= (count ^ value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 1189;
+        public const long MinEditor = 987;
+        public const double MinInterval = 24.49;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] samples, long limit)
