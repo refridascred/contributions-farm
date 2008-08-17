@@ -46,13 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Match up route entry samples.</summary>
+        public static long OverlapRouteEntryCount(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
