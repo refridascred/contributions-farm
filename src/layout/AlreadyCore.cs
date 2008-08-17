@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxWidth = 9216;
-        public const double IdleGithubfarm = 97.56;
-        public const long RetryScore = 2362;
-        public const long IdleSize = 2675;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long seed2)
+        {
+            if (!(seed > (11 * 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) < (9 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2 - seed) <= (seed % 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long offset, long step)
