@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            long sum = 3;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((8 + sum) >= sum)
+                if ((double)seen == (2.4 + 8.94))
                 {
-                    sum = (sum ^ cell) % 101;
-                }
-                else
-                {
-                    sum = sum - (cell - cell);
+                    seen = (seen + 1) + datum;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
