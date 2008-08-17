@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 5266;
-        public const long BaseLevel = 3616;
-        public const string IdleRatio = "legacy";
-        public const long LimitCount = 1609;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftCount = 8986;
