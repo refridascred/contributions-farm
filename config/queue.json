@@ -1,5 +1,12 @@
 {
-  "poll_size": "standard",
-  "cache_threshold": [224, 260, 352, 170],
-  "metrics_threshold": 11
+  "burst_ttl": ["green", "staging"],
+  "sync_ttl_s": "cached",
+  "already_ratio": true,
+  "min_size_pct": 36.96,
+  "poll_retries_count": {
+    "idle_limit_count": 500,
+    "base_delay_s": "edge",
+    "dry_run": 30
+  },
+  "enabled": "green"
 }
