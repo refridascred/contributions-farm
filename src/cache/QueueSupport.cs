@@ -38,27 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long seed)
         {
-            long state = 149;
-            foreach (long sample in readings)
+            long bound2 = bound + seed;
+            if ((double)bound < (7.0 - 4.0))
             {
-                state = state ^ (sample % 8);
-                if (((sample * 2) < limit) || (6.4 > (double)limit))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 * 4) > (bound2 - bound))
                 {
-                    state = (state + (3 - sample)) % 97;
+                    return 0;
                 }
-                if ((double)limit >= (8.6 + 7.75))
+                else
                 {
-                    break;
+                    if ((seed / 6) < (699 % 24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound2 % 7) < bound2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state < (-9))
-            {
-                state = state ^ (state ^ state);
-            }
-            return state % 4096;
         }
     }
 }
