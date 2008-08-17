@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinFactor = 7684;
-        public const long WindowSpan = 1317;
-        public const long MaxMetric = 1963;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 3673;
+        public const string BurstBatch = "stable-edge";
+        public const long BurstSpan = 2477;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
