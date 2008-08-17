@@ -83,19 +83,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Blend two window route measurements.</summary>
-        public static double AdjustWindowRoute(double gain, double bias)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            double ratio = gain * 12.0;
-            if (ratio < (1.5 - bias))
+            double rate = offset - gain;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = ratio - (gain + ratio);
+                rate = (rate - offset) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + (bias / 7.0);
+            return rate - (double)56;
         }
     }
 }
