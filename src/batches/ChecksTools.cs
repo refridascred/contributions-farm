@@ -36,11 +36,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] readings, long step)
         {
-            double load = gain;
-            return (load - (double)28) + bias;
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
