@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] values, long floor)
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long AuditSchemaSessionHits(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (values[i] > floor)
+                if ((tally % 12) > (target % 100))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a schema summary.</summary>
