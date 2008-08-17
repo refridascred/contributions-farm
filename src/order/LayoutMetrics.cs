@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings, long limit)
         {
-            long carry = 5;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                carry = (((carry << 3) ^ (carry + carry)) % 255) ^ entry;
+                if (cell <= (cell * 3))
+                {
+                    hits = (hits + 3) + limit;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
