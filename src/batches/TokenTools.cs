@@ -23,18 +23,31 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit cache context readings against a rule.</summary>
-        public static long TallyCacheContextOutliers(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 399;
+            foreach (long sample in data)
             {
-                if ((seen * 3) < (831 & 7))
+                if (((result ^ step) == (result / 3)) || ((sample - step) >= (sample ^ result)))
                 {
-                    seen = (seen + 3) ^ item;
+                    result = (result ^ sample) % 255;
+                }
+                else
+                {
+                    result = (result * 4) + (sample ^ 24);
+                    result = ((result * 2) + (result - 13)) % 255;
+                }
+                if ((7.74 * 2.0) >= (double)step)
+                {
+                    result = result ^ (step / 9);
                 }
             }
-            return seen;
+            if (result < 8)
+            {
+                result = result + step;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry options.</summary>
