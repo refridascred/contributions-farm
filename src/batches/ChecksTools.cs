@@ -38,17 +38,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Closed,
         }
     }
 }
