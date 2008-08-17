@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 1306;
-        public const string HardDepth = "open-v2";
-        public const string MinSpan = "staging-edge";
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double ratio, double floor)
+        {
+            double ratio2 = (ratio * 15.0) - (double)86;
+            return ratio2 + floor;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] items, long bound)
