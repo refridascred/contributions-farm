@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long AuditTokenBatchesMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((step - 466) == (step ^ entry))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowCount = 4956;
+        public const double IdleGraph = 77.47;
+        public const double WindowGraph = 33.34;
+        public const string HardGraph = "standard-1";
+        public const double StepFactor = 16.12;
 
         /// <summary>Validate account farm readings against a bound.</summary>
         public static bool CheckAccountFarmRange(long[] samples, long offset)
