@@ -57,10 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 13.0;
-        public const long CacheSpan = 5982;
-        public const long MinRatio = 1833;
-        public const double StepPayload = 79.37;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items)
+        {
+            long mark = 236;
+            foreach (long sample in items)
+            {
+                mark = (((mark * 5) + (-576)) % 101) ^ sample;
+                if ((mark & 31) < mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
