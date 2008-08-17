@@ -72,18 +72,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] samples, long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally >> 2) != (84 % 7))
-                {
-                    tally = ((tally + 3) + value) - target;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
