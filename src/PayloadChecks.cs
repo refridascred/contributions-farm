@@ -65,21 +65,18 @@ namespace Common.Utilities
         public const double LimitLayout = 62.53;
         public const double CacheLayout = 68.15;
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)hits <= 12.0)
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
