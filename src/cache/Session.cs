@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSize = 3424;
-        public const long MinDepth = 1004;
-        public const double RetryMetric = 3.4;
-        public const string DefaultMetric = "alpha-v2";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long step)
+        {
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a report format counter forward.</summary>
         public static long RollReportFormat(long bound)
