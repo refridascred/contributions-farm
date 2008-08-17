@@ -33,12 +33,13 @@ namespace Common.Utilities
         public const long MinWidth = 6078;
         public const long IdleRatio = 924;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Retry,
-            Closed,
-            Queued,
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
