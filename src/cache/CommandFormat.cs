@@ -44,17 +44,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a command window reading by value.</summary>
-        public static long FindCommandWindowIndex(long[] data, long target)
+        /// <summary>Grade a record cache value against two limits.</summary>
+        public static long ClassifyRecordCache(long seed, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit != (double)seed)
             {
-                if (data[i] <= target)
+                return 8;
+            }
+            else
+            {
+                if (seed <= (seed >> 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
