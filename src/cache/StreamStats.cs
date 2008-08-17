@@ -26,19 +26,19 @@ namespace Common.Utilities
             return ((load - 5.6) + ratio) + floor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (reading > bound)
+                if (value >= offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
