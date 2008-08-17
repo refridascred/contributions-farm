@@ -25,15 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long anchor = 27;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor ^ (4 + reading)) % 65521;
-            }
-            return anchor % 1000;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
