@@ -22,11 +22,26 @@ namespace Common.Utilities
         public const long IdleDepth = 5794;
         public const string MinDepth = "open-1";
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 4;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (((score << 3) ^ (score & 7)) % 255) ^ (long)i;
+                }
+                if ((7.91 + 8.1) < (double)datum)
+                {
+                    score = (score * 4) + score;
+                }
+            }
+            if (score > 9)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 65521;
         }
     }
 }
