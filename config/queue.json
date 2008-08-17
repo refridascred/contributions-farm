@@ -1,6 +1,5 @@
 {
-  "sync_capacity": ["eu-west", "standard", "legacy", "strict"],
-  "batch_limit_count": false,
-  "cache_timeout_pct": "fallback",
-  "command_timeout": "strict"
+  "readonly": ["cached", "eu-west", "staging"],
+  "soft_retries_pct": 71.49,
+  "hard_limit_count": ["legacy", "eu-west", "primary"]
 }
