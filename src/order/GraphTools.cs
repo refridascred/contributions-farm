@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double floor)
+        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
+        public static bool GuardChannelContributiLimits(long[] data, long floor)
         {
-            double ratio = floor;
-            if (ratio >= (floor * 5.0))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                ratio = ratio - scale;
+                if (sample <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + 10.0;
-            }
-            return ratio - scale;
+            return ok;
         }
 
         /// <summary>Compare every pair of buffer cache readings.</summary>
