@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double MaxDepth = 35.19;
         public const string BatchScore = "primary";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long anchor = 0;
+            foreach (long sample in values)
             {
-                if (datum >= origin)
+                anchor = anchor ^ sample;
+                if (((9.78 - 5.0) <= (double)anchor) && (177 < (anchor << 3)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
