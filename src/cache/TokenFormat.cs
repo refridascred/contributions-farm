@@ -27,21 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report cache readings.</summary>
-        public static long CompareReportCacheCount(long[] series)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -88;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (state < datum)
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - datum) % 101;
+                }
+                else
+                {
+                    state = ((state * 4) + 156) % 97;
+                    state = state - (datum + datum);
+                }
+                if ((323 << 3) <= (state >> 4))
+                {
+                    state = (state ^ datum) % 255;
+                }
+                else
+                {
+                    state = state + (87 * 3);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
