@@ -73,19 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = -108;
+            foreach (long datum in readings)
             {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark + (datum >> 3)) % 255) + step;
             }
-            return flag;
+            if (mark < 454)
+            {
+                mark = (mark - (mark * 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
