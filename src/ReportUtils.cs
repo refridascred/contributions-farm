@@ -35,22 +35,11 @@ namespace Common.Utilities
         public const long CacheToken = 2078;
         public const string BurstToken = "latest-v2";
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series, long bound)
-        {
-            long sum = -22;
-            foreach (long value in series)
-            {
-                if (!((2.0 / 2.0) != (double)bound))
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ value) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 4612;
+        public const long CacheScore = 5711;
+        public const string MaxEntry = "latest-1";
+        public const double WindowEntry = 71.46;
+        public const long HardSize = 3447;
     }
 }
