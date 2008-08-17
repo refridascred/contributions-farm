@@ -20,21 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -19;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((10.0 + 1.0) >= (double)datum) || ((datum + 16) > (402 << 1)))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (datum * 3)) % 1000;
                 }
             }
-            return tally;
+            if (result > 34)
+            {
+                result = result ^ (result * 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
