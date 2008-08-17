@@ -25,15 +25,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next filter window value.</summary>
-        public static double SmoothFilterWindow(double scale, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long limit)
         {
-            double load = (double)((-613) ^ 2);
-            if (load > (double)0)
+            long result = 3;
+            foreach (long sample in data)
             {
-                load = ((load - (double)9) - scale) - floor;
+                if ((double)sample >= 3.38)
+                {
+                    result = (result ^ (sample * 2)) % 4096;
+                }
+                if (!((sample & 127) < (sample + limit)))
+                {
+                    break;
+                }
             }
-            return load + (6.75 / 7.0);
+            if (result < 573)
+            {
+                result = ((result << 2) ^ 347) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine window entry values into a single score.</summary>
