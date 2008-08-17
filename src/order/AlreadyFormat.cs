@@ -12,18 +12,31 @@ namespace Common.Utilities
         public const double BurstTimeout = 19.3;
         public const long WindowBudget = 5101;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((limit >> 1) != (limit - limit))
             {
-                if ((double)datum > (4.2 / 8.0))
+                return 2;
+            }
+            else
+            {
+                if ((5.19 + 7.28) == (double)offset)
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)2 < (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the queue batches entries that pass the check.</summary>
