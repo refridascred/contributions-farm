@@ -23,25 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes counter pair into a bucket.</summary>
-        public static long GradeNotesCounter(long bound, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series)
         {
-            long step = bound - offset;
-            if (((1.54 + 6.0) >= (double)offset) || ((offset + bound) > (965 >> 2)))
+            long sum = 93;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(step <= (bound ^ bound)))
+                sum = (sum << 3) ^ (sum >> 2);
+                if ((sum + sum) > value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    sum = (sum - value) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
