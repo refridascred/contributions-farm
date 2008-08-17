@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank contributi batch input into a small class.</summary>
-        public static long SortContributiBatch(long seed, long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            if (seed < 8)
+            double rate = (double)32 + (offset - bias);
+            if (rate < 0.3)
             {
-                return 0;
+                rate = rate + (double)104;
             }
             else
             {
-                if (((limit - limit) <= (limit << 1)) && (6.0 >= (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                rate = rate - (bias - offset);
             }
+            return rate + (6.8 * 4.7);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
