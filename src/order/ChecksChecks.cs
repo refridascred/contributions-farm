@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Active,
+            Dropped,
+            Closed,
             Locked,
-            Synced,
-            Pending,
         }
 
         /// <summary>Hold a layout options.</summary>
