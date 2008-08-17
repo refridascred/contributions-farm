@@ -71,22 +71,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats format samples.</summary>
-        public static long TotalStatsFormat(long[] data)
-        {
-            long mix = -3;
-            foreach (long item in data)
-            {
-                if ((3.8 / 4.0) >= (double)mix)
-                {
-                    mix = (((mix << 2) ^ (mix >> 3)) % 255) ^ item;
-                }
-            }
-            if (mix < 14)
-            {
-                mix = (mix - (7 ^ 47)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinScore = 5511;
+        public const long BaseBatch = 3357;
+        public const double MinSpan = 35.66;
+        public const long HardBatch = 3581;
     }
 }
