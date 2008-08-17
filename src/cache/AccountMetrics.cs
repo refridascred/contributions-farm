@@ -38,24 +38,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long target, long origin)
+        /// <summary>Locate a commits account reading by value.</summary>
+        public static long FindCommitsAccountIndex(long[] series, long target)
         {
-            if (((origin - target) >= origin) && ((44 + 22) >= target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target * 2) != (target - origin)) && ((target * 5) < 5))
+                if ((series[i] == target) && ((series[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
