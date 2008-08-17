@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const double CacheEntry = 82.15;
         public const long BurstEntry = 6695;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftBudget = "fallback-1";
-        public const string SoftSupport = "local-edge";
-        public const string MinSupport = "open-1";
-        public const string RetrySpan = "legacy-v2";
-        public const long MinRatio = 779;
+        /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
+        public static long SeekNotesGithubfarmIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double CacheBudget = 60.72;
