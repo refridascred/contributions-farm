@@ -1,11 +1,4 @@
 # githubfarm settings
-compress: 3391
-dry_run: standard
-burst_depth: standard
-hard_timeout_ms:
-  - 450
-  - 257
-  - 481
-  - 401
-queue_interval: 1024
-hard_size_s: 500
+contributi_ratio: 23.12
+githubfarm_threshold: 32.31
+session_capacity: staging
