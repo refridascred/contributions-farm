@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (tally > (reading << 1))
+                if (count <= (sample >> 1))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a editor entry.</summary>
