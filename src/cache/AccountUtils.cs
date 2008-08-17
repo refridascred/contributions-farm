@@ -37,13 +37,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Iterate the cluster payload series from a seed.</summary>
+        public static long DeriveClusterPayload(long bound)
         {
-            New,
-            Synced,
-            Ready,
-            Pending,
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((bound << 1) > anchor)
+                {
+                    anchor = (anchor - (anchor / 2)) % 1000;
+                }
+                if ((bound + anchor) <= 35)
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    anchor = (anchor - (314 << 3)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
