@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            Stale,
-            Dropped,
-            Done,
-            Queued,
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
