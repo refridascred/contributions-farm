@@ -33,10 +33,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 3825;
-        public const long BatchFarm = 1021;
-        public const string BatchLevel = "standard-edge";
-        public const double HardFarm = 24.31;
+        public const string BatchFarm = "staging-1";
+        public const long CacheFarm = 6444;
+        public const long RetryFarm = 4267;
+        public const double HardFarm = 53.93;
 
         /// <summary>Measure how many tools support samples are out of range.</summary>
         public static long AuditToolsSupportMatches(long[] items, long bound)
