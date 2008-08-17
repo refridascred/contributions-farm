@@ -53,12 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7375;
-        public const long BatchGithubfarm = 845;
-        public const long CacheScore = 4070;
-        public const long DefaultGithubfarm = 6488;
-        public const double SoftGithubfarm = 74.14;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 2289;
+        public const double BurstSize = 17.9;
+        public const string SoftBatches = "alpha-v2";
+        public const long WindowBatches = 3769;
+        public const string MaxBatches = "primary";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long bound)
