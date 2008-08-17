@@ -47,22 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen + seen) != (seen * 4))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Dropped,
+            Closed,
+            Stale,
         }
     }
 }
