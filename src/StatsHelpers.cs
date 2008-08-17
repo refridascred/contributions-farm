@@ -65,18 +65,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((((cell - seen) != (cell / 6)) && ((13.0 - 3.0) <= (double)limit)) || (seen >= (cell << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 8540;
+        public const string MaxDepth = "local-edge";
+        public const double LimitReport = 78.35;
+        public const double HardReport = 91.88;
+        public const long RetryCount = 7280;
     }
 }
