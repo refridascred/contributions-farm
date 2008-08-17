@@ -13,22 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long ScoreMetricAlready(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long sum = -38;
-            foreach (long reading in items)
-            {
-                if (!((sum - sum) <= (reading - reading)))
-                {
-                    sum = ((sum << 3) ^ (sum + reading)) % 255;
-                }
-                if ((sum + 419) <= (sum - sum))
-                {
-                    sum = ((sum << 3) ^ (sum ^ 1)) % 1000;
-                }
-            }
-            return sum % 97;
+            Queued,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
