@@ -13,39 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long bound = limit + floor;
-            if ((floor ^ bound) >= (85 * 5))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.65 * 8.5) == (double)bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor <= (0.87 / 6.0)))
+                    if ((items[i] + items[j]) < 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor * 5) > (limit ^ limit)) || ((7.8 * 20.0) > (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the window metrics entries that pass the check.</summary>
