@@ -37,23 +37,12 @@ namespace Common.Utilities
         public const string MinInterval = "stable-v2";
         public const long StepMetrics = 3199;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long mark = 436;
-            foreach (long cell in levels)
-            {
-                if (8 > mark)
-                {
-                    mark = mark ^ (cell - cell);
-                }
-            }
-            if (mark > 7)
-            {
-                mark = (mark ^ (mark + mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "alpha";
+        public const string WindowRatio = "latest-edge";
+        public const double CacheScore = 61.24;
+        public const long StepBudget = 4171;
+        public const long MinCount = 403;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] readings)
