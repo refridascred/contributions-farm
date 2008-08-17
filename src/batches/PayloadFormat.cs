@@ -43,25 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long bound, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long floor)
         {
-            long offset = bound - origin;
-            if ((offset >> 4) >= (offset + origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + origin) >= (origin % 16))
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
