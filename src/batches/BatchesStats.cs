@@ -50,15 +50,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] values, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((offset + 67) != ((-106) - reading)) && (reading >= offset))
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
