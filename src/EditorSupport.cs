@@ -65,19 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] data, long limit)
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long MeasureEntryFarmMatches(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item > limit)
+                if ((4.0 + 13.0) < (double)seed)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
