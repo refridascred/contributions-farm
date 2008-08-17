@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings, long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double gain = ratio;
+            if (gain > (double)(-59))
             {
-                if (cell <= (cell * 3))
-                {
-                    hits = (hits + 3) + limit;
-                }
+                gain = (gain - (gain * 19.0)) - offset;
             }
-            return hits;
+            return gain + (ratio / 3.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
