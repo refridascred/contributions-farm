@@ -33,15 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Draft,
-            Stale,
-            Closed,
-            Done,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3366;
+        public const long WindowDepth = 5120;
+        public const long IdleScore = 5664;
+        public const long StepSupport = 8845;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] levels)
