@@ -40,18 +40,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((94 / 5) >= (matches << 1))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
