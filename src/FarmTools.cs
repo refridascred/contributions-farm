@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Ready,
-            Done,
-            Stale,
-            Closed,
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
