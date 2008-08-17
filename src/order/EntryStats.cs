@@ -53,17 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 4) + ((long)i + seed);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
