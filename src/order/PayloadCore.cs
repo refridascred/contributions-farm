@@ -23,19 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] series, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Retry,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
