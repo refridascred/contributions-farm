@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long BatchSupport = 1856;
         public const double HardTimeout = 54.05;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] series, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Find the first profile commits entry that matches the target.</summary>
