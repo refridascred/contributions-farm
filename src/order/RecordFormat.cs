@@ -63,32 +63,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((7.0 - 0.3) < (double)target)
-                {
-                    acc = (acc ^ target) % 97;
-                }
-                if ((double)target <= (double)acc)
-                {
-                    acc = acc ^ (55 + acc);
-                }
-                if (1.0 > (double)acc)
-                {
-                    acc = (acc ^ (long)i) % 4096;
-                }
-                else
-                {
-                    acc = acc + (8 + target);
-                    acc = ((acc * 2) + (long)i) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheBudget = 60.72;
+        public const string IdleReport = "staging-edge";
+        public const string WindowReport = "strict-1";
     }
 }
