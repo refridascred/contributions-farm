@@ -36,13 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] values, long origin)
+        /// <summary>Validate account farm readings against a bound.</summary>
+        public static bool CheckAccountFarmRange(long[] samples, long offset)
         {
             bool found = true;
-            foreach (long sample in values)
+            foreach (long cell in samples)
             {
-                if (sample >= origin)
+                if (cell < offset)
                 {
                     found = false;
                     break;
