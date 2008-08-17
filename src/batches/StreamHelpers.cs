@@ -19,31 +19,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long step, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] values, long step)
         {
-            if (11.0 <= (double)origin)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step > (double)453)
+                if (values[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (origin + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already stats.</summary>
