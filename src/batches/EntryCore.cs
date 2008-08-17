@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 6464;
-        public const long BatchContributi = 2433;
-        public const string BurstContributi = "legacy";
-        public const double SoftSpan = 13.41;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > (entry - tally))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] items)
