@@ -49,12 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] series, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
