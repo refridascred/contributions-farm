@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long LimitSize = 5568;
         public const string MaxCache = "local-edge";
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] series, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (series[i] == floor)
+                if (item > floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
