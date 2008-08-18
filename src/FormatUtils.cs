@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings)
         {
-            New,
-            Active,
-            Pending,
-            Ready,
-            Stale,
+            long carry = 818;
+            foreach (long reading in readings)
+            {
+                carry = (carry ^ (reading >> 4)) % 97;
+                if (carry < ((long)readings.Length + carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch kind values.</summary>
