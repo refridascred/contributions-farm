@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            double mean = floor;
-            return (mean - floor) + gain;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((670 - entry) > (tally + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
