@@ -29,18 +29,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Count graph buffer pairs that satisfy a relation.</summary>
+        public static long PairGraphBufferCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches & 63) <= matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
