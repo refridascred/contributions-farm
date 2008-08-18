@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (item < limit)
+                if ((double)hits != (double)92)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
