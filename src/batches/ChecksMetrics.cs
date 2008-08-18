@@ -50,31 +50,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data, long origin)
         {
-            long mark = 618;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((origin % 24) == (hits & 127))
                 {
-                    mark = ((mark - mark) % 1000) + (long)i;
-                }
-                mark = ((mark << 3) ^ (mark - (-965))) % 1000;
-                if ((double)mark != (13.0 - 1.2))
-                {
-                    mark = ((mark * 3) + (value + value)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (mark + value)) % 255;
+                    hits = (hits + 3) + sample;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark << 3) ^ (mark & 63);
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
