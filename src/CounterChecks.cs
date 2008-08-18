@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] data)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((53 / 2) < (sample + sample)) || (((sample - 2) > (sample * 4)) && ((double)hits >= (7.0 * 0.8))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
