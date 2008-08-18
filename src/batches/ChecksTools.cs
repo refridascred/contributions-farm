@@ -19,21 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 482;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc + (target / 6);
+                acc = (acc + (reading + target)) % 97;
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
