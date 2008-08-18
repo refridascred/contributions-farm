@@ -33,12 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryTimeout = 65.44;
-        public const long RetryWindow = 5122;
-        public const long MaxSpan = 5473;
-        public const long LimitScore = 2957;
-        public const string MinLevel = "staging-edge";
+        /// <summary>Compare every pair of order githubfarm readings.</summary>
+        public static long OverlapOrderGithubfarmCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
