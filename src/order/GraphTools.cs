@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long StepReport = 1200;
         public const double BaseReport = 59.12;
 
-        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
-        public static bool GuardChannelContributiLimits(long[] data, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer cache readings.</summary>
