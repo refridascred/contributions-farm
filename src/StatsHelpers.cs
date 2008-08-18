@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double rate, double bias)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double rate2 = bias / 9.0;
-            if (rate2 < 20.0)
-            {
-                rate2 = rate2 - (rate / 9.0);
-            }
-            return rate2 + (bias / 4.0);
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
