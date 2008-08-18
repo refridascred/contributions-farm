@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next notes cluster value.</summary>
-        public static double ScaleNotesCluster(double scale, double offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double rate = offset;
-            if (rate < (scale - rate))
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + rate;
+            Stale,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
