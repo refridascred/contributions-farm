@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const string RetryBuffer = "cached-1";
         public const double CacheTimeout = 87.77;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] series)
         {
-            long anchor = 93;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)anchor > (8.6 + 6.7))
+                if (((cell >> 4) <= (tally + 673)) && ((cell % 64) < (tally % 60)))
                 {
-                    anchor = ((anchor - anchor) + value) + target;
+                    tally = tally + 2;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
