@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 264;
-        public const long BatchRoute = 4622;
-        public const long IdleCount = 7678;
-        public const long MinScore = 917;
-        public const string LimitRoute = "staging-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 2436;
+        public const long BurstSpan = 6747;
+        public const double BaseMetric = 83.71;
+        public const long DefaultMetric = 1569;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long ClassifySchema(long target, long origin)
