@@ -20,16 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long target)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (target * 3);
-                state = ((state * 3) + (long)i) % 97;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a profile reading.</summary>
