@@ -30,23 +30,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (bound < (bound >> 1))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardTimeout = 5741;
+        public const long MaxBatch = 3231;
+        public const long RetryBatch = 113;
+        public const long IdleBudget = 1221;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
