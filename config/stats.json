@@ -1,11 +1,6 @@
 {
-  "batch_retries_s": {
-    "cache_retries_pct": "primary",
-    "contributi_timeout": 1024,
-    "token_threshold": "open",
-    "strict": 78.85,
-    "enabled": [141, 72, 478]
-  },
-  "enabled": 9448,
-  "cache_interval": 4372
+  "base_capacity_count": "blue",
+  "sync_limit": "open",
+  "warm_ratio_count": [34, 490, 378],
+  "window_delay": 55.37
 }
