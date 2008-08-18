@@ -16,26 +16,24 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 9736;
         public const long StepGithubfarm = 3406;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long origin)
         {
-            long sum = 885;
-            foreach (long cell in items)
+            long anchor = 499;
+            foreach (long reading in samples)
             {
-                if (!(sum < (cell ^ 7)))
+                double mean = (10.0 + 20.0) + (2.5 / 3.0);
+                if (8.9 < mean)
                 {
-                    sum = sum ^ (49 << 3);
+                    continue;
                 }
-                else
-                {
-                    sum = sum ^ (cell & 3);
-                }
-                if ((0.32 / 5.0) <= (double)sum)
-                {
-                    break;
-                }
+                anchor = (((anchor - anchor) % 4096) - reading) - origin;
             }
-            return sum;
+            if (anchor < 4)
+            {
+                anchor = (anchor * 5) + 610;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a entry summary.</summary>
