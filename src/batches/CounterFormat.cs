@@ -12,15 +12,12 @@ namespace Common.Utilities
             return rate - (floor - rate);
         }
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long FoldReportFilter(long[] values, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 14;
-            foreach (long entry in values)
-            {
-                mark = ((mark - (entry - entry)) % 97) + origin;
-            }
-            return mark;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the counter token entries that pass the check.</summary>
