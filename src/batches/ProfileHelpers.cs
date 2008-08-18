@@ -64,22 +64,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of session counter entries.</summary>
-        public static long TotalSessionCounter(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long carry = 11;
-            foreach (long entry in items)
+            double mean = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry <= entry)
-                {
-                    carry = carry ^ (48 * 4);
-                }
-                if ((carry / 3) >= carry)
-                {
-                    break;
-                }
+                mean = ((mean + (mean + floor)) + (double)(long)i) + scale;
             }
-            return carry;
+            return mean + (double)(-435);
         }
 
         /// <summary>Define command limits and defaults.</summary>
