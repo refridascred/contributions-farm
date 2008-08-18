@@ -64,15 +64,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            long state = 78;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                state = ((state ^ (state >> 2)) % 97) + datum;
+                if (matches > value)
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the route order entries that pass the check.</summary>
