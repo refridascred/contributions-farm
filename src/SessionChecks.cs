@@ -40,18 +40,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((3 >> 1) > hits)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 61.77;
+        public const double DefaultInterval = 31.29;
+        public const long CacheWidth = 3724;
+        public const double DefaultPayload = 15.47;
+        public const long IdlePayload = 8047;
     }
 }
