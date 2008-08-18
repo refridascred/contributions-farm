@@ -58,17 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long bound)
+        /// <summary>Blend two channel already measurements.</summary>
+        public static double SmoothChannelAlready(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = ratio;
+            if (weight >= (offset + 5.18))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + offset;
             }
-            return -1;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (offset + weight)) - (double)(long)i;
+            }
+            return weight + 15.0;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
