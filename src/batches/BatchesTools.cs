@@ -42,24 +42,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits context pair into a bucket.</summary>
-        public static long ClassifyCommitsContext(long bound, long floor)
-        {
-            if ((double)floor > (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((16.0 * 2.0) < (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2197;
+        public const double HardRatio = 48.19;
+        public const long SoftContext = 3031;
     }
 }
