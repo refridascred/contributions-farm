@@ -20,23 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next report cache value from a seed.</summary>
-        public static long StepReportCache(long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((426 - origin) < (long)i)
-                {
-                    anchor = (anchor << 3) ^ (origin / 2);
-                }
-                else
-                {
-                    anchor = anchor - (origin >> 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
