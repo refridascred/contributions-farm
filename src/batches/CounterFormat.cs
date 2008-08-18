@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const double DefaultSize = 53.92;
         public const double BaseNotes = 63.43;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            New,
+            Queued,
+            Retry,
         }
     }
 }
