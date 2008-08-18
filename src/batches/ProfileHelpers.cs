@@ -53,11 +53,12 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepBudget = "staging-edge";
-        public const long DefaultRatio = 4005;
-        public const long LimitSupport = 590;
-        public const long WindowSupport = 4269;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1808;
+        public const string WindowRatio = "alpha-v2";
+        public const long LimitReport = 7381;
+        public const long BatchReport = 2681;
+        public const long WindowReport = 6337;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
