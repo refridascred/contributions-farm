@@ -53,11 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 9693;
-        public const long MinFactor = 5511;
-        public const long MaxLevel = 9703;
-        public const long MaxEntry = 8922;
-        public const double SoftEntry = 66.05;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
