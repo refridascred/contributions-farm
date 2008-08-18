@@ -61,21 +61,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] >= bound) && ((levels[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
