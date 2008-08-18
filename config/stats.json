@@ -1,5 +1,13 @@
 {
-  "payload_threshold": true,
-  "record_threshold": 30,
-  "layout_interval": "staging"
+  "cache_limit_ms": {
+    "enabled": 26.04,
+    "persist": 2448,
+    "idle_window_pct": true,
+    "support_depth": false
+  },
+  "warm_depth": 5025,
+  "cluster_limit": 96,
+  "verbose": false,
+  "base_interval_pct": ["open", "stable"],
+  "flush_timeout_s": 30
 }
