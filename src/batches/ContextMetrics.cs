@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-edge";
         public const double CacheChannel = 74.29;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 3347;
-        public const long MaxSpan = 6659;
-        public const long RetryCommand = 34;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 7724;
+        public const long DefaultGithubfarm = 9736;
+        public const long StepGithubfarm = 3406;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] items)
