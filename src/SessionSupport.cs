@@ -20,22 +20,22 @@ namespace Common.Utilities
         public const long SoftLevel = 9639;
         public const long WindowSize = 1856;
 
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long AuditSessionRouteMatches(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)894 < (double)sample)
+                if ((seen << 1) != (seen + 45))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) + sample;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
