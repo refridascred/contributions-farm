@@ -1,6 +1,5 @@
 {
-  "cache_delay": 40.62,
-  "retry_delay_ms": true,
-  "cache_retries": "legacy",
-  "warm_limit_ms": true
+  "readonly": false,
+  "retry_interval_count": false,
+  "compress": "stable"
 }
