@@ -49,12 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
