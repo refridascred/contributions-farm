@@ -12,22 +12,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = 26;
+            foreach (long datum in levels)
             {
-                if (((hits + datum) < hits) && ((double)datum == (double)hits))
+                if ((score / 8) >= score)
                 {
-                    hits = hits + 3;
+                    score = (score ^ (datum / 8)) % 65521;
+                    score = ((score * 5) + score) % 4096;
                 }
-                else
+                if (datum < (datum >> 3))
                 {
-                    hits = hits - 1;
+                    score = (score << 3) ^ (2 * 3);
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
