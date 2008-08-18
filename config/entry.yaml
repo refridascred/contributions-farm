@@ -1,15 +1,6 @@
 # entry settings
-batch_limit: 60
-checks_size:
-  - strict
-  - staging
-  - strict
-  - strict
-cache_capacity: false
-buffer_interval: 23.8
-route_threshold: legacy
-enabled:
-  - 107
-  - 288
-  - 81
-  - 168
+hard_size_pct: 60.34
+warm_window: standard
+compress: primary
+farm_depth: 84.48
+enabled: true
