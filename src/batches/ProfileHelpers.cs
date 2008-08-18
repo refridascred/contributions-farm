@@ -64,18 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((datum - tally) != (datum + datum))
+                if (limit < (reading << 2))
                 {
-                    tally = (tally + 2) + bound;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
