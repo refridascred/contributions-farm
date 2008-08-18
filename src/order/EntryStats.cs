@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 232;
+        public const long StepCount = 754;
+        public const string WindowWidth = "stable-edge";
+        public const long IdleRecord = 2440;
 
         /// <summary>Validate layout stats readings against a bound.</summary>
         public static bool VerifyLayoutStatsBounds(long[] readings, long bound)
