@@ -34,19 +34,13 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
