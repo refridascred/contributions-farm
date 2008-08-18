@@ -1,12 +1,8 @@
 # support settings
-audit: 14
-default_delay_pct:
-  - fallback
-  - fallback
-  - eu-west
-  - latest
-poll_threshold_s:
-  - 216
-  - 406
-  - 330
-  - 403
+retry_retries: 60
+default_depth_ms:
+  - legacy
+  - cached
+  - standard
+  - staging
+dry_run: true
