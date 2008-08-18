@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long bound)
+        /// <summary>Find the first metrics batch entry that matches the target.</summary>
+        public static long LocateMetricsBatchIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
