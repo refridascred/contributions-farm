@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long gap = target - seed;
-            if (((1.0 / 3.0) != (double)seed) || ((gap % 10) < (seed ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (3.4 - 0.4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)seed != (9.7 * 7.8)) || ((seed / 8) >= (target + 0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((gap % 3) < (320 << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
