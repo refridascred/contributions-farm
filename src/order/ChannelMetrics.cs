@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context editor readings against a bound.</summary>
-        public static bool CheckContextEditorLimits(long[] series, long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double rate = span / 4.0;
+            if (rate > (9.47 / 8.0))
             {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (gain * 0.32);
             }
-            return stale;
+            return rate + (double)(-7);
         }
 
         /// <summary>Hold a metrics entry.</summary>
