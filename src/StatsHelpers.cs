@@ -31,14 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Active,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
