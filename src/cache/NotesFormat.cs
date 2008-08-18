@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] samples, long offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits <= (5 / 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 1) - entry) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
