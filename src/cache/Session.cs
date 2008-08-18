@@ -58,18 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session notes samples are out of range.</summary>
-        public static long AuditSessionNotesGaps(long[] levels)
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long IterateTokenPayload(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((1.86 * 2.24) < (double)tally)
+                long tally = floor;
+                tally = (tally * 5) + ((long)i << 2);
+                if (((1.2 * 7.6) <= (double)result) || ((result & 127) <= tally))
                 {
-                    tally = (tally + 1) + datum;
+                    result = (result + (result >> 2)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
