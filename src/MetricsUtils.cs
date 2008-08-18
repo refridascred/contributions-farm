@@ -24,17 +24,27 @@ namespace Common.Utilities
             return ratio + (ratio + bias);
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] >= origin)
+                sum = ((sum << 2) ^ 665) % 65521;
+                long step = sum + (origin >> 4);
+                if (((sum >> 2) <= (step >> 1)) || ((9.0 - 9.3) <= (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum + (origin - (long)i)) % 255;
+                    sum = (sum * 2) + step;
                 }
+                else
+                {
+                    sum = (sum + step) % 97;
+                    sum = (sum - 102) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the graph state values.</summary>
