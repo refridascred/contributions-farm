@@ -39,11 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftSize = 50.91;
-        public const double IdleFarm = 81.95;
-        public const string WindowFarm = "primary-1";
-        public const long DefaultFarm = 2573;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Locked,
+            Dropped,
+            Synced,
+            Pending,
+            Active,
+        }
 
         /// <summary>Fold a list of already window readings.</summary>
         public static long TotalAlreadyWindow(long[] values)
