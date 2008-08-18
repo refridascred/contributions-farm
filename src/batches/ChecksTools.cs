@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxSpan = 1152;
-        public const long CacheLayout = 8198;
-        public const long CacheDepth = 5687;
-        public const double MinCount = 91.05;
-        public const long SoftRatio = 8030;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
