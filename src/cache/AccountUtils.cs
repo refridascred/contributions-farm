@@ -23,14 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long floor, long seed)
         {
-            Closed,
-            Draft,
-            Queued,
-            Dropped,
-            Ready,
+            long gap = floor ^ seed;
+            if (floor < (gap + gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)901 < (double)seed) || (((-6) - 268) > (floor >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((45 - 648) < floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel level values.</summary>
