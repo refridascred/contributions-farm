@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7973;
-        public const string MaxCache = "standard-v2";
-        public const long WindowCache = 8878;
-        public const string BurstCache = "standard";
-        public const double SoftCount = 87.82;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (14 > reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountGaps(long[] items, long offset)
