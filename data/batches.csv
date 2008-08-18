@@ -1,6 +1,10 @@
-id,ratio,state,weight,level
-1,931,legacy,927,981
-2,staging,open,328,3
-3,standard,575,638,550
-4,primary,88.74,7.52,cached
-5,legacy,574,715,blue
+id,level,owner,rank
+1,40.52,606,40.66
+2,53.53,8.07,936
+3,28.16,85.69,373
+4,815,41.81,98.77
+5,68.6,340,fallback
+6,761,strict,53.13
+7,latest,fallback,cached
+8,807,66.82,2.89
+9,447,98.52,legacy
