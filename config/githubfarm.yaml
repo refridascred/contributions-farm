@@ -1,11 +1,17 @@
 # githubfarm settings
-hard_window: 1445
-soft_threshold_count: 1697
-strict: 68
-batches_retries: 32.08
-enabled:
-  - 448
-  - 207
-  - 5
-  - 333
-burst_retries_pct: legacy
+strict:
+  - 286
+  - 17
+verbose: 9327
+soft_timeout:
+  enabled:
+    - latest
+    - primary
+    - strict
+  context_interval: false
+  max_depth_ms: 8013
+  hard_threshold:
+    - 242
+    - 159
+    - 62
+  warm_ratio_count: 68.84
