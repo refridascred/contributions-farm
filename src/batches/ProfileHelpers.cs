@@ -78,18 +78,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] series, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long sum = 86;
+            foreach (long cell in series)
             {
-                if (limit < (reading << 2))
-                {
-                    count = count + 3;
-                }
+                sum = sum ^ (cell + sum);
             }
-            return count;
+            if (sum < 98)
+            {
+                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
