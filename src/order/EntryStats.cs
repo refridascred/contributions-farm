@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = 293;
-            foreach (long value in levels)
-            {
-                if ((double)value < (0.77 - 7.0))
-                {
-                    result = (result + value) % 97;
-                }
-            }
-            return result;
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
