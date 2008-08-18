@@ -1,28 +1,8 @@
 # githubfarm settings
-base_timeout_pct: local
-idle_limit_s: strict
-flush_ratio: latest
-strict:
-  - 432
-  - 243
-  - 138
 persist:
-  burst_interval: latest
-  max_timeout_pct: false
-  base_window_s:
-    base_capacity_ms: cached
-    min_retries: 65
-    compress: false
-    retry_delay: 250
-  persist:
-    - 437
-    - 468
-  stats_interval: fallback
-  editor_capacity:
-    - 234
-    - 148
-    - 417
-enabled:
-  - open
-  - eu-west
-  - local
+  - 333
+  - 12
+enabled: false
+batch_threshold_ms: staging
+verbose: fallback
+compress: 5158
