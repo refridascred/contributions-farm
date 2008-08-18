@@ -1,12 +1,6 @@
 {
-  "batch_limit_pct": 61,
-  "batch_ratio": {
-    "persist": "primary",
-    "record_window": 2875,
-    "audit": "open"
-  },
-  "entry_timeout": ["standard", "green", "stable", "open"],
-  "readonly": "standard",
-  "min_depth_ms": ["blue", "primary"],
-  "retry_timeout_s": ["stable", "primary"]
+  "checks_limit": "blue",
+  "strict": 56.93,
+  "githubfarm_depth": true,
+  "checks_interval": true
 }
