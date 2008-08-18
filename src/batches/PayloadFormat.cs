@@ -44,26 +44,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = 780;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum ^ item) + (long)i;
-                }
-                if (((sum + sum) <= sum) && ((double)item >= 7.89))
-                {
-                    sum = sum + (sum << 1);
-                }
-            }
-            if (sum < 828)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            Ready,
+            Active,
+            Draft,
+            Pending,
+            Closed,
         }
     }
 }
