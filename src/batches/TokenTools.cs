@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const double BatchNotes = 12.74;
         public const string BatchRatio = "legacy-edge";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] values, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
