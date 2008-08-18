@@ -21,11 +21,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many report batch samples are out of range.</summary>
+        public static long MeasureReportBatchMatches(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((184 + matches) <= origin)
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
