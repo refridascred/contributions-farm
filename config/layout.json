@@ -1,6 +1,7 @@
 {
-  "flush_timeout_count": 8382,
-  "editor_size": 1830,
-  "poll_delay": [76, 418, 469],
-  "audit": 58
+  "dry_run": true,
+  "readonly": "fallback",
+  "verbose": "strict",
+  "buffer_ttl": [290, 487],
+  "hard_ttl_pct": "latest"
 }
