@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Paused,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryWidth = 6569;
+        public const long LimitRatio = 953;
+        public const string BurstProfile = "primary-1";
+        public const string IdleLevel = "open-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string IdleProfile = "staging-1";
