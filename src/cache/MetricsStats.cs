@@ -82,18 +82,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] items, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                if ((4 ^ datum) >= (origin % 64))
+                if (item <= 0)
                 {
-                    count = count + 3;
+                    anchor = (anchor - ((long)series.Length ^ 952)) % 1000;
+                    anchor = (anchor << 2) ^ (step >> 5);
+                }
+                if ((step >= (step + step)) && (item >= (anchor ^ anchor)))
+                {
+                    anchor = (anchor + anchor) % 65521;
                 }
             }
-            return count;
+            if (anchor < 3)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
     }
 }
