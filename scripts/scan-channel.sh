@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=496
+log "limit is ${CHANNEL_LIMIT}"
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
