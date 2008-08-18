@@ -34,13 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long limit)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
