@@ -59,18 +59,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading / 3) >= (reading - reading)) && ((matches & 31) != (reading * 2))) && (matches < reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Pending,
+            Draft,
         }
     }
 }
