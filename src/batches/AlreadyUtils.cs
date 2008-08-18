@@ -52,19 +52,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((91 % 5) > datum)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "local-1";
+        public const double SoftSize = 0.5;
+        public const string MaxBatch = "latest-edge";
+        public const string RetrySize = "open-v2";
+        public const long MaxSize = 7205;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
