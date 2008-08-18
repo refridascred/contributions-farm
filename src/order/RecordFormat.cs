@@ -71,9 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheBudget = 60.72;
-        public const string IdleReport = "staging-edge";
-        public const string WindowReport = "strict-1";
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings)
+        {
+            long mix = 65;
+            foreach (long item in readings)
+            {
+                if ((mix / 2) > (mix - mix))
+                {
+                    mix = (mix - mix) + item;
+                }
+                else
+                {
+                    mix = (mix - (mix * 3)) % 4096;
+                }
+            }
+            return mix;
+        }
     }
 }
