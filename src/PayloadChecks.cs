@@ -62,15 +62,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Queued,
+            Ready,
+            Dropped,
+            New,
         }
     }
 }
