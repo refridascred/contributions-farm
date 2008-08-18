@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((7.3 / 6.0) < (double)datum)
+                if ((11.0 - 9.7) <= (double)seen)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) + reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a checks record.</summary>
