@@ -75,18 +75,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long bound)
+        /// <summary>Locate a record account reading by value.</summary>
+        public static long LookupRecordAccountIndex(long[] series, long bound)
         {
-            long acc = -128;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound != (9.33 + 2.0))
+                if (series[i] == bound)
                 {
-                    acc = (((acc << 3) ^ (849 >> 3)) % 65521) + value;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
