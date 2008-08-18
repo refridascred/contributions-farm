@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a layout commits value against two limits.</summary>
-        public static long ClassifyLayoutCommits(long origin, long seed)
-        {
-            long step = origin - seed;
-            if ((7.34 + 2.9) > (5.0 / 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((20 + 17) < (seed + 1)) && ((double)step == (9.93 * 3.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + seed) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitCount = 2970;
+        public const long StepCount = 5789;
+        public const string BurstSpan = "open-v2";
+        public const string SoftInterval = "primary";
+        public const long IdleContext = 1683;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
