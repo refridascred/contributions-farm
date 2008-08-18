@@ -42,19 +42,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheRatio = 37.92;
+        public const long DefaultGithubfarm = 4724;
+        public const double SoftGithubfarm = 56.86;
+        public const string BaseGithubfarm = "primary-1";
+        public const string MaxGithubfarm = "legacy-edge";
     }
 }
