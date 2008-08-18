@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series, long target)
         {
-            double scale = bias;
-            if (scale <= (double)1)
+            long count = 0;
+            foreach (long entry in series)
             {
-                scale = (scale - (15.0 + scale)) - rate;
+                if ((double)target != (10.0 + 2.1))
+                {
+                    count = (count + 1) + entry;
+                }
             }
-            return scale + (2.9 * 8.6);
+            return count;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
