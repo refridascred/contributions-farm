@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels, long origin)
         {
-            double rate = span;
-            if (rate <= ratio)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                rate = rate - (double)806;
+                if ((double)origin >= (double)677)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - ratio;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
