@@ -1,12 +1,14 @@
 # Command notes
 
-Run the account check before changing any record limits.
-The batches module keeps commits values in sync with the layout cache.
-The support report groups every notes by contributi.
+Each counter is validated before it reaches the batches queue.
+Keep order and window names short and lowercase.
+
+Use channel settings to tune how often session data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new queue fields
-- Prefer already defaults
-- Log every cache change
+- Document new format fields
+- Prefer batch defaults
+- Review schema limits each release
+- Keep batch values small
