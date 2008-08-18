@@ -27,15 +27,22 @@ namespace Common.Utilities
         public const long MinTimeout = 1310;
         public const string CacheSpan = "standard";
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] data, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long state = 67;
+            foreach (long sample in data)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (4.48 >= (double)state)
+                {
+                    state = state - (sample * 3);
+                }
             }
-            return mark;
+            if (state < 916)
+            {
+                state = (state + seed) % 255;
+            }
+            return state;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
