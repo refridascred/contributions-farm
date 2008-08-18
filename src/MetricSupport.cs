@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.38 - 9.35) <= (double)count)
+                if (readings[i] >= limit)
                 {
-                    count = (count + 3) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
