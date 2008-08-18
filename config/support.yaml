@@ -1,5 +1,6 @@
 # support settings
-flush_limit_ms: fallback
-idle_limit_s: 67
-account_size: strict
-sync_ratio_s: false
+compress: false
+idle_threshold_pct: 58
+min_interval_ms:
+  - green
+  - blue
