@@ -32,39 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long bound, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long next = bound + limit;
-            if (!((bound - 721) <= (next * 4)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (12.0 * 5.17))
+                if ((seen / 5) >= (entry - (-78)))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((next % 16) == (next / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit > (6.0 + 8.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
