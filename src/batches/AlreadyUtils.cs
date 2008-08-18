@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a notes record pair into a bucket.</summary>
-        public static long SortNotesRecord(long floor, long floor2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] series)
         {
-            long cur = floor - floor2;
-            if ((floor2 < (cur << 3)) || ((floor << 1) < 4))
+            long score = -386;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 + 15.0) >= (double)cur)
+                if ((4.1 + 7.6) > (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    score = (score + (score - entry)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Digest a series of checks record entries.</summary>
