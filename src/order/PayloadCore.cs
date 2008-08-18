@@ -16,16 +16,11 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double span)
-        {
-            double ratio = (double)(84 * 5);
-            if (ratio >= (double)8)
-            {
-                ratio = ((ratio + 7.22) - scale) - span;
-            }
-            return ratio - (5.3 - 1.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 47.25;
+        public const string MinWidth = "staging-edge";
+        public const double SoftLevel = 46.98;
+        public const double BatchSize = 62.19;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
