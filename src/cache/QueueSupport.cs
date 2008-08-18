@@ -36,22 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] samples, long offset)
+        /// <summary>Accumulate commits counter samples.</summary>
+        public static long CombineCommitsCounter(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 98;
+            foreach (long entry in values)
             {
-                if ((53 / 3) <= offset)
+                if (score <= (score % 64))
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score ^ (entry & 127)) % 1000;
                 }
             }
-            return seen;
+            return score % 97;
         }
     }
 }
