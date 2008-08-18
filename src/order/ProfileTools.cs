@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark - target) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
