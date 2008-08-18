@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Compare every pair of editor metric readings.</summary>
+        public static long MatchEditorMetricCount(long[] series)
         {
-            long total = 790;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)sample < (5.6 - 1.7)) || ((sample & 3) != (total % 12)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (-7);
-                }
-                else
-                {
-                    total = (total + sample) % 1000;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > (-1))
-            {
-                total = (total ^ (total % 7)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
