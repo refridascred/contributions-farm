@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Paused,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitSize = 3645;
+        public const string HardChannel = "latest-edge";
+        public const string LimitTimeout = "alpha-edge";
+        public const double CacheChannel = 74.29;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCommand = 3347;
