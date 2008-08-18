@@ -59,17 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) != 0))
+                if (reading >= (8 + seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
