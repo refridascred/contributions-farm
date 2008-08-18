@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] series, long origin)
+        /// <summary>Blend two command filter measurements.</summary>
+        public static double BlendCommandFilter(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double mean = bias;
+            if (mean > (bias + 17.0))
             {
-                if ((origin + origin) > (origin + value))
-                {
-                    count = count + 2;
-                }
+                mean = (mean + (bias / 6.0)) + span;
             }
-            return count;
+            else
+            {
+                mean = mean + (double)75;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
