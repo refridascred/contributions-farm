@@ -1,12 +1,10 @@
 # Command notes
 
-Each layout is validated before it reaches the graph queue.
-Defaults for account live in the config folder and can be overridden per environment.
-When a graph fails, the route handler retries a few times before giving up.
+The graph report groups every contributi by support.
+When a metrics fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new order fields
-- Validate report input early
-- Prefer githubfarm defaults
-- Keep githubfarm values small
+- Keep format values small
+- Review counter limits each release
+- Prefer profile defaults
