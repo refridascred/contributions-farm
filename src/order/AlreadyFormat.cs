@@ -14,26 +14,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine context metrics values into a single score.</summary>
-        public static long TallyContextMetrics(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 9;
-            foreach (long reading in readings)
-            {
-                if (reading >= (result % 12))
-                {
-                    result = (result - (reading + result)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result / 7);
-                }
-            }
-            if (result < 8)
-            {
-                result = (result * 4) + (81 % 5);
-            }
-            return result;
+            Active,
+            Closed,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a layout header.</summary>
