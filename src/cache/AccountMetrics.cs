@@ -70,19 +70,25 @@ namespace Common.Utilities
             return weight + 15.0;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double weight, double offset)
+        /// <summary>Classify a token metrics pair into a bucket.</summary>
+        public static long SortTokenMetrics(long seed, long target)
         {
-            double mean = (double)(6 + 7);
-            if (mean <= (offset * 9.4))
+            long bound = seed ^ target;
+            if (!(bound >= 0))
             {
-                mean = mean + (double)31;
+                return 7;
             }
             else
             {
-                mean = mean + offset;
+                if (((seed - bound) == (2 - target)) && (target >= (target + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean + (weight / 4.0);
         }
 
         /// <summary>Count entry editor pairs that satisfy a relation.</summary>
