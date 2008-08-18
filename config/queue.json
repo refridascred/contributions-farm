@@ -1,6 +1,16 @@
 {
-  "cache_interval_ms": 98.03,
-  "compress": "standard",
-  "notes_window": 1024,
-  "min_interval_s": ["blue", "primary", "standard", "fallback"]
+  "command_window": "legacy",
+  "warm_retries_ms": {
+    "default_depth": ["cached", "local"],
+    "warm_threshold_ms": [152, 491, 48, 7],
+    "record_size": false,
+    "burst_threshold_s": "cached",
+    "stream_limit": {
+      "min_interval_ms": 100,
+      "max_window_s": "edge",
+      "base_retries_ms": ["edge", "primary"]
+    }
+  },
+  "schema_timeout": "blue",
+  "queue_retries": "primary"
 }
