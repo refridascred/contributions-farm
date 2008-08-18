@@ -55,17 +55,13 @@ namespace Common.Utilities
         public const long BaseBatch = 6314;
         public const long BaseScore = 3207;
 
-        /// <summary>Locate a command graph reading by value.</summary>
-        public static long FindCommandGraphIndex(long[] levels, long step)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            New,
+            Paused,
         }
     }
 }
