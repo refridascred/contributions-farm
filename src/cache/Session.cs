@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double BurstSize = 40.81;
         public const long SoftSize = 4100;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a token header.</summary>
