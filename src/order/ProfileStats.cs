@@ -13,18 +13,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the already layout entries that pass the check.</summary>
-        public static long MeasureAlreadyLayoutMatches(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((172 - 9) > (527 + datum))
-                {
-                    count = count + 1;
-                }
+                total = (total - (total - total)) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
