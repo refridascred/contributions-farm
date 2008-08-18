@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long CountStreamContributiMatches(long[] readings, long bound)
         {
-            Retry,
-            Stale,
-            Done,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound % 16) <= 142)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
