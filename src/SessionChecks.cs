@@ -43,32 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values, long step)
         {
-            long diff = bound - seed;
-            if ((diff >> 3) < (bound + seed))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((diff & 63) > (8 + seed)) && ((5.1 * 3.22) < (double)seed))
+                if ((double)(-615) < (double)hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound % 2) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = ((hits + 3) + entry) + step;
                 }
             }
+            return hits;
         }
     }
 }
