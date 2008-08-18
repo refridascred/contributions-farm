@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] levels)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double bias = floor;
+            if (bias <= (floor + floor))
             {
-                if (hits > (hits + hits))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                bias = bias - gain;
             }
-            return hits;
+            return bias - (double)786;
         }
 
         /// <summary>Define format limits and defaults.</summary>
