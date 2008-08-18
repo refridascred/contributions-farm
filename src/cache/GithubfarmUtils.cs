@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] values, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double drift = (double)(-527) + scale;
+            return (drift + scale) + bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
