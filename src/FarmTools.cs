@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            double bias = (double)(9 - 8);
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                bias = (bias + ratio) + (double)(long)i;
             }
-            return result;
+            return bias - span;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
