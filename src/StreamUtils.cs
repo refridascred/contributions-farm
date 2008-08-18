@@ -51,15 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Count the batches payload entries that pass the check.</summary>
+        public static long MeasureBatchesPayloadOutliers(long[] values, long offset)
         {
-            double mean = bias + bias;
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                mean = (mean - mean) - rate;
+                if ((((13.0 + 17.0) >= (double)offset) && ((cell & 255) <= (offset * 5))) || ((offset & 63) < 5))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mean - (bias + bias);
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
