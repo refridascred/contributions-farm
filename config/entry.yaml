@@ -1,5 +1,15 @@
 # entry settings
-max_ttl_s: 94.36
-min_delay_pct: 8697
-readonly: true
-hard_ttl_count: local
+token_capacity:
+  batch_retries:
+    - primary
+    - blue
+  entry_threshold: 8932
+  readonly: staging
+editor_delay:
+  cache_capacity: false
+  payload_threshold: strict
+  poll_delay: fallback
+payload_ttl: open
+base_ratio: 51
+stream_size: false
+compress: 61
