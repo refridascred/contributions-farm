@@ -40,19 +40,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context order readings.</summary>
-        public static long WeighContextOrder(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long origin)
         {
-            long score = 4;
-            foreach (long item in samples)
+            long diff = offset - origin;
+            if (!((diff - diff) <= (origin / 2)))
             {
-                score = (((score << 3) ^ score) % 4096) + item;
+                return 0;
             }
-            if (score < 2)
+            else
             {
-                score = ((score << 3) ^ ((long)samples.Length + score)) % 97;
+                if ((double)offset <= 11.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return score;
         }
 
         /// <summary>Count the command cluster entries that pass the check.</summary>
