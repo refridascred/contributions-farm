@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next token stats value from a seed.</summary>
-        public static long SeriesTokenStats(long step)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step % 5) >= 8)
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the already layout entries that pass the check.</summary>
