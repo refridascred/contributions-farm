@@ -34,22 +34,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] values, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (3 < (seen % 8))
-                {
-                    seen = ((seen + 3) + value) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc << 2) ^ floor;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every context batches entry stays within the limit.</summary>
