@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = target ^ floor;
+            if (((target - 587) < target) || (740 < cur))
             {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < (double)cur)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
