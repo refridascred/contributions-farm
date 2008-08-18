@@ -76,21 +76,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long PairSchemaCommandCount(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.07 + 7.2) == (double)seen)
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
