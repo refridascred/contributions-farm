@@ -12,19 +12,15 @@ namespace Common.Utilities
             return rate - (floor - rate);
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool VerifyRouteProfileLimits(long[] samples, long target)
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long FoldReportFilter(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 14;
+            foreach (long entry in values)
             {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark - (entry - entry)) % 97) + origin;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count the counter token entries that pass the check.</summary>
