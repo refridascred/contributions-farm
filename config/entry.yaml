@@ -1,26 +1,10 @@
 # entry settings
-compress: 7003
-window_retries: false
-burst_delay_ms: eu-west
-graph_limit:
-  flush_interval:
-    cache_timeout: 49.96
-    compress: false
-    default_retries_pct: false
-    min_retries_ms:
-      - staging
-      - stable
-      - blue
-    readonly: 1024
-  base_interval:
-    - 307
-    - 496
-  poll_timeout: open
-default_threshold: 14.68
-burst_ttl_pct:
-  burst_capacity_pct: true
-  persist: true
-  base_window_ms: false
-  min_ratio: standard
-  dry_run: 83.14
-  base_retries: open
+sync_timeout_count:
+  - legacy
+  - cached
+  - local
+enabled: stable
+batch_size_s: green
+min_interval_pct: false
+batch_timeout_count: false
+dry_run: stable
