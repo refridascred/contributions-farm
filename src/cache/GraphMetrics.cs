@@ -55,14 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Dropped,
-            Done,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 7498;
+        public const double CacheInterval = 18.32;
+        public const long DefaultScore = 962;
+        public const long IdleLayout = 6354;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchDepth = 5029;
