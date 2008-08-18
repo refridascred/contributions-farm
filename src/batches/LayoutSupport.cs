@@ -21,11 +21,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long target)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                score = ((score + (target ^ target)) % 255) + entry;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm status values.</summary>
