@@ -32,18 +32,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] values, long floor)
+        /// <summary>Count cache route pairs that satisfy a relation.</summary>
+        public static long MatchCacheRouteCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > (tally * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) - floor;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
