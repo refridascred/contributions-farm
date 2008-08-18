@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "strict-1";
+        public const long RetryChecks = 1879;
+        public const double MaxChecks = 64.92;
+        public const double BaseLevel = 49.54;
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double rate, double offset)
