@@ -31,13 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Locate a profile channel reading by value.</summary>
+        public static long FindProfileChannelIndex(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
