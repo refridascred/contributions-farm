@@ -1,12 +1,6 @@
 # support settings
-enabled: 1024
-dry_run:
-  - 284
-  - 473
-  - 371
-  - 241
-stream_depth: cached
-command_capacity:
-  - 415
-  - 298
-audit: 18
+max_capacity_pct:
+  - 9
+  - 238
+sync_ratio_s: 31.22
+verbose: standard
