@@ -52,15 +52,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
         {
-            double mean = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = 92;
+            foreach (long datum in data)
             {
-                mean = ((mean + (mean + floor)) + (double)(long)i) + scale;
+                mark = ((mark ^ (25 - 1)) % 1000) ^ datum;
+                mark = (mark << 3) ^ (mark % 5);
             }
-            return mean + (double)(-435);
+            return mark;
         }
 
         /// <summary>Hold a filter entry.</summary>
