@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long BaseWindow = 1288;
         public const double WindowTimeout = 6.92;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long bound)
+        /// <summary>Project the next report githubfarm value.</summary>
+        public static double SmoothReportGithubfarm(double scale, double offset)
         {
-            long prev = offset + bound;
-            if ((bound / 8) < bound)
+            double mean = (11.0 / 4.0) / 4.0;
+            if (mean >= scale)
             {
-                return 1;
+                mean = (mean - (double)20) - offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((3.04 * 13.0) >= (double)prev) && (bound <= (bound * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((19 - offset) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = (mean + scale) - (double)(long)i;
             }
+            return mean + (scale * 0.4);
         }
 
         /// <summary>Hold a farm snapshot.</summary>
