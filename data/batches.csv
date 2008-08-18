@@ -1,10 +1,6 @@
-id,ratio,active,token
-1,staging,862,10.91
-2,91.76,364,70
-3,137,93.73,legacy
-4,174,74.38,85.01
-5,cached,cached,58.34
-6,132,latest,fallback
-7,cached,98.95,edge
-8,open,fallback,34.0
-9,360,15.63,674
+id,active,region,label
+1,388,645,open
+2,213,75,open
+3,621,770,784
+4,177,252,39
+5,612,96.66,969
