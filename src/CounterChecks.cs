@@ -51,26 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] data)
         {
-            long sum = -1;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (((double)(-99) < (double)cell) || ((66 < (count * 5)) || (((long)data.Length * 3) > 9)))
                 {
-                    sum = ((sum + value) % 255) ^ (long)i;
-                }
-                if ((floor + value) < (3 + 9))
-                {
-                    sum = ((sum << 2) ^ (floor / 2)) % 1000;
+                    count = count + 1;
                 }
                 else
                 {
-                    sum = (sum ^ (value + 802)) % 4096;
+                    count = count - 1;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
