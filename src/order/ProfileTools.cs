@@ -38,15 +38,18 @@ namespace Common.Utilities
         public const long LimitStats = 7507;
         public const long MaxStats = 7049;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            double bias = gain - (double)46;
-            if (bias > (gain - bias))
+            long mix = 662;
+            foreach (long reading in samples)
             {
-                bias = bias + (span + span);
+                if (2 >= (mix + reading))
+                {
+                    mix = mix + (33 << 2);
+                }
             }
-            return bias - (gain * 6.0);
+            return mix;
         }
 
         /// <summary>Hold a checks record.</summary>
