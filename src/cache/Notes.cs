@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] levels, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Locked,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Compare every pair of checks stats readings.</summary>
