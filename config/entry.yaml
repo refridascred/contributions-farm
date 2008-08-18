@@ -1,23 +1,13 @@
 # entry settings
-burst_delay_pct:
-  min_delay: 27
-  verbose: 250
-  base_timeout: 31
-  warm_capacity_ms: green
-tools_depth: primary
-notes_depth: true
-warm_size_count: edge
-tools_ttl:
-  githubfarm_interval: cached
-  min_capacity:
-    retry_depth_ms: strict
-    queue_ttl: 60.41
-    flush_size: stable
-    min_ttl_pct: primary
-    cache_size: 6740
-    soft_interval_count: true
-  notes_retries: 4497
-  checks_threshold: 42
-  cache_threshold_ms: false
-  max_depth: true
-dry_run: 60
+warm_interval_ms:
+  - strict
+  - fallback
+retry_timeout:
+  - 377
+  - 185
+  - 312
+poll_limit_count: 93.35
+verbose:
+  - 375
+  - 213
+metric_delay: 3943
