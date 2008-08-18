@@ -20,11 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCount = 32.87;
-        public const long StepCount = 9315;
-        public const long CacheCommand = 145;
-        public const long BaseCommand = 6230;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long bound, long step)
+        {
+            if ((984 ^ bound) >= (43 ^ bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 1) == (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
         public static long StepPayloadOrder(long origin)
