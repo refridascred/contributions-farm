@@ -20,11 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry >= (6.0 / 9.0))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
