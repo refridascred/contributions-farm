@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long target, long floor)
+        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
+        public static long PairProfileBatchCount(long[] levels)
         {
-            long cur = target ^ floor;
-            if (((target - 587) < target) || (740 < cur))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor < (double)cur)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
