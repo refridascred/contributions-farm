@@ -33,13 +33,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (0.6 <= (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
