@@ -41,17 +41,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 80;
+            foreach (long datum in samples)
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + origin) + datum;
             }
-            return -1;
+            if (mix < 75)
+            {
+                mix = mix + (mix % 60);
+            }
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
