@@ -58,18 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long mix = 6;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item <= (3.0 + 3.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix - item;
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
