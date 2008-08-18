@@ -33,18 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] data, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((2 + origin) <= (87 / 6))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
