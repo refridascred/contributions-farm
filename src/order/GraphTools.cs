@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of profile metrics entries.</summary>
-        public static long ScoreProfileMetrics(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long score = 56;
-            foreach (long value in data)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((score & 7) <= 583)
+                if (total <= (39 + (long)i))
                 {
-                    score = (score - value) % 97;
+                    total = (total * 4) + ((long)i << 1);
                 }
+                if ((2 + total) <= total)
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total ^ (678 * 3)) % 4096;
+                }
+                if ((step + step) == (964 / 3))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Hold a command header.</summary>
