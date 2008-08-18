@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheLevel = 7519;
-        public const double BatchStream = 66.69;
-        public const long WindowStream = 8386;
-        public const long StepScore = 8897;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 57.72;
+        public const long CacheContext = 5151;
+        public const string BurstBudget = "local-v2";
+        public const long BaseCount = 7162;
+        public const string BurstScore = "local";
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
