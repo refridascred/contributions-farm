@@ -31,17 +31,22 @@ namespace Common.Utilities
             return load - (double)25;
         }
 
-        /// <summary>Locate a token filter reading by value.</summary>
-        public static long LookupTokenFilterIndex(long[] samples, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                if (15.0 < (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
