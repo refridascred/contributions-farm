@@ -1,10 +1,6 @@
 # support settings
-retry_ratio_ms: open
-warm_interval_pct: false
-buffer_timeout: legacy
-idle_ttl_count:
-  - local
-  - cached
-  - stable
-  - eu-west
-audit: standard
+audit: 7467
+compress:
+  - primary
+  - primary
+flush_ratio_pct: green
