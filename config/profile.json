@@ -1,7 +1,20 @@
 {
-  "default_timeout_ms": "eu-west",
-  "min_ttl_pct": true,
-  "sync_limit_count": [109, 42, 410],
-  "command_timeout": ["stable", "standard", "primary"],
-  "soft_capacity": [268, 459, 417, 133]
+  "soft_timeout_ms": {
+    "notes_retries": 2559,
+    "strict": {
+      "account_depth": 45,
+      "burst_limit": 80.79,
+      "verbose": 19,
+      "dry_run": 45
+    },
+    "farm_delay": {
+      "retry_ratio_ms": "open",
+      "sync_timeout_count": 4,
+      "burst_timeout_count": ["edge", "primary", "strict", "primary"],
+      "session_capacity": 2339
+    }
+  },
+  "batch_size": 31.23,
+  "readonly": "fallback",
+  "cache_timeout": 3860
 }
