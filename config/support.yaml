@@ -1,10 +1,17 @@
 # support settings
-batch_timeout_count: blue
-notes_ttl: 500
-max_size_count: 1024
-verbose:
-  - 125
-  - 336
-  - 423
-soft_retries: edge
-hard_limit: 30
+soft_size:
+  audit: 1024
+  flush_size_s: blue
+  dry_run:
+    - 206
+    - 49
+    - 490
+  hard_window: 61
+  flush_delay_s: false
+  cache_ratio: 46.11
+metric_capacity: true
+base_delay_pct:
+  - legacy
+  - legacy
+  - fallback
+  - blue
