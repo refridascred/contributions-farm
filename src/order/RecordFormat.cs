@@ -22,14 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Active,
-            Stale,
             Synced,
-            Failed,
             Idle,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
