@@ -38,15 +38,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data, long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long state = 236;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state - (state - entry)) % 97) + origin;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
