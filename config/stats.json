@@ -1,5 +1,7 @@
 {
-  "audit": "open",
-  "burst_capacity_s": 72.11,
-  "readonly": 100
+  "cache_timeout_ms": 60,
+  "dry_run": false,
+  "poll_ratio": [249, 150, 31],
+  "checks_interval": 51,
+  "min_retries_count": "standard"
 }
