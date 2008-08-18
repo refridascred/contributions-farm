@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long score = 2;
-            foreach (long cell in data)
-            {
-                if ((4 > score) && ((cell - cell) <= cell))
-                {
-                    score = (score - cell) % 4096;
-                }
-                if (((score ^ 673) == (cell - (-6))) || ((2.8 + 7.1) > (double)score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
