@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 468;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)mark == (14.0 / 6.0)) || ((floor + reading) < ((-524) + mark)))
                 {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 3) ^ (mark - 89);
+                }
+                else
+                {
+                    mark = mark + (floor % 97);
                 }
             }
-            return seen;
+            if (mark < 619)
+            {
+                mark = mark - (floor >> 2);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Rank report input into a small class.</summary>
