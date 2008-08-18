@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long TallyBufferStats(long[] series)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long mix = 85;
-            foreach (long entry in series)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((23 & 7) <= (mix ^ 5))
+                if (!!((double)anchor >= 3.9))
                 {
-                    mix = (mix + entry) % 255;
+                    anchor = anchor - (anchor * 2);
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - mix)) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Hold a editor entry.</summary>
