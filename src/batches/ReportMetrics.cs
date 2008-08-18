@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long bound)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long delta = step ^ bound;
+            if ((delta + 19) >= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((delta / 3) != (delta + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound == (5.4 - 11.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine filter order values into a single score.</summary>
