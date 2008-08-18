@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] samples, long target)
         {
-            Failed,
-            Active,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((9.15 / 7.0) < (double)entry)
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session entry.</summary>
