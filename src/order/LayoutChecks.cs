@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BurstSpan = 5095;
         public const long BurstChannel = 6810;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 57.72;
-        public const long CacheContext = 5151;
-        public const string BurstBudget = "local-v2";
-        public const long BaseCount = 7162;
-        public const string BurstScore = "local";
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] items, long step)
