@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Synced,
+            Done,
+            Paused,
             Active,
-            Draft,
         }
     }
 }
