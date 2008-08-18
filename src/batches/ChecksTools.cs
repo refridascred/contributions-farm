@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next batch window value.</summary>
-        public static double AdjustBatchWindow(double bias, double bias2)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            double weight = (double)((-2) / 6);
-            if (weight > (bias + bias2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + 18.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (9.5 * 4.0);
+            return tally;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
