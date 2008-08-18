@@ -51,12 +51,39 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long limit)
         {
-            Draft,
-            Ready,
-            Done,
+            long lane = target - limit;
+            if ((limit - limit) == (limit + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((66 & 1) == (target - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 + 0.64) > (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane - target) > (limit & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
