@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a report contributi reading by value.</summary>
-        public static long LocateReportContributiIndex(long[] readings, long floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
