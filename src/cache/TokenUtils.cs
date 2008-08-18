@@ -15,19 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two commits contributi measurements.</summary>
-        public static double BlendCommitsContributi(double weight, double offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            double weight2 = offset + (double)55;
-            if (weight2 <= (weight - weight2))
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                weight2 = weight2 + weight2;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight2 + weight)) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return score;
         }
 
         /// <summary>Measure how many layout contributi samples are out of range.</summary>
