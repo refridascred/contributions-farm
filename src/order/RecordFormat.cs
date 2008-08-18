@@ -36,39 +36,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "legacy-1";
         public const long DefaultCount = 3531;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long next = floor ^ seed;
-            if (((seed >> 5) >= (next * 2)) && ((7.9 * 18.0) != (double)next))
+            long carry = 146;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next * 3) >= (-181))
+                carry = ((carry ^ (carry + carry)) % 4096) ^ reading;
+                if (5 <= (carry - carry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((445 + next) >= (98 + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)next != (5.73 * 19.0)) && ((344 % 7) == (99 ^ floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = carry + 6;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate report samples.</summary>
