@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Validate context editor readings against a bound.</summary>
+        public static bool CheckContextEditorLimits(long[] series, long offset)
         {
-            double load = span;
-            if (load < 2.4)
+            bool stale = true;
+            foreach (long value in series)
             {
-                load = (load + span) + scale;
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load - 5.27);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (span * 20.0);
+            return stale;
         }
 
         /// <summary>Hold a metrics entry.</summary>
