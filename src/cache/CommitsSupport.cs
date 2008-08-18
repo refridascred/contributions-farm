@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Digest a series of counter route entries.</summary>
+        public static long WeighCounterRoute(long[] items)
         {
-            double mean = 2.26;
-            if (mean > 1.0)
+            long mark = 23;
+            foreach (long sample in items)
             {
-                mean = ((mean + (mean / 5.0)) - bias) + floor;
+                mark = (mark * 5) + (sample << 3);
+                if (!((sample % 60) != (sample + mark)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)68) + (double)(long)i;
-            }
-            return mean + (double)94;
+            return mark;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
