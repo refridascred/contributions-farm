@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            double ratio2 = offset;
-            if (ratio2 >= 5.56)
-            {
-                ratio2 = ratio2 + 8.96;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - (1.49 / 2.0)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            double mean = (weight + floor) + weight;
+            return mean - floor;
         }
 
         /// <summary>Describe the entry status values.</summary>
