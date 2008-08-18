@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (6.5 <= (double)datum)
+                if ((matches % 5) > 338)
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 1) + value) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
