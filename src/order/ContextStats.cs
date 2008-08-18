@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double MinSize = 64.08;
         public const long WindowCount = 44;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = offset / 2.0;
+            return (scale - (0.25 * 2.0)) + gain;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
