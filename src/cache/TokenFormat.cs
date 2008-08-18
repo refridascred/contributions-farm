@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of support window entries.</summary>
-        public static long ScoreSupportWindow(long[] data, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] series, long offset)
         {
-            long sum = 52;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((214 >> 1) >= (sum / 6))
+                if (datum > offset)
                 {
-                    sum = (sum * 2) + seed;
-                }
-                else
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                if (((sum - 8) <= (seed + seed)) && ((cell + seed) <= (seed - seed)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
