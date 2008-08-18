@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double rate, double bias)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double offset)
         {
-            double rate2 = 7.0;
-            if (rate2 < (rate - bias))
+            double bias = (scale * 0.58) / 4.0;
+            if (bias < scale)
             {
-                rate2 = rate2 - rate2;
+                bias = (bias + (15.0 + bias)) - offset;
             }
-            return rate2 - (double)(-24);
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (scale - bias)) + (double)(long)i;
+            }
+            return bias + (bias / 9.0);
         }
 
         /// <summary>Hold a already header.</summary>
