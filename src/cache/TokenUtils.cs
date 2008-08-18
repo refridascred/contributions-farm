@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double gain, double bias)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            double rate = (double)(2 - 456);
-            if (rate < gain)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                rate = rate - (bias / 5.0);
+                anchor = ((anchor << 2) ^ ((long)i >> 5)) % 65521;
+                anchor = anchor ^ (anchor & 127);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)31) - (double)(long)i;
-            }
-            return rate - (double)84;
+            return anchor;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
