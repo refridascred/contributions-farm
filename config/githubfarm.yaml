@@ -1,10 +1,23 @@
 # githubfarm settings
-command_size:
-  - strict
-  - stable
-token_timeout:
-  farm_retries: eu-west
-  cache_depth: 75.18
-  metric_size: true
-  warm_threshold_s: standard
-flush_timeout: fallback
+cache_depth: 9767
+base_threshold:
+  token_capacity:
+    - green
+    - legacy
+    - green
+  enabled: false
+  window_retries:
+    base_delay: 72
+    editor_threshold:
+      - legacy
+      - local
+      - open
+    record_depth: 72.54
+    default_threshold_s: 76.25
+  editor_capacity: 90.23
+  account_window: 500
+compress: 48
+default_interval_count:
+  max_delay_pct: open
+  soft_size_ms: strict
+  graph_size: 5.62
