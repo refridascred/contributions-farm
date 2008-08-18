@@ -45,9 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 4699;
-        public const long BaseEntry = 9561;
-        public const long RetryEntry = 8618;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
