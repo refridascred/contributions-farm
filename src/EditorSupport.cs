@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 3886;
-        public const long LimitCounter = 3534;
-        public const double SoftDepth = 54.25;
-        public const long MinCounter = 9509;
-        public const long BaseCounter = 1875;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Synced,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 9121;
