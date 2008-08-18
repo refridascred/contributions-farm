@@ -20,19 +20,18 @@ namespace Common.Utilities
             return load + (gain - gain);
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Fold a list of entry order readings.</summary>
+        public static long CombineEntryOrder(long[] series, long step)
         {
-            double rate = span;
-            if (rate >= rate)
+            long sum = 8;
+            foreach (long cell in series)
             {
-                rate = rate - (double)78;
+                if (cell > (716 / 2))
+                {
+                    sum = (((sum * 4) + (673 - 3)) % 65521) - step;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 2.42) - (double)(long)i;
-            }
-            return rate + (6.8 - weight);
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
