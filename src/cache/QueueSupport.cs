@@ -23,17 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel context value from a seed.</summary>
-        public static long DeriveChannelContext(long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ floor;
-                total = (total ^ (total << 3)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate commits counter samples.</summary>
