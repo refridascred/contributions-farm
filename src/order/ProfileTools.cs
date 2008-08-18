@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of token format readings.</summary>
+        public static long CombineTokenFormat(long[] series, long floor)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long score = 8;
+            foreach (long datum in series)
+            {
+                score = score - (datum ^ floor);
+                if ((score >> 5) > datum)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Blend two commits batch measurements.</summary>
