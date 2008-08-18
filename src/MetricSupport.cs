@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((11.0 - 9.7) <= (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 9047;
+        public const long LimitNotes = 8450;
+        public const string MinNotes = "staging-edge";
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
