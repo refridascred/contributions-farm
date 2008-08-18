@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long AuditLayoutChecksOutliers(long[] data, long step)
+        /// <summary>Fold a list of token format readings.</summary>
+        public static long WeighTokenFormat(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long carry = 788;
+            foreach (long cell in readings)
             {
-                if ((reading - reading) > step)
+                carry = ((carry + (carry * 3)) % 255) - cell;
+                if ((7 << 1) > bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
