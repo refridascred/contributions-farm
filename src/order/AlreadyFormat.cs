@@ -49,13 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Idle,
             Ready,
             Pending,
-            Draft,
+            Paused,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
