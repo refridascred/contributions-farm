@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double rate = weight;
-            if (rate >= rate)
-            {
-                rate = (rate - 4.8) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (weight * 3.8)) + (double)(long)i;
-            }
-            return rate - (double)6;
+            New,
+            Locked,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a stats record.</summary>
