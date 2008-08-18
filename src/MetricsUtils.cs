@@ -24,21 +24,19 @@ namespace Common.Utilities
             return ratio + (ratio + bias);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
+        public static bool VerifyEditorContributiBounds(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= target)
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the graph state values.</summary>
