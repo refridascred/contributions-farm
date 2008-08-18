@@ -1,16 +1,5 @@
 {
-  "flush_ttl_count": 85.0,
-  "max_size_s": 250,
-  "dry_run": {
-    "idle_ratio": "staging",
-    "enabled": "eu-west",
-    "sync_retries_ms": 100,
-    "soft_threshold": 321
-  },
-  "compress": {
-    "warm_ttl": false,
-    "readonly": 4691,
-    "max_capacity_s": 30
-  },
-  "retry_timeout": 7910
+  "base_limit": "local",
+  "warm_interval_s": ["stable", "fallback"],
+  "strict": 12.35
 }
