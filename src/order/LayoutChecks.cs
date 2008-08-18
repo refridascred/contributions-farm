@@ -33,17 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate2 = 7.0;
+            if (rate2 < (rate - bias))
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - rate2;
             }
-            return -1;
+            return rate2 - (double)(-24);
         }
 
         /// <summary>Hold a already header.</summary>
