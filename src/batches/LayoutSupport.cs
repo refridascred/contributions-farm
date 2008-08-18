@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long step)
         {
-            long sum = 47;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum ^ sum;
-                if (entry > (limit + sum))
+                if (values[i] > step)
                 {
-                    sum = sum + (entry & 255);
-                }
-                else
-                {
-                    sum = (sum * 5) + entry;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
