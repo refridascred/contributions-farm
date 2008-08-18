@@ -48,27 +48,26 @@ namespace Common.Utilities
         public const double IdleBudget = 9.39;
         public const long BatchEditor = 672;
 
-        /// <summary>Combine editor githubfarm values into a single score.</summary>
-        public static long TallyEditorGithubfarm(long[] items, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long carry = 83;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                carry = carry - (origin & 7);
-                if ((cell & 3) < (cell + (long)items.Length))
+                sum = (sum + (8 >> 3)) % 97;
+                if (!!((sum << 3) > 2))
                 {
-                    carry = (carry + (cell & 31)) % 101;
+                    sum = (sum - (offset - offset)) % 97;
+                    sum = (sum + (sum - 27)) % 101;
                 }
-                else
+                if ((long)i < (sum - sum))
                 {
-                    carry = ((carry * 2) + (carry ^ (long)items.Length)) % 4096;
+                    sum = (sum ^ (sum / 8)) % 255;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (carry < 161)
-            {
-                carry = carry - (carry - origin);
-            }
-            return carry % 97;
+            return sum;
         }
     }
 }
