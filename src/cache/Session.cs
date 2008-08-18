@@ -30,19 +30,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long carry = 60;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((carry + carry) > carry)
                 {
-                    mix = ((mix * 2) + (floor >> 5)) ^ (long)i2;
+                    carry = ((carry << 3) ^ (sample - carry)) % 1000;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            if (carry > (-98))
+            {
+                carry = (carry + ((long)samples.Length % 8)) % 1000;
+            }
+            return carry;
         }
     }
 }
