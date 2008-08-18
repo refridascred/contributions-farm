@@ -1,5 +1,8 @@
 # entry settings
-editor_retries: latest
-batch_limit: 50.99
-min_delay_s: open
-warm_size: true
+warm_size_s: 83.9
+contributi_ttl:
+  - 456
+  - 326
+strict: open
+route_window: false
+poll_timeout_ms: standard
