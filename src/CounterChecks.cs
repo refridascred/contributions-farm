@@ -78,18 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] series, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((2.0 - 3.9) != (double)(long)series.Length))
-                {
-                    hits = ((hits + 1) + item) + bound;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
