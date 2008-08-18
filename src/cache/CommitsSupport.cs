@@ -70,22 +70,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples)
-        {
-            long result = 321;
-            foreach (long entry in samples)
-            {
-                if ((18.0 * 9.15) > (double)entry)
-                {
-                    result = (result * 3) + (760 + entry);
-                }
-            }
-            if (result < 8)
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 8305;
+        public const string CacheFormat = "stable-v2";
+        public const long StepLevel = 9152;
     }
 }
