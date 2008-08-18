@@ -1,7 +1,6 @@
 {
-  "persist": 15.77,
-  "default_threshold_count": 7455,
-  "audit": "strict",
-  "readonly": true,
-  "idle_capacity_count": "blue"
+  "default_capacity_count": 9696,
+  "batch_threshold_ms": 6826,
+  "verbose": "primary",
+  "min_limit_s": true
 }
