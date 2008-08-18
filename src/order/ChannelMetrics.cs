@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (hits <= (hits + hits))
+                if (reading > offset)
                 {
-                    hits = (hits + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
