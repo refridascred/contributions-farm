@@ -19,18 +19,38 @@ namespace Common.Utilities
         public const long BaseCount = 7162;
         public const string BurstScore = "local";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] readings)
+        /// <summary>Classify a queue metric pair into a bucket.</summary>
+        public static long BucketQueueMetric(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (!((5 / 9) >= (offset * 5)))
             {
-                if ((425 - seen) >= (entry & 7))
+                return 2;
+            }
+            else
+            {
+                if ((seed * 5) > offset)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed <= 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((218 > (offset + 3)) || ((offset << 3) >= (offset - seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
