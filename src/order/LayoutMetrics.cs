@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (((reading - count) == (reading / 5)) && !((double)reading >= (5.0 / 4.0)))
+                if ((double)(long)samples.Length > (9.0 * 7.24))
                 {
-                    count = count + 1;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two format measurements.</summary>
