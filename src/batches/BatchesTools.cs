@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
