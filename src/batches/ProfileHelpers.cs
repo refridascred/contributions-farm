@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long CountProfileCommandHits(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item * 4) > (item / 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
