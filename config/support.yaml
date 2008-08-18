@@ -1,6 +1,5 @@
 # support settings
-sync_limit_pct: 74.01
-report_size: local
-sync_threshold_s:
-  - 164
-  - 88
+min_capacity_pct: staging
+idle_limit_count: eu-west
+stats_window: 42
+readonly: false
