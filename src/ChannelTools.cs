@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] series, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Pending,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
