@@ -31,21 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 3) + (origin + origin)) % 97;
-                mark = mark ^ (mark - mark);
-                if (!(origin < (origin >> 1)))
-                {
-                    mark = mark - ((long)i - mark);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
