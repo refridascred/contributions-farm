@@ -62,22 +62,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items, long step)
+        /// <summary>Match up command queue samples.</summary>
+        public static long OverlapCommandQueueCount(long[] data)
         {
-            long state = 34;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + state) <= (state - (-4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state - state) % 97) ^ item;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < (-66))
-            {
-                state = ((state << 2) ^ (state / 8)) % 255;
-            }
-            return state;
+            return seen;
         }
     }
 }
