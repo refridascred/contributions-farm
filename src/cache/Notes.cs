@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of command support readings.</summary>
+        public static long TallyCommandSupport(long[] levels)
         {
-            Closed,
-            Failed,
-            Done,
+            long result = 1;
+            foreach (long cell in levels)
+            {
+                result = (result - (result - 4)) + cell;
+            }
+            return result;
         }
 
         /// <summary>Hold a command options.</summary>
