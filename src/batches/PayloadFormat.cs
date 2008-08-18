@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double floor)
-        {
-            double scale = floor - (double)3;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (ratio / 8.0)) + (double)(long)i;
-            }
-            return scale + (ratio + ratio);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstLevel = 7743;
+        public const long BurstSpan = 8729;
+        public const string LimitSize = "cached";
+        public const long StepSpan = 2545;
+        public const double RetryCount = 66.02;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
