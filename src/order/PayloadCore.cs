@@ -31,19 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double BlendStreamEditor(double scale, double floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double scale2 = 19.0 / 4.0;
-            if (scale2 < scale)
-            {
-                scale2 = scale2 - (double)495;
-            }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 + (scale2 * 3.98);
+            Stale,
+            Queued,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
