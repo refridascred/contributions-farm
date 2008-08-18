@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] levels, long origin)
         {
-            if (((2 - offset) >= step) && ((6.3 + 14.0) == (double)offset))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > (double)step)
+                if (cell <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of checks stats readings.</summary>
