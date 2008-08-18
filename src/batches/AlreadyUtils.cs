@@ -59,9 +59,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6343;
-        public const double SoftBudget = 80.87;
-        public const double CacheCommand = 94.48;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinWidth = "strict";
+        public const string StepReport = "fallback-v2";
+        public const string BurstReport = "latest-v2";
+        public const double WindowRatio = 19.86;
+        public const long MaxLevel = 9895;
     }
 }
