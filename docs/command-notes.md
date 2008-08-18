@@ -1,12 +1,12 @@
 # Command notes
 
-When a account fails, the cache handler retries a few times before giving up.
-Use profile settings to tune how often layout data is refreshed.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any record limits.
+The batches module keeps commits values in sync with the layout cache.
+The support report groups every notes by contributi.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every stream change
-- Prefer commits defaults
-- Validate contributi input early
+- Validate githubfarm input early
+- Document new queue fields
+- Prefer already defaults
+- Log every cache change
