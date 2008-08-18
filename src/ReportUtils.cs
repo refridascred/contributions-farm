@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] data, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long state = 67;
-            foreach (long sample in data)
+            long total = 5;
+            foreach (long sample in items)
             {
-                if (4.48 >= (double)state)
-                {
-                    state = state - (sample * 3);
-                }
+                total = ((total << 2) ^ (total % 60)) - sample;
             }
-            if (state < 916)
-            {
-                state = (state + seed) % 255;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
