@@ -17,18 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] series, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((66 % 3) > (floor + matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a account options.</summary>
