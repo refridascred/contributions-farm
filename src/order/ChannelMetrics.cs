@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double weight, double offset)
-        {
-            double mean = (offset / 8.0) * 16.0;
-            return mean - (weight - weight);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultFactor = 6931;
+        public const string BaseTimeout = "strict-v2";
+        public const long MaxContext = 6625;
+        public const long WindowContext = 6197;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryHits(long[] readings)
