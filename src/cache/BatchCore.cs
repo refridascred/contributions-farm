@@ -24,20 +24,17 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Locate a batch window reading by value.</summary>
+        public static long LookupBatchWindowIndex(long[] data, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin <= mix)
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    mix = mix ^ origin;
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate layout metrics readings against a bound.</summary>
