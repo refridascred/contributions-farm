@@ -27,19 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
