@@ -5,34 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long sum = 28;
-            foreach (long cell in samples)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                long slot = (sum % 7) + sum;
-                if (!((double)slot < 4.7))
-                {
-                    slot = slot - (slot / 5);
-                    slot = (slot + (sum + slot)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    slot = (slot * 5) + (long)samples.Length;
-                    sum = sum - cell;
-                }
-                if ((sum - sum) <= cell)
-                {
-                    sum = (sum + (sum << 1)) % 4096;
-                }
+                mark = (mark - target) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (sum < (-85))
-            {
-                sum = (sum + (sum & 31)) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate batch samples.</summary>
