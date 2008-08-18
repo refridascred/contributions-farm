@@ -1,6 +1,11 @@
-id,count,score,weight,label
-1,14.24,547,693,52.78
-2,green,25.36,local,95.02
-3,75.38,blue,67.72,94.97
-4,126,strict,866,strict
-5,433,staging,451,794
+id,label,region,ratio
+1,strict,strict,primary
+2,local,97.58,legacy
+3,974,latest,44.94
+4,944,270,legacy
+5,primary,primary,51.85
+6,737,local,775
+7,760,49.78,373
+8,239,78.18,34.58
+9,872,649,26.02
+10,27,86.4,97.34
