@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2179;
-        public const long SoftContext = 231;
-        public const long IdleContext = 7811;
-        public const long MinContext = 2073;
-        public const long StepFactor = 6472;
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long TallyStreamFarmHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + 1) > limit)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] readings, long limit)
