@@ -54,12 +54,13 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1808;
-        public const string WindowRatio = "alpha-v2";
-        public const long LimitReport = 7381;
-        public const long BatchReport = 2681;
-        public const long WindowReport = 6337;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string StepNotes = "strict-edge";
