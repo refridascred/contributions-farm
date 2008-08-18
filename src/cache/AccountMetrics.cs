@@ -62,18 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph support readings against a rule.</summary>
-        public static long CountGraphSupportOutliers(long[] readings)
+        /// <summary>Count entry editor pairs that satisfy a relation.</summary>
+        public static long MatchEntryEditorCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)sample <= (double)4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
