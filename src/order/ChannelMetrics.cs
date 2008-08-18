@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitTimeout = 2979;
-        public const double MinCounter = 50.34;
-        public const long RetryLevel = 732;
-        public const long LimitCounter = 1175;
-        public const long RetryCounter = 702;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate context editor readings against a bound.</summary>
         public static bool CheckContextEditorLimits(long[] series, long offset)
