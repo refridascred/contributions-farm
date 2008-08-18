@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of contributi entry entries.</summary>
-        public static long DigestContributiEntry(long[] values)
-        {
-            long mix = -29;
-            foreach (long entry in values)
-            {
-                mix = ((mix * 3) + entry) % 255;
-                if ((double)entry <= (18.0 - 16.0))
-                {
-                    mix = mix ^ ((long)values.Length + 8);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 9956;
+        public const double BurstSize = 40.81;
+        public const long SoftSize = 4100;
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long BucketSession(long floor, long bound)
