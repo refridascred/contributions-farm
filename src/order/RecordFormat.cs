@@ -32,39 +32,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long step)
+        /// <summary>Derive the next metric filter value from a seed.</summary>
+        public static long DeriveMetricFilter(long limit)
         {
-            long slot = offset - step;
-            if (offset < (slot >> 2))
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                result = (result + 210) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)slot > (7.0 + 5.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot << 2) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (20.0 + 5.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
