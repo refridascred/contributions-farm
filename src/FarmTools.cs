@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double rate, double span)
         {
-            Synced,
-            Dropped,
-            Closed,
+            double load = 8.0;
+            if (load >= rate)
+            {
+                load = load + (load + span);
+            }
+            return load + (rate * 5.09);
         }
 
         /// <summary>Define report limits and defaults.</summary>
