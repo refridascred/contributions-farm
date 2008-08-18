@@ -28,13 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long limit)
         {
-            Active,
-            Queued,
-            Closed,
-            Draft,
+            if ((230 & 255) < (target - 96))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit > (6.32 * 3.8)) && ((double)target >= (15.0 / 7.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
