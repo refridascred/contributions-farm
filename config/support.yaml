@@ -1,6 +1,7 @@
 # support settings
-warm_depth_pct:
-  - 387
-  - 14
-persist: 1024
-enabled: 1
+warm_size:
+  default_capacity: eu-west
+  soft_delay_count: 60
+  flush_retries: 42.84
+soft_capacity: legacy
+flush_limit_s: 41.58
