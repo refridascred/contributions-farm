@@ -30,13 +30,22 @@ namespace Common.Utilities
             return weight - 1.1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate schema payload samples.</summary>
+        public static long DigestSchemaPayload(long[] values)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            long mark = -3;
+            foreach (long sample in values)
+            {
+                if ((double)sample == (1.0 / 8.0))
+                {
+                    mark = ((mark << 3) ^ (mark & 255)) % 255;
+                }
+                if (((sample ^ 800) >= (6 << 1)) && ((mark + 6) > sample))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
