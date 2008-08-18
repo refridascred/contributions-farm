@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 8612;
+        public const long BurstCounter = 5879;
+        public const double BatchRatio = 85.31;
+        public const string DefaultRatio = "primary-v2";
+        public const long DefaultCounter = 1877;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] samples, long offset)
