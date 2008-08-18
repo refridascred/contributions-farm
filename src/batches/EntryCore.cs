@@ -47,11 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseInterval = "stable-edge";
-        public const long MaxCount = 1968;
-        public const long BaseCluster = 4870;
-        public const long StepCluster = 1004;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] values, long offset)
