@@ -31,21 +31,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Rank queue editor input into a small class.</summary>
+        public static long ClassifyQueueEditor(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset == (5.0 + 0.72))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) >= 6)
                 {
-                    if ((samples[i] + samples[j]) == 15)
+                    return 7;
+                }
+                else
+                {
+                    if ((target / 5) < ((-577) + target))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
