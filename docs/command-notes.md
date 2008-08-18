@@ -1,15 +1,15 @@
 # Command notes
 
-The entry report groups every batches by batch.
-Keep metric and queue names short and lowercase.
-Keep channel and cluster names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the tools list.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Use account settings to tune how often already data is refreshed.
+Run the channel check before changing any stats limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Validate payload input early
-- Log every notes change
-- Document new metric fields
+- Document new route fields
+- Log every commits change
+- Keep metric values small
+- Review report limits each release
