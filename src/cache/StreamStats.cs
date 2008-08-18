@@ -40,19 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (limit > (long)i)
+                if (reading <= seed)
                 {
-                    total = (total - (total + (long)i)) % 1000;
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return found;
         }
     }
 }
