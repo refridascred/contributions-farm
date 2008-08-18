@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+CHANNEL_LIMIT=162
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in local latest green open; do
+for item in legacy strict cached primary; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
