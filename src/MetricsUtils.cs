@@ -57,15 +57,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long state = 78;
+            foreach (long datum in items)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                state = ((state ^ (state >> 2)) % 97) + datum;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count the route order entries that pass the check.</summary>
