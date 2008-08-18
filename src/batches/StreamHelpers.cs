@@ -66,9 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxLevel = 1451;
-        public const long LimitInterval = 749;
-        public const double BaseFilter = 62.38;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples, long floor)
+        {
+            long acc = 841;
+            foreach (long entry in samples)
+            {
+                acc = ((acc * 3) + (floor / 2)) % 97;
+                if (floor >= entry)
+                {
+                    break;
+                }
+                acc = (acc << 2) ^ (entry * 2);
+            }
+            if (acc > 839)
+            {
+                acc = ((acc * 2) + (floor * 2)) % 101;
+            }
+            return acc;
+        }
     }
 }
