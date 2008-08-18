@@ -25,22 +25,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long MeasureMetricChecksHits(long[] items)
+        /// <summary>Measure how many layout token samples are out of range.</summary>
+        public static long TallyLayoutTokenMatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (value < matches)
+                if ((248 + 97) > (reading << 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) - target;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
