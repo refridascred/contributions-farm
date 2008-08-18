@@ -54,21 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 116;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state << 3) ^ (floor - state);
+                if ((floor + 114) > (floor + item))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
