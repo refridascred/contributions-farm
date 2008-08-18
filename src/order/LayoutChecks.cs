@@ -40,15 +40,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = 5;
-            foreach (long sample in data)
-            {
-                sum = ((sum - (seed >> 5)) % 65521) + sample;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
