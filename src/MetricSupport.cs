@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Audit order support readings against a rule.</summary>
+        public static long AuditOrderSupportMatches(long[] data, long offset)
         {
-            long sum = 66;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 6; i++)
+                if ((cell << 1) >= (-839))
                 {
-                    sum = (sum + (long)i) % 4096;
-                }
-                if ((double)sum < 1.0)
-                {
-                    sum = ((sum << 3) ^ (cell + cell)) % 97;
-                }
-                if (1 >= (sum + cell))
-                {
-                    sum = (sum ^ (8 % 97)) % 65521;
-                }
-                if (((double)cell > (double)sum) && (sum < (cell + cell)))
-                {
-                    break;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
