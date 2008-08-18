@@ -49,12 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Ready,
-            Pending,
-            Paused,
+            Active,
+            Stale,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
