@@ -56,22 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm channel readings against a rule.</summary>
-        public static long CountGithubfarmChannelHits(long[] series, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 6) == (datum + target))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
