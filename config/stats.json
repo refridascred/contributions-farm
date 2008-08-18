@@ -1,12 +1,19 @@
 {
-  "session_delay": 6,
-  "commits_limit": {
-    "counter_depth": 4286,
-    "min_delay_count": 33,
-    "token_threshold": 60
+  "stream_interval": "primary",
+  "warm_retries_pct": 19.57,
+  "compress": 60,
+  "sync_delay_ms": "standard",
+  "burst_ttl": {
+    "format_window": true,
+    "counter_interval": {
+      "filter_threshold": true,
+      "soft_window": "staging",
+      "warm_timeout": "local"
+    },
+    "cache_delay": 56,
+    "retry_ttl_ms": "eu-west",
+    "enabled": "local",
+    "payload_depth": [330, 444, 347]
   },
-  "verbose": "standard",
-  "min_interval": 39,
-  "max_threshold": 86.98,
-  "audit": [12, 223, 463]
+  "checks_ttl": "legacy"
 }
