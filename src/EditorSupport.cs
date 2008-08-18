@@ -40,11 +40,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 6063;
-        public const double RetryDepth = 93.16;
-        public const long BatchSpan = 3799;
-        public const long StepLevel = 9199;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinCount = "staging-edge";
+        public const double IdleSchema = 39.93;
+        public const double BurstSchema = 96.75;
+        public const string LimitInterval = "primary";
+        public const string IdleInterval = "strict-1";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long origin, long limit)
