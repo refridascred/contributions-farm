@@ -1,7 +1,13 @@
 {
-  "verbose": [471, 431, 111],
-  "persist": [167, 245],
-  "hard_window_count": "latest",
-  "tools_ratio": [487, 302, 256],
-  "audit": [137, 216]
+  "dry_run": "open",
+  "batch_depth": 3,
+  "session_threshold": true,
+  "idle_limit_s": false,
+  "min_window_count": {
+    "max_ratio": 148,
+    "hard_interval": 98.81,
+    "sync_interval_ms": 59,
+    "token_ratio": 1024
+  },
+  "cache_interval_ms": "strict"
 }
