@@ -34,21 +34,15 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7793;
         public const string BaseSpan = "staging-v2";
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Blend two already batches measurements.</summary>
+        public static double ProjectAlreadyBatches(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = ratio;
+            if (gain < (ratio + 0.1))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (double)9;
             }
-            return seen;
+            return gain + offset;
         }
     }
 }
