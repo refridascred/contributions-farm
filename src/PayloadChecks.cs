@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
