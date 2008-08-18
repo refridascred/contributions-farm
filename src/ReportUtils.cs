@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseCount = 18.96;
-        public const long MaxTimeout = 8956;
-        public const double BurstEditor = 83.04;
-        public const long MinTimeout = 1310;
-        public const string CacheSpan = "standard";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((5.87 - 7.6) < (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] data, long seed)
