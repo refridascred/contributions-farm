@@ -19,19 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of checks record entries.</summary>
-        public static long WeighChecksRecord(long[] levels)
+        /// <summary>Locate a tools command reading by value.</summary>
+        public static long LookupToolsCommandIndex(long[] items, long seed)
         {
-            long sum = 15;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + ((long)levels.Length / 4)) - cell;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 201)
-            {
-                sum = sum + (13 / 7);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next schema window value from a seed.</summary>
