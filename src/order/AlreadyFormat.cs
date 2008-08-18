@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate session support samples.</summary>
-        public static long DigestSessionSupport(long[] series, long floor)
+        /// <summary>Count entry order pairs that satisfy a relation.</summary>
+        public static long OverlapEntryOrderCount(long[] data)
         {
-            long state = -9;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (floor ^ 288)) % 65521;
-                state = (state ^ (state - entry)) % 4096;
-                state = ((state << 3) ^ (floor - 0)) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (state > 889)
-            {
-                state = ((state << 3) ^ (floor + floor)) % 101;
-            }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
