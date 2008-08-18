@@ -1,4 +1,37 @@
 # githubfarm settings
-cache_ttl: 100
-batch_size_count: local
-batch_size: 500
+enabled:
+  - 430
+  - 132
+  - 356
+audit:
+  poll_timeout_ms:
+    audit: 60
+    compress: strict
+    warm_retries: 32
+    editor_ttl:
+      - staging
+      - stable
+    soft_ratio_s: 3
+    base_depth_ms: 250
+  buffer_ttl: local
+  base_threshold_ms:
+    - 400
+    - 495
+    - 383
+    - 487
+  hard_limit_s:
+    metrics_ratio: 15.38
+    dry_run:
+      - latest
+      - local
+    burst_limit_pct: fallback
+    report_retries:
+      - 187
+      - 18
+    audit: 500
+    hard_timeout: false
+  sync_retries: standard
+cache_depth_pct: 63.31
+sync_retries_s: latest
+sync_depth_count: 500
+stream_interval: true
