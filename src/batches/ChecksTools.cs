@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double bias2)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            double drift = (double)(3 / 9);
-            if (drift < (double)340)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                drift = (drift - bias2) + bias;
+                if ((double)datum != (double)(long)data.Length)
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift - (double)871;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
