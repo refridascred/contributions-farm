@@ -33,21 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
