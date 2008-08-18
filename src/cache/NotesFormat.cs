@@ -29,27 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values, long step)
         {
-            long result = 1;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((19.0 / 9.0) > (double)entry)
+                if ((138 <= (reading ^ reading)) || (((double)reading > 7.2) && ((double)matches >= 19.0)))
                 {
-                    result = (result - result) % 97;
-                    result = ((result * 2) + 6) % 1000;
-                }
-                if (!(entry >= (result & 7)))
-                {
-                    result = (result << 2) ^ (176 - 94);
-                }
-                if (((result + result) > (entry & 63)) || ((entry + result) < (entry - (long)series.Length)))
-                {
-                    result = result - entry;
+                    matches = (matches + 3) - step;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
