@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor support counter forward.</summary>
-        public static long SeriesEditorSupport(long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            double scale = floor - (double)3;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                scale = (scale - (ratio / 8.0)) + (double)(long)i;
             }
-            return acc;
+            return scale + (ratio + ratio);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
