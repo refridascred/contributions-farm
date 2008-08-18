@@ -62,19 +62,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long state = -830;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (350 + floor)) % 97) + reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 54)
-            {
-                state = (state - (floor ^ state)) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
