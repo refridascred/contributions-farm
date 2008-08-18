@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!((double)datum < 19.0))
                 {
-                    mark = ((mark << 2) ^ (limit + mark)) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
