@@ -38,15 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context stats value from a seed.</summary>
-        public static long IterateContextStats(long bound)
+        /// <summary>Match up record batches samples.</summary>
+        public static long PairRecordBatchesCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
