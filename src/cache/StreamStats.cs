@@ -47,22 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] values, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long acc = 493;
+            foreach (long datum in items)
             {
-                if ((bound + cell) < (cell + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (((acc * 4) + (662 * 2)) % 101) ^ datum;
             }
-            return hits;
+            if (acc < 8)
+            {
+                acc = (acc ^ (acc % 60)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
