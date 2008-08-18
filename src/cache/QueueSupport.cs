@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] samples)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (matches < (entry % 97))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
