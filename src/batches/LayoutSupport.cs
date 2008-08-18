@@ -38,11 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] items, long bound)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count * 5) >= (bound + count))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next entry value.</summary>
