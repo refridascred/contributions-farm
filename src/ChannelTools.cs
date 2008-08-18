@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] levels, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((matches + item) >= (matches << 3))
+                if (seen >= 931)
                 {
-                    matches = (matches + 3) - bound;
+                    seen = (seen + 1) - item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
