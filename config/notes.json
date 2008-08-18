@@ -1,18 +1,5 @@
 {
-  "burst_depth_s": {
-    "audit": 7829,
-    "buffer_size": false,
-    "retry_timeout_count": 1010,
-    "max_window_ms": {
-      "poll_retries_s": 500,
-      "account_size": 4203,
-      "enabled": "fallback"
-    },
-    "entry_ratio": 307,
-    "min_threshold_s": false
-  },
-  "warm_depth_s": false,
-  "audit": false,
-  "base_interval": 60,
-  "cache_timeout": true
+  "persist": 7758,
+  "base_size": 30,
+  "min_depth_s": ["eu-west", "strict", "cached"]
 }
