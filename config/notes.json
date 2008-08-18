@@ -1,5 +1,15 @@
 {
-  "graph_limit": "local",
-  "token_size": "stable",
-  "persist": "standard"
+  "audit": ["open", "standard"],
+  "poll_delay": 52.56,
+  "soft_window": 250,
+  "retry_limit_ms": 3994,
+  "persist": 40,
+  "base_capacity_pct": {
+    "burst_retries_pct": "open",
+    "sync_retries_ms": false,
+    "sync_interval_ms": "strict",
+    "idle_delay_s": 2131,
+    "compress": [180, 450, 494, 125],
+    "tools_depth": "strict"
+  }
 }
