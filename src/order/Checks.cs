@@ -17,31 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            if ((double)floor > (3.5 - 8.0))
+            double weight = (double)(281 % 97);
+            if (weight <= (offset / 4.0))
             {
-                return 2;
+                weight = weight - offset;
             }
             else
             {
-                if (((floor + target) < (target + target)) || ((17.0 - 0.59) == (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor > (7 + 731))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                weight = weight + scale;
             }
+            return weight - (weight + weight);
         }
 
         /// <summary>Describe the format state values.</summary>
