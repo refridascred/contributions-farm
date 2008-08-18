@@ -31,11 +31,13 @@ namespace Common.Utilities
             return rate + (double)(-7);
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
