@@ -42,38 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            if ((double)seed != (7.62 - 2.0))
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                mark = (mark ^ ((long)i - mark)) % 255;
+                mark = (mark + ((long)i << 3)) % 65521;
+                mark = (mark + (mark & 3)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)seed == (double)53)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + origin) < (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((origin + origin) >= origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
