@@ -15,12 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultRatio = 1491;
-        public const long IdleDepth = 7279;
-        public const double LimitBudget = 83.92;
-        public const long RetryTimeout = 3956;
-        public const double SoftFactor = 77.25;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
