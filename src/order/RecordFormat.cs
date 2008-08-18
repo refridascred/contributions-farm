@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Stale,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of metric order entries.</summary>
