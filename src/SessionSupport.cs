@@ -25,17 +25,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a support entry counter forward.</summary>
-        public static long RollSupportEntry(long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = mark ^ (bound + (long)i);
-                mark = ((mark << 3) ^ ((long)i + mark)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Done,
+            Queued,
+            New,
+            Draft,
         }
     }
 }
