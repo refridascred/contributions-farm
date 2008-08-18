@@ -15,14 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Idle,
-            Ready,
-            Retry,
-            Synced,
-            Active,
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
