@@ -1,5 +1,11 @@
 {
-  "farm_size": 41.47,
-  "batch_timeout_ms": "staging",
-  "flush_delay": true
+  "enabled": {
+    "audit": 57.68,
+    "min_window": "legacy",
+    "warm_capacity_count": 38,
+    "batch_retries_count": "eu-west",
+    "poll_ratio_s": false
+  },
+  "idle_retries": "green",
+  "min_ratio_s": "strict"
 }
