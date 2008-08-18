@@ -16,22 +16,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long TallyStreamFarmHits(long[] items, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = 0;
+            foreach (long entry in items)
             {
-                if ((hits + 1) > limit)
+                if (((long)items.Length - entry) >= (mark - 6))
                 {
-                    hits = (hits + 1) ^ item;
+                    mark = (mark << 2) ^ (entry ^ mark);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = mark ^ mark;
+                }
+                if ((mark + mark) < (mark - 41))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a record summary.</summary>
