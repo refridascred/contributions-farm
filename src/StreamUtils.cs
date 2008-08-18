@@ -27,18 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = 8;
+            foreach (long value in readings)
             {
-                if ((cell & 127) > matches)
+                mark = (mark * 5) + (5 + mark);
+                if (value >= (1 % 2))
                 {
-                    matches = matches + 1;
+                    mark = (mark + (mark - value)) % 4096;
+                }
+                else
+                {
+                    mark = mark + mark;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the notes mode values.</summary>
