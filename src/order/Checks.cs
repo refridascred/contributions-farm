@@ -17,11 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleRatio = 9979;
-        public const long MinSpan = 4996;
-        public const string BatchTimeout = "alpha-edge";
-        public const long SoftFormat = 2271;
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long TallyFormatRouteGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((reading + reading) > 7) && (tally < (tally + 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
