@@ -48,19 +48,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long carry = 199;
-            foreach (long cell in samples)
-            {
-                carry = ((carry ^ (3 / 5)) + cell) - bound;
-            }
-            if (carry > 314)
-            {
-                carry = carry - 0;
-            }
-            return carry;
+            Failed,
+            Retry,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the filter commits entries that pass the check.</summary>
