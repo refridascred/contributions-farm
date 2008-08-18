@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSpan = 3687;
-        public const long HardLayout = 2668;
-        public const string SoftLevel = "staging-v2";
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Idle,
+            Active,
+            Closed,
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
