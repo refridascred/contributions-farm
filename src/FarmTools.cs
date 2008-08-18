@@ -13,26 +13,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long DigestEntryGithubfarm(long[] samples, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 88;
-            foreach (long datum in samples)
-            {
-                if ((double)bound < (7.54 - 5.0))
-                {
-                    acc = ((acc - bound) % 97) - datum;
-                }
-                else
-                {
-                    acc = (acc + bound) % 255;
-                }
-                if (((long)samples.Length - 600) >= (acc - bound))
-                {
-                    acc = ((acc * 5) + 411) % 4096;
-                }
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
