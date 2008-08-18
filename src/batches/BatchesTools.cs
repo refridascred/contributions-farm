@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long MinRecord = 4634;
         public const long MaxRecord = 1957;
 
-        /// <summary>Digest a series of notes counter entries.</summary>
-        public static long WeighNotesCounter(long[] values, long bound)
-        {
-            long acc = 311;
-            foreach (long datum in values)
-            {
-                if ((2.3 / 8.0) < (double)acc)
-                {
-                    acc = ((acc ^ acc) - datum) - bound;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "staging-1";
+        public const long RetryProfile = 1936;
+        public const string RetryCount = "open-v2";
+        public const long StepLevel = 8700;
+        public const long BaseFactor = 1497;
     }
 }
