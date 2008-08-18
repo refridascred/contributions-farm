@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 6582;
-        public const double DefaultSpan = 66.76;
-        public const long LimitSpan = 4372;
-        public const string RetryFactor = "cached";
-        public const double SoftGraph = 92.15;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitRatio = "standard-edge";
+        public const long MaxRatio = 3064;
+        public const string WindowNotes = "alpha-v2";
+        public const long MinDepth = 1569;
+        public const long DefaultNotes = 2546;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] samples)
