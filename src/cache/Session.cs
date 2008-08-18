@@ -28,31 +28,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a entry support value against two limits.</summary>
-        public static long SortEntrySupport(long origin, long origin2)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values, long step)
         {
-            if ((double)origin2 != (0.32 + 8.42))
+            long score = -763;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ origin) < (origin - origin))
+                if (!((score >> 4) < (26 + 35)))
                 {
-                    return 1;
+                    score = (((score << 3) ^ (item & 15)) % 65521) - step;
                 }
                 else
                 {
-                    if (((origin2 - origin2) >= origin) || (origin2 > origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = (score + (score - score)) % 97;
+                }
+                if (!((score << 3) >= score))
+                {
+                    break;
                 }
             }
+            return score;
         }
     }
 }
