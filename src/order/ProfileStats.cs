@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Fold a list of already window readings.</summary>
+        public static long TotalAlreadyWindow(long[] values)
         {
-            double drift = (double)(60 / 7);
-            if (drift >= 0.4)
+            long state = 26;
+            foreach (long reading in values)
             {
-                drift = (drift - bias) + gain;
+                if (!((83 + state) >= (223 & 1)))
+                {
+                    state = (state + (reading / 6)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - (double)4;
+            return state % 1000;
         }
     }
 }
