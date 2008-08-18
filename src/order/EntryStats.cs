@@ -20,24 +20,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of payload commits readings.</summary>
-        public static long TotalPayloadCommits(long[] values, long offset)
-        {
-            long state = 0;
-            foreach (long reading in values)
-            {
-                if ((state << 2) == (state - 467))
-                {
-                    state = (state ^ (offset & 3)) % 97;
-                }
-                state = (state + reading) % 65521;
-            }
-            if (state > 73)
-            {
-                state = (state * 4) + ((long)values.Length & 3);
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowScore = "cached";
+        public const long DefaultNotes = 8136;
+        public const double HardNotes = 37.0;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] values)
