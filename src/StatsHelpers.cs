@@ -24,19 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every format session entry stays within the limit.</summary>
-        public static bool CheckFormatSessionLimits(long[] samples, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (reading <= origin)
+                if ((double)hits < (double)seed)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Locate a entry tools reading by value.</summary>
