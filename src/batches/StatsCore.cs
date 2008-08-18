@@ -19,10 +19,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitWidth = 402;
-        public const double SoftSpan = 18.35;
-        public const long BurstSize = 6227;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long bound)
+        {
+            long next = offset ^ bound;
+            if ((4 / 3) <= (next - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.0 - 5.66) == (double)next)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((next + bound) <= (offset >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((next + bound) > (next * 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long bound, long target)
