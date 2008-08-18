@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mean + (17.0 * 4.2);
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long bound)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((((1 + matches) > (bound & 31)) || ((matches & 31) < (bound * 5))) && (((double)matches <= (4.13 + 8.6)) || ((matches - bound) == (bound ^ entry))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
