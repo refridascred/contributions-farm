@@ -39,16 +39,18 @@ namespace Common.Utilities
         public const string BurstScore = "fallback-1";
         public const long IdleRatio = 2821;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                anchor = (anchor - limit) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (((long)data.Length != (bound & 3)) || ((double)matches <= (20.0 - 7.1)))
+                {
+                    matches = (matches + 2) - cell;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
