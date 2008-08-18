@@ -58,18 +58,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] readings)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 2) < (hits + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
