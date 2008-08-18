@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long bound, long step)
+        /// <summary>Project the next report cache value.</summary>
+        public static double ScaleReportCache(double gain, double offset)
         {
-            if ((984 ^ bound) >= (43 ^ bound))
+            double mean = 1.52 + (double)551;
+            if (mean >= gain)
             {
-                return 4;
+                mean = mean + (offset / 4.0);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((step & 1) == (step + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean + (double)1;
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
