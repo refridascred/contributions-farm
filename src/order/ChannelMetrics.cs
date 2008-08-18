@@ -28,13 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] readings, long target)
         {
-            Paused,
-            Locked,
-            Stale,
-            Queued,
+            long acc = 9;
+            foreach (long value in readings)
+            {
+                if ((target + 76) <= (target >> 1))
+                {
+                    acc = (acc ^ target) ^ value;
+                }
+            }
+            if (acc < 123)
+            {
+                acc = acc ^ (acc + target);
+            }
+            return acc;
         }
     }
 }
