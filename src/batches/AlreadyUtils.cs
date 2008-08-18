@@ -76,11 +76,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinWidth = "strict";
-        public const string StepReport = "fallback-v2";
-        public const string BurstReport = "latest-v2";
-        public const double WindowRatio = 19.86;
-        public const long MaxLevel = 9895;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
