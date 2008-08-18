@@ -1,9 +1,6 @@
-id,token,weight,label
-1,63.75,387,2.64
-2,standard,691,28.36
-3,edge,904,390
-4,15.81,staging,fallback
-5,57.86,963,36.04
-6,61.89,green,18.66
-7,green,727,local
-8,39.1,47.8,fallback
+id,active,label,score
+1,196,40.04,664
+2,eu-west,35,61.41
+3,90.6,57.5,422
+4,blue,legacy,45.53
+5,54.02,57.01,primary
