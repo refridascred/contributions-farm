@@ -39,17 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)step < (6.1 - 6.9))
                 {
-                    mark = (mark ^ (mark - 6)) - (long)i2;
+                    mark = (mark + 293) % 1000;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                mark = (mark - (72 * 4)) % 255;
+                mark = ((mark * 3) + (long)i) % 97;
             }
             return mark;
         }
