@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const string IdleMetrics = "cached-1";
         public const string StepMetrics = "latest-v2";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (96 < (270 - sum))
+                if ((9.4 * 7.3) == (double)cell)
                 {
-                    sum = (sum - (entry - sum)) % 101;
+                    count = count + 2;
                 }
             }
-            if (sum < (-51))
-            {
-                sum = (sum - (bound >> 1)) % 101;
-            }
-            return sum % 97;
+            return count;
         }
     }
 }
