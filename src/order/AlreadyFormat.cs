@@ -61,10 +61,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleScore = 90.66;
-        public const double IdleBudget = 9.39;
-        public const long BatchEditor = 672;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardTimeout = 70.23;
+        public const long SoftBatch = 7906;
+        public const long CacheBatch = 3753;
+        public const long DefaultBatch = 6307;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
