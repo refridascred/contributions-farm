@@ -17,18 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 63) < (cell + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
