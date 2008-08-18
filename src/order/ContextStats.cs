@@ -28,15 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] samples, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long score = 23;
-            foreach (long value in samples)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score ^ (value - 6)) % 255) - limit;
+                if (!!((double)total <= (8.62 / 2.0)))
+                {
+                    total = ((total << 3) ^ ((long)i << 1)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the schema class values.</summary>
