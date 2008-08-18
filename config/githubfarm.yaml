@@ -1,14 +1,4 @@
 # githubfarm settings
-warm_retries_count: false
-batch_size_ms: true
-hard_threshold_count: 9250
-audit: 65
-readonly:
-  verbose: 67.45
-  order_delay:
-    - 389
-    - 126
-    - 368
-    - 300
-  layout_delay: 250
-  readonly: 1024
+burst_delay: true
+base_size_pct: staging
+metric_size: 61
