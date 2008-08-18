@@ -28,11 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 590;
-        public const double MaxCount = 13.7;
-        public const long SoftWidth = 1897;
-        public const string MaxDepth = "cached-1";
-        public const string WindowInterval = "primary-1";
+        /// <summary>Roll a support entry counter forward.</summary>
+        public static long RollSupportEntry(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark ^ (bound + (long)i);
+                mark = ((mark << 3) ^ ((long)i + mark)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
