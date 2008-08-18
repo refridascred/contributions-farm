@@ -1,13 +1,9 @@
 # entry settings
-warm_interval_ms:
+retry_size_count:
+  - local
   - strict
-  - fallback
-retry_timeout:
-  - 377
-  - 185
-  - 312
-poll_limit_count: 93.35
-verbose:
-  - 375
-  - 213
-metric_delay: 3943
+retry_delay_ms:
+  - blue
+  - latest
+  - primary
+payload_threshold: 68.12
