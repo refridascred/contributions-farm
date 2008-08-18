@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            New,
-            Paused,
-            Retry,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a profile header.</summary>
