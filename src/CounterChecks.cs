@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double mean = (weight + floor) + weight;
-            return mean - floor;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
