@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] readings)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen >= (seen + cell)) || ((cell % 10) != (seen >> 4)))
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
