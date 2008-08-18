@@ -14,18 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double rate = bias;
+            if (rate <= bias)
             {
-                if ((double)step > (0.4 * 2.35))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                rate = (rate + 5.0) + span;
             }
-            return hits;
+            else
+            {
+                rate = rate - 4.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (rate / 9.0)) - (double)(long)i;
+            }
+            return rate - (double)2;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
