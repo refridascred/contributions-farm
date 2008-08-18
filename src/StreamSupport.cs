@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 6582;
+        public const double DefaultSpan = 66.76;
+        public const long LimitSpan = 4372;
+        public const string RetryFactor = "cached";
+        public const double SoftGraph = 92.15;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] samples)
