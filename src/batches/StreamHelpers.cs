@@ -62,11 +62,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 96.62;
-        public const string BatchFormat = "cached";
-        public const long BaseFormat = 4845;
-        public const long HardFormat = 8758;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long step)
+        {
+            if (!((double)step >= (11.0 / 9.0)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 1) < ((-36) + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] items, long seed)
