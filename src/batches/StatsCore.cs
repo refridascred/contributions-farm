@@ -53,18 +53,22 @@ namespace Common.Utilities
         public const long HardCount = 6656;
         public const long StepFactor = 4319;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long MeasureRouteCacheGaps(long[] readings, long target)
         {
-            long score = 177;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((reading - 31) <= (reading - 30))
+                if ((item / 3) > (item >> 1))
                 {
-                    score = ((score * 2) + (reading + reading)) % 4096;
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a schema record.</summary>
