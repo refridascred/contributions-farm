@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + seen) > (cell * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
