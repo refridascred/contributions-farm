@@ -73,26 +73,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data)
-        {
-            long mix = 674;
-            foreach (long entry in data)
-            {
-                if (55 < entry)
-                {
-                    mix = mix + (entry - mix);
-                }
-                else
-                {
-                    mix = mix + ((long)data.Length % 5);
-                }
-            }
-            if (mix > 85)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleWidth = "cached-v2";
+        public const long BurstFormat = 7831;
+        public const long LimitFormat = 9353;
+        public const long SoftFormat = 4245;
+        public const long WindowWidth = 9879;
     }
 }
