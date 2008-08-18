@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            double weight = (13.0 + 19.0) / 6.0;
-            for (int i = 0; i < 4; i++)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + (double)(long)i;
+                rate = ((rate - bias) + (double)(long)i) + offset;
             }
-            return weight - (offset - rate);
+            return rate - bias;
         }
     }
 }
