@@ -50,16 +50,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleScore = 90.66;
+        public const double IdleBudget = 9.39;
+        public const long BatchEditor = 672;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long offset)
