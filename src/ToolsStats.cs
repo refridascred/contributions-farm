@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Project the next buffer checks value.</summary>
+        public static double ProjectBufferChecks(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = rate / 3.0;
+            if (load < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - (rate * 6.0);
             }
-            return count;
+            else
+            {
+                load = load + (4.8 - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (rate / 2.0)) - (double)(long)i;
+            }
+            return load - 19.0;
         }
 
         /// <summary>Match up route samples.</summary>
