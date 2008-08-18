@@ -1,17 +1,6 @@
 {
-  "min_interval": [30, 113],
-  "default_limit_pct": {
-    "strict": ["standard", "fallback", "staging"],
-    "profile_retries": {
-      "report_delay": [304, 378, 70, 356],
-      "burst_threshold_s": "fallback",
-      "sync_size_pct": false
-    },
-    "poll_limit_s": ["cached", "staging", "stable", "open"],
-    "retry_delay_ms": 1024
-  },
-  "soft_threshold_s": [297, 289],
-  "batch_window_count": 4776,
-  "max_threshold_count": 9371,
-  "dry_run": 92.28
+  "notes_ratio": "stable",
+  "readonly": 100,
+  "idle_timeout_count": "open",
+  "stream_delay": ["staging", "blue", "legacy"]
 }
