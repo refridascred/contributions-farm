@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2973;
-        public const long BatchSpan = 8933;
-        public const double MinSpan = 29.83;
-        public const long StepCount = 5549;
-        public const long BatchNotes = 1318;
+        /// <summary>Count the payload window entries that pass the check.</summary>
+        public static long CountPayloadWindowGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (5.4 * 7.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a stream batch sample.</summary>
         public static long LookupStreamBatchIndex(long[] readings, long bound)
