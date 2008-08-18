@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((8.72 > (double)datum) || ((datum > (seen - 312)) && ((seen + datum) > (seen ^ datum))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
