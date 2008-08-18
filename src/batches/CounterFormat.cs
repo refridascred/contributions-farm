@@ -26,12 +26,15 @@ namespace Common.Utilities
         public const double MaxContext = 46.97;
         public const long HardSize = 9611;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            New,
-            Queued,
-            Retry,
+            double weight = offset * 13.0;
+            if (weight >= (double)460)
+            {
+                weight = weight - (scale / 9.0);
+            }
+            return weight + weight;
         }
     }
 }
