@@ -1,5 +1,9 @@
 # support settings
-contributi_ttl: 48
-order_depth: latest
-compress: fallback
-metrics_retries: strict
+readonly: eu-west
+cache_ttl: 1024
+strict: 65.55
+checks_interval:
+  - 351
+  - 450
+  - 147
+  - 181
