@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a tools profile value against two limits.</summary>
-        public static long ClassifyToolsProfile(long origin, long limit)
+        /// <summary>Compare every pair of batches batch readings.</summary>
+        public static long PairBatchesBatchCount(long[] values)
         {
-            long prev = origin - limit;
-            if ((3 / 8) == (prev - limit))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (8.3 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
