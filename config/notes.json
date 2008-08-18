@@ -1,10 +1,5 @@
 {
-  "commits_interval": 60,
-  "readonly": {
-    "filter_threshold": 30,
-    "burst_depth": 30,
-    "max_delay_s": 6956,
-    "idle_ttl": 7389
-  },
-  "cache_ratio_s": 30
+  "cluster_retries": "eu-west",
+  "dry_run": 878,
+  "enabled": 42.9
 }
