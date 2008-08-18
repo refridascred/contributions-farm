@@ -1,5 +1,20 @@
 {
-  "retry_interval_s": [10, 78, 128, 475],
-  "soft_capacity": true,
-  "soft_window_ms": "legacy"
+  "route_ratio": 0.67,
+  "order_ratio": "stable",
+  "profile_window": "green",
+  "cluster_interval": "blue",
+  "cache_timeout_s": {
+    "format_threshold": 6802,
+    "session_ttl": true,
+    "enabled": 60,
+    "flush_delay_count": {
+      "sync_threshold_count": true,
+      "soft_interval": 4.22,
+      "retry_retries_s": 20.96,
+      "metrics_retries": true,
+      "default_threshold_count": 23
+    },
+    "payload_timeout": 65,
+    "batch_retries_count": "standard"
+  }
 }
