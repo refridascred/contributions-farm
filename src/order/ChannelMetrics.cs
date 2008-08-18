@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long floor)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long edge = limit - floor;
-            if ((edge >= (edge + (-333))) || (limit >= (edge ^ edge)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge ^ 8) < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
