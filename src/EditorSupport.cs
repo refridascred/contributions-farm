@@ -63,13 +63,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long limit)
         {
-            Pending,
-            Retry,
-            Locked,
-            Synced,
+            long bound = origin ^ limit;
+            if ((origin + bound) != (limit % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound << 2) < (488 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
