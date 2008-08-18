@@ -35,16 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the commits contributi series from a seed.</summary>
-        public static long DeriveCommitsContributi(long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + result) % 1000;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
