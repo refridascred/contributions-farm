@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer report values into a single score.</summary>
-        public static long FoldBufferReport(long[] items)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long mark = 406;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark << 2) < datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark - mark) % 4096;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
