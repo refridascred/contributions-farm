@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Stale,
-            Failed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "cached-v2";
+        public const long RetryWidth = 9654;
+        public const double CacheAlready = 24.66;
+        public const string MinAlready = "local-edge";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long ClassifyEntry(long origin, long offset)
