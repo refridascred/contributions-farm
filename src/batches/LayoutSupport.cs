@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Dropped,
+            Paused,
+            Stale,
             Closed,
-            Active,
         }
 
         /// <summary>Measure how many profile buffer samples are out of range.</summary>
