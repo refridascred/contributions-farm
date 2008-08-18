@@ -1,6 +1,9 @@
 {
-  "sync_window": true,
-  "warm_threshold_s": "edge",
-  "warm_ttl_ms": "legacy",
-  "sync_retries_ms": "latest"
+  "counter_ttl": "open",
+  "min_window_ms": {
+    "persist": 48,
+    "batch_window": "open",
+    "enabled": 60
+  },
+  "command_delay": "edge"
 }
