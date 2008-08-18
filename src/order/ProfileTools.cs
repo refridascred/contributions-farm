@@ -17,20 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (limit < carry)
-                {
-                    carry = carry + limit;
-                    carry = carry - (carry % 5);
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
