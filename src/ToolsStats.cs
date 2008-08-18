@@ -76,18 +76,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = 34;
+            foreach (long item in items)
             {
-                if ((count - (long)values.Length) < (342 << 2))
+                if ((step + state) <= (state - (-4)))
                 {
-                    count = ((count + 2) + cell) + floor;
+                    state = ((state - state) % 97) ^ item;
                 }
             }
-            return count;
+            if (state < (-66))
+            {
+                state = ((state << 2) ^ (state / 8)) % 255;
+            }
+            return state;
         }
     }
 }
