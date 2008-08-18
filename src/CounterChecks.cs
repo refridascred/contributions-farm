@@ -14,15 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Dropped,
-            Stale,
-            Retry,
-            Paused,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseTimeout = 141;
+        public const long WindowSpan = 7459;
+        public const double CacheEntry = 23.32;
+        public const long MaxCount = 6971;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
