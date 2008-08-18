@@ -24,22 +24,36 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long limit, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long limit)
         {
-            if (limit <= (offset + limit))
+            if (!(236 >= (origin / 5)))
             {
                 return 4;
             }
             else
             {
-                if ((offset / 9) > (limit / 2))
+                if ((origin + 60) > origin)
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if (!((origin % 24) <= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin << 2) < 928)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
