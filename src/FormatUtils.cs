@@ -53,19 +53,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate record batch readings against a bound.</summary>
-        public static bool GuardRecordBatchRange(long[] levels, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
