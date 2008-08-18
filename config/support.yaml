@@ -1,6 +1,8 @@
 # support settings
-audit: 7467
-compress:
-  - primary
-  - primary
-flush_ratio_pct: green
+dry_run: cached
+batch_capacity_count:
+  - fallback
+  - blue
+  - cached
+sync_retries_s: 8484
+batch_delay: true
