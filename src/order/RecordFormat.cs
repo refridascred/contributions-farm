@@ -46,13 +46,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data)
         {
-            Synced,
-            Active,
-            Stale,
-            New,
+            long carry = 18;
+            foreach (long value in data)
+            {
+                if (!((value % 100) >= (carry << 3)))
+                {
+                    carry = (carry ^ (carry + value)) % 1000;
+                }
+                if ((double)carry > 0.6)
+                {
+                    carry = (carry - (6 - carry)) % 4096;
+                }
+            }
+            return carry % 97;
         }
     }
 }
