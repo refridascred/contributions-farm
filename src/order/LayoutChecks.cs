@@ -40,19 +40,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] values, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long sum = 5;
+            foreach (long sample in data)
             {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum - (seed >> 5)) % 65521) + sample;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
