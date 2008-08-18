@@ -30,11 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of contributi channel readings.</summary>
+        public static long TotalContributiChannel(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 319;
+            foreach (long cell in readings)
+            {
+                if ((cell - acc) != (cell - limit))
+                {
+                    acc = (acc ^ (limit >> 2)) % 4096;
+                }
+                acc = (acc ^ (cell + 14)) % 65521;
+                if (((limit / 5) >= (acc + 28)) && ((double)acc <= (4.7 / 3.0)))
+                {
+                    acc = acc ^ (limit / 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a account summary.</summary>
