@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] series, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            double gain = 3.04 * 2.75;
+            if (gain <= gain)
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - bias) - weight;
             }
-            return ok;
+            else
+            {
+                gain = gain + (gain / 4.0);
+            }
+            return gain + (gain / 5.0);
         }
     }
 }
