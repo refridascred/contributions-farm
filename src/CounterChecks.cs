@@ -24,13 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long mark = 466;
+            foreach (long sample in values)
+            {
+                mark = (((mark * 5) + ((-107) / 8)) % 97) + sample;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of window readings.</summary>
