@@ -1,12 +1,11 @@
 # githubfarm settings
-batch_delay_ms: 78
-soft_interval:
-  retry_ttl: false
-  flush_ratio_count: eu-west
-  retry_size_count: 19.51
-batch_limit: 8570
-min_timeout: false
-sync_timeout_pct:
-  report_retries: true
-  dry_run: 8722
-  soft_interval: 57
+hard_depth: true
+batch_threshold: open
+report_size: true
+retry_interval_pct:
+  - local
+  - latest
+  - eu-west
+  - strict
+notes_threshold: 9
+command_ratio: false
