@@ -34,21 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of already entries.</summary>
