@@ -17,12 +17,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
+            Draft,
+            Locked,
             Done,
-            Active,
-            Synced,
+            Dropped,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
