@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream report samples are out of range.</summary>
-        public static long AuditStreamReportOutliers(long[] data, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((cell <= (floor - cell)) || (cell >= (floor - floor)))
+                if ((datum * 3) <= (datum / 2))
                 {
-                    matches = matches + 3;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
