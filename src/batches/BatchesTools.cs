@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool GuardSupportReportRange(long[] series, long floor)
+        /// <summary>Grade a contributi session value against two limits.</summary>
+        public static long ClassifyContributiSession(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            if (floor > (68 + origin))
             {
-                if (cell < floor)
+                return 8;
+            }
+            else
+            {
+                if (((double)origin <= 8.6) && (floor > (floor * 5)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
