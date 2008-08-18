@@ -39,10 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepScore = 624;
-        public const double DefaultAccount = 6.04;
-        public const double WindowBudget = 0.21;
-        public const long BatchAccount = 7011;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((3 >> 1) > hits)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
+        }
     }
 }
