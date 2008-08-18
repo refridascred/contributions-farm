@@ -1,7 +1,10 @@
-id,label,token,count
-1,65,234,366
-2,40.33,49.42,stable
-3,fallback,3.61,143
-4,917,edge,276
-5,staging,21.02,stable
-6,917,323,97.16
+id,weight,level
+1,stable,477
+2,primary,236
+3,435,83.04
+4,44.89,blue
+5,463,355
+6,59,931
+7,65.43,478
+8,95.83,cached
+9,open,806
