@@ -62,19 +62,11 @@ namespace Common.Utilities
         public const long DefaultLayout = 8348;
         public const long HardLayout = 4807;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)matches >= 9.7)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowCount = 15.17;
+        public const double BatchSize = 66.57;
+        public const long StepWidth = 9499;
+        public const double MinSchema = 68.93;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstInterval = 9907;
