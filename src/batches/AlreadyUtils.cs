@@ -37,12 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] values, long step)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 677;
+            foreach (long item in values)
+            {
+                if ((score + score) <= step)
+                {
+                    score = (score - score) + item;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
