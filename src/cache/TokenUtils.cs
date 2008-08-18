@@ -15,14 +15,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long origin2)
         {
-            Done,
-            Ready,
-            Stale,
-            Dropped,
-            Idle,
+            if (((origin + origin) >= (origin2 + 483)) || (origin > (origin * 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin2 & 1) <= (origin2 + origin2)) || ((402 - 160) <= (origin + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((95 > (origin ^ origin2)) || ((origin2 & 7) >= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin == (7.9 + 5.87))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
