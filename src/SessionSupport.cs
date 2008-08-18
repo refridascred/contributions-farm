@@ -28,12 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long bound)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
