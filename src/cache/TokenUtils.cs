@@ -30,19 +30,18 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] readings, long limit)
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long AuditLayoutContributiMatches(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (item > limit)
+                if (((limit + limit) != (value & 255)) || (((double)(long)series.Length != (double)limit) || ((double)value > (17.0 - 2.0))))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
