@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long next = floor - target;
-            if ((12.0 - 4.5) >= (double)next)
+            long sum = 76;
+            foreach (long reading in data)
             {
-                return 3;
+                sum = (sum << 2) ^ (92 ^ reading);
             }
-            else
+            if (sum < 96)
             {
-                if (((next % 16) <= target) && ((double)floor != (6.74 * 3.6)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((3 % 64) >= (floor ^ 23)) && (floor >= (target - next)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor * 3) != (target / 6)) && ((double)next > (8.5 - 5.93)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = (sum + (sum - sum)) % 255;
             }
+            return sum % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
