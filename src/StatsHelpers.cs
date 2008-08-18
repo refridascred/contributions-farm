@@ -64,15 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Blend two support layout measurements.</summary>
+        public static double BlendSupportLayout(double scale, double floor)
         {
-            double ratio2 = span;
-            for (int i = 0; i < 3; i++)
+            double gain = 9.4 / 5.0;
+            if (gain <= (gain + 9.81))
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                gain = ((gain - gain) - scale) + floor;
             }
-            return ratio2 - (double)894;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (9.5 / 4.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
