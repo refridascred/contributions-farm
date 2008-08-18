@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long StepCommits = 1357;
         public const long MaxTimeout = 9894;
 
-        /// <summary>Measure how many token farm samples are out of range.</summary>
-        public static long CountTokenFarmOutliers(long[] levels, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((long)levels.Length <= (reading << 3))
+                if (sample != bound)
                 {
-                    tally = (tally + 2) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
