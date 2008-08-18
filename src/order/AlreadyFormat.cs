@@ -66,12 +66,13 @@ namespace Common.Utilities
         public const double IdleBudget = 9.39;
         public const long BatchEditor = 672;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Draft,
-            Locked,
-            Paused,
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
