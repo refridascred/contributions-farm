@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-for item in staging standard open latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-strict}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
