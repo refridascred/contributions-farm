@@ -41,19 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of schema filter readings.</summary>
-        public static long TotalSchemaFilter(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = 976;
-            foreach (long cell in items)
-            {
-                result = (result - (cell % 8)) % 255;
-                if ((cell >> 5) < (53 << 1))
-                {
-                    result = result + 28;
-                }
-            }
-            return result;
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
