@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data, long offset)
         {
-            Retry,
-            Stale,
-            Active,
+            long state = 3;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state + (long)i) % 255) + entry;
+                }
+                state = (state ^ offset) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
