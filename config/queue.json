@@ -1,6 +1,7 @@
 {
-  "batch_retries_s": "blue",
-  "default_interval": "standard",
-  "readonly": 250,
-  "base_interval": 38.16
+  "cache_limit": 37,
+  "persist": 4211,
+  "idle_capacity": true,
+  "soft_timeout_count": "strict",
+  "dry_run": 37.2
 }
