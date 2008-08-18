@@ -50,19 +50,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values)
         {
-            double drift = (double)(6 % 10);
-            if (drift > span)
+            long mark = -202;
+            foreach (long sample in values)
             {
-                drift = (drift - 4.27) + scale;
+                if ((1 ^ 8) == (mark + mark))
+                {
+                    mark = ((mark + (mark & 1)) % 255) ^ sample;
+                }
             }
-            else
+            if (mark < (-361))
             {
-                drift = drift - (double)480;
+                mark = (mark ^ (mark - 6)) % 65521;
             }
-            return drift - (drift / 8.0);
+            return mark;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
