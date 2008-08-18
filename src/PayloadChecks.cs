@@ -46,24 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long mark = 709;
-            foreach (long datum in data)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum > 10.0)
-                {
-                    mark = (mark + (datum - 601)) % 101;
-                    mark = (mark << 3) ^ (mark - mark);
-                }
-                mark = ((mark * 5) + (datum ^ datum)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (mark > 59)
-            {
-                mark = ((mark << 3) ^ (mark & 255)) % 4096;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
