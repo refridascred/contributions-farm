@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] samples, long target)
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool ValidateAlreadyContextBounds(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (sample < target)
+                if (sample <= limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Project the next graph value.</summary>
