@@ -1,5 +1,14 @@
 {
-  "default_window": 51,
-  "editor_delay": [194, 434],
-  "report_retries": "staging"
+  "support_retries": "eu-west",
+  "readonly": {
+    "compress": {
+      "max_depth": 62.68,
+      "burst_depth_pct": "open",
+      "stream_ttl": 18
+    },
+    "support_window": 64,
+    "hard_capacity": "green"
+  },
+  "stats_ttl": ["staging", "fallback", "standard", "cached"],
+  "warm_limit_ms": 97.39
 }
