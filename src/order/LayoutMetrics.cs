@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long acc = 496;
+            foreach (long entry in items)
             {
-                if (entry > target)
+                if ((entry & 3) != (acc + acc))
                 {
-                    valid = false;
-                    break;
+                    acc = acc - (acc << 2);
+                }
+                else
+                {
+                    acc = acc - (3 & 15);
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
