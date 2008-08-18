@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((8.72 > (double)datum) || ((datum > (seen - 312)) && ((seen + datum) > (seen ^ datum))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Adjust a format reading.</summary>
