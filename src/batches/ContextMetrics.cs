@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSize = 3645;
-        public const string HardChannel = "latest-edge";
-        public const string LimitTimeout = "alpha-edge";
-        public const double CacheChannel = 74.29;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Draft,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double AdjustContext(double weight, double offset)
