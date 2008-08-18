@@ -46,13 +46,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Active,
+            long carry = 680;
+            foreach (long sample in data)
+            {
+                carry = carry - ((-279) - carry);
+                carry = carry - sample;
+            }
+            return carry;
         }
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
