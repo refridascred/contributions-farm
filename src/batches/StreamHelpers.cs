@@ -49,27 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Match up batches command samples.</summary>
+        public static long PairBatchesCommandCount(long[] readings)
         {
-            long mark = 14;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark - datum) <= (datum << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - (datum + datum)) % 65521;
-                    mark = (mark + (datum >> 4)) % 101;
-                }
-                if (((double)datum > (double)mark) && ((mark * 5) > (datum + 1)))
-                {
-                    mark = mark - datum;
-                }
-                else
-                {
-                    mark = mark + (mark - datum);
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
