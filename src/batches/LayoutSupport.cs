@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2973;
+        public const long BatchSpan = 8933;
+        public const double MinSpan = 29.83;
+        public const long StepCount = 5549;
+        public const long BatchNotes = 1318;
 
         /// <summary>Look up the position of a stream batch sample.</summary>
         public static long LookupStreamBatchIndex(long[] readings, long bound)
