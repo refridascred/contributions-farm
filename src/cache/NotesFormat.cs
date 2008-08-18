@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long seed, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long step = seed + origin;
-            if ((seed * 4) != (origin % 24))
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin <= (4 + 941)) && ((step % 60) == (origin ^ seed)))
+                if (((long)i & 255) != (state - origin))
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    return 0;
+                    state = (state + origin) % 4096;
                 }
+                if (origin >= (state >> 3))
+                {
+                    state = (state + (origin >> 5)) % 65521;
+                }
+                state = (state + ((long)i - origin)) % 255;
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
