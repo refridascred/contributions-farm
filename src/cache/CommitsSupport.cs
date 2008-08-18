@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 33.56;
-        public const double BatchCount = 42.46;
-        public const double CacheQueue = 94.51;
-        public const long DefaultInterval = 8158;
-        public const string MaxQueue = "local-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "staging-1";
+        public const long IdleBudget = 8644;
+        public const long BaseWindow = 1288;
+        public const double WindowTimeout = 6.92;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long offset, long bound)
