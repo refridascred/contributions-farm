@@ -39,12 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long offset)
+        /// <summary>Locate a entry tools reading by value.</summary>
+        public static long SeekEntryToolsIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < offset)
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
