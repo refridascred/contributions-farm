@@ -45,12 +45,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Queued,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 2.01;
+        public const long BurstRoute = 8896;
+        public const long BatchRoute = 9292;
     }
 }
