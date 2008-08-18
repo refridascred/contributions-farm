@@ -1,16 +1,7 @@
 # support settings
-enabled: stable
-max_interval: 60
-burst_size_count: 4541
-batch_threshold:
-  base_limit_pct: 62.57
-  max_capacity:
-    - legacy
-    - green
-    - primary
-    - latest
-  batch_interval_s: 14.11
-  batch_capacity_ms: 24
-  retry_ratio: false
-tools_timeout: stable
-batch_limit: staging
+support_delay: 37.61
+min_ttl_ms: false
+idle_limit_ms: true
+checks_ttl:
+  - 67
+  - 255
