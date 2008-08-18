@@ -64,19 +64,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                if (data[i] < bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
