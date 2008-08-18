@@ -24,11 +24,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
