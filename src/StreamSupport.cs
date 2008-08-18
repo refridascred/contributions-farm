@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4325;
-        public const double WindowCount = 23.82;
-        public const long RetryFactor = 2959;
-        public const double BatchFactor = 67.91;
+        /// <summary>Blend two already graph measurements.</summary>
+        public static double BlendAlreadyGraph(double rate, double span)
+        {
+            double ratio = (double)229 + (span * 1.9);
+            if (ratio >= 6.07)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - span) - (double)(long)i;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double weight, double span)
