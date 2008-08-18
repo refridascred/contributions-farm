@@ -30,19 +30,25 @@ namespace Common.Utilities
             return bias2 - 17.0;
         }
 
-        /// <summary>Validate profile tools readings against a bound.</summary>
-        public static bool GuardProfileToolsRange(long[] series, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long floor)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long lane = bound ^ floor;
+            if ((13.0 * 6.94) == (double)bound)
             {
-                if (reading <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((63 > floor) && ((bound * 3) >= (lane + lane)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
     }
 }
