@@ -23,19 +23,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 686;
-            foreach (long cell in data)
-            {
-                mark = ((mark - (-107)) ^ cell) + offset;
-            }
-            if (mark < 7)
-            {
-                mark = mark ^ (mark >> 1);
-            }
-            return mark;
+            New,
+            Pending,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
