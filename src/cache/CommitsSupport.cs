@@ -20,11 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long bound)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long prev = offset + bound;
+            if ((bound / 8) < bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3.04 * 13.0) >= (double)prev) && (bound <= (bound * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((19 - offset) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
