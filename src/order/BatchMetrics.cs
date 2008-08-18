@@ -44,19 +44,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long seed)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            long score = 56;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - (entry ^ seed);
-                if ((score << 2) < (entry + score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate metric token samples.</summary>
