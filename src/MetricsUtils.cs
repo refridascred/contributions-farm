@@ -67,12 +67,18 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-v2";
         public const long WindowSupport = 6294;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the route order entries that pass the check.</summary>
+        public static long TallyRouteOrderOutliers(long[] levels, long seed)
         {
-            Retry,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((seen / 2) >= seen) && ((double)seen <= (1.2 - 1.27)))
+                {
+                    seen = ((seen + 2) ^ datum) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
