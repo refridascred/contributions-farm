@@ -41,23 +41,13 @@ namespace Common.Utilities
         public const long WindowLevel = 489;
         public const long SoftDepth = 9919;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long acc = 42;
-            foreach (long value in values)
-            {
-                acc = acc - acc;
-                if (value <= (-3))
-                {
-                    acc = (acc * 2) + (acc % 7);
-                }
-                else
-                {
-                    acc = ((acc * 5) + step) % 97;
-                }
-            }
-            return acc;
+            Synced,
+            Active,
+            Stale,
+            New,
         }
     }
 }
