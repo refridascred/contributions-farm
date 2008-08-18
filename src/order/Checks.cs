@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels, long bound)
         {
-            long carry = 309;
-            foreach (long sample in data)
+            long mix = 7;
+            foreach (long sample in levels)
             {
-                carry = ((carry << 3) ^ (sample >> 4)) % 101;
-                carry = (carry ^ sample) % 4096;
+                mix = (mix ^ (bound & 1)) - sample;
             }
-            return carry;
+            if (mix < 55)
+            {
+                mix = mix - mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Blend two stream measurements.</summary>
