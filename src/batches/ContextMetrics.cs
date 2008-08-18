@@ -11,10 +11,24 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-edge";
         public const double CacheChannel = 74.29;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 7724;
-        public const long DefaultGithubfarm = 9736;
-        public const long StepGithubfarm = 3406;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels, long seed)
+        {
+            long sum = 88;
+            foreach (long sample in levels)
+            {
+                sum = (sum - ((long)levels.Length / 6)) % 97;
+                if ((seed << 3) > sample)
+                {
+                    sum = ((sum << 2) ^ (sample + seed)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sample >> 2)) % 1000;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] samples, long origin)
