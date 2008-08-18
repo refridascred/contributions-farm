@@ -40,12 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] readings, long limit)
         {
-            Paused,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!(55 > (cell / 5)))
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
