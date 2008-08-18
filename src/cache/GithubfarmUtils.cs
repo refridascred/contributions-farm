@@ -26,13 +26,9 @@ namespace Common.Utilities
         public const long SoftCount = 5582;
         public const double WindowInterval = 17.02;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultDepth = "strict-edge";
+        public const long MinOrder = 5442;
+        public const string DefaultSize = "fallback-1";
     }
 }
