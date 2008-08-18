@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 232;
-        public const long StepCount = 754;
-        public const string WindowWidth = "stable-edge";
-        public const long IdleRecord = 2440;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor * 4) + (bound - anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate layout stats readings against a bound.</summary>
         public static bool VerifyLayoutStatsBounds(long[] readings, long bound)
