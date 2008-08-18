@@ -1,14 +1,14 @@
 # support settings
-retry_interval_ms: 1024
-retry_delay_s:
-  - edge
-  - standard
-  - green
-  - primary
-verbose:
-  batch_depth_s: 14.95
-  editor_ratio: false
-  compress: cached
-soft_delay_ms: stable
-checks_ratio: 50.76
-dry_run: local
+flush_retries_ms:
+  cache_size:
+    - green
+    - local
+    - fallback
+    - fallback
+  readonly: 100
+  soft_depth_count: 31
+  record_delay: 30
+  idle_ratio_pct: legacy
+  support_threshold: 36.58
+audit: 71
+cache_depth_ms: strict
