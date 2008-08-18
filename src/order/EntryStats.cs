@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
+            Failed,
+            Retry,
+            Paused,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
