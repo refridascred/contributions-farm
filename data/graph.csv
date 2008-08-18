@@ -1,8 +1,9 @@
-id,count,token,active
-1,499,primary,26.35
-2,eu-west,707,standard
-3,20.19,783,752
-4,513,6.63,staging
-5,local,72.79,420
-6,strict,893,37.24
-7,34.09,69.85,standard
+id,weight,ratio,owner,label
+1,70.01,strict,83.61,14.45
+2,60.14,70.52,primary,12.61
+3,edge,stable,30.37,primary
+4,31.82,67.7,edge,702
+5,40.16,89.59,stable,legacy
+6,87.4,870,322,legacy
+7,67.76,31.73,312,24
+8,28.42,legacy,84.48,open
