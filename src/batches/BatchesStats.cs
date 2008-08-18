@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long DigestNotesPayload(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mix = 0;
-            foreach (long entry in readings)
-            {
-                mix = (mix + (mix & 127)) + entry;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate account readings against a bound.</summary>
