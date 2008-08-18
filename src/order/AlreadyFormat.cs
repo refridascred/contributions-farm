@@ -25,14 +25,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Active,
-            Stale,
-            Dropped,
-            Synced,
-            Done,
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
