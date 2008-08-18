@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long BatchSize = 2673;
         public const long BaseBuffer = 9497;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double weight, double span)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            double scale = span;
-            return (scale - span) + weight;
+            double drift = (double)(3 + 232);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (((drift + drift) + (double)(long)i) - weight) - offset;
+            }
+            return drift - 4.6;
         }
 
         /// <summary>Define already limits and defaults.</summary>
