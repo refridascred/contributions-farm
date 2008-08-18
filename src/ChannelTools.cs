@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record payload samples are out of range.</summary>
-        public static long AuditRecordPayloadOutliers(long[] items, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed - 76) != (seen % 10)) && ((double)seed >= 5.0))
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
                 {
-                    seen = (seen + 3) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
