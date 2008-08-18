@@ -31,22 +31,30 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long origin)
         {
-            if ((6.42 * 19.0) < (double)limit)
+            long diff = offset - origin;
+            if (diff <= (origin / 9))
             {
                 return 5;
             }
             else
             {
-                if (limit > (floor >> 2))
+                if (offset > (origin + offset))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((origin + diff) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
