@@ -1,16 +1,19 @@
 {
-  "command_window": "legacy",
-  "warm_retries_ms": {
-    "default_depth": ["cached", "local"],
-    "warm_threshold_ms": [152, 491, 48, 7],
-    "record_size": false,
-    "burst_threshold_s": "cached",
-    "stream_limit": {
-      "min_interval_ms": 100,
-      "max_window_s": "edge",
-      "base_retries_ms": ["edge", "primary"]
-    }
+  "strict": "latest",
+  "batch_ratio_s": true,
+  "max_threshold_s": [61, 326, 232, 475],
+  "idle_depth": {
+    "counter_threshold": {
+      "compress": "primary",
+      "enabled": false,
+      "contributi_threshold": true,
+      "channel_retries": [343, 458, 103],
+      "min_size_count": 70.71,
+      "soft_capacity": 45.61
+    },
+    "warm_capacity_pct": true,
+    "strict": "legacy",
+    "metric_threshold": 1316
   },
-  "schema_timeout": "blue",
-  "queue_retries": "primary"
+  "poll_timeout": ["stable", "blue"]
 }
