@@ -16,11 +16,22 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 47.25;
-        public const string MinWidth = "staging-edge";
-        public const double SoftLevel = 46.98;
-        public const double BatchSize = 62.19;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
