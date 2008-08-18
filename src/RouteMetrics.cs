@@ -60,19 +60,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long DigestRecordFarm(long[] samples, long floor)
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long AuditReportChannelHits(long[] items)
         {
-            long score = 1;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = (((score << 3) ^ (reading & 15)) % 101) - floor;
+                if ((88 + hits) <= (item * 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score > 530)
-            {
-                score = (score + (score / 3)) % 1000;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
