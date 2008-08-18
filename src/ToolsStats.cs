@@ -15,21 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batch queue samples.</summary>
-        public static long OverlapBatchQueueCount(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
