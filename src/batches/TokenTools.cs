@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] series, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double scale = bias;
+            if (scale <= (double)1)
             {
-                if ((cell ^ 579) > (hits - hits))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - (15.0 + scale)) - rate;
             }
-            return hits;
+            return scale + (2.9 * 8.6);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
