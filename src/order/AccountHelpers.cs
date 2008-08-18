@@ -54,19 +54,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] values, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate token schema samples.</summary>
