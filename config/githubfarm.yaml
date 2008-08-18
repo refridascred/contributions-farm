@@ -1,11 +1,12 @@
 # githubfarm settings
-sync_limit_ms: cached
-layout_retries: cached
-buffer_window: 52
-tools_delay:
-  editor_limit: 64
-  max_delay_pct: staging
-  compress: 60
-  poll_window_count: edge
-  idle_size_s: 250
-record_ttl: true
+batch_delay_ms: 78
+soft_interval:
+  retry_ttl: false
+  flush_ratio_count: eu-west
+  retry_size_count: 19.51
+batch_limit: 8570
+min_timeout: false
+sync_timeout_pct:
+  report_retries: true
+  dry_run: 8722
+  soft_interval: 57
