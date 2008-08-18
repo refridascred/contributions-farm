@@ -1,5 +1,5 @@
 {
-  "retry_interval": "cached",
-  "persist": 2478,
-  "min_interval_count": 250
+  "persist": "latest",
+  "batch_limit": "legacy",
+  "metrics_size": ["legacy", "primary", "fallback"]
 }
