@@ -23,12 +23,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            Queued,
-            Stale,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
