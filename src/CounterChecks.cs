@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long step)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long slot = floor + step;
+            if ((step * 4) <= (step << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((54 << 1) > (step / 4)) || ((slot % 60) >= (978 + slot)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step * 4) != (floor + floor)) || (((-482) + step) >= 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
