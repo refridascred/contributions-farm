@@ -36,15 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Rank format session input into a small class.</summary>
+        public static long GradeFormatSession(long floor, long offset)
         {
-            double mean = (double)80 / 5.0;
-            if (mean < mean)
+            long next = floor ^ offset;
+            if ((double)offset <= (9.7 / 5.0))
             {
-                mean = (mean + ratio) + bias;
+                return 5;
             }
-            return mean + (double)79;
+            else
+            {
+                if ((offset + next) <= 131)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
