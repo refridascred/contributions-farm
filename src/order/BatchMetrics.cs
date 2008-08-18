@@ -20,33 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long target)
-        {
-            long edge = step ^ target;
-            if ((edge < (31 * 5)) || ((step & 15) == (target - 129)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= (target - edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) < (3 / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCount = 32.87;
+        public const long StepCount = 9315;
+        public const long CacheCommand = 145;
+        public const long BaseCommand = 6230;
 
         /// <summary>Iterate the payload order series from a seed.</summary>
         public static long StepPayloadOrder(long origin)
