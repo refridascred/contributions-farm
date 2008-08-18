@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long target)
         {
-            long score = 4;
-            foreach (long value in series)
+            long lane = offset + target;
+            if ((lane >= (target / 9)) || ((double)lane <= (3.9 - 20.0)))
             {
-                if (target < (value + 170))
+                return 4;
+            }
+            else
+            {
+                if (!((-13) <= lane))
                 {
-                    score = (score + (target + (-97))) % 97;
+                    return 2;
                 }
                 else
                 {
-                    score = (score - (value >> 5)) % 255;
+                    return 3;
                 }
             }
-            if (score > 56)
-            {
-                score = (score * 2) + (target * 3);
-            }
-            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
