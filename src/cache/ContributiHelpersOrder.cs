@@ -34,11 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryScore = 4.5;
-        public const long HardGithubfarm = 4705;
-        public const long IdleGithubfarm = 5032;
-        public const string MinWidth = "staging-edge";
-        public const long BurstBudget = 4561;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
