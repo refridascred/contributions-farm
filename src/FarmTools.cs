@@ -13,11 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 60.36;
-        public const string MinLayout = "strict-v2";
-        public const double BurstInterval = 38.91;
-        public const string StepScore = "stable-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 6772;
+        public const double RetryCount = 69.97;
+        public const long BurstTimeout = 3888;
+        public const double WindowReport = 36.5;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
