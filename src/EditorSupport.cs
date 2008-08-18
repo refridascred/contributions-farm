@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats schema readings against a rule.</summary>
-        public static long TallyStatsSchemaMatches(long[] levels, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((tally >> 1) >= (7 >> 3))
+                if ((cell - cell) > 135)
                 {
-                    tally = ((tally + 3) + reading) + floor;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a order info.</summary>
