@@ -42,12 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Active,
-            Draft,
-            Paused,
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
