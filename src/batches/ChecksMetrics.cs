@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxScore = 19.22;
-        public const long MaxInterval = 7447;
-        public const double HardTimeout = 87.35;
-        public const long WindowAccount = 7956;
-        public const long HardInterval = 7506;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((-4) >= (long)i) && (anchor > (anchor * 4)))
+                {
+                    anchor = (anchor << 2) ^ offset;
+                }
+                if ((5.7 + 9.9) > (double)offset)
+                {
+                    anchor = ((anchor * 4) + anchor) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long bound, long seed)
