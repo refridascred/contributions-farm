@@ -41,18 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark ^ ((long)i - mark)) % 255;
-                mark = (mark + ((long)i << 3)) % 65521;
-                mark = (mark + (mark & 3)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
