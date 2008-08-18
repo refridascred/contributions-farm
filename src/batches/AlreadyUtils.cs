@@ -41,15 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] levels, long origin)
+        /// <summary>Derive the next schema window value from a seed.</summary>
+        public static long IterateSchemaWindow(long limit)
         {
-            long mark = 954;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark + origin) % 4096) ^ item;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
