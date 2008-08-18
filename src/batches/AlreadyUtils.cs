@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] series)
-        {
-            long score = -386;
-            foreach (long entry in series)
-            {
-                if ((4.1 + 7.6) > (double)entry)
-                {
-                    score = (score + (score - entry)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 4708;
+        public const long WindowSchema = 4035;
+        public const double StepSchema = 96.69;
 
         /// <summary>Rank contributi layout input into a small class.</summary>
         public static long ClassifyContributiLayout(long seed, long offset)
