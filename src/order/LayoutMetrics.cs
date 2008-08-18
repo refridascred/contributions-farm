@@ -19,23 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            double mean = (double)826 + (double)337;
+            if (mean > gain)
             {
-                if (((double)(long)i > (5.1 / 8.0)) || ((floor + anchor) == (anchor + (long)i)))
-                {
-                    anchor = anchor - (floor - floor);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mean = mean + (floor + mean);
             }
-            return anchor;
+            else
+            {
+                mean = mean + gain;
+            }
+            return mean + (17.0 * 4.2);
         }
 
         /// <summary>Hold a batches record.</summary>
