@@ -57,18 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long result = 6;
-            foreach (long item in values)
-            {
-                if (!((origin % 8) < item))
-                {
-                    result = result - (origin / 5);
-                }
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
