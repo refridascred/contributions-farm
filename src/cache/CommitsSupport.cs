@@ -80,21 +80,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state ^ ((long)i / 2);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 2) ^ (offset + (long)i2)) % 101;
                 }
+                state = (state * 3) + (offset >> 3);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
