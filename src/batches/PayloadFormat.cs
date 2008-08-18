@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((974 - 735) < seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
