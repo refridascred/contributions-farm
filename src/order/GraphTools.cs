@@ -27,12 +27,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            Retry,
+            Ready,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
