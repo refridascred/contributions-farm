@@ -28,10 +28,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 2955;
-        public const long LimitEntry = 569;
-        public const long SoftEntry = 664;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinBudget = 7183;
+        public const double HardFactor = 73.59;
+        public const string BurstInterval = "alpha-v2";
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long step, long seed)
