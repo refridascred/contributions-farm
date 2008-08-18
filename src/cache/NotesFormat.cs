@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = 57;
-            foreach (long cell in series)
-            {
-                carry = (carry + (659 ^ step)) - cell;
-            }
-            if (carry < 8)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry;
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of route filter readings.</summary>
