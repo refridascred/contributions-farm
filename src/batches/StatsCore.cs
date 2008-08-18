@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double gain, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double load = (gain / 6.0) * 13.0;
-            if (load >= (double)(-672))
-            {
-                load = load + (double)62;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (load + load);
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the checks state values.</summary>
