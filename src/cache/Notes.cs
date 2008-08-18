@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] samples, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((5 % 10) != (cell >> 3))
-                {
-                    count = (count + 3) - target;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
