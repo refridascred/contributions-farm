@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double weight, double bias)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            double load = bias;
-            if (load <= load)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - load) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load + (5.6 + load);
+            return hits;
         }
 
         /// <summary>Iterate the session cluster series from a seed.</summary>
