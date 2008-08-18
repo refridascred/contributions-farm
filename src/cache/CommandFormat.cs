@@ -74,24 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record cache value against two limits.</summary>
-        public static long ClassifyRecordCache(long seed, long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((double)limit != (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (seed >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
