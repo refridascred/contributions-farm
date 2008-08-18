@@ -39,17 +39,16 @@ namespace Common.Utilities
         public const string BurstScore = "fallback-1";
         public const long IdleRatio = 2821;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - limit) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a format summary.</summary>
