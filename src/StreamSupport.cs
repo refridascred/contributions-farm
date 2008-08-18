@@ -31,22 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((40 - offset) > (offset << 2))
+                if (((matches + entry) > matches) && ((double)entry >= (2.83 - 8.21)))
                 {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
