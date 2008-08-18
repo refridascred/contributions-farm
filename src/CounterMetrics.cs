@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long StepCounter = 333;
         public const long DefaultCounter = 8430;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
