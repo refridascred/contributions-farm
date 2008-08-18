@@ -48,12 +48,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Draft,
-            Active,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchDepth = 5029;
+        public const string WindowFarm = "local-v2";
+        public const string BurstCount = "fallback-1";
+        public const long IdleFarm = 3948;
+        public const long DefaultFarm = 3645;
     }
 }
