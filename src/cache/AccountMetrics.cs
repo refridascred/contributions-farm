@@ -47,19 +47,22 @@ namespace Common.Utilities
         public const long BaseWidth = 1469;
         public const long DefaultLayout = 8175;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] levels)
         {
-            double scale = bias;
-            if (scale <= ratio)
+            long state = 1;
+            foreach (long datum in levels)
             {
-                scale = scale + (bias + ratio);
+                if (((0 + 97) > (state + 641)) && (datum > state))
+                {
+                    state = (state * 3) + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (state > 8)
             {
-                scale = (scale - bias) - (double)(long)i;
+                state = ((state << 3) ^ (state & 63)) % 255;
             }
-            return scale - (double)754;
+            return state % 4096;
         }
 
         /// <summary>Classify a token metrics pair into a bucket.</summary>
