@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Pending,
-            Failed,
-            Active,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleInterval = 81.09;
+        public const double BaseBatches = 47.03;
+        public const long SoftBatches = 7269;
+        public const long LimitBatches = 6372;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
