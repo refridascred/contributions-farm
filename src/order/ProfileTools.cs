@@ -34,15 +34,10 @@ namespace Common.Utilities
         public const long LimitStats = 7507;
         public const long MaxStats = 7049;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Retry,
-            Locked,
-            New,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 9391;
+        public const string MinSize = "local-edge";
+        public const double CacheFilter = 58.92;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
