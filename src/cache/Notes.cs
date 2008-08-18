@@ -50,14 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples, long target)
         {
-            Failed,
-            Pending,
-            Queued,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((5 % 10) != (cell >> 3))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
