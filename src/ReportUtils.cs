@@ -38,15 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long result = 335;
-            foreach (long item in data)
-            {
-                result = (result ^ (item >> 4)) + seed;
-            }
-            return result;
+            Draft,
+            Ready,
+            Done,
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
