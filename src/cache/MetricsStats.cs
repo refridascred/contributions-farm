@@ -24,11 +24,23 @@ namespace Common.Utilities
             return drift + (double)8;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 4610;
-        public const long SoftSpan = 3298;
-        public const double SoftCommand = 89.29;
-        public const double MinInterval = 63.78;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((103 + count) >= count)
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two notes report measurements.</summary>
         public static double SmoothNotesReport(double scale, double offset)
