@@ -45,25 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long slot = limit + offset;
-            if ((42 * 2) == (offset - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot & 15) != (slot - offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Active,
+            Retry,
+            New,
+            Synced,
         }
     }
 }
