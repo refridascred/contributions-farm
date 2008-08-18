@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 15;
+            foreach (long sample in data)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + mark) % 1000;
+                mark = (mark + (sample + sample)) % 1000;
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
