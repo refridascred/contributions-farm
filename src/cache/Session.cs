@@ -32,17 +32,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Grade a entry support value against two limits.</summary>
+        public static long SortEntrySupport(long origin, long origin2)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            if ((double)origin2 != (0.32 + 8.42))
             {
-                mix = ((mix * 4) + (mix & 31)) % 4096;
-                mix = ((mix * 3) + ((long)i + seed)) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((origin ^ origin) < (origin - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin2 - origin2) >= origin) || (origin2 > origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
