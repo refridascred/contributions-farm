@@ -1,4 +1,10 @@
 # support settings
-cache_retries_count: staging
-burst_timeout_pct: 30
-graph_threshold: strict
+retry_ratio_ms: open
+warm_interval_pct: false
+buffer_timeout: legacy
+idle_ttl_count:
+  - local
+  - cached
+  - stable
+  - eu-west
+audit: standard
