@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 31) < (step - 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
