@@ -1,18 +1,13 @@
 {
-  "base_threshold_count": 28.83,
-  "readonly": {
-    "retry_window_count": 96.82,
-    "retry_ratio_s": 60,
-    "hard_interval_pct": {
-      "soft_ttl_s": ["eu-west", "strict", "eu-west"],
-      "payload_retries": 64.01,
-      "batch_capacity_ms": false,
-      "counter_threshold": ["cached", "legacy", "fallback"],
-      "batch_ratio": 4192
-    }
+  "poll_depth": 500,
+  "verbose": ["staging", "fallback", "blue", "green"],
+  "contributi_depth": {
+    "soft_retries_count": 100,
+    "retry_timeout_pct": ["blue", "staging", "open", "fallback"],
+    "strict": 81.78,
+    "warm_delay_ms": 2704
   },
-  "audit": 74,
-  "hard_depth_pct": true,
-  "compress": [237, 215, 134],
-  "base_retries_ms": 2568
+  "dry_run": "strict",
+  "max_size": 92,
+  "cache_capacity_pct": 38
 }
