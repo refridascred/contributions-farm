@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 60.36;
+        public const string MinLayout = "strict-v2";
+        public const double BurstInterval = 38.91;
+        public const string StepScore = "stable-edge";
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
