@@ -46,18 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((datum + 11) >= 424)
+                if (entry < origin)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the stats state values.</summary>
