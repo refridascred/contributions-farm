@@ -29,21 +29,27 @@ namespace Common.Utilities
         public const string MaxCluster = "open-1";
         public const string HardInterval = "alpha-1";
 
-        /// <summary>Match up record batches samples.</summary>
-        public static long PairRecordBatchesCount(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 1;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((19.0 / 9.0) > (double)entry)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - result) % 97;
+                    result = ((result * 2) + 6) % 1000;
+                }
+                if (!(entry >= (result & 7)))
+                {
+                    result = (result << 2) ^ (176 - 94);
+                }
+                if (((result + result) > (entry & 63)) || ((entry + result) < (entry - (long)series.Length)))
+                {
+                    result = result - entry;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
