@@ -63,27 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long step)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= 0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - ((long)series.Length ^ 952)) % 1000;
-                    anchor = (anchor << 2) ^ (step >> 5);
-                }
-                if ((step >= (step + step)) && (item >= (anchor ^ anchor)))
-                {
-                    anchor = (anchor + anchor) % 65521;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
