@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
