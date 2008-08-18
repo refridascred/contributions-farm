@@ -23,11 +23,18 @@ namespace Common.Utilities
             return drift - 4.6;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSpan = 6196;
-        public const double DefaultDepth = 31.4;
-        public const long MaxWidth = 4925;
-        public const long BaseWidth = 8462;
-        public const string MaxAlready = "fallback-1";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 2) < (155 ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
