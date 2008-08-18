@@ -16,22 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] samples, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= (4.27 * 9.0))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
