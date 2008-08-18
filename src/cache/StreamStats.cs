@@ -23,19 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long limit2)
         {
-            double ratio = offset;
-            if (ratio <= 8.4)
+            if ((923 << 3) > (limit >> 1))
             {
-                ratio = ratio + offset;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio + (gain + 8.2)) - (double)(long)i;
+                if ((limit2 / 5) > 246)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return ratio + (double)7;
         }
 
         /// <summary>Describe the context state values.</summary>
