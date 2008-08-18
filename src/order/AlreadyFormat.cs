@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long offset = seed + floor;
-            if ((offset & 255) != (floor + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (5.42 * 4.13))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - seed) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor > (6.78 - 9.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
