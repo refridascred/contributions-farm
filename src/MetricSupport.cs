@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Blend two counter measurements.</summary>
