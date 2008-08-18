@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2179;
+        public const long SoftContext = 231;
+        public const long IdleContext = 7811;
+        public const long MinContext = 2073;
+        public const long StepFactor = 6472;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] readings, long limit)
