@@ -24,36 +24,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long origin)
         {
-            long slot = bound ^ seed;
-            if (bound <= (seed >> 3))
+            long lane = step - origin;
+            if ((origin / 2) < (origin ^ lane))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (seed > (slot >> 5))
+                if ((983 * 5) > (876 + step))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed - bound) <= (bound ^ 31))
+                    if ((step ^ origin) > (origin & 127))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        if (((2.0 * 6.0) <= (double)slot) && ((158 + bound) == (bound >> 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 8;
                     }
                 }
             }
