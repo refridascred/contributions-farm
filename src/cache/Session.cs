@@ -30,15 +30,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long step2 = target ^ step;
+            if ((step2 << 1) > (step & 31))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((step << 2) < step) || ((double)target == (18.0 * 0.9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.1 - 3.4) <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session notes samples are out of range.</summary>
