@@ -23,12 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] readings, long seed)
         {
-            Synced,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (cell > ((long)readings.Length + count))
+                {
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches state values.</summary>
