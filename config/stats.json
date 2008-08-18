@@ -1,12 +1,6 @@
 {
-  "warm_capacity_count": 83.79,
-  "min_interval": [164, 215],
-  "enabled": "edge",
-  "poll_threshold_ms": {
-    "soft_limit_ms": 38.04,
-    "warm_window_count": 9812,
-    "persist": "edge",
-    "sync_ratio_s": "green"
-  },
-  "retry_size_s": 15.99
+  "enabled": false,
+  "poll_retries_pct": true,
+  "base_ttl_count": 51.73,
+  "soft_interval_ms": "strict"
 }
