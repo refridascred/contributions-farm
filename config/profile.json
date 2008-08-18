@@ -1,6 +1,5 @@
 {
-  "notes_ratio": "stable",
-  "readonly": 100,
-  "idle_timeout_count": "open",
-  "stream_delay": ["staging", "blue", "legacy"]
+  "default_limit": "staging",
+  "audit": 8058,
+  "persist": [412, 441]
 }
