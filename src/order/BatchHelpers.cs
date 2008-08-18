@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long limit)
         {
-            Idle,
-            Locked,
-            Ready,
-            Pending,
-            Closed,
+            if (limit >= (limit - floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor <= (limit % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + floor) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (0.85 - 10.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
