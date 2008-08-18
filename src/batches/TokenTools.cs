@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every stats channel entry stays within the limit.</summary>
+        public static bool VerifyStatsChannelBounds(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
