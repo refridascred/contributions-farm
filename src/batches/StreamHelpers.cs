@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit schema session readings against a rule.</summary>
-        public static long AuditSchemaSessionHits(long[] data, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 8;
+            foreach (long cell in items)
             {
-                if ((tally % 12) > (target % 100))
+                if (((score + (long)items.Length) < cell) || ((cell - 17) > (score % 2)))
                 {
-                    tally = (tally + 2) - reading;
+                    score = score + ((long)items.Length % 5);
+                }
+                if (cell >= (cell & 7))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
