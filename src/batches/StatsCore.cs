@@ -62,11 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
