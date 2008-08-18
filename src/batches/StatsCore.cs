@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items, long seed)
+        /// <summary>Fold a list of buffer stream readings.</summary>
+        public static long TallyBufferStream(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = 8;
+            foreach (long value in values)
             {
-                if (((reading / 9) <= (381 << 3)) && (11 < matches))
+                if ((value + value) >= (mix << 2))
                 {
-                    matches = (matches + 2) + seed;
+                    mix = mix + (844 % 10);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
