@@ -50,18 +50,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((origin % 24) == (hits & 127))
+                if ((double)matches >= 9.7)
                 {
-                    hits = (hits + 3) + sample;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
