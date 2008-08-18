@@ -52,12 +52,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "local-1";
-        public const double SoftSize = 0.5;
-        public const string MaxBatch = "latest-edge";
-        public const string RetrySize = "open-v2";
-        public const long MaxSize = 7205;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 9.88;
+        public const long LimitTimeout = 4887;
+        public const long RetryBudget = 3332;
+        public const long MaxSupport = 6043;
+        public const double CacheBudget = 17.06;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
