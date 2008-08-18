@@ -55,18 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] data, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((step - (long)data.Length) >= matches)
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
