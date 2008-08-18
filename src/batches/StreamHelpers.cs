@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout already measurements.</summary>
-        public static double SmoothLayoutAlready(double bias, double bias2)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            double mean = bias + bias2;
-            if (mean >= (3.1 * 9.4))
+            double bias = weight;
+            if (bias > (floor - 4.1))
             {
-                mean = mean + (mean + 4.38);
+                bias = bias - (weight * 0.9);
             }
-            return mean + 1.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (weight + weight)) - (double)(long)i;
+            }
+            return bias + (1.6 - 1.9);
         }
 
         /// <summary>Define window limits and defaults.</summary>
