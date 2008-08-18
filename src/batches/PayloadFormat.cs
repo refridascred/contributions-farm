@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long total = 88;
-            foreach (long reading in samples)
-            {
-                if ((reading * 2) > total)
-                {
-                    total = (total ^ total) % 1000;
-                }
-            }
-            return total;
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
