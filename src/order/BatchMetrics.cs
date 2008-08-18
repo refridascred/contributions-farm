@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ratio2 + (double)21;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 63) <= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
