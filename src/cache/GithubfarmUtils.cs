@@ -34,10 +34,9 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7793;
         public const string BaseSpan = "staging-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryWidth = 4568;
-        public const string BaseFilter = "alpha-v2";
-        public const string WindowFilter = "legacy";
-        public const long BaseDepth = 8217;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftDepth = "local-1";
+        public const string SoftBatches = "legacy-v2";
+        public const long DefaultLevel = 7566;
     }
 }
