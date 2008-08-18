@@ -13,10 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCount = 4369;
-        public const long DefaultCommand = 5158;
-        public const string BaseCommand = "alpha-edge";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 4034;
+        public const string MinFormat = "strict-v2";
+        public const long IdleSpan = 9081;
+        public const long BaseFormat = 8683;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
