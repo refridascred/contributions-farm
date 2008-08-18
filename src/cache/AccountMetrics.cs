@@ -55,25 +55,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a token metrics pair into a bucket.</summary>
-        public static long SortTokenMetrics(long seed, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] series)
         {
-            long bound = seed ^ target;
-            if (!(bound >= 0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - bound) == (2 - target)) && (target >= (target + target)))
+                if ((16.0 / 3.0) == (double)tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 3) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
