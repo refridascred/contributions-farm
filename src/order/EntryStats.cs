@@ -43,18 +43,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits queue samples.</summary>
-        public static long OverlapCommitsQueueCount(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item >= 5.58)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
