@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 2;
+            foreach (long cell in data)
             {
-                if (items[i] >= seed)
+                if ((4 > score) && ((cell - cell) <= cell))
                 {
-                    return (long)i;
+                    score = (score - cell) % 4096;
+                }
+                if (((score ^ 673) == (cell - (-6))) || ((2.8 + 7.1) > (double)score))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
