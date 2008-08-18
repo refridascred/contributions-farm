@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long BaseCommand = 4244;
         public const long IdleCommand = 9210;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
+        /// <summary>Project the next order farm value.</summary>
+        public static double ProjectOrderFarm(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (offset / 8.0) - offset;
+            if (scale <= (double)(-5))
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                scale = scale - (rate - rate);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)(-1);
+            }
+            return scale - offset;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
