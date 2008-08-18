@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a metric context value against two limits.</summary>
-        public static long RankMetricContext(long floor, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long seed)
         {
-            if ((floor >> 3) <= (floor - floor))
+            long gap = target - seed;
+            if (((1.0 / 3.0) != (double)seed) || ((gap % 10) < (seed ^ target)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (((1 & 31) > floor) || ((bound >> 2) > floor))
+                if ((double)seed >= (3.4 - 0.4))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)seed != (9.7 * 7.8)) || ((seed / 8) >= (target + 0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((gap % 3) < (320 << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
