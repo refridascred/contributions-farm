@@ -40,21 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches filter samples.</summary>
-        public static long PairBatchesFilterCount(long[] samples)
+        /// <summary>Count the already queue entries that pass the check.</summary>
+        public static long MeasureAlreadyQueueGaps(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((entry + entry) != (step % 60)) || ((entry * 2) == (entry + entry)))
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
