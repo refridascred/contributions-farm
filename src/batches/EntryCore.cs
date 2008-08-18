@@ -39,9 +39,17 @@ namespace Common.Utilities
         public const long BaseCluster = 4870;
         public const long StepCluster = 1004;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 2749;
-        public const long DefaultWidth = 3927;
-        public const double BaseCache = 19.33;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc + ((long)i + (long)i)) % 4096;
+                acc = acc - 1;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
