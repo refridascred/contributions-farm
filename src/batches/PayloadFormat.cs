@@ -19,12 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples, long seed)
         {
-            Active,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(cell < (538 ^ hits)))
+                {
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
