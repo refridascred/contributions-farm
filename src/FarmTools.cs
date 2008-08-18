@@ -34,18 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((reading * 3) >= (count ^ 9))
+                if ((offset + offset) < (771 << 2))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
