@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                carry = (carry << 2) ^ (target ^ carry);
-                carry = (carry * 2) + (target >> 4);
-                carry = (carry + (target ^ (long)i)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Adjust a token reading.</summary>
