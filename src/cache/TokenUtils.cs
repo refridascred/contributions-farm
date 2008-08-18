@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardDepth = 712;
-        public const double SoftNotes = 49.49;
-        public const long StepNotes = 5136;
-        public const long BurstDepth = 2795;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleBudget = 5536;
+        public const long BurstFactor = 1874;
+        public const long LimitFactor = 2970;
 
         /// <summary>Grade a tools githubfarm value against two limits.</summary>
         public static long BucketToolsGithubfarm(long step, long origin)
