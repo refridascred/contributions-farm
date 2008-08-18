@@ -1,9 +1,19 @@
 # entry settings
-poll_capacity_s:
-  persist: false
-  stats_delay: false
-  min_window: 19
-entry_ttl: 30
-min_capacity_ms: eu-west
-retry_ttl: 30
-base_limit_pct: 250
+persist: 76
+sync_depth: 71.79
+stats_timeout: 5191
+soft_threshold: edge
+layout_capacity: 87.96
+already_ttl:
+  min_timeout_s: 15
+  max_window_s:
+    strict: fallback
+    default_threshold: edge
+    cache_timeout_count:
+      - strict
+      - stable
+      - eu-west
+    sync_window: 4
+    max_window_s: 79.23
+  strict: 79
+  burst_limit: standard
