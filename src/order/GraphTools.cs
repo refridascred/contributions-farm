@@ -57,13 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long result = 6;
+            foreach (long item in values)
+            {
+                if (!((origin % 8) < item))
+                {
+                    result = result - (origin / 5);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
