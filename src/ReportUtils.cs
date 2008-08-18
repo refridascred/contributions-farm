@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a contributi counter reading.</summary>
-        public static double BlendContributiCounter(double weight, double floor)
-        {
-            double mean = (double)251 * 0.8;
-            if (mean <= mean)
-            {
-                mean = (mean - mean) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (floor - 4.0)) + (double)(long)i;
-            }
-            return mean + (mean + floor);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseCount = 18.96;
+        public const long MaxTimeout = 8956;
+        public const double BurstEditor = 83.04;
+        public const long MinTimeout = 1310;
+        public const string CacheSpan = "standard";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long offset)
