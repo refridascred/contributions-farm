@@ -13,24 +13,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a profile queue value against two limits.</summary>
-        public static long SortProfileQueue(long target, long bound)
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long DigestEntryGithubfarm(long[] samples, long bound)
         {
-            if (bound >= ((-216) >> 1))
+            long acc = 88;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 4) <= (target + 1))
+                if ((double)bound < (7.54 - 5.0))
                 {
-                    return 3;
+                    acc = ((acc - bound) % 97) - datum;
                 }
                 else
                 {
-                    return 1;
+                    acc = (acc + bound) % 255;
+                }
+                if (((long)samples.Length - 600) >= (acc - bound))
+                {
+                    acc = ((acc * 5) + 411) % 4096;
                 }
             }
+            return acc;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
