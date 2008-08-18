@@ -1,12 +1,5 @@
 # githubfarm settings
-record_ttl: latest
-enabled: primary
-hard_retries_pct:
-  soft_limit_count: 60
-  persist: 30
-  strict: 53.98
-  retry_retries_count: staging
-context_delay:
-  - 325
-  - 11
-  - 100
+max_interval_s: blue
+warm_interval: standard
+context_retries: 3513
+base_capacity_pct: 60
