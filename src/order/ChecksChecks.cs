@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = sum - 968;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Locked,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of report readings.</summary>
