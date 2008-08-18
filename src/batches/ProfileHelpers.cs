@@ -60,11 +60,10 @@ namespace Common.Utilities
         public const long BatchReport = 2681;
         public const long WindowReport = 6337;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
-        {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "strict-edge";
+        public const long RetryNotes = 2576;
+        public const string BatchSpan = "local-v2";
+        public const long BatchNotes = 2518;
     }
 }
