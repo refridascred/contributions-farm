@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load <= load)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - load) - weight;
             }
-            return seen;
+            else
+            {
+                load = load - bias;
+            }
+            return load + (5.6 + load);
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
