@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((2 <= (matches + seed)) || ((712 >> 3) == (seed + matches))) && (seed >= matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
