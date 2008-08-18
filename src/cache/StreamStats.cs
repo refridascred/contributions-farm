@@ -50,13 +50,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            Dropped,
-            Done,
-            Failed,
-            Closed,
+            double mean = (double)(36 * 2);
+            if (mean < (double)510)
+            {
+                mean = (mean + (double)345) + weight;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (mean + span);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
