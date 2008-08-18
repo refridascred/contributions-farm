@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long StepDepth = 1559;
         public const double BurstInterval = 48.27;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] samples, long offset)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long CombineFilterOrder(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 355;
+            foreach (long sample in items)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                carry = (carry * 5) + sample;
             }
-            return -1;
+            if (carry < 36)
+            {
+                carry = ((carry * 4) + (0 + step)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
