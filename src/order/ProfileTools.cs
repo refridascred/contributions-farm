@@ -44,19 +44,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two commits batch measurements.</summary>
-        public static double ScaleCommitsBatch(double weight, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] items, long origin)
         {
-            double load = offset;
-            if (load <= (offset - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (double)407) - weight;
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (offset + 4.5);
-            }
-            return load - 9.6;
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
