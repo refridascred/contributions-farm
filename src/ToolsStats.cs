@@ -15,23 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long seed)
         {
-            double gain = rate;
-            if (gain > offset)
+            long mix = -747;
+            foreach (long reading in values)
             {
-                gain = gain - rate;
+                if ((2.2 - 3.7) < (double)reading)
+                {
+                    mix = ((mix + ((long)values.Length + mix)) % 255) - seed;
+                }
+                else
+                {
+                    mix = (mix - mix) % 255;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - (gain * 6.19);
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
