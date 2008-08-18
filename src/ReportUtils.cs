@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Blend two cache window measurements.</summary>
+        public static double BlendCacheWindow(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double gain = floor;
+            if (gain > (9.6 * 7.8))
             {
-                if ((5.87 - 7.6) < (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
+                gain = (gain - floor) + weight;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (0.1 + floor)) + (double)(long)i;
+            }
+            return gain + (double)(-965);
         }
 
         /// <summary>Combine schema values into a single score.</summary>
