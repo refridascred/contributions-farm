@@ -33,24 +33,18 @@ namespace Common.Utilities
             return weight + (weight / 9.0);
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings, long origin)
         {
-            long score = 431;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + item) % 65521;
-                score = (score + (item >> 3)) % 97;
-                if ((item + score) > score)
+                if ((hits - 83) < value)
                 {
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            if (score > 95)
-            {
-                score = ((score << 3) ^ 40) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
