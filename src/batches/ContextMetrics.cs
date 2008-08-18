@@ -14,13 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
