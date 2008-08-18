@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] samples, long floor)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry == (20.0 / 6.0))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
