@@ -15,19 +15,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a profile commits figure with a bias.</summary>
-        public static double BlendProfileCommits(double weight, double offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long offset)
         {
-            double ratio = weight;
-            if (ratio < (ratio / 5.0))
+            long cur = seed - offset;
+            if (seed <= (cur ^ cur))
             {
-                ratio = ratio - ratio;
+                return 4;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + (double)(-37)) - (double)(long)i;
+                if ((seed + cur) < (cur / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (cur <= (cur << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19.0 - 2.6) == (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return ratio - offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
