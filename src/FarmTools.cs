@@ -23,15 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
