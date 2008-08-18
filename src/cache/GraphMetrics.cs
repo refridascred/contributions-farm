@@ -20,18 +20,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long CountEntryStreamGaps(long[] data)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = -9;
+            foreach (long datum in samples)
             {
-                if ((double)datum > (7.0 * 11.0))
+                if (((score << 3) <= datum) || ((double)datum <= 2.32))
                 {
-                    matches = matches + 3;
+                    score = score + datum;
+                }
+                if ((score % 12) > (617 ^ datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 87)
+            {
+                score = (score * 3) + score;
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
