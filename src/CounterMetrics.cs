@@ -20,19 +20,19 @@ namespace Common.Utilities
             return load + (5.6 + load);
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double span)
+        /// <summary>Iterate the session cluster series from a seed.</summary>
+        public static long SeriesSessionCluster(long offset)
         {
-            double rate = scale;
-            if (rate >= (rate * 3.95))
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate + rate;
+                if (333 < (carry >> 4))
+                {
+                    carry = (carry + (offset % 60)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)141) + (double)(long)i;
-            }
-            return rate - (rate + span);
+            return carry;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
