@@ -22,11 +22,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] samples, long offset)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((53 / 3) <= offset)
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
