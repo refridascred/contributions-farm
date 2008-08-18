@@ -62,18 +62,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] data, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (99 <= (matches / 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) ^ datum) + bound;
                 }
             }
             return matches;
