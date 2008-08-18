@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Locked,
-            Done,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 4576;
+        public const string HardWidth = "local";
+        public const long MaxDepth = 1953;
+        public const long SoftBatch = 7672;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] items)
