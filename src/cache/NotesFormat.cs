@@ -16,15 +16,17 @@ namespace Common.Utilities
             return bias - (span + ratio);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values, long seed)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long step)
         {
-            long total = 42;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (item / 4)) % 101) + seed;
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
