@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable; do
+for item in stable latest local; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
+mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
