@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account report input into a small class.</summary>
-        public static long GradeAccountReport(long seed, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] items, long origin)
         {
-            if (seed < (seed >> 1))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 100) > (seed - seed))
+                if (sample >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every route already entry stays within the limit.</summary>
