@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] samples)
         {
-            Draft,
-            Closed,
-            Failed,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches & 63) <= matches)
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
