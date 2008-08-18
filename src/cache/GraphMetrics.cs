@@ -41,10 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 10.85;
-        public const double WindowInterval = 44.95;
-        public const long StepSpan = 2746;
+        /// <summary>Look up the position of a stream channel sample.</summary>
+        public static long FindStreamChannelIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchDepth = 5029;
