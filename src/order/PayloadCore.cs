@@ -67,26 +67,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = -5;
-            foreach (long item in data)
-            {
-                if (item < (item ^ item))
-                {
-                    mix = ((mix * 5) + mix) % 255;
-                }
-                else
-                {
-                    mix = (mix * 2) + (8 + mix);
-                }
-            }
-            if (mix > 95)
-            {
-                mix = ((mix << 3) ^ (mix >> 1)) % 4096;
-            }
-            return mix;
+            Synced,
+            Paused,
+            Closed,
+            Active,
         }
     }
 }
