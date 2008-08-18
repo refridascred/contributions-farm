@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] series)
-        {
-            long state = 90;
-            foreach (long item in series)
-            {
-                if (item >= (state - 1))
-                {
-                    state = (state - item) % 65521;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 29.34;
+        public const long LimitCount = 3237;
+        public const long BaseQueue = 1006;
+        public const long RetryLevel = 911;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] values, long floor)
