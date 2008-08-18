@@ -43,22 +43,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long bound)
         {
-            long acc = 29;
-            foreach (long value in series)
+            if (((bound ^ step) >= bound) && ((61 >> 1) < step))
             {
-                if (6 >= (long)series.Length)
+                return 4;
+            }
+            else
+            {
+                if ((bound + 578) > (step << 2))
                 {
-                    acc = (acc << 3) ^ (acc + value);
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (acc < 9)
-            {
-                acc = (acc * 4) + (acc & 15);
-            }
-            return acc;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
