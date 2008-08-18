@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a token filter counter forward.</summary>
-        public static long RollTokenFilter(long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry + step;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
