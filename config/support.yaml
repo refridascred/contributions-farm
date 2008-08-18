@@ -1,5 +1,14 @@
 # support settings
-warm_threshold_s: 29
-cache_retries: 86.77
-sync_window_count: blue
-layout_timeout: blue
+retry_interval_ms: 1024
+retry_delay_s:
+  - edge
+  - standard
+  - green
+  - primary
+verbose:
+  batch_depth_s: 14.95
+  editor_ratio: false
+  compress: cached
+soft_delay_ms: stable
+checks_ratio: 50.76
+dry_run: local
