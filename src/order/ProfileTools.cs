@@ -19,12 +19,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 4704;
-        public const double HardBudget = 61.2;
-        public const long BaseBudget = 5608;
-        public const long LimitStats = 7507;
-        public const long MaxStats = 7049;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            New,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Blend two commits batch measurements.</summary>
         public static double ScaleCommitsBatch(double weight, double offset)
