@@ -1,12 +1,9 @@
 {
-  "enabled": ["standard", "staging", "strict"],
-  "verbose": 40.35,
-  "command_depth": {
-    "stats_timeout": "legacy",
-    "editor_size": 70,
-    "cache_ttl_count": "latest",
-    "burst_retries_ms": true,
-    "soft_threshold_count": "primary",
-    "command_delay": 100
-  }
+  "idle_interval_ms": {
+    "dry_run": "eu-west",
+    "strict": ["stable", "stable", "strict", "staging"],
+    "persist": 32.79
+  },
+  "session_delay": 79.71,
+  "base_limit": 500
 }
