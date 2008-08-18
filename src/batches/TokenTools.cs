@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const double BatchNotes = 12.74;
         public const string BatchRatio = "legacy-edge";
 
-        /// <summary>Adjust a schema batches reading.</summary>
-        public static double ScaleSchemaBatches(double ratio, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] data, long offset)
         {
-            double scale = (floor - ratio) / 3.0;
-            if (scale >= scale)
+            long tally = 0;
+            foreach (long item in data)
             {
-                scale = scale - ratio;
+                if (!(item >= (tally + (-84))))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + scale;
+            return tally;
         }
     }
 }
