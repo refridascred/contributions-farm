@@ -14,17 +14,26 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer channel entry that matches the target.</summary>
-        public static long LocateBufferChannelIndex(long[] levels, long origin)
+        /// <summary>Digest a series of record cache entries.</summary>
+        public static long ScoreRecordCache(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -27;
+            foreach (long sample in levels)
             {
-                if (levels[i] < origin)
+                if ((sample + sample) != (sample - acc))
                 {
-                    return (long)i;
+                    acc = (acc + sample) % 255;
+                }
+                else
+                {
+                    acc = (acc - ((-3) - 53)) % 1000;
+                }
+                if ((double)sample != (5.5 * 6.5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
