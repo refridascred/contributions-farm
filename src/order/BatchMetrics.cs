@@ -38,13 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit record schema readings against a rule.</summary>
+        public static long AuditRecordSchemaGaps(long[] series)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)5 <= (double)entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
