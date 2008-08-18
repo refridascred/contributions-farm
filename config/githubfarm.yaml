@@ -1,10 +1,16 @@
 # githubfarm settings
-burst_window_count: true
-cache_delay_ms: standard
-contributi_delay: latest
-counter_ttl:
-  - 10
-  - 365
-enabled:
-  - local
-  - primary
+enabled: 95.06
+poll_threshold:
+  base_capacity_pct: 5234
+  base_timeout_pct: eu-west
+  retry_ratio:
+    burst_capacity_ms: 8649
+    buffer_depth: blue
+    sync_threshold_count: 30
+    retry_size_s: 72.08
+    persist: 81.72
+    audit: open
+poll_threshold_pct: 57.58
+cache_delay_ms:
+  - 253
+  - 355
