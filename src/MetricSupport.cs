@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit order support readings against a rule.</summary>
-        public static long AuditOrderSupportMatches(long[] data, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell << 1) >= (-839))
+                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
                 {
-                    hits = (hits + 2) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
