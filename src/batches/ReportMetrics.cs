@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
-        public static bool VerifyGraphContributiLimits(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (sample > seed)
+                if (hits >= entry)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
