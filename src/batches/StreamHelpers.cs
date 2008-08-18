@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 8387;
-        public const long IdleEntry = 5482;
-        public const string RetryEntry = "fallback-v2";
-        public const long BatchTimeout = 4265;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item < (double)floor)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
