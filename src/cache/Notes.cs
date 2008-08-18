@@ -49,18 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "local";
+        public const long SoftCommits = 8599;
+        public const long MinScore = 7893;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsMatches(long[] readings, long origin)
