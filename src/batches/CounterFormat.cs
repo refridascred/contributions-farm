@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = bias;
+            if (bias2 > (bias - 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = (bias2 - (double)473) - floor;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - (double)525;
+            }
+            return bias2 + 3.77;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
