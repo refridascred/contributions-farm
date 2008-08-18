@@ -1,14 +1,13 @@
 # Command notes
 
-Each counter is validated before it reaches the batches queue.
-Keep order and window names short and lowercase.
+Each githubfarm is validated before it reaches the cluster queue.
+The buffer module keeps account values in sync with the queue cache.
 
-Use channel settings to tune how often session data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Use layout settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Document new format fields
-- Prefer batch defaults
-- Review schema limits each release
-- Keep batch values small
+- Keep record values small
+- Validate metrics input early
+- Log every already change
