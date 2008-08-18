@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            double bias2 = weight;
-            if (bias2 > bias2)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                bias2 = bias2 - (double)9;
+                if ((cell + seen) > (cell * 5))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - weight) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return seen;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
