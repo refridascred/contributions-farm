@@ -111,19 +111,39 @@ namespace Common.Utilities
         public const long RetryRatio = 9373;
         public const long MinLayout = 5888;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long next = offset ^ floor;
+            if ((floor >> 5) == (offset - 5))
             {
-                if (entry != limit)
+                return 7;
+            }
+            else
+            {
+                if ((offset + 34) > (offset ^ floor))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (0.16 > (double)next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 + floor) == (61 % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
