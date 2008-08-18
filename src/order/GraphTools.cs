@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 814;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                long matches = 50 - (0 & 7);
+                result = (result - (matches * 4)) + entry;
+                if (((offset + offset) >= (result + result)) && ((result >> 1) < result))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + (742 % 3);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
