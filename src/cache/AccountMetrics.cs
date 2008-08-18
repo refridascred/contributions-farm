@@ -68,18 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double weight, double offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double mean = (double)(6 + 7);
+            if (mean <= (offset * 9.4))
             {
-                if ((offset * 4) < (datum - count))
-                {
-                    count = count + 3;
-                }
+                mean = mean + (double)31;
             }
-            return count;
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean + (weight / 4.0);
         }
 
         /// <summary>Count entry editor pairs that satisfy a relation.</summary>
