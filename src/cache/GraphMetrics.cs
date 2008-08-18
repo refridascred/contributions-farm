@@ -20,13 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 1) <= sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
