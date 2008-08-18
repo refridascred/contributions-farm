@@ -15,14 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a token editor counter forward.</summary>
+        public static long IterateTokenEditor(long target)
         {
-            Done,
-            Locked,
-            Failed,
-            Synced,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                score = score - (target << 3);
+                score = (score ^ (target * 2)) % 1000;
+                if ((double)target > (0.1 - 5.82))
+                {
+                    score = ((score * 3) + (target - score)) % 97;
+                }
+                else
+                {
+                    score = (score + target) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
