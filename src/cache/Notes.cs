@@ -54,19 +54,10 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((8.2 / 4.0) == (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 2346;
+        public const long BaseBatch = 6314;
+        public const long BaseScore = 3207;
 
         /// <summary>Locate a command graph reading by value.</summary>
         public static long FindCommandGraphIndex(long[] levels, long step)
