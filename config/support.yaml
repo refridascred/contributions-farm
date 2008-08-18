@@ -1,20 +1,5 @@
 # support settings
-batch_limit_s:
-  - latest
-  - stable
-  - latest
-  - fallback
-session_limit:
-  - primary
-  - open
-  - cached
-  - green
-strict: 53.7
-batch_capacity:
-  sync_window_s: open
-  tools_window: 38.31
-  burst_depth_count: 21.04
-  soft_interval_s: 48.74
-  poll_capacity_count: 3
-  min_ttl_count: staging
-cache_ratio: 30
+contributi_ttl: 48
+order_depth: latest
+compress: fallback
+metrics_retries: strict
