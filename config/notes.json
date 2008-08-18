@@ -1,5 +1,7 @@
 {
-  "default_threshold": 30,
-  "compress": 9360,
-  "idle_threshold": 250
+  "default_capacity_pct": 22.92,
+  "hard_delay": true,
+  "cache_retries_pct": false,
+  "batch_depth": 62.73,
+  "batches_capacity": 410
 }
