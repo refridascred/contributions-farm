@@ -36,13 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            New,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 0.67;
+        public const string HardLevel = "primary-edge";
+        public const long StepWidth = 69;
 
         /// <summary>Blend two channel already measurements.</summary>
         public static double SmoothChannelAlready(double ratio, double offset)
