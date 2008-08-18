@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = offset / 9.0;
-            if (mean >= rate)
-            {
-                mean = mean + 4.6;
-            }
-            else
-            {
-                mean = mean + (rate * 11.0);
-            }
-            return mean + mean;
+            Queued,
+            Ready,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
