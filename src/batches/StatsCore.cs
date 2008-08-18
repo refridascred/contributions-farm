@@ -19,25 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm githubfarm value against two limits.</summary>
-        public static long BucketFarmGithubfarm(long floor, long origin)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long cur = floor ^ origin;
-            if ((cur % 10) > (floor << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur + cur) < (840 & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Dropped,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
