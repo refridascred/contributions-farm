@@ -20,14 +20,22 @@ namespace Common.Utilities
         public const long SoftLevel = 9639;
         public const long WindowSize = 1856;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long AuditSessionRouteMatches(long[] data)
         {
-            New,
-            Pending,
-            Draft,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)894 < (double)sample)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
