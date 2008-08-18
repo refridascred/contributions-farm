@@ -34,19 +34,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] data, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
