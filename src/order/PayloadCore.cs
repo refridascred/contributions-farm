@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Grade a order counter value against two limits.</summary>
+        public static long SortOrderCounter(long limit, long limit2)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long step = limit ^ limit2;
+            if ((step << 2) < (limit - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit2 >= (6.3 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((90 << 3) < (limit * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
