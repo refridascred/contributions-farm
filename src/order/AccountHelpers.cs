@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a batch tools reading.</summary>
-        public static double SmoothBatchTools(double ratio, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            double drift = ratio;
-            if (drift <= (ratio + span))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (double)(-261);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + 4.55;
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
