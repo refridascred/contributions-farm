@@ -24,13 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double weight, double bias)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            double bias2 = weight;
+            if (bias2 > (double)6)
+            {
+                bias2 = bias2 - (bias2 + bias);
+            }
+            else
+            {
+                bias2 = bias2 + 2.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias + bias2)) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias2);
         }
     }
 }
