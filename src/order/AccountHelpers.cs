@@ -70,18 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] data, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((9.6 + 3.0) >= (double)hits)
+                if (sample >= seed)
                 {
-                    hits = ((hits + 2) ^ value) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
