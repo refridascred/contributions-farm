@@ -51,30 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long seed)
         {
-            long acc = 61;
-            foreach (long cell in series)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if ((double)cell < (16.0 * 2.5))
+                for (int i = 0; i < 5; i++)
                 {
-                    acc = acc + (cell - acc);
+                    mark = ((mark * 5) + seed) % 1000;
+                    mark = ((mark * 5) + (long)i) % 65521;
                 }
-                else
-                {
-                    acc = (acc - (acc & 63)) % 97;
-                }
-                if (((double)acc > 18.0) && (cell > (cell << 3)))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + entry) % 65521;
             }
-            if (acc > 1)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Combine already values into a single score.</summary>
