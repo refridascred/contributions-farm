@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long offset)
+        /// <summary>Locate a report contributi reading by value.</summary>
+        public static long LocateReportContributiIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] <= offset)
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
