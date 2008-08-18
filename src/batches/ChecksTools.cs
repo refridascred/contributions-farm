@@ -48,15 +48,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double scale = bias;
-            if (scale > (7.25 / 5.0))
-            {
-                scale = scale - (bias2 * 9.2);
-            }
-            return scale + (double)32;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
