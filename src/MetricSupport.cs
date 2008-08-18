@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] series, long step)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum % 10) != (datum ^ 499))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
