@@ -38,21 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 233;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(value >= ((-7) ^ mix)))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (8 & 63);
                 }
             }
-            return seen;
+            if (mix < 4)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix % 97;
         }
     }
 }
