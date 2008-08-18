@@ -52,12 +52,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 9.88;
-        public const long LimitTimeout = 4887;
-        public const long RetryBudget = 3332;
-        public const long MaxSupport = 6043;
-        public const double CacheBudget = 17.06;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long step, long origin)
+        {
+            if ((step & 15) == (step + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step >> 4) < (origin - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin + (-2)) < (origin << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 17.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
