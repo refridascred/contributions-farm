@@ -1,6 +1,11 @@
-id,active,label,score
-1,196,40.04,664
-2,eu-west,35,61.41
-3,90.6,57.5,422
-4,blue,legacy,45.53
-5,54.02,57.01,primary
+id,region
+1,157
+2,latest
+3,strict
+4,481
+5,57
+6,85.59
+7,637
+8,strict
+9,66.54
+10,cached
