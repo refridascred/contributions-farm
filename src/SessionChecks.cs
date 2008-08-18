@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next order farm value.</summary>
-        public static double ProjectOrderFarm(double rate, double offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double scale = (offset / 8.0) - offset;
-            if (scale <= (double)(-5))
-            {
-                scale = scale - (rate - rate);
-            }
-            else
-            {
-                scale = scale - (double)(-1);
-            }
-            return scale - offset;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
