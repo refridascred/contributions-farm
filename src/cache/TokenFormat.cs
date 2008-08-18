@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 53.83;
-        public const double DefaultLevel = 7.15;
-        public const string SoftBuffer = "open-v2";
-        public const double HardRatio = 38.83;
-        public const double RetryDepth = 45.11;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long seed)
+        {
+            long score = 8;
+            foreach (long sample in readings)
+            {
+                score = ((score + (seed * 4)) % 97) ^ sample;
+            }
+            return score % 97;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] values)
