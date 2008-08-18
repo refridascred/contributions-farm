@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double load = gain;
+            if (load > (load - load))
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (double)5) - floor;
             }
-            return found;
+            else
+            {
+                load = load - (double)466;
+            }
+            return load + (gain - gain);
         }
 
         /// <summary>Adjust a token reading.</summary>
