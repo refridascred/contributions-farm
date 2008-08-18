@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Blend two filter notes measurements.</summary>
+        public static double ScaleFilterNotes(double scale, double bias)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double bias2 = (double)(2 - 284);
+            if (bias2 >= (bias + bias))
+            {
+                bias2 = bias2 + scale;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - 8.78;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
