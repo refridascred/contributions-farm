@@ -49,11 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 61.77;
-        public const double DefaultInterval = 31.29;
-        public const long CacheWidth = 3724;
-        public const double DefaultPayload = 15.47;
-        public const long IdlePayload = 8047;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Pending,
+            Dropped,
+            Done,
+            Synced,
+            Retry,
+        }
     }
 }
