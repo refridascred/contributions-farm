@@ -22,13 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches << 1) < (limit / 5))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
