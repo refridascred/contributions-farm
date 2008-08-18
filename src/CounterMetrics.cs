@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 7106;
-        public const string MaxEditor = "staging-edge";
-        public const long RetryEditor = 4620;
-        public const long LimitEditor = 5427;
-        public const string IdleFactor = "latest-v2";
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double span)
+        {
+            double rate = scale;
+            if (rate >= (rate * 3.95))
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)141) + (double)(long)i;
+            }
+            return rate - (rate + span);
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] samples, long offset)
