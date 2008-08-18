@@ -14,17 +14,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long SeekCommandRecordIndex(long[] items, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
