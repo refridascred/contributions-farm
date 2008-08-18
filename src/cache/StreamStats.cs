@@ -50,19 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long acc = 493;
-            foreach (long datum in items)
-            {
-                acc = (((acc * 4) + (662 * 2)) % 101) ^ datum;
-            }
-            if (acc < 8)
-            {
-                acc = (acc ^ (acc % 60)) % 255;
-            }
-            return acc;
+            Dropped,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
