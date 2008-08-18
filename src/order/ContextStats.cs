@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFactor = 2351;
+        public const long SoftFactor = 7663;
+        public const double MinSize = 64.08;
+        public const long WindowCount = 44;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatLimits(long[] readings, long seed)
