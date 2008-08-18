@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine support counter values into a single score.</summary>
+        public static long CombineSupportCounter(long[] levels)
         {
-            Paused,
-            Idle,
-            Ready,
-            Done,
+            long result = 38;
+            foreach (long value in levels)
+            {
+                if ((result + result) >= result)
+                {
+                    result = ((result << 3) ^ (result - value)) % 65521;
+                }
+            }
+            if (result < 47)
+            {
+                result = result - (result - result);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
