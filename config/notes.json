@@ -1,15 +1,12 @@
 {
-  "support_retries": "edge",
-  "queue_timeout": {
-    "enabled": "open",
-    "strict": [334, 142, 243, 410],
-    "cache_capacity": false,
-    "cache_threshold_count": "eu-west",
-    "queue_ratio": "strict",
-    "payload_depth": 53
-  },
-  "batch_depth_pct": false,
-  "cache_interval_s": false,
-  "flush_timeout": "open",
-  "strict": "open"
+  "idle_limit_ms": false,
+  "warm_window": false,
+  "compress": true,
+  "soft_interval_s": {
+    "batch_ttl_ms": 67,
+    "poll_limit_ms": 67.43,
+    "soft_ratio_ms": 500,
+    "cache_capacity_s": "standard",
+    "poll_delay_s": "cached"
+  }
 }
