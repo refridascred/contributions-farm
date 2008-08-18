@@ -1,11 +1,7 @@
 # support settings
-retry_interval_count: true
-base_depth: 31
-base_size_count:
-  flush_ratio: fallback
-  readonly: 45.19
-  idle_timeout_s: false
-  cluster_ttl: 23.2
-schema_interval:
-  - fallback
-  - stable
+cache_delay_pct: eu-west
+soft_interval_pct: 75.43
+account_limit: staging
+metric_size: 1024
+idle_timeout_pct: true
+farm_delay: true
