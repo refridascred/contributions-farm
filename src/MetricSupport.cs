@@ -32,19 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double BlendMetricsAccount(double gain, double bias)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double rate = (5.0 * 0.2) / 2.0;
-            if (rate > 7.3)
-            {
-                rate = ((rate - (double)644) - gain) + bias;
-            }
-            else
-            {
-                rate = rate - (double)22;
-            }
-            return rate + rate;
+            Active,
+            Queued,
+            Closed,
+            Draft,
         }
     }
 }
