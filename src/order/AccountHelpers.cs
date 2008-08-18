@@ -51,17 +51,26 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Look up the position of a channel session sample.</summary>
-        public static long FindChannelSessionIndex(long[] series, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 34;
+            foreach (long value in readings)
             {
-                if (series[i] < limit)
+                if ((target + sum) == (target << 2))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ ((-99) + value)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (target >> 4)) % 101;
                 }
             }
-            return -1;
+            if (sum > 75)
+            {
+                sum = (sum ^ target) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
