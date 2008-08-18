@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long CountFormatNotesGaps(long[] items)
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long CombineToolsBatch(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = 0;
+            foreach (long value in readings)
             {
-                if (677 < (datum * 4))
-                {
-                    seen = seen + 2;
-                }
+                anchor = (((anchor + anchor) % 1000) ^ value) + origin;
+                anchor = ((anchor * 2) + anchor) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
