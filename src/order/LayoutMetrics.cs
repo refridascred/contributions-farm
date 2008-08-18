@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBudget = "fallback-v2";
-        public const long RetryRatio = 216;
-        public const double BatchWidth = 38.23;
-        public const long SoftInterval = 5623;
-        public const long LimitSize = 2917;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
