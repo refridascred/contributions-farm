@@ -56,26 +56,19 @@ namespace Common.Utilities
         public const long WindowBatches = 3769;
         public const string MaxBatches = "primary";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] items, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (bound >= mark)
+                if (datum != limit)
                 {
-                    mark = (mark << 2) ^ (mark * 5);
-                    mark = (mark * 2) + (5 + bound);
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark * 5) + (29 % 100);
-                    mark = ((mark * 2) + (5 + (long)i)) % 1000;
-                }
-                mark = ((mark << 3) ^ (mark % 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
     }
 }
