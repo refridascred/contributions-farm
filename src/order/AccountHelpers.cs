@@ -30,19 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double ratio, double floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long seed)
         {
-            double rate = floor;
-            if (rate < 11.0)
+            if ((target % 7) > (target % 8))
             {
-                rate = (rate - (rate / 2.0)) - ratio;
+                return 8;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (double)767) + (double)(long)i;
+                if ((target ^ seed) == (362 * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)seed == (8.0 - 12.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return rate + floor;
         }
 
         /// <summary>Hold a account summary.</summary>
