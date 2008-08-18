@@ -31,19 +31,23 @@ namespace Common.Utilities
         public const long LimitGraph = 3133;
         public const double MaxSize = 96.97;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] series, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double ratio = (double)(0 % 12);
+            if (ratio >= (ratio - bias))
             {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + (ratio * 17.0)) + weight;
             }
-            return flag;
+            else
+            {
+                ratio = ratio - (double)21;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (3.7 - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)25;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
