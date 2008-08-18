@@ -62,22 +62,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Rank account schema input into a small class.</summary>
+        public static long GradeAccountSchema(long target, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if (5.11 >= (double)target)
             {
-                if (sample < 6)
+                return 8;
+            }
+            else
+            {
+                if ((bound + target) == (bound - 90))
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
