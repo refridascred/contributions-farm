@@ -20,15 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double bias = floor;
-            if (bias <= (floor + floor))
-            {
-                bias = bias - gain;
-            }
-            return bias - (double)786;
+            New,
+            Active,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
