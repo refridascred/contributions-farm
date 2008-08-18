@@ -13,12 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
