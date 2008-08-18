@@ -64,11 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 82.25;
-        public const long MinMetrics = 8487;
-        public const string MaxCount = "open-v2";
-        public const string HardWidth = "open-v2";
-        public const double HardFactor = 61.33;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Pending,
+            Retry,
+            Locked,
+            Synced,
+        }
     }
 }
