@@ -26,12 +26,23 @@ namespace Common.Utilities
         public const long BurstEditor = 6666;
         public const long CacheInterval = 5798;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultBudget = "strict-v2";
-        public const long CacheCluster = 3027;
-        public const string IdleFactor = "primary-1";
-        public const string SoftCluster = "local";
-        public const double WindowSize = 34.42;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally ^ tally) > (tally % 5))
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long SortSchema(long bound, long offset)
