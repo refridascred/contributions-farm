@@ -56,12 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] levels)
         {
-            Queued,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally < (double)2)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
