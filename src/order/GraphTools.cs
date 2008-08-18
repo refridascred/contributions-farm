@@ -28,21 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer cache readings.</summary>
-        public static long MatchBufferCacheCount(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor - reading) >= reading)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
