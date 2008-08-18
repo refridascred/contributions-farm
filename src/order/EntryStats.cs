@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                anchor = (anchor * 4) + (bound - anchor);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Validate layout stats readings against a bound.</summary>
