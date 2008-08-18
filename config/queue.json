@@ -1,20 +1,5 @@
 {
-  "base_size_count": 1561,
-  "warm_delay_ms": "fallback",
-  "window_limit": 4584,
-  "compress": [203, 113, 185],
-  "warm_delay": {
-    "max_limit_pct": "legacy",
-    "min_ratio": ["eu-west", "open", "fallback"],
-    "sync_window_pct": 63,
-    "readonly": true,
-    "poll_size": ["green", "edge", "local", "latest"]
-  },
-  "batch_retries_s": {
-    "base_capacity_ms": [444, 25, 115, 262],
-    "idle_ratio_count": 24,
-    "idle_window": 8644,
-    "persist": "strict",
-    "compress": "staging"
-  }
+  "retry_interval": "cached",
+  "persist": 2478,
+  "min_interval_count": 250
 }
