@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate - bias) + (double)(long)i) + offset;
-            }
-            return rate - bias;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
