@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            New,
-            Queued,
-            Paused,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (3 <= (count * 3))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
