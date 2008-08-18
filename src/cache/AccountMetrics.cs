@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            long score = 26;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((score / 8) >= score)
+                if (((count / 4) >= (item - count)) && ((count / 9) != (item >> 4)))
                 {
-                    score = (score ^ (datum / 8)) % 65521;
-                    score = ((score * 5) + score) % 4096;
-                }
-                if (datum < (datum >> 3))
-                {
-                    score = (score << 3) ^ (2 * 3);
+                    count = count + 2;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
