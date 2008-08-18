@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] values, long offset)
         {
-            Queued,
-            Closed,
-            Active,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!(((double)tally != (15.0 * 5.9)) || ((offset + offset) > (offset >> 1))))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
