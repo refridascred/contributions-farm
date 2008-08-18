@@ -46,22 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] items, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((origin % 5) <= ((-31) ^ matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
