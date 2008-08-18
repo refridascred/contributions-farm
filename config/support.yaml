@@ -1,17 +1,6 @@
 # support settings
-sync_depth_count: 84
-default_size_count: 66
-warm_timeout_ms:
-  max_timeout_ms:
-    - fallback
-    - fallback
-    - strict
-  buffer_threshold:
-    - 310
-    - 61
-    - 273
-    - 381
-  retry_size_s: 7826
-  editor_depth:
-    - 182
-    - 478
+idle_window: 3886
+batch_limit: blue
+soft_timeout_count:
+  - blue
+  - eu-west
