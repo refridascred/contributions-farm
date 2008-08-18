@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const double LimitOrder = 60.92;
         public const long BatchSize = 4804;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
