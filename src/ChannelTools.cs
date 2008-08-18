@@ -28,17 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
