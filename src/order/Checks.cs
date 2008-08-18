@@ -49,11 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 91.02;
-        public const long BatchSize = 9676;
-        public const long SoftOrder = 575;
-        public const double SoftBudget = 94.2;
-        public const long BurstOrder = 7001;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long bound, long origin)
+        {
+            if ((origin % 5) > (origin >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound < (bound - (-74)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
