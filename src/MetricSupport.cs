@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings, long bound)
-        {
-            long mix = 866;
-            foreach (long value in readings)
-            {
-                mix = (((mix - mix) % 255) ^ value) - bound;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitScore = "alpha-1";
+        public const double CacheCount = 64.92;
+        public const long IdleBudget = 3663;
+        public const double BaseGraph = 97.58;
+        public const long WindowGraph = 8455;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionOutliers(long[] samples)
