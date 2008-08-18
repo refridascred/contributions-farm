@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 87;
-            foreach (long reading in readings)
-            {
-                carry = carry ^ (7 - reading);
-            }
-            return carry;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
