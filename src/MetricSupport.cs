@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 30;
+            foreach (long datum in readings)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) == 0))
+                if (((long)readings.Length - carry) >= (65 % 16))
                 {
-                    return (long)i;
+                    carry = carry - (datum << 2);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of commits order entries.</summary>
