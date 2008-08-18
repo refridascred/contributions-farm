@@ -1,6 +1,19 @@
 {
-  "default_depth": 78,
-  "enabled": 1024,
-  "channel_ttl": "legacy",
-  "compress": 30.97
+  "base_size_pct": 6037,
+  "stats_limit": 30.74,
+  "metric_ttl": 250,
+  "flush_timeout_pct": {
+    "retry_timeout": {
+      "base_window": "staging",
+      "hard_threshold": 500,
+      "profile_threshold": "standard"
+    },
+    "enabled": [166, 237, 245],
+    "poll_limit_ms": {
+      "base_interval_pct": 32.15,
+      "format_timeout": 3607,
+      "min_interval_count": "green",
+      "persist": 5
+    }
+  }
 }
