@@ -1,11 +1,11 @@
 {
-  "record_limit": ["staging", "fallback", "stable"],
-  "audit": "open",
-  "githubfarm_capacity": 2332,
-  "burst_timeout": {
-    "profile_size": "stable",
-    "idle_retries_pct": ["strict", "cached"],
-    "channel_ttl": 500
+  "flush_retries": {
+    "soft_interval_pct": 86.95,
+    "max_capacity_s": 77,
+    "persist": 85.57,
+    "burst_size_s": true,
+    "cache_retries": 2225
   },
-  "dry_run": 1024
+  "cache_depth_count": 22.03,
+  "route_ratio": "open"
 }
