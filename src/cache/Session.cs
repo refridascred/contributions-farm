@@ -45,17 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long target)
+        /// <summary>Measure how many session notes samples are out of range.</summary>
+        public static long AuditSessionNotesGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] > target)
+                if ((1.86 * 2.24) < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
