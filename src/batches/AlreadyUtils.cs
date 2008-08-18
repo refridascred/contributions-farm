@@ -52,28 +52,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order filter series from a seed.</summary>
-        public static long StepOrderFilter(long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] values, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)acc <= (double)1)
+                if ((91 % 5) > datum)
                 {
-                    acc = ((acc * 2) + (-1)) % 255;
-                    break;
+                    seen = (seen + 3) + origin;
                 }
-                if (!!((double)acc < (9.7 - 17.0)))
-                {
-                    acc = ((acc * 5) + (limit >> 4)) % 101;
-                }
-                if ((9 % 3) > (acc - limit))
-                {
-                    acc = (acc - ((long)i % 16)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
