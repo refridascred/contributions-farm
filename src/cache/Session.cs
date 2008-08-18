@@ -27,26 +27,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            long score = -763;
-            foreach (long item in values)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((score >> 4) < (26 + 35)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    score = (((score << 3) ^ (item & 15)) % 65521) - step;
+                    mix = ((mix * 2) + (floor >> 5)) ^ (long)i2;
                 }
-                else
-                {
-                    score = (score + (score - score)) % 97;
-                }
-                if (!((score << 3) >= score))
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
     }
 }
