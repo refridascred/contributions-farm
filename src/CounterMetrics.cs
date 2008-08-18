@@ -26,11 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long floor)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            long sum = 84;
+            foreach (long datum in items)
+            {
+                if (((0.74 - 1.65) >= (double)datum) || ((floor + 5) <= (0 - floor)))
+                {
+                    sum = (sum - (sum * 2)) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
