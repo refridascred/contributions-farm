@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] series, long target)
+        /// <summary>Find the first account tools entry that matches the target.</summary>
+        public static long LocateAccountToolsIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= target)
+                if (readings[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
