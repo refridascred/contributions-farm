@@ -1,10 +1,14 @@
 # Command notes
 
-The graph report groups every contributi by support.
-When a metrics fails, the window handler retries a few times before giving up.
+Keep metric and notes names short and lowercase.
+The queue module keeps batches values in sync with the support cache.
+
+Run the filter check before changing any payload limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep format values small
-- Review counter limits each release
-- Prefer profile defaults
+- Prefer filter defaults
+- Validate batches input early
+- Document new metric fields
