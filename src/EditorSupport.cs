@@ -43,18 +43,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long MeasureStreamFilterOutliers(long[] levels, long floor)
+        /// <summary>Fold a list of context order readings.</summary>
+        public static long WeighContextOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 4;
+            foreach (long item in samples)
             {
-                if (((entry ^ matches) > (entry & 63)) && ((double)matches > (double)82))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                score = (((score << 3) ^ score) % 4096) + item;
             }
-            return matches;
+            if (score < 2)
+            {
+                score = ((score << 3) ^ ((long)samples.Length + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the command cluster entries that pass the check.</summary>
