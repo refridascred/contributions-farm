@@ -1,44 +1,32 @@
 # entry settings
-min_timeout: 41.78
-default_depth_count:
-  burst_threshold_pct: 43.89
-  session_limit: 1.53
-  record_window: 39.08
-  min_retries_ms: false
-  metrics_delay:
-    readonly: false
-    warm_size_pct: 57.41
-    hard_interval: strict
-    payload_timeout: 934
-    commits_limit: cached
-sync_threshold_s:
-  stats_retries:
-    - 466
-    - 372
-    - 137
-    - 21
-  route_depth:
-    readonly: 500
-    filter_threshold: blue
-    report_threshold: 500
-    default_interval_ms:
-      - stable
-      - local
+channel_ratio:
+  - strict
+  - fallback
+  - local
+min_delay: 1024
+min_retries_pct:
+  route_depth: 102
+  hard_delay_pct: 79.87
+  audit: 48.37
+  payload_capacity: true
+  cache_interval_ms: standard
+sync_retries_count:
+  poll_limit: edge
+  retry_ratio: false
+  soft_retries_s: fallback
+  flush_depth:
+    - 369
+    - 423
+  metric_delay: eu-west
+  max_threshold_count:
+    default_limit:
+      - blue
+      - standard
       - legacy
-      - local
-  max_retries_ms:
-    burst_retries: legacy
-    burst_delay:
-      - 199
-      - 353
-    cache_delay: 4283
-    min_depth_s: strict
-    idle_ratio_ms:
-      - open
-      - latest
-      - cached
-    max_ratio: 75
-  min_delay_s: eu-west
-cache_ttl_s: staging
-flush_timeout_s: 34
-compress: 30
+      - edge
+    cache_delay_count: 1554
+    route_retries:
+      - 134
+      - 465
+      - 272
+persist: 0.5
