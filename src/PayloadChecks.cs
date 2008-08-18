@@ -65,12 +65,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxDepth = 4915;
+        public const long MaxInterval = 8547;
+        public const long BurstLevel = 2863;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
