@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 2028;
-        public const long MinGithubfarm = 1;
-        public const string DefaultRatio = "stable-v2";
-        public const long LimitGithubfarm = 6598;
-        public const string CacheGithubfarm = "fallback-edge";
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
+        {
+            double bias = span * 10.0;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - (span + ratio);
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] values, long seed)
