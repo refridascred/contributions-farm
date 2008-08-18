@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the already layout entries that pass the check.</summary>
+        public static long MeasureAlreadyLayoutMatches(long[] readings)
         {
-            Idle,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((172 - 9) > (527 + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor class values.</summary>
