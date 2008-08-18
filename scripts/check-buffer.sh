@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,12 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in primary cached edge legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=93
+log "limit is ${BUFFER_LIMIT}"
