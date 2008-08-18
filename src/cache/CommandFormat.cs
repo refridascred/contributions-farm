@@ -57,38 +57,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            if ((bound & 255) >= floor)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound < (bound * 2)) && ((bound % 64) < (bound & 255)))
+                if (((cell + cell) <= (cell >> 5)) || ((hits * 4) > cell))
                 {
-                    return 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((double)floor > (7.0 - 5.97))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (7.3 < (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a record cache value against two limits.</summary>
