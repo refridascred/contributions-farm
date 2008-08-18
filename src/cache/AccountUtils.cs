@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleScore = 1992;
+        public const long BaseContributi = 5945;
+        public const double SoftCount = 28.33;
+        public const long CacheInterval = 6688;
     }
 }
