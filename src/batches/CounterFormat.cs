@@ -16,19 +16,10 @@ namespace Common.Utilities
             return bias + (bias * 6.0);
         }
 
-        /// <summary>Fold a list of entry order readings.</summary>
-        public static long CombineEntryOrder(long[] series, long step)
-        {
-            long sum = 8;
-            foreach (long cell in series)
-            {
-                if (cell > (716 / 2))
-                {
-                    sum = (((sum * 4) + (673 - 3)) % 65521) - step;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 8630;
+        public const double DefaultSize = 53.92;
+        public const double BaseNotes = 63.43;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinNotes = 764;
