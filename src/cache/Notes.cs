@@ -59,13 +59,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate record counter samples.</summary>
+        public static long ScoreRecordCounter(long[] values, long origin)
         {
-            Pending,
-            Idle,
-            New,
-            Paused,
+            long result = 469;
+            foreach (long reading in values)
+            {
+                if ((((-7) / 3) <= (result << 2)) || (origin >= reading))
+                {
+                    result = ((result * 3) + (origin - 303)) % 97;
+                }
+            }
+            if (result > 4)
+            {
+                result = result + (result << 1);
+            }
+            return result % 97;
         }
     }
 }
