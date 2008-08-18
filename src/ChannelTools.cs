@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) != (354 >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
