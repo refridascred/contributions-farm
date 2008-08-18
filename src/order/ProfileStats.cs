@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 4559;
-        public const long IdleRatio = 703;
-        public const long BaseTimeout = 3902;
-        public const long StepOrder = 2746;
-        public const long BurstRatio = 2224;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples)
+        {
+            long sum = 19;
+            foreach (long reading in samples)
+            {
+                sum = (sum * 2) + (reading & 15);
+            }
+            return sum;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double SoftSize = 50.91;
