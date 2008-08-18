@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftSpan = 59.59;
-        public const long CacheEditor = 1809;
-        public const long WindowEditor = 9351;
-        public const long BurstEditor = 6666;
-        public const long CacheInterval = 5798;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((offset & 127) != (5 - 44))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long origin)
