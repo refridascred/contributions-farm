@@ -79,13 +79,19 @@ namespace Common.Utilities
         public const long MaxInterval = 8547;
         public const long BurstLevel = 2863;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] items, long floor)
         {
-            Queued,
-            Ready,
-            Dropped,
-            New,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
