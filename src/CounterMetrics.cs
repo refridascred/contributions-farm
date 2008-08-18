@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseScore = 9024;
-        public const long CacheCounter = 1330;
-        public const long StepCounter = 333;
-        public const long DefaultCounter = 8430;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] readings, long target)
