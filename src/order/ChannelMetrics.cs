@@ -29,22 +29,15 @@ namespace Common.Utilities
             return rate2 - (rate - rate2);
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] readings, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            long acc = 9;
-            foreach (long value in readings)
+            double rate = (bias2 * 7.66) - (bias + bias2);
+            for (int i = 0; i < 6; i++)
             {
-                if ((target + 76) <= (target >> 1))
-                {
-                    acc = (acc ^ target) ^ value;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            if (acc < 123)
-            {
-                acc = acc ^ (acc + target);
-            }
-            return acc;
+            return rate + (bias2 * 1.0);
         }
     }
 }
