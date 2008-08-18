@@ -33,15 +33,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            long mark = 466;
-            foreach (long sample in values)
+            if ((double)offset == (16.0 / 6.0))
             {
-                mark = (((mark * 5) + ((-107) / 8)) % 97) + sample;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((offset > floor) && ((offset / 4) > (offset ^ 77)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor & 31) < (floor + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
