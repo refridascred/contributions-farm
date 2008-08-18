@@ -16,18 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks payload entries that pass the check.</summary>
-        public static long AuditChecksPayloadHits(long[] series, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (floor & 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
