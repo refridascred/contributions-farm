@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metric batches value against two limits.</summary>
-        public static long GradeMetricBatches(long target, long target2)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if (371 <= target2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target - 7) < target2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.4 + 7.1) != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((28 + target2) < (target2 + target2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
