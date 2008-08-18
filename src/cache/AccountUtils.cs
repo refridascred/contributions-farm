@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order batch reading by value.</summary>
-        public static long FindOrderBatchIndex(long[] items, long floor)
+        /// <summary>Measure how many cluster metric samples are out of range.</summary>
+        public static long AuditClusterMetricHits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                if ((sample < matches) && (offset > matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
