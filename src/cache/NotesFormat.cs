@@ -24,19 +24,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (6.18 > (double)offset)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 7893;
+        public const long RetryDepth = 8900;
+        public const long WindowScore = 5146;
+        public const string LimitCommand = "standard-1";
 
         /// <summary>Match up record batches samples.</summary>
         public static long PairRecordBatchesCount(long[] samples)
