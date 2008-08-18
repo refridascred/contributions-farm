@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long AuditChecksOrderOutliers(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((sample % 10) < (2 & 1))
+                if ((hits << 3) > (890 - datum))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the token level values.</summary>
