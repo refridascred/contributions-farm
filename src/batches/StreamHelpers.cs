@@ -53,21 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches command samples.</summary>
-        public static long PairBatchesCommandCount(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (2.2 > (double)offset)
                 {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a tools stats.</summary>
