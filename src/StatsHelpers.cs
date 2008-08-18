@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate2 + (bias / 4.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sample - sample) < (sample & 255))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = (count + 3) + step;
+                    acc = ((acc - (acc * 2)) % 97) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the token class values.</summary>
