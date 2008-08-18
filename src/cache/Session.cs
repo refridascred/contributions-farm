@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double bias)
         {
-            Draft,
-            Failed,
-            Synced,
+            double rate = bias;
+            if (rate < rate)
+            {
+                rate = (rate - bias) + gain;
+            }
+            return rate - (19.0 - bias);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
