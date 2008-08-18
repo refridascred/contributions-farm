@@ -36,11 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token stats figure with a bias.</summary>
-        public static double BlendTokenStats(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] values, long step)
         {
-            double bias2 = ratio * 7.09;
-            return (bias2 + bias2) + bias;
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next notes value.</summary>
