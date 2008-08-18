@@ -41,14 +41,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long step)
         {
-            Locked,
-            Done,
-            Ready,
-            Stale,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
