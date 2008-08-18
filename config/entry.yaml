@@ -1,6 +1,13 @@
 # entry settings
-hard_size_pct: 60.34
-warm_window: standard
-compress: primary
-farm_depth: 84.48
-enabled: true
+warm_size_count: 65.17
+poll_timeout_ms: blue
+base_threshold_s: 3574
+contributi_size: cached
+max_interval_ms:
+  readonly: 9019
+  editor_limit: false
+  poll_window_pct:
+    - 350
+    - 483
+    - 442
+  support_ratio: edge
