@@ -35,39 +35,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long bound, long bound2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings)
         {
-            long step = bound ^ bound2;
-            if ((36 & 31) > (45 - bound))
+            long state = 5;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step << 1) == (step + bound)) && (5 <= (bound + step)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 2;
+                    state = (((state << 2) ^ (cell ^ cell)) % 101) + (long)i;
                 }
-                else
+                if ((cell >> 4) >= (state >> 4))
                 {
-                    if (((double)6 >= (double)step) && (696 <= (bound ^ step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step + step) != (82 - step)) && ((double)step == (6.0 * 8.05)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = state ^ state;
+                }
+                if ((state - state) > (state & 1))
+                {
+                    state = (state + ((-44) + state)) % 1000;
                 }
             }
+            if (state > 7)
+            {
+                state = (state * 5) + (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Count the window cluster entries that pass the check.</summary>
