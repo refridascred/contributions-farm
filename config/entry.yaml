@@ -1,10 +1,18 @@
 # entry settings
-tools_window:
-  - cached
-  - standard
-persist: false
-verbose: 70.04
-compress:
-  - 169
-  - 54
-  - 333
+default_interval_s: fallback
+idle_limit: fallback
+flush_timeout: 8091
+audit:
+  cache_window_s:
+    poll_ttl_count: true
+    persist: true
+    cluster_timeout: 2624
+    counter_interval: 100
+  batch_window_count: 1024
+  base_ratio: 39
+  batch_capacity_count: false
+persist:
+  - 441
+  - 409
+  - 39
+  - 164
