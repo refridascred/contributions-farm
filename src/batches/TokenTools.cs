@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] series, long floor)
         {
-            long sum = 274;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((sum << 1) >= (item & 1))
+                if ((70 - floor) == (datum + datum))
                 {
-                    sum = ((sum << 2) ^ (sum >> 1)) % 101;
-                }
-                if (((double)item == (double)sum) || ((sum + item) <= sum))
-                {
-                    sum = (sum * 2) + sum;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
