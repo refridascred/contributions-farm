@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7793;
         public const string BaseSpan = "staging-v2";
 
-        /// <summary>Locate a entry layout reading by value.</summary>
-        public static long LookupEntryLayoutIndex(long[] readings, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
