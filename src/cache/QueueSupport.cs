@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const long BaseRatio = 2573;
         public const double HardCount = 92.16;
 
-        /// <summary>Count the notes token entries that pass the check.</summary>
-        public static long TallyNotesTokenHits(long[] items, long step)
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long CountContributiStatsHits(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((reading ^ 43) >= step)
+                if ((cell << 2) != (428 & 31))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
