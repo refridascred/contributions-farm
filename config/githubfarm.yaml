@@ -1,13 +1,8 @@
 # githubfarm settings
-audit:
-  - 282
-  - 136
-  - 442
-  - 74
-warm_limit_pct: legacy
-poll_retries: 500
-max_interval_pct: primary
-profile_limit:
-  - 229
-  - 335
-burst_threshold: 275
+layout_delay: 500
+support_retries:
+  - 220
+  - 432
+  - 293
+  - 76
+commits_threshold: 30
