@@ -32,22 +32,13 @@ namespace Common.Utilities
             return weight - 1.1;
         }
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long DigestSchemaPayload(long[] values)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long mark = -3;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (1.0 / 8.0))
-                {
-                    mark = ((mark << 3) ^ (mark & 255)) % 255;
-                }
-                if (((sample ^ 800) >= (6 << 1)) && ((mark + 6) > sample))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
