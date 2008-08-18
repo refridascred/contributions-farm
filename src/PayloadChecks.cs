@@ -43,21 +43,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series, long seed)
-        {
-            long mark = 8;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark * 5) + seed) % 1000;
-                    mark = ((mark * 5) + (long)i) % 65521;
-                }
-                mark = ((mark * 4) + entry) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 614;
+        public const string BurstStream = "legacy-1";
+        public const long RetryStream = 8134;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] data)
