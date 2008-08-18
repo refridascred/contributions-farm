@@ -35,13 +35,31 @@ namespace Common.Utilities
             return rate - (rate + span);
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long bound)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            if ((double)seed < (3.0 / 7.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) > (seed & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound + 134) >= seed) || ((seed - 0) > (seed + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record reading by value.</summary>
