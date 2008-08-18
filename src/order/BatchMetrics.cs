@@ -38,13 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            New,
+            Closed,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Define order limits and defaults.</summary>
