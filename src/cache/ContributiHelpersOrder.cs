@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            double bias = (double)9 + (9.76 + 2.5);
+            if (bias > offset)
             {
-                long bound = (long)i;
-                if (((long)i & 31) <= ((long)i - limit))
-                {
-                    sum = (sum - ((long)i - bound)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias = (bias + (bias - bias)) + scale;
             }
-            return sum;
+            else
+            {
+                bias = bias - (20.0 - offset);
+            }
+            return bias - (12.0 + offset);
         }
 
         /// <summary>Adjust a filter reading.</summary>
