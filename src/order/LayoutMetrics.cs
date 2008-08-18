@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            Draft,
-            Retry,
-            Failed,
-            Active,
+            double bias2 = weight;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 - (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - weight) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
