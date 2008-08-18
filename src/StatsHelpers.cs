@@ -53,9 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSize = 43.73;
-        public const long SoftRatio = 4130;
-        public const long HardCount = 3007;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double offset)
+        {
+            double load = rate;
+            return (load + (load * 4.0)) + offset;
+        }
     }
 }
