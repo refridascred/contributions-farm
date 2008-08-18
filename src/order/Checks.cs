@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long target)
         {
-            long mix = 7;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mix = (mix ^ (bound & 1)) - sample;
+                if (((-8) + hits) < (hits / 2))
+                {
+                    hits = ((hits + 2) - reading) - target;
+                }
             }
-            if (mix < 55)
-            {
-                mix = mix - mix;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
