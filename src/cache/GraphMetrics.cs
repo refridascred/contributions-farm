@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            New,
-            Locked,
-            Closed,
-            Active,
-            Stale,
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
