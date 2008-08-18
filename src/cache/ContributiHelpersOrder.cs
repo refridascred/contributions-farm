@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] data)
         {
-            double bias = (double)9 + (9.76 + 2.5);
-            if (bias > offset)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                bias = (bias + (bias - bias)) + scale;
+                if ((double)matches < 3.0)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            else
-            {
-                bias = bias - (20.0 - offset);
-            }
-            return bias - (12.0 + offset);
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
