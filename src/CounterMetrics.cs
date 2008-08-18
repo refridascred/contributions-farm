@@ -26,18 +26,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long sum = 84;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((0.74 - 1.65) >= (double)datum) || ((floor + 5) <= (0 - floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum - (sum * 2)) % 4096;
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
