@@ -32,18 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] samples)
+        /// <summary>Count already commits pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCommitsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally * 4) > (59 & 63))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) - value;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the contributi entry entries that pass the check.</summary>
