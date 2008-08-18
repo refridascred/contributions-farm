@@ -43,10 +43,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2346;
-        public const long BaseBatch = 6314;
-        public const long BaseScore = 3207;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Failed,
+            Pending,
+            Queued,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
