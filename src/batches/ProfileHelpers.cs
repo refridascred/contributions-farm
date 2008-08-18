@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] samples, long step)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally > (step + value))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
