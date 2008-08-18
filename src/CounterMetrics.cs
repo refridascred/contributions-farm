@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long StepCounter = 333;
         public const long DefaultCounter = 8430;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Locked,
-            Pending,
-            Synced,
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
