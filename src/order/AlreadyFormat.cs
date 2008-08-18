@@ -22,15 +22,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            double scale = 0.9 - 2.04;
+            if (scale >= offset)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                scale = scale - (double)609;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale + (scale + rate);
         }
 
         /// <summary>Describe the payload state values.</summary>
