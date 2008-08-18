@@ -1,6 +1,8 @@
 {
-  "sync_timeout_ms": "strict",
-  "sync_limit": "primary",
-  "default_limit_s": "cached",
-  "checks_window": 27.2
+  "min_capacity_count": "primary",
+  "persist": "cached",
+  "flush_depth": true,
+  "burst_capacity": "legacy",
+  "min_timeout": 30,
+  "verbose": "primary"
 }
