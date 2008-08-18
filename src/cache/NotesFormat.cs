@@ -29,11 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 7893;
-        public const long RetryDepth = 8900;
-        public const long WindowScore = 5146;
-        public const string LimitCommand = "standard-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepDepth = 7276;
+        public const string WindowInterval = "alpha-edge";
+        public const double BatchCluster = 16.31;
+        public const string MaxCluster = "open-1";
+        public const string HardInterval = "alpha-1";
 
         /// <summary>Match up record batches samples.</summary>
         public static long PairRecordBatchesCount(long[] samples)
