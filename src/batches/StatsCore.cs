@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] series, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches % 5) > 338)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 1) + value) + bound;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
