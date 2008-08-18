@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "fallback-v2";
-        public const double SoftChannel = 83.82;
-        public const double IdleChannel = 90.59;
-        public const long BatchFactor = 6750;
-        public const long LimitSize = 1162;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Closed,
+            Active,
+            Failed,
+            Done,
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
