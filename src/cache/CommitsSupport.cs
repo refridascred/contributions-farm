@@ -39,16 +39,19 @@ namespace Common.Utilities
             return weight + (scale * 4.0);
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            double mean = 2.26;
+            if (mean > 1.0)
             {
-                anchor = anchor - ((long)i << 2);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                mean = ((mean + (mean / 5.0)) - bias) + floor;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)68) + (double)(long)i;
+            }
+            return mean + (double)94;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
