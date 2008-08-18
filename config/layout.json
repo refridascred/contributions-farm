@@ -1,5 +1,8 @@
 {
-  "counter_capacity": "stable",
-  "hard_ratio_ms": ["eu-west", "edge"],
-  "batch_ratio_count": "blue"
+  "window_depth": true,
+  "persist": [489, 268, 418, 33],
+  "max_ttl": 94.96,
+  "max_ratio_ms": "primary",
+  "audit": 63.12,
+  "token_capacity": [59, 145, 198]
 }
