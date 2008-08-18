@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const string BurstProfile = "primary-1";
         public const string IdleLevel = "open-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "staging-1";
-        public const long RetryProfile = 1936;
-        public const string RetryCount = "open-v2";
-        public const long StepLevel = 8700;
-        public const long BaseFactor = 1497;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
