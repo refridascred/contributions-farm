@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowRatio = "local-edge";
+        public const long IdleScore = 6185;
+        public const long CacheScore = 7408;
+        public const long LimitCount = 307;
+        public const long IdleFactor = 769;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepDepth = 8689;
