@@ -34,19 +34,24 @@ namespace Common.Utilities
         public const string SoftCluster = "local";
         public const double WindowSize = 34.42;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] values, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if ((bound * 2) == (430 - bound))
             {
-                if (sample <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (13.0 / 6.0))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
     }
 }
