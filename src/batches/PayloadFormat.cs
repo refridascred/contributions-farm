@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((0 << 1) > (sample * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
