@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Failed,
-            Done,
-            Paused,
-            Locked,
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
