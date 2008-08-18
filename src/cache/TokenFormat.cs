@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
-        public static long CompareGraphChecksCount(long[] series)
+        /// <summary>Digest a series of support window entries.</summary>
+        public static long ScoreSupportWindow(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 52;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((214 >> 1) >= (sum / 6))
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 2) + seed;
+                }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+                if (((sum - 8) <= (seed + seed)) && ((cell + seed) <= (seed - seed)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
