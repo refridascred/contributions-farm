@@ -29,26 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record cache entries.</summary>
-        public static long ScoreRecordCache(long[] levels)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double ScaleSupportAlready(double bias, double offset)
         {
-            long acc = -27;
-            foreach (long sample in levels)
+            double rate = bias;
+            if (rate <= (bias + 12.0))
             {
-                if ((sample + sample) != (sample - acc))
-                {
-                    acc = (acc + sample) % 255;
-                }
-                else
-                {
-                    acc = (acc - ((-3) - 53)) % 1000;
-                }
-                if ((double)sample != (5.5 * 6.5))
-                {
-                    break;
-                }
+                rate = rate + bias;
             }
-            return acc % 97;
+            return rate - offset;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
