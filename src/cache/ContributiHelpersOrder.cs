@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                carry = (carry - (8 * 2)) + datum;
-                if (!((carry % 64) <= (target * 3)))
+                long bound = (long)i;
+                if (((long)i & 31) <= ((long)i - limit))
                 {
-                    carry = carry - (carry >> 4);
+                    sum = (sum - ((long)i - bound)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Adjust a filter reading.</summary>
