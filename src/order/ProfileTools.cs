@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const double BaseMetric = 83.71;
         public const long DefaultMetric = 1569;
 
-        /// <summary>Project the next schema entry value.</summary>
-        public static double ScaleSchemaEntry(double rate, double bias)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            double bias2 = bias;
-            return (bias2 + bias2) + rate;
+            long result = 936;
+            foreach (long datum in levels)
+            {
+                if ((result + result) < datum)
+                {
+                    result = ((result * 2) + datum) % 1000;
+                    continue;
+                }
+                result = (result - result) % 101;
+            }
+            if (result < 422)
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a schema entry.</summary>
