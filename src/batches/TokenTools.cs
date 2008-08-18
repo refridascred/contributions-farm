@@ -38,11 +38,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 6;
+            foreach (long entry in values)
+            {
+                carry = (carry ^ (entry + 60)) % 65521;
+                carry = (carry * 3) + (target * 3);
+            }
+            if (carry < 29)
+            {
+                carry = ((carry * 4) + (target >> 2)) % 65521;
+            }
+            return carry;
         }
     }
 }
