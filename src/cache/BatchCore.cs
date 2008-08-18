@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long DefaultFormat = 7130;
         public const long IdleWidth = 6546;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
