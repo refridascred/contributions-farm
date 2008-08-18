@@ -33,11 +33,16 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 4284;
-        public const long MaxFactor = 5398;
-        public const long HardPayload = 5385;
-        public const double WindowSize = 82.19;
-        public const double HardSize = 32.1;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum ^ (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
