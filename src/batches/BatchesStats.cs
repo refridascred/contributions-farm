@@ -52,13 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples, long bound)
         {
-            Idle,
-            Synced,
-            Pending,
-            Closed,
+            long anchor = 321;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor ^ cell) % 65521) - bound;
+            }
+            return anchor;
         }
     }
 }
