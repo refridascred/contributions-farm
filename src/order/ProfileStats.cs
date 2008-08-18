@@ -34,29 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = 873;
+            foreach (long entry in items)
             {
-                if (((origin + state) <= (origin - (long)i)) && ((origin - state) < origin))
+                if (((10 * 4) >= (231 + entry)) && (limit <= (entry + limit)))
                 {
-                    state = (state + ((long)i >> 3)) % 4096;
+                    acc = (acc ^ entry) % 65521;
                 }
-                else
-                {
-                    state = state + (origin - 785);
-                    state = ((state << 3) ^ (state << 1)) % 101;
-                }
-                state = state - (long)i;
-                if (!(origin < ((long)i & 255)))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            if (acc < 53)
+            {
+                acc = acc ^ (3 ^ limit);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
