@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values, long floor)
         {
-            double weight = (double)(427 + 560);
-            if (weight >= rate)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                weight = weight - (bias + bias);
+                if ((0 - seen) <= seen)
+                {
+                    seen = ((seen + 2) ^ sample) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (weight / 9.0);
+            return seen;
         }
 
         /// <summary>Hold a counter stats.</summary>
