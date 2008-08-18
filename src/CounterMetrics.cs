@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Active,
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
