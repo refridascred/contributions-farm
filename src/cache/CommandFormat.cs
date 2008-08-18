@@ -57,19 +57,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report buffer readings.</summary>
-        public static long FoldReportBuffer(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long floor)
         {
-            long state = 537;
-            foreach (long item in items)
+            if ((bound & 255) >= floor)
             {
-                if (((item - 399) < (state / 9)) || ((double)state != (double)93))
-                {
-                    state = state ^ (item / 3);
-                }
-                state = state + (state - state);
+                return 2;
             }
-            return state % 97;
+            else
+            {
+                if ((bound < (bound * 2)) && ((bound % 64) < (bound & 255)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (7.0 - 5.97))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (7.3 < (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record cache value against two limits.</summary>
