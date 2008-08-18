@@ -42,11 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheRatio = 37.92;
-        public const long DefaultGithubfarm = 4724;
-        public const double SoftGithubfarm = 56.86;
-        public const string BaseGithubfarm = "primary-1";
-        public const string MaxGithubfarm = "legacy-edge";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
