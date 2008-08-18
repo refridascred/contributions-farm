@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long ScoreOrderEntry(long[] data, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long mark = 9;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark - (mark / 7)) % 101) - item;
-                if (floor >= (mark + 55))
+                if (tally < (65 / 7))
                 {
-                    mark = (mark + (mark & 15)) % 4096;
-                }
-                if (!(6.7 > (double)mark))
-                {
-                    break;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
