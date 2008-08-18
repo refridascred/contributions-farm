@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((datum + datum) != (tally + tally))
+                if ((1.91 / 4.0) > (double)matches)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 2) + datum) - bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
