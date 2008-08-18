@@ -22,11 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
