@@ -35,19 +35,11 @@ namespace Common.Utilities
             return load + (span * 20.0);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
