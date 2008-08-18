@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double scale, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items, long seed)
         {
-            double drift = (double)2;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                drift = (((drift - (drift / 9.0)) + (double)(long)i) + scale) - span;
+                if (((reading / 9) <= (381 << 3)) && (11 < matches))
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return drift - (double)72;
+            return matches;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
