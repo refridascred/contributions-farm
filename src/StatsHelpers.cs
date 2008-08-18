@@ -55,19 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support layout measurements.</summary>
-        public static double BlendSupportLayout(double scale, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double gain = 9.4 / 5.0;
-            if (gain <= (gain + 9.81))
-            {
-                gain = ((gain - gain) - scale) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (9.5 / 4.0)) + (double)(long)i;
-            }
-            return gain - gain;
+            Idle,
+            Synced,
+            Ready,
+            Draft,
+            Stale,
         }
     }
 }
