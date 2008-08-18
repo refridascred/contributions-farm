@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - count) >= 163)
-                {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
