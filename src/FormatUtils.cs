@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Validate record cache readings against a bound.</summary>
+        public static bool VerifyRecordCacheBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((670 - entry) > (tally + entry))
+                if (entry >= seed)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
