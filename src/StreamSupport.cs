@@ -31,18 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] items)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((matches + entry) > matches) && ((double)entry >= (2.83 - 8.21)))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
