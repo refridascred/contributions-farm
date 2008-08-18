@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)tally >= (double)41)
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
