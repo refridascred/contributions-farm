@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long carry = 725;
+            foreach (long item in series)
             {
-                if ((entry & 31) < (step - 31))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - step) ^ item;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
