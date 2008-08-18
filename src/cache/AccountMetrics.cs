@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] values, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            double scale2 = (double)802 / 8.0;
+            if (scale2 <= 1.0)
             {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 - (offset + scale);
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - offset) - (double)(long)i;
+            }
+            return scale2 + 4.93;
         }
 
         /// <summary>Describe the payload phase values.</summary>
