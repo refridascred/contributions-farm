@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] series, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double scale = floor;
+            if (scale > rate)
             {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (17.0 + scale);
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (floor - 3.8)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
