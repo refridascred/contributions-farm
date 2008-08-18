@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double bias = span * 10.0;
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - (span + ratio);
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
