@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] samples, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Synced,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
