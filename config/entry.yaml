@@ -1,4 +1,10 @@
 # entry settings
-audit: 70
-checks_delay: local
-payload_ratio: 100
+tools_window:
+  - cached
+  - standard
+persist: false
+verbose: 70.04
+compress:
+  - 169
+  - 54
+  - 333
