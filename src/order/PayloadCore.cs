@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Blend two route channel measurements.</summary>
+        public static double BlendRouteChannel(double rate, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            double load = (double)(867 - 741);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (floor * 6.55)) - (double)(long)i) - rate;
+            }
+            return load - floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
