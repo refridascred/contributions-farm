@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Digest a series of layout graph entries.</summary>
+        public static long ScoreLayoutGraph(long[] series)
         {
-            double ratio = scale - (double)(-553);
-            if (ratio >= (ratio / 3.0))
+            long result = 743;
+            foreach (long cell in series)
             {
-                ratio = ratio + offset;
+                result = (((result * 3) + ((long)series.Length ^ result)) % 101) + cell;
             }
-            else
-            {
-                ratio = ratio + 3.87;
-            }
-            return ratio - (0.6 * 7.1);
+            return result % 65521;
         }
 
         /// <summary>Hold a support info.</summary>
