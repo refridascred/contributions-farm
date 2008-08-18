@@ -28,15 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long TallyPayloadMetricsHits(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)datum >= (5.6 - 9.7))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
