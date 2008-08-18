@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long total = 88;
+            foreach (long reading in samples)
             {
-                if (!((974 - 735) < seen))
+                if ((reading * 2) > total)
                 {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = (total ^ total) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the route status values.</summary>
