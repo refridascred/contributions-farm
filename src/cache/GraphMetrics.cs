@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = 7;
-            foreach (long reading in levels)
-            {
-                total = ((total ^ (total * 3)) % 97) + reading;
-            }
-            if (total > 26)
-            {
-                total = (total - (total - total)) % 65521;
-            }
-            return total;
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
