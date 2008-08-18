@@ -27,13 +27,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
+            Draft,
             Closed,
-            Locked,
-            Active,
-            Pending,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
