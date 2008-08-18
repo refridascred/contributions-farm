@@ -34,24 +34,19 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long floor)
         {
-            if ((3.49 + 3.0) == (double)offset)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (offset + offset))
+                if (reading >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
