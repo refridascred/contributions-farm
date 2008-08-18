@@ -15,13 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
