@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (4.23 >= (double)value)
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 3.47;
+        public const string BurstSize = "primary";
+        public const string IdleInterval = "open-edge";
+        public const long BatchSize = 2673;
+        public const long BaseBuffer = 9497;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double weight, double span)
