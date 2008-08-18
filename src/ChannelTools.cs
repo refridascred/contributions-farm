@@ -36,14 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many record payload samples are out of range.</summary>
+        public static long AuditRecordPayloadOutliers(long[] items, long seed)
         {
-            Idle,
-            Queued,
-            Active,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((seed - 76) != (seen % 10)) && ((double)seed >= 5.0))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
     }
 }
