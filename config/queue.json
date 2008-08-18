@@ -1,7 +1,6 @@
 {
-  "poll_delay_ms": [193, 295, 114, 42],
-  "metric_ratio": 30,
-  "readonly": 36,
-  "batch_ttl": 28,
-  "sync_limit_ms": 2
+  "sync_timeout_ms": "strict",
+  "sync_limit": "primary",
+  "default_limit_s": "cached",
+  "checks_window": 27.2
 }
