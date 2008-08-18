@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitScore = "alpha-1";
-        public const double CacheCount = 64.92;
-        public const long IdleBudget = 3663;
-        public const double BaseGraph = 97.58;
-        public const long WindowGraph = 8455;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings)
+        {
+            long sum = 66;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum + (long)i) % 4096;
+                }
+                if ((double)sum < 1.0)
+                {
+                    sum = ((sum << 3) ^ (cell + cell)) % 97;
+                }
+                if (1 >= (sum + cell))
+                {
+                    sum = (sum ^ (8 % 97)) % 65521;
+                }
+                if (((double)cell > (double)sum) && (sum < (cell + cell)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionOutliers(long[] samples)
