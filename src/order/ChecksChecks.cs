@@ -25,21 +25,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 67;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum * 2) + ((-1) >> 5)) % 255) + entry;
             }
-            return count;
+            return sum;
         }
     }
 }
