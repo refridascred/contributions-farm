@@ -28,31 +28,19 @@ namespace Common.Utilities
         public const long MinTimeout = 1361;
         public const long BatchInterval = 6777;
 
-        /// <summary>Classify a filter stats pair into a bucket.</summary>
-        public static long BucketFilterStats(long origin, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] samples, long origin)
         {
-            if ((double)bound <= (7.4 + 16.0))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > bound)
+                if (entry >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (3.6 <= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
