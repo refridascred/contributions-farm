@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a entry window reading by value.</summary>
-        public static long FindEntryWindowIndex(long[] readings, long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Closed,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Blend two commits contributi measurements.</summary>
