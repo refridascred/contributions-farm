@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7997;
-        public const long MinScore = 9251;
-        public const long BaseCommand = 4244;
-        public const long IdleCommand = 9210;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen + seen) == (item + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next order farm value.</summary>
         public static double ProjectOrderFarm(double rate, double offset)
