@@ -53,18 +53,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (6 < (cell + cell))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
