@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((count - count) > value)
+                if (cell <= target)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the tools level values.</summary>
