@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double gain = ratio;
-            if (gain > (double)(-59))
-            {
-                gain = (gain - (gain * 19.0)) - offset;
-            }
-            return gain + (ratio / 3.0);
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
