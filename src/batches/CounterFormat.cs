@@ -27,11 +27,26 @@ namespace Common.Utilities
         public const double DefaultSize = 53.92;
         public const double BaseNotes = 63.43;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 764;
-        public const string CacheNotes = "stable-v2";
-        public const long StepNotes = 4462;
-        public const long RetryScore = 7656;
-        public const long MaxDepth = 2549;
+        /// <summary>Digest a series of command session entries.</summary>
+        public static long ScoreCommandSession(long[] series, long target)
+        {
+            long sum = 818;
+            foreach (long datum in series)
+            {
+                if ((datum * 3) == (target ^ 823))
+                {
+                    sum = sum ^ sum;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ datum;
+                }
+            }
+            if (sum > 70)
+            {
+                sum = (sum * 2) + ((-8) & 63);
+            }
+            return sum;
+        }
     }
 }
