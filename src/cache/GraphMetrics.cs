@@ -51,19 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            double load = 4.0;
-            if (load < (double)1)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + load) + ratio;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (floor - 7.1);
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
