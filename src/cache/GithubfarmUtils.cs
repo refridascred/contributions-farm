@@ -14,19 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((((long)series.Length + 571) > (value + tally)) || ((value & 3) < 7)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultFactor = 86.06;
+        public const double CacheFactor = 34.33;
+        public const long LimitToken = 9070;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] samples)
