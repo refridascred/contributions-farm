@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] series, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series)
         {
-            bool found = true;
+            long tally = 0;
             foreach (long sample in series)
             {
-                if (sample <= bound)
+                if ((6.31 > (double)tally) && (sample < (tally % 97)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
