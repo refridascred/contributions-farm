@@ -39,18 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm notes readings against a rule.</summary>
-        public static long AuditGithubfarmNotesHits(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((item + item) > matches)
+                if (bound < (bound >> 1))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
