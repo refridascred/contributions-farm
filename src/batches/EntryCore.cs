@@ -25,11 +25,22 @@ namespace Common.Utilities
             return bias2 + (gain * 7.9);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 439;
-        public const long BaseScore = 6852;
-        public const string MaxSpan = "legacy-edge";
-        public const long BurstTools = 393;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BaseInterval = "stable-edge";
