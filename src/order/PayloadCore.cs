@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a order counter value against two limits.</summary>
-        public static long SortOrderCounter(long limit, long limit2)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long step = limit ^ limit2;
-            if ((step << 2) < (limit - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit2 >= (6.3 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((90 << 3) < (limit * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
