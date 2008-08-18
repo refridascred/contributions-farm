@@ -1,6 +1,5 @@
 {
-  "enabled": false,
-  "poll_retries_pct": true,
-  "base_ttl_count": 51.73,
-  "soft_interval_ms": "strict"
+  "cache_capacity": 7856,
+  "batches_interval": 31,
+  "burst_limit_ms": false
 }
