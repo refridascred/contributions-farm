@@ -17,11 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheDepth = "cached-v2";
-        public const double BurstRecord = 4.68;
-        public const string CacheSpan = "staging-1";
-        public const string SoftRecord = "primary";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long GradeCache(long bound, long target)
