@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Scale a profile commits figure with a bias.</summary>
+        public static double BlendProfileCommits(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double ratio = weight;
+            if (ratio < (ratio / 5.0))
             {
-                if ((28 % 10) != (seen >> 5))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)(-37)) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
