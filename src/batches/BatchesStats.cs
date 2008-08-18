@@ -35,31 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((floor + floor) == (25 % 64))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor > 9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor + target) < (floor & 15)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
