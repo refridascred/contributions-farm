@@ -1,10 +1,10 @@
 # Command notes
 
-Each tools is validated before it reaches the format queue.
-The session report groups every format by session.
+The contributi report groups every githubfarm by account.
+The order module keeps payload values in sync with the session cache.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review queue limits each release
-- Document new profile fields
+- Log every batch change
+- Document new tools fields
+- Prefer metric defaults
