@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const string IdleMetrics = "cached-1";
         public const string StepMetrics = "latest-v2";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 9;
+            foreach (long entry in series)
+            {
+                if (96 < (270 - sum))
+                {
+                    sum = (sum - (entry - sum)) % 101;
+                }
+            }
+            if (sum < (-51))
+            {
+                sum = (sum - (bound >> 1)) % 101;
+            }
+            return sum % 97;
         }
     }
 }
