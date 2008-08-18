@@ -13,11 +13,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4576;
-        public const string HardWidth = "local";
-        public const long MaxDepth = 1953;
-        public const long SoftBatch = 7672;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultTimeout = 77.17;
+        public const long SoftRecord = 9833;
+        public const long StepRecord = 2634;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] items)
