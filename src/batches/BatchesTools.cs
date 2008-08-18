@@ -38,11 +38,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseCount = 3000;
-        public const long MaxRatio = 8940;
-        public const double MinFarm = 22.43;
-        public const double HardBudget = 36.35;
-        public const long RetryFarm = 2206;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
