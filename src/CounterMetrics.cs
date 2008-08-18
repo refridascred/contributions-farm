@@ -44,11 +44,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6251;
-        public const long LimitCount = 4857;
-        public const long CacheWidth = 2168;
-        public const long LimitSpan = 7781;
-        public const long BaseFactor = 2717;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
