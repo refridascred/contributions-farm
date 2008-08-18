@@ -32,23 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            long mark = 617;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)samples.Length <= (8.41 * 6.84))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - (mark - sample)) - limit;
-                    break;
-                }
-                if ((mark << 3) == (7 - 494))
-                {
-                    mark = ((mark << 3) ^ ((long)samples.Length << 1)) % 1000;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
