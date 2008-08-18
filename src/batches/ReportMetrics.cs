@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchLevel = "staging-1";
-        public const long StepWidth = 2326;
-        public const long CacheRatio = 1596;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Combine filter order values into a single score.</summary>
         public static long CombineFilterOrder(long[] items, long step)
