@@ -23,25 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum + sum) ^ (long)i2;
-                }
-                if ((double)sum != (6.83 - 6.58))
-                {
-                    sum = (sum * 5) + (long)i;
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 9260;
+        public const long RetryContext = 1406;
+        public const double WindowContext = 22.35;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
