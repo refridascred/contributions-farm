@@ -19,13 +19,26 @@ namespace Common.Utilities
         public const double LimitOrder = 60.92;
         public const long BatchSize = 4804;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long seed)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long mix = 2;
+            foreach (long value in readings)
+            {
+                if ((9 ^ (long)readings.Length) <= seed)
+                {
+                    mix = ((mix << 3) ^ value) % 255;
+                }
+                else
+                {
+                    mix = (mix - (value - mix)) % 1000;
+                }
+            }
+            if (mix < 975)
+            {
+                mix = mix - (seed - (-2));
+            }
+            return mix % 4096;
         }
     }
 }
