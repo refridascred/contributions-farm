@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a session context pair into a bucket.</summary>
-        public static long GradeSessionContext(long offset, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double gain, double span)
         {
-            long gap = offset + seed;
-            if ((offset ^ 40) <= (seed * 3))
+            double ratio = span + (span + span);
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                ratio = (ratio + gain) + (double)(long)i;
             }
-            else
-            {
-                if ((seed >> 2) != (offset & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((gap ^ offset) != (gap / 7)) && ((seed - (-40)) < seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (9.5 + 2.54))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio - (double)7;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
