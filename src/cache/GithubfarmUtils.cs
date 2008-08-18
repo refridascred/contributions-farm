@@ -13,10 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 926;
-        public const long WindowCommits = 7173;
-        public const long RetryCommits = 8098;
+        /// <summary>Find the first tools context entry that matches the target.</summary>
+        public static long FindToolsContextIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 9732;
