@@ -15,25 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a token editor counter forward.</summary>
-        public static long IterateTokenEditor(long target)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            double gain = rate;
+            if (gain > offset)
             {
-                score = score - (target << 3);
-                score = (score ^ (target * 2)) % 1000;
-                if ((double)target > (0.1 - 5.82))
-                {
-                    score = ((score * 3) + (target - score)) % 97;
-                }
-                else
-                {
-                    score = (score + target) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                gain = gain - rate;
             }
-            return score;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - (gain * 6.19);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
