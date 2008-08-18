@@ -1,6 +1,6 @@
 # support settings
-record_ratio: local
-payload_interval: true
-hard_depth_pct: eu-west
-soft_window_pct: 30
-base_size: 100
+sync_limit_pct: 74.01
+report_size: local
+sync_threshold_s:
+  - 164
+  - 88
