@@ -53,18 +53,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long AuditFilterCommitsHits(long[] items, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)limit == (1.0 * 5.49))
-                {
-                    hits = (hits + 2) - cell;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
