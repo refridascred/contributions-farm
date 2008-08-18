@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 33.56;
+        public const double BatchCount = 42.46;
+        public const double CacheQueue = 94.51;
+        public const long DefaultInterval = 8158;
+        public const string MaxQueue = "local-1";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long BucketEntry(long offset, long bound)
