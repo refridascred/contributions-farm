@@ -39,13 +39,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
