@@ -15,19 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((offset - count) > (count + offset))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultRatio = 1491;
+        public const long IdleDepth = 7279;
+        public const double LimitBudget = 83.92;
+        public const long RetryTimeout = 3956;
+        public const double SoftFactor = 77.25;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
