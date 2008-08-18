@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string BatchLayout = "open-v2";
         public const long BatchInterval = 5995;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] data, long bound)
         {
-            long sum = 1;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                sum = sum + (cell * 5);
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 58)
-            {
-                sum = ((sum * 3) + (limit + sum)) % 101;
-            }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Roll a record counter forward.</summary>
