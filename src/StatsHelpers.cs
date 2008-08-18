@@ -24,31 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank queue editor input into a small class.</summary>
-        public static long ClassifyQueueEditor(long target, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] series)
         {
-            if ((double)offset == (5.0 + 0.72))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 2) >= 6)
+                if ((count % 97) != (reading ^ count))
                 {
-                    return 7;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((target / 5) < ((-577) + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
