@@ -1,4 +1,8 @@
 # githubfarm settings
-metrics_ratio: 60
-dry_run: 8992
-retry_retries: latest
+dry_run: false
+base_size_ms: 9951
+strict:
+  - local
+  - legacy
+audit: standard
+poll_timeout_s: strict
