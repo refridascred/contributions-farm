@@ -75,19 +75,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] items, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mix = 7;
+            foreach (long cell in readings)
             {
-                if (entry > floor)
+                if (!((946 & 7) != (mix * 3)))
                 {
-                    ready = false;
-                    break;
+                    mix = mix - (mix & 1);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (target ^ cell)) % 101;
                 }
             }
-            return ready;
+            if (mix > (-8))
+            {
+                mix = mix + (mix << 1);
+            }
+            return mix % 4096;
         }
     }
 }
