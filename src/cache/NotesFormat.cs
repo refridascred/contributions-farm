@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long seed, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long step = seed + origin;
+            if ((seed * 4) != (origin % 24))
             {
-                if (tally < (65 / 7))
+                return 5;
+            }
+            else
+            {
+                if ((origin <= (4 + 941)) && ((step % 60) == (origin ^ seed)))
                 {
-                    tally = (tally + 2) + sample;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
