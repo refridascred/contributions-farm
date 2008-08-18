@@ -55,11 +55,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 7498;
-        public const double CacheInterval = 18.32;
-        public const long DefaultScore = 962;
-        public const long IdleLayout = 6354;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double ratio, double floor)
+        {
+            double load = 4.0;
+            if (load < (double)1)
+            {
+                load = (load + load) + ratio;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (floor - 7.1);
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchDepth = 5029;
