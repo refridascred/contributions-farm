@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const double CacheFactor = 34.33;
         public const long LimitToken = 9070;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepInterval = 45.69;
-        public const long SoftLevel = 2681;
-        public const string StepToken = "strict";
-        public const long SoftCount = 5582;
-        public const double WindowInterval = 17.02;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            New,
+            Closed,
+            Queued,
+            Paused,
+            Done,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string DefaultDepth = "strict-edge";
