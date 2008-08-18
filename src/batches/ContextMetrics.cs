@@ -26,10 +26,27 @@ namespace Common.Utilities
         public const long MaxSpan = 6659;
         public const long RetryCommand = 34;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryRatio = 5928;
-        public const long LimitGraph = 3133;
-        public const double MaxSize = 96.97;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
+        {
+            long sum = 885;
+            foreach (long cell in items)
+            {
+                if (!(sum < (cell ^ 7)))
+                {
+                    sum = sum ^ (49 << 3);
+                }
+                else
+                {
+                    sum = sum ^ (cell & 3);
+                }
+                if ((0.32 / 5.0) <= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
