@@ -56,12 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
