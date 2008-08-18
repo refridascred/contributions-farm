@@ -23,23 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support counter values into a single score.</summary>
-        public static long CombineSupportCounter(long[] levels)
-        {
-            long result = 38;
-            foreach (long value in levels)
-            {
-                if ((result + result) >= result)
-                {
-                    result = ((result << 3) ^ (result - value)) % 65521;
-                }
-            }
-            if (result < 47)
-            {
-                result = result - (result - result);
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 4610;
+        public const long SoftSpan = 3298;
+        public const double SoftCommand = 89.29;
+        public const double MinInterval = 63.78;
 
         /// <summary>Blend two notes report measurements.</summary>
         public static double SmoothNotesReport(double scale, double offset)
