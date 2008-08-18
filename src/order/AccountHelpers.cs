@@ -24,31 +24,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] data, long limit)
         {
-            if ((target % 7) > (target % 8))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ seed) == (362 * 5))
+                if (entry < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)seed == (8.0 - 12.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a account summary.</summary>
