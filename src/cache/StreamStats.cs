@@ -37,19 +37,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long seed)
+        /// <summary>Count the route layout entries that pass the check.</summary>
+        public static long TallyRouteLayoutHits(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (reading <= seed)
+                if (8.39 >= (double)reading)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
