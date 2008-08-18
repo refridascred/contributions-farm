@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double weight = (double)(281 % 97);
-            if (weight <= (offset / 4.0))
-            {
-                weight = weight - offset;
-            }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight - (weight + weight);
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the stats state values.</summary>
