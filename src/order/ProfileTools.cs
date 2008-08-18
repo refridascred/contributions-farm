@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token format readings.</summary>
-        public static long CombineTokenFormat(long[] series, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = 8;
-            foreach (long datum in series)
-            {
-                score = score - (datum ^ floor);
-                if ((score >> 5) > datum)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
