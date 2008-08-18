@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Validate entry stream readings against a bound.</summary>
+        public static bool VerifyEntryStreamBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (!(hits < (311 + datum)) && ((9 <= hits) || ((hits + datum) == (808 + hits))))
+                if (sample < floor)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
