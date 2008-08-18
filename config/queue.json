@@ -1,7 +1,8 @@
 {
-  "cache_limit": 37,
-  "persist": 4211,
-  "idle_capacity": true,
-  "soft_timeout_count": "strict",
-  "dry_run": 37.2
+  "entry_ratio": 36.49,
+  "cache_size_pct": 500,
+  "soft_size_pct": 500,
+  "batch_limit": 35,
+  "stream_window": 60,
+  "commits_threshold": ["blue", "blue", "eu-west"]
 }
