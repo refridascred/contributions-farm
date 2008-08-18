@@ -56,18 +56,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches payload entries that pass the check.</summary>
-        public static long MeasureBatchesPayloadOutliers(long[] values, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((((13.0 + 17.0) >= (double)offset) && ((cell & 255) <= (offset * 5))) || ((offset & 63) < 5))
+                if ((value >> 5) > (489 * 3))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of report entries.</summary>
