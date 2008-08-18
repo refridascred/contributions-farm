@@ -72,17 +72,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total - seed) % 101;
-                total = (total - seed) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
