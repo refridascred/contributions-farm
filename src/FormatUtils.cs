@@ -65,21 +65,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((reading / 3) >= (reading - reading)) && ((matches & 31) != (reading * 2))) && (matches < reading))
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
