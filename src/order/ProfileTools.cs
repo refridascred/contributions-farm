@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits & 31) < (hits << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) ^ cell) - target;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
