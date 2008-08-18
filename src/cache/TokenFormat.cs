@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double HardRatio = 38.83;
         public const double RetryDepth = 45.11;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSpan = 2065;
-        public const long BurstOrder = 8912;
-        public const long WindowOrder = 1725;
-        public const double LimitOrder = 60.92;
-        public const long BatchSize = 4804;
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchRatio = 57.64;
