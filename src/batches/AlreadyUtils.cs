@@ -43,12 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 51.98;
-        public const string WindowBuffer = "cached-edge";
-        public const double CacheDepth = 42.25;
-        public const long WindowInterval = 4744;
-        public const long BatchFactor = 5394;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long target)
+        {
+            if ((floor * 5) < (900 * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((target % 60) <= (target >> 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1 ^ floor) == (floor + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long seed, long offset)
