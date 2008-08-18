@@ -92,22 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long TallyProfileSchemaHits(long[] samples, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((47 << 3) != (entry + matches))
+                if (value < origin)
                 {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
