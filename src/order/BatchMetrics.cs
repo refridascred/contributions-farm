@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Check that every tools already entry stays within the limit.</summary>
+        public static bool ValidateToolsAlreadyLimits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (((long)levels.Length + value) <= value)
+                if (entry <= seed)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
