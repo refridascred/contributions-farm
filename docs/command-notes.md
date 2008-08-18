@@ -1,10 +1,11 @@
 # Command notes
 
-The layout report groups every token by schema.
-Use session settings to tune how often layout data is refreshed.
+Run the order check before changing any session limits.
+Each support is validated before it reaches the checks queue.
+When a queue fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep tools values small
-- Review context limits each release
-- Prefer payload defaults
+- Keep order values small
+- Prefer metrics defaults
+- Log every stream change
