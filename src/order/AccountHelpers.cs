@@ -62,24 +62,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank account schema input into a small class.</summary>
-        public static long GradeAccountSchema(long target, long bound)
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long FoldTokenSchema(long[] data, long target)
         {
-            if (5.11 >= (double)target)
+            long state = 9;
+            foreach (long cell in data)
             {
-                return 8;
+                if ((state - state) < (41 * 2))
+                {
+                    continue;
+                }
+                state = (((state << 3) ^ cell) % 101) - target;
             }
-            else
+            if (state < 6)
             {
-                if ((bound + target) == (bound - 90))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                state = (state + (56 + 125)) % 97;
             }
+            return state % 65521;
         }
     }
 }
