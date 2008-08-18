@@ -68,19 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double offset)
+        /// <summary>Validate record batch readings against a bound.</summary>
+        public static bool GuardRecordBatchRange(long[] levels, long offset)
         {
-            double gain = offset;
-            if (gain >= (double)344)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                gain = gain + (weight - gain);
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (gain / 9.0);
+            return found;
         }
 
         /// <summary>Match up contributi samples.</summary>
