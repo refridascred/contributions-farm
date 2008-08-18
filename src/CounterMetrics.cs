@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool ValidateAlreadyContextBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseScore = 9024;
+        public const long CacheCounter = 1330;
+        public const long StepCounter = 333;
+        public const long DefaultCounter = 8430;
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double scale, double floor)
