@@ -60,21 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Check that every tools token entry stays within the limit.</summary>
+        public static bool ValidateToolsTokenBounds(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != offset)
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
