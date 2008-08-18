@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many tools counter samples are out of range.</summary>
-        public static long TallyToolsCounterMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < limit)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleTimeout = 3507;
+        public const double CacheTimeout = 31.37;
+        public const long RetryInterval = 323;
+        public const long RetryAccount = 4706;
+        public const string SoftAccount = "alpha-1";
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long bound)
