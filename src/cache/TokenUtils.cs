@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long step)
+        /// <summary>Blend two commits contributi measurements.</summary>
+        public static double BlendCommitsContributi(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = offset + (double)55;
+            if (weight2 <= (weight - weight2))
             {
-                if ((items[i] < step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight2;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (weight2 + weight)) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
