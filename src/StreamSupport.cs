@@ -31,21 +31,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count session record pairs that satisfy a relation.</summary>
-        public static long PairSessionRecordCount(long[] readings)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = floor;
+            if (ratio > gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + floor;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio + 11.0;
         }
     }
 }
