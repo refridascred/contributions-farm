@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 2769;
-        public const double HardCount = 20.31;
-        public const string IdleProfile = "local-1";
-        public const string MinScore = "staging-1";
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long limit)
