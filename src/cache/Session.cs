@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 9956;
-        public const double BurstSize = 40.81;
-        public const long SoftSize = 4100;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
