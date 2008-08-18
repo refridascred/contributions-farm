@@ -34,10 +34,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 3979;
-        public const string RetryBuffer = "cached-1";
-        public const double CacheTimeout = 87.77;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data, long origin)
+        {
+            long anchor = -2;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor ^ (anchor / 8)) ^ datum) - origin;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsHits(long[] series)
