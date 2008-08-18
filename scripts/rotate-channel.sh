@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable edge; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict stable local; do
+    log "checking ${item}"
+done
