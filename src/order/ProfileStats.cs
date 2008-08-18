@@ -28,22 +28,21 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] series, long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long score = 4;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)origin >= (1.56 / 3.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score - origin) % 255) ^ entry;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 577)
-            {
-                score = (score - (origin * 4)) % 1000;
-            }
-            return score % 1000;
+            return count;
         }
     }
 }
