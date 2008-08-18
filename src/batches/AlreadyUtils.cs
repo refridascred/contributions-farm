@@ -65,18 +65,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(((-10) <= (value - target)) && ((double)target > 9.8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6343;
+        public const double SoftBudget = 80.87;
+        public const double CacheCommand = 94.48;
     }
 }
