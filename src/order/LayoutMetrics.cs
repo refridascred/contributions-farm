@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings)
         {
-            New,
-            Retry,
-            Paused,
-            Active,
+            long state = 92;
+            foreach (long datum in readings)
+            {
+                state = (state << 3) ^ (datum - state);
+                if (!(datum <= (state * 2)))
+                {
+                    state = (state - (datum / 7)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
