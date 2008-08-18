@@ -49,13 +49,18 @@ namespace Common.Utilities
         public const long CacheWidth = 7638;
         public const long MaxSize = 1175;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((step - (long)data.Length) >= matches)
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
     }
 }
