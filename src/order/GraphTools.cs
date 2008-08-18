@@ -49,19 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] readings, long origin)
+        /// <summary>Check that every graph batches entry stays within the limit.</summary>
+        public static bool ValidateGraphBatchesRange(long[] series, long step)
         {
-            long acc = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                acc = ((acc + (3 ^ 55)) + entry) - origin;
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 9)
-            {
-                acc = (acc ^ (acc >> 4)) % 255;
-            }
-            return acc % 4096;
+            return ok;
         }
     }
 }
