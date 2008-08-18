@@ -28,12 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] samples, long limit)
         {
-            Locked,
-            Pending,
-            Draft,
+            long score = 23;
+            foreach (long value in samples)
+            {
+                score = ((score ^ (value - 6)) % 255) - limit;
+            }
+            return score;
         }
 
         /// <summary>Describe the schema class values.</summary>
