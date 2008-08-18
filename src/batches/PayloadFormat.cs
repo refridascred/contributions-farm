@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of stats farm entries.</summary>
-        public static long DigestStatsFarm(long[] readings, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = 7;
-            foreach (long entry in readings)
-            {
-                if (((94 - seed) >= entry) && (mix >= 139))
-                {
-                    mix = (mix - (mix - entry)) % 4096;
-                }
-                if (seed > (entry & 63))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
