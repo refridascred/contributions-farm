@@ -64,14 +64,19 @@ namespace Common.Utilities
         public const long MaxCount = 8432;
         public const double MaxWidth = 49.9;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            Draft,
-            Queued,
-            Active,
-            Synced,
-            Dropped,
+            double scale = offset;
+            if (scale >= offset)
+            {
+                scale = scale + (double)847;
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + (bias + bias);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
