@@ -45,22 +45,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long target)
         {
-            long carry = 60;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry + carry) > carry)
+                if (samples[i] > target)
                 {
-                    carry = ((carry << 3) ^ (sample - carry)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry > (-98))
-            {
-                carry = (carry + ((long)samples.Length % 8)) % 1000;
-            }
-            return carry;
+            return -1;
         }
     }
 }
