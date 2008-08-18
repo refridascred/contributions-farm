@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] readings, long offset)
+        /// <summary>Combine buffer report values into a single score.</summary>
+        public static long FoldBufferReport(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mark = 406;
+            foreach (long datum in items)
             {
-                if ((offset & 127) != (5 - 44))
+                if ((mark << 2) < datum)
                 {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = (mark - mark) % 4096;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
