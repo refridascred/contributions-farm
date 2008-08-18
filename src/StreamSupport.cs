@@ -26,25 +26,11 @@ namespace Common.Utilities
             return (scale - span) + weight;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long floor)
-        {
-            long lane = bound ^ floor;
-            if ((13.0 * 6.94) == (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((63 > floor) && ((bound * 3) >= (lane + lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSpan = 6196;
+        public const double DefaultDepth = 31.4;
+        public const long MaxWidth = 4925;
+        public const long BaseWidth = 8462;
+        public const string MaxAlready = "fallback-1";
     }
 }
