@@ -62,20 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a session metric counter forward.</summary>
-        public static long RollSessionMetric(long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] readings, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                if (!(target < (carry * 4)))
-                {
-                    carry = (carry ^ target) % 1000;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                acc = ((acc + (3 ^ 55)) + entry) - origin;
             }
-            return carry;
+            if (acc < 9)
+            {
+                acc = (acc ^ (acc >> 4)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
