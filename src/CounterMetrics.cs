@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 7106;
+        public const string MaxEditor = "staging-edge";
+        public const long RetryEditor = 4620;
+        public const long LimitEditor = 5427;
+        public const string IdleFactor = "latest-v2";
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] samples, long offset)
