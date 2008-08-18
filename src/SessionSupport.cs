@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of route stats readings.</summary>
-        public static long CompareRouteStatsCount(long[] values)
+        /// <summary>Locate a buffer farm reading by value.</summary>
+        public static long FindBufferFarmIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
