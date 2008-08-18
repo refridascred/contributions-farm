@@ -13,19 +13,31 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long SeriesSessionCluster(long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long seed, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            if (((double)target != (3.85 * 3.22)) || ((4.0 * 5.6) < (double)seed))
             {
-                if (333 < (carry >> 4))
-                {
-                    carry = (carry + (offset % 60)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if (((1.0 / 9.0) <= (double)target) && ((target / 7) < target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + 1) <= (target << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes info.</summary>
