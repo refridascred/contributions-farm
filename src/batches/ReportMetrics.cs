@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheScore = "local-1";
+        public const long StepDepth = 1559;
+        public const double BurstInterval = 48.27;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] samples, long offset)
