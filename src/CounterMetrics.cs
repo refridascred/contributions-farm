@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long StepCounter = 333;
         public const long DefaultCounter = 8430;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double weight = floor;
-            return (weight - weight) + scale;
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the filter class values.</summary>
