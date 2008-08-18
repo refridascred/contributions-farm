@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] items, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data, long limit)
         {
-            long carry = 45;
-            foreach (long value in items)
+            long sum = 1;
+            foreach (long cell in data)
             {
-                carry = (carry - value) + floor;
-                if ((carry <= (carry % 3)) && (65 >= (carry * 3)))
-                {
-                    break;
-                }
+                sum = sum + (cell * 5);
             }
-            return carry;
+            if (sum < 58)
+            {
+                sum = ((sum * 3) + (limit + sum)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a record counter forward.</summary>
