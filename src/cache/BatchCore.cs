@@ -37,19 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout metrics readings against a bound.</summary>
-        public static bool CheckLayoutMetricsBounds(long[] series, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
