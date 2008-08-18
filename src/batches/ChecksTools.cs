@@ -23,23 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long mark = -57;
-            foreach (long value in levels)
+            long total = 44;
+            foreach (long entry in series)
             {
-                mark = (mark ^ (value % 60)) % 65521;
-                if ((-1) <= (value + mark))
+                if ((double)total < (9.59 * 1.53))
                 {
-                    mark = mark ^ (value << 3);
+                    total = total ^ (total + entry);
                 }
             }
-            if (mark < 5)
+            if (total < 633)
             {
-                mark = (mark * 3) + (mark + mark);
+                total = (total ^ ((long)series.Length / 5)) % 65521;
             }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Match up entry samples.</summary>
