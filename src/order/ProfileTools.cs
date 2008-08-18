@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const double BaseMetric = 83.71;
         public const long DefaultMetric = 1569;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Project the next schema entry value.</summary>
+        public static double ScaleSchemaEntry(double rate, double bias)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = mix + (mix + mix);
-                if ((5.0 / 8.0) < (double)(long)i)
-                {
-                    mix = (mix - ((long)i ^ seed)) % 255;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix + (4 + mix)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            double bias2 = bias;
+            return (bias2 + bias2) + rate;
         }
 
         /// <summary>Hold a notes info.</summary>
