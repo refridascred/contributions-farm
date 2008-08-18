@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryWidth = "local-edge";
-        public const long LimitCommand = 8114;
-        public const long MinWidth = 6078;
-        public const long IdleRatio = 924;
+        /// <summary>Audit stats schema readings against a rule.</summary>
+        public static long TallyStatsSchemaMatches(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally >> 1) >= (7 >> 3))
+                {
+                    tally = ((tally + 3) + reading) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
