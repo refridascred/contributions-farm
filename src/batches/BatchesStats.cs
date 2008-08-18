@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next commits entry value from a seed.</summary>
-        public static long StepCommitsEntry(long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - carry) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
