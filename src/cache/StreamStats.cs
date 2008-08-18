@@ -42,19 +42,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Done,
+            Retry,
         }
     }
 }
