@@ -1,13 +1,8 @@
 {
-  "warm_threshold_ms": false,
-  "burst_timeout_pct": ["primary", "legacy", "cached"],
-  "sync_timeout": ["open", "eu-west"],
-  "default_window_count": {
-    "readonly": false,
-    "burst_ratio": "standard",
-    "schema_threshold": 29.16,
-    "default_depth": 74.11,
-    "flush_ratio_s": "edge",
-    "strict": 6342
-  }
+  "soft_delay_s": [353, 423, 314],
+  "hard_threshold_s": true,
+  "enabled": 30,
+  "warm_timeout_pct": 91,
+  "batch_depth_pct": "strict",
+  "hard_limit": "strict"
 }
