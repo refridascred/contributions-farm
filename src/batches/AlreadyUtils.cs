@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Digest a series of checks record entries.</summary>
+        public static long WeighChecksRecord(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = 15;
+            foreach (long cell in levels)
             {
-                total = ((total * 4) + (long)i) % 101;
+                sum = (sum + ((long)levels.Length / 4)) - cell;
             }
-            return total;
+            if (sum < 201)
+            {
+                sum = sum + (13 / 7);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate checks samples.</summary>
