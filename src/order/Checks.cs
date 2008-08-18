@@ -53,17 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitBudget = 6275;
+        public const double CacheSize = 53.06;
+        public const string StepSchema = "standard-edge";
+        public const string DefaultSchema = "latest-1";
+        public const long SoftSchema = 2826;
     }
 }
