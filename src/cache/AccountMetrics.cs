@@ -48,12 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowBudget = 1397;
-        public const string BaseAccount = "open-1";
-        public const string WindowAccount = "cached-edge";
-        public const double MinAccount = 75.12;
-        public const long SoftSize = 4879;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((offset * 4) < (datum - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit graph support readings against a rule.</summary>
         public static long CountGraphSupportOutliers(long[] readings)
