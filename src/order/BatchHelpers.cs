@@ -18,39 +18,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long cur = floor + origin;
-            if ((double)origin <= 7.06)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor - 160) == (floor - floor)) || ((floor + floor) <= (floor + 678)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (2.2 + 7.73))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((1.3 + 8.4) == (double)cur) || ((origin + floor) < 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
