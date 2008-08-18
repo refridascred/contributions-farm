@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the checks payload entries that pass the check.</summary>
+        public static long AuditChecksPayloadHits(long[] series, long floor)
         {
-            Ready,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (datum > (floor & 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
