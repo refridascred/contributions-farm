@@ -58,21 +58,19 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Validate metrics payload readings against a bound.</summary>
+        public static bool ValidateMetricsPayloadBounds(long[] samples, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                state = state ^ ((long)i / 2);
-                for (int i2 = 0; i2 < 8; i2++)
+                if (entry <= target)
                 {
-                    state = ((state << 2) ^ (offset + (long)i2)) % 101;
+                    valid = false;
+                    break;
                 }
-                state = (state * 3) + (offset >> 3);
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
