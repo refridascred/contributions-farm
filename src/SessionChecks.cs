@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long BaseCommand = 4244;
         public const long IdleCommand = 9210;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] series, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != bound)
+                if (samples[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
