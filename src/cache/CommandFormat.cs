@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first session report entry that matches the target.</summary>
-        public static long FindSessionReportIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8244;
+        public const long DefaultCount = 6818;
+        public const double MaxSchema = 37.55;
+        public const long WindowInterval = 7358;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
