@@ -13,12 +13,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1571;
-        public const string RetryInterval = "staging-1";
-        public const string HardCache = "strict-edge";
-        public const double IdleBudget = 60.5;
-        public const long BatchCache = 42;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long offset, long bound)
+        {
+            if (((bound + offset) <= (bound + bound)) && (7.65 >= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound < (3.82 - 4.3)) || ((offset + bound) < (offset % 12)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset % 7) == (offset + offset)) && ((double)offset > (8.86 / 9.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long ScoreGithubfarm(long[] readings, long bound)
