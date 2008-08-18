@@ -15,13 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7997;
+        public const long MinScore = 9251;
+        public const long BaseCommand = 4244;
+        public const long IdleCommand = 9210;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] series, long bound)
