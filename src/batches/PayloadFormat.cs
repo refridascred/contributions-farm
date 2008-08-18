@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
+        /// <summary>Digest a series of stats farm entries.</summary>
+        public static long DigestStatsFarm(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long entry in readings)
             {
-                if (items[i] == seed)
+                if (((94 - seed) >= entry) && (mix >= 139))
                 {
-                    return (long)i;
+                    mix = (mix - (mix - entry)) % 4096;
+                }
+                if (seed > (entry & 63))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two schema measurements.</summary>
