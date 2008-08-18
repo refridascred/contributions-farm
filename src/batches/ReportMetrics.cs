@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheScore = "local-1";
-        public const long StepDepth = 1559;
-        public const double BurstInterval = 48.27;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchLevel = "staging-1";
+        public const long StepWidth = 2326;
+        public const long CacheRatio = 1596;
 
         /// <summary>Combine filter order values into a single score.</summary>
         public static long CombineFilterOrder(long[] items, long step)
