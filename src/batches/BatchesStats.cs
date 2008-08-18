@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 218;
-        public const double SoftReport = 66.23;
-        public const long MaxReport = 4651;
-        public const string IdleReport = "standard-edge";
-        public const long LimitDepth = 8335;
+        /// <summary>Derive the next commits entry value from a seed.</summary>
+        public static long StepCommitsEntry(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry - carry) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] readings)
