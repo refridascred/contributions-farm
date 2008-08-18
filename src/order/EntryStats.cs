@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of layout graph entries.</summary>
-        public static long ScoreLayoutGraph(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long result = 743;
-            foreach (long cell in series)
-            {
-                result = (((result * 3) + ((long)series.Length ^ result)) % 101) + cell;
-            }
-            return result % 65521;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
