@@ -74,11 +74,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleLevel = 0.86;
+        public const long RetryFactor = 6413;
+        public const long LimitCache = 8859;
+        public const string BurstCache = "strict-1";
     }
 }
