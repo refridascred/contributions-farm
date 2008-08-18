@@ -43,31 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Match up commits queue samples.</summary>
+        public static long OverlapCommitsQueueCount(long[] data)
         {
-            if (seed > (step + seed))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 2) <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 63) > step)
+                    if ((data[i] + data[j]) == 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
