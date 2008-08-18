@@ -1,12 +1,8 @@
 {
-  "support_window": 82.1,
-  "dry_run": 60,
-  "githubfarm_timeout": ["primary", "latest", "eu-west", "eu-west"],
-  "verbose": "cached",
-  "base_depth_pct": {
-    "format_limit": 3,
-    "notes_threshold": "local",
-    "base_retries": 39,
-    "tools_depth": 40
-  }
+  "queue_threshold": 250,
+  "session_capacity": 30.53,
+  "audit": false,
+  "route_delay": 21,
+  "checks_limit": "edge",
+  "max_threshold": ["stable", "stable", "stable"]
 }
