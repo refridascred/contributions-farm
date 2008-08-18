@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next graph value.</summary>
