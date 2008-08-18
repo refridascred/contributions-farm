@@ -68,21 +68,18 @@ namespace Common.Utilities
             return weight + (double)633;
         }
 
-        /// <summary>Match up tools already samples.</summary>
-        public static long PairToolsAlreadyCount(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((8.7 - 15.0) <= (double)bound) || ((hits << 1) >= (item - item)))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
