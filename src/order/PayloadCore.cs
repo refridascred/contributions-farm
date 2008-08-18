@@ -14,16 +14,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a farm contributi counter forward.</summary>
-        public static long StepFarmContributi(long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (limit / 2)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Blend two stream editor measurements.</summary>
