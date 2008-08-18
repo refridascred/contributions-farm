@@ -22,20 +22,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((double)anchor != (7.8 * 7.68)) || (limit < (3 + limit)))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + limit) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the payload state values.</summary>
