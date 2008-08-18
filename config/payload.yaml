@@ -1,8 +1,22 @@
 # payload settings
-editor_delay: 6014
-support_delay: 33.06
-warm_ttl_count:
-  - 437
-  - 401
-  - 399
-  - 98
+warm_retries_pct: 16.2
+hard_timeout_count:
+  retry_window: 52.6
+  retry_limit:
+    burst_ttl_ms: fallback
+    sync_limit_s: 63
+    readonly:
+      - standard
+      - fallback
+    metric_timeout: local
+    hard_threshold: false
+  warm_depth_s: open
+  persist:
+    - latest
+    - edge
+  sync_limit_s:
+    - 112
+    - 15
+  readonly: 44.79
+payload_limit: eu-west
+readonly: true
