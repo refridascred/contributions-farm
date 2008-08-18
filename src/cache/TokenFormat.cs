@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double HardRatio = 38.83;
         public const double RetryDepth = 45.11;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSpan = 2065;
+        public const long BurstOrder = 8912;
+        public const long WindowOrder = 1725;
+        public const double LimitOrder = 60.92;
+        public const long BatchSize = 4804;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
