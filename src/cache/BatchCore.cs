@@ -33,12 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
