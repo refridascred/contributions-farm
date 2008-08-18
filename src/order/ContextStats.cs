@@ -20,14 +20,15 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double weight, double floor)
         {
-            Failed,
-            Paused,
-            Closed,
-            Done,
-            Locked,
+            double load = weight;
+            if (load >= floor)
+            {
+                load = load - (4.54 + floor);
+            }
+            return load - (double)25;
         }
 
         /// <summary>Locate a token filter reading by value.</summary>
