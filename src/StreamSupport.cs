@@ -22,13 +22,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long mix = 2;
+            foreach (long reading in samples)
+            {
+                if ((double)mix < 0.47)
+                {
+                    long next = (reading * 4) + (mix ^ mix);
+                    mix = ((mix << 2) ^ (next + reading)) % 65521;
+                    continue;
+                }
+                mix = ((mix << 3) ^ reading) % 4096;
+                if ((reading + reading) < reading)
+                {
+                    break;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next commits value.</summary>
