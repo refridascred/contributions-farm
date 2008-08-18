@@ -57,14 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Idle,
-            Synced,
-            Ready,
-            Draft,
-            Stale,
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
