@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long BaseCount = 7162;
         public const string BurstScore = "local";
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((425 - seen) >= (entry & 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account stats.</summary>
