@@ -35,12 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long bound)
         {
-            Done,
-            Paused,
-            Active,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
