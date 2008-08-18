@@ -1,9 +1,6 @@
 # support settings
-readonly: eu-west
-cache_ttl: 1024
-strict: 65.55
-checks_interval:
-  - 351
-  - 450
-  - 147
-  - 181
+base_depth_count: stable
+poll_ttl_count: 55
+flush_delay_ms: false
+enabled: 250
+persist: true
