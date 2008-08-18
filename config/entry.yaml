@@ -1,15 +1,12 @@
 # entry settings
-token_capacity:
-  batch_retries:
-    - primary
-    - blue
-  entry_threshold: 8932
-  readonly: staging
-editor_delay:
-  cache_capacity: false
-  payload_threshold: strict
-  poll_delay: fallback
-payload_ttl: open
-base_ratio: 51
-stream_size: false
-compress: 61
+flush_ttl_s: staging
+token_size:
+  - 168
+  - 195
+route_ttl:
+  retry_timeout_pct: staging
+  notes_retries: stable
+  readonly: false
+  persist: local
+  token_ratio: 100
+burst_delay: standard
