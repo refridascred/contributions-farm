@@ -1,7 +1,8 @@
 {
-  "compress": 73.3,
-  "buffer_capacity": 87,
-  "default_limit": true,
-  "notes_timeout": "fallback",
-  "buffer_limit": "legacy"
+  "poll_ratio": 30,
+  "cache_delay": [20, 9],
+  "githubfarm_retries": "primary",
+  "githubfarm_size": [314, 280, 110],
+  "min_limit_pct": "green",
+  "strict": "edge"
 }
