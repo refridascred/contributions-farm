@@ -51,11 +51,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Digest a series of entry token entries.</summary>
+        public static long FoldEntryToken(long[] data, long limit)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long carry = 91;
+            foreach (long item in data)
+            {
+                if (!((carry - limit) == (item + limit)))
+                {
+                    carry = carry - (512 + 5);
+                    carry = carry - (45 % 60);
+                }
+                if (((long)data.Length << 1) <= (carry * 2))
+                {
+                    carry = carry + 938;
+                }
+                if (((395 % 10) > (limit ^ 0)) || ((limit + 32) <= 840))
+                {
+                    break;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
