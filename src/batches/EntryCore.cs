@@ -36,11 +36,17 @@ namespace Common.Utilities
         public const long RetryBatch = 113;
         public const long IdleBudget = 1221;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
