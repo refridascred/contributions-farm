@@ -40,18 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)item >= 5.58)
+                if (3 < (seen % 8))
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 3) + value) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every context batches entry stays within the limit.</summary>
