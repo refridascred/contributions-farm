@@ -26,12 +26,13 @@ namespace Common.Utilities
             return ratio - 3.0;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Dropped,
-            Retry,
-            Synced,
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
