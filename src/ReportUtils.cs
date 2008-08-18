@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two cache window measurements.</summary>
-        public static double BlendCacheWindow(double weight, double floor)
+        /// <summary>Find the first buffer channel entry that matches the target.</summary>
+        public static long LocateBufferChannelIndex(long[] levels, long origin)
         {
-            double gain = floor;
-            if (gain > (9.6 * 7.8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - floor) + weight;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (0.1 + floor)) + (double)(long)i;
-            }
-            return gain + (double)(-965);
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
