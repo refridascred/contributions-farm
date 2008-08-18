@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long hits = 0;
+            long score = 265;
             foreach (long datum in readings)
             {
-                if ((hits << 3) > (890 - datum))
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (((score << 2) ^ (score << 2)) % 97) - datum;
             }
-            return hits;
+            if (score > 13)
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
