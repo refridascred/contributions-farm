@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 8185;
-        public const long MinMetrics = 8436;
-        public const long StepMetrics = 9993;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Ready,
+            Locked,
+            Done,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
