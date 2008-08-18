@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 7513;
-        public const string CacheBatch = "latest";
-        public const long IdleScore = 7558;
-        public const long MinBatch = 1937;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Synced,
+            New,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] series)
