@@ -1,8 +1,8 @@
 {
-  "poll_ratio": 30,
-  "cache_delay": [20, 9],
-  "githubfarm_retries": "primary",
-  "githubfarm_size": [314, 280, 110],
-  "min_limit_pct": "green",
-  "strict": "edge"
+  "route_timeout": 41.6,
+  "base_ttl_pct": 30,
+  "sync_retries_pct": "legacy",
+  "poll_threshold_count": "primary",
+  "idle_capacity_pct": 4612,
+  "sync_threshold_count": 1024
 }
