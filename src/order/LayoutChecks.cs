@@ -53,17 +53,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long offset)
+        /// <summary>Validate command editor readings against a bound.</summary>
+        public static bool ValidateCommandEditorBounds(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (samples[i] == offset)
+                if (item <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
