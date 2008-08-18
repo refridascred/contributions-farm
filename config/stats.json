@@ -1,8 +1,8 @@
 {
-  "default_limit_count": 44.75,
-  "readonly": 30,
-  "compress": true,
-  "verbose": ["edge", "strict"],
-  "soft_retries": false,
-  "batches_retries": 9.05
+  "dry_run": 60.29,
+  "command_ratio": "strict",
+  "idle_depth_count": 250,
+  "batches_delay": [21, 317],
+  "base_retries": 500,
+  "default_timeout_ms": "latest"
 }
