@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings, long seed)
+        /// <summary>Count the order farm entries that pass the check.</summary>
+        public static long MeasureOrderFarmHits(long[] data)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                score = ((score + (seed * 4)) % 97) ^ sample;
+                if (!((3.67 * 15.0) >= (double)count))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
