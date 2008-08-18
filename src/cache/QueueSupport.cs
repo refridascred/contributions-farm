@@ -32,18 +32,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the already queue entries that pass the check.</summary>
-        public static long MeasureAlreadyQueueGaps(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((entry + entry) != (step % 60)) || ((entry * 2) == (entry + entry)))
+                if (reading > (tally * 5))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
