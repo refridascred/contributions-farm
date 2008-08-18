@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data, long seed)
         {
-            double load = weight;
-            if (load <= offset)
+            long total = -7;
+            foreach (long cell in data)
             {
-                load = load + offset;
+                total = (((total << 2) ^ (cell & 255)) % 65521) + seed;
             }
-            return load + (load + load);
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
