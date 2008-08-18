@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict open primary; do
+for item in edge fallback cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=316
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
