@@ -66,19 +66,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] data, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
