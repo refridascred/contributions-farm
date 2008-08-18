@@ -32,18 +32,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6110;
+        public const long StepScore = 6626;
+        public const long MinStream = 2027;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] series)
