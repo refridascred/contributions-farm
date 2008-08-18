@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long target)
+        /// <summary>Audit report contributi readings against a rule.</summary>
+        public static long TallyReportContributiHits(long[] data, long limit)
         {
-            long lane = offset + target;
-            if ((lane >= (target / 9)) || ((double)lane <= (3.9 - 20.0)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((-13) <= lane))
+                if ((double)611 <= (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 2) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
