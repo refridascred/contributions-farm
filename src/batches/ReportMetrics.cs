@@ -14,24 +14,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long origin, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long offset)
         {
-            if (87 <= target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (3.0 - 4.67))
+                if (samples[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
