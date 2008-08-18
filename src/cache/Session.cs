@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((7.6 + 5.65) != (double)value) || ((40 >> 2) >= (86 + value)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
