@@ -16,14 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            Done,
-            Draft,
-            Ready,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - 70) >= 5)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
