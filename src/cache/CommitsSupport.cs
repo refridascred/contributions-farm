@@ -18,11 +18,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Compare every pair of counter support readings.</summary>
+        public static long CompareCounterSupportCount(long[] samples)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
