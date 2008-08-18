@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data, long bound)
         {
-            Stale,
-            Paused,
-            Synced,
+            long anchor = 68;
+            foreach (long item in data)
+            {
+                anchor = (anchor - (item * 2)) % 255;
+                if ((double)bound == (5.0 + 19.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window entry.</summary>
