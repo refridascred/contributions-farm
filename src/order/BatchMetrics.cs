@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every tools already entry stays within the limit.</summary>
-        public static bool ValidateToolsAlreadyLimits(long[] data, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (entry <= seed)
+                if (item != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
