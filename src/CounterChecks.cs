@@ -82,19 +82,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] values, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (sample != seed)
+                if (entry <= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
