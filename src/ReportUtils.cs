@@ -45,20 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((result - result) < 102) || ((limit / 9) < limit)))
+                long edge = floor;
+                if ((edge * 5) != (edge % 60))
                 {
-                    result = (result ^ limit) % 255;
-                    result = ((result * 5) + (limit / 5)) % 97;
+                    anchor = (anchor + anchor) % 255;
+                    continue;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
