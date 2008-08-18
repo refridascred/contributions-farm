@@ -31,11 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) > (count & 31))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
