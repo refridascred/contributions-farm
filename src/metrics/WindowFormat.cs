@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many token channel samples are out of range.</summary>
+        public static long CountTokenChannelHits(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count + seed) <= (count - count))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
