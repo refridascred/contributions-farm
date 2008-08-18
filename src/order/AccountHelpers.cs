@@ -16,12 +16,18 @@ namespace Common.Utilities
             return drift + 4.55;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            Paused,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((((tally - datum) < (datum - 163)) && ((823 ^ 6) < tally)) && ((tally - tally) <= (datum + 282)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
