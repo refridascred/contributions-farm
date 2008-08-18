@@ -19,20 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((11.0 * 3.48) > (double)(long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - ((long)i & 3)) % 65521;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result << 3) ^ (79 ^ result)) % 65521;
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Scale a token stats figure with a bias.</summary>
