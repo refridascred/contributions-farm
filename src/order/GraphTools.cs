@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardInterval = 5560;
-        public const double BurstInterval = 78.68;
-        public const long MaxMetrics = 4233;
-        public const long BaseMetrics = 8794;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryLevel = 54.58;
+        public const long LimitDepth = 1540;
+        public const long StepReport = 1200;
+        public const double BaseReport = 59.12;
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
         public static bool GuardChannelContributiLimits(long[] data, long floor)
