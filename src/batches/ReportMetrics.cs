@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((target % 12) < (matches / 8))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
