@@ -48,26 +48,12 @@ namespace Common.Utilities
         public const double IdleBudget = 9.39;
         public const long BatchEditor = 672;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum + (8 >> 3)) % 97;
-                if (!!((sum << 3) > 2))
-                {
-                    sum = (sum - (offset - offset)) % 97;
-                    sum = (sum + (sum - 27)) % 101;
-                }
-                if ((long)i < (sum - sum))
-                {
-                    sum = (sum ^ (sum / 8)) % 255;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
