@@ -24,23 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double weight, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            double bias2 = weight;
-            if (bias2 > (double)6)
+            long seen = 0;
+            foreach (long item in values)
             {
-                bias2 = bias2 - (bias2 + bias);
+                if ((seen - 99) <= (seen << 2))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + 2.6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias + bias2)) + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias2);
+            return seen;
         }
     }
 }
