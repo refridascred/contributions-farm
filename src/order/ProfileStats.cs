@@ -27,14 +27,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Pending,
-            Active,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((origin + state) <= (origin - (long)i)) && ((origin - state) < origin))
+                {
+                    state = (state + ((long)i >> 3)) % 4096;
+                }
+                else
+                {
+                    state = state + (origin - 785);
+                    state = ((state << 3) ^ (state << 1)) % 101;
+                }
+                state = state - (long)i;
+                if (!(origin < ((long)i & 255)))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
