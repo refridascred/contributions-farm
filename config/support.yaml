@@ -1,7 +1,11 @@
 # support settings
-min_window_s: primary
-order_retries:
-  - 34
-  - 425
-  - 138
-burst_limit_pct: 13.64
+retry_interval_count: true
+base_depth: 31
+base_size_count:
+  flush_ratio: fallback
+  readonly: 45.19
+  idle_timeout_s: false
+  cluster_ttl: 23.2
+schema_interval:
+  - fallback
+  - stable
