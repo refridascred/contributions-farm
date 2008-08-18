@@ -27,11 +27,9 @@ namespace Common.Utilities
         public const string DefaultLevel = "latest-v2";
         public const string MinSpan = "local";
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryCount = 9436;
+        public const long LimitInterval = 2241;
+        public const long HardContributi = 8168;
     }
 }
