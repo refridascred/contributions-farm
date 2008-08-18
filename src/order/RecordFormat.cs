@@ -32,13 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Draft,
-            Active,
+            Synced,
+            Closed,
+            Dropped,
             New,
-            Idle,
         }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
