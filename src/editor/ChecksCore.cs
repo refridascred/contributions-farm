@@ -27,12 +27,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            Active,
-            Ready,
-            Idle,
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 2) + (target >> 5)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
