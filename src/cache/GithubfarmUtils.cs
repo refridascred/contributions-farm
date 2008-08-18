@@ -26,10 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9732;
-        public const long RetryGithubfarm = 7793;
-        public const string BaseSpan = "staging-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleRatio = "cached-edge";
+        public const string WindowSpan = "stable-v2";
+        public const long StepCounter = 2328;
+        public const double DefaultSpan = 39.95;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string SoftDepth = "local-1";
