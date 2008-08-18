@@ -39,12 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "open-v2";
-        public const string RetryStats = "alpha";
-        public const long MaxWidth = 6039;
-        public const string CacheCount = "local";
-        public const long BatchTimeout = 822;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long bound)
+        {
+            if ((double)bound == (14.0 / 7.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + 6) <= (bound + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)limit > (1.55 - 3.15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] samples)
