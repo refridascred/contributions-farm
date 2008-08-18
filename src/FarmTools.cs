@@ -16,11 +16,12 @@ namespace Common.Utilities
             return load + (rate * 5.09);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 6772;
-        public const double RetryCount = 69.97;
-        public const long BurstTimeout = 3888;
-        public const double WindowReport = 36.5;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
