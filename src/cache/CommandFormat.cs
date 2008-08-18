@@ -21,21 +21,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up entry stats samples.</summary>
-        public static long MatchEntryStatsCount(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound ^ bound2;
+            if ((36 & 31) > (45 - bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step << 1) == (step + bound)) && (5 <= (bound + step)))
                 {
-                    if ((items[i] - items[j]) < 1)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)6 >= (double)step) && (696 <= (bound ^ step)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step + step) != (82 - step)) && ((double)step == (6.0 * 8.05)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the window cluster entries that pass the check.</summary>
