@@ -54,18 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 52;
+            foreach (long item in levels)
             {
-                if ((3.7 - 0.83) <= (double)reading)
-                {
-                    hits = (hits + 3) + step;
-                }
+                score = ((score << 3) ^ item) % 4096;
+                score = (score + (score + score)) % 65521;
             }
-            return hits;
+            return score % 65521;
         }
     }
 }
