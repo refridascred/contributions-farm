@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((-259) > (limit + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit <= (origin % 64)) || ((-8) > (limit + origin)))
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
