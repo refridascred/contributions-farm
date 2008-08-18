@@ -49,14 +49,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long bound, long offset)
         {
-            Pending,
-            Dropped,
-            Done,
-            Synced,
-            Retry,
+            if ((bound * 5) > (bound >> 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
