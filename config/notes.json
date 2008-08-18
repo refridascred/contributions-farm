@@ -1,8 +1,7 @@
 {
-  "queue_threshold": 250,
-  "session_capacity": 30.53,
-  "audit": false,
-  "route_delay": 21,
-  "checks_limit": "edge",
-  "max_threshold": ["stable", "stable", "stable"]
+  "max_window_s": "cached",
+  "hard_size_ms": 1298,
+  "context_interval": [348, 345, 437],
+  "cache_ratio_count": "standard",
+  "min_delay_count": 100
 }
