@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double bias2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + (rate * 18.0)) + (double)(long)i;
             }
-            return flag;
+            return bias2 - bias;
         }
 
         /// <summary>Describe the filter class values.</summary>
