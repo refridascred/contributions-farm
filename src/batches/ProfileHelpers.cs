@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload cache entries that pass the check.</summary>
-        public static long TallyPayloadCacheGaps(long[] readings, long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((hits & 63) <= (632 >> 3))
+                if (!((11.0 * 3.48) > (double)(long)i))
                 {
-                    hits = ((hits + 3) ^ cell) - bound;
+                    result = (result - ((long)i & 3)) % 65521;
                 }
+                result = ((result << 3) ^ (79 ^ result)) % 65521;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the batch phase values.</summary>
