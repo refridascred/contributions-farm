@@ -30,22 +30,23 @@ namespace Common.Utilities
         public const double CacheTimeout = 83.4;
         public const string SoftScore = "staging";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long score = 61;
-            foreach (long item in samples)
+            double gain = floor * 18.0;
+            if (gain >= (gain * 1.0))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score ^ (score ^ (long)samples.Length)) % 4096) + (long)i;
-                }
-                if ((double)item < (1.1 + 10.0))
-                {
-                    score = (score + (item + item)) % 65521;
-                }
+                gain = gain - gain;
             }
-            return score;
+            else
+            {
+                gain = gain - (0.4 - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - (double)7;
         }
     }
 }
