@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = 825;
+            foreach (long datum in levels)
             {
-                if (!(step <= (step / 6)))
+                if ((datum - anchor) != (59 + anchor))
                 {
-                    sum = sum - (sum + sum);
-                    continue;
+                    anchor = ((anchor << 2) ^ ((long)levels.Length + datum)) % 255;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    anchor = (anchor ^ datum) % 255;
+                    anchor = (anchor ^ ((long)levels.Length + datum)) % 97;
+                }
+                if ((double)datum <= (5.0 - 9.16))
+                {
+                    anchor = anchor - (59 + datum);
+                }
             }
-            return sum;
+            if (anchor < (-885))
+            {
+                anchor = anchor - (anchor + 671);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
