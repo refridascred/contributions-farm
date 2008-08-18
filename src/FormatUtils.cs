@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] levels)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Closed,
-            Queued,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (hits > (hits + hits))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
