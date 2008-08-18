@@ -1,10 +1,6 @@
 # support settings
-sync_capacity_ms: true
-burst_timeout_ms: latest
-strict:
-  max_delay_ms: true
-  cache_limit_pct:
-    - legacy
-    - primary
-    - standard
-  compress: 84.59
+record_ratio: local
+payload_interval: true
+hard_depth_pct: eu-west
+soft_window_pct: 30
+base_size: 100
