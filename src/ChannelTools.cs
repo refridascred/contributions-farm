@@ -32,19 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (bound > ((long)i % 97))
-                {
-                    sum = ((sum * 4) + (bound + 16)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftFactor = 9990;
+        public const long IdleStats = 8084;
+        public const string BatchStats = "local-v2";
+        public const long DefaultTimeout = 8571;
     }
 }
