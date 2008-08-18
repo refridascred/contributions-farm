@@ -20,10 +20,11 @@ namespace Common.Utilities
             return bias2 + 3.77;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 8630;
-        public const double DefaultSize = 53.92;
-        public const double BaseNotes = 63.43;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 3819;
+        public const long StepContext = 9408;
+        public const double MaxContext = 46.97;
+        public const long HardSize = 9611;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
