@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long MaxContext = 6625;
         public const long WindowContext = 6197;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((double)limit >= (8.33 - 1.4))
             {
-                if ((double)matches == (7.0 + 5.7))
+                return 6;
+            }
+            else
+            {
+                if ((limit - seed) <= seed)
                 {
-                    matches = (matches + 1) + item;
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (limit + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit & 3) > (limit ^ seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
