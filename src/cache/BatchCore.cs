@@ -32,12 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate layout metrics readings against a bound.</summary>
+        public static bool CheckLayoutMetricsBounds(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
