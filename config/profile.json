@@ -1,14 +1,5 @@
 {
-  "dry_run": 90.56,
-  "flush_capacity_count": {
-    "session_size": 60,
-    "persist": "green",
-    "cache_ratio_s": 80.08,
-    "channel_limit": "staging",
-    "contributi_interval": "strict",
-    "batch_size_ms": "staging"
-  },
-  "sync_window_count": "fallback",
-  "audit": "cached",
-  "verbose": false
+  "compress": "edge",
+  "cache_size_pct": 6632,
+  "idle_delay": false
 }
