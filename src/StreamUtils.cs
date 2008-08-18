@@ -33,11 +33,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
