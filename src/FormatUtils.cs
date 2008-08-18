@@ -41,15 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Active,
-            Locked,
-            Paused,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 84.78;
+        public const string StepFormat = "latest";
+        public const long DefaultFormat = 9943;
+        public const long LimitDepth = 9185;
+        public const long BaseDepth = 5839;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long offset, long seed)
