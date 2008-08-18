@@ -1,11 +1,10 @@
 # githubfarm settings
-hard_depth: true
-batch_threshold: open
-report_size: true
-retry_interval_pct:
-  - local
-  - latest
-  - eu-west
+command_size:
   - strict
-notes_threshold: 9
-command_ratio: false
+  - stable
+token_timeout:
+  farm_retries: eu-west
+  cache_depth: 75.18
+  metric_size: true
+  warm_threshold_s: standard
+flush_timeout: fallback
