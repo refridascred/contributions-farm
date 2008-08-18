@@ -41,19 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long anchor = -7;
+            foreach (long value in data)
             {
-                if (entry < origin)
+                if ((double)bound >= (8.0 / 4.0))
                 {
-                    valid = false;
+                    anchor = anchor ^ (value + anchor);
+                }
+                if (((bound << 2) < value) && ((bound % 60) >= (value + bound)))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the stats state values.</summary>
