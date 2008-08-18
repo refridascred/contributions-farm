@@ -24,19 +24,17 @@ namespace Common.Utilities
             return ratio + (ratio + bias);
         }
 
-        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
-        public static bool VerifyEditorContributiBounds(long[] readings, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= target)
+                if (values[i] >= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
