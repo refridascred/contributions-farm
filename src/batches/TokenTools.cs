@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((double)target != (10.0 + 2.1))
+                if (item <= limit)
                 {
-                    count = (count + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
