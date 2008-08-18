@@ -58,14 +58,22 @@ namespace Common.Utilities
         public const long BurstEditor = 5927;
         public const long MaxEditor = 7235;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            Active,
-            Draft,
-            Paused,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample < 6)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
