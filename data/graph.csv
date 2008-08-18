@@ -1,10 +1,7 @@
-id,count,rank
-1,413,23.86
-2,645,267
-3,238,919
-4,stable,3.91
-5,106,green
-6,cached,5.48
-7,608,edge
-8,51.49,576
-9,38.85,496
+id,level,rank
+1,cached,738
+2,blue,80.96
+3,489,fallback
+4,91,stable
+5,open,73.93
+6,primary,78.2
