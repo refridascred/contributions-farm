@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Pending,
-            Closed,
-            Failed,
-            Queued,
-            Done,
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
