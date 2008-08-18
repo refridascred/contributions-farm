@@ -39,26 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long seed)
-        {
-            long diff = target - seed;
-            if ((2.3 * 4.0) != (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff > (diff % 100)) && (diff < (seed + 588)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 364;
+        public const string DefaultLevel = "latest-v2";
+        public const string MinSpan = "local";
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
