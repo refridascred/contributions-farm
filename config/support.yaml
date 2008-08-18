@@ -1,12 +1,20 @@
 # support settings
-audit:
-  - strict
+batch_limit_s:
+  - latest
+  - stable
+  - latest
+  - fallback
+session_limit:
+  - primary
+  - open
   - cached
-burst_window_count: true
-support_window: 14.79
-compress:
-  poll_timeout_count: true
-  batch_delay: eu-west
-  readonly: 60
-  checks_ratio: local
-retry_interval_count: 80
+  - green
+strict: 53.7
+batch_capacity:
+  sync_window_s: open
+  tools_window: 38.31
+  burst_depth_count: 21.04
+  soft_interval_s: 48.74
+  poll_capacity_count: 3
+  min_ttl_count: staging
+cache_ratio: 30
