@@ -21,18 +21,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 2) < (155 ^ seen))
+                if (items[i] < origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
