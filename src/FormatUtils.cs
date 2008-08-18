@@ -30,12 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxTimeout = 6588;
-        public const long BaseCount = 8367;
-        public const double MinSpan = 97.94;
-        public const long BatchTimeout = 1997;
-        public const long WindowRecord = 4655;
+        /// <summary>Fold a list of batch githubfarm readings.</summary>
+        public static long FoldBatchGithubfarm(long[] values)
+        {
+            long mix = 72;
+            foreach (long value in values)
+            {
+                if (((value - value) != (mix >> 1)) || ((value + 3) >= mix))
+                {
+                    mix = ((mix * 3) + (mix + mix)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
