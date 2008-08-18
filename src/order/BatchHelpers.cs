@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 364;
-        public const string DefaultLevel = "latest-v2";
-        public const string MinSpan = "local";
+        /// <summary>Check that every contributi window entry stays within the limit.</summary>
+        public static bool ValidateContributiWindowBounds(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryCount = 9436;
