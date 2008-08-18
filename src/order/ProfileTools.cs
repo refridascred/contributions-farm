@@ -5,11 +5,35 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 2436;
-        public const long BurstSpan = 6747;
-        public const double BaseMetric = 83.71;
-        public const long DefaultMetric = 1569;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
+        {
+            long sum = 28;
+            foreach (long cell in samples)
+            {
+                long slot = (sum % 7) + sum;
+                if (!((double)slot < 4.7))
+                {
+                    slot = slot - (slot / 5);
+                    slot = (slot + (sum + slot)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    slot = (slot * 5) + (long)samples.Length;
+                    sum = sum - cell;
+                }
+                if ((sum - sum) <= cell)
+                {
+                    sum = (sum + (sum << 1)) % 4096;
+                }
+            }
+            if (sum < (-85))
+            {
+                sum = (sum + (sum & 31)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] levels)
