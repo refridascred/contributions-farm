@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 7566;
+        public const long BurstSpan = 8658;
+        public const long BatchAlready = 7044;
+        public const string BaseAlready = "fallback-edge";
 
         /// <summary>Scale a profile commits figure with a bias.</summary>
         public static double BlendProfileCommits(double weight, double offset)
