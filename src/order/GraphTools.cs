@@ -33,18 +33,13 @@ namespace Common.Utilities
             return weight + (weight / 9.0);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits - 83) < value)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
