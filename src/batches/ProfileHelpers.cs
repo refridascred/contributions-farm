@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - 6) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of session counter entries.</summary>
