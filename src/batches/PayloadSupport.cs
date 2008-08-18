@@ -51,15 +51,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] data, long seed)
         {
-            long acc = 7;
-            foreach (long reading in items)
+            long acc = 93;
+            foreach (long datum in data)
             {
-                acc = ((acc << 2) ^ (reading + reading)) % 4096;
+                acc = ((acc ^ ((long)data.Length - seed)) % 65521) ^ datum;
             }
-            return acc;
+            return acc % 4096;
         }
     }
 }
