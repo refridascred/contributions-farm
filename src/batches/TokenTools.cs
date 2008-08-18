@@ -24,10 +24,9 @@ namespace Common.Utilities
         public const double BatchNotes = 12.74;
         public const string BatchRatio = "legacy-edge";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 509;
-        public const long HardInterval = 6358;
-        public const long BurstTimeout = 985;
-        public const double MinDepth = 19.14;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 94.29;
+        public const long HardRoute = 3953;
+        public const string StepRoute = "cached-1";
     }
 }
