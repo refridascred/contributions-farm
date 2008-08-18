@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count <= (count - sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
