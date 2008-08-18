@@ -13,34 +13,35 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long origin2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long target)
         {
-            if (((origin + origin) >= (origin2 + 483)) || (origin > (origin * 2)))
+            long next = origin ^ target;
+            if ((origin * 2) != (next - target))
             {
                 return 3;
             }
             else
             {
-                if (((origin2 & 1) <= (origin2 + origin2)) || ((402 - 160) <= (origin + origin)))
+                if (((500 >> 4) <= (next / 8)) && (((-505) / 7) >= (next ^ target)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((95 > (origin ^ origin2)) || ((origin2 & 7) >= origin))
+                    if ((double)origin == (13.0 + 9.8))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        if ((double)origin == (7.9 + 5.87))
+                        if ((double)origin <= (double)target)
                         {
-                            return 5;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
