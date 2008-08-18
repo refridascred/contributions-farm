@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long SoftLevel = 9639;
         public const long WindowSize = 1856;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen << 1) != (seen + 45))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
