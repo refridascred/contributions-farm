@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const long LimitGraph = 3133;
         public const double MaxSize = 96.97;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double ratio = (double)(0 % 12);
-            if (ratio >= (ratio - bias))
-            {
-                ratio = (ratio + (ratio * 17.0)) + weight;
-            }
-            else
-            {
-                ratio = ratio - (double)21;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (3.7 - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)25;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
