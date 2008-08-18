@@ -14,18 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long MeasureEntryMetricsGaps(long[] items)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (tally <= (40 ^ 573))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
