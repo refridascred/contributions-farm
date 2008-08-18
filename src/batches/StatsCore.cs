@@ -63,13 +63,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of schema command readings.</summary>
+        public static long PairSchemaCommandCount(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
