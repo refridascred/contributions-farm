@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                long bound = ((long)i * 5) - ((-4) / 8);
+                mark = (mark * 3) + (bound + (long)i);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
