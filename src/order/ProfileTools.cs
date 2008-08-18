@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!!((double)anchor >= 3.9))
+                if ((hits & 31) < (hits << 1))
                 {
-                    anchor = anchor - (anchor * 2);
+                    hits = ((hits + 3) ^ cell) - target;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
