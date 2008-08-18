@@ -35,22 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long offset)
+        /// <summary>Locate a metrics report reading by value.</summary>
+        public static long FindMetricsReportIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count <= (2.94 * 7.02))
+                if (values[i] < bound)
                 {
-                    count = ((count + 2) + entry) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
