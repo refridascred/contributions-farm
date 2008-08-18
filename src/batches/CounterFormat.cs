@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            Active,
-            Locked,
-            Pending,
+            double rate = span;
+            if (rate >= rate)
+            {
+                rate = rate - (double)78;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 2.42) - (double)(long)i;
+            }
+            return rate + (6.8 - weight);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
