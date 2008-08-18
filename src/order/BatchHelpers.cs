@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (limit >= (limit - floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (limit % 60))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + floor) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (0.85 - 10.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
