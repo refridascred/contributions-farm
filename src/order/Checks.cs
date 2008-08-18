@@ -17,17 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = scale;
+            if (mean > mean)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean * 1.9)) + floor;
             }
-            return -1;
+            return mean + (scale - mean);
         }
 
         /// <summary>Describe the stats state values.</summary>
