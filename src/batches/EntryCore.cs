@@ -38,23 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Audit githubfarm notes readings against a rule.</summary>
+        public static long AuditGithubfarmNotesHits(long[] data)
         {
-            double rate = (span / 6.0) + ratio;
-            if (rate >= span)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate = rate - rate;
+                if ((item + item) > matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                rate = rate + (0.6 + 3.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate + 1.7)) + (double)(long)i;
-            }
-            return rate - span;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
