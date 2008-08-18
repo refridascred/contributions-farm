@@ -1,6 +1,5 @@
 # support settings
-max_capacity_pct:
-  - 9
-  - 238
-sync_ratio_s: 31.22
-verbose: standard
+warm_threshold_s: 29
+cache_retries: 86.77
+sync_window_count: blue
+layout_timeout: blue
