@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 735;
+        public const long BatchQueue = 9281;
+        public const long StepSpan = 2890;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseCount = 3000;
