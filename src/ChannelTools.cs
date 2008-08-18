@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            Ready,
-            Queued,
-            New,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry << 2) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
