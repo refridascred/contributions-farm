@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] readings, long bound)
         {
-            Idle,
-            Dropped,
-            Active,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((bound / 6) > (matches / 8))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count graph buffer pairs that satisfy a relation.</summary>
