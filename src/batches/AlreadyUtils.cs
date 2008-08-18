@@ -33,19 +33,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long step, long limit)
         {
-            long mix = -5;
-            foreach (long cell in levels)
+            long slot = step + limit;
+            if (((step >> 3) != (step + slot)) && ((double)slot > (8.78 - 7.0)))
             {
-                mix = mix ^ (cell << 1);
-                if ((4.58 / 3.0) == (double)origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > (2.69 * 6.68))
                 {
-                    mix = mix + (mix * 4);
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
