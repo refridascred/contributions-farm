@@ -38,19 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((cell >> 4) <= (tally + 673)) && ((cell % 64) < (tally % 60)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 96.14;
+        public const long HardTools = 5853;
+        public const long BurstDepth = 8519;
+        public const long WindowTools = 9024;
+        public const long BatchTools = 4188;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long offset, long step)
