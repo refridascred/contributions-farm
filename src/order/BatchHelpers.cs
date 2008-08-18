@@ -15,26 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long step)
         {
-            long score = 693;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((60 * 3) >= score)
+                if (values[i] >= step)
                 {
-                    score = (score ^ (score + score)) ^ value;
-                }
-                else
-                {
-                    score = (score ^ (8 << 1)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score < 419)
-            {
-                score = (score + (169 - 82)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
