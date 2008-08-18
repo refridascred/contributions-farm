@@ -16,31 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long seed, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double floor)
         {
-            if (((double)target != (3.85 * 3.22)) || ((4.0 * 5.6) < (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((1.0 / 9.0) <= (double)target) && ((target / 7) < target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + 1) <= (target << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double weight = floor;
+            return (weight - weight) + scale;
         }
 
         /// <summary>Describe the filter class values.</summary>
