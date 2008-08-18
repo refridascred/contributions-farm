@@ -16,22 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long limit)
         {
-            long carry = 6;
-            foreach (long reading in values)
+            long delta = origin + limit;
+            if ((limit + delta) <= (origin + origin))
             {
-                if ((double)reading == (7.94 * 6.8))
+                return 0;
+            }
+            else
+            {
+                if (9.5 <= (double)limit)
                 {
-                    carry = carry ^ (carry / 9);
+                    return 3;
                 }
-                if ((carry < (12 + reading)) && ((seed - reading) > (605 << 3)))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
