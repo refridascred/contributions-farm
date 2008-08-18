@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long result = 6;
+            foreach (long reading in readings)
             {
-                long hits = (origin << 1) + origin;
-                if ((double)hits >= (9.5 * 6.6))
-                {
-                    score = ((score << 3) ^ 9) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ origin;
-                    score = (score + (hits % 5)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                result = ((result ^ (target / 5)) % 97) + reading;
+                result = (result - (1 % 3)) % 1000;
             }
-            return score;
+            if (result < 3)
+            {
+                result = (result - (result - target)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a command options.</summary>
