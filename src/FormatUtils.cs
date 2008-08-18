@@ -62,13 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double offset)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            double gain = offset;
+            if (gain >= (double)344)
+            {
+                gain = gain + (weight - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (gain / 9.0);
         }
 
         /// <summary>Match up contributi samples.</summary>
