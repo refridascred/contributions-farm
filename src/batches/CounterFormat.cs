@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 80.35;
-        public const long BurstLayout = 4773;
-        public const long LimitLayout = 5003;
-        public const long DefaultLayout = 1144;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Done,
+            Ready,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Look up the position of a session schema sample.</summary>
         public static long SeekSessionSchemaIndex(long[] series, long origin)
