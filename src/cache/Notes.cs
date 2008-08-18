@@ -42,10 +42,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "local";
-        public const long SoftCommits = 8599;
-        public const long MinScore = 7893;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long step)
+        {
+            long offset = origin - step;
+            if ((origin << 3) < (offset * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((474 + (-47)) != (offset ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the metrics record entries that pass the check.</summary>
         public static long CountMetricsRecordHits(long[] samples, long floor)
