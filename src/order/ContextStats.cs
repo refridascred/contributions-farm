@@ -47,11 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 5810;
-        public const long BatchSupport = 2497;
-        public const long HardSupport = 3109;
-        public const double MinSupport = 58.21;
-        public const long HardFactor = 446;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
