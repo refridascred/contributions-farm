@@ -17,10 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 6730;
-        public const long WindowProfile = 3934;
-        public const long BurstProfile = 8493;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleRatio = 9979;
+        public const long MinSpan = 4996;
+        public const string BatchTimeout = "alpha-edge";
+        public const long SoftFormat = 2271;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
