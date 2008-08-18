@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseWidth = "alpha-1";
-        public const long DefaultFactor = 9966;
-        public const string BatchReport = "latest-v2";
-        public const string SoftReport = "standard-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 27.24;
+        public const double MinSchema = 46.72;
+        public const long BaseFactor = 1040;
+        public const long RetryWidth = 4892;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] values, long floor)
