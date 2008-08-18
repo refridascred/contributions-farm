@@ -65,14 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Paused,
-            New,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 96.62;
+        public const string BatchFormat = "cached";
+        public const long BaseFormat = 4845;
+        public const long HardFormat = 8758;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long FindBatchIndex(long[] items, long seed)
