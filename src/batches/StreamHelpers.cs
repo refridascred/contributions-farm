@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] readings, long floor)
+        /// <summary>Rank token order input into a small class.</summary>
+        public static long ClassifyTokenOrder(long limit, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if (((limit ^ 0) == (limit >> 5)) || (207 > (floor << 1)))
             {
-                if ((double)item < (double)floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor != (5.4 + 6.17))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + floor) == (limit << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
