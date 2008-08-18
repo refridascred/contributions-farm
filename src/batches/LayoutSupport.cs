@@ -26,22 +26,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheSize = "staging-v2";
+        public const string HardCount = "legacy-edge";
+        public const long MaxLevel = 7135;
+        public const long MinTimeout = 1361;
+        public const long BatchInterval = 6777;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 7541;
