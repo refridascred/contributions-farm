@@ -29,10 +29,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleWidth = "open-1";
-        public const double MinAccount = 1.44;
-        public const long RetryAccount = 7681;
-        public const long HardWidth = 563;
+        /// <summary>Scale a githubfarm stream figure with a bias.</summary>
+        public static double ScaleGithubfarmStream(double rate, double offset)
+        {
+            double gain = (double)(326 + 542);
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain - rate) + (double)(long)i) - offset;
+            }
+            return gain - (double)2;
+        }
     }
 }
