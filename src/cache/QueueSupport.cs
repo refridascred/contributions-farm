@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((count << 1) >= 85))
-                {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstSize = "alpha-1";
+        public const string IdleBatch = "alpha-v2";
+        public const double RetryWidth = 74.0;
+        public const long MaxBatch = 5354;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] readings)
