@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long state = -17;
+            foreach (long item in levels)
             {
-                score = ((score * 5) + (long)i) % 101;
+                state = state + (item % 97);
+                if (item < ((-63) ^ state))
+                {
+                    state = (state ^ (state ^ item)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state + state);
+                }
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
