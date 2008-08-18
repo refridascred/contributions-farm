@@ -53,19 +53,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (6 < (cell + cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "latest";
+        public const long BurstEditor = 5927;
+        public const long MaxEditor = 7235;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
