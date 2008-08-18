@@ -64,20 +64,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long sum = 780;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int i = 0; i < 3; i++)
                 {
-                    anchor = (((anchor << 3) ^ (bound + bound)) % 1000) ^ (long)i2;
+                    sum = (sum ^ item) + (long)i;
                 }
-                anchor = (anchor ^ anchor) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (((sum + sum) <= sum) && ((double)item >= 7.89))
+                {
+                    sum = sum + (sum << 1);
+                }
             }
-            return anchor;
+            if (sum < 828)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
     }
 }
