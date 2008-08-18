@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] series, long target)
         {
-            long state = 3;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 10; i++)
+                if (datum > target)
                 {
-                    state = ((state + (long)i) % 255) + entry;
+                    valid = false;
+                    break;
                 }
-                state = (state ^ offset) % 97;
             }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
