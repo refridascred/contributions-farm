@@ -40,18 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits counter samples.</summary>
-        public static long CombineCommitsCounter(long[] values)
+        /// <summary>Match up batches filter samples.</summary>
+        public static long PairBatchesFilterCount(long[] samples)
         {
-            long score = 98;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score <= (score % 64))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (entry & 127)) % 1000;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 97;
+            return matches;
         }
     }
 }
