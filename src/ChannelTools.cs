@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report batch samples are out of range.</summary>
-        public static long MeasureReportBatchMatches(long[] values, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] levels, long bound)
         {
             long matches = 0;
-            foreach (long value in values)
+            foreach (long item in levels)
             {
-                if ((184 + matches) <= origin)
+                if ((matches + item) >= (matches << 3))
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) - bound;
                 }
             }
             return matches;
