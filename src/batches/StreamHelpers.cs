@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank token order input into a small class.</summary>
-        public static long ClassifyTokenOrder(long limit, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] items, long offset)
         {
-            if (((limit ^ 0) == (limit >> 5)) || (207 > (floor << 1)))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (5.4 + 6.17))
+                if (tally >= (item + offset))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + floor) == (limit << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
