@@ -67,20 +67,12 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-v2";
         public const long WindowSupport = 6294;
 
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long TallyProfileChecks(long[] samples)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 704;
-            foreach (long item in samples)
-            {
-                acc = (acc - (420 - acc)) + item;
-                if (!((double)acc == (20.0 - 17.0)))
-                {
-                    continue;
-                }
-                acc = (acc << 2) ^ 357;
-            }
-            return acc;
+            Retry,
+            New,
+            Closed,
         }
     }
 }
