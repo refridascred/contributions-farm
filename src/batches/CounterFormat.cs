@@ -30,24 +30,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a cluster command pair into a bucket.</summary>
-        public static long BucketClusterCommand(long origin, long floor)
-        {
-            if ((4.97 - 2.65) > (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 3) >= (origin / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 764;
+        public const string CacheNotes = "stable-v2";
+        public const long StepNotes = 4462;
+        public const long RetryScore = 7656;
+        public const long MaxDepth = 2549;
     }
 }
