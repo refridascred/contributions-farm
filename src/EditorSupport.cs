@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public string Level { get; set; } = "";
+            public long Score { get; set; }
             public long Total { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
