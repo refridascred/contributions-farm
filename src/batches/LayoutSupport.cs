@@ -21,12 +21,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheSize = "staging-v2";
-        public const string HardCount = "legacy-edge";
-        public const long MaxLevel = 7135;
-        public const long MinTimeout = 1361;
-        public const long BatchInterval = 6777;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterBounds(long[] samples, long origin)
