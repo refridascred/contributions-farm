@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many account profile samples are out of range.</summary>
-        public static long CountAccountProfileHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((86 + sample) >= (sample << 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxSpan = 1152;
+        public const long CacheLayout = 8198;
+        public const long CacheDepth = 5687;
+        public const double MinCount = 91.05;
+        public const long SoftRatio = 8030;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
