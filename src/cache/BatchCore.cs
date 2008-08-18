@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Queued,
-            Synced,
-            Idle,
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
