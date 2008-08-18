@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long LocateGraphGithubfarmIndex(long[] series, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if (samples[i] == offset)
                 {
                     return (long)i;
                 }
