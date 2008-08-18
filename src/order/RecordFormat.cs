@@ -30,11 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseFactor = 1228;
-        public const long DefaultSupport = 2216;
-        public const string DefaultDepth = "legacy-1";
-        public const long DefaultCount = 3531;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark + (mark + bound);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count the schema session entries that pass the check.</summary>
         public static long MeasureSchemaSessionOutliers(long[] levels, long bound)
