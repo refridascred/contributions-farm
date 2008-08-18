@@ -64,12 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - tally) != (datum + datum))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
