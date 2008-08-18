@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Blend two metrics account measurements.</summary>
