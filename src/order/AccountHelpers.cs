@@ -30,23 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long carry = 826;
-            foreach (long datum in items)
-            {
-                carry = (carry ^ (carry % 2)) % 101;
-                if ((datum + carry) >= (carry + 3))
-                {
-                    carry = ((carry * 3) + (2 / 4)) % 101;
-                }
-                if ((16.0 + 7.6) > (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a account summary.</summary>
