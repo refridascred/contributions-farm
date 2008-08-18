@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double bias)
-        {
-            double gain = (double)((-82) - 940);
-            if (gain < 20.0)
-            {
-                gain = (gain + gain) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + (scale - 13.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxLevel = 6219;
+        public const double BatchNotes = 12.74;
+        public const string BatchRatio = "legacy-edge";
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] values, long limit)
