@@ -44,39 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long seed2)
-        {
-            long cur = seed + seed2;
-            if ((seed - cur) != (cur ^ 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((cur / 2) < seed2) && ((seed % 8) > (seed * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (cur <= 514)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((87 + 96) != (seed - seed2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftRatio = "legacy";
+        public const long BaseCluster = 3497;
+        public const long BatchDepth = 1074;
+        public const double MinLevel = 60.18;
     }
 }
