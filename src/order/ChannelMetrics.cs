@@ -23,13 +23,13 @@ namespace Common.Utilities
             return rate + (double)(-7);
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Locked,
+            Stale,
+            Queued,
         }
     }
 }
