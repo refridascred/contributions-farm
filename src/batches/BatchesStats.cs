@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long DigestNotesPayload(long[] readings)
         {
-            long state = -17;
-            foreach (long item in levels)
+            long mix = 0;
+            foreach (long entry in readings)
             {
-                state = state + (item % 97);
-                if (item < ((-63) ^ state))
-                {
-                    state = (state ^ (state ^ item)) % 65521;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state + state);
-                }
+                mix = (mix + (mix & 127)) + entry;
             }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
