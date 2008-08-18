@@ -1,6 +1,7 @@
 {
-  "verbose": 7355,
-  "persist": "green",
-  "soft_window_s": true,
-  "soft_window_pct": "legacy"
+  "dry_run": 500,
+  "soft_ratio_count": 98.28,
+  "batch_retries": 38.44,
+  "verbose": "stable",
+  "max_interval": [278, 125, 19]
 }
