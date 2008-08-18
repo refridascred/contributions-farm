@@ -35,28 +35,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a channel entry counter forward.</summary>
-        public static long DeriveChannelEntry(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)limit <= (3.6 / 8.0))
-                {
-                    continue;
-                }
-                if (8 > mark)
-                {
-                    mark = (mark ^ 8) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (mark << 1);
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchWidth = 2880;
+        public const string BaseCount = "staging-edge";
+        public const long RetryPayload = 7988;
+        public const long WindowBudget = 9077;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
