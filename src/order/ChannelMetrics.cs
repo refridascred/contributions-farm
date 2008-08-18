@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            Paused,
-            Ready,
-            Closed,
-            Failed,
-            Retry,
+            double rate2 = span;
+            if (rate2 >= (double)117)
+            {
+                rate2 = rate2 + (span + 13.0);
+            }
+            return rate2 - (rate - rate2);
         }
 
         /// <summary>Digest a series of route entries.</summary>
