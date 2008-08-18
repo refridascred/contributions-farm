@@ -61,16 +61,13 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long score = 52;
-            foreach (long item in levels)
-            {
-                score = ((score << 3) ^ item) % 4096;
-                score = (score + (score + score)) % 65521;
-            }
-            return score % 65521;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
