@@ -25,16 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mark = mark + (mark + bound);
-                mark = ((mark * 3) + (long)i) % 97;
+                state = state + ((long)i & 7);
+                state = ((state << 3) ^ (origin << 1)) % 4096;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the window status values.</summary>
