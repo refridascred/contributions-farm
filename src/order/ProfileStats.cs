@@ -31,18 +31,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of already window readings.</summary>
-        public static long TotalAlreadyWindow(long[] values)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            long state = 26;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((83 + state) >= (223 & 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (reading / 6)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return seen;
         }
     }
 }
