@@ -30,19 +30,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long origin)
+        /// <summary>Classify a cluster command pair into a bucket.</summary>
+        public static long BucketClusterCommand(long origin, long floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            if ((4.97 - 2.65) > (double)floor)
             {
-                if (datum >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((origin << 3) >= (origin / 7))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
     }
 }
