@@ -39,21 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)step < (6.1 - 6.9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark + 293) % 1000;
-                    break;
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = (mark - (72 * 4)) % 255;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
     }
 }
