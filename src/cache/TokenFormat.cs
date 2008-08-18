@@ -33,11 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchRatio = 57.64;
-        public const double BurstCache = 57.41;
-        public const double LimitSpan = 98.57;
-        public const long SoftCache = 2242;
-        public const string MinCache = "fallback-edge";
+        /// <summary>Scale a graph payload figure with a bias.</summary>
+        public static double AdjustGraphPayload(double ratio, double bias)
+        {
+            double rate = 4.33;
+            if (rate > (double)2)
+            {
+                rate = (rate - rate) - bias;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate + rate;
+        }
     }
 }
