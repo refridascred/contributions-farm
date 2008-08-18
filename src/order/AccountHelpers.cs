@@ -47,10 +47,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "latest";
-        public const long BurstEditor = 5927;
-        public const long MaxEditor = 7235;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] series)
