@@ -65,19 +65,18 @@ namespace Common.Utilities
             return drift - (drift / 8.0);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long result = 50;
-            foreach (long sample in values)
+            long score = 366;
+            foreach (long cell in levels)
             {
-                result = ((result + (result * 2)) % 97) ^ sample;
+                if ((score < ((-5) << 1)) || ((score ^ score) != (64 - 62)))
+                {
+                    score = score + (cell * 3);
+                }
             }
-            if (result > 139)
-            {
-                result = (result - (step % 5)) % 255;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
