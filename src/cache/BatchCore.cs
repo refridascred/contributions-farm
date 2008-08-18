@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            double mean = offset;
+            if (mean > (offset + gain))
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                mean = mean + gain;
             }
-            return carry;
+            else
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean * 11.0)) + (double)(long)i;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
