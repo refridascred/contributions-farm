@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((datum % 10) != (datum ^ 499))
+                if ((1.38 - 9.35) <= (double)count)
                 {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the session level values.</summary>
