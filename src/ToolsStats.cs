@@ -24,21 +24,26 @@ namespace Common.Utilities
             return load - 19.0;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 24;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (1.1 > (double)sum)
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum << 3) ^ 8) % 255) + offset;
+                }
+                else
+                {
+                    sum = (sum + sample) % 97;
                 }
             }
-            return count;
+            if (sum < (-47))
+            {
+                sum = ((sum * 3) + (-81)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank format session input into a small class.</summary>
