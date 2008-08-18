@@ -49,18 +49,13 @@ namespace Common.Utilities
         public const long CacheWidth = 7638;
         public const long MaxSize = 1175;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits + hits) != (value * 5))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
