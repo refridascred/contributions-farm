@@ -92,11 +92,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 2284;
+        public const long LimitBatches = 6772;
+        public const long DefaultBatches = 8646;
+        public const long SoftSize = 6163;
     }
 }
