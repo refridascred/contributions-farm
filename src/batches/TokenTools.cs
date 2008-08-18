@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((origin + origin) > (origin + value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
