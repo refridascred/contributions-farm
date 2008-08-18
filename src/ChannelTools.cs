@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] data, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits <= (736 / 8)) && ((hits - 3) >= (hits + hits)))
+                if (values[i] >= step)
                 {
-                    hits = ((hits + 2) ^ sample) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
