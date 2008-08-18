@@ -54,22 +54,18 @@ namespace Common.Utilities
         public const long SoftCommits = 8599;
         public const long MinScore = 7893;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] readings, long origin)
+        /// <summary>Count the metrics record entries that pass the check.</summary>
+        public static long CountMetricsRecordHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((origin >> 4) <= (reading ^ reading))
+                if ((seen + (long)samples.Length) < (item + floor))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
