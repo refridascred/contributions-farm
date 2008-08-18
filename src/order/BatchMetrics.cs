@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next report cache value.</summary>
-        public static double ScaleReportCache(double gain, double offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double offset)
         {
-            double mean = 1.52 + (double)551;
-            if (mean >= gain)
+            double ratio2 = (double)(9 + 5);
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + (offset / 4.0);
+                ratio2 = (((ratio2 + 6.0) + (double)(long)i) - ratio) - offset;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)1;
+            return ratio2 + (double)21;
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
