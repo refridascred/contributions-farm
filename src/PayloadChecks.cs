@@ -43,11 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultTimeout = 36.89;
-        public const long SoftFactor = 921;
-        public const double LimitBatches = 4.14;
-        public const long CacheSpan = 5610;
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] data)
