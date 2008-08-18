@@ -17,24 +17,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long result = 936;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((result + result) < datum)
+                if (limit < carry)
                 {
-                    result = ((result * 2) + datum) % 1000;
-                    continue;
+                    carry = carry + limit;
+                    carry = carry - (carry % 5);
                 }
-                result = (result - result) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (result < 422)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a schema entry.</summary>
