@@ -78,19 +78,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] data, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (entry <= step)
+                if (!((2.0 - 3.9) != (double)(long)series.Length))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) + item) + bound;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
