@@ -40,22 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] readings, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!(55 > (cell / 5)))
-                {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
