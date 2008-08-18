@@ -33,21 +33,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (bound > ((long)i % 97))
                 {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 4) + (bound + 16)) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
