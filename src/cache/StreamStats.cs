@@ -50,23 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double mean = (double)(36 * 2);
-            if (mean < (double)510)
-            {
-                mean = (mean + (double)345) + weight;
-            }
-            else
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (mean + span);
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
