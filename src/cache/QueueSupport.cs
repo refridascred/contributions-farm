@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const double RetryWidth = 74.0;
         public const long MaxBatch = 5354;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((item & 255) > (count << 3)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = state - (target * 3);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
