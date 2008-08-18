@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] samples, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 78;
+            foreach (long entry in samples)
             {
-                if (tally > item)
+                if (!((total + total) >= 97))
                 {
-                    tally = (tally + 3) + step;
+                    total = ((total << 2) ^ (total & 1)) % 4096;
+                }
+                if ((entry + total) != (entry ^ entry))
+                {
+                    total = (total - (total - total)) % 65521;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
