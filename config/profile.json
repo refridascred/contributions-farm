@@ -1,8 +1,5 @@
 {
-  "route_retries": "latest",
-  "flush_ratio": 77.96,
-  "hard_timeout_count": "legacy",
-  "min_interval_pct": "latest",
-  "account_capacity": true,
-  "command_timeout": 52
+  "idle_threshold_pct": 7385,
+  "soft_delay": 5,
+  "flush_window_count": "fallback"
 }
