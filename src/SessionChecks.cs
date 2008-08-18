@@ -32,13 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
+            public bool Size { get; set; }
+            public double Mode { get; set; }
             public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
