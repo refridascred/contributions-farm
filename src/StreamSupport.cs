@@ -37,19 +37,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double floor)
-        {
-            double ratio = floor;
-            if (ratio > gain)
-            {
-                ratio = ratio + floor;
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio + 11.0;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 28.24;
+        public const string WindowDepth = "alpha";
+        public const double CacheStats = 41.04;
     }
 }
