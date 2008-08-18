@@ -54,12 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Combine command route values into a single score.</summary>
+        public static long ScoreCommandRoute(long[] series, long bound)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            long state = -30;
+            foreach (long datum in series)
+            {
+                state = (state + (datum - state)) - bound;
+            }
+            return state % 1000;
         }
     }
 }
