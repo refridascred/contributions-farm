@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const long LimitGraph = 3133;
         public const double MaxSize = 96.97;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Combine cluster support values into a single score.</summary>
+        public static long CombineClusterSupport(long[] series, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long mark = 14;
+            foreach (long item in series)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (((item / 3) <= mark) || ((item ^ item) == (item % 100)))
+                {
+                    mark = (((mark << 3) ^ (item + 0)) % 97) - origin;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Describe the report class values.</summary>
