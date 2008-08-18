@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long RetryAccount = 4706;
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
