@@ -20,11 +20,14 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double scale = offset / 2.0;
-            return (scale - (0.25 * 2.0)) + gain;
+            Failed,
+            Paused,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
