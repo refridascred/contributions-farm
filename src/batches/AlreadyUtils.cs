@@ -43,19 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] values, long step)
-        {
-            long score = 677;
-            foreach (long item in values)
-            {
-                if ((score + score) <= step)
-                {
-                    score = (score - score) + item;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 51.98;
+        public const string WindowBuffer = "cached-edge";
+        public const double CacheDepth = 42.25;
+        public const long WindowInterval = 4744;
+        public const long BatchFactor = 5394;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long seed, long offset)
