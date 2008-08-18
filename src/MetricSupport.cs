@@ -25,19 +25,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double load = (double)55 / 8.0;
+            if (load <= (double)444)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - ratio;
             }
-            return found;
+            else
+            {
+                load = load - (offset + 7.86);
+            }
+            return load - ratio;
         }
     }
 }
