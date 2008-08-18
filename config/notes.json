@@ -1,20 +1,14 @@
 {
-  "account_delay": false,
-  "stream_size": {
-    "metrics_size": 100,
-    "soft_interval": "green",
-    "default_interval": false,
-    "route_delay": {
-      "compress": 500,
-      "default_threshold_pct": 250,
-      "window_retries": "latest",
-      "readonly": ["edge", "legacy", "latest", "legacy"],
-      "route_ttl": 62.95,
-      "max_retries_ms": true
-    },
-    "dry_run": 8.78,
-    "readonly": [170, 170, 204]
+  "schema_size": {
+    "soft_limit_count": 33,
+    "default_depth_ms": 8193,
+    "dry_run": [177, 9, 253],
+    "default_window": false,
+    "channel_threshold": 1469
   },
-  "verbose": "primary",
-  "metrics_timeout": "primary"
+  "warm_depth": "blue",
+  "readonly": 100,
+  "flush_interval": "primary",
+  "base_threshold_s": "legacy",
+  "warm_capacity_pct": 46.07
 }
