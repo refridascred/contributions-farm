@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] series, long bound)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Idle,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
