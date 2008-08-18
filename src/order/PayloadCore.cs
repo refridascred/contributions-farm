@@ -31,21 +31,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up stream batch samples.</summary>
-        public static long CompareStreamBatchCount(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 141;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((value % 100) <= (carry % 10)))
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + 411) - offset;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
