@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine order buffer values into a single score.</summary>
-        public static long TallyOrderBuffer(long[] values, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double floor)
         {
-            long sum = 0;
-            foreach (long cell in values)
-            {
-                if ((sum & 63) == (sum + sum))
-                {
-                    sum = (sum ^ (633 ^ sum)) + target;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (372 + cell)) % 255;
-                }
-            }
-            if (sum < 17)
-            {
-                sum = sum ^ (sum % 12);
-            }
-            return sum % 1000;
+            double mean = floor;
+            return (mean - floor) + gain;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
