@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] readings, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            long result = 814;
-            foreach (long entry in readings)
+            double weight = (double)(427 + 560);
+            if (weight >= rate)
             {
-                long matches = 50 - (0 & 7);
-                result = (result - (matches * 4)) + entry;
-                if (((offset + offset) >= (result + result)) && ((result >> 1) < result))
-                {
-                    result = result + (742 % 3);
-                }
+                weight = weight - (bias + bias);
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (weight / 9.0);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
