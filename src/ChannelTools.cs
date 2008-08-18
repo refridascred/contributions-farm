@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long AuditToolsChannelGaps(long[] data, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!(datum <= (offset - seen)) || (((datum - datum) == (offset % 97)) && ((datum + 116) <= datum)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
