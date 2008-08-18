@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(step <= (step / 6)))
+                {
+                    sum = sum - (sum + sum);
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
