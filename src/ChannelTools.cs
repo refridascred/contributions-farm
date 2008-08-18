@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftDepth = 48.54;
+        public const long StepSupport = 8211;
+        public const double IdleSupport = 69.07;
+        public const long CacheSupport = 1326;
+        public const string WindowSupport = "latest-v2";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
