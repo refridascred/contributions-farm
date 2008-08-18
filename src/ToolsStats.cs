@@ -36,12 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinBudget = 71.77;
-        public const double MinWidth = 88.89;
-        public const double BatchScore = 95.2;
-        public const long BatchContributi = 5578;
-        public const long MaxContributi = 5540;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double bias)
+        {
+            double mean = (double)80 / 5.0;
+            if (mean < mean)
+            {
+                mean = (mean + ratio) + bias;
+            }
+            return mean + (double)79;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiLimits(long[] values, long origin)
