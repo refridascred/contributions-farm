@@ -1,8 +1,18 @@
 # route settings
-profile_depth:
-  - standard
+cache_ttl_count: 12.37
+dry_run:
+  account_interval:
+    hard_retries: open
+    retry_capacity:
+      - green
+      - fallback
+    base_ratio_count:
+      - edge
+      - standard
+  default_threshold_ms: edge
+  dry_run: latest
+queue_retries: latest
+booking_timeout:
   - latest
-  - strict
-  - standard
-max_timeout_count: strict
-base_ratio_ms: 4043
+  - local
+  - open
