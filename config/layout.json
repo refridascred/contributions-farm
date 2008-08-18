@@ -1,17 +1,7 @@
 {
-  "schema_limit": [491, 178],
-  "batch_retries_s": 1024,
-  "poll_depth_pct": true,
-  "batch_limit_pct": {
-    "batch_retries": "local",
-    "layout_ttl": [108, 186, 496],
-    "githubfarm_size": "green",
-    "order_depth": 250,
-    "burst_depth": {
-      "cache_ratio": [72, 177, 268],
-      "default_ttl_count": false,
-      "token_window": 30
-    },
-    "batches_capacity": 3
-  }
+  "contributi_retries": 12,
+  "stream_timeout": 940,
+  "order_interval": 60,
+  "readonly": [9, 76],
+  "cache_retries_pct": true
 }
