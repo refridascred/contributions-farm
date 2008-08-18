@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
