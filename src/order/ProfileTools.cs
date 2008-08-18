@@ -41,10 +41,16 @@ namespace Common.Utilities
         public const long LimitStats = 7507;
         public const long MaxStats = 7049;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 9391;
-        public const string MinSize = "local-edge";
-        public const double CacheFilter = 58.92;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double span)
+        {
+            double bias = gain - (double)46;
+            if (bias > (gain - bias))
+            {
+                bias = bias + (span + span);
+            }
+            return bias - (gain * 6.0);
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
