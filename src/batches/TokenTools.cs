@@ -38,12 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
