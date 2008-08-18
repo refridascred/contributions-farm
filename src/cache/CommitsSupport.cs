@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double weight = scale;
-            if (weight < scale)
-            {
-                weight = (weight - (double)99) - offset;
-            }
-            else
-            {
-                weight = weight + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + (scale * 4.0);
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
