@@ -19,38 +19,17 @@ namespace Common.Utilities
         public const long BaseCount = 7162;
         public const string BurstScore = "local";
 
-        /// <summary>Classify a queue metric pair into a bucket.</summary>
-        public static long BucketQueueMetric(long seed, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long step)
         {
-            if (!((5 / 9) >= (offset * 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 5) > offset)
+                if (items[i] == step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed <= 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((218 > (offset + 3)) || ((offset << 3) >= (offset - seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
