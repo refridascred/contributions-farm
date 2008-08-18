@@ -56,10 +56,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleLevel = 0.86;
-        public const long RetryFactor = 6413;
-        public const long LimitCache = 8859;
-        public const string BurstCache = "strict-1";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
