@@ -16,25 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long delta = origin + limit;
-            if ((limit + delta) <= (origin + origin))
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (9.5 <= (double)limit)
+                if ((double)seed != (6.7 - 8.1))
                 {
-                    return 3;
+                    result = (result + seed) % 65521;
                 }
-                else
-                {
-                    return 4;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
