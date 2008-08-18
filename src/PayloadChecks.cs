@@ -14,22 +14,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((seed * 5) < (limit + (-5)))
             {
-                if ((count % 5) > 91)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (5.3 * 4.7))
                 {
-                    count = (count + 1) + datum;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
