@@ -45,24 +45,12 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long step, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (limit < (step / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((691 + limit) != (step ^ step)) && ((double)limit < 3.74))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
