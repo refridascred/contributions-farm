@@ -38,18 +38,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = 236;
+            foreach (long entry in data)
             {
-                if ((double)datum != (double)(long)data.Length)
-                {
-                    hits = hits + 1;
-                }
+                state = ((state - (state - entry)) % 97) + origin;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
