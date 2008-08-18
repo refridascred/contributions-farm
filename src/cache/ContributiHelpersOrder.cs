@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi tools readings against a bound.</summary>
-        public static bool ValidateContributiToolsRange(long[] levels, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of support entries.</summary>
