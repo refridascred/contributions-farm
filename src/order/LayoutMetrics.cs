@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            long state = 92;
-            foreach (long datum in readings)
+            double rate = (9.1 / 8.0) + (span * 7.04);
+            if (rate > (rate * 2.7))
             {
-                state = (state << 3) ^ (datum - state);
-                if (!(datum <= (state * 2)))
-                {
-                    state = (state - (datum / 7)) % 65521;
-                }
+                rate = (rate + (rate / 5.0)) - ratio;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate - rate)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
