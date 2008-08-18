@@ -1,31 +1,13 @@
 # githubfarm settings
-soft_ratio_ms:
-  min_capacity:
-    - 326
-    - 222
-    - 345
-  flush_delay_pct: primary
-  strict: false
-  max_size_pct:
-    hard_ratio:
-      - cached
-      - standard
-      - stable
-    max_timeout_count: local
-    hard_interval_pct: 2.76
-  enabled:
-    sync_threshold:
-      - 299
-      - 418
-      - 402
-    report_delay: false
-    hard_window_pct: false
-    idle_capacity_pct: false
-  poll_depth: primary
-base_ttl_pct:
-  - latest
-  - cached
-poll_limit_count:
-  - edge
-  - cached
-  - latest
+strict: 29.11
+report_threshold: strict
+base_capacity: false
+farm_size:
+  farm_ttl: false
+  persist: edge
+  entry_capacity:
+    - 375
+    - 105
+    - 246
+    - 378
+  schema_retries: true
