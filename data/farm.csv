@@ -1,11 +1,6 @@
-id,owner,token
-1,600,64.62
-2,fallback,860
-3,eu-west,open
-4,88.67,41.2
-5,941,37.95
-6,69,982
-7,880,771
-8,local,64.77
-9,94,879
-10,70.19,standard
+id,active,owner
+1,8.84,382
+2,522,846
+3,221,fallback
+4,61.92,staging
+5,24.09,eu-west
