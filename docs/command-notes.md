@@ -1,13 +1,11 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the cluster queue.
-The buffer module keeps account values in sync with the queue cache.
-
-Defaults for account live in the config folder and can be overridden per environment.
-Use layout settings to tune how often stats data is refreshed.
+A batch that stays idle for too long is moved to the profile list.
+When a tools fails, the metric handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep record values small
-- Validate metrics input early
-- Log every already change
+- Prefer counter defaults
+- Document new window fields
+- Review route limits each release
