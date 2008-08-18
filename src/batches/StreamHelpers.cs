@@ -29,15 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine farm graph values into a single score.</summary>
-        public static long FoldFarmGraph(long[] levels)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 94;
-            foreach (long sample in levels)
-            {
-                acc = (acc + (acc + acc)) + sample;
-            }
-            return acc;
+            Done,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
