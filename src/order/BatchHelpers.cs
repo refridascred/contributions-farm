@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string BatchLayout = "open-v2";
         public const long BatchInterval = 5995;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] data, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
