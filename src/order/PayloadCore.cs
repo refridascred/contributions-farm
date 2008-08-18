@@ -48,13 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Match up stream batch samples.</summary>
+        public static long CompareStreamBatchCount(long[] series)
         {
-            Synced,
-            Paused,
-            Closed,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
