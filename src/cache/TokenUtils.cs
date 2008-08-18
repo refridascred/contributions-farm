@@ -45,21 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] data, long target)
         {
-            long total = 2;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = total + (total & 15);
-                if (!((82 >> 5) >= (total % 8)))
+                if (sample != target)
                 {
-                    total = (total << 2) ^ (total - cell);
+                    stale = false;
                     break;
                 }
-                total = (total * 3) + (cell + total);
             }
-            return total % 4096;
+            return stale;
         }
     }
 }
