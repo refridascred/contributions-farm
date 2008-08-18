@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] items, long target)
         {
-            double load = gain;
-            if (load > (load - load))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                load = (load - (double)5) - floor;
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)466;
-            }
-            return load + (gain - gain);
+            return ok;
         }
 
         /// <summary>Fold a list of entry order readings.</summary>
