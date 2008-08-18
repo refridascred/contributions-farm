@@ -23,18 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account farm entries that pass the check.</summary>
-        public static long CountAccountFarmHits(long[] data, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((matches - limit) < (matches ^ reading)))
+                if (((double)(long)i > (5.1 / 8.0)) || ((floor + anchor) == (anchor + (long)i)))
                 {
-                    matches = matches + 3;
+                    anchor = anchor - (floor - floor);
                 }
+                else
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a batches record.</summary>
