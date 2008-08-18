@@ -1,13 +1,5 @@
 {
-  "max_size_ms": [91, 16, 213],
-  "editor_depth": {
-    "poll_interval_count": "blue",
-    "batch_threshold_pct": true,
-    "default_threshold_pct": "strict",
-    "persist": "staging",
-    "max_size_pct": 7.05
-  },
-  "cache_interval": 97.17,
-  "record_interval": [407, 158, 331],
-  "audit": false
+  "default_window": 51,
+  "editor_delay": [194, 434],
+  "report_retries": "staging"
 }
