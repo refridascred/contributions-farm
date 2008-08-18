@@ -19,21 +19,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count notes order pairs that satisfy a relation.</summary>
-        public static long CompareNotesOrderCount(long[] readings)
+        /// <summary>Rank contributi layout input into a small class.</summary>
+        public static long ClassifyContributiLayout(long seed, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((seed - offset) == (seed + offset)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((18.0 * 2.3) >= (double)offset)
                 {
-                    if ((readings[i] - readings[j]) != 15)
+                    return 5;
+                }
+                else
+                {
+                    if (!((117 ^ (-916)) > (seed ^ offset)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next schema window value from a seed.</summary>
