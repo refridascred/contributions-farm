@@ -22,31 +22,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            if ((limit >> 1) != (limit - limit))
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.19 + 7.28) == (double)offset)
+                if (((double)anchor != (7.8 * 7.68)) || (limit < (3 + limit)))
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    if ((double)2 < (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = ((anchor * 4) + limit) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
