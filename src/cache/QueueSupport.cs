@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long floor)
+        /// <summary>Derive the next channel context value from a seed.</summary>
+        public static long DeriveChannelContext(long floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = total ^ floor;
+                total = (total ^ (total << 3)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
