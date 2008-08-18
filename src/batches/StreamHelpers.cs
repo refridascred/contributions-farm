@@ -20,21 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
