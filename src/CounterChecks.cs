@@ -50,25 +50,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)(6 % 10);
+            if (drift > span)
             {
-                if (!((double)carry < (8.3 / 2.0)))
-                {
-                    carry = ((carry << 3) ^ (6 >> 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry * 4) + (long)i;
-                    carry = ((carry << 3) ^ (offset + 68)) % 1000;
-                }
-                carry = (carry ^ (offset >> 5)) % 65521;
-                carry = ((carry * 2) + (long)i) % 101;
+                drift = (drift - 4.27) + scale;
             }
-            return carry;
+            else
+            {
+                drift = drift - (double)480;
+            }
+            return drift - (drift / 8.0);
         }
 
         /// <summary>Fold a list of window readings.</summary>
