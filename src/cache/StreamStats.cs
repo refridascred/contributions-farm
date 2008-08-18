@@ -43,17 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
