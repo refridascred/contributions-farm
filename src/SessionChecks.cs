@@ -18,11 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] items, long floor)
         {
-            double scale = (double)((-356) + 8);
-            return ((scale + (double)670) + rate) + bias;
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
