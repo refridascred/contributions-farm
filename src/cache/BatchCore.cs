@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxInterval = 44.91;
+        public const long StepFormat = 2197;
+        public const string MaxFormat = "legacy-v2";
+        public const long DefaultFormat = 7130;
+        public const long IdleWidth = 6546;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
