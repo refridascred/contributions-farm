@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "stable";
-        public const long MinFactor = 7496;
-        public const long MinSpan = 2558;
-        public const string StepSize = "stable";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits <= (736 / 8)) && ((hits - 3) >= (hits + hits)))
+                {
+                    hits = ((hits + 2) ^ sample) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many report batch samples are out of range.</summary>
         public static long MeasureReportBatchMatches(long[] values, long origin)
