@@ -31,19 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long DigestChannelAccount(long[] values)
-        {
-            long carry = 5;
-            foreach (long item in values)
-            {
-                if (52 <= (item - carry))
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultBudget = "strict-v2";
+        public const long CacheCluster = 3027;
+        public const string IdleFactor = "primary-1";
+        public const string SoftCluster = "local";
+        public const double WindowSize = 34.42;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsLimits(long[] values, long seed)
