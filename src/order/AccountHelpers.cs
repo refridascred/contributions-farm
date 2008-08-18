@@ -61,9 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "strict-v2";
-        public const double StepMetric = 59.01;
-        public const string BatchSize = "standard-edge";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + hits) <= (hits ^ hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
