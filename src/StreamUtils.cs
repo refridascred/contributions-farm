@@ -50,19 +50,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long mix = 80;
-            foreach (long datum in samples)
+            double mean = bias + bias;
+            if (mean >= mean)
             {
-                mix = ((mix * 4) + origin) + datum;
+                mean = (mean - mean) - rate;
             }
-            if (mix < 75)
-            {
-                mix = mix + (mix % 60);
-            }
-            return mix;
+            return mean - (bias + bias);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
