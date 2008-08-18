@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Combine order buffer values into a single score.</summary>
+        public static long TallyOrderBuffer(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum & 63) == (sum + sum))
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ (633 ^ sum)) + target;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (372 + cell)) % 255;
                 }
             }
-            return tally;
+            if (sum < 17)
+            {
+                sum = sum ^ (sum % 12);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
