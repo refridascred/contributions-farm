@@ -29,12 +29,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long target, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            if ((floor + floor) == (25 % 64))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor > 9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor + target) < (floor & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
