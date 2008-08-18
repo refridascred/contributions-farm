@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-for item in primary fallback staging; do
+RECORD_LIMIT=185
+log "limit is ${RECORD_LIMIT}"
+
+for item in edge staging; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=371
-log "limit is ${RECORD_LIMIT}"
