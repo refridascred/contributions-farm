@@ -14,13 +14,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long target)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            long edge = step ^ target;
+            if ((edge < (31 * 5)) || ((step & 15) == (target - 129)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step >= (target - edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) < (3 / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
