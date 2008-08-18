@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long TallyAlreadyCounter(long[] samples)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double offset)
         {
-            long anchor = 41;
-            foreach (long item in samples)
+            double load = weight;
+            if (load <= offset)
             {
-                if ((-5) > (item - item))
-                {
-                    anchor = ((anchor << 2) ^ ((long)samples.Length * 4)) % 97;
-                }
+                load = load + offset;
             }
-            return anchor;
+            return load + (load + load);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
