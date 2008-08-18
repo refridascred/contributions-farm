@@ -40,31 +40,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a tools report pair into a bucket.</summary>
-        public static long GradeToolsReport(long step, long step2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] values, long floor)
         {
-            if (!((step + step2) < step))
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step2 <= (double)(-1))
+                if (sample < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.39 - 5.5) > (double)step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
