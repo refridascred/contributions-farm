@@ -28,22 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long ScoreStreamLayout(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] values, long step)
         {
-            long total = 716;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (((total + offset) == (value + (-3))) || ((offset ^ value) < offset))
+                if (datum > step)
                 {
-                    total = ((total << 2) ^ (total >> 5)) % 65521;
-                }
-                if ((value - offset) < (value + total))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
