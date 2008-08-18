@@ -28,10 +28,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinBudget = 7183;
-        public const double HardFactor = 73.59;
-        public const string BurstInterval = "alpha-v2";
+        /// <summary>Fold a list of payload commits readings.</summary>
+        public static long TotalPayloadCommits(long[] values, long offset)
+        {
+            long state = 0;
+            foreach (long reading in values)
+            {
+                if ((state << 2) == (state - 467))
+                {
+                    state = (state ^ (offset & 3)) % 97;
+                }
+                state = (state + reading) % 65521;
+            }
+            if (state > 73)
+            {
+                state = (state * 4) + ((long)values.Length & 3);
+            }
+            return state;
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long step, long seed)
