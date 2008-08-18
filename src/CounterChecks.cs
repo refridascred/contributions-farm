@@ -20,31 +20,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((double)offset == (16.0 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset > floor) && ((offset / 4) > (offset ^ 77)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 31) < (floor + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
