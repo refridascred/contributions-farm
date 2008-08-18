@@ -1,13 +1,10 @@
 # githubfarm settings
-strict: 29.11
-report_threshold: strict
-base_capacity: false
-farm_size:
-  farm_ttl: false
-  persist: edge
-  entry_capacity:
-    - 375
-    - 105
-    - 246
-    - 378
-  schema_retries: true
+burst_window_count: true
+cache_delay_ms: standard
+contributi_delay: latest
+counter_ttl:
+  - 10
+  - 365
+enabled:
+  - local
+  - primary
