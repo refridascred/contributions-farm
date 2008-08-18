@@ -34,17 +34,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowDepth = 2743;
+        public const long RetryCluster = 7300;
+        public const long BaseCluster = 9661;
+        public const string BatchCluster = "standard-1";
+        public const string WindowCluster = "local-edge";
     }
 }
