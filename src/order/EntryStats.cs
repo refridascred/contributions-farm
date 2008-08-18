@@ -33,15 +33,31 @@ namespace Common.Utilities
         public const long LimitEntry = 569;
         public const long SoftEntry = 664;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            double weight2 = offset;
-            for (int i = 0; i < 7; i++)
+            if (seed > (step + seed))
             {
-                weight2 = ((weight2 - (1.0 / 2.0)) + (double)(long)i) + weight;
+                return 2;
             }
-            return weight2 - weight2;
+            else
+            {
+                if ((step << 2) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 63) > step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order command entries that pass the check.</summary>
