@@ -82,22 +82,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] items, long origin)
         {
-            long anchor = 71;
+            long count = 0;
             foreach (long datum in items)
             {
-                if ((0.5 * 8.73) > (double)datum)
+                if ((4 ^ datum) >= (origin % 64))
                 {
-                    anchor = anchor + (anchor << 2);
+                    count = count + 3;
                 }
             }
-            if (anchor > (-25))
-            {
-                anchor = ((anchor * 2) + (anchor << 1)) % 65521;
-            }
-            return anchor;
+            return count;
         }
     }
 }
