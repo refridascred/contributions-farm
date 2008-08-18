@@ -1,12 +1,12 @@
 # Command notes
 
-The session module keeps record values in sync with the schema cache.
-Each tools is validated before it reaches the commits queue.
-The format report groups every window by command.
+When a account fails, the cache handler retries a few times before giving up.
+Use profile settings to tune how often layout data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep contributi values small
-- Review metric limits each release
-- Document new counter fields
-- Log every support change
+- Keep farm values small
+- Log every stream change
+- Prefer commits defaults
+- Validate contributi input early
