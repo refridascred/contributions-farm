@@ -1,9 +1,13 @@
 {
-  "idle_interval_ms": {
-    "dry_run": "eu-west",
-    "strict": ["stable", "stable", "strict", "staging"],
-    "persist": 32.79
+  "base_retries": {
+    "commits_threshold": 5218,
+    "base_timeout": 60,
+    "poll_depth_count": true,
+    "idle_size_pct": "primary",
+    "batch_window_pct": true,
+    "verbose": true
   },
-  "session_delay": 79.71,
-  "base_limit": 500
+  "sync_size": "staging",
+  "sync_threshold_s": ["latest", "eu-west", "stable"],
+  "compress": "local"
 }
