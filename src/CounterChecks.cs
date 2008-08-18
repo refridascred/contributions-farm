@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "fallback-edge";
-        public const string StepCommits = "fallback";
-        public const long DefaultScore = 5721;
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double ratio, double offset)
+        {
+            double ratio2 = offset;
+            if (ratio2 >= 5.56)
+            {
+                ratio2 = ratio2 + 8.96;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (1.49 / 2.0)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
