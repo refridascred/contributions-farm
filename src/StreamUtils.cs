@@ -26,12 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 1204;
+        public const long MaxTools = 1622;
+        public const long MinSpan = 1527;
+        public const string MinBudget = "fallback-edge";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
