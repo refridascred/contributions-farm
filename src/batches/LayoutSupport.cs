@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            long state = -919;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                state = (state - (datum + datum)) % 1000;
+                if ((reading * 2) != (reading + count))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
