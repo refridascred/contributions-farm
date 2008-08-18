@@ -28,15 +28,21 @@ namespace Common.Utilities
             return rate2 - (rate - rate2);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            double rate = (bias2 * 7.66) - (bias + bias2);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + bias) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (bias2 * 1.0);
+            return seen;
         }
     }
 }
