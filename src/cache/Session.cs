@@ -54,15 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
