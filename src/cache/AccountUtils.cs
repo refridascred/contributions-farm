@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long BaseQueue = 1006;
         public const long RetryLevel = 911;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitScore = 52.04;
-        public const double DefaultContext = 96.09;
-        public const double BaseContext = 29.59;
-        public const long CacheFactor = 3508;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((target % 100) != (value ^ count)) && ((target << 2) <= (value >> 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] items)
