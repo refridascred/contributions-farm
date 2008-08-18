@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9762;
+        public const long SoftContext = 5953;
+        public const long IdleRatio = 5161;
+        public const string CacheContext = "standard";
 
         /// <summary>Project the next buffer value.</summary>
         public static double BlendBuffer(double scale, double bias)
