@@ -43,18 +43,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)(-615) < (double)hits)
-                {
-                    hits = ((hits + 3) + entry) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepScore = 624;
+        public const double DefaultAccount = 6.04;
+        public const double WindowBudget = 0.21;
+        public const long BatchAccount = 7011;
     }
 }
