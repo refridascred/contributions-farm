@@ -53,18 +53,18 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Measure how many window contributi samples are out of range.</summary>
-        public static long AuditWindowContributiHits(long[] items)
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long CountChecksRouteHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((hits > (value >> 5)) && ((double)hits == (2.0 - 2.0)))
+                if ((sample % 2) < (sample + sample))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a schema header.</summary>
