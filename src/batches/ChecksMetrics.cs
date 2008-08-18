@@ -35,21 +35,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of token queue readings.</summary>
-        public static long CompareTokenQueueCount(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the stream class values.</summary>
