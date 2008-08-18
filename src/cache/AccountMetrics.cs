@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many command counter samples are out of range.</summary>
+        public static long TallyCommandCounterMatches(long[] readings, long origin)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (192 > (cell % 10))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
