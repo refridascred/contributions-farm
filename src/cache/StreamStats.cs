@@ -20,24 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long limit, long limit2)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long floor)
         {
-            if ((923 << 3) > (limit >> 1))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit2 / 5) > 246)
+                if (series[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
