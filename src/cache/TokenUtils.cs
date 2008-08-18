@@ -45,19 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] data, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
