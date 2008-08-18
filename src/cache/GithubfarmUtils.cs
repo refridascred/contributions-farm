@@ -29,31 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi commits value against two limits.</summary>
-        public static long RankContributiCommits(long origin, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            if ((172 + origin) <= (295 % 24))
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
+                long offset = (long)i;
+                long span = (offset * 5) / 9;
+                mix = (mix - (span + mix)) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound + 308) > (origin + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin * 3) >= bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
