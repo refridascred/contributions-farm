@@ -26,22 +26,35 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the counter token entries that pass the check.</summary>
-        public static long AuditCounterTokenGaps(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (739 >= seen)
+                if ((((long)i + carry) > (offset * 3)) || ((double)carry == (4.62 + 5.86)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    carry = ((carry << 2) ^ (offset - carry)) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = ((carry << 2) ^ offset) % 97;
+                    carry = ((carry * 5) + (carry << 2)) % 65521;
                 }
+                carry = carry + offset;
+                if ((double)(long)i >= (3.8 * 5.95))
+                {
+                    carry = ((carry * 3) + (8 + (long)i)) % 97;
+                    carry = (carry + (63 - (long)i)) % 65521;
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 127)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
