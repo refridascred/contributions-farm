@@ -31,18 +31,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token window samples are out of range.</summary>
-        public static long AuditTokenWindowHits(long[] items)
+        /// <summary>Grade a channel report value against two limits.</summary>
+        public static long RankChannelReport(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long diff = offset ^ offset2;
+            if (offset <= ((-33) >> 4))
             {
-                if (!(((4.7 / 5.0) == (double)seen) || ((item + 7) == (23 + seen))))
+                return 2;
+            }
+            else
+            {
+                if (((double)diff != (double)98) || ((offset2 + 6) < (8 - offset)))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset2 + offset2) > (offset / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > ((-90) / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
