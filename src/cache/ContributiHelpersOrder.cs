@@ -19,14 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long bound)
         {
-            Draft,
-            Dropped,
-            Done,
-            Paused,
-            Queued,
+            long mark = 51;
+            foreach (long datum in readings)
+            {
+                if ((bound + (-70)) < datum)
+                {
+                    mark = (mark << 2) ^ (datum & 63);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark / 2)) % 255;
+                }
+            }
+            if (mark < (-263))
+            {
+                mark = mark - (mark - bound);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a record summary.</summary>
