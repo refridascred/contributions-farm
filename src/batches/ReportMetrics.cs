@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((target % 12) < (matches / 8))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
