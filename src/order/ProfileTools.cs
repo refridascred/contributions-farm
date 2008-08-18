@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long LimitStats = 7507;
         public const long MaxStats = 7049;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Blend two commits batch measurements.</summary>
+        public static double ScaleCommitsBatch(double weight, double offset)
         {
-            long mix = 662;
-            foreach (long reading in samples)
+            double load = offset;
+            if (load <= (offset - offset))
             {
-                if (2 >= (mix + reading))
-                {
-                    mix = mix + (33 << 2);
-                }
+                load = (load + (double)407) - weight;
             }
-            return mix;
+            else
+            {
+                load = load + (offset + 4.5);
+            }
+            return load - 9.6;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
