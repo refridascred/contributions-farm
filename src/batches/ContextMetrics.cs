@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
