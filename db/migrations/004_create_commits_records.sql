@@ -1,12 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL,
     level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1,
-    label TEXT
+    rank INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
 
-INSERT INTO commits_records (level, active, label) VALUES (80, 38, 'staging');
-INSERT INTO commits_records (level, active, label) VALUES (51, 68, 'latest');
+INSERT INTO commits_records (state, ratio, level, rank, active) VALUES ('cached', 53.24, 22, 83, 70);
