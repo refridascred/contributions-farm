@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long CombineFilterOrder(long[] items, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long carry = 355;
-            foreach (long sample in items)
-            {
-                carry = (carry * 5) + sample;
-            }
-            if (carry < 36)
-            {
-                carry = ((carry * 4) + (0 + step)) % 255;
-            }
-            return carry % 1000;
+            Stale,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
