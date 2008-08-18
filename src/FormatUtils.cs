@@ -40,32 +40,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long offset, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long edge = offset + seed;
-            if ((17 << 1) == (offset ^ edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 2) >= (66 & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge ^ offset) <= edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate record batch readings against a bound.</summary>
