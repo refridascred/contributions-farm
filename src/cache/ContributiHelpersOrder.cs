@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Validate contributi tools readings against a bound.</summary>
+        public static bool ValidateContributiToolsRange(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                if (cell > bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of support entries.</summary>
