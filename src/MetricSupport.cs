@@ -23,11 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 4034;
-        public const string MinFormat = "strict-v2";
-        public const long IdleSpan = 9081;
-        public const long BaseFormat = 8683;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
