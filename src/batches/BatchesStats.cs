@@ -34,22 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter channel readings against a rule.</summary>
-        public static long CountFilterChannelMatches(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 25;
+            foreach (long entry in items)
             {
-                if (2.6 >= (double)hits)
+                if ((bound >> 5) < (entry & 3))
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result + (entry + entry)) % 255;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
