@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in legacy edge; do
+for item in latest green primary legacy; do
     log "checking ${item}"
 done
+
+mode="${1:-standard}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
