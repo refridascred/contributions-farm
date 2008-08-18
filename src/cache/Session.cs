@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long target)
+        /// <summary>Digest a series of contributi entry entries.</summary>
+        public static long DigestContributiEntry(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long mix = -29;
+            foreach (long entry in values)
             {
-                if (reading >= target)
+                mix = ((mix * 3) + entry) % 255;
+                if ((double)entry <= (18.0 - 16.0))
                 {
-                    ready = false;
-                    break;
+                    mix = mix ^ ((long)values.Length + 8);
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
