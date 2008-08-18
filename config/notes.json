@@ -1,17 +1,5 @@
 {
-  "already_retries": 1024,
-  "enabled": "eu-west",
-  "warm_delay_count": {
-    "already_size": [394, 76, 444],
-    "dry_run": "open",
-    "contributi_retries": {
-      "token_capacity": "fallback",
-      "strict": 250,
-      "window_retries": "edge"
-    },
-    "default_threshold_count": 60
-  },
-  "record_interval": 9650,
-  "poll_timeout": 30,
-  "soft_size_ms": "open"
+  "base_interval_pct": 100,
+  "idle_interval_pct": "primary",
+  "hard_delay": 2977
 }
