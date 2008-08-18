@@ -38,21 +38,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count cache route pairs that satisfy a relation.</summary>
-        public static long MatchCacheRouteCount(long[] series)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
