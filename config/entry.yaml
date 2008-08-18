@@ -1,8 +1,4 @@
 # entry settings
-editor_limit: 100
-verbose: 88.45
-soft_timeout_count: 54.41
-hard_delay_ms:
-  - stable
-  - strict
-burst_limit_s: 89.11
+readonly: edge
+min_timeout_pct: blue
+cache_depth_pct: true
