@@ -29,10 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftFactor = 9990;
-        public const long IdleStats = 8084;
-        public const string BatchStats = "local-v2";
-        public const long DefaultTimeout = 8571;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
+        {
+            double load = (2.52 - offset) + scale;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)(-7)) + (double)(long)i;
+            }
+            return load - offset;
+        }
     }
 }
