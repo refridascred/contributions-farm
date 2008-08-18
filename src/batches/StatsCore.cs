@@ -69,12 +69,18 @@ namespace Common.Utilities
             return weight - (double)20;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long score = 177;
+            foreach (long reading in readings)
+            {
+                if ((reading - 31) <= (reading - 30))
+                {
+                    score = ((score * 2) + (reading + reading)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
