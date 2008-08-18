@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] data, long step)
         {
-            double weight = (double)(16 - 295);
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                weight = ((weight + (double)(long)i) + gain) - bias;
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - 1.1;
+            return stale;
         }
 
         /// <summary>Hold a payload entry.</summary>
