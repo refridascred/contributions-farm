@@ -1,5 +1,7 @@
 {
-  "compress": "edge",
-  "cache_size_pct": 6632,
-  "idle_delay": false
+  "default_timeout_ms": "eu-west",
+  "min_ttl_pct": true,
+  "sync_limit_count": [109, 42, 410],
+  "command_timeout": ["stable", "standard", "primary"],
+  "soft_capacity": [268, 459, 417, 133]
 }
