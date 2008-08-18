@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRatio = 6972;
-        public const long HardLevel = 7403;
-        public const string HardRecord = "staging-v2";
-        public const long MinRecord = 4634;
-        public const long MaxRecord = 1957;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 8962;
+        public const string IdleEntry = "open-1";
+        public const double LimitEntry = 34.95;
+        public const long WindowDepth = 8439;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string IdleProfile = "staging-1";
