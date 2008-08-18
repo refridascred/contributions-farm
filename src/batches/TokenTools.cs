@@ -19,10 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxLevel = 6219;
-        public const double BatchNotes = 12.74;
-        public const string BatchRatio = "legacy-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 6422;
+        public const double BaseWidth = 47.17;
+        public const double IdleCount = 4.53;
+        public const double IdleBudget = 19.01;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitRoute = 94.29;
