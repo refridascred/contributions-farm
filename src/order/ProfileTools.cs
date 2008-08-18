@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
+            public long Weight { get; set; }
+            public long Count { get; set; }
             public double Score { get; set; }
-            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two commits batch measurements.</summary>
