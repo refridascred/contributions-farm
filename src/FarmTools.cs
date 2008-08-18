@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] data, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long result = 7;
+            foreach (long entry in readings)
             {
-                if ((value >> 5) >= target)
+                if ((result << 3) > entry)
                 {
-                    tally = tally + 3;
+                    result = (result + ((-2) & 127)) % 4096;
                 }
-                else
+                for (int i = 0; i < 9; i++)
                 {
-                    tally = tally - 1;
+                    result = ((result ^ (entry & 3)) % 255) ^ (long)i;
+                    result = (result - (entry << 3)) % 4096;
+                }
+                if ((result % 3) <= (result ^ result))
+                {
+                    result = ((result << 3) ^ (result << 3)) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a profile header.</summary>
