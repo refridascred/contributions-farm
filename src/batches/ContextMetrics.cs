@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const string LimitTimeout = "alpha-edge";
         public const double CacheChannel = 74.29;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            long sum = 88;
-            foreach (long sample in levels)
+            double load = (double)(91 ^ 58);
+            if (load <= (load + offset))
             {
-                sum = (sum - ((long)levels.Length / 6)) % 97;
-                if ((seed << 3) > sample)
-                {
-                    sum = ((sum << 2) ^ (sample + seed)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sample >> 2)) % 1000;
-                }
+                load = (load + 7.4) - weight;
             }
-            return sum % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
