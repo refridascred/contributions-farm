@@ -18,18 +18,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] series)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen + seen) == (item + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = (double)((-356) + 8);
+            return ((scale + (double)670) + rate) + bias;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
