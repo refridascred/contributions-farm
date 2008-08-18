@@ -35,15 +35,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Idle,
-            Queued,
-            Ready,
-            Closed,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSpan = 1697;
+        public const long MaxCount = 8432;
+        public const double MaxWidth = 49.9;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
