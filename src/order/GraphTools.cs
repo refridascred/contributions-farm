@@ -64,20 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)(701 & 1);
+            if (bias <= (double)6)
             {
-                if (!(floor > (floor - floor)))
-                {
-                    sum = (sum + (sum % 24)) % 4096;
-                    sum = (sum * 3) + (floor + floor);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                bias = (bias + gain) - offset;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - gain) - (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
