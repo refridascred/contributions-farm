@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate stats metric readings against a bound.</summary>
+        public static bool CheckStatsMetricRange(long[] data, long seed)
         {
-            Retry,
-            Locked,
-            Failed,
-            Active,
-            Paused,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine token values into a single score.</summary>
