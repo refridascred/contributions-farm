@@ -1,13 +1,5 @@
 {
-  "channel_timeout": {
-    "already_timeout": 5991,
-    "farm_ttl": 47.69,
-    "command_size": "eu-west",
-    "counter_ratio": "cached",
-    "retry_depth": true
-  },
-  "enabled": "open",
-  "soft_threshold_ms": "eu-west",
-  "warm_ratio_s": [159, 341, 7],
-  "queue_capacity": 60
+  "audit": "open",
+  "burst_capacity_s": 72.11,
+  "readonly": 100
 }
