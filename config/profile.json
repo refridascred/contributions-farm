@@ -1,5 +1,6 @@
 {
-  "default_limit": "staging",
-  "audit": 8058,
-  "persist": [412, 441]
+  "metrics_threshold": "edge",
+  "retry_delay_count": "fallback",
+  "default_timeout": 60,
+  "readonly": "primary"
 }
