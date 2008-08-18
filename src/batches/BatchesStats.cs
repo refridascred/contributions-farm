@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double weight, double span)
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long CountFormatNotesGaps(long[] items)
         {
-            double bias = (span * 2.46) * 3.0;
-            if (bias < (span - weight))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                bias = bias + span;
+                if (677 < (datum * 4))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias - (double)805;
-            }
-            return bias - (span * 2.39);
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
