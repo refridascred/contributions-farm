@@ -26,18 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a editor batches reading by value.</summary>
-        public static long FindEditorBatchesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftInterval = 4051;
+        public const long RetryFilter = 2512;
+        public const string BaseLevel = "legacy-1";
+        public const long RetryBudget = 9963;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] data)
