@@ -1,8 +1,11 @@
 # githubfarm settings
-persist:
-  - 333
-  - 12
-enabled: false
-batch_threshold_ms: staging
-verbose: fallback
-compress: 5158
+sync_limit_ms: cached
+layout_retries: cached
+buffer_window: 52
+tools_delay:
+  editor_limit: 64
+  max_delay_pct: staging
+  compress: 60
+  poll_window_count: edge
+  idle_size_s: 250
+record_ttl: true
