@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of token format readings.</summary>
-        public static long WeighTokenFormat(long[] readings, long bound)
+        /// <summary>Count format token pairs that satisfy a relation.</summary>
+        public static long CompareFormatTokenCount(long[] items)
         {
-            long carry = 788;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry + (carry * 3)) % 255) - cell;
-                if ((7 << 1) > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a order batch reading by value.</summary>
