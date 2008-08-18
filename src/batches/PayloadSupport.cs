@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Stale,
-            Active,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftCount = 6240;
+        public const string WindowSession = "primary-1";
+        public const long MaxWidth = 2441;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long bound, long step)
