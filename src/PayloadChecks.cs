@@ -30,15 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double span)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long offset)
         {
-            double weight2 = 4.3;
-            if (weight2 >= (2.8 / 8.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = ((weight2 + weight2) + weight) - span;
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (double)496;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
