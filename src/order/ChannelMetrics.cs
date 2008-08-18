@@ -12,13 +12,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Draft,
-            Idle,
-            Synced,
+            Paused,
+            Ready,
             Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the route kind values.</summary>
