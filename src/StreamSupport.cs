@@ -29,15 +29,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a githubfarm stream figure with a bias.</summary>
-        public static double ScaleGithubfarmStream(double rate, double offset)
-        {
-            double gain = (double)(326 + 542);
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - rate) + (double)(long)i) - offset;
-            }
-            return gain - (double)2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 6203;
+        public const long WindowLevel = 8406;
+        public const long RetryScore = 3413;
+        public const string MaxWidth = "stable";
+        public const long RetryLevel = 4534;
     }
 }
