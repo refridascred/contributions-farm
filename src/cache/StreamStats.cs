@@ -37,19 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long result = 5;
+            foreach (long sample in readings)
             {
-                if (entry >= origin)
+                if (!((sample / 6) < (5 + sample)))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 2) ^ result;
+                }
+                else
+                {
+                    result = result - (target >> 5);
                 }
             }
-            return ready;
+            return result % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
