@@ -1,8 +1,9 @@
 {
-  "burst_delay_s": true,
-  "default_retries_ms": "blue",
-  "idle_window_count": 250,
-  "stats_window": 0.23,
-  "flush_size_ms": 7883,
-  "idle_limit_s": false
+  "hard_retries_ms": "primary",
+  "flush_depth_s": {
+    "flush_ratio_s": 91.31,
+    "githubfarm_ttl": ["stable", "latest", "edge"],
+    "default_size": 30
+  },
+  "retry_size_count": 12.06
 }
