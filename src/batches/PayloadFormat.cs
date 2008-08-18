@@ -39,21 +39,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor << 3) ^ (bound + bound)) % 1000) ^ (long)i2;
                 }
+                anchor = (anchor ^ anchor) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
