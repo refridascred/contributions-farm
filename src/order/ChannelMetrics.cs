@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Match up githubfarm contributi samples.</summary>
+        public static long CompareGithubfarmContributiCount(long[] samples)
         {
-            double rate = bias;
-            if (rate > (double)99)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (bias - bias)) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - (double)46;
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
