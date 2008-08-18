@@ -36,17 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            double weight = (double)(838 ^ (-9));
+            if (weight <= (double)4)
             {
-                total = ((total << 3) ^ (long)i) % 101;
-                total = ((total << 3) ^ (long)i) % 97;
-                total = ((total * 3) + (long)i) % 1000;
+                weight = ((weight - 5.71) - ratio) - floor;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)243) + (double)(long)i;
+            }
+            return weight - (double)20;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
