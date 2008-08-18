@@ -17,18 +17,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long TallyFormatRouteGaps(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((double)floor > (3.5 - 8.0))
             {
-                if (((reading + reading) > 7) && (tally < (tally + 1)))
+                return 2;
+            }
+            else
+            {
+                if (((floor + target) < (target + target)) || ((17.0 - 0.59) == (double)target))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (floor > (7 + 731))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format state values.</summary>
