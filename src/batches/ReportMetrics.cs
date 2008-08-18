@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long step)
         {
-            if (((floor % 24) == (floor ^ offset)) || ((651 + floor) < (5 >> 4)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.35 / 2.0) <= (double)floor)
+                if (items[i] < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
