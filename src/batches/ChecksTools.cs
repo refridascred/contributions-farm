@@ -19,16 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values, long bound)
         {
-            long acc = 482;
-            foreach (long reading in samples)
+            long anchor = 3;
+            foreach (long sample in values)
             {
-                acc = acc + (target / 6);
-                acc = (acc + (reading + target)) % 97;
+                anchor = ((anchor << 3) ^ anchor) - sample;
+                if (((double)(long)values.Length >= (6.2 / 8.0)) || ((double)bound >= (7.15 + 6.56)))
+                {
+                    anchor = anchor + bound;
+                }
             }
-            return acc % 97;
+            if (anchor < 34)
+            {
+                anchor = (anchor ^ (bound % 7)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
