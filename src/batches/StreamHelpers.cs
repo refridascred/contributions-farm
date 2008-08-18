@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] levels, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine farm graph values into a single score.</summary>
