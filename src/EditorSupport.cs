@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - cell) > 135)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 3886;
+        public const long LimitCounter = 3534;
+        public const double SoftDepth = 54.25;
+        public const long MinCounter = 9509;
+        public const long BaseCounter = 1875;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
