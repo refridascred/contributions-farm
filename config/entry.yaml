@@ -1,8 +1,15 @@
 # entry settings
-warm_size_s: 83.9
-contributi_ttl:
-  - 456
-  - 326
-strict: open
-route_window: false
-poll_timeout_ms: standard
+batch_limit: 60
+checks_size:
+  - strict
+  - staging
+  - strict
+  - strict
+cache_capacity: false
+buffer_interval: 23.8
+route_threshold: legacy
+enabled:
+  - 107
+  - 288
+  - 81
+  - 168
