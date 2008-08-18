@@ -65,12 +65,10 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 96.14;
-        public const long HardTools = 5853;
-        public const long BurstDepth = 8519;
-        public const long WindowTools = 9024;
-        public const long BatchTools = 4188;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSize = 1965;
+        public const long SoftWindow = 634;
+        public const long LimitWindow = 2129;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long offset, long step)
