@@ -40,13 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            Locked,
+            Queued,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Fold a list of session readings.</summary>
