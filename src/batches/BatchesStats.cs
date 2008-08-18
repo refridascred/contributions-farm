@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const string IdleReport = "standard-edge";
         public const long LimitDepth = 8335;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a token value against two limits.</summary>
