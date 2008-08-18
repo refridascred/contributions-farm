@@ -44,11 +44,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            double weight = (13.0 + 19.0) / 6.0;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (offset - rate);
         }
     }
 }
