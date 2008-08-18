@@ -19,15 +19,10 @@ namespace Common.Utilities
         public const double CacheFactor = 34.33;
         public const long LimitToken = 9070;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            New,
-            Closed,
-            Queued,
-            Paused,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9732;
+        public const long RetryGithubfarm = 7793;
+        public const string BaseSpan = "staging-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string DefaultDepth = "strict-edge";
