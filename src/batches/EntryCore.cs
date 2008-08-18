@@ -44,17 +44,17 @@ namespace Common.Utilities
         public const long BaseCluster = 4870;
         public const long StepCluster = 1004;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + ((long)i + (long)i)) % 4096;
-                acc = acc - 1;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
