@@ -68,12 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "open";
-        public const double DefaultQueue = 73.69;
-        public const double RetryCount = 98.75;
-        public const long HardCount = 6656;
-        public const long StepFactor = 4319;
+        /// <summary>Combine batches checks values into a single score.</summary>
+        public static long CombineBatchesChecks(long[] values)
+        {
+            long total = 44;
+            foreach (long datum in values)
+            {
+                total = total ^ (total << 1);
+                total = (total ^ (total >> 3)) % 97;
+                if ((5.04 + 8.97) > (double)datum)
+                {
+                    total = (total ^ (datum - datum)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count the route cache entries that pass the check.</summary>
         public static long MeasureRouteCacheGaps(long[] readings, long target)
