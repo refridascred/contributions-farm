@@ -1,7 +1,31 @@
 # support settings
-cache_delay_pct: eu-west
-soft_interval_pct: 75.43
-account_limit: staging
-metric_size: 1024
-idle_timeout_pct: true
-farm_delay: true
+warm_threshold:
+  already_ratio: false
+  metrics_limit:
+    warm_interval_ms:
+      - 230
+      - 196
+      - 176
+    warm_window_s: false
+    flush_window_pct: 17.27
+  tools_retries: standard
+  token_depth: 49.26
+  soft_size_s: 43
+soft_retries_s: staging
+channel_size:
+  retry_depth:
+    - 9
+    - 144
+  warm_depth_pct:
+    already_limit: 30
+    idle_capacity: 1364
+    githubfarm_timeout:
+      - standard
+      - legacy
+      - primary
+      - fallback
+  enabled: true
+  layout_timeout: 74
+  dry_run: 89
+  sync_retries_pct: primary
+audit: 91
