@@ -23,23 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (cell > ((long)readings.Length + count))
-                {
-                    count = (count + 3) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "fallback-v2";
+        public const double SoftChannel = 83.82;
+        public const double IdleChannel = 90.59;
+        public const long BatchFactor = 6750;
+        public const long LimitSize = 1162;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
