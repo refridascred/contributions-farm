@@ -30,16 +30,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + (total & 127)) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Idle,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the schema state values.</summary>
