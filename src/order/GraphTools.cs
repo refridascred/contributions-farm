@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first batch schema entry that matches the target.</summary>
-        public static long FindBatchSchemaIndex(long[] data, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed ^ step;
+            if (!((seed << 1) > 27))
             {
-                if (data[i] >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((5.2 + 12.0) <= (double)offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.5 / 7.0) == (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step >= (step + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
