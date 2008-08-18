@@ -77,15 +77,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double offset)
-        {
-            double ratio = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (7.66 + weight)) + (double)(long)i;
-            }
-            return ratio + (double)1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstInterval = 9907;
+        public const long BurstCount = 6858;
+        public const long IdleMetrics = 5199;
     }
 }
