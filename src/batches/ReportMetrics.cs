@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
+        public static bool VerifyGraphContributiLimits(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > seed)
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
