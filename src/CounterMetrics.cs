@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long limit, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
-            if ((41 >= (origin + limit)) && ((limit * 3) <= origin))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin + limit) >= (origin & 127)) && ((origin ^ limit) < origin))
+                if ((double)tally <= (3.48 + 9.2))
                 {
-                    return 4;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    if ((2.9 / 6.0) <= (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
