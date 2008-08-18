@@ -19,17 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a tools command reading by value.</summary>
-        public static long LookupToolsCommandIndex(long[] items, long seed)
+        /// <summary>Count notes order pairs that satisfy a relation.</summary>
+        public static long CompareNotesOrderCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next schema window value from a seed.</summary>
