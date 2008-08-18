@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every account command entry stays within the limit.</summary>
+        public static bool VerifyAccountCommandBounds(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
