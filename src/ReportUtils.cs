@@ -53,17 +53,18 @@ namespace Common.Utilities
         public const string BurstCache = "standard";
         public const double SoftCount = 87.82;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] == target)
+                if ((double)reading <= (double)offset)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
