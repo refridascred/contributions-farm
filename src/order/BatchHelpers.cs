@@ -15,11 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long bound)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a profile info.</summary>
