@@ -1,17 +1,5 @@
 {
-  "retry_capacity": {
-    "cache_capacity_s": 84,
-    "audit": "eu-west",
-    "soft_depth": "eu-west",
-    "record_threshold": 34
-  },
-  "max_interval": false,
-  "base_depth": ["green", "primary", "local"],
-  "flush_timeout_s": {
-    "token_window": 43.16,
-    "sync_limit_ms": 99,
-    "context_delay": [162, 418, 147],
-    "flush_delay_pct": ["blue", "eu-west", "fallback"],
-    "idle_depth": "staging"
-  }
+  "hard_interval": ["primary", "open", "staging", "cached"],
+  "enabled": 21.01,
+  "retry_timeout": true
 }
