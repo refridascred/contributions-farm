@@ -54,10 +54,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardBudget = 4445;
-        public const long SoftLevel = 730;
-        public const string DefaultCache = "cached";
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Active,
+            Done,
+            Closed,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Check that every tools token entry stays within the limit.</summary>
         public static bool ValidateToolsTokenBounds(long[] levels, long offset)
