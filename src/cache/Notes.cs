@@ -32,10 +32,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 6110;
-        public const long StepScore = 6626;
-        public const long MinStream = 2027;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 8892;
+        public const long StepSize = 374;
+        public const long MinGithubfarm = 8384;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterGaps(long[] series)
