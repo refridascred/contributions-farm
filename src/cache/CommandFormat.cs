@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine commits command values into a single score.</summary>
-        public static long TotalCommitsCommand(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            long result = -656;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((double)reading < (9.0 / 2.0))
+                if ((count * 4) > value)
                 {
-                    result = (result << 3) ^ (reading + reading);
-                }
-                else
-                {
-                    result = (result - reading) % 4096;
+                    count = count + 2;
                 }
             }
-            if (result > 907)
-            {
-                result = result - (19 + 4);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
