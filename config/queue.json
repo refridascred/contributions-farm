@@ -1,20 +1,8 @@
 {
-  "command_depth": 6917,
-  "batch_ttl_s": 41.79,
-  "soft_window": {
-    "metric_depth": {
-      "warm_capacity_count": 1.96,
-      "dry_run": 21,
-      "default_window": ["staging", "blue", "legacy", "staging"],
-      "poll_ttl": "cached",
-      "batch_delay": "strict",
-      "min_delay_pct": "local"
-    },
-    "layout_interval": 41,
-    "payload_delay": ["legacy", "standard"],
-    "editor_ratio": 17,
-    "retry_limit_pct": false
-  },
-  "base_window_count": 10,
-  "session_window": 68
+  "verbose": "local",
+  "graph_ratio": [427, 198],
+  "min_interval_count": true,
+  "entry_threshold": 92,
+  "already_size": false,
+  "already_interval": ["green", "green"]
 }
