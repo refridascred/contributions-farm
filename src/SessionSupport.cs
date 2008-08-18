@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 72.22;
-        public const long SoftLevel = 9639;
-        public const long WindowSize = 1856;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Active,
+            Locked,
+            New,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
