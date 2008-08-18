@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] items, long origin)
+        /// <summary>Measure how many batches order samples are out of range.</summary>
+        public static long MeasureBatchesOrderOutliers(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (sample >= origin)
+                if ((-936) < (bound << 1))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every route already entry stays within the limit.</summary>
