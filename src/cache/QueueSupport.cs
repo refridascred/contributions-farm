@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            long anchor = 68;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                anchor = (anchor - (item * 2)) % 255;
-                if ((double)bound == (5.0 + 19.0))
+                if (!((count << 1) >= 85))
                 {
-                    break;
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a window entry.</summary>
