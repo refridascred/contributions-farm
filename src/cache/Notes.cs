@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command support readings.</summary>
-        public static long TallyCommandSupport(long[] levels)
+        /// <summary>Compare every pair of checks stats readings.</summary>
+        public static long PairChecksStatsCount(long[] readings)
         {
-            long result = 1;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (result - 4)) + cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a command options.</summary>
