@@ -27,15 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values, long step)
         {
-            long total = 5;
-            foreach (long sample in items)
+            long state = 2;
+            foreach (long value in values)
             {
-                total = ((total << 2) ^ (total % 60)) - sample;
+                state = (state ^ (value - value)) - step;
             }
-            return total;
+            return state % 4096;
         }
 
         /// <summary>Describe the session mode values.</summary>
