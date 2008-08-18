@@ -15,15 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Ready,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
