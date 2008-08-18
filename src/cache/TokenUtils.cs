@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 2) ^ ((long)i >> 5)) % 65521;
-                anchor = anchor ^ (anchor & 127);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "primary-edge";
+        public const long LimitFactor = 1636;
+        public const long CacheChannel = 5273;
+        public const long RetryChannel = 4513;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] items, long step)
