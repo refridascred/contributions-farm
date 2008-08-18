@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleTimeout = 3507;
-        public const double CacheTimeout = 31.37;
-        public const long RetryInterval = 323;
-        public const long RetryAccount = 4706;
-        public const string SoftAccount = "alpha-1";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series, long limit)
+        {
+            long result = 52;
+            foreach (long sample in series)
+            {
+                result = ((result * 2) + (sample + result)) + limit;
+                result = ((result << 3) ^ (result - result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
