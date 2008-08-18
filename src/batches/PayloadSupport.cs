@@ -27,10 +27,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultTimeout = 77.17;
-        public const long SoftRecord = 9833;
-        public const long StepRecord = 2634;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels)
+        {
+            long anchor = 469;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor ^ (cell % 60)) % 101) + (long)i;
+                }
+                anchor = anchor + (long)levels.Length;
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
+                if ((anchor ^ cell) > cell)
+                {
+                    break;
+                }
+            }
+            if (anchor < 21)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] items)
