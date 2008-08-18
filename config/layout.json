@@ -1,7 +1,12 @@
 {
-  "dry_run": true,
-  "readonly": "fallback",
-  "verbose": "strict",
-  "buffer_ttl": [290, 487],
-  "hard_ttl_pct": "latest"
+  "enabled": ["standard", "staging", "strict"],
+  "verbose": 40.35,
+  "command_depth": {
+    "stats_timeout": "legacy",
+    "editor_size": 70,
+    "cache_ttl_count": "latest",
+    "burst_retries_ms": true,
+    "soft_threshold_count": "primary",
+    "command_delay": 100
+  }
 }
