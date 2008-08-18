@@ -1,7 +1,19 @@
 {
-  "contributi_retries": 12,
-  "stream_timeout": 940,
-  "order_interval": 60,
-  "readonly": [9, 76],
-  "cache_retries_pct": true
+  "base_window_s": 250,
+  "flush_delay": false,
+  "persist": 22.59,
+  "report_depth": "blue",
+  "warm_delay": {
+    "command_size": "primary",
+    "githubfarm_capacity": 20,
+    "retry_size_ms": {
+      "buffer_ttl": 13.3,
+      "poll_ttl_count": 4692,
+      "commits_capacity": [156, 274],
+      "batch_size": 22,
+      "persist": 3280,
+      "warm_delay_count": 95.08
+    },
+    "format_depth": 99
+  }
 }
