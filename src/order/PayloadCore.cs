@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
             public double Region { get; set; }
-            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
