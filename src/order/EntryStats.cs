@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Validate layout stats readings against a bound.</summary>
+        public static bool VerifyLayoutStatsBounds(long[] readings, long bound)
         {
-            Failed,
-            Retry,
-            Paused,
-            New,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
