@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 30.89;
-        public const long MaxDepth = 4403;
-        public const long MaxCommits = 5658;
-        public const string IdleScore = "legacy-1";
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double scale, double offset)
+        {
+            double drift = (double)(39 << 3);
+            return (drift + (2.57 + scale)) + offset;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] levels, long offset)
