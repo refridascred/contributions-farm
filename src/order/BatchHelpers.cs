@@ -38,9 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryCount = 9436;
-        public const long LimitInterval = 2241;
-        public const long HardContributi = 8168;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 66.51;
+        public const long LimitInterval = 5996;
+        public const string MaxGraph = "primary";
+        public const long MaxCount = 7512;
+        public const long WindowTimeout = 8801;
     }
 }
