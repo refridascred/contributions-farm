@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit notes batches readings against a rule.</summary>
-        public static long AuditNotesBatchesOutliers(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if ((41 >= (origin + limit)) && ((limit * 3) <= origin))
             {
-                if ((reading % 8) < (matches + matches))
+                return 0;
+            }
+            else
+            {
+                if (((origin + limit) >= (origin & 127)) && ((origin ^ limit) < origin))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((2.9 / 6.0) <= (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
