@@ -1,8 +1,7 @@
 # githubfarm settings
-layout_delay: 500
-support_retries:
-  - 220
-  - 432
-  - 293
-  - 76
-commits_threshold: 30
+flush_delay: 6331
+idle_delay_ms: latest
+burst_threshold: 19.57
+burst_depth: legacy
+batches_limit: true
+cache_depth: 66.1
