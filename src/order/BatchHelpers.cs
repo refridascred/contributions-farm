@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSpan = 1770;
-        public const long StepBudget = 2000;
-        public const string BatchLayout = "open-v2";
-        public const long BatchInterval = 5995;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Idle,
+            Locked,
+            Ready,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
