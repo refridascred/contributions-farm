@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long offset)
         {
-            long offset = origin + limit;
-            if (((23 + limit) == (limit + 481)) && ((3.39 + 3.56) <= (double)offset))
+            if ((43 + offset) < offset)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (origin > (origin << 3))
+                if ((offset + offset) <= (origin + origin))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 0;
                 }
             }
         }
