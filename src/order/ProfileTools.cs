@@ -46,13 +46,37 @@ namespace Common.Utilities
         public const string MinSize = "local-edge";
         public const double CacheFilter = 58.92;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            Dropped,
-            Pending,
-            Closed,
-            Idle,
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((total * 4) >= step)
+                {
+                    total = (total ^ step) % 4096;
+                    total = (total * 4) + 564;
+                }
+                else
+                {
+                    total = ((total * 2) + (total ^ 5)) % 255;
+                }
+                if ((total / 4) < (step + (long)i))
+                {
+                    total = (total + (total * 3)) % 1000;
+                }
+                if ((9 - 526) != ((long)i << 3))
+                {
+                    break;
+                }
+                else
+                {
+                    total = total - (total * 3);
+                    total = (total + (step + step)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
