@@ -1,8 +1,12 @@
 {
-  "strict": false,
-  "poll_limit_count": false,
-  "base_limit_s": 23.01,
-  "burst_retries_s": "strict",
-  "default_window": 8.49,
-  "format_depth": "cached"
+  "graph_capacity": 23,
+  "hard_timeout": 26,
+  "batch_limit_s": 73.7,
+  "audit": 51.23,
+  "flush_threshold_count": {
+    "flush_capacity": "green",
+    "cache_size_pct": "strict",
+    "warm_ratio_s": 5990
+  },
+  "retry_ratio_pct": false
 }
