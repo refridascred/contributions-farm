@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
