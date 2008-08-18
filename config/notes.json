@@ -1,6 +1,19 @@
 {
-  "default_capacity_count": 9696,
-  "batch_threshold_ms": 6826,
-  "verbose": "primary",
-  "min_limit_s": true
+  "stats_limit": "local",
+  "audit": "cached",
+  "verbose": "eu-west",
+  "flush_size_count": "green",
+  "burst_capacity": {
+    "payload_interval": "local",
+    "burst_limit_pct": 60,
+    "report_limit": ["green", "green", "staging"],
+    "tools_ratio": {
+      "payload_ttl": 11,
+      "idle_threshold_ms": 1.55,
+      "burst_ttl": 30,
+      "min_size_ms": true,
+      "retry_retries": 250,
+      "compress": 39.24
+    }
+  }
 }
