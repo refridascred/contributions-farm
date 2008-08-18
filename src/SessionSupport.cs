@@ -24,11 +24,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long offset2)
         {
-            double mean = weight;
-            return mean + floor;
+            long lane = offset + offset2;
+            if ((18.0 + 3.6) != (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset2 << 3) > lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
