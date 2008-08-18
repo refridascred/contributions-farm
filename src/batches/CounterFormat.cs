@@ -14,17 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a session schema sample.</summary>
-        public static long SeekSessionSchemaIndex(long[] series, long origin)
+        /// <summary>Check that every route profile entry stays within the limit.</summary>
+        public static bool VerifyRouteProfileLimits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (series[i] < origin)
+                if (cell > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
