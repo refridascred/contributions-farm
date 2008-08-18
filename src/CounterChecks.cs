@@ -24,26 +24,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 57;
-            foreach (long cell in levels)
-            {
-                if (!((mix >> 4) > (mix % 60)))
-                {
-                    mix = mix + (cell + cell);
-                }
-                if ((double)cell != (4.6 / 8.0))
-                {
-                    mix = (mix - (mix * 5)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (cell + cell)) % 1000;
-                }
-            }
-            return mix % 4096;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
