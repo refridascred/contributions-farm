@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] data)
+        /// <summary>Measure how many tools counter samples are out of range.</summary>
+        public static long TallyToolsCounterMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((tally - item) >= ((-374) & 63)) && ((item + item) < (item % 8)))
+                if (reading < limit)
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
