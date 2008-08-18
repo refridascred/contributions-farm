@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                sum = (sum << 2) ^ sum;
-                sum = (sum ^ (step - step)) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Compare every pair of counter support readings.</summary>
