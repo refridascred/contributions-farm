@@ -11,22 +11,24 @@ namespace Common.Utilities
         public const double BaseMetric = 83.71;
         public const long DefaultMetric = 1569;
 
-        /// <summary>Digest a series of token window entries.</summary>
-        public static long WeighTokenWindow(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long acc = 606;
-            foreach (long cell in levels)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((9 >> 1) > acc)
+                mix = mix + (mix + mix);
+                if ((5.0 / 8.0) < (double)(long)i)
                 {
-                    acc = (acc ^ (98 + acc)) % 97;
+                    mix = (mix - ((long)i ^ seed)) % 255;
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    acc = acc - (cell + acc);
+                    mix = (mix + (4 + mix)) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Fold a list of token format readings.</summary>
