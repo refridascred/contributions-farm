@@ -53,17 +53,19 @@ namespace Common.Utilities
         public const long BaseCluster = 4870;
         public const long StepCluster = 1004;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                if (cell > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
