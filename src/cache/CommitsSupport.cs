@@ -81,12 +81,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Closed,
-            Stale,
-            Failed,
+            long result = 321;
+            foreach (long entry in samples)
+            {
+                if ((18.0 * 9.15) > (double)entry)
+                {
+                    result = (result * 3) + (760 + entry);
+                }
+            }
+            if (result < 8)
+            {
+                result = (result + (result - result)) % 97;
+            }
+            return result % 65521;
         }
     }
 }
