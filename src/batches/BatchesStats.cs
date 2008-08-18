@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long CombineToolsBatch(long[] readings, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double ratio, double span)
         {
-            long anchor = 0;
-            foreach (long value in readings)
+            double rate = span;
+            if (rate <= ratio)
             {
-                anchor = (((anchor + anchor) % 1000) ^ value) + origin;
-                anchor = ((anchor * 2) + anchor) % 101;
+                rate = rate - (double)806;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
