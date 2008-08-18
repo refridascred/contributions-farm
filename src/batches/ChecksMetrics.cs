@@ -62,21 +62,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound + floor;
+            if ((offset >> 4) > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (53 >= offset)
                 {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
