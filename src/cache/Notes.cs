@@ -32,11 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long limit)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long next = bound + limit;
+            if (!((bound - 721) <= (next * 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (12.0 * 5.17))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((next % 16) == (next / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit > (6.0 + 8.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph state values.</summary>
