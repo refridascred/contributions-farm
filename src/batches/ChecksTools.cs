@@ -48,15 +48,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double bias)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            double bias2 = ratio;
-            if (bias2 < (double)18)
+            double scale = bias;
+            if (scale > (7.25 / 5.0))
             {
-                bias2 = (bias2 + bias2) - bias;
+                scale = scale - (bias2 * 9.2);
             }
-            return bias2 - bias2;
+            return scale + (double)32;
         }
     }
 }
