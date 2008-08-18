@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            Failed,
-            Pending,
-            New,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the first tools context entry that matches the target.</summary>
