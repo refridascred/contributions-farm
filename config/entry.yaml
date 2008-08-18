@@ -1,19 +1,32 @@
 # entry settings
-persist: 76
-sync_depth: 71.79
-stats_timeout: 5191
-soft_threshold: edge
-layout_capacity: 87.96
-already_ttl:
-  min_timeout_s: 15
+warm_size: 100
+max_window_s:
+  record_capacity:
+    readonly: true
+    max_ttl: standard
+    hard_capacity_ms: strict
+    session_limit: primary
+    profile_limit: true
+  default_interval: 60
+  compress: fallback
+  batch_window_count: 3828
+  max_retries:
+    - 76
+    - 334
+    - 400
+min_interval_pct:
+  channel_window: 40.19
+  warm_timeout: 2457
   max_window_s:
-    strict: fallback
-    default_threshold: edge
-    cache_timeout_count:
-      - strict
-      - stable
-      - eu-west
-    sync_window: 4
-    max_window_s: 79.23
-  strict: 79
-  burst_limit: standard
+    min_window: 17
+    sync_ratio_pct: 8370
+    flush_retries: 98
+  editor_retries:
+    strict: latest
+    report_size: 84
+    base_limit_count: 35
+    cache_retries_pct: false
+    persist: staging
+  payload_ratio: 60
+burst_capacity_ms: 82.54
+sync_size_s: false
