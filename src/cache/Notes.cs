@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account stream entries.</summary>
-        public static long TallyAccountStream(long[] data, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 7;
-            foreach (long value in data)
-            {
-                if ((value % 16) > seed)
-                {
-                    carry = ((carry * 5) + value) % 4096;
-                }
-                if ((value % 8) <= (value - value))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a command options.</summary>
