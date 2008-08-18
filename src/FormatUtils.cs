@@ -63,13 +63,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            Retry,
-            Active,
-            Pending,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
