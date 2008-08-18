@@ -25,21 +25,18 @@ namespace Common.Utilities
             return scale + (ratio + ratio);
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen > 9)
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) + datum) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
