@@ -26,11 +26,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftInterval = 4051;
-        public const long RetryFilter = 2512;
-        public const string BaseLevel = "legacy-1";
-        public const long RetryBudget = 9963;
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double BlendStreamEditor(double scale, double floor)
+        {
+            double scale2 = 19.0 / 4.0;
+            if (scale2 < scale)
+            {
+                scale2 = scale2 - (double)495;
+            }
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 + (scale2 * 3.98);
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] data)
