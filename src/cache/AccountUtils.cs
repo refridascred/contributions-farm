@@ -11,25 +11,17 @@ namespace Common.Utilities
         public const string BatchReport = "latest-v2";
         public const string SoftReport = "standard-v2";
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long floor)
         {
-            long edge = bound - limit;
-            if ((double)93 == (double)bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((-59) < (edge + bound))
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
