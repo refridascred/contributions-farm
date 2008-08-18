@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long target)
         {
-            double rate = weight + (weight / 6.0);
-            if (rate > rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - (18.0 + span);
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)80) + (double)(long)i;
-            }
-            return rate - (span / 3.0);
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
