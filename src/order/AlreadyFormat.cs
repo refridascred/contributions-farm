@@ -50,14 +50,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            Failed,
-            Retry,
-            Ready,
-            Queued,
-            Active,
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
