@@ -14,12 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxFactor = 3151;
-        public const double BaseCluster = 92.97;
-        public const long WindowFactor = 8450;
-        public const string IdleCluster = "local-edge";
-        public const long BatchCluster = 687;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
         public static long StepPayloadOrder(long origin)
