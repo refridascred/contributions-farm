@@ -28,11 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 66.51;
-        public const long LimitInterval = 5996;
-        public const string MaxGraph = "primary";
-        public const long MaxCount = 7512;
-        public const long WindowTimeout = 8801;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            New,
+            Active,
+            Done,
+            Pending,
+            Stale,
+        }
     }
 }
