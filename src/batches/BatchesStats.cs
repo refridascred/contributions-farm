@@ -58,31 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((double)seed <= (double)floor) || ((double)seed != (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor > (8 + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + 373) < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Pending,
+            Closed,
         }
     }
 }
