@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter contributi reading.</summary>
-        public static double BlendCounterContributi(double rate, double span)
-        {
-            double weight = span / 8.0;
-            if (weight < (span - 7.0))
-            {
-                weight = (weight - (double)94) - rate;
-            }
-            else
-            {
-                weight = weight + (weight + span);
-            }
-            return weight - span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheLevel = 7519;
+        public const double BatchStream = 66.69;
+        public const long WindowStream = 8386;
+        public const long StepScore = 8897;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] items, long seed)
