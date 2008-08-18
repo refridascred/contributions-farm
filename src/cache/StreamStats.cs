@@ -49,22 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the route layout entries that pass the check.</summary>
-        public static long TallyRouteLayoutHits(long[] data, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (8.39 >= (double)reading)
+                if (entry != origin)
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
