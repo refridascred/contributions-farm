@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double rate, double span)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            double load = 8.0;
-            if (load >= rate)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (load + span);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (rate * 5.09);
+            return tally;
         }
 
         /// <summary>Hold a record summary.</summary>
