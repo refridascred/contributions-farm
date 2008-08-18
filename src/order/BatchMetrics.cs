@@ -40,18 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long AuditRecordSchemaGaps(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = 29;
+            foreach (long value in series)
             {
-                if ((double)5 <= (double)entry)
+                if (6 >= (long)series.Length)
                 {
-                    seen = seen + 2;
+                    acc = (acc << 3) ^ (acc + value);
                 }
             }
-            return seen;
+            if (acc < 9)
+            {
+                acc = (acc * 4) + (acc & 15);
+            }
+            return acc;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
