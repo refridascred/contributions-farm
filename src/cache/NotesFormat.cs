@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((138 <= (reading ^ reading)) || (((double)reading > 7.2) && ((double)matches >= 19.0)))
+                if (!((count + datum) > (count * 3)) && !((double)count >= (6.33 / 9.0)))
                 {
-                    matches = (matches + 3) - step;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
