@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!(57 > (count << 2)))
                 {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
