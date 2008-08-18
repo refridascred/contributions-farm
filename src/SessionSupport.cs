@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first graph metric entry that matches the target.</summary>
-        public static long FindGraphMetricIndex(long[] data, long step)
+        /// <summary>Compare every pair of route stats readings.</summary>
+        public static long CompareRouteStatsCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the graph phase values.</summary>
