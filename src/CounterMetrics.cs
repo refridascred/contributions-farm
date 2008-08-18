@@ -28,31 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if ((double)seed < (3.0 / 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) > (seed & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound + 134) >= seed) || ((seed - 0) > (seed + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
