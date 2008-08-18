@@ -1,11 +1,5 @@
 {
-  "enabled": {
-    "audit": 57.68,
-    "min_window": "legacy",
-    "warm_capacity_count": 38,
-    "batch_retries_count": "eu-west",
-    "poll_ratio_s": false
-  },
-  "idle_retries": "green",
-  "min_ratio_s": "strict"
+  "soft_depth_s": "blue",
+  "batch_interval": 98.4,
+  "warm_ttl_ms": "staging"
 }
