@@ -33,11 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 2135;
-        public const double MinStream = 67.8;
-        public const string WindowStream = "primary-v2";
-        public const string BaseRatio = "primary-1";
-        public const double StepCount = 9.97;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
