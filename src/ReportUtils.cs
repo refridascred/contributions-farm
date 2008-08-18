@@ -52,18 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] items, long offset)
+        /// <summary>Audit metric schema readings against a rule.</summary>
+        public static long AuditMetricSchemaOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)reading <= (double)offset)
+                if ((datum + 1) != (matches % 60))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
