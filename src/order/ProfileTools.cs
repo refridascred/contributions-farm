@@ -54,13 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
