@@ -28,19 +28,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2159;
+        public const long BatchInterval = 6549;
+        public const long HardSpan = 4073;
+        public const string SoftRecord = "legacy-edge";
     }
 }
