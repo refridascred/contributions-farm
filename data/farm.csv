@@ -1,8 +1,6 @@
-id,active,score,token
-1,25.63,463,120
-2,499,823,21.92
-3,0.56,0.73,legacy
-4,staging,71.71,15
-5,34.26,legacy,28.66
-6,588,558,318
-7,81.29,87.9,186
+id,count,score,weight,label
+1,14.24,547,693,52.78
+2,green,25.36,local,95.02
+3,75.38,blue,67.72,94.97
+4,126,strict,866,strict
+5,433,staging,451,794
