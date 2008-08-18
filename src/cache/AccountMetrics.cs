@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate counter editor readings against a bound.</summary>
-        public static bool CheckCounterEditorRange(long[] levels, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
