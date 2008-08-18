@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            Active,
-            Closed,
-            Stale,
-            Retry,
-            Locked,
+            double ratio = (double)(784 + 9);
+            if (ratio >= (gain * 4.5))
+            {
+                ratio = (ratio + (ratio / 5.0)) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - 3.0;
         }
 
         /// <summary>Describe the layout level values.</summary>
