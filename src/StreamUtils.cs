@@ -46,19 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample > step)
+                if ((origin % 5) <= ((-31) ^ matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
