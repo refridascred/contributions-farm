@@ -32,26 +32,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of farm commits entries.</summary>
-        public static long TotalFarmCommits(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            long mix = 3;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading < (double)7)
+                if (samples[i] > offset)
                 {
-                    mix = (mix + (mix / 2)) % 65521;
-                }
-                if (((-4) * 5) > reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 632)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
