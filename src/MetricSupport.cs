@@ -16,13 +16,18 @@ namespace Common.Utilities
         public const long LimitNotes = 8450;
         public const string MinNotes = "staging-edge";
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (6.17 > (double)hits)
+                {
+                    hits = ((hits + 3) ^ reading) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
