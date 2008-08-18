@@ -26,14 +26,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Active,
-            Idle,
-            New,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxTimeout = 16.04;
+        public const long MinChannel = 3730;
+        public const double BatchChannel = 8.33;
+        public const long StepChannel = 6500;
     }
 }
