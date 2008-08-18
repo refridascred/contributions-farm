@@ -48,15 +48,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples, long bound)
-        {
-            long anchor = 321;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor ^ cell) % 65521) - bound;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4699;
+        public const long BaseEntry = 9561;
+        public const long RetryEntry = 8618;
     }
 }
