@@ -48,28 +48,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
+            long result = 314;
+            foreach (long cell in series)
             {
-                if (((long)i + (long)i) > (floor + sum))
+                if (((cell << 1) > (origin << 1)) && ((result >> 5) > 12))
                 {
-                    sum = (sum << 2) ^ (sum << 1);
+                    result = ((result * 5) + (origin >> 1)) % 97;
                 }
-                if (((long)i < floor) || ((512 + floor) > (floor + floor)))
-                {
-                    sum = sum - (sum >> 1);
-                    sum = (sum - (sum * 4)) % 255;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (((sum << 2) ^ (332 + sum)) % 4096) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Roll a session metric counter forward.</summary>
