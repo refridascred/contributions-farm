@@ -37,25 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long step, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] data)
         {
-            long slot = step - floor;
-            if (step >= (slot - step))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot - floor) > slot)
+                if ((double)item >= (12.0 + 12.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
