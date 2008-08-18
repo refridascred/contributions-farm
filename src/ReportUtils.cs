@@ -38,18 +38,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (14 > reading)
+                if (!(((result - result) < 102) || ((limit / 9) < limit)))
                 {
-                    hits = hits + 1;
+                    result = (result ^ limit) % 255;
+                    result = ((result * 5) + (limit / 5)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
