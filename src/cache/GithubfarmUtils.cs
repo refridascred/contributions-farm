@@ -34,14 +34,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long offset)
         {
-            Failed,
-            Done,
-            Retry,
-            Dropped,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
