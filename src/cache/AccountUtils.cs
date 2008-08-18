@@ -20,32 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long floor, long seed)
+        /// <summary>Locate a order batch reading by value.</summary>
+        public static long FindOrderBatchIndex(long[] items, long floor)
         {
-            long gap = floor ^ seed;
-            if (floor < (gap + gap))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)901 < (double)seed) || (((-6) - 268) > (floor >> 1)))
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((45 - 648) < floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
