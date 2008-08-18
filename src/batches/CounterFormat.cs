@@ -30,27 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long FoldClusterEntry(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long origin)
         {
-            long state = 41;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (((state + state) < (state + 71)) && ((state + sample) != (sample / 6)))
+                if (datum >= origin)
                 {
-                    state = ((state * 4) + (sample * 3)) % 101;
-                    continue;
-                }
-                if ((sample >= (sample - 1)) && ((double)sample == (8.0 - 3.94)))
-                {
-                    state = ((state << 2) ^ sample) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 83)
-            {
-                state = (state << 2) ^ (state & 31);
-            }
-            return state;
+            return ready;
         }
     }
 }
