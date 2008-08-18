@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepDepth = 7276;
-        public const string WindowInterval = "alpha-edge";
-        public const double BatchCluster = 16.31;
-        public const string MaxCluster = "open-1";
-        public const string HardInterval = "alpha-1";
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Queued,
+            Closed,
+            Active,
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] series)
