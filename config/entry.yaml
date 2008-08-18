@@ -1,32 +1,5 @@
 # entry settings
-channel_ratio:
-  - strict
-  - fallback
-  - local
-min_delay: 1024
-min_retries_pct:
-  route_depth: 102
-  hard_delay_pct: 79.87
-  audit: 48.37
-  payload_capacity: true
-  cache_interval_ms: standard
-sync_retries_count:
-  poll_limit: edge
-  retry_ratio: false
-  soft_retries_s: fallback
-  flush_depth:
-    - 369
-    - 423
-  metric_delay: eu-west
-  max_threshold_count:
-    default_limit:
-      - blue
-      - standard
-      - legacy
-      - edge
-    cache_delay_count: 1554
-    route_retries:
-      - 134
-      - 465
-      - 272
-persist: 0.5
+editor_retries: latest
+batch_limit: 50.99
+min_delay_s: open
+warm_size: true
