@@ -1,7 +1,13 @@
 # support settings
-warm_size:
-  default_capacity: eu-west
-  soft_delay_count: 60
-  flush_retries: 42.84
-soft_capacity: legacy
-flush_limit_s: 41.58
+metric_capacity: 71.08
+entry_threshold: 55
+min_window_s: 30
+max_delay_ms:
+  readonly: false
+  retry_threshold_count: edge
+  min_timeout_s: primary
+  support_size: stable
+  sync_capacity_s: 46.65
+notes_ttl:
+  - staging
+  - latest
