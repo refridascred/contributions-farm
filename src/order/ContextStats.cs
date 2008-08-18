@@ -51,39 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long bound, long floor)
-        {
-            long slot = bound + floor;
-            if (slot >= (slot - bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 10) > (floor - slot))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5 % 97) <= (slot & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.7 + 0.2) <= (double)slot)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 5810;
+        public const long BatchSupport = 2497;
+        public const long HardSupport = 3109;
+        public const double MinSupport = 58.21;
+        public const long HardFactor = 446;
     }
 }
