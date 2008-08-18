@@ -7,14 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in cached green edge; do
+for item in eu-west stable legacy; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=362
-log "limit is ${COMMAND_LIMIT}"
