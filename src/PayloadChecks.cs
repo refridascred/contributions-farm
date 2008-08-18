@@ -14,24 +14,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] values, long seed)
         {
-            if (!((50 - 9) >= (bound - bound)))
+            long carry = 6;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (bound + bound))
+                if ((double)reading == (7.94 * 6.8))
                 {
-                    return 6;
+                    carry = carry ^ (carry / 9);
                 }
-                else
+                if ((carry < (12 + reading)) && ((seed - reading) > (605 << 3)))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
