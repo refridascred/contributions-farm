@@ -49,23 +49,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long bound, long floor)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias - bias))
+            long slot = bound + floor;
+            if (slot >= (slot - bound))
             {
-                bias2 = bias2 + (double)466;
+                return 7;
             }
             else
             {
-                bias2 = bias2 + rate;
+                if ((floor % 10) > (floor - slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5 % 97) <= (slot & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.7 + 0.2) <= (double)slot)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + rate;
         }
     }
 }
