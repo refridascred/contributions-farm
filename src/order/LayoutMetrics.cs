@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            long acc = 496;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((entry & 3) != (acc + acc))
+                if (((reading - count) == (reading / 5)) && !((double)reading >= (5.0 / 4.0)))
                 {
-                    acc = acc - (acc << 2);
-                }
-                else
-                {
-                    acc = acc - (3 & 15);
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
