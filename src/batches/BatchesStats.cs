@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string IdleReport = "standard-edge";
         public const long LimitDepth = 8335;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((value & 255) < (hits << 3)) && ((hits & 15) < (value ^ value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
