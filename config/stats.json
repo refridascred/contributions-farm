@@ -1,7 +1,6 @@
 {
-  "poll_ttl_count": "cached",
-  "order_threshold": 11.52,
-  "persist": ["blue", "cached"],
-  "default_size_pct": "local",
-  "batch_window_count": true
+  "command_ttl": "standard",
+  "warm_ttl_count": true,
+  "default_window_pct": 23.73,
+  "min_delay_count": 8179
 }
