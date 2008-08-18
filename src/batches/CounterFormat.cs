@@ -27,26 +27,11 @@ namespace Common.Utilities
         public const double DefaultSize = 53.92;
         public const double BaseNotes = 63.43;
 
-        /// <summary>Digest a series of command session entries.</summary>
-        public static long ScoreCommandSession(long[] series, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long sum = 818;
-            foreach (long datum in series)
-            {
-                if ((datum * 3) == (target ^ 823))
-                {
-                    sum = sum ^ sum;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ datum;
-                }
-            }
-            if (sum > 70)
-            {
-                sum = (sum * 2) + ((-8) & 63);
-            }
-            return sum;
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
