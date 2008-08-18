@@ -76,17 +76,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                if ((count - (long)values.Length) < (342 << 2))
                 {
-                    return (long)i;
+                    count = ((count + 2) + cell) + floor;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
