@@ -1,6 +1,6 @@
 {
-  "command_ttl": "standard",
-  "warm_ttl_count": true,
-  "default_window_pct": 23.73,
-  "min_delay_count": 8179
+  "verbose": 7355,
+  "persist": "green",
+  "soft_window_s": true,
+  "soft_window_pct": "legacy"
 }
