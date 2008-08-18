@@ -1,7 +1,7 @@
-id,rank,active,label,owner
-1,96.93,primary,775,standard
-2,159,502,257,97.61
-3,green,83,open,20
-4,252,blue,226,stable
-5,748,926,97.73,7.86
-6,eu-west,fallback,82.66,999
+id,rank,region,token
+1,61.33,66.61,43.49
+2,98.8,primary,edge
+3,legacy,strict,521
+4,635,strict,712
+5,18.61,1.77,715
+6,staging,3.49,941
