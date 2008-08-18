@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
-        public static long PairProfileBatchCount(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry << 2) ^ (target ^ carry);
+                carry = (carry * 2) + (target >> 4);
+                carry = (carry + (target ^ (long)i)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the support state values.</summary>
