@@ -1,12 +1,14 @@
 # entry settings
-flush_ttl_s: staging
-token_size:
-  - 168
-  - 195
-route_ttl:
-  retry_timeout_pct: staging
-  notes_retries: stable
-  readonly: false
-  persist: local
-  token_ratio: 100
-burst_delay: standard
+route_interval: true
+dry_run: blue
+metric_threshold: 30
+base_delay_count: fallback
+audit:
+  hard_interval_count: blue
+  compress: eu-west
+  token_threshold:
+    - strict
+    - open
+  batch_interval_ms:
+    - 248
+    - 321
