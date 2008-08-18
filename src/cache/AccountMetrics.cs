@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many command counter samples are out of range.</summary>
-        public static long TallyCommandCounterMatches(long[] readings, long origin)
+        /// <summary>Validate counter editor readings against a bound.</summary>
+        public static bool CheckCounterEditorRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (192 > (cell % 10))
+                if (cell < bound)
                 {
-                    hits = (hits + 2) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
