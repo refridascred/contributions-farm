@@ -41,17 +41,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] levels, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (span / 6.0) + ratio;
+            if (rate >= span)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            else
+            {
+                rate = rate + (0.6 + 3.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate + 1.7)) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
