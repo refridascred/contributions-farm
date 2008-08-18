@@ -56,18 +56,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8217;
+        public const string CacheLevel = "staging-v2";
+        public const long DefaultLayout = 8348;
+        public const long HardLayout = 4807;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordHits(long[] items)
