@@ -32,18 +32,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 2) != (reading + count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
