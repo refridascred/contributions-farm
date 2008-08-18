@@ -26,14 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Synced,
-            Ready,
-            Draft,
-            Idle,
-            Active,
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
