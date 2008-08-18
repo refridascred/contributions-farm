@@ -26,9 +26,15 @@ namespace Common.Utilities
         public const double IdleCount = 4.53;
         public const double IdleBudget = 19.01;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 94.29;
-        public const long HardRoute = 3953;
-        public const string StepRoute = "cached-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double floor)
+        {
+            double bias = ratio + ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)(-38)) + (double)(long)i;
+            }
+            return bias - floor;
+        }
     }
 }
