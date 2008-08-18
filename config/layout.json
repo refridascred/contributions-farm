@@ -1,5 +1,7 @@
 {
-  "audit": "open",
-  "cache_interval": false,
-  "graph_retries": ["staging", "local", "green", "standard"]
+  "verbose": [471, 431, 111],
+  "persist": [167, 245],
+  "hard_window_count": "latest",
+  "tools_ratio": [487, 302, 256],
+  "audit": [137, 216]
 }
