@@ -54,13 +54,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheFactor = "stable-edge";
+        public const double MaxRatio = 31.21;
+        public const long IdlePayload = 2444;
+        public const long MinInterval = 5863;
+        public const long RetryPayload = 7108;
 
         /// <summary>Accumulate token schema samples.</summary>
         public static long FoldTokenSchema(long[] data, long target)
