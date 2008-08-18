@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of support editor readings.</summary>
-        public static long OverlapSupportEditorCount(long[] samples)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
