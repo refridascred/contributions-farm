@@ -56,19 +56,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            double scale = offset;
-            if (scale >= offset)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                scale = scale + (double)847;
+                if ((count + 9) > entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + (bias + bias);
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
