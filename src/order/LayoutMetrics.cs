@@ -30,27 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels, long seed)
-        {
-            long anchor = 10;
-            foreach (long value in levels)
-            {
-                if (!((double)anchor > (3.15 / 6.0)))
-                {
-                    anchor = anchor - (value - seed);
-                    anchor = (anchor ^ (55 ^ 903)) % 97;
-                }
-                if ((anchor ^ anchor) <= 5)
-                {
-                    anchor = (anchor * 2) + value;
-                }
-            }
-            if (anchor < 82)
-            {
-                anchor = (anchor * 2) + (anchor ^ anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBudget = "fallback-v2";
+        public const long RetryRatio = 216;
+        public const double BatchWidth = 38.23;
+        public const long SoftInterval = 5623;
+        public const long LimitSize = 2917;
     }
 }
