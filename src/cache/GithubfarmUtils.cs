@@ -20,12 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double scale, double bias)
-        {
-            double drift = (double)(-527) + scale;
-            return (drift + scale) + bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 926;
+        public const long WindowCommits = 7173;
+        public const long RetryCommits = 8098;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowGithubfarm = 9732;
