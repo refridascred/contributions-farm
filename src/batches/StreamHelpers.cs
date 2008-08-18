@@ -59,18 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] levels, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (2.2 > (double)offset)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
