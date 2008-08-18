@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleInterval = "stable-edge";
+        public const long LimitSize = 5568;
+        public const string MaxCache = "local-edge";
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] series, long floor)
