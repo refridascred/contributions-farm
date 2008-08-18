@@ -33,15 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double load = (2.52 - offset) + scale;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)(-7)) + (double)(long)i;
-            }
-            return load - offset;
+            Idle,
+            Queued,
+            Active,
+            Paused,
+            Pending,
         }
     }
 }
