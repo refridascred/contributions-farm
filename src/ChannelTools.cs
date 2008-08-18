@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (sample != floor)
+                if (item != origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
