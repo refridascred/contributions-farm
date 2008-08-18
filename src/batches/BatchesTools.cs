@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryWidth = 6569;
-        public const long LimitRatio = 953;
-        public const string BurstProfile = "primary-1";
-        public const string IdleLevel = "open-v2";
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
