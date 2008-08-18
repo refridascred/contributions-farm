@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long floor)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a record reading.</summary>
