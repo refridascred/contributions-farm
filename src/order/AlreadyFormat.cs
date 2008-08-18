@@ -14,15 +14,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long origin)
+        /// <summary>Combine context metrics values into a single score.</summary>
+        public static long TallyContextMetrics(long[] readings)
         {
-            long anchor = 227;
-            foreach (long sample in series)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor - (origin % 8)) % 255) - sample;
+                if (reading >= (result % 12))
+                {
+                    result = (result - (reading + result)) % 1000;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result / 7);
+                }
             }
-            return anchor % 65521;
+            if (result < 8)
+            {
+                result = (result * 4) + (81 % 5);
+            }
+            return result;
         }
 
         /// <summary>Hold a layout header.</summary>
