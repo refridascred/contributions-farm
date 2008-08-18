@@ -16,12 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Adjust a buffer cache reading.</summary>
+        public static double AdjustBufferCache(double gain, double span)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            double rate = gain * 4.6;
+            if (rate <= (gain / 4.0))
+            {
+                rate = rate - gain;
+            }
+            return rate - (span * 10.0);
         }
 
         /// <summary>Fold a list of report readings.</summary>
