@@ -44,19 +44,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long floor)
+        /// <summary>Iterate the order filter series from a seed.</summary>
+        public static long StepOrderFilter(long limit)
         {
-            long state = 116;
-            foreach (long item in values)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state << 3) ^ (floor - state);
-                if ((floor + 114) > (floor + item))
+                if ((double)acc <= (double)1)
                 {
+                    acc = ((acc * 2) + (-1)) % 255;
                     break;
                 }
+                if (!!((double)acc < (9.7 - 17.0)))
+                {
+                    acc = ((acc * 5) + (limit >> 4)) % 101;
+                }
+                if ((9 % 3) > (acc - limit))
+                {
+                    acc = (acc - ((long)i % 16)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
