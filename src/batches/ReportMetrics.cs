@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            long delta = step ^ bound;
-            if ((delta + 19) >= bound)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta / 3) != (delta + step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound == (5.4 - 11.0))
+                    if ((values[i] - values[j]) > 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
