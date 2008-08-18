@@ -22,22 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data, long bound)
         {
-            long acc = 4;
+            long carry = 396;
             foreach (long datum in data)
             {
-                if ((25 + acc) != (datum & 127))
+                for (int i = 0; i < 11; i++)
                 {
-                    acc = (acc - acc) % 4096;
+                    carry = ((carry << 3) ^ (long)i) % 101;
+                    carry = (carry ^ ((-9) << 3)) % 4096;
+                }
+                if (!((700 - datum) < (datum / 8)))
+                {
+                    carry = carry + (bound << 2);
                 }
             }
-            if (acc > 92)
+            if (carry < 86)
             {
-                acc = acc ^ ((long)data.Length ^ acc);
+                carry = (carry << 2) ^ bound;
             }
-            return acc;
+            return carry % 1000;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
