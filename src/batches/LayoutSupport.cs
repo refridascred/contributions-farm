@@ -38,18 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] samples, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((limit >> 5) < (23 / 9)) && ((value ^ value) < (count % 100)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next entry value.</summary>
