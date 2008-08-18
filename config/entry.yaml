@@ -1,8 +1,31 @@
 # entry settings
-min_interval:
-  - legacy
-  - latest
-  - green
-  - open
-compress: false
-cache_interval_count: 27.52
+soft_size:
+  hard_interval_count: 37.36
+  strict: 6841
+  enabled:
+    metrics_threshold: primary
+    retry_depth_ms: staging
+    entry_threshold: true
+    strict: true
+    record_capacity: blue
+    schema_size: staging
+  dry_run: true
+  already_capacity: 100
+idle_size_pct: blue
+batch_depth:
+  base_delay: primary
+  enabled:
+    sync_retries_count: 44
+    window_ratio: 8368
+    poll_delay_s:
+      - 321
+      - 208
+  hard_limit_count: blue
+  sync_depth_count: true
+  cache_ttl_s:
+    - strict
+    - open
+    - fallback
+    - eu-west
+  readonly: false
+strict: stable
