@@ -29,13 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Retry,
+            Synced,
         }
     }
 }
