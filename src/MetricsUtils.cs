@@ -41,11 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a record options.</summary>
