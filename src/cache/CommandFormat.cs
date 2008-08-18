@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] series, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
