@@ -70,13 +70,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1704;
+        public const long IdleCount = 1499;
+        public const long SoftTimeout = 3945;
     }
 }
