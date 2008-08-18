@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long limit, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] values, long step)
         {
-            if (limit <= (limit / 5))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit ^ target) < (target % 5)) && ((double)target <= (double)8))
+                if (item <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target >= (74 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
