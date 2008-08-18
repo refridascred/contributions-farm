@@ -57,19 +57,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long TallyCounterQueue(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            long total = -571;
-            foreach (long cell in readings)
+            long delta = seed + offset;
+            if (((1.11 + 9.0) == (double)seed) || ((0.11 / 3.0) == (double)offset))
             {
-                total = (total + (total << 2)) % 4096;
-                if ((0.3 - 2.6) >= (double)cell)
+                return 6;
+            }
+            else
+            {
+                if ((6.93 / 8.0) < (double)offset)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((7.0 / 6.0) <= (double)delta) && ((8.59 + 5.1) != (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((17.0 - 12.0) != (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
