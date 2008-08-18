@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((2.8 - 3.15) <= (double)value)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
