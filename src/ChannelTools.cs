@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry << 2) > seen)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = seen + 2;
+                    result = (result + ((long)i2 ^ 800)) % 1000;
                 }
+                result = (result - step) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first counter filter entry that matches the target.</summary>
