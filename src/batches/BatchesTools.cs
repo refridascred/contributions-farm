@@ -34,13 +34,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Classify a commits context pair into a bucket.</summary>
+        public static long ClassifyCommitsContext(long bound, long floor)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            if ((double)floor > (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((16.0 * 2.0) < (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
