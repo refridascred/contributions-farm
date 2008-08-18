@@ -1,6 +1,5 @@
 # support settings
-base_depth_count: stable
-poll_ttl_count: 55
-flush_delay_ms: false
-enabled: 250
-persist: true
+flush_limit_ms: fallback
+idle_limit_s: 67
+account_size: strict
+sync_ratio_s: false
