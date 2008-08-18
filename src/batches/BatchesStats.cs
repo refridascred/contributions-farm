@@ -37,14 +37,31 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long seed)
         {
-            Closed,
-            Dropped,
-            Active,
-            Retry,
-            Locked,
+            if (((double)seed <= (double)floor) || ((double)seed != (double)floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor > (8 + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + 373) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
