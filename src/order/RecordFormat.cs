@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long value in samples)
             {
-                if (!!(57 > (count << 2)))
+                if ((count - count) > value)
                 {
-                    count = (count + 1) ^ cell;
+                    count = count + 2;
                 }
             }
             return count;
