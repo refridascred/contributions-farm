@@ -41,38 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long step)
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long TallyWindowClusterMatches(long[] values)
         {
-            if ((7 - limit) < (limit - step))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step - limit) < (limit ^ limit)) || ((limit - 85) < (9 % 12)))
+                if ((count << 1) <= cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step <= (step + limit)) && ((limit << 2) != (step << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.0 + 5.7) != (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
