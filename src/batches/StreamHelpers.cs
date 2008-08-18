@@ -59,13 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long MeasureSupportAccountHits(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((9.3 / 4.0) < (double)hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
