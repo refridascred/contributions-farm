@@ -20,21 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of counter support readings.</summary>
-        public static long CompareCounterSupportCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale;
+            if (weight < scale)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - (double)99) - offset;
             }
-            return hits;
+            else
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + (scale * 4.0);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
