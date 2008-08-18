@@ -93,18 +93,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long bound)
+        /// <summary>Fold a list of payload batch readings.</summary>
+        public static long ScorePayloadBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = 596;
+            foreach (long sample in readings)
             {
-                if ((double)entry <= 1.0)
-                {
-                    hits = (hits + 3) + bound;
-                }
+                sum = (sum - (sample << 1)) % 97;
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
