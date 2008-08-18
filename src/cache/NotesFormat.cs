@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the cache commits series from a seed.</summary>
-        public static long IterateCacheCommits(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)step > (13.0 + 8.5))
-                {
-                    total = (total * 4) + 222;
-                    total = ((total * 3) + (9 + (long)i)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 2028;
+        public const long MinGithubfarm = 1;
+        public const string DefaultRatio = "stable-v2";
+        public const long LimitGithubfarm = 6598;
+        public const string CacheGithubfarm = "fallback-edge";
 
         /// <summary>Accumulate layout samples.</summary>
         public static long WeighLayout(long[] values, long seed)
