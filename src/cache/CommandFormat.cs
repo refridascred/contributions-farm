@@ -66,21 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
