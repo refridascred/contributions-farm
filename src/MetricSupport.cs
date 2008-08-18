@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Digest a series of commits order entries.</summary>
+        public static long CombineCommitsOrder(long[] readings, long step)
         {
-            Failed,
-            Done,
-            Ready,
+            long mix = 2;
+            foreach (long item in readings)
+            {
+                mix = (mix ^ 882) % 101;
+                if ((8 > (item + step)) && ((double)770 > (double)step))
+                {
+                    mix = (mix + item) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
