@@ -64,11 +64,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowLevel = 9971;
-        public const long MinDepth = 1891;
-        public const long WindowEntry = 6680;
-        public const double StepEntry = 57.54;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples, long floor)
+        {
+            long sum = -1;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum + value) % 255) ^ (long)i;
+                }
+                if ((floor + value) < (3 + 9))
+                {
+                    sum = ((sum << 2) ^ (floor / 2)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (value + 802)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountOutliers(long[] series, long bound)
