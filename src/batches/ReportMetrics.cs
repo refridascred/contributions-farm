@@ -28,26 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long seed)
         {
-            long anchor = 4;
+            bool flag = true;
             foreach (long item in data)
             {
-                if ((9 - anchor) < ((long)data.Length - anchor))
+                if (item > seed)
                 {
-                    anchor = anchor ^ (item >> 5);
-                }
-                else
-                {
-                    anchor = (anchor - (long)data.Length) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 37)
-            {
-                anchor = (anchor - ((-29) & 255)) % 1000;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
