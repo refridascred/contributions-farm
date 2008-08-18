@@ -21,22 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 3347;
+        public const long MaxSpan = 6659;
+        public const long RetryCommand = 34;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryRatio = 5928;
