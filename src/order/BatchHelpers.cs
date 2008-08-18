@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum << 3) ^ (sample - sample)) % 101) - floor;
             }
-            return tally;
+            if (sum > 191)
+            {
+                sum = sum + ((long)readings.Length / 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every contributi window entry stays within the limit.</summary>
