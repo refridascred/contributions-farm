@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long offset)
         {
-            long carry = 30;
-            foreach (long datum in readings)
+            long carry = 427;
+            foreach (long cell in samples)
             {
-                if (((long)readings.Length - carry) >= (65 % 16))
+                if (!((offset >> 2) > (5 ^ offset)))
                 {
-                    carry = carry - (datum << 2);
+                    carry = (carry ^ (carry / 4)) ^ cell;
                 }
             }
             return carry;
