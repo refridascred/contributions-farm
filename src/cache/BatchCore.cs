@@ -16,21 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
