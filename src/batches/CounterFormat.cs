@@ -28,11 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftRatio = "legacy-v2";
-        public const long BaseOrder = 5098;
-        public const double SoftOrder = 79.7;
-        public const long RetryInterval = 194;
-        public const long SoftSize = 5142;
+        /// <summary>Count the counter token entries that pass the check.</summary>
+        public static long AuditCounterTokenGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (739 >= seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
