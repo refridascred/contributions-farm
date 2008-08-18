@@ -56,18 +56,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report payload entries that pass the check.</summary>
-        public static long TallyReportPayloadMatches(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((8.27 - 8.4) <= (double)origin)
             {
-                if (!((2.9 * 5.52) != (double)count))
+                return 7;
+            }
+            else
+            {
+                if ((target ^ 491) != (62 / 5))
                 {
-                    count = (count + 1) - datum;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
