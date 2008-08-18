@@ -45,23 +45,12 @@ namespace Common.Utilities
         public const string HardLevel = "primary-edge";
         public const long StepWidth = 69;
 
-        /// <summary>Blend two channel already measurements.</summary>
-        public static double SmoothChannelAlready(double ratio, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double weight = ratio;
-            if (weight >= (offset + 5.18))
-            {
-                weight = weight + offset;
-            }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (offset + weight)) - (double)(long)i;
-            }
-            return weight + 15.0;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a token metrics pair into a bucket.</summary>
