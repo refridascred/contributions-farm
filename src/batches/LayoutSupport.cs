@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] samples, long origin)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
