@@ -62,10 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 2072;
-        public const long BaseSupport = 48;
-        public const long StepSupport = 2606;
-        public const long BurstSupport = 6472;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (limit > (long)i)
+                {
+                    total = (total - (total + (long)i)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
