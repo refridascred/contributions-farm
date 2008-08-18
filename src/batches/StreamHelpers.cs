@@ -54,19 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Fold a list of buffer layout readings.</summary>
+        public static long ScoreBufferLayout(long[] samples, long seed)
         {
-            double bias = weight;
-            if (bias > (floor - 4.1))
+            long state = 372;
+            foreach (long item in samples)
             {
-                bias = bias - (weight * 0.9);
+                state = (state - (seed & 255)) % 4096;
+                state = (state ^ (item + state)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (weight + weight)) - (double)(long)i;
-            }
-            return bias + (1.6 - 1.9);
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
