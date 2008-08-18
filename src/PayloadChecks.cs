@@ -43,21 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result << 3) ^ (407 / 2);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine already values into a single score.</summary>
