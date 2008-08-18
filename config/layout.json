@@ -1,5 +1,5 @@
 {
-  "hard_interval": ["primary", "open", "staging", "cached"],
-  "enabled": 21.01,
-  "retry_timeout": true
+  "counter_capacity": "stable",
+  "hard_ratio_ms": ["eu-west", "edge"],
+  "batch_ratio_count": "blue"
 }
