@@ -53,19 +53,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route account readings.</summary>
-        public static long ScoreRouteAccount(long[] series)
-        {
-            long mark = 845;
-            foreach (long sample in series)
-            {
-                if ((mark << 2) > (sample + mark))
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 10.85;
+        public const double WindowInterval = 44.95;
+        public const long StepSpan = 2746;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchDepth = 5029;
