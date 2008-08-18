@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] values, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 103;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (score + (value + origin)) + (long)i;
-                }
-                score = score + (score - value);
-                if (!(score <= 204))
-                {
-                    score = (score + (value - 57)) % 4096;
-                }
-            }
-            return score % 4096;
+            Pending,
+            Queued,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the graph phase values.</summary>
