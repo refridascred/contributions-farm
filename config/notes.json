@@ -1,13 +1,8 @@
 {
-  "enabled": [150, 161],
-  "idle_depth": {
-    "poll_delay_pct": true,
-    "hard_window_ms": [322, 96],
-    "token_delay": "green",
-    "max_threshold_s": 30,
-    "persist": [451, 167, 402]
-  },
-  "max_depth": 30,
-  "audit": 1024,
-  "verbose": 72.85
+  "editor_limit": [58, 209, 368, 394],
+  "audit": 89,
+  "min_depth_pct": [500, 364],
+  "min_delay_s": 250,
+  "layout_capacity": ["blue", "latest", "staging", "cached"],
+  "cache_threshold": false
 }
