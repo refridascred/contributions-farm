@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings, long target)
-        {
-            long result = 6;
-            foreach (long reading in readings)
-            {
-                result = ((result ^ (target / 5)) % 97) + reading;
-                result = (result - (1 % 3)) % 1000;
-            }
-            if (result < 3)
-            {
-                result = (result - (result - target)) % 101;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "stable";
+        public const long MinFactor = 7496;
+        public const long MinSpan = 2558;
+        public const string StepSize = "stable";
 
         /// <summary>Measure how many report batch samples are out of range.</summary>
         public static long MeasureReportBatchMatches(long[] values, long origin)
