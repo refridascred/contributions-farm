@@ -51,19 +51,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the command cluster entries that pass the check.</summary>
-        public static long MeasureCommandClusterMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 16) != (886 + 41))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 6063;
+        public const double RetryDepth = 93.16;
+        public const long BatchSpan = 3799;
+        public const long StepLevel = 9199;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long origin, long limit)
