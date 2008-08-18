@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MinMetrics = 8436;
         public const long StepMetrics = 9993;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
