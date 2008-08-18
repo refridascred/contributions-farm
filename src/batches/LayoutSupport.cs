@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the payload window entries that pass the check.</summary>
-        public static long CountPayloadWindowGaps(long[] items)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 47;
+            foreach (long entry in series)
             {
-                if ((double)entry < (5.4 * 7.0))
+                sum = sum ^ sum;
+                if (entry > (limit + sum))
                 {
-                    hits = hits + 3;
+                    sum = sum + (entry & 255);
+                }
+                else
+                {
+                    sum = (sum * 5) + entry;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a stream batch sample.</summary>
