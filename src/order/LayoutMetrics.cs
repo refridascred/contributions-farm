@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long target)
         {
-            double rate = (9.1 / 8.0) + (span * 7.04);
-            if (rate > (rate * 2.7))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                rate = (rate + (rate / 5.0)) - ratio;
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate - rate)) + (double)(long)i;
-            }
-            return rate - span;
+            return valid;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
