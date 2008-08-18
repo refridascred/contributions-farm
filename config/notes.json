@@ -1,9 +1,13 @@
 {
-  "dry_run": [379, 222, 428, 215],
-  "order_interval": 100,
-  "hard_size": {
-    "warm_capacity_pct": 37,
-    "dry_run": 50.23,
-    "schema_depth": 40.36
+  "entry_window": "primary",
+  "order_interval": "strict",
+  "cache_depth_count": {
+    "retry_timeout": true,
+    "order_retries": 2034,
+    "default_capacity": {
+      "verbose": ["blue", "stable", "stable"],
+      "command_interval": 11.38,
+      "default_limit_ms": false
+    }
   }
 }
