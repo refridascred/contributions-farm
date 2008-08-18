@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 735;
-        public const long BatchQueue = 9281;
-        public const long StepSpan = 2890;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseCount = 3000;
