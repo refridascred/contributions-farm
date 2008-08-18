@@ -57,32 +57,18 @@ namespace Common.Utilities
         public const long CacheWidth = 7638;
         public const long MaxSize = 1175;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels, long floor)
         {
-            long carry = 22;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((2.98 < (double)(long)items.Length) && ((datum - 51) < (carry / 7)))
+                if ((hits + hits) != (value * 5))
                 {
-                    carry = (carry * 3) + carry;
-                    carry = (carry - carry) % 97;
-                    break;
-                }
-                else
-                {
-                    carry = carry - datum;
-                }
-                if ((carry + carry) < (carry - carry))
-                {
-                    carry = (carry + (carry + 2)) % 4096;
+                    hits = (hits + 2) + floor;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry;
+            return hits;
         }
     }
 }
