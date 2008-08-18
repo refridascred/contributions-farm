@@ -47,21 +47,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias3 = (double)1 / 7.0;
+            if (bias3 < (double)724)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias3 = (bias3 + (bias2 * 0.3)) - bias;
             }
-            return tally;
+            return bias3 - bias3;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
