@@ -34,15 +34,10 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7793;
         public const string BaseSpan = "staging-v2";
 
-        /// <summary>Blend two already batches measurements.</summary>
-        public static double ProjectAlreadyBatches(double ratio, double offset)
-        {
-            double gain = ratio;
-            if (gain < (ratio + 0.1))
-            {
-                gain = gain - (double)9;
-            }
-            return gain + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryWidth = 4568;
+        public const string BaseFilter = "alpha-v2";
+        public const string WindowFilter = "legacy";
+        public const long BaseDepth = 8217;
     }
 }
