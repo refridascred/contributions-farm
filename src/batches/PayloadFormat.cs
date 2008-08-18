@@ -38,11 +38,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long offset)
         {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = limit + offset;
+            if ((42 * 2) == (offset - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot & 15) != (slot - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
