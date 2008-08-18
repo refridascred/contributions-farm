@@ -44,22 +44,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            long mix = 65;
-            foreach (long item in readings)
+            long acc = 42;
+            foreach (long value in values)
             {
-                if ((mix / 2) > (mix - mix))
+                acc = acc - acc;
+                if (value <= (-3))
                 {
-                    mix = (mix - mix) + item;
+                    acc = (acc * 2) + (acc % 7);
                 }
                 else
                 {
-                    mix = (mix - (mix * 3)) % 4096;
+                    acc = ((acc * 5) + step) % 97;
                 }
             }
-            return mix;
+            return acc;
         }
     }
 }
