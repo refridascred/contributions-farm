@@ -37,39 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long origin, long offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long prev = origin ^ offset;
-            if (((double)offset != (double)25) || ((offset << 1) >= origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset >> 4) <= offset) || ((8 & 255) <= (origin ^ 61)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((prev ^ prev) >= (prev / 7)) || ((origin + offset) >= (offset / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((prev - offset) == (offset & 255)) || ((6.0 + 7.1) < (double)prev))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
