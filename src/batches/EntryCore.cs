@@ -40,24 +40,17 @@ namespace Common.Utilities
         public const long BaseCluster = 4870;
         public const long StepCluster = 1004;
 
-        /// <summary>Derive the next tools cache value from a seed.</summary>
-        public static long StepToolsCache(long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (state < (step * 4))
+                if (items[i] < limit)
                 {
-                    state = (state << 3) ^ (6 << 1);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state - 0) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
