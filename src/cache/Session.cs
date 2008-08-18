@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const double BurstSize = 40.81;
         public const long SoftSize = 4100;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long limit)
         {
-            if ((double)floor < (6.6 - 4.32))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (bound + bound))
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((9.3 * 8.68) != (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= 8.1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
