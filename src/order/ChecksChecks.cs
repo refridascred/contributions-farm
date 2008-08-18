@@ -23,10 +23,17 @@ namespace Common.Utilities
         public const string CacheSpan = "staging-1";
         public const string SoftRecord = "primary";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxTimeout = 16.04;
-        public const long MinChannel = 3730;
-        public const double BatchChannel = 8.33;
-        public const long StepChannel = 6500;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
