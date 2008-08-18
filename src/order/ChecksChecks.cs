@@ -17,22 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] samples, long limit)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= (double)120)
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
