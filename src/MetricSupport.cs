@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long offset)
-        {
-            long carry = 427;
-            foreach (long cell in samples)
-            {
-                if (!((offset >> 2) > (5 ^ offset)))
-                {
-                    carry = (carry ^ (carry / 4)) ^ cell;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitInterval = 94.03;
+        public const long BatchCache = 9993;
+        public const double StepFactor = 88.87;
+        public const string StepCache = "cached-edge";
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
