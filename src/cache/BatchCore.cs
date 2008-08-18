@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -43;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((floor - result) < (result & 1)) || ((sample + sample) <= (sample + floor)))
                 {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (result / 5)) % 1000;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
