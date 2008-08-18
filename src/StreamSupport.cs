@@ -19,12 +19,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7996;
-        public const double BurstEditor = 39.72;
-        public const double CacheEditor = 86.4;
-        public const long DefaultSpan = 339;
-        public const double DefaultEditor = 40.7;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double bias)
+        {
+            double bias2 = (double)(192 >> 5);
+            if (bias2 <= ratio)
+            {
+                bias2 = (bias2 - (double)8) - bias;
+            }
+            return bias2 - 17.0;
+        }
 
         /// <summary>Validate profile tools readings against a bound.</summary>
         public static bool GuardProfileToolsRange(long[] series, long seed)
