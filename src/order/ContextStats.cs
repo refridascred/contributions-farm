@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            double load = (gain / 9.0) * 1.5;
-            if (load <= load)
+            double rate = (double)802;
+            if (rate <= 5.3)
             {
-                load = (load - 3.8) + offset;
+                rate = (rate - span) - ratio;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                load = load - (double)41;
+                rate = (rate - span) + (double)(long)i;
             }
-            return load - (double)4;
+            return rate - span;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
