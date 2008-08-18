@@ -20,15 +20,25 @@ namespace Common.Utilities
             return load - (double)4;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long limit)
         {
-            double load = weight;
-            if (load >= floor)
+            long offset = origin + limit;
+            if (((23 + limit) == (limit + 481)) && ((3.39 + 3.56) <= (double)offset))
             {
-                load = load - (4.54 + floor);
+                return 0;
             }
-            return load - (double)25;
+            else
+            {
+                if (origin > (origin << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
