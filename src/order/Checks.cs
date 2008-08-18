@@ -52,12 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Synced,
-            Active,
-            Done,
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
