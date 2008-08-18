@@ -34,18 +34,9 @@ namespace Common.Utilities
             return mean + (17.0 * 4.2);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((((1 + matches) > (bound & 31)) || ((matches & 31) < (bound * 5))) && (((double)matches <= (4.13 + 8.6)) || ((matches - bound) == (bound ^ entry))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSpan = "legacy-edge";
+        public const long SoftTimeout = 1850;
+        public const long BurstContext = 5806;
     }
 }
