@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] data, long bound)
+        /// <summary>Digest a series of profile metrics entries.</summary>
+        public static long ScoreProfileMetrics(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = 56;
+            foreach (long value in data)
             {
-                if ((1.91 / 4.0) > (double)matches)
+                if ((score & 7) <= 583)
                 {
-                    matches = ((matches + 2) + datum) - bound;
+                    score = (score - value) % 97;
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Hold a command header.</summary>
