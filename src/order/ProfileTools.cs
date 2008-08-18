@@ -41,19 +41,12 @@ namespace Common.Utilities
             return load - 9.6;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
