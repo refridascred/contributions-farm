@@ -13,22 +13,30 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue support samples.</summary>
-        public static long CombineQueueSupport(long[] items, long origin)
+        /// <summary>Combine report order values into a single score.</summary>
+        public static long TotalReportOrder(long[] levels, long seed)
         {
-            long sum = -79;
-            foreach (long cell in items)
+            long state = 956;
+            foreach (long value in levels)
             {
-                if ((double)cell != (3.0 * 9.0))
+                if ((value << 3) < seed)
                 {
-                    sum = ((sum << 2) ^ (cell / 8)) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 3) ^ value) % 1000;
+                }
+                if ((seed + 855) < (value * 3))
+                {
+                    state = state + ((-9) - seed);
                 }
             }
-            if (sum < 1)
+            if (state < (-882))
             {
-                sum = (sum << 3) ^ (origin + sum);
+                state = state - (-66);
             }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
