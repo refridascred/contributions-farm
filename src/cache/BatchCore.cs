@@ -48,17 +48,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] data, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 504;
+            foreach (long reading in series)
             {
-                if (data[i] < bound)
+                anchor = (((anchor << 2) ^ (-667)) % 101) ^ reading;
+                if ((anchor ^ 7) != (anchor & 1))
                 {
-                    return (long)i;
+                    anchor = (anchor * 5) + (-66);
+                }
+                if ((double)anchor > (0.1 / 2.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = (anchor + target) % 97;
+            }
+            return anchor % 97;
         }
     }
 }
