@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long BaseRatio = 2573;
         public const double HardCount = 92.16;
 
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long CountContributiStatsHits(long[] readings)
+        /// <summary>Audit payload counter readings against a rule.</summary>
+        public static long CountPayloadCounterOutliers(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((cell << 2) != (428 & 31))
+                if ((datum + 1) <= (offset % 100))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
