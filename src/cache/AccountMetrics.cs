@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((count / 4) >= (item - count)) && ((count / 9) != (item >> 4)))
+                if ((seen % 8) > (cell / 6))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
