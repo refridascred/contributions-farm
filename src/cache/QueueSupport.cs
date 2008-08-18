@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool GuardRecordToolsRange(long[] data, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (entry > offset)
+                if (!!((item & 255) > (count << 3)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
