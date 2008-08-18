@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The editor module keeps queue values in sync with the account cache.
-A farm that stays idle for too long is moved to the payload list.
+A cache that stays idle for too long is moved to the githubfarm list.
+Each metric is validated before it reaches the account queue.
+Keep cluster and batches names short and lowercase.
+
+Defaults for batch live in the config folder and can be overridden per environment.
+The contributi module keeps githubfarm values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new command fields
-- Keep farm values small
+- Document new format fields
+- Validate cache input early
+- Keep counter values small
