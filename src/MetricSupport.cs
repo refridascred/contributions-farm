@@ -38,19 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double BlendMetricsAccount(double gain, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            double rate = (5.0 * 0.2) / 2.0;
+            if (rate > 7.3)
             {
-                if (target <= (target ^ target))
-                {
-                    score = (score + (score + target)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                rate = ((rate - (double)644) - gain) + bias;
             }
-            return score;
+            else
+            {
+                rate = rate - (double)22;
+            }
+            return rate + rate;
         }
     }
 }
