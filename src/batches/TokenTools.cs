@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] series, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double gain = (double)((-82) - 940);
+            if (gain < 20.0)
             {
-                if ((70 - floor) == (datum + datum))
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain + gain) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + (scale - 13.0);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
