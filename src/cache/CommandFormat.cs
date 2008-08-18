@@ -30,12 +30,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            Done,
-            Paused,
-            Active,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((92 >= bound) || ((bound * 5) != (bound * 4)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
