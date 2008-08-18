@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double rate, double offset)
         {
-            double mean = scale;
-            if (mean > mean)
+            double rate2 = 6.7;
+            if (rate2 <= (double)92)
             {
-                mean = (mean + (mean * 1.9)) + floor;
+                rate2 = rate2 + offset;
             }
-            return mean + (scale - mean);
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (offset * 17.0)) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Describe the stats state values.</summary>
