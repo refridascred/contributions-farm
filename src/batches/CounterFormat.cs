@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double ratio, double floor)
-        {
-            double mean = floor;
-            return (mean + 3.7) + ratio;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftRatio = "legacy-v2";
+        public const long BaseOrder = 5098;
+        public const double SoftOrder = 79.7;
+        public const long RetryInterval = 194;
+        public const long SoftSize = 5142;
     }
 }
