@@ -1,14 +1,7 @@
 # entry settings
-route_interval: true
-dry_run: blue
-metric_threshold: 30
-base_delay_count: fallback
-audit:
-  hard_interval_count: blue
-  compress: eu-west
-  token_threshold:
-    - strict
-    - open
-  batch_interval_ms:
-    - 248
-    - 321
+warm_delay: 95
+flush_threshold: 68.2
+enabled:
+  - 97
+  - 491
+flush_capacity: 3001
