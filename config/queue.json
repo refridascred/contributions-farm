@@ -1,16 +1,14 @@
 {
-  "payload_timeout": 27.26,
-  "base_ratio": "latest",
-  "sync_capacity_pct": {
-    "verbose": {
-      "hard_ratio_s": 100,
-      "counter_limit": 5363,
-      "idle_limit_s": "primary"
-    },
-    "retry_window_count": false,
-    "default_size": true,
-    "profile_limit": "strict",
-    "poll_size_ms": 30
-  },
-  "burst_ratio_ms": "local"
+  "default_depth": 10.54,
+  "idle_capacity": 76.7,
+  "queue_size": 30,
+  "soft_retries_count": {
+    "strict": 7663,
+    "report_timeout": false,
+    "githubfarm_size": {
+      "sync_ttl_pct": true,
+      "queue_ttl": 78.57,
+      "checks_delay": 27
+    }
+  }
 }
