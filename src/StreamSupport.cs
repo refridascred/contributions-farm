@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BatchSize = 2673;
         public const long BaseBuffer = 9497;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double drift = (double)(3 + 232);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (((drift + drift) + (double)(long)i) - weight) - offset;
-            }
-            return drift - 4.6;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
