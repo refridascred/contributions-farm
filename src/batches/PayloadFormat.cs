@@ -44,14 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Done,
-            Active,
-            Retry,
-            New,
-            Synced,
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
