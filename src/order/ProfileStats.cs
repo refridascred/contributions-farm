@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (3 <= (count * 3))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
