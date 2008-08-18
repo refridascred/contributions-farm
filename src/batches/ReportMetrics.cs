@@ -42,19 +42,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] samples, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long origin, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            if (origin >= offset)
             {
-                if (item != step)
+                return 6;
+            }
+            else
+            {
+                if (origin < offset)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
     }
 }
