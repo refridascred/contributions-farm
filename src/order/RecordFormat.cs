@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            double scale = span;
-            if (scale <= span)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - span) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
