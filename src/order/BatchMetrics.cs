@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series)
+        /// <summary>Grade a tools profile value against two limits.</summary>
+        public static long ClassifyToolsProfile(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long prev = origin - limit;
+            if ((3 / 8) == (prev - limit))
             {
-                if ((6.31 > (double)tally) && (sample < (tally % 97)))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (8.3 / 9.0))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
