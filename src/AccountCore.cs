@@ -44,16 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout entry series from a seed.</summary>
-        public static long DeriveLayoutEntry(long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            double load = bias + (offset + offset);
+            if (load > bias)
             {
-                sum = (sum - (9 >> 5)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                load = load + (bias * 4.6);
             }
-            return sum;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load + bias)) + (double)(long)i;
+            }
+            return load - (double)2;
         }
 
         /// <summary>Project the next tools value.</summary>
