@@ -30,19 +30,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long carry = 60;
+            foreach (long entry in values)
             {
-                if (sample != target)
+                carry = ((carry << 3) ^ (carry - carry)) - origin;
+                if ((double)(long)values.Length < (double)entry)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (carry > 52)
+            {
+                carry = ((carry << 3) ^ (carry % 12)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many session notes samples are out of range.</summary>
