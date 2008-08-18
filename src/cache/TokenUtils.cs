@@ -26,18 +26,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long AuditLayoutContributiMatches(long[] series, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if ((step2 > (3 / 2)) && ((step2 ^ step2) < (step2 + step2)))
             {
-                if (((limit + limit) != (value & 255)) || (((double)(long)series.Length != (double)limit) || ((double)value > (17.0 - 2.0))))
+                return 0;
+            }
+            else
+            {
+                if ((0.74 - 8.1) == (double)step)
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)step <= (6.9 - 1.1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >= (step2 >> 4)) && ((4.4 + 2.0) != (double)step2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
