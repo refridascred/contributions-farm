@@ -24,19 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long target)
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool CheckFormatSessionLimits(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (datum != target)
+                if (reading <= origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Locate a entry tools reading by value.</summary>
