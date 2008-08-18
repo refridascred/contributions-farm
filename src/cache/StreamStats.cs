@@ -23,21 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset;
+            if (ratio <= 8.4)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (gain + 8.2)) - (double)(long)i;
+            }
+            return ratio + (double)7;
         }
 
         /// <summary>Describe the context state values.</summary>
