@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double span)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long limit2)
         {
-            double rate = (double)802;
-            if (rate <= 5.3)
+            if ((0 < (limit2 & 15)) || ((limit2 - limit2) >= (limit + limit2)))
             {
-                rate = (rate - span) - ratio;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate - span) + (double)(long)i;
+                if (!((limit >> 4) > (limit2 * 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit2 >= (limit2 - limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit2 >= limit) && ((limit2 ^ limit) <= (limit2 * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return rate - span;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
