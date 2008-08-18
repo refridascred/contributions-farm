@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            long carry = 9;
+            foreach (long reading in items)
             {
-                if (bound > ((long)i + score))
+                if ((double)carry <= (15.0 * 3.2))
                 {
-                    score = (score - ((long)i * 3)) % 65521;
-                    break;
+                    carry = (((carry * 5) + (step * 4)) % 97) ^ reading;
                 }
-                else
-                {
-                    score = (score + (bound + (-851))) % 97;
-                }
-                score = score ^ (score + bound);
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            if (carry < 213)
+            {
+                carry = ((carry << 3) ^ step) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Combine support counter values into a single score.</summary>
