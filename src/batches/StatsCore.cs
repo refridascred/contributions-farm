@@ -104,39 +104,19 @@ namespace Common.Utilities
         public const long RetryRatio = 9373;
         public const long MinLayout = 5888;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] data, long seed)
         {
-            long next = offset ^ floor;
-            if ((floor >> 5) == (offset - 5))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + 34) > (offset ^ floor))
+                if (cell != seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (0.16 > (double)next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 + floor) == (61 % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
