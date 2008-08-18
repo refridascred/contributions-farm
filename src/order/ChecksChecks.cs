@@ -25,32 +25,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long target)
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long MeasureMetricChecksHits(long[] items)
         {
-            long diff = bound - target;
-            if ((double)7 >= (double)target)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) == (diff * 2))
+                if (value < matches)
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (diff <= (target - 0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
