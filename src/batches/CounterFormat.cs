@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            Ready,
-            Dropped,
-            Locked,
+            double rate = gain - (double)984;
+            return rate - (floor - rate);
         }
 
         /// <summary>Check that every route profile entry stays within the limit.</summary>
