@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long CountProfileCommandHits(long[] readings)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item * 4) > (item / 5))
+                if (items[i] == offset)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
