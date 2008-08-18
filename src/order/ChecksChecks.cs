@@ -35,17 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metrics report reading by value.</summary>
-        public static long FindMetricsReportIndex(long[] values, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
