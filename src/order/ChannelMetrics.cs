@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitTimeout = 2979;
+        public const double MinCounter = 50.34;
+        public const long RetryLevel = 732;
+        public const long LimitCounter = 1175;
+        public const long RetryCounter = 702;
 
         /// <summary>Validate context editor readings against a bound.</summary>
         public static bool CheckContextEditorLimits(long[] series, long offset)
