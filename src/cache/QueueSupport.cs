@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
