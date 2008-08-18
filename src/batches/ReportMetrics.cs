@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (((floor % 24) == (floor ^ offset)) || ((651 + floor) < (5 >> 4)))
             {
-                if (hits >= entry)
+                return 3;
+            }
+            else
+            {
+                if ((0.35 / 2.0) <= (double)floor)
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
