@@ -1,7 +1,5 @@
 {
-  "poll_ratio": "legacy",
-  "idle_capacity": "eu-west",
-  "idle_ttl_ms": 2,
-  "persist": 61.76,
-  "default_size_s": ["stable", "standard", "green", "local"]
+  "batch_window": ["primary", "edge", "strict"],
+  "graph_retries": ["latest", "standard", "fallback"],
+  "idle_ratio": 60
 }
