@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitLevel = 258;
-        public const long HardInterval = 4508;
-        public const string BurstSize = "stable";
-        public const string CacheWidth = "stable-edge";
-        public const long SoftCount = 5912;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Done,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long offset, long origin)
