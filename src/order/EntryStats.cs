@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Roll a layout payload counter forward.</summary>
+        public static long RollLayoutPayload(long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                long hits = (90 ^ floor) - sum;
+                if ((floor + hits) < (sum - sum))
                 {
-                    sum = (sum + ((-23) + origin)) ^ (long)i2;
-                    sum = ((sum * 4) + (sum ^ origin)) % 1000;
+                    sum = (sum + ((long)i ^ 871)) % 255;
                 }
-                sum = (sum - (sum * 3)) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
             }
             return sum;
         }
