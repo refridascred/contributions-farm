@@ -19,26 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            long mark = 51;
-            foreach (long datum in readings)
+            double weight = (double)(16 - 295);
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound + (-70)) < datum)
-                {
-                    mark = (mark << 2) ^ (datum & 63);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark / 2)) % 255;
-                }
+                weight = ((weight + (double)(long)i) + gain) - bias;
             }
-            if (mark < (-263))
-            {
-                mark = mark - (mark - bound);
-            }
-            return mark % 1000;
+            return weight - 1.1;
         }
 
         /// <summary>Hold a record summary.</summary>
