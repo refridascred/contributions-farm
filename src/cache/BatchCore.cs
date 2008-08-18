@@ -42,27 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] series, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data, long offset)
         {
-            long anchor = 504;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = (((anchor << 2) ^ (-667)) % 101) ^ reading;
-                if ((anchor ^ 7) != (anchor & 1))
+                if ((sample >= (280 / 6)) && ((offset % 64) > (sample ^ tally)))
                 {
-                    anchor = (anchor * 5) + (-66);
-                }
-                if ((double)anchor > (0.1 / 2.0))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor + target) % 97;
-            }
-            return anchor % 97;
+            return tally;
         }
     }
 }
