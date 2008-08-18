@@ -1,7 +1,7 @@
 # githubfarm settings
-flush_delay: 6331
-idle_delay_ms: latest
-burst_threshold: 19.57
-burst_depth: legacy
-batches_limit: true
-cache_depth: 66.1
+hard_timeout: 30
+profile_window: false
+retry_delay_count: edge
+editor_retries: latest
+verbose: false
+sync_limit_count: 12
