@@ -35,12 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSize = 7829;
-        public const string HardContext = "legacy-v2";
-        public const long SoftContext = 6917;
-        public const double BaseContext = 2.92;
-        public const long RetryCount = 5639;
+        /// <summary>Compare every pair of token queue readings.</summary>
+        public static long CompareTokenQueueCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
