@@ -54,24 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((origin % 5) > (origin >> 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound < (bound - (-74)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Active,
+            Done,
         }
     }
 }
