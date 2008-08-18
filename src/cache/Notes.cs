@@ -60,22 +60,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate record counter samples.</summary>
-        public static long ScoreRecordCounter(long[] values, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long origin)
         {
-            long result = 469;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((((-7) / 3) <= (result << 2)) || (origin >= reading))
+                if ((origin >> 4) <= (reading ^ reading))
                 {
-                    result = ((result * 3) + (origin - 303)) % 97;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > 4)
-            {
-                result = result + (result << 1);
-            }
-            return result % 97;
+            return count;
         }
     }
 }
