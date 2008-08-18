@@ -25,13 +25,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] readings, long seed)
         {
-            Synced,
-            New,
-            Stale,
-            Pending,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
