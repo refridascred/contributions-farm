@@ -14,21 +14,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a checks summary.</summary>
