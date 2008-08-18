@@ -31,15 +31,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleWidth = "open-1";
+        public const double MinAccount = 1.44;
+        public const long RetryAccount = 7681;
+        public const long HardWidth = 563;
     }
 }
