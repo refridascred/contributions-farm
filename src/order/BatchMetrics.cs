@@ -45,24 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] levels, long target)
         {
-            if (((bound ^ step) >= bound) && ((61 >> 1) < step))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + 578) > (step << 2))
+                if ((value ^ (long)levels.Length) > (10 >> 1))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 1) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
