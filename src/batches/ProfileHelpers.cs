@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double ratio = span + (span + span);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - (double)7;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
