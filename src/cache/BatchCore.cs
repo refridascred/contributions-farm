@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter notes measurements.</summary>
-        public static double ScaleFilterNotes(double scale, double bias)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double bias2 = (double)(2 - 284);
-            if (bias2 >= (bias + bias))
-            {
-                bias2 = bias2 + scale;
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - 8.78;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
