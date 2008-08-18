@@ -1,5 +1,11 @@
 {
-  "max_capacity_count": 1024,
-  "soft_threshold": 15,
-  "warm_capacity_s": false
+  "default_delay_count": [243, 227, 203],
+  "retry_size_pct": "primary",
+  "warm_threshold_count": 48.75,
+  "cache_interval_count": {
+    "retry_delay_s": "primary",
+    "dry_run": 84.04,
+    "filter_interval": true,
+    "hard_size_s": "legacy"
+  }
 }
