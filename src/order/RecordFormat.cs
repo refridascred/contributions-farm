@@ -32,16 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next metric filter value from a seed.</summary>
-        public static long DeriveMetricFilter(long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result + 210) % 1000;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
