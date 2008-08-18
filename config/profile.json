@@ -1,8 +1,7 @@
 {
-  "soft_delay_s": [353, 423, 314],
-  "hard_threshold_s": true,
-  "enabled": 30,
-  "warm_timeout_pct": 91,
-  "batch_depth_pct": "strict",
-  "hard_limit": "strict"
+  "poll_ratio": "legacy",
+  "idle_capacity": "eu-west",
+  "idle_ttl_ms": 2,
+  "persist": 61.76,
+  "default_size_s": ["stable", "standard", "green", "local"]
 }
