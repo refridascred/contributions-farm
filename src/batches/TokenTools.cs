@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const double BatchNotes = 12.74;
         public const string BatchRatio = "legacy-edge";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(item >= (tally + (-84))))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 509;
+        public const long HardInterval = 6358;
+        public const long BurstTimeout = 985;
+        public const double MinDepth = 19.14;
     }
 }
