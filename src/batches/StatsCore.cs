@@ -67,18 +67,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((4.07 + 7.2) == (double)seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
