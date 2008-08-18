@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long AuditReportSupportHits(long[] samples)
         {
-            long score = 81;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)score >= (8.0 + 1.0))
+                if (7.75 < (double)item)
                 {
-                    break;
-                }
-                if ((double)(long)levels.Length != (double)score)
-                {
-                    score = ((score * 5) + (score & 127)) + entry;
+                    tally = tally + 3;
                 }
             }
-            if (score < (-41))
-            {
-                score = score ^ (score + score);
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
