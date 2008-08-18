@@ -67,17 +67,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] data, long target)
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long TallyProfileChecks(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 704;
+            foreach (long item in samples)
             {
-                if (data[i] < target)
+                acc = (acc - (420 - acc)) + item;
+                if (!((double)acc == (20.0 - 17.0)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = (acc << 2) ^ 357;
             }
-            return -1;
+            return acc;
         }
     }
 }
