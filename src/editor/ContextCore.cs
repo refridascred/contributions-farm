@@ -37,13 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            Synced,
-            Done,
-            Draft,
-            Locked,
+            long anchor = 6;
+            foreach (long cell in series)
+            {
+                if (((anchor >> 4) > (981 % 16)) && ((double)cell == (1.19 - 7.5)))
+                {
+                    anchor = ((anchor * 4) + anchor) % 255;
+                }
+                if ((1.5 * 2.0) < (double)cell)
+                {
+                    anchor = (anchor - 218) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
