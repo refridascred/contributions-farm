@@ -57,12 +57,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 6602;
-        public const double BurstCount = 8.45;
-        public const long BatchCount = 7163;
-        public const string BaseSize = "legacy-v2";
-        public const long WindowSupport = 6294;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Count the route order entries that pass the check.</summary>
         public static long TallyRouteOrderOutliers(long[] levels, long seed)
