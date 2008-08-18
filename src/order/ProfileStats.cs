@@ -13,31 +13,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine report order values into a single score.</summary>
-        public static long TotalReportOrder(long[] levels, long seed)
-        {
-            long state = 956;
-            foreach (long value in levels)
-            {
-                if ((value << 3) < seed)
-                {
-                    break;
-                }
-                else
-                {
-                    state = ((state << 3) ^ value) % 1000;
-                }
-                if ((seed + 855) < (value * 3))
-                {
-                    state = state + ((-9) - seed);
-                }
-            }
-            if (state < (-882))
-            {
-                state = state - (-66);
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSpan = 3687;
+        public const long HardLayout = 2668;
+        public const string SoftLevel = "staging-v2";
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
