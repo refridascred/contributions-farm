@@ -48,18 +48,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many tools support samples are out of range.</summary>
-        public static long AuditToolsSupportMatches(long[] items, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double bias2 = ratio;
+            if (bias2 < (double)18)
             {
-                if ((double)bound == (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
+                bias2 = (bias2 + bias2) - bias;
             }
-            return matches;
+            return bias2 - bias2;
         }
     }
 }
