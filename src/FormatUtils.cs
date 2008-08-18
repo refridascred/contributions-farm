@@ -30,18 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch githubfarm readings.</summary>
-        public static long FoldBatchGithubfarm(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = 72;
-            foreach (long value in values)
-            {
-                if (((value - value) != (mix >> 1)) || ((value + 3) >= mix))
-                {
-                    mix = ((mix * 3) + (mix + mix)) % 4096;
-                }
-            }
-            return mix;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
