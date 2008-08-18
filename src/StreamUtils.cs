@@ -46,14 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long step)
         {
-            Locked,
-            Queued,
-            Idle,
-            Done,
-            Failed,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the batches payload entries that pass the check.</summary>
