@@ -13,18 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long AuditProfileBufferHits(long[] readings, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((5.05 + 0.03) <= (9.47 + 1.9))
-                {
-                    seen = ((seen + 1) - entry) + seed;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
