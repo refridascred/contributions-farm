@@ -40,22 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = 89;
-            foreach (long item in readings)
-            {
-                if (item <= mark)
-                {
-                    mark = (mark + limit) % 97;
-                }
-                if ((430 + 56) > (item + item))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Paused,
+            Done,
+            Queued,
         }
     }
 }
