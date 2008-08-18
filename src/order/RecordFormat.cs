@@ -20,14 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long floor)
         {
-            Synced,
-            Idle,
-            Paused,
-            Closed,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
