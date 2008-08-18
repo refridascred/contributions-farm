@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double ratio, double bias)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            double gain = ratio;
+            if (gain > gain)
+            {
+                gain = (gain + (double)16) - bias;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the record phase values.</summary>
