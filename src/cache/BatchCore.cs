@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long seed)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long LookupMetricsGithubfarmIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= seed)
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
