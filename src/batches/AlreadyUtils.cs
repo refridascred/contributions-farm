@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double rate, double bias)
+        /// <summary>Iterate the entry stats series from a seed.</summary>
+        public static long SeriesEntryStats(long offset)
         {
-            double rate2 = (bias * 6.72) * 1.12;
-            if (rate2 > rate)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                rate2 = rate2 - (double)715;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - (double)80) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return total;
         }
 
         /// <summary>Rank contributi layout input into a small class.</summary>
