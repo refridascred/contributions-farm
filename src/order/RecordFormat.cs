@@ -32,10 +32,40 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchSpan = "strict-1";
-        public const long MaxWidth = 261;
-        public const long StepCount = 6219;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long step)
+        {
+            long slot = offset - step;
+            if (offset < (slot >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)slot > (7.0 + 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot << 2) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (20.0 + 5.4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
         public static long SeekNotesGithubfarmIndex(long[] samples, long limit)
