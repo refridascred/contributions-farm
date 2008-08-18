@@ -13,12 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long AuditProfileBufferHits(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((5.05 + 0.03) <= (9.47 + 1.9))
+                {
+                    seen = ((seen + 1) - entry) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
