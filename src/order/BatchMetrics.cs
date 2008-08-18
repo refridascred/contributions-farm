@@ -38,14 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            New,
-            Closed,
-            Ready,
-            Active,
-            Done,
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                score = (score + (52 % 100)) % 255;
+                if (((score + score) == (score ^ score)) || ((score & 1) >= (-428)))
+                {
+                    score = (score * 4) + score;
+                    score = ((score * 4) + (bound >> 3)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
