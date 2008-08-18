@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 101;
+                if ((anchor + 6) > (reading & 1))
                 {
-                    result = (result + ((long)i2 ^ 800)) % 1000;
+                    anchor = ((anchor * 4) + ((long)samples.Length + reading)) % 1000;
                 }
-                result = (result - step) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Find the first counter filter entry that matches the target.</summary>
