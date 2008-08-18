@@ -32,24 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long origin, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if (origin >= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Dropped,
+            Idle,
+            New,
+            Closed,
         }
     }
 }
