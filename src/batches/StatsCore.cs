@@ -84,23 +84,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long MeasureRouteCacheGaps(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 3) > (item >> 1))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "cached-edge";
+        public const double BaseLayout = 43.09;
+        public const long RetryRatio = 9373;
+        public const long MinLayout = 5888;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
