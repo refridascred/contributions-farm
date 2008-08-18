@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseQueue = 1006;
         public const long RetryLevel = 911;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitScore = 52.04;
+        public const double DefaultContext = 96.09;
+        public const double BaseContext = 29.59;
+        public const long CacheFactor = 3508;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] items)
