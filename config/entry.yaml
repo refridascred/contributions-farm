@@ -1,6 +1,9 @@
 # entry settings
-batch_timeout: legacy
-farm_interval: 1294
-stats_threshold: 47
-idle_timeout: 78
-min_retries: local
+poll_capacity_s:
+  persist: false
+  stats_delay: false
+  min_window: 19
+entry_ttl: 30
+min_capacity_ms: eu-west
+retry_ttl: 30
+base_limit_pct: 250
