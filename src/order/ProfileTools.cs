@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const long MinScore = 917;
         public const string LimitRoute = "staging-v2";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long target, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            long gap = target - origin;
+            if ((double)gap >= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((179 + target) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(gap < (origin * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload stats.</summary>
