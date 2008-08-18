@@ -31,19 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (((result * 4) + (99 ^ result)) % 97) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 4284;
+        public const long MaxFactor = 5398;
+        public const long HardPayload = 5385;
+        public const double WindowSize = 82.19;
+        public const double HardSize = 32.1;
     }
 }
