@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool GuardRecordToolsRange(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count cache route pairs that satisfy a relation.</summary>
