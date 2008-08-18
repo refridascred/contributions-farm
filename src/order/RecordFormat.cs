@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const string DefaultDepth = "legacy-1";
         public const long DefaultCount = 3531;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Count the schema session entries that pass the check.</summary>
+        public static long MeasureSchemaSessionOutliers(long[] levels, long bound)
         {
-            long carry = 146;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry ^ (carry + carry)) % 4096) ^ reading;
-                if (5 <= (carry - carry))
+                if ((matches ^ matches) <= matches)
                 {
-                    carry = carry + 6;
+                    matches = ((matches + 1) - cell) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
