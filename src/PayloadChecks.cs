@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "primary-edge";
+        public const long RetryBudget = 6112;
+        public const long MaxAlready = 6764;
+        public const long HardLevel = 4436;
+        public const string IdleScore = "alpha-1";
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long offset)
