@@ -22,19 +22,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double rate, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            double scale = 0.9 - 2.04;
-            if (scale >= offset)
+            long score = -1;
+            foreach (long value in samples)
             {
-                scale = scale - (double)609;
+                if (!((value >> 3) == (value << 2)))
+                {
+                    score = (score + score) % 65521;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (score < 161)
             {
-                scale = (scale + offset) + (double)(long)i;
+                score = (score ^ (score * 2)) % 97;
             }
-            return scale + (scale + rate);
+            return score % 4096;
         }
 
         /// <summary>Describe the payload state values.</summary>
