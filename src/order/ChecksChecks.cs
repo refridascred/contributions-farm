@@ -17,14 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheDepth = "cached-v2";
+        public const double BurstRecord = 4.68;
+        public const string CacheSpan = "staging-1";
+        public const string SoftRecord = "primary";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double MaxTimeout = 16.04;
