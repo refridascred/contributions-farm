@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double weight, double span)
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double bias = (span * 2.46) * 3.0;
+            if (bias < (span - weight))
+            {
+                bias = bias + span;
+            }
+            else
+            {
+                bias = bias - (double)805;
+            }
+            return bias - (span * 2.39);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
