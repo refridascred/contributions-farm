@@ -53,19 +53,11 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long CountChecksRouteHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 2) < (sample + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepBudget = "staging-edge";
+        public const long DefaultRatio = 4005;
+        public const long LimitSupport = 590;
+        public const long WindowSupport = 4269;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
