@@ -1,19 +1,13 @@
 {
-  "context_size": [172, 194, 249],
-  "queue_depth": {
-    "readonly": false,
-    "already_threshold": "green",
-    "idle_capacity_count": ["standard", "edge"],
-    "default_depth": 33.04,
-    "retry_window_count": [253, 20],
-    "enabled": {
-      "strict": [306, 393],
-      "hard_depth_s": false,
-      "audit": 80.07,
-      "soft_ttl": ["stable", "blue", "open"]
+  "burst_timeout_pct": 98.98,
+  "sync_size_s": {
+    "cluster_delay": 99,
+    "hard_size_pct": "blue",
+    "route_depth": {
+      "enabled": false,
+      "cache_limit": ["green", "standard", "legacy", "legacy"],
+      "burst_retries_ms": 60
     }
   },
-  "warm_capacity_ms": "green",
-  "entry_ttl": 97.1,
-  "burst_depth_count": ["staging", "stable", "stable"]
+  "poll_delay_count": true
 }
