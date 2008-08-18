@@ -15,39 +15,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            long cur = seed - offset;
-            if (seed <= (cur ^ cur))
+            long score = 693;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + cur) < (cur / 9))
+                if ((60 * 3) >= score)
                 {
-                    return 3;
+                    score = (score ^ (score + score)) ^ value;
                 }
                 else
                 {
-                    if (cur <= (cur << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19.0 - 2.6) == (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score ^ (8 << 1)) % 1000;
                 }
             }
+            if (score < 419)
+            {
+                score = (score + (169 - 82)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
