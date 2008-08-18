@@ -55,15 +55,27 @@ namespace Common.Utilities
         public const double IdleBudget = 9.39;
         public const long BatchEditor = 672;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Combine editor githubfarm values into a single score.</summary>
+        public static long TallyEditorGithubfarm(long[] items, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = 83;
+            foreach (long cell in items)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                carry = carry - (origin & 7);
+                if ((cell & 3) < (cell + (long)items.Length))
+                {
+                    carry = (carry + (cell & 31)) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry ^ (long)items.Length)) % 4096;
+                }
             }
-            return acc;
+            if (carry < 161)
+            {
+                carry = carry - (carry - origin);
+            }
+            return carry % 97;
         }
     }
 }
