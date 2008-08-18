@@ -26,19 +26,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            double load = (double)55 / 8.0;
-            if (load <= (double)444)
+            long result = -9;
+            foreach (long value in series)
             {
-                load = load - ratio;
+                result = ((result + (5 & 127)) % 97) + value;
+                result = (result ^ (645 >> 1)) % 101;
             }
-            else
+            if (result > 717)
             {
-                load = load - (offset + 7.86);
+                result = ((result << 3) ^ (result % 100)) % 255;
             }
-            return load - ratio;
+            return result % 65521;
         }
     }
 }
