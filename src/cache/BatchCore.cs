@@ -27,12 +27,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultWidth = 6205;
+        public const long RetryAccount = 2386;
+        public const long BatchSpan = 8593;
+        public const double SoftBudget = 10.22;
+        public const double BurstSize = 7.06;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long bound, long step)
