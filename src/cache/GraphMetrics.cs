@@ -41,22 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] data, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long anchor = -7;
-            foreach (long value in data)
-            {
-                if ((double)bound >= (8.0 / 4.0))
-                {
-                    anchor = anchor ^ (value + anchor);
-                }
-                if (((bound << 2) < value) && ((bound % 60) >= (value + bound)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Dropped,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the stats state values.</summary>
