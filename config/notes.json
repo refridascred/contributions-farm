@@ -1,5 +1,8 @@
 {
-  "base_interval_pct": 100,
-  "idle_interval_pct": "primary",
-  "hard_delay": 2977
+  "profile_size": 17.88,
+  "soft_retries_pct": ["cached", "strict", "stable", "latest"],
+  "editor_timeout": false,
+  "soft_size_ms": ["local", "edge"],
+  "strict": 250,
+  "sync_ttl": true
 }
