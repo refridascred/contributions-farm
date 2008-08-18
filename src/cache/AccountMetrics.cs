@@ -38,18 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((6.42 * 19.0) < (double)limit)
             {
-                if ((double)item >= (12.0 + 12.0))
+                return 5;
+            }
+            else
+            {
+                if (limit > (floor >> 2))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
