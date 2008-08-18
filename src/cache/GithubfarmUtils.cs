@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const double CacheFactor = 34.33;
         public const long LimitToken = 9070;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples)
-        {
-            long total = 70;
-            foreach (long cell in samples)
-            {
-                total = ((total << 3) ^ cell) % 255;
-                if (((double)cell > (2.84 / 7.0)) || ((cell + cell) >= cell))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepInterval = 45.69;
+        public const long SoftLevel = 2681;
+        public const string StepToken = "strict";
+        public const long SoftCount = 5582;
+        public const double WindowInterval = 17.02;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] readings, long offset)
