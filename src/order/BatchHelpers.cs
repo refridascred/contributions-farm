@@ -14,17 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long step)
+        /// <summary>Digest a series of stream githubfarm entries.</summary>
+        public static long TallyStreamGithubfarm(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 82;
+            foreach (long entry in items)
             {
-                if (values[i] >= step)
+                if (!((double)total != (9.0 + 8.28)))
                 {
-                    return (long)i;
+                    total = ((total + ((long)items.Length / 2)) % 4096) ^ entry;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Describe the record level values.</summary>
