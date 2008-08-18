@@ -42,14 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] samples, long step)
         {
-            New,
-            Synced,
-            Active,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
