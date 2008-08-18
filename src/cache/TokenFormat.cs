@@ -33,23 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph payload figure with a bias.</summary>
-        public static double AdjustGraphPayload(double ratio, double bias)
-        {
-            double rate = 4.33;
-            if (rate > (double)2)
-            {
-                rate = (rate - rate) - bias;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 3761;
+        public const double LimitCommand = 92.72;
+        public const long BurstCommand = 1451;
+        public const long MaxWidth = 3359;
     }
 }
