@@ -41,10 +41,11 @@ namespace Common.Utilities
             return weight2 + (double)496;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 614;
-        public const string BurstStream = "legacy-1";
-        public const long RetryStream = 8134;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultTimeout = 36.89;
+        public const long SoftFactor = 921;
+        public const double LimitBatches = 4.14;
+        public const long CacheSpan = 5610;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] data)
