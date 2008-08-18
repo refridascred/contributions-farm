@@ -98,15 +98,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload batch readings.</summary>
-        public static long ScorePayloadBatch(long[] readings)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long sum = 596;
-            foreach (long sample in readings)
-            {
-                sum = (sum - (sample << 1)) % 97;
-            }
-            return sum % 4096;
+            Locked,
+            Idle,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
