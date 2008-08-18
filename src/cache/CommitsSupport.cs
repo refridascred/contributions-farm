@@ -39,18 +39,16 @@ namespace Common.Utilities
             return weight + (scale * 4.0);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (291 <= tally)
-                {
-                    tally = (tally + 3) + item;
-                }
+                anchor = anchor - ((long)i << 2);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
