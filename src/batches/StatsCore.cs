@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((double)sample >= (19.0 / 8.0))
+                if ((((value - count) < value) || (count >= (4 + count))) || ((double)value != (5.63 / 9.0)))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
