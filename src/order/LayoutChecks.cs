@@ -33,19 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long target)
+        /// <summary>Classify a tools report pair into a bucket.</summary>
+        public static long GradeToolsReport(long step, long step2)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if (!((step + step2) < step))
             {
-                if (entry < target)
+                return 6;
+            }
+            else
+            {
+                if ((double)step2 <= (double)(-1))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.39 - 5.5) > (double)step2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
