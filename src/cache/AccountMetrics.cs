@@ -40,10 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 0.67;
-        public const string HardLevel = "primary-edge";
-        public const long StepWidth = 69;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 7766;
+        public const long BurstCount = 6408;
+        public const string LimitInterval = "open";
+        public const long BaseWidth = 1469;
+        public const long DefaultLayout = 8175;
 
         /// <summary>Adjust a account reading.</summary>
         public static double ProjectAccount(double ratio, double bias)
