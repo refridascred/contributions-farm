@@ -58,39 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long lane = target - limit;
-            if ((limit - limit) == (limit + target))
+            double bias = span - span;
+            if (bias <= bias)
             {
-                return 6;
+                bias = bias - span;
             }
             else
             {
-                if ((66 & 1) == (target - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 + 0.64) > (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane - target) > (limit & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = bias - gain;
             }
+            return bias - span;
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
