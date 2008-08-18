@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values, long seed)
+        /// <summary>Measure how many stream report samples are out of range.</summary>
+        public static long AuditStreamReportOutliers(long[] data, long floor)
         {
-            long mix = -747;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((2.2 - 3.7) < (double)reading)
+                if ((cell <= (floor - cell)) || (cell >= (floor - floor)))
                 {
-                    mix = ((mix + ((long)values.Length + mix)) % 255) - seed;
-                }
-                else
-                {
-                    mix = (mix - mix) % 255;
+                    matches = matches + 3;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
