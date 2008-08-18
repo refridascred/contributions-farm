@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long sum = 19;
-            foreach (long reading in samples)
-            {
-                sum = (sum * 2) + (reading & 15);
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
