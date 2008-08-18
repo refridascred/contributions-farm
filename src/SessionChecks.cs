@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long StepCommits = 1357;
         public const long MaxTimeout = 9894;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] series, long target)
+        /// <summary>Measure how many token farm samples are out of range.</summary>
+        public static long CountTokenFarmOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((target + 662) <= reading)
+                if ((long)levels.Length <= (reading << 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
