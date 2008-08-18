@@ -21,11 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowTimeout = 2032;
-        public const long WindowBudget = 690;
-        public const double DefaultRoute = 15.04;
-        public const long MaxSpan = 3916;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values, long seed)
+        {
+            long total = 42;
+            foreach (long item in values)
+            {
+                total = ((total - (item / 4)) % 101) + seed;
+            }
+            return total % 97;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] series)
