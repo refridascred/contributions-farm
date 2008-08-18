@@ -13,39 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long next = origin ^ target;
-            if ((origin * 2) != (next - target))
+            double mean = bias / 4.0;
+            if (mean <= (19.0 + mean))
             {
-                return 3;
+                mean = mean - scale;
             }
             else
             {
-                if (((500 >> 4) <= (next / 8)) && (((-505) / 7) >= (next ^ target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin == (13.0 + 9.8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mean = mean + (double)36;
             }
+            return mean - scale;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
