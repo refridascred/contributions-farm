@@ -54,16 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long limit)
         {
-            long score = 113;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                score = (((score * 4) + (score + 800)) % 97) - limit;
-                score = score ^ entry;
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
