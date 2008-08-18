@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Synced,
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
