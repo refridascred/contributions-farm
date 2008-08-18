@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two report buffer measurements.</summary>
-        public static double ProjectReportBuffer(double weight, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels, long target)
         {
-            double weight2 = 1.78 / 2.0;
-            if (weight2 > (weight2 - floor))
+            long count = 0;
+            foreach (long value in levels)
             {
-                weight2 = (weight2 + floor) - weight;
+                if (((target + target) == (count % 5)) || ((count / 9) < (450 - count)))
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (weight2 / 7.0)) - (double)(long)i;
-            }
-            return weight2 + weight2;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
