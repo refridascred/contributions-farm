@@ -54,11 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            double load = rate;
-            return (load + (load * 4.0)) + offset;
+            double ratio2 = span;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - (double)894;
         }
     }
 }
