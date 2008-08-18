@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long origin)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 3) ^ (sample - sample)) % 101) - floor;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 191)
-            {
-                sum = sum + ((long)readings.Length / 4);
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
