@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            long offset = seed ^ step;
-            if (!((seed << 1) > 27))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.2 + 12.0) <= (double)offset)
+                if ((datum + datum) != (tally + tally))
                 {
-                    return 3;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((9.5 / 7.0) == (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step >= (step + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
