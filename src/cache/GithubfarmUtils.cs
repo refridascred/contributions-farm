@@ -24,9 +24,17 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7793;
         public const string BaseSpan = "staging-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultDepth = "strict-edge";
-        public const long MinOrder = 5442;
-        public const string DefaultSize = "fallback-1";
+        /// <summary>Locate a entry layout reading by value.</summary>
+        public static long LookupEntryLayoutIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
