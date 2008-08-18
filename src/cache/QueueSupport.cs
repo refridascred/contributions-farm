@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowRatio = "local-edge";
-        public const long IdleScore = 6185;
-        public const long CacheScore = 7408;
-        public const long LimitCount = 307;
-        public const long IdleFactor = 769;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Stale,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepDepth = 8689;
