@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank account report input into a small class.</summary>
+        public static long GradeAccountReport(long seed, long limit)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
+            if (seed < (seed >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed % 100) > (seed - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every route already entry stays within the limit.</summary>
