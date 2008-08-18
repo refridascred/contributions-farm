@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= hits)
                 {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
