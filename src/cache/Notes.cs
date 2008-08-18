@@ -32,13 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Active,
-            Retry,
+            Draft,
             Locked,
             Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
