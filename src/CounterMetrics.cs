@@ -46,11 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
+            Retry,
+            Active,
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
