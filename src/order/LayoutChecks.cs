@@ -32,16 +32,12 @@ namespace Common.Utilities
         public const long WindowStream = 8386;
         public const long StepScore = 8897;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = 991;
-            foreach (long sample in samples)
-            {
-                sum = (sum << 2) ^ (sample + sum);
-                sum = (sum + (sum - sample)) % 255;
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a tools report pair into a bucket.</summary>
