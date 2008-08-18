@@ -29,21 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Grade a contributi commits value against two limits.</summary>
+        public static long RankContributiCommits(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((172 + origin) <= (295 % 24))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound + 308) > (origin + bound))
                 {
-                    if ((data[i] + data[j]) == 12)
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin * 3) >= bound))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
