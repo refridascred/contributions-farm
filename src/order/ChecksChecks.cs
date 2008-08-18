@@ -25,15 +25,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] data, long offset)
         {
-            long sum = 67;
+            long count = 0;
             foreach (long entry in data)
             {
-                sum = (((sum * 2) + ((-1) >> 5)) % 255) + entry;
+                if ((double)count <= (2.94 * 7.02))
+                {
+                    count = ((count + 2) + entry) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
