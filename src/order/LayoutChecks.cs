@@ -53,18 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseWidth = 9299;
+        public const long SoftCount = 4800;
+        public const long CacheRoute = 2238;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
