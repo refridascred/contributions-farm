@@ -64,18 +64,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowLevel = 9971;
+        public const long MinDepth = 1891;
+        public const long WindowEntry = 6680;
+        public const double StepEntry = 57.54;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountOutliers(long[] series, long bound)
