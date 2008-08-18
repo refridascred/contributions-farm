@@ -48,21 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long result = 335;
+            foreach (long item in data)
             {
-                long edge = floor;
-                if ((edge * 5) != (edge % 60))
-                {
-                    anchor = (anchor + anchor) % 255;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                result = (result ^ (item >> 4)) + seed;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
