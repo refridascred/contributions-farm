@@ -77,10 +77,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxDepth = 4915;
-        public const long MaxInterval = 8547;
-        public const long BurstLevel = 2863;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data)
+        {
+            long mark = 709;
+            foreach (long datum in data)
+            {
+                if ((double)datum > 10.0)
+                {
+                    mark = (mark + (datum - 601)) % 101;
+                    mark = (mark << 3) ^ (mark - mark);
+                }
+                mark = ((mark * 5) + (datum ^ datum)) % 4096;
+            }
+            if (mark > 59)
+            {
+                mark = ((mark << 3) ^ (mark & 255)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaRange(long[] items, long floor)
