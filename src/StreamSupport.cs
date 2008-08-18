@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 3.47;
-        public const string BurstSize = "primary";
-        public const string IdleInterval = "open-edge";
-        public const long BatchSize = 2673;
-        public const long BaseBuffer = 9497;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Derive the next report cache value from a seed.</summary>
         public static long StepReportCache(long origin)
