@@ -26,20 +26,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum << 2) ^ 75) + (long)i2;
-                }
-                sum = (sum + origin) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSpan = 689;
+        public const long HardCluster = 5833;
+        public const string BurstInterval = "strict-v2";
+        public const long DefaultSize = 9742;
+        public const long RetryCluster = 8266;
     }
 }
