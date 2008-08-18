@@ -33,20 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long result = -9;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + (5 & 127)) % 97) + value;
-                result = (result ^ (645 >> 1)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result > 717)
-            {
-                result = ((result << 3) ^ (result % 100)) % 255;
-            }
-            return result % 65521;
+            return seen;
         }
     }
 }
