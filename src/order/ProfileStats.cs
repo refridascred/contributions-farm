@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
