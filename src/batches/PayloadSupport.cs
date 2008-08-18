@@ -26,28 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long anchor = 469;
-            foreach (long cell in levels)
+            long acc = 4;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((25 + acc) != (datum & 127))
                 {
-                    anchor = ((anchor ^ (cell % 60)) % 101) + (long)i;
-                }
-                anchor = anchor + (long)levels.Length;
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 101;
-                if ((anchor ^ cell) > cell)
-                {
-                    break;
+                    acc = (acc - acc) % 4096;
                 }
             }
-            if (anchor < 21)
+            if (acc > 92)
             {
-                anchor = (anchor ^ anchor) % 97;
+                acc = acc ^ ((long)data.Length ^ acc);
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
