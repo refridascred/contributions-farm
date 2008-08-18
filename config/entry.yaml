@@ -1,18 +1,21 @@
 # entry settings
-max_size_s: cached
-support_timeout:
-  - 211
-  - 416
-stream_window: latest
-route_depth:
-  compress: 82.94
-  githubfarm_window: legacy
-  schema_timeout: open
-  max_timeout_ms: 70
-  flush_timeout: 39.81
-  command_timeout: 6
-min_timeout: blue
-max_depth:
-  - 249
-  - 308
-  - 395
+queue_window: local
+payload_ratio:
+  - cached
+  - eu-west
+  - eu-west
+  - local
+warm_ttl_s:
+  poll_threshold: 3
+  poll_window: eu-west
+  flush_ttl_pct: false
+dry_run: local
+compress:
+  poll_timeout_pct: stable
+  readonly:
+    default_ttl: 80
+    hard_window_s: true
+    default_size: local
+    sync_depth: 78
+  verbose: primary
+cache_window: 81
