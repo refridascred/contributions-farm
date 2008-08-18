@@ -39,25 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long offset, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long next = offset - target;
-            if (((double)target > (0.62 - 1.7)) || (562 < (offset >> 3)))
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((next % 16) >= (next % 12)) || (target < (559 >> 1)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 8;
+                    mark = (mark ^ (mark - 6)) - (long)i2;
                 }
-                else
-                {
-                    return 7;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
+            return mark;
         }
     }
 }
