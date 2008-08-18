@@ -1,8 +1,12 @@
 {
-  "profile_size": 17.88,
-  "soft_retries_pct": ["cached", "strict", "stable", "latest"],
-  "editor_timeout": false,
-  "soft_size_ms": ["local", "edge"],
-  "strict": 250,
-  "sync_ttl": true
+  "tools_ratio": 1024,
+  "base_window_count": 33.9,
+  "cache_size": ["fallback", "standard", "edge"],
+  "compress": {
+    "stats_retries": 26.75,
+    "channel_window": 83,
+    "idle_size_count": 60
+  },
+  "batch_depth": 64,
+  "entry_ratio": ["open", "legacy"]
 }
