@@ -59,10 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSpan = 1697;
-        public const long MaxCount = 8432;
-        public const double MaxWidth = 49.9;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Synced,
+            Queued,
+            Draft,
+            Ready,
+            Active,
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double bias, double offset)
