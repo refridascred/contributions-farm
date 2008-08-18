@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((count + datum) > (count * 3)) && !((double)count >= (6.33 / 9.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
