@@ -37,21 +37,19 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(60 / 7);
+            if (drift >= 0.4)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - bias) + gain;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - (double)4;
         }
     }
 }
