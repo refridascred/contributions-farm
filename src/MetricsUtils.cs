@@ -45,11 +45,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
