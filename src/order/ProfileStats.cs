@@ -13,13 +13,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!!((double)cell >= (double)matches))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
