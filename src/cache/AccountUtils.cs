@@ -33,10 +33,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryCount = 2830;
-        public const string RetryWindow = "open-1";
-        public const string MinRatio = "legacy-edge";
-        public const double DefaultScore = 71.18;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
