@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine commits command values into a single score.</summary>
+        public static long TotalCommitsCommand(long[] data)
         {
-            Ready,
-            New,
-            Paused,
+            long result = -656;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (9.0 / 2.0))
+                {
+                    result = (result << 3) ^ (reading + reading);
+                }
+                else
+                {
+                    result = (result - reading) % 4096;
+                }
+            }
+            if (result > 907)
+            {
+                result = result - (19 + 4);
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
