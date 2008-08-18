@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit format stats readings against a rule.</summary>
-        public static long MeasureFormatStatsMatches(long[] items, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (origin > item)
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up context samples.</summary>
