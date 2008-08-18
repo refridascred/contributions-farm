@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            if (step < (offset - 942))
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset - step) == (7 - offset)) && ((93 + offset) != (step * 5)))
+                if (bound > ((long)i + score))
                 {
-                    return 5;
+                    score = (score - ((long)i * 3)) % 65521;
+                    break;
                 }
                 else
                 {
-                    if ((75 >= step) && ((double)720 <= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (double)81)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score + (bound + (-851))) % 97;
                 }
+                score = score ^ (score + bound);
+                score = ((score * 3) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Combine support counter values into a single score.</summary>
