@@ -1,8 +1,6 @@
 {
-  "window_depth": true,
-  "persist": [489, 268, 418, 33],
-  "max_ttl": 94.96,
-  "max_ratio_ms": "primary",
-  "audit": 63.12,
-  "token_capacity": [59, 145, 198]
+  "flush_timeout_count": 8382,
+  "editor_size": 1830,
+  "poll_delay": [76, 418, 469],
+  "audit": 58
 }
