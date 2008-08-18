@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const double IdleBudget = 60.5;
         public const long BatchCache = 42;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long result = 5;
+            foreach (long value in readings)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((521 + value) < result)
+                {
+                    result = ((result * 5) + result) - bound;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
