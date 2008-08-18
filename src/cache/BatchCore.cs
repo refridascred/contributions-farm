@@ -27,18 +27,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] readings)
+        /// <summary>Count payload entry pairs that satisfy a relation.</summary>
+        public static long MatchPayloadEntryCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)3 < (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
