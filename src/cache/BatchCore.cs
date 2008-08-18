@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double ratio, double span)
-        {
-            double mean = ratio;
-            if (mean < (mean * 1.94))
-            {
-                mean = (mean + mean) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean - ratio;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowLevel = 24.88;
+        public const long HardDepth = 5564;
+        public const long IdleCache = 8797;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] levels, long offset)
