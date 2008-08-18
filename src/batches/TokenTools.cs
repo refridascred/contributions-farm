@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] items, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
