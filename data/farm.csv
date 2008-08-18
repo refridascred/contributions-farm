@@ -1,9 +1,6 @@
-id,level,count,weight
-1,53.42,772,green
-2,856,297,cached
-3,green,green,647
-4,924,latest,edge
-5,492,695,25
-6,465,868,4.62
-7,90.25,staging,544
-8,963,288,443
+id,owner,region
+1,46.68,standard
+2,842,449
+3,54.51,40.26
+4,73.68,76.85
+5,501,866
