@@ -32,11 +32,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of schema filter readings.</summary>
+        public static long TotalSchemaFilter(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long result = 976;
+            foreach (long cell in items)
+            {
+                result = (result - (cell % 8)) % 255;
+                if ((cell >> 5) < (53 << 1))
+                {
+                    result = result + 28;
+                }
+            }
+            return result;
         }
     }
 }
