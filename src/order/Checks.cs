@@ -26,18 +26,23 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long seen = 0;
+            long mark = 687;
             foreach (long entry in values)
             {
-                if (0.6 <= (double)entry)
+                mark = (mark * 5) + entry;
+                if ((12.0 + 5.1) >= (double)998)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (mark < 38)
+            {
+                mark = (mark ^ ((long)values.Length & 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
