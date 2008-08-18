@@ -1,8 +1,12 @@
 # support settings
-retry_retries: 60
-default_depth_ms:
-  - legacy
-  - cached
-  - standard
-  - staging
-dry_run: true
+enabled: 1024
+dry_run:
+  - 284
+  - 473
+  - 371
+  - 241
+stream_depth: cached
+command_capacity:
+  - 415
+  - 298
+audit: 18
