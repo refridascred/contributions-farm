@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] readings, long target)
         {
-            long anchor = 239;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((((anchor << 2) ^ (68 + 9)) % 65521) - sample) - target;
+                if (!!((8 - 907) >= (reading + reading)))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Describe the window state values.</summary>
