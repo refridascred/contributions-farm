@@ -25,15 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Roll a route commits counter forward.</summary>
+        public static long SeriesRouteCommits(long offset)
         {
-            long state = origin;
+            long state = offset;
             for (int i = 0; i < 23; i++)
             {
-                state = state + ((long)i & 7);
-                state = ((state << 3) ^ (origin << 1)) % 4096;
-                state = ((state * 5) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
             return state;
         }
