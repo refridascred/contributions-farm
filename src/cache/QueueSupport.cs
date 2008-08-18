@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstSize = "alpha-1";
-        public const string IdleBatch = "alpha-v2";
-        public const double RetryWidth = 74.0;
-        public const long MaxBatch = 5354;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long limit, long target)
+        {
+            if (limit <= (limit / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit ^ target) < (target % 5)) && ((double)target <= (double)8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target >= (74 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long target)
