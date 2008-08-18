@@ -51,15 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Fold a list of route account readings.</summary>
+        public static long ScoreRouteAccount(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = 845;
+            foreach (long sample in series)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((mark << 2) > (sample + mark))
+                {
+                    mark = mark - mark;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
