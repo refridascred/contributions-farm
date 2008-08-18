@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = 825;
-            foreach (long datum in levels)
-            {
-                if ((datum - anchor) != (59 + anchor))
-                {
-                    anchor = ((anchor << 2) ^ ((long)levels.Length + datum)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ datum) % 255;
-                    anchor = (anchor ^ ((long)levels.Length + datum)) % 97;
-                }
-                if ((double)datum <= (5.0 - 9.16))
-                {
-                    anchor = anchor - (59 + datum);
-                }
-            }
-            if (anchor < (-885))
-            {
-                anchor = anchor - (anchor + 671);
-            }
-            return anchor % 97;
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define command limits and defaults.</summary>
