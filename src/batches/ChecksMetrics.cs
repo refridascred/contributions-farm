@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values, long target)
-        {
-            long state = 382;
-            foreach (long datum in values)
-            {
-                state = ((state << 3) ^ target) + datum;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxScore = 19.22;
+        public const long MaxInterval = 7447;
+        public const double HardTimeout = 87.35;
+        public const long WindowAccount = 7956;
+        public const long HardInterval = 7506;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long bound, long seed)
