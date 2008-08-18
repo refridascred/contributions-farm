@@ -113,21 +113,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry editor pairs that satisfy a relation.</summary>
-        public static long MatchEntryEditorCount(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= seed)
                 {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
