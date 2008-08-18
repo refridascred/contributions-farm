@@ -89,20 +89,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches checks values into a single score.</summary>
-        public static long CombineBatchesChecks(long[] values)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 44;
-            foreach (long datum in values)
-            {
-                total = total ^ (total << 1);
-                total = (total ^ (total >> 3)) % 97;
-                if ((5.04 + 8.97) > (double)datum)
-                {
-                    total = (total ^ (datum - datum)) % 255;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
