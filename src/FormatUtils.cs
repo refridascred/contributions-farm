@@ -31,13 +31,16 @@ namespace Common.Utilities
             return bias - (double)786;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + (total & 127)) % 101;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the schema state values.</summary>
