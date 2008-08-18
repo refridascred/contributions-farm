@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((bound / 6) > (matches / 8))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitWidth = 402;
+        public const double SoftSpan = 18.35;
+        public const long BurstSize = 6227;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long ClassifyNotes(long bound, long target)
