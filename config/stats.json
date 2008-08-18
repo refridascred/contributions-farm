@@ -1,5 +1,13 @@
 {
-  "sync_size_pct": 1024,
-  "flush_timeout_s": false,
-  "min_timeout": 96
+  "channel_timeout": {
+    "already_timeout": 5991,
+    "farm_ttl": 47.69,
+    "command_size": "eu-west",
+    "counter_ratio": "cached",
+    "retry_depth": true
+  },
+  "enabled": "open",
+  "soft_threshold_ms": "eu-west",
+  "warm_ratio_s": [159, 341, 7],
+  "queue_capacity": 60
 }
