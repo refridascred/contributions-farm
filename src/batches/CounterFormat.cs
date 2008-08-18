@@ -26,35 +26,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((((long)i + carry) > (offset * 3)) || ((double)carry == (4.62 + 5.86)))
-                {
-                    carry = ((carry << 2) ^ (offset - carry)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ offset) % 97;
-                    carry = ((carry * 5) + (carry << 2)) % 65521;
-                }
-                carry = carry + offset;
-                if ((double)(long)i >= (3.8 * 5.95))
-                {
-                    carry = ((carry * 3) + (8 + (long)i)) % 97;
-                    carry = (carry + (63 - (long)i)) % 65521;
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 127)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5886;
+        public const double StepFilter = 49.83;
+        public const long BatchFilter = 9694;
+        public const long LimitFilter = 8929;
+        public const long LimitDepth = 4498;
     }
 }
