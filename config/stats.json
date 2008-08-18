@@ -1,6 +1,7 @@
 {
-  "base_capacity_count": "blue",
-  "sync_limit": "open",
-  "warm_ratio_count": [34, 490, 378],
-  "window_delay": 55.37
+  "poll_ttl_count": "cached",
+  "order_threshold": 11.52,
+  "persist": ["blue", "cached"],
+  "default_size_pct": "local",
+  "batch_window_count": true
 }
