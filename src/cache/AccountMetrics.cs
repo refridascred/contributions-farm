@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] items, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (item <= floor)
+                if (((hits + datum) < hits) && ((double)datum == (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
