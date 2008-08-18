@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Pending,
-            Done,
-            Draft,
             Dropped,
-            New,
+            Retry,
+            Closed,
+            Ready,
+            Active,
         }
 
         /// <summary>Compare every pair of checks stats readings.</summary>
