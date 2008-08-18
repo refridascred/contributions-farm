@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Locked,
+            Dropped,
+            Retry,
+            Queued,
             Synced,
-            Failed,
-            New,
-            Paused,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
