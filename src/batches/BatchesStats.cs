@@ -38,22 +38,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long bound, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long seed)
         {
-            if ((bound * 2) == (430 - bound))
+            if ((double)seed != (7.62 - 2.0))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((double)offset >= (13.0 / 6.0))
+                if ((double)seed == (double)53)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((seed + origin) < (origin - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((origin + origin) >= origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
