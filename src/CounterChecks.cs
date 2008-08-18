@@ -45,18 +45,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardBudget = 4445;
+        public const long SoftLevel = 730;
+        public const string DefaultCache = "cached";
 
         /// <summary>Check that every tools token entry stays within the limit.</summary>
         public static bool ValidateToolsTokenBounds(long[] levels, long offset)
