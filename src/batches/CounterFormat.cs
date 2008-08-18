@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] items, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double bias = (double)(588 - 84);
+            if (bias > (gain - span))
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return ok;
+            return bias + (bias * 6.0);
         }
 
         /// <summary>Fold a list of entry order readings.</summary>
