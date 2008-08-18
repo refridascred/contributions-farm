@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double ratio, double floor)
-        {
-            double weight = (double)(838 ^ (-9));
-            if (weight <= (double)4)
-            {
-                weight = ((weight - 5.71) - ratio) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (double)243) + (double)(long)i;
-            }
-            return weight - (double)20;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "open";
+        public const double DefaultQueue = 73.69;
+        public const double RetryCount = 98.75;
+        public const long HardCount = 6656;
+        public const long StepFactor = 4319;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] readings)
