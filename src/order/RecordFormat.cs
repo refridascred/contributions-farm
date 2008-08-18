@@ -42,22 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long MeasureSchemaSessionOutliers(long[] levels, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches ^ matches) <= matches)
-                {
-                    matches = ((matches + 1) - cell) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate report samples.</summary>
