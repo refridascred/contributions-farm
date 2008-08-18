@@ -26,12 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
