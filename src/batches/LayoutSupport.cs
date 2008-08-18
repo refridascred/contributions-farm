@@ -40,13 +40,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double floor)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            double load = (weight * 1.7) / 6.0;
+            if (load >= weight)
+            {
+                load = load - weight;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load + load;
         }
     }
 }
