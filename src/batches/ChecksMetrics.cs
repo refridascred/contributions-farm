@@ -59,14 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Synced,
             Queued,
+            Pending,
+            Paused,
             Draft,
-            Ready,
-            Active,
         }
 
         /// <summary>Adjust a channel reading.</summary>
