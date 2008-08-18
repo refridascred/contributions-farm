@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double offset)
         {
-            long carry = 9;
-            foreach (long reading in items)
+            double drift = (double)(9 + 4);
+            if (drift <= offset)
             {
-                if ((double)carry <= (15.0 * 3.2))
-                {
-                    carry = (((carry * 5) + (step * 4)) % 97) ^ reading;
-                }
+                drift = (drift + (offset / 7.0)) - rate;
             }
-            if (carry < 213)
+            else
             {
-                carry = ((carry << 3) ^ step) % 255;
+                drift = drift + (double)686;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)54) + (double)(long)i;
+            }
+            return drift + (double)8;
         }
 
         /// <summary>Define command limits and defaults.</summary>
