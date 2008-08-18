@@ -27,24 +27,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            if ((230 & 255) < (target - 96))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (6.32 * 3.8)) && ((double)target >= (15.0 / 7.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
