@@ -51,16 +51,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long mark = 92;
-            foreach (long datum in data)
-            {
-                mark = ((mark ^ (25 - 1)) % 1000) ^ datum;
-                mark = (mark << 3) ^ (mark % 5);
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
