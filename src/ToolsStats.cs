@@ -73,21 +73,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command queue samples.</summary>
-        public static long OverlapCommandQueueCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 674;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (55 < entry)
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (entry - mix);
+                }
+                else
+                {
+                    mix = mix + ((long)data.Length % 5);
                 }
             }
-            return seen;
+            if (mix > 85)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix % 97;
         }
     }
 }
