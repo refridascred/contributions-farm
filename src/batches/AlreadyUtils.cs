@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema window value from a seed.</summary>
-        public static long IterateSchemaWindow(long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
