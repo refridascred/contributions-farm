@@ -51,15 +51,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of profile command readings.</summary>
-        public static long WeighProfileCommand(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long seed)
         {
-            long result = 63;
-            foreach (long item in items)
+            long edge = offset + seed;
+            if ((17 << 1) == (offset ^ edge))
             {
-                result = (result - (item - result)) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((offset * 2) >= (66 & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((edge ^ offset) <= edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a report reading.</summary>
