@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 264;
+        public const long BatchRoute = 4622;
+        public const long IdleCount = 7678;
+        public const long MinScore = 917;
+        public const string LimitRoute = "staging-v2";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] data, long seed)
