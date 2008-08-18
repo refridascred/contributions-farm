@@ -1,8 +1,5 @@
 {
-  "editor_limit": [58, 209, 368, 394],
-  "audit": 89,
-  "min_depth_pct": [500, 364],
-  "min_delay_s": 250,
-  "layout_capacity": ["blue", "latest", "staging", "cached"],
-  "cache_threshold": false
+  "graph_limit": "local",
+  "token_size": "stable",
+  "persist": "standard"
 }
