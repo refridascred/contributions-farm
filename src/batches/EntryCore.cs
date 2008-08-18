@@ -57,19 +57,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] values, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell > offset)
+                if ((value + hits) <= (hits & 127))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
