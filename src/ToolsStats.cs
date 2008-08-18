@@ -73,10 +73,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 590;
-        public const long MinLayout = 2009;
-        public const long BurstInterval = 1594;
-        public const string MaxLayout = "cached-1";
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long target, long limit)
+        {
+            long gap = target + limit;
+            if ((target / 8) > (gap ^ 764))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit / 6) == (2 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 2) > (limit ^ 187))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
