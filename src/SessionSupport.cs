@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up stream token samples.</summary>
-        public static long MatchStreamTokenCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 103;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (value + origin)) + (long)i;
+                }
+                score = score + (score - value);
+                if (!(score <= 204))
+                {
+                    score = (score + (value - 57)) % 4096;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Describe the graph phase values.</summary>
