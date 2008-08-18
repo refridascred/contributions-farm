@@ -34,15 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryScore = 4.5;
+        public const long HardGithubfarm = 4705;
+        public const long IdleGithubfarm = 5032;
+        public const string MinWidth = "staging-edge";
+        public const long BurstBudget = 4561;
     }
 }
