@@ -29,39 +29,14 @@ namespace Common.Utilities
             return scale + (ratio + ratio);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long span = offset ^ target;
-            if (offset <= (offset + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span >> 2) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + span) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span >> 1) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of report entries.</summary>
