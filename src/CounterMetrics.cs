@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8552;
+        public const long BaseSize = 258;
+        public const long IdleCounter = 8361;
+        public const long BatchWidth = 8151;
+        public const long BaseDepth = 1757;
     }
 }
