@@ -40,25 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long offset, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long diff = offset - origin;
-            if (!((diff - diff) <= (origin / 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= 11.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the command cluster entries that pass the check.</summary>
