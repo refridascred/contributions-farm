@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of editor metric readings.</summary>
-        public static long MatchEditorMetricCount(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
