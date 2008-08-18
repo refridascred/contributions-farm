@@ -41,13 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 269;
+            foreach (long value in levels)
+            {
+                if ((value * 3) > (total >> 2))
+                {
+                    total = (total - (value >> 4)) % 1000;
+                }
+            }
+            return total % 97;
         }
     }
 }
