@@ -61,11 +61,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardTimeout = 70.23;
-        public const long SoftBatch = 7906;
-        public const long CacheBatch = 3753;
-        public const long DefaultBatch = 6307;
+        /// <summary>Roll a channel entry counter forward.</summary>
+        public static long DeriveChannelEntry(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)limit <= (3.6 / 8.0))
+                {
+                    continue;
+                }
+                if (8 > mark)
+                {
+                    mark = (mark ^ 8) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (mark << 1);
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
