@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] data, long step)
+        /// <summary>Digest a series of format already entries.</summary>
+        public static long WeighFormatAlready(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 251;
+            foreach (long item in data)
             {
-                if ((step << 3) == (hits + sample))
+                mix = ((mix << 2) ^ mix) + item;
+                if (mix <= (903 & 1))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
