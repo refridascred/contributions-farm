@@ -12,20 +12,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Roll a token tools counter forward.</summary>
-        public static long StepTokenTools(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result - 732) != (25 + target))
-                {
-                    result = ((result << 3) ^ (long)i) % 97;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleBudget = 5141;
+        public const double SoftMetric = 91.25;
+        public const long MinMetric = 1975;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] readings)
