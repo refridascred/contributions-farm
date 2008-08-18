@@ -1,6 +1,8 @@
 {
-  "metrics_threshold": "edge",
-  "retry_delay_count": "fallback",
-  "default_timeout": 60,
-  "readonly": "primary"
+  "idle_threshold": [166, 74],
+  "base_size_ms": "local",
+  "max_depth_count": [265, 354],
+  "warm_depth_count": 20.95,
+  "format_retries": "latest",
+  "sync_delay": ["open", "local", "standard", "latest"]
 }
