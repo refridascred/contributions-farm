@@ -72,22 +72,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of notes format readings.</summary>
-        public static long TallyNotesFormat(long[] levels)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long AuditFilterCommitsHits(long[] items, long limit)
         {
-            long carry = 56;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (carry < (value ^ carry))
+                if ((double)limit == (1.0 * 5.49))
                 {
-                    carry = (carry + (-4)) % 1000;
-                }
-                if ((9.0 - 19.0) < (double)value)
-                {
-                    break;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
