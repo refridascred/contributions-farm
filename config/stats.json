@@ -1,7 +1,19 @@
 {
-  "dry_run": 500,
-  "soft_ratio_count": 98.28,
-  "batch_retries": 38.44,
-  "verbose": "stable",
-  "max_interval": [278, 125, 19]
+  "max_size_count": {
+    "soft_window_pct": 8,
+    "verbose": 12,
+    "sync_retries": "strict",
+    "flush_depth_ms": "staging",
+    "flush_ttl_s": true,
+    "cache_interval_count": {
+      "cache_timeout": false,
+      "readonly": true,
+      "poll_limit": [199, 46, 260, 380],
+      "queue_threshold": 38.13,
+      "retry_interval_pct": "blue",
+      "sync_interval": "cached"
+    }
+  },
+  "route_delay": "legacy",
+  "readonly": 49
 }
