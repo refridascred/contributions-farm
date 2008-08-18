@@ -83,22 +83,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long TallyQueueContextHits(long[] readings)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long LocateGraphGithubfarmIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > (item / 2))
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
