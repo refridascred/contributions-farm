@@ -1,5 +1,16 @@
 {
-  "strict": 70.6,
-  "base_capacity_count": true,
-  "max_timeout_count": 48.02
+  "sync_timeout_s": {
+    "max_window": "standard",
+    "min_size_pct": false,
+    "dry_run": {
+      "batch_size": 86.87,
+      "idle_delay_pct": "local",
+      "warm_interval": 14
+    }
+  },
+  "retry_capacity_pct": 500,
+  "sync_window_pct": true,
+  "support_ttl": "local",
+  "audit": 74.37,
+  "idle_capacity_ms": 60
 }
