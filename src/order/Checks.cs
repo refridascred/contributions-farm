@@ -57,12 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit githubfarm channel readings against a rule.</summary>
+        public static long CountGithubfarmChannelHits(long[] series, long target)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 6) == (datum + target))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
