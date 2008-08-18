@@ -34,15 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long score = 431;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                score = ((score * 2) + item) % 65521;
+                score = (score + (item >> 3)) % 97;
+                if ((item + score) > score)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score > 95)
+            {
+                score = ((score << 3) ^ 40) % 97;
+            }
+            return score;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
