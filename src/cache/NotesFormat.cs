@@ -35,22 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Derive the next context stats value from a seed.</summary>
+        public static long IterateContextStats(long bound)
         {
-            long mix = 233;
-            foreach (long value in readings)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(value >= ((-7) ^ mix)))
-                {
-                    mix = mix + (8 & 63);
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (mix < 4)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix % 97;
+            return sum;
         }
     }
 }
