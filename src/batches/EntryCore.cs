@@ -13,15 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double bias2 = (double)(4 + 68);
-            if (bias2 >= (double)27)
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (gain * 7.9);
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
