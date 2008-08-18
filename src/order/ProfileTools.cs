@@ -18,11 +18,26 @@ namespace Common.Utilities
             return (bias2 + bias2) + rate;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] items)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                if (((mix * 5) == (datum >> 4)) || (mix < (datum + (-52))))
+                {
+                    mix = (mix + mix) % 101;
+                }
+                if ((datum / 4) > (datum * 5))
+                {
+                    break;
+                }
+            }
+            if (mix > 473)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
