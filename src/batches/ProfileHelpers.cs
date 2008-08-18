@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate record commits readings against a bound.</summary>
-        public static bool ValidateRecordCommitsBounds(long[] data, long target)
+        /// <summary>Classify a session context pair into a bucket.</summary>
+        public static long GradeSessionContext(long offset, long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long gap = offset + seed;
+            if ((offset ^ 40) <= (seed * 3))
             {
-                if (sample >= target)
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 2) != (offset & 255))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((gap ^ offset) != (gap / 7)) && ((seed - (-40)) < seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (9.5 + 2.54))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
