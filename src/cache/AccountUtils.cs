@@ -13,18 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen << 3) > (cell - cell))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
