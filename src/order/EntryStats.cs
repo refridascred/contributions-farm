@@ -74,20 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout payload counter forward.</summary>
-        public static long RollLayoutPayload(long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                long hits = (90 ^ floor) - sum;
-                if ((floor + hits) < (sum - sum))
+                if ((21 + 42) >= reading)
                 {
-                    sum = (sum + ((long)i ^ 871)) % 255;
+                    hits = (hits + 3) - bound;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
