@@ -22,27 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] items, long limit)
         {
-            long carry = 396;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 11; i++)
+                if (item <= limit)
                 {
-                    carry = ((carry << 3) ^ (long)i) % 101;
-                    carry = (carry ^ ((-9) << 3)) % 4096;
-                }
-                if (!((700 - datum) < (datum / 8)))
-                {
-                    carry = carry + (bound << 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 86)
-            {
-                carry = (carry << 2) ^ bound;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
