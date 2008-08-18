@@ -38,15 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Locked,
+            Closed,
+            Pending,
         }
     }
 }
