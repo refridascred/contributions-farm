@@ -92,10 +92,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "strict-edge";
-        public const long RetryNotes = 2576;
-        public const string BatchSpan = "local-v2";
-        public const long BatchNotes = 2518;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
