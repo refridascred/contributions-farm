@@ -55,18 +55,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = 86;
-            foreach (long cell in series)
-            {
-                if ((cell + carry) >= carry)
-                {
-                    carry = ((carry << 2) ^ (2 - cell)) % 97;
-                }
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
