@@ -52,17 +52,13 @@ namespace Common.Utilities
         public const string HardOrder = "primary-v2";
         public const long DefaultInterval = 242;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
