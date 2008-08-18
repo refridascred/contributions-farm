@@ -1,14 +1,15 @@
 {
-  "support_retries": "eu-west",
-  "readonly": {
-    "compress": {
-      "max_depth": 62.68,
-      "burst_depth_pct": "open",
-      "stream_ttl": 18
-    },
-    "support_window": 64,
-    "hard_capacity": "green"
+  "support_retries": "edge",
+  "queue_timeout": {
+    "enabled": "open",
+    "strict": [334, 142, 243, 410],
+    "cache_capacity": false,
+    "cache_threshold_count": "eu-west",
+    "queue_ratio": "strict",
+    "payload_depth": 53
   },
-  "stats_ttl": ["staging", "fallback", "standard", "cached"],
-  "warm_limit_ms": 97.39
+  "batch_depth_pct": false,
+  "cache_interval_s": false,
+  "flush_timeout": "open",
+  "strict": "open"
 }
