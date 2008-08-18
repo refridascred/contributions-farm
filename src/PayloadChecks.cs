@@ -34,13 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double span)
         {
-            Pending,
-            Synced,
-            Failed,
-            Active,
+            double weight2 = 4.3;
+            if (weight2 >= (2.8 / 8.0))
+            {
+                weight2 = ((weight2 + weight2) + weight) - span;
+            }
+            return weight2 + (double)496;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
