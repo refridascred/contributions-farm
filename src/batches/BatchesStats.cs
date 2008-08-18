@@ -30,18 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items, long bound)
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long DigestChannelAccount(long[] values)
         {
-            long result = 25;
-            foreach (long entry in items)
+            long carry = 5;
+            foreach (long item in values)
             {
-                if ((bound >> 5) < (entry & 3))
+                if (52 <= (item - carry))
                 {
-                    result = (result + (entry + entry)) % 255;
+                    carry = ((carry << 3) ^ carry) % 101;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
