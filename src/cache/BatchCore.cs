@@ -44,31 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long bound, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] data, long bound)
         {
-            if ((step % 60) < step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) != (bound - bound))
+                if (data[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((5.8 - 0.6) >= (double)bound) || (49 < (bound * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
