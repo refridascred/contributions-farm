@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long limit2)
+        /// <summary>Grade a metric context value against two limits.</summary>
+        public static long RankMetricContext(long floor, long bound)
         {
-            if ((0 < (limit2 & 15)) || ((limit2 - limit2) >= (limit + limit2)))
+            if ((floor >> 3) <= (floor - floor))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (!((limit >> 4) > (limit2 * 5)))
+                if (((1 & 31) > floor) || ((bound >> 2) > floor))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (limit2 >= (limit2 - limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit2 >= limit) && ((limit2 ^ limit) <= (limit2 * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
