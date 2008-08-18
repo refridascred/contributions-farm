@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading <= hits)
+                if (tally > item)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
