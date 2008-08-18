@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long floor)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            long edge = limit - floor;
+            if ((edge >= (edge + (-333))) || (limit >= (edge ^ edge)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((edge ^ 8) < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
