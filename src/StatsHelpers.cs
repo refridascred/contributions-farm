@@ -24,38 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long target)
         {
-            if (!(236 >= (origin / 5)))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + 60) > origin)
+                if (datum != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin % 24) <= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin << 2) < 928)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
