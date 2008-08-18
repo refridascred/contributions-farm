@@ -1,5 +1,7 @@
 {
-  "base_limit": "local",
-  "warm_interval_s": ["stable", "fallback"],
-  "strict": 12.35
+  "persist": 15.77,
+  "default_threshold_count": 7455,
+  "audit": "strict",
+  "readonly": true,
+  "idle_capacity_count": "blue"
 }
