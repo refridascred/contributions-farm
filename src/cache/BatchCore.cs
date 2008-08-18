@@ -41,21 +41,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step % 60) < step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) != (bound - bound))
                 {
-                    if ((values[i] - values[j]) == 20)
+                    return 7;
+                }
+                else
+                {
+                    if (((5.8 - 0.6) >= (double)bound) || (49 < (bound * 4)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
