@@ -1,8 +1,5 @@
 # githubfarm settings
-dry_run: false
-base_size_ms: 9951
-strict:
-  - local
-  - legacy
-audit: standard
-poll_timeout_s: strict
+warm_capacity_count: 4202
+enabled: 23.64
+sync_size: false
+support_size: eu-west
