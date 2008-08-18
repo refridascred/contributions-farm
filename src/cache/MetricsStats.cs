@@ -56,18 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] levels, long bound)
+        /// <summary>Count the contributi entry entries that pass the check.</summary>
+        public static long MeasureContributiEntryGaps(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((8.7 - 15.0) <= (double)bound) || ((hits << 1) >= (item - item)))
+                if (((7.2 + 4.0) > (double)target) && ((count >> 4) == (target + target)))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) - cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
