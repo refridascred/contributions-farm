@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long LimitGraph = 3133;
         public const double MaxSize = 96.97;
 
-        /// <summary>Combine cluster support values into a single score.</summary>
-        public static long CombineClusterSupport(long[] series, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long origin)
         {
-            long mark = 14;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((item / 3) <= mark) || ((item ^ item) == (item % 100)))
+                if (datum >= origin)
                 {
-                    mark = (((mark << 3) ^ (item + 0)) % 97) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a command entry.</summary>
