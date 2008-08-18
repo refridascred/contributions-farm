@@ -28,11 +28,32 @@ namespace Common.Utilities
         public const long MinTimeout = 1361;
         public const long BatchInterval = 6777;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7541;
-        public const long IdleFactor = 153;
-        public const long CacheWidth = 7638;
-        public const long MaxSize = 1175;
+        /// <summary>Classify a filter stats pair into a bucket.</summary>
+        public static long BucketFilterStats(long origin, long bound)
+        {
+            if ((double)bound <= (7.4 + 16.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (3.6 <= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamOutliers(long[] data, long step)
