@@ -18,14 +18,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Retry,
-            Active,
-            Locked,
-            Paused,
-            Stale,
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
