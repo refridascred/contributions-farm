@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (seed > (seed - seed))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
