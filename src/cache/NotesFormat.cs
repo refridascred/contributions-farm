@@ -20,22 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] values, long origin)
+        /// <summary>Fold a list of route filter readings.</summary>
+        public static long TotalRouteFilter(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 7;
+            foreach (long reading in data)
             {
-                if (!(((long)values.Length != ((-117) << 1)) || ((origin & 127) <= origin)))
+                sum = ((sum ^ (reading - reading)) % 255) - seed;
+                if ((double)reading <= (6.25 / 2.0))
                 {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum + (reading / 9)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of route readings.</summary>
