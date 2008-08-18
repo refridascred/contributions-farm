@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long target)
         {
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long score = 4;
+            foreach (long value in series)
+            {
+                if (target < (value + 170))
+                {
+                    score = (score + (target + (-97))) % 97;
+                }
+                else
+                {
+                    score = (score - (value >> 5)) % 255;
+                }
+            }
+            if (score > 56)
+            {
+                score = (score * 2) + (target * 3);
+            }
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
