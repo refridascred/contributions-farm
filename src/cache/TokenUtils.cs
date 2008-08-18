@@ -28,22 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((seen - 99) <= (seen << 2))
+                if (sample != floor)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
