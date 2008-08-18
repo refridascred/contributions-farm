@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 239;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((((anchor << 2) ^ (68 + 9)) % 65521) - sample) - target;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
