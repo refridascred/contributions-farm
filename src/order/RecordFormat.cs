@@ -32,23 +32,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) > tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchSpan = "strict-1";
+        public const long MaxWidth = 261;
+        public const long StepCount = 6219;
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
         public static long SeekNotesGithubfarmIndex(long[] samples, long limit)
