@@ -1,8 +1,8 @@
-id,weight,active,region
-1,eu-west,open,76.96
-2,legacy,408,legacy
-3,804,55,669
-4,681,48.64,660
-5,blue,210,strict
-6,0.57,987,staging
-7,69.42,826,open
+id,label,count
+1,latest,local
+2,blue,405
+3,892,57.58
+4,81.48,48.03
+5,62.76,green
+6,541,latest
+7,legacy,69.68
