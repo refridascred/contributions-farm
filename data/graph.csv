@@ -1,7 +1,6 @@
-id,rank,region,token
-1,61.33,66.61,43.49
-2,98.8,primary,edge
-3,legacy,strict,521
-4,635,strict,712
-5,18.61,1.77,715
-6,staging,3.49,941
+id,state,rank,active
+1,stable,869,edge
+2,80.6,68.75,71.36
+3,green,348,220
+4,28.88,142,634
+5,green,58.46,4.33
