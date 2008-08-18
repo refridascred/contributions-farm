@@ -16,21 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up githubfarm contributi samples.</summary>
-        public static long CompareGithubfarmContributiCount(long[] samples)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load < 2.4)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load + span) + scale;
             }
-            return count;
+            else
+            {
+                load = load - (load - 5.27);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (span * 20.0);
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
