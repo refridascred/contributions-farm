@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] levels, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (sample >= floor)
+                if ((2 + origin) <= (87 / 6))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
