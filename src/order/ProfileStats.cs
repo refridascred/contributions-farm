@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series, long offset)
+        /// <summary>Accumulate queue support samples.</summary>
+        public static long CombineQueueSupport(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long sum = -79;
+            foreach (long cell in items)
             {
-                if (!!((double)cell >= (double)matches))
+                if ((double)cell != (3.0 * 9.0))
                 {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum << 2) ^ (cell / 8)) % 65521;
                 }
             }
-            return matches;
+            if (sum < 1)
+            {
+                sum = (sum << 3) ^ (origin + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
