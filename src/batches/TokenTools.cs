@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every stats channel entry stays within the limit.</summary>
-        public static bool VerifyStatsChannelBounds(long[] levels, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (reading < origin)
+                if ((cell ^ 579) > (hits - hits))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
