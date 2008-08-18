@@ -40,15 +40,22 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long step)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long AuditReportToolsHits(long[] levels)
         {
-            long state = 2;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                state = (state ^ (value - value)) - step;
+                if ((datum << 3) >= datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
