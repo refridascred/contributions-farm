@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            Closed,
-            Stale,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((long)samples.Length < (7 ^ 5)) && (seen >= ((-242) * 4)))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two counter measurements.</summary>
