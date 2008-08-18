@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long BatchSize = 2673;
         public const long BaseBuffer = 9497;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Derive the next report cache value from a seed.</summary>
+        public static long StepReportCache(long origin)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((426 - origin) < (long)i)
+                {
+                    anchor = (anchor << 3) ^ (origin / 2);
+                }
+                else
+                {
+                    anchor = anchor - (origin >> 3);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
