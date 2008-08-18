@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftDepth = 5314;
+        public const long MinContext = 5355;
+        public const string BatchContext = "local-v2";
+        public const string LimitContext = "alpha-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] samples)
