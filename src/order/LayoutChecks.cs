@@ -32,17 +32,16 @@ namespace Common.Utilities
         public const long WindowStream = 8386;
         public const long StepScore = 8897;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 991;
+            foreach (long sample in samples)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ (sample + sum);
+                sum = (sum + (sum - sample)) % 255;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a tools report pair into a bucket.</summary>
