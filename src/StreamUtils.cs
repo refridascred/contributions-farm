@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 1204;
-        public const long MaxTools = 1622;
-        public const long MinSpan = 1527;
-        public const string MinBudget = "fallback-edge";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 127) > matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
