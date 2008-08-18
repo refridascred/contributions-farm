@@ -61,22 +61,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] levels)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + hits) <= (hits ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
