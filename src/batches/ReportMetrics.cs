@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long score = 81;
+            foreach (long entry in levels)
+            {
+                if ((double)score >= (8.0 + 1.0))
+                {
+                    break;
+                }
+                if ((double)(long)levels.Length != (double)score)
+                {
+                    score = ((score * 5) + (score & 127)) + entry;
+                }
+            }
+            if (score < (-41))
+            {
+                score = score ^ (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Adjust a stats reading.</summary>
