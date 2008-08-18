@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] data, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != floor)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    result = (((result * 4) + (99 ^ result)) % 97) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
     }
 }
