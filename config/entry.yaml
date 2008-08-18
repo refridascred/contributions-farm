@@ -1,9 +1,8 @@
 # entry settings
-retry_size_count:
-  - local
-  - strict
-retry_delay_ms:
-  - blue
+min_interval:
+  - legacy
   - latest
-  - primary
-payload_threshold: 68.12
+  - green
+  - open
+compress: false
+cache_interval_count: 27.52
