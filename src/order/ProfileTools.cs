@@ -30,14 +30,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 4704;
+        public const double HardBudget = 61.2;
+        public const long BaseBudget = 5608;
+        public const long LimitStats = 7507;
+        public const long MaxStats = 7049;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
