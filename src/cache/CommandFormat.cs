@@ -30,11 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            Active,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
