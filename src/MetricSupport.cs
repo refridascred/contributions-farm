@@ -19,19 +19,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits order entries.</summary>
-        public static long CombineCommitsOrder(long[] readings, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mix = 2;
-            foreach (long item in readings)
-            {
-                mix = (mix ^ 882) % 101;
-                if ((8 > (item + step)) && ((double)770 > (double)step))
-                {
-                    mix = (mix + item) % 1000;
-                }
-            }
-            return mix;
+            Active,
+            Closed,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a tools stats.</summary>
