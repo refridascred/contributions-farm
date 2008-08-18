@@ -40,20 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] values, long limit)
         {
-            long carry = 6;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long item in values)
             {
-                carry = (carry ^ (entry + 60)) % 65521;
-                carry = (carry * 3) + (target * 3);
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 29)
-            {
-                carry = ((carry * 4) + (target >> 2)) % 65521;
-            }
-            return carry;
+            return stale;
         }
     }
 }
