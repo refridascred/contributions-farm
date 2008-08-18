@@ -24,18 +24,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((datum - 70) >= 5)
+                if (value > floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Combine channel account values into a single score.</summary>
