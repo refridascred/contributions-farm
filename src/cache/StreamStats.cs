@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format already entries.</summary>
-        public static long WeighFormatAlready(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = 251;
-            foreach (long item in data)
-            {
-                mix = ((mix << 2) ^ mix) + item;
-                if (mix <= (903 & 1))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
