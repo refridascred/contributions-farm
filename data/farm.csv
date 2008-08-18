@@ -1,8 +1,8 @@
-id,label,count
-1,latest,local
-2,blue,405
-3,892,57.58
-4,81.48,48.03
-5,62.76,green
-6,541,latest
-7,legacy,69.68
+id,state,label,owner,level
+1,81.53,901,925,79.52
+2,primary,58.95,66,20.17
+3,746,latest,blue,603
+4,open,350,58.61,strict
+5,10.72,456,46,6.83
+6,fallback,52.13,70.87,legacy
+7,stable,353,598,eu-west
