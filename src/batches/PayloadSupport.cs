@@ -51,15 +51,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] data, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long seed2)
         {
-            long acc = 93;
-            foreach (long datum in data)
+            long cur = seed + seed2;
+            if ((seed - cur) != (cur ^ 9))
             {
-                acc = ((acc ^ ((long)data.Length - seed)) % 65521) ^ datum;
+                return 4;
             }
-            return acc % 4096;
+            else
+            {
+                if (((cur / 2) < seed2) && ((seed % 8) > (seed * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (cur <= 514)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((87 + 96) != (seed - seed2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
