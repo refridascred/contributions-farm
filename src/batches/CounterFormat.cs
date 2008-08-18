@@ -34,11 +34,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5886;
-        public const double StepFilter = 49.83;
-        public const long BatchFilter = 9694;
-        public const long LimitFilter = 8929;
-        public const long LimitDepth = 4498;
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long FoldClusterEntry(long[] values)
+        {
+            long state = 41;
+            foreach (long sample in values)
+            {
+                if (((state + state) < (state + 71)) && ((state + sample) != (sample / 6)))
+                {
+                    state = ((state * 4) + (sample * 3)) % 101;
+                    continue;
+                }
+                if ((sample >= (sample - 1)) && ((double)sample == (8.0 - 3.94)))
+                {
+                    state = ((state << 2) ^ sample) % 1000;
+                }
+            }
+            if (state < 83)
+            {
+                state = (state << 2) ^ (state & 31);
+            }
+            return state;
+        }
     }
 }
