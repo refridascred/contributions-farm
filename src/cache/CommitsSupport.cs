@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter route entries.</summary>
-        public static long WeighCounterRoute(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 23;
-            foreach (long sample in items)
-            {
-                mark = (mark * 5) + (sample << 3);
-                if (!((sample % 60) != (sample + mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
