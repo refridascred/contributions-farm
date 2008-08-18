@@ -49,19 +49,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every graph batches entry stays within the limit.</summary>
-        public static bool ValidateGraphBatchesRange(long[] series, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum >= step)
+                if (!(floor > (floor - floor)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (sum % 24)) % 4096;
+                    sum = (sum * 3) + (floor + floor);
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
     }
 }
