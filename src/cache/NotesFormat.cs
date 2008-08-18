@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long ScoreOrderEntry(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long mark = 9;
+            foreach (long item in data)
+            {
+                mark = ((mark - (mark / 7)) % 101) - item;
+                if (floor >= (mark + 55))
+                {
+                    mark = (mark + (mark & 15)) % 4096;
+                }
+                if (!(6.7 > (double)mark))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of route filter readings.</summary>
