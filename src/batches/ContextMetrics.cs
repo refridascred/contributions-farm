@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] samples, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = 41;
-            foreach (long cell in samples)
-            {
-                if ((anchor << 1) > (anchor + 65))
-                {
-                    anchor = ((anchor * 4) + (offset / 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (cell * 2)) % 4096;
-                }
-                anchor = (anchor + (cell + 5)) % 97;
-            }
-            if (anchor > 32)
-            {
-                anchor = (anchor - (offset << 3)) % 4096;
-            }
-            return anchor % 97;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
