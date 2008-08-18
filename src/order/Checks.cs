@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((-8) + hits) < (hits / 2))
+                if ((datum <= 17) || (((floor / 8) > 15) && ((double)matches == (double)datum)))
                 {
-                    hits = ((hits + 2) - reading) - target;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next schema value.</summary>
