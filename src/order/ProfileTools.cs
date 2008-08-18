@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long MinScore = 917;
         public const string LimitRoute = "staging-v2";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long total = -7;
-            foreach (long cell in data)
-            {
-                total = (((total << 2) ^ (cell & 255)) % 65521) + seed;
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
