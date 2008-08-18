@@ -33,19 +33,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] data, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != target)
+                if ((9.3 - 18.0) <= (double)(long)i)
                 {
-                    valid = false;
+                    score = (score << 2) ^ ((long)i - seed);
                     break;
                 }
+                score = score ^ (seed + seed);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return valid;
+            return score;
         }
     }
 }
