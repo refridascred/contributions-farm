@@ -24,25 +24,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long offset2)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long lane = offset + offset2;
-            if ((18.0 + 3.6) != (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 << 3) > lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
