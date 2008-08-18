@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] series, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] levels, long target)
         {
-            long acc = 68;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                acc = ((acc ^ (long)series.Length) + sample) + offset;
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
