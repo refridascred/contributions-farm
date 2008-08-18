@@ -29,17 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first editor queue entry that matches the target.</summary>
-        public static long LookupEditorQueueIndex(long[] values, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -5;
+            foreach (long cell in levels)
             {
-                if (values[i] == origin)
+                mix = mix ^ (cell << 1);
+                if ((4.58 / 3.0) == (double)origin)
                 {
-                    return (long)i;
+                    mix = mix + (mix * 4);
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
