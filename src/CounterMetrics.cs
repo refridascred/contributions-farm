@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally <= (3.48 + 9.2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
