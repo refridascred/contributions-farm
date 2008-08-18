@@ -58,12 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if (data[i] < offset)
                 {
                     return (long)i;
                 }
