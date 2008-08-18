@@ -18,26 +18,12 @@ namespace Common.Utilities
             return (bias2 + bias2) + rate;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long mix = 8;
-            foreach (long datum in items)
-            {
-                if (((mix * 5) == (datum >> 4)) || (mix < (datum + (-52))))
-                {
-                    mix = (mix + mix) % 101;
-                }
-                if ((datum / 4) > (datum * 5))
-                {
-                    break;
-                }
-            }
-            if (mix > 473)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 1000;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
