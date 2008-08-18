@@ -1,48 +1,23 @@
 # entry settings
-cache_capacity_count:
-  min_threshold_ms: primary
-  default_threshold_s: 90
-  channel_size:
-    layout_timeout: true
-    batch_interval_ms: primary
-    context_depth: 6261
-    flush_ratio_pct: 1028
-    session_threshold: fallback
-    verbose:
-      - 71
-      - 356
-      - 446
-      - 341
-  compress: 5575
-  default_threshold:
-    - local
-    - latest
-    - cached
-  min_ttl_pct:
-    compress: primary
-    context_timeout: open
-    batch_threshold_count: 28.99
-    dry_run: legacy
-    filter_capacity: stable
-filter_ttl: standard
-notes_window:
-  stream_limit: 73.67
-  buffer_capacity: false
-  persist: false
-  soft_ratio_count: primary
-  poll_delay: 50.12
-  batch_threshold:
-    - latest
-    - edge
-    - cached
-cache_timeout_count: true
-idle_limit:
-  - cached
-  - strict
-  - standard
-dry_run:
-  retry_interval: 500
-  hard_ttl: 43.52
-  contributi_interval: standard
-  retry_window: true
-  hard_threshold_count: 60
+burst_delay_pct:
+  min_delay: 27
+  verbose: 250
+  base_timeout: 31
+  warm_capacity_ms: green
+tools_depth: primary
+notes_depth: true
+warm_size_count: edge
+tools_ttl:
+  githubfarm_interval: cached
+  min_capacity:
+    retry_depth_ms: strict
+    queue_ttl: 60.41
+    flush_size: stable
+    min_ttl_pct: primary
+    cache_size: 6740
+    soft_interval_count: true
+  notes_retries: 4497
+  checks_threshold: 42
+  cache_threshold_ms: false
+  max_depth: true
+dry_run: 60
