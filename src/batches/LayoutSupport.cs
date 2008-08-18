@@ -13,13 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample != (5.9 - 3.5))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
