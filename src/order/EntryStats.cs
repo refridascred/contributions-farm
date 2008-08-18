@@ -26,15 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cluster channel value from a seed.</summary>
-        public static long IterateClusterChannel(long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long result = 293;
+            foreach (long value in levels)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)value < (0.77 - 7.0))
+                {
+                    result = (result + value) % 97;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
