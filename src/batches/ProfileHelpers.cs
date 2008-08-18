@@ -56,18 +56,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] levels)
+        /// <summary>Scale a token stats figure with a bias.</summary>
+        public static double BlendTokenStats(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally < (double)2)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            double bias2 = ratio * 7.09;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Project the next notes value.</summary>
