@@ -34,16 +34,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (acc << 2) ^ floor;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (((long)i - mark) >= (mark / 7))
+                {
+                    mark = (mark - ((long)i + (long)i)) % 97;
+                    mark = (mark - (mark >> 2)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Check that every context batches entry stays within the limit.</summary>
