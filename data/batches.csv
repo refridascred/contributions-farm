@@ -1,8 +1,6 @@
-id,weight,ratio,state,count
-1,844,local,legacy,primary
-2,legacy,894,23.14,431
-3,76.15,223,85.99,60.69
-4,82.84,29.37,0.36,staging
-5,edge,stable,930,723
-6,218,52.29,legacy,eu-west
-7,50.88,strict,6,798
+id,token,label,owner,active
+1,545,465,latest,6.66
+2,968,78.01,48.06,37.19
+3,57.24,582,blue,186
+4,7.08,strict,91.52,750
+5,418,legacy,23.61,open
