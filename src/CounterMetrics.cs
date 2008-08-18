@@ -33,12 +33,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine stream layout values into a single score.</summary>
+        public static long ScoreStreamLayout(long[] series, long offset)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 716;
+            foreach (long value in series)
+            {
+                if (((total + offset) == (value + (-3))) || ((offset ^ value) < offset))
+                {
+                    total = ((total << 2) ^ (total >> 5)) % 65521;
+                }
+                if ((value - offset) < (value + total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
