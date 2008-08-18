@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = span;
+            if (scale <= span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - span) - gain;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the session status values.</summary>
