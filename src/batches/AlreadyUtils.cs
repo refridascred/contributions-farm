@@ -45,38 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long step, long origin)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long TallyCounterQueue(long[] readings)
         {
-            if ((step & 15) == (step + origin))
+            long total = -571;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step >> 4) < (origin - step)))
+                total = (total + (total << 2)) % 4096;
+                if ((0.3 - 2.6) >= (double)cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin + (-2)) < (origin << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 17.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Hold a session stats.</summary>
