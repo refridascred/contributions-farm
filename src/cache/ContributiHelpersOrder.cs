@@ -31,17 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile channel reading by value.</summary>
-        public static long FindProfileChannelIndex(long[] levels, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 89;
+            foreach (long item in readings)
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) == 0))
+                if (item <= mark)
                 {
-                    return (long)i;
+                    mark = (mark + limit) % 97;
+                }
+                if ((430 + 56) > (item + item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
