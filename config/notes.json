@@ -1,18 +1,12 @@
 {
-  "cache_limit_s": 12.1,
-  "soft_delay": 4208,
-  "enabled": 2.88,
-  "poll_threshold_s": "blue",
-  "retry_ttl": {
-    "soft_delay_count": 98,
-    "idle_depth_count": 92.68,
-    "retry_capacity": 8259,
-    "burst_delay_s": false,
-    "dry_run": {
-      "persist": true,
-      "hard_interval_ms": 1480,
-      "hard_timeout_pct": 5062,
-      "compress": 5578
-    }
+  "support_window": 82.1,
+  "dry_run": 60,
+  "githubfarm_timeout": ["primary", "latest", "eu-west", "eu-west"],
+  "verbose": "cached",
+  "base_depth_pct": {
+    "format_limit": 3,
+    "notes_threshold": "local",
+    "base_retries": 39,
+    "tools_depth": 40
   }
 }
