@@ -74,13 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((floor * 2) == (long)i)
+                {
+                    total = ((total * 3) + floor) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
