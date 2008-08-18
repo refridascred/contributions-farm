@@ -24,13 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 2958;
+        public const long SoftSize = 1976;
+        public const long HardBuffer = 3690;
+        public const long IdleTimeout = 6954;
+        public const long BurstBuffer = 57;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchWidth = 2880;
