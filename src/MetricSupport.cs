@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values)
         {
-            double ratio = (double)(784 + 9);
-            if (ratio >= (gain * 4.5))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + (ratio / 5.0)) + span;
+                if ((7.3 / 6.0) < (double)datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 3.0;
+            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
