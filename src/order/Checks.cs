@@ -32,13 +32,13 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Done,
-            Idle,
+            Dropped,
             Stale,
             Synced,
+            Ready,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
