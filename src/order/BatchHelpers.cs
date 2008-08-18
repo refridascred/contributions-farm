@@ -20,19 +20,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every contributi window entry stays within the limit.</summary>
-        public static bool ValidateContributiWindowBounds(long[] data, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value < seed)
+                if ((28 % 10) != (seen >> 5))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
