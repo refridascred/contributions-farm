@@ -1,19 +1,7 @@
 {
-  "strict": "latest",
-  "batch_ratio_s": true,
-  "max_threshold_s": [61, 326, 232, 475],
-  "idle_depth": {
-    "counter_threshold": {
-      "compress": "primary",
-      "enabled": false,
-      "contributi_threshold": true,
-      "channel_retries": [343, 458, 103],
-      "min_size_count": 70.71,
-      "soft_capacity": 45.61
-    },
-    "warm_capacity_pct": true,
-    "strict": "legacy",
-    "metric_threshold": 1316
-  },
-  "poll_timeout": ["stable", "blue"]
+  "poll_delay_ms": [193, 295, 114, 42],
+  "metric_ratio": 30,
+  "readonly": 36,
+  "batch_ttl": 28,
+  "sync_limit_ms": 2
 }
