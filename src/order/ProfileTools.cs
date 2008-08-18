@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const double BaseMetric = 83.71;
         public const long DefaultMetric = 1569;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long target, long origin)
+        /// <summary>Digest a series of token window entries.</summary>
+        public static long WeighTokenWindow(long[] levels)
         {
-            long gap = target - origin;
-            if ((double)gap >= (double)target)
+            long acc = 606;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((179 + target) > target)
+                if ((9 >> 1) > acc)
                 {
-                    return 5;
+                    acc = (acc ^ (98 + acc)) % 97;
                 }
                 else
                 {
-                    if (!(gap < (origin * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = acc - (cell + acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Fold a list of token format readings.</summary>
