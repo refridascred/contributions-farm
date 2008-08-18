@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two already graph measurements.</summary>
-        public static double BlendAlreadyGraph(double rate, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings, long step)
         {
-            double ratio = (double)229 + (span * 1.9);
-            if (ratio >= 6.07)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio + ratio;
+                if (4.23 >= (double)value)
+                {
+                    matches = (matches + 2) + step;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - span) - (double)(long)i;
-            }
-            return ratio + rate;
+            return matches;
         }
 
         /// <summary>Blend two context measurements.</summary>
