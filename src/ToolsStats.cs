@@ -73,39 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long bound)
         {
-            long gap = target + limit;
-            if ((target / 8) > (gap ^ 764))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit / 6) == (2 * 2))
+                if ((double)entry <= 1.0)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 2) > (limit ^ 187))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
+            return hits;
         }
     }
 }
