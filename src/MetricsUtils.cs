@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long seed)
         {
-            Failed,
-            Closed,
-            New,
+            if (73 < (seed + 634))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed < (seed - seed)) || (floor > (floor ^ 13)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next queue value.</summary>
