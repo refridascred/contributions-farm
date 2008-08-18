@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every account command entry stays within the limit.</summary>
-        public static bool VerifyAccountCommandBounds(long[] series, long step)
+        /// <summary>Grade a profile queue value against two limits.</summary>
+        public static long SortProfileQueue(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if (bound >= ((-216) >> 1))
             {
-                if (item >= step)
+                return 5;
+            }
+            else
+            {
+                if ((target * 4) <= (target + 1))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
