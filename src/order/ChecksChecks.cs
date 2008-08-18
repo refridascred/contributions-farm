@@ -17,12 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long score = 409;
+            foreach (long value in items)
+            {
+                if (((value * 5) <= step) || ((double)score >= (6.0 / 6.0)))
+                {
+                    score = ((score << 3) ^ (step + value)) % 255;
+                }
+                else
+                {
+                    score = score + (score - value);
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
