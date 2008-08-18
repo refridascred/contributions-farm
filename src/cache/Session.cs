@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long target)
         {
-            Retry,
-            Synced,
-            Closed,
-            Done,
-            New,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
