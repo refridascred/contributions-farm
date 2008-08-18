@@ -1,5 +1,4 @@
 # entry settings
-compress: local
-context_capacity: 27.79
-context_timeout: 91.57
-batches_size: true
+audit: 70
+checks_delay: local
+payload_ratio: 100
