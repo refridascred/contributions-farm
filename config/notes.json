@@ -1,6 +1,16 @@
 {
-  "sync_depth_s": true,
-  "persist": 76.13,
-  "githubfarm_delay": 1024,
-  "payload_limit": "standard"
+  "flush_ttl_count": 85.0,
+  "max_size_s": 250,
+  "dry_run": {
+    "idle_ratio": "staging",
+    "enabled": "eu-west",
+    "sync_retries_ms": 100,
+    "soft_threshold": 321
+  },
+  "compress": {
+    "warm_ttl": false,
+    "readonly": 4691,
+    "max_capacity_s": 30
+  },
+  "retry_timeout": 7910
 }
