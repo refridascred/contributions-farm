@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long BaseRatio = 2573;
         public const double HardCount = 92.16;
 
-        /// <summary>Audit payload counter readings against a rule.</summary>
-        public static long CountPayloadCounterOutliers(long[] readings, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + 1) <= (offset % 100))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
