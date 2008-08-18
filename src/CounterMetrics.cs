@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = 725;
-            foreach (long item in series)
-            {
-                carry = (carry - step) ^ item;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
