@@ -1,37 +1,47 @@
 # githubfarm settings
-enabled:
-  - 430
-  - 132
-  - 356
-audit:
-  poll_timeout_ms:
-    audit: 60
-    compress: strict
-    warm_retries: 32
-    editor_ttl:
-      - staging
-      - stable
-    soft_ratio_s: 3
-    base_depth_ms: 250
-  buffer_ttl: local
-  base_threshold_ms:
-    - 400
-    - 495
-    - 383
-    - 487
-  hard_limit_s:
-    metrics_ratio: 15.38
-    dry_run:
+hard_size_ms: 100
+entry_window: blue
+window_interval:
+  min_limit:
+    min_retries_pct: strict
+    poll_window_pct: 90.04
+    hard_ttl_s: cached
+  tools_size:
+    metrics_size: 29.34
+    session_limit: 3825
+    checks_window:
+      - legacy
+      - legacy
       - latest
-      - local
-    burst_limit_pct: fallback
-    report_retries:
-      - 187
-      - 18
-    audit: 500
-    hard_timeout: false
-  sync_retries: standard
-cache_depth_pct: 63.31
-sync_retries_s: latest
-sync_depth_count: 500
-stream_interval: true
+    soft_delay_count: 74.67
+    dry_run:
+      - 22
+      - 168
+      - 90
+      - 117
+    compress: 500
+  batch_timeout_s:
+    hard_ttl_pct: false
+    filter_capacity: 24.2
+    max_threshold: false
+    hard_interval_s: 60
+    retry_interval_ms: stable
+  strict:
+    max_capacity: true
+    max_interval_count: false
+    batch_threshold_s:
+      - latest
+      - legacy
+      - fallback
+      - green
+    burst_limit_pct: eu-west
+    poll_window: 12.67
+soft_size_s:
+  readonly:
+    - primary
+    - edge
+    - green
+    - green
+  token_depth: 45.47
+  min_depth_pct: 100
+  default_size_s: 60
