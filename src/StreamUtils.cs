@@ -12,10 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleBudget = 5141;
-        public const double SoftMetric = 91.25;
-        public const long MinMetric = 1975;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] readings)
