@@ -37,22 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long result = 5;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sample / 6) < (5 + sample)))
+                if (items[i] > bound)
                 {
-                    result = (result << 2) ^ result;
-                }
-                else
-                {
-                    result = result - (target >> 5);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
