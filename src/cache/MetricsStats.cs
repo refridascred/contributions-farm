@@ -57,21 +57,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Blend two notes report measurements.</summary>
+        public static double SmoothNotesReport(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 14.0 * 20.0;
+            if (weight > (double)0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - (scale - 7.53)) - offset;
             }
-            return tally;
+            return weight + (double)633;
         }
 
         /// <summary>Match up tools already samples.</summary>
