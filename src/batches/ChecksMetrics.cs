@@ -16,23 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster batch value from a seed.</summary>
-        public static long RollClusterBatch(long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long slot = bound ^ seed;
+            if (bound <= (seed >> 3))
             {
-                if (((long)i >> 2) < (9 / 3))
+                return 6;
+            }
+            else
+            {
+                if (seed > (slot >> 5))
                 {
-                    carry = carry + carry;
+                    return 3;
                 }
                 else
                 {
-                    carry = carry + ((-80) + (long)i);
+                    if ((seed - bound) <= (bound ^ 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((2.0 * 6.0) <= (double)slot) && ((158 + bound) == (bound >> 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
