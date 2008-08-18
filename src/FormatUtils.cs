@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate record cache readings against a bound.</summary>
-        public static bool VerifyRecordCacheBounds(long[] readings, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Combine token values into a single score.</summary>
