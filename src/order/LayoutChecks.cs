@@ -53,19 +53,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate command editor readings against a bound.</summary>
-        public static bool ValidateCommandEditorBounds(long[] items, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Idle,
+            Queued,
         }
     }
 }
