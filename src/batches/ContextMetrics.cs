@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 3001;
+        public const long CacheSpan = 2314;
+        public const long WindowChannel = 1484;
+        public const string MinScore = "stable-edge";
+        public const long MaxChannel = 835;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryRatio = 5928;
