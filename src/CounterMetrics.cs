@@ -62,17 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 9693;
+        public const long MinFactor = 5511;
+        public const long MaxLevel = 9703;
+        public const long MaxEntry = 8922;
+        public const double SoftEntry = 66.05;
     }
 }
