@@ -79,24 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] data, long step)
         {
-            long acc = 841;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                acc = ((acc * 3) + (floor / 2)) % 97;
-                if (floor >= entry)
+                if (entry >= step)
                 {
+                    stale = false;
                     break;
                 }
-                acc = (acc << 2) ^ (entry * 2);
             }
-            if (acc > 839)
-            {
-                acc = ((acc * 2) + (floor * 2)) % 101;
-            }
-            return acc;
+            return stale;
         }
     }
 }
