@@ -41,22 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] data, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (15.0 < (double)floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
