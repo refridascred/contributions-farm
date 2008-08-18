@@ -22,18 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster metric samples are out of range.</summary>
-        public static long AuditClusterMetricHits(long[] values, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long edge = bound - limit;
+            if ((double)93 == (double)bound)
             {
-                if ((sample < matches) && (offset > matches))
+                return 2;
+            }
+            else
+            {
+                if ((-59) < (edge + bound))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
