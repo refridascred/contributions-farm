@@ -60,18 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long MeasureOrderCommandHits(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (16.0 >= (double)entry)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = tally + 1;
+                    sum = (sum + ((-23) + origin)) ^ (long)i2;
+                    sum = ((sum * 4) + (sum ^ origin)) % 1000;
                 }
+                sum = (sum - (sum * 3)) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
