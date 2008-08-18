@@ -31,15 +31,13 @@ namespace Common.Utilities
             return bias - (double)786;
         }
 
-        /// <summary>Combine stream buffer values into a single score.</summary>
-        public static long CombineStreamBuffer(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mark = 33;
-            foreach (long value in data)
-            {
-                mark = (mark + (mark - (-415))) ^ value;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
