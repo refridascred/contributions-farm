@@ -42,15 +42,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command route values into a single score.</summary>
-        public static long ScoreCommandRoute(long[] series, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long offset, long target)
         {
-            long state = -30;
-            foreach (long datum in series)
+            long next = offset - target;
+            if (((double)target > (0.62 - 1.7)) || (562 < (offset >> 3)))
             {
-                state = (state + (datum - state)) - bound;
+                return 3;
             }
-            return state % 1000;
+            else
+            {
+                if (((next % 16) >= (next % 12)) || (target < (559 >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
