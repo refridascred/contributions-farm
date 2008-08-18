@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long floor)
         {
-            Dropped,
-            Failed,
-            New,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
