@@ -30,13 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long target)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of order readings.</summary>
