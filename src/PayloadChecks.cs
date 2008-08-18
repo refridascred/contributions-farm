@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 1756;
-        public const long MinTimeout = 5479;
-        public const long BurstStats = 2888;
-        public const string BurstScore = "fallback-1";
-        public const long IdleRatio = 2821;
+        /// <summary>Measure how many token window samples are out of range.</summary>
+        public static long AuditTokenWindowHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(((4.7 / 5.0) == (double)seen) || ((item + 7) == (23 + seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] series)
