@@ -1,20 +1,8 @@
 {
-  "soft_timeout_ms": {
-    "notes_retries": 2559,
-    "strict": {
-      "account_depth": 45,
-      "burst_limit": 80.79,
-      "verbose": 19,
-      "dry_run": 45
-    },
-    "farm_delay": {
-      "retry_ratio_ms": "open",
-      "sync_timeout_count": 4,
-      "burst_timeout_count": ["edge", "primary", "strict", "primary"],
-      "session_capacity": 2339
-    }
-  },
-  "batch_size": 31.23,
-  "readonly": "fallback",
-  "cache_timeout": 3860
+  "route_retries": "latest",
+  "flush_ratio": 77.96,
+  "hard_timeout_count": "legacy",
+  "min_interval_pct": "latest",
+  "account_capacity": true,
+  "command_timeout": 52
 }
