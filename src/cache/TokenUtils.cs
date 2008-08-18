@@ -33,16 +33,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] readings, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                sum = (sum ^ (long)i) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
