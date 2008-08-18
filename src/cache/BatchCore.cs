@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long result = -43;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((floor - result) < (result & 1)) || ((sample + sample) <= (sample + floor)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 3) ^ (result / 5)) % 1000;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
