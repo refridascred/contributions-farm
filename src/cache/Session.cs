@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double BurstSize = 40.81;
         public const long SoftSize = 4100;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
