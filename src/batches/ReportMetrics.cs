@@ -28,21 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9 - anchor) < ((long)data.Length - anchor))
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (item >> 5);
+                }
+                else
+                {
+                    anchor = (anchor - (long)data.Length) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 37)
+            {
+                anchor = (anchor - ((-29) & 255)) % 1000;
+            }
+            return anchor;
         }
     }
 }
