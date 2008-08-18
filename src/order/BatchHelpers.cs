@@ -15,19 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (value >= bound)
+                if ((offset - count) > (count + offset))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
