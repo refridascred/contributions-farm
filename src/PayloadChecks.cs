@@ -12,22 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long step)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value > (step + 35))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
