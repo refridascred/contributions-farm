@@ -17,12 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 63) < (cell + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
