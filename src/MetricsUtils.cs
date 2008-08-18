@@ -59,13 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Dropped,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 6602;
+        public const double BurstCount = 8.45;
+        public const long BatchCount = 7163;
+        public const string BaseSize = "legacy-v2";
+        public const long WindowSupport = 6294;
 
         /// <summary>Combine profile checks values into a single score.</summary>
         public static long TallyProfileChecks(long[] samples)
