@@ -39,22 +39,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long mark = 68;
-            foreach (long item in samples)
+            long mix = -5;
+            foreach (long item in data)
             {
-                if ((mark - mark) == (20 + mark))
+                if (item < (item ^ item))
                 {
-                    mark = ((mark << 2) ^ item) % 65521;
+                    mix = ((mix * 5) + mix) % 255;
+                }
+                else
+                {
+                    mix = (mix * 2) + (8 + mix);
                 }
             }
-            if (mark > 478)
+            if (mix > 95)
             {
-                mark = (mark ^ mark) % 4096;
+                mix = ((mix << 3) ^ (mix >> 1)) % 4096;
             }
-            return mark;
+            return mix;
         }
     }
 }
