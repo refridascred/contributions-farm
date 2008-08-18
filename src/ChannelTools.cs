@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] values)
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long AuditToolsChannelGaps(long[] data, long offset)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long datum in data)
             {
-                if (seen >= 931)
+                if (!(datum <= (offset - seen)) || (((datum - datum) == (offset % 97)) && ((datum + 116) <= datum)))
                 {
-                    seen = (seen + 1) - item;
+                    seen = seen + 3;
                 }
             }
             return seen;
