@@ -25,18 +25,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many layout token samples are out of range.</summary>
-        public static long TallyLayoutTokenMatches(long[] levels, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((248 + 97) > (reading << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) - target;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
