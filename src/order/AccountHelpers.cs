@@ -24,19 +24,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] data, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long carry = 826;
+            foreach (long datum in items)
             {
-                if (entry < limit)
+                carry = (carry ^ (carry % 2)) % 101;
+                if ((datum + carry) >= (carry + 3))
                 {
-                    valid = false;
+                    carry = ((carry * 3) + (2 / 4)) % 101;
+                }
+                if ((16.0 + 7.6) > (double)carry)
+                {
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Hold a account summary.</summary>
