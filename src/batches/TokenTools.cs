@@ -37,14 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Stale,
-            Paused,
-            Idle,
-            Done,
-            Retry,
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
