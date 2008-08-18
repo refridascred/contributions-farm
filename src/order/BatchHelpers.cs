@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6247;
+        public const long LimitRatio = 8942;
+        public const long HardChecks = 8367;
+        public const string HardCount = "legacy-1";
+        public const long BatchChecks = 5500;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long WindowBatch = 364;
