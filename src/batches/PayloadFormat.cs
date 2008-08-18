@@ -25,18 +25,39 @@ namespace Common.Utilities
             return scale + (ratio + ratio);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long span = offset ^ target;
+            if (offset <= (offset + target))
             {
-                if (seen > 9)
+                return 7;
+            }
+            else
+            {
+                if ((span >> 2) > target)
                 {
-                    seen = ((seen + 1) + datum) + bound;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + span) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((span >> 1) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
