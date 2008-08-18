@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches order samples are out of range.</summary>
-        public static long MeasureBatchesOrderOutliers(long[] series, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((-936) < (bound << 1))
+                if (item < limit)
                 {
-                    seen = (seen + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every route already entry stays within the limit.</summary>
