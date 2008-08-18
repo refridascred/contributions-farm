@@ -64,18 +64,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] values, long seed)
         {
-            long score = 366;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((score < ((-5) << 1)) || ((score ^ score) != (64 - 62)))
+                if (cell >= seed)
                 {
-                    score = score + (cell * 3);
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
