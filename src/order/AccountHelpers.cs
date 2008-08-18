@@ -61,19 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "strict-v2";
+        public const double StepMetric = 59.01;
+        public const string BatchSize = "standard-edge";
     }
 }
