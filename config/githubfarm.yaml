@@ -1,20 +1,4 @@
 # githubfarm settings
-sync_interval_count:
-  - 245
-  - 468
-  - 71
-dry_run:
-  - staging
-  - edge
-  - local
-flush_ttl: primary
-verbose:
-  notes_delay: 100
-  compress: 7213
-  verbose: 17.04
-  readonly: primary
-  commits_capacity:
-    cache_retries_pct: 6266
-    batch_ratio_pct: 89.93
-    payload_threshold: stable
-  warm_retries: 73
+cache_threshold: stable
+max_size_pct: true
+stream_depth: 3575
