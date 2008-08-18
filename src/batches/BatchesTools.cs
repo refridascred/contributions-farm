@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long MinRecord = 4634;
         public const long MaxRecord = 1957;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of notes counter entries.</summary>
+        public static long WeighNotesCounter(long[] values, long bound)
         {
-            New,
-            Locked,
-            Closed,
-            Pending,
+            long acc = 311;
+            foreach (long datum in values)
+            {
+                if ((2.3 / 8.0) < (double)acc)
+                {
+                    acc = ((acc ^ acc) - datum) - bound;
+                }
+            }
+            return acc;
         }
     }
 }
