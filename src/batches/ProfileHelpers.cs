@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool CheckOrderStatsBounds(long[] samples, long offset)
+        /// <summary>Validate record commits readings against a bound.</summary>
+        public static bool ValidateRecordCommitsBounds(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (datum <= offset)
+                if (sample >= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
