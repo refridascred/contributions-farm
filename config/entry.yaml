@@ -1,24 +1,8 @@
 # entry settings
-max_retries_pct: 19.26
-compress: 30
-session_limit:
-  burst_threshold_s: green
-  compress: eu-west
-  batch_interval:
-    entry_retries: green
-    layout_ttl: cached
-    min_depth_ms: latest
-    cache_depth_pct: 9607
-    idle_limit_s: 4033
-  retry_timeout_pct: false
-  queue_timeout:
-    token_size: true
-    max_window: legacy
-    checks_threshold: 39.97
-    cache_threshold: 45
-  warm_timeout_pct: 82
-cache_threshold_ms: 500
-audit: 1960
-poll_retries_ms:
-  - 497
-  - 392
+editor_limit: 100
+verbose: 88.45
+soft_timeout_count: 54.41
+hard_delay_ms:
+  - stable
+  - strict
+burst_limit_s: 89.11
