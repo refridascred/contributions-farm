@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long floor)
-        {
-            long mark = 468;
-            foreach (long reading in data)
-            {
-                if (((double)mark == (14.0 / 6.0)) || ((floor + reading) < ((-524) + mark)))
-                {
-                    mark = (mark << 3) ^ (mark - 89);
-                }
-                else
-                {
-                    mark = mark + (floor % 97);
-                }
-            }
-            if (mark < 619)
-            {
-                mark = mark - (floor >> 2);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseWidth = "alpha-1";
+        public const long DefaultFactor = 9966;
+        public const string BatchReport = "latest-v2";
+        public const string SoftReport = "standard-v2";
 
         /// <summary>Rank report input into a small class.</summary>
         public static long RankReport(long bound, long limit)
