@@ -30,14 +30,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Synced,
-            Closed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseFactor = 1228;
+        public const long DefaultSupport = 2216;
+        public const string DefaultDepth = "legacy-1";
+        public const long DefaultCount = 3531;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long BucketRecord(long floor, long seed)
