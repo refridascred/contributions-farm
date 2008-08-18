@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Grade a layout commits value against two limits.</summary>
+        public static long ClassifyLayoutCommits(long origin, long seed)
         {
-            long state = 615;
-            foreach (long entry in levels)
+            long step = origin - seed;
+            if ((7.34 + 2.9) > (5.0 / 6.0))
             {
-                if ((3.16 / 6.0) >= (double)entry)
+                return 7;
+            }
+            else
+            {
+                if (((20 + 17) < (seed + 1)) && ((double)step == (9.93 * 3.0)))
                 {
-                    state = state + (state << 3);
+                    return 6;
                 }
-                if ((double)entry == (double)669)
+                else
                 {
-                    state = (state ^ (entry - entry)) % 65521;
+                    if ((origin + seed) < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
