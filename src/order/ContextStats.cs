@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const string SoftFarm = "alpha";
         public const string BatchCount = "alpha-v2";
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if ((43 + offset) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) <= (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
