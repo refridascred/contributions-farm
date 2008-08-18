@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!!(item < 730))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
