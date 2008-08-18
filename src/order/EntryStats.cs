@@ -40,11 +40,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleBudget = 8434;
-        public const long StepWidth = 9751;
-        public const long CacheRatio = 1464;
-        public const long RetryToken = 8200;
+        /// <summary>Combine checks notes values into a single score.</summary>
+        public static long TotalChecksNotes(long[] samples, long origin)
+        {
+            long mark = 840;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark ^ entry) + (long)i) - origin;
+                }
+                mark = (mark ^ 50) % 101;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Check that every context batches entry stays within the limit.</summary>
         public static bool CheckContextBatchesLimits(long[] values, long bound)
