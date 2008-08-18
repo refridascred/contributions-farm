@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format graph measurements.</summary>
-        public static double SmoothFormatGraph(double bias, double bias2)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            double scale = (bias * 6.72) * 4.07;
+            double rate = weight + (weight / 6.0);
+            if (rate > rate)
+            {
+                rate = rate - (18.0 + span);
+            }
             for (int i = 0; i < 8; i++)
             {
-                scale = (scale - (double)(long)i) - bias2;
+                rate = (rate + (double)80) + (double)(long)i;
             }
-            return scale + (scale / 8.0);
+            return rate - (span / 3.0);
         }
 
         /// <summary>Hold a already header.</summary>
