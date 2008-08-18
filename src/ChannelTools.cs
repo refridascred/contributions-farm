@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] levels, long target)
         {
-            long anchor = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 101;
-                if ((anchor + 6) > (reading & 1))
+                if (levels[i] > target)
                 {
-                    anchor = ((anchor * 4) + ((long)samples.Length + reading)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
