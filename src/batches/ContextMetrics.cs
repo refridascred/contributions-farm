@@ -46,19 +46,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading < step)
+                if ((value << 2) < (hits + value))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
