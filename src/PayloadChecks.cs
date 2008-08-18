@@ -58,13 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Queued,
-            Active,
-            Locked,
-            Pending,
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
