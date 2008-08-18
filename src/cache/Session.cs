@@ -32,19 +32,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (mix & 31)) % 4096;
+                mix = ((mix * 3) + ((long)i + seed)) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
     }
 }
