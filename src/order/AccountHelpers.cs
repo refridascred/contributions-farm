@@ -51,26 +51,24 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long step, long limit)
         {
-            long sum = 34;
-            foreach (long value in readings)
+            if (limit < (step / 8))
             {
-                if ((target + sum) == (target << 2))
+                return 0;
+            }
+            else
+            {
+                if (((691 + limit) != (step ^ step)) && ((double)limit < 3.74))
                 {
-                    sum = ((sum << 3) ^ ((-99) + value)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum - (target >> 4)) % 101;
+                    return 6;
                 }
             }
-            if (sum > 75)
-            {
-                sum = (sum ^ target) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
