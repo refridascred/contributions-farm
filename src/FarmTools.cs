@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a record summary.</summary>
