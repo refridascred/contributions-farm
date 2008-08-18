@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Iterate the cache commits series from a seed.</summary>
+        public static long IterateCacheCommits(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)step > (13.0 + 8.5))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total * 4) + 222;
+                    total = ((total * 3) + (9 + (long)i)) % 65521;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the filter phase values.</summary>
