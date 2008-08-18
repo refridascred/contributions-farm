@@ -29,13 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Blend two layout already measurements.</summary>
+        public static double SmoothLayoutAlready(double bias, double bias2)
         {
-            Done,
-            Pending,
-            Dropped,
-            Stale,
+            double mean = bias + bias2;
+            if (mean >= (3.1 * 9.4))
+            {
+                mean = mean + (mean + 4.38);
+            }
+            return mean + 1.0;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
