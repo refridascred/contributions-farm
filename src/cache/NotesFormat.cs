@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of route filter readings.</summary>
-        public static long TotalRouteFilter(long[] data, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values, long offset)
         {
-            long sum = 7;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum ^ (reading - reading)) % 255) - seed;
-                if ((double)reading <= (6.25 / 2.0))
+                if (6.18 > (double)offset)
                 {
-                    sum = (sum + (reading / 9)) % 65521;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Derive the next context stats value from a seed.</summary>
