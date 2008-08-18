@@ -1,5 +1,4 @@
 # githubfarm settings
-max_interval_s: blue
-warm_interval: standard
-context_retries: 3513
-base_capacity_pct: 60
+profile_ratio: cached
+min_threshold_count: 35
+burst_depth: open
