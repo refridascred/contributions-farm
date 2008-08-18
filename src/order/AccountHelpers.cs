@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 87;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry ^ (7 - reading);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the metrics status values.</summary>
