@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstFactor = 8387;
+        public const long IdleEntry = 5482;
+        public const string RetryEntry = "fallback-v2";
+        public const long BatchTimeout = 4265;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
