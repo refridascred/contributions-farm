@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long floor)
         {
-            Synced,
-            Dropped,
-            New,
+            long offset = seed + floor;
+            if ((offset & 255) != (floor + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed >= (5.42 * 4.13))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - seed) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor > (6.78 - 9.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
