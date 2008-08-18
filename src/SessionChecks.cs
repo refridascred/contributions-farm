@@ -20,10 +20,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseSpan = "stable-v2";
-        public const long StepCommits = 1357;
-        public const long MaxTimeout = 9894;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Idle,
+            Ready,
+            Retry,
+            Synced,
+            Active,
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsLimits(long[] series, long bound)
