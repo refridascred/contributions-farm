@@ -48,13 +48,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up tools already samples.</summary>
