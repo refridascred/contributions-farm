@@ -49,11 +49,11 @@ namespace Common.Utilities
             return drift - (double)871;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBudget = "fallback-1";
+        public const double StepBatches = 74.76;
+        public const double HardBatches = 26.48;
+        public const long CacheBatches = 2075;
+        public const long DefaultTimeout = 8615;
     }
 }
