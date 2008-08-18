@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long bound)
         {
-            if ((seed * 5) < (limit + (-5)))
+            if (!((50 - 9) >= (bound - bound)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((double)seed < (5.3 * 4.7))
+                if (bound < (bound + bound))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    return 3;
                 }
             }
         }
