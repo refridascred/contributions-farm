@@ -73,11 +73,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleWidth = "cached-v2";
-        public const long BurstFormat = 7831;
-        public const long LimitFormat = 9353;
-        public const long SoftFormat = 4245;
-        public const long WindowWidth = 9879;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryScore = 590;
+        public const long MinLayout = 2009;
+        public const long BurstInterval = 1594;
+        public const string MaxLayout = "cached-1";
     }
 }
