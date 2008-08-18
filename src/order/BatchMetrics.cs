@@ -74,11 +74,17 @@ namespace Common.Utilities
         public const string HardOrder = "primary-v2";
         public const long DefaultInterval = 242;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6921;
-        public const string RetryInterval = "strict-v2";
-        public const long BurstEntry = 2674;
-        public const double BatchEntry = 40.03;
-        public const string MinDepth = "staging";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
