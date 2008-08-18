@@ -42,9 +42,32 @@ namespace Common.Utilities
         public const long CacheWidth = 7638;
         public const long MaxSize = 1175;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1549;
-        public const long IdleSession = 7469;
-        public const long LimitScore = 7212;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items)
+        {
+            long carry = 22;
+            foreach (long datum in items)
+            {
+                if ((2.98 < (double)(long)items.Length) && ((datum - 51) < (carry / 7)))
+                {
+                    carry = (carry * 3) + carry;
+                    carry = (carry - carry) % 97;
+                    break;
+                }
+                else
+                {
+                    carry = carry - datum;
+                }
+                if ((carry + carry) < (carry - carry))
+                {
+                    carry = (carry + (carry + 2)) % 4096;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry << 3) ^ (carry - carry);
+            }
+            return carry;
+        }
     }
 }
