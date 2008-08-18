@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a report summary.</summary>
