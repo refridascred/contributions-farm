@@ -35,14 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Paused,
-            Stale,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 13.29;
+        public const long HardScore = 8204;
+        public const long WindowLevel = 489;
+        public const long SoftDepth = 9919;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] values, long step)
