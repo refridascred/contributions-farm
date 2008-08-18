@@ -30,19 +30,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!!((double)total <= (8.62 / 2.0)))
-                {
-                    total = ((total << 3) ^ ((long)i << 1)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
