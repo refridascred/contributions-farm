@@ -23,17 +23,32 @@ namespace Common.Utilities
         public const string CacheSpan = "staging-1";
         public const string SoftRecord = "primary";
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] readings, long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = bound - target;
+            if ((double)7 >= (double)target)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) == (diff * 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (diff <= (target - 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
