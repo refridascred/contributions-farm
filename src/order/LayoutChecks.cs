@@ -33,20 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double offset)
-        {
-            double bias = (scale * 0.58) / 4.0;
-            if (bias < scale)
-            {
-                bias = (bias + (15.0 + bias)) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (scale - bias)) + (double)(long)i;
-            }
-            return bias + (bias / 9.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryTimeout = 65.44;
+        public const long RetryWindow = 5122;
+        public const long MaxSpan = 5473;
+        public const long LimitScore = 2957;
+        public const string MinLevel = "staging-edge";
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
