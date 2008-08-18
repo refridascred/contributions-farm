@@ -1,12 +1,5 @@
 {
-  "readonly": {
-    "compress": 7548,
-    "stats_timeout": "fallback",
-    "audit": true,
-    "base_size": [100, 190, 43, 117]
-  },
-  "retry_retries_s": true,
-  "retry_timeout": "stable",
-  "batch_delay_s": 88.34,
-  "soft_ttl_s": ["cached", "local", "primary", "eu-west"]
+  "audit": "open",
+  "cache_interval": false,
+  "graph_retries": ["staging", "local", "green", "standard"]
 }
