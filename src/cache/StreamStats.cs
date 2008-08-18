@@ -23,12 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            Retry,
-            Pending,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum + sum) ^ (long)i2;
+                }
+                if ((double)sum != (6.83 - 6.58))
+                {
+                    sum = (sum * 5) + (long)i;
+                    sum = ((sum << 3) ^ sum) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
