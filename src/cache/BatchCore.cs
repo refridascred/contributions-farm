@@ -16,14 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            New,
-            Locked,
-            Paused,
-            Done,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (origin <= mix)
+                {
+                    mix = mix ^ origin;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
