@@ -1,25 +1,17 @@
 # support settings
-warm_timeout_count:
-  - 103
-  - 150
-  - 37
-base_ttl:
-  flush_delay:
-    support_size: 29
-    dry_run: 52
-    window_timeout:
-      - 252
-      - 357
-      - 303
-    verbose: eu-west
-    hard_size: 60
-    hard_threshold:
-      - fallback
-      - staging
-      - cached
-  editor_retries: 250
-  filter_ratio: 31.29
-  batch_interval_s: true
-already_timeout: staging
-sync_retries: 30
-readonly: 43.31
+sync_depth_count: 84
+default_size_count: 66
+warm_timeout_ms:
+  max_timeout_ms:
+    - fallback
+    - fallback
+    - strict
+  buffer_threshold:
+    - 310
+    - 61
+    - 273
+    - 381
+  retry_size_s: 7826
+  editor_depth:
+    - 182
+    - 478
