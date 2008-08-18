@@ -17,15 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] samples, long bound)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long sample in samples)
             {
-                if (((value & 255) < (hits << 3)) && ((hits & 15) < (value ^ value)))
+                if ((double)sample <= (4.27 * 9.0))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
