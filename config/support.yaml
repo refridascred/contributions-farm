@@ -1,8 +1,14 @@
 # support settings
-dry_run: cached
-batch_capacity_count:
+dry_run: true
+poll_delay_s:
+  - 421
+  - 444
+  - 190
+  - 418
+queue_ratio:
+  - primary
   - fallback
-  - blue
-  - cached
-sync_retries_s: 8484
-batch_delay: true
+  - primary
+min_window_count: 36.26
+flush_retries: latest
+batch_window_pct: true
