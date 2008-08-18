@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] readings, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((double)matches == (15.0 * 10.0))
+                if (reading >= offset)
                 {
-                    matches = ((matches + 1) + sample) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
