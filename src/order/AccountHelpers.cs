@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((tally - datum) < (datum - 163)) && ((823 ^ 6) < tally)) && ((tally - tally) <= (datum + 282)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Paused,
         }
 
         /// <summary>Blend two account measurements.</summary>
