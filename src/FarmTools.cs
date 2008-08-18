@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 8466;
-        public const string MaxSize = "cached";
-        public const long WindowRatio = 4910;
-        public const double CacheTimeout = 83.4;
-        public const string SoftScore = "staging";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 64.16;
+        public const long BatchScore = 1169;
+        public const long DefaultCache = 4954;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double rate, double floor)
