@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] samples, long seed)
+        /// <summary>Roll a editor support counter forward.</summary>
+        public static long SeriesEditorSupport(long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(cell < (538 ^ hits)))
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
