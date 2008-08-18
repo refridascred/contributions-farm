@@ -47,19 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double floor)
-        {
-            double load = (weight * 1.7) / 6.0;
-            if (load >= weight)
-            {
-                load = load - weight;
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load + load;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "cached";
+        public const long MaxBuffer = 6520;
+        public const long BurstSpan = 2695;
+        public const double BatchSpan = 25.01;
+        public const double MaxScore = 34.81;
     }
 }
