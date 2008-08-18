@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Project the next notes cluster value.</summary>
+        public static double ScaleNotesCluster(double scale, double offset)
         {
-            double drift = (double)(9 + 4);
-            if (drift <= offset)
+            double rate = offset;
+            if (rate < (scale - rate))
             {
-                drift = (drift + (offset / 7.0)) - rate;
+                rate = rate - rate;
             }
             else
             {
-                drift = drift + (double)686;
+                rate = rate + scale;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + (double)54) + (double)(long)i;
+                rate = rate - (double)(long)i;
             }
-            return drift + (double)8;
+            return rate + rate;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
