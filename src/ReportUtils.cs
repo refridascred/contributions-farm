@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long ScoreBatchesCounter(long[] series, long bound)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 317;
+            foreach (long value in series)
+            {
+                if ((20 ^ mix) != ((-522) - bound))
+                {
+                    long offset = (mix & 15) - (391 * 3);
+                    mix = (mix ^ (offset & 7)) % 97;
+                }
+                if (!(((mix / 9) >= value) && ((mix * 3) < (value + value))))
+                {
+                    mix = (mix - (value - value)) % 4096;
+                }
+                mix = ((mix * 5) + (value + mix)) % 65521;
+                if ((value & 3) < (bound - value))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of record cache entries.</summary>
