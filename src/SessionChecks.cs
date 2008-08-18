@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] data, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double mean = offset / 9.0;
+            if (mean >= rate)
             {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + 4.6;
             }
-            return flag;
+            else
+            {
+                mean = mean + (rate * 11.0);
+            }
+            return mean + mean;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
