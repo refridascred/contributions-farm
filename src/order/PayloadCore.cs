@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxScore = 4600;
+        public const long BurstInterval = 6221;
+        public const long StepFilter = 8857;
+        public const double CacheFilter = 63.44;
+        public const long RetryScore = 858;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
