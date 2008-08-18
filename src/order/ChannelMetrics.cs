@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Check that every entry session entry stays within the limit.</summary>
+        public static bool VerifyEntrySessionLimits(long[] levels, long floor)
         {
-            long mark = 15;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                mark = (mark + mark) % 1000;
-                mark = (mark + (sample + sample)) % 1000;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Describe the commits mode values.</summary>
