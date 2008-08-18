@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((double)seed != (6.7 - 8.1))
+                if (value > (step + 35))
                 {
-                    result = (result + seed) % 65521;
+                    count = count + 2;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
