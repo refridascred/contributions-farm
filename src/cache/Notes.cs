@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of account stream entries.</summary>
+        public static long TallyAccountStream(long[] data, long seed)
         {
-            Done,
-            Dropped,
-            Retry,
-            Queued,
+            long carry = 7;
+            foreach (long value in data)
+            {
+                if ((value % 16) > seed)
+                {
+                    carry = ((carry * 5) + value) % 4096;
+                }
+                if ((value % 8) <= (value - value))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
