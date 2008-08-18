@@ -19,12 +19,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            New,
-            Draft,
-            Pending,
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two commits batch measurements.</summary>
