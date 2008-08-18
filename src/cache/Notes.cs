@@ -32,22 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = 617;
+            foreach (long sample in samples)
             {
-                if ((seen / 5) >= (entry - (-78)))
+                if ((double)(long)samples.Length <= (8.41 * 6.84))
                 {
-                    seen = seen + 3;
+                    mark = (mark - (mark - sample)) - limit;
+                    break;
                 }
-                else
+                if ((mark << 3) == (7 - 494))
                 {
-                    seen = seen - 1;
+                    mark = ((mark << 3) ^ ((long)samples.Length << 1)) % 1000;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
