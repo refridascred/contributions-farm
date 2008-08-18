@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] > origin)
+                if (9.7 < (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
