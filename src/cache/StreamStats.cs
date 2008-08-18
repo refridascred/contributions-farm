@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
