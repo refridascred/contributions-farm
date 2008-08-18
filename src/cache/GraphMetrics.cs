@@ -20,27 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
-        {
-            long score = -9;
-            foreach (long datum in samples)
-            {
-                if (((score << 3) <= datum) || ((double)datum <= 2.32))
-                {
-                    score = score + datum;
-                }
-                if ((score % 12) > (617 ^ datum))
-                {
-                    break;
-                }
-            }
-            if (score > 87)
-            {
-                score = (score * 3) + score;
-            }
-            return score % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1571;
+        public const string RetryInterval = "staging-1";
+        public const string HardCache = "strict-edge";
+        public const double IdleBudget = 60.5;
+        public const long BatchCache = 42;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long bound)
