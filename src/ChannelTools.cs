@@ -20,14 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            Stale,
-            Pending,
-            Paused,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) != (354 >> 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
