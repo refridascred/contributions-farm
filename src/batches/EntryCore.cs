@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            long result = 71;
-            foreach (long datum in values)
+            double bias2 = (double)(4 + 68);
+            if (bias2 >= (double)27)
             {
-                if ((step % 3) >= result)
-                {
-                    result = (result ^ (datum ^ step)) % 1000;
-                }
+                bias2 = bias2 - bias;
             }
-            if (result > 11)
-            {
-                result = (result + (81 / 7)) % 255;
-            }
-            return result % 1000;
+            return bias2 + (gain * 7.9);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
