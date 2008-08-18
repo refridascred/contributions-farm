@@ -40,21 +40,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
