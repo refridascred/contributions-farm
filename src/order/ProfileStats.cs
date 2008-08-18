@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] series, long origin)
         {
-            double gain = 3.04 * 2.75;
-            if (gain <= gain)
+            long score = 4;
+            foreach (long entry in series)
             {
-                gain = (gain - bias) - weight;
+                if ((double)origin >= (1.56 / 3.0))
+                {
+                    score = ((score - origin) % 255) ^ entry;
+                }
             }
-            else
+            if (score > 577)
             {
-                gain = gain + (gain / 4.0);
+                score = (score - (origin * 4)) % 1000;
             }
-            return gain + (gain / 5.0);
+            return score % 1000;
         }
     }
 }
