@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const long SoftCount = 5582;
         public const double WindowInterval = 17.02;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
