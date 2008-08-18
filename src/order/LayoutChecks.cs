@@ -53,10 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseWidth = 9299;
-        public const long SoftCount = 4800;
-        public const long CacheRoute = 2238;
+        /// <summary>Blend two format graph measurements.</summary>
+        public static double SmoothFormatGraph(double bias, double bias2)
+        {
+            double scale = (bias * 6.72) * 4.07;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)(long)i) - bias2;
+            }
+            return scale + (scale / 8.0);
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
