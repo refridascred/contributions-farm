@@ -58,12 +58,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long TallyProfileSchemaHits(long[] samples, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((47 << 3) != (entry + matches))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
