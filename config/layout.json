@@ -1,13 +1,8 @@
 {
-  "dry_run": "open",
-  "batch_depth": 3,
-  "session_threshold": true,
-  "idle_limit_s": false,
-  "min_window_count": {
-    "max_ratio": 148,
-    "hard_interval": 98.81,
-    "sync_interval_ms": 59,
-    "token_ratio": 1024
-  },
-  "cache_interval_ms": "strict"
+  "context_limit": ["strict", "edge", "legacy", "strict"],
+  "persist": 24.48,
+  "strict": false,
+  "poll_timeout_pct": "eu-west",
+  "format_depth": 4719,
+  "dry_run": 2.97
 }
