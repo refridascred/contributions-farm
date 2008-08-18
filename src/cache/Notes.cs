@@ -43,15 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double weight2 = 5.0 - (double)(-77);
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = ((weight2 + floor) - (double)(long)i) + weight;
-            }
-            return weight2 - weight2;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
