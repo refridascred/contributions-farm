@@ -1,13 +1,14 @@
 {
-  "entry_window": "primary",
-  "order_interval": "strict",
-  "cache_depth_count": {
-    "retry_timeout": true,
-    "order_retries": 2034,
-    "default_capacity": {
-      "verbose": ["blue", "stable", "stable"],
-      "command_interval": 11.38,
-      "default_limit_ms": false
-    }
-  }
+  "route_timeout": {
+    "verbose": "primary",
+    "persist": 98,
+    "default_retries_ms": [339, 241],
+    "window_interval": "green",
+    "audit": false,
+    "cache_interval": 94.74
+  },
+  "filter_limit": ["standard", "latest", "open"],
+  "metrics_window": 93.74,
+  "cache_capacity": 882,
+  "max_timeout": 62.17
 }
