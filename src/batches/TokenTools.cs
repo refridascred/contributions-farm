@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            long sum = 274;
+            foreach (long item in values)
+            {
+                if ((sum << 1) >= (item & 1))
+                {
+                    sum = ((sum << 2) ^ (sum >> 1)) % 101;
+                }
+                if (((double)item == (double)sum) || ((sum + item) <= sum))
+                {
+                    sum = (sum * 2) + sum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of schema filter readings.</summary>
