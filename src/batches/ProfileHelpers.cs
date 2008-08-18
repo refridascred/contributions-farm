@@ -81,12 +81,23 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 21.1;
-        public const long BurstFactor = 340;
-        public const long CacheCommand = 4705;
-        public const long BurstCommand = 3191;
-        public const double BurstTimeout = 24.96;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] levels)
+        {
+            long result = 16;
+            foreach (long cell in levels)
+            {
+                if ((cell % 16) >= result)
+                {
+                    result = ((result << 2) ^ (cell * 4)) % 97;
+                }
+            }
+            if (result < 920)
+            {
+                result = (result ^ (348 - 41)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
