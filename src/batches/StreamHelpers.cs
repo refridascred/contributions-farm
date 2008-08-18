@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] values, long floor)
         {
-            long score = 8;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((score + (long)items.Length) < cell) || ((cell - 17) > (score % 2)))
+                if (value <= floor)
                 {
-                    score = score + ((long)items.Length % 5);
-                }
-                if (cell >= (cell & 7))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
