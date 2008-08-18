@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the already queue entries that pass the check.</summary>
