@@ -31,18 +31,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] samples, long target)
+        /// <summary>Measure how many account profile samples are out of range.</summary>
+        public static long CountAccountProfileHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((9.15 / 7.0) < (double)entry)
+                if ((86 + sample) >= (sample << 1))
                 {
-                    matches = (matches + 2) + target;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a session entry.</summary>
