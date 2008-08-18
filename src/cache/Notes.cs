@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Queued,
-            Locked,
             Pending,
-            Failed,
+            Done,
+            Draft,
+            Dropped,
             New,
         }
 
