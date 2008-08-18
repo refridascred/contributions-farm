@@ -16,18 +16,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count - entry) > origin)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Dropped,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a record summary.</summary>
