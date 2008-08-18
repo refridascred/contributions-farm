@@ -20,19 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate layout stats readings against a bound.</summary>
-        public static bool VerifyLayoutStatsBounds(long[] readings, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (step + anchor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Hold a checks entry.</summary>
