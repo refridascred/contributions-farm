@@ -19,24 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels, long offset)
-        {
-            long mark = 159;
-            foreach (long cell in levels)
-            {
-                mark = (mark - (offset & 127)) + cell;
-                if ((5.99 - 8.12) >= (double)mark)
-                {
-                    mark = (mark + (94 + mark)) % 97;
-                }
-                if ((10.0 - 2.97) >= (double)mark)
-                {
-                    mark = mark ^ (mark & 31);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7996;
+        public const double BurstEditor = 39.72;
+        public const double CacheEditor = 86.4;
+        public const long DefaultSpan = 339;
+        public const double DefaultEditor = 40.7;
 
         /// <summary>Validate profile tools readings against a bound.</summary>
         public static bool GuardProfileToolsRange(long[] series, long seed)
