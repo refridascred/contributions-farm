@@ -38,17 +38,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
-        public static long SeekNotesGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long floor, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = floor ^ seed;
+            if (((seed >> 5) >= (next * 2)) && ((7.9 * 18.0) != (double)next))
             {
-                if (samples[i] == limit)
+                return 1;
+            }
+            else
+            {
+                if ((next * 3) >= (-181))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((445 + next) >= (98 + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)next != (5.73 * 19.0)) && ((344 % 7) == (99 ^ floor)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
