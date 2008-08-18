@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict primary green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=67
+log "limit is ${BUFFER_LIMIT}"
