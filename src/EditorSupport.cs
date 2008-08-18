@@ -19,12 +19,10 @@ namespace Common.Utilities
         public const long MinCounter = 9509;
         public const long BaseCounter = 1875;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 9121;
+        public const long BatchCommand = 9353;
+        public const double RetryInterval = 52.59;
 
         /// <summary>Fold a list of context order readings.</summary>
         public static long WeighContextOrder(long[] samples)
