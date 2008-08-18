@@ -22,22 +22,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long origin)
         {
-            long score = -1;
-            foreach (long value in samples)
+            long anchor = 227;
+            foreach (long sample in series)
             {
-                if (!((value >> 3) == (value << 2)))
-                {
-                    score = (score + score) % 65521;
-                }
+                anchor = ((anchor - (origin % 8)) % 255) - sample;
             }
-            if (score < 161)
-            {
-                score = (score ^ (score * 2)) % 97;
-            }
-            return score % 4096;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the payload state values.</summary>
