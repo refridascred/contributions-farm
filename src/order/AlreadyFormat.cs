@@ -73,17 +73,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long limit)
+        /// <summary>Fold a list of notes format readings.</summary>
+        public static long TallyNotesFormat(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 56;
+            foreach (long value in levels)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if (carry < (value ^ carry))
                 {
-                    return (long)i;
+                    carry = (carry + (-4)) % 1000;
+                }
+                if ((9.0 - 19.0) < (double)value)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
