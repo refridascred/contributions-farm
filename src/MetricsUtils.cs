@@ -45,20 +45,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinBudget = 3636;
+        public const double BurstWindow = 13.94;
+        public const long BatchScore = 1270;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] series)
