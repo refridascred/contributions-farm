@@ -34,21 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of route account readings.</summary>
