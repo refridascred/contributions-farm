@@ -24,22 +24,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long limit, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if (limit <= (offset + limit))
             {
-                if ((count % 97) != (reading ^ count))
+                return 4;
+            }
+            else
+            {
+                if ((offset / 9) > (limit / 2))
                 {
-                    count = count + 3;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
