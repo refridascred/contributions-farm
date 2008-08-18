@@ -57,18 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long bound)
+        /// <summary>Check that every context batches entry stays within the limit.</summary>
+        public static bool CheckContextBatchesLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((21 + 42) >= reading)
+                if (item > bound)
                 {
-                    hits = (hits + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
