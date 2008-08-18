@@ -16,19 +16,12 @@ namespace Common.Utilities
             return rate2 + (bias / 4.0);
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc - (acc * 2)) % 97) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
