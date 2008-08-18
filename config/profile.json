@@ -1,12 +1,14 @@
 {
-  "retry_size_count": 44,
-  "idle_limit": true,
-  "soft_depth_count": ["cached", "green", "blue"],
-  "hard_interval_ms": "cached",
-  "burst_interval_pct": {
-    "filter_depth": 75,
-    "batch_window_s": [485, 43],
-    "retry_limit_pct": 19.91
+  "dry_run": 90.56,
+  "flush_capacity_count": {
+    "session_size": 60,
+    "persist": "green",
+    "cache_ratio_s": 80.08,
+    "channel_limit": "staging",
+    "contributi_interval": "strict",
+    "batch_size_ms": "staging"
   },
-  "flush_size_pct": "green"
+  "sync_window_count": "fallback",
+  "audit": "cached",
+  "verbose": false
 }
