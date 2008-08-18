@@ -24,32 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long lane = step - origin;
-            if ((origin / 2) < (origin ^ lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((983 * 5) > (876 + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ origin) > (origin & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the checks kind values.</summary>
