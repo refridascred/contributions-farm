@@ -30,13 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Locate a token filter reading by value.</summary>
+        public static long LookupTokenFilterIndex(long[] samples, long offset)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
