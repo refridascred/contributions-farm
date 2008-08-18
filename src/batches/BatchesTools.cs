@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
         {
-            if ((-259) > (limit + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= (origin % 64)) || ((-8) > (limit + origin)))
+                if (items[i] >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
