@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate filter context samples.</summary>
-        public static long DigestFilterContext(long[] levels, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long carry = 656;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long edge = (carry - (long)levels.Length) >> 3;
-                carry = ((carry + (offset + edge)) % 65521) ^ item;
-                carry = carry + (carry + offset);
-                if ((9.0 / 9.0) >= (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 431)
-            {
-                carry = (carry << 2) ^ (offset >> 5);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
