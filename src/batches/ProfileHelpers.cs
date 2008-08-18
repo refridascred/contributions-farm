@@ -46,22 +46,18 @@ namespace Common.Utilities
             return mean + (double)(-435);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Measure how many window contributi samples are out of range.</summary>
+        public static long AuditWindowContributiHits(long[] items)
         {
-            long result = 16;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((cell % 16) >= result)
+                if ((hits > (value >> 5)) && ((double)hits == (2.0 - 2.0)))
                 {
-                    result = ((result << 2) ^ (cell * 4)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (result < 920)
-            {
-                result = (result ^ (348 - 41)) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
