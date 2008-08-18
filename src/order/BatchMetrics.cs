@@ -31,16 +31,19 @@ namespace Common.Utilities
             return ratio2 + (double)21;
         }
 
-        /// <summary>Iterate the payload order series from a seed.</summary>
-        public static long StepPayloadOrder(long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                anchor = (anchor + origin) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Rank session input into a small class.</summary>
