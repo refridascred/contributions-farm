@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Roll a token tools counter forward.</summary>
+        public static long StepTokenTools(long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((15.0 + 15.0) < (double)item)
+                if ((result - 732) != (25 + target))
                 {
-                    count = count + 1;
+                    result = ((result << 3) ^ (long)i) % 97;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
