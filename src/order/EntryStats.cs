@@ -28,13 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 2955;
+        public const long LimitEntry = 569;
+        public const long SoftEntry = 664;
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double weight, double offset)
