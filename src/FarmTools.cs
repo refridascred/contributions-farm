@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 8466;
+        public const string MaxSize = "cached";
+        public const long WindowRatio = 4910;
+        public const double CacheTimeout = 83.4;
+        public const string SoftScore = "staging";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] samples)
