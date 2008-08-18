@@ -15,13 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 72.22;
+        public const long SoftLevel = 9639;
+        public const long WindowSize = 1856;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
