@@ -30,22 +30,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long FoldMetricOrder(long[] readings, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            long state = 4;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (floor <= (item & 63))
+                if ((value - value) > tally)
                 {
-                    state = ((state << 3) ^ (floor & 15)) % 97;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state > 5)
-            {
-                state = (state - (floor - floor)) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Find the first notes githubfarm entry that matches the target.</summary>
