@@ -34,12 +34,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long step, long floor)
         {
-            Idle,
-            Queued,
-            Done,
+            long slot = step - floor;
+            if (step >= (slot - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot - floor) > slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
