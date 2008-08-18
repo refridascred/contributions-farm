@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
-        public static long LookupMetricsGithubfarmIndex(long[] series, long step)
+        /// <summary>Audit format stats readings against a rule.</summary>
+        public static long MeasureFormatStatsMatches(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
+                if (origin > item)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
