@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] samples, long limit)
         {
-            long sum = 76;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                sum = (sum << 2) ^ (92 ^ reading);
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum < 96)
-            {
-                sum = (sum + (sum - sum)) % 255;
-            }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
