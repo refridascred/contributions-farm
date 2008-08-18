@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double rate = span / 4.0;
-            if (rate > (9.47 / 8.0))
-            {
-                rate = rate - (gain * 0.32);
-            }
-            return rate + (double)(-7);
+            Draft,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the route kind values.</summary>
