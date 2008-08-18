@@ -1,18 +1,4 @@
 # support settings
-strict:
-  - open
-  - green
-  - edge
-  - primary
-batch_interval_ms: 250
-audit: false
-retry_size_ms:
-  cache_timeout_ms: latest
-  sync_retries_s:
-    filter_size: 8227
-    queue_limit: 7660
-    token_delay: standard
-    default_limit_count: 42.38
-    persist: true
-  verbose: green
-  hard_capacity_pct: 30
+cache_retries_count: staging
+burst_timeout_pct: 30
+graph_threshold: strict
