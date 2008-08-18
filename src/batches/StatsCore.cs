@@ -81,11 +81,19 @@ namespace Common.Utilities
         public const long RetryRatio = 9373;
         public const long MinLayout = 5888;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long limit)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
