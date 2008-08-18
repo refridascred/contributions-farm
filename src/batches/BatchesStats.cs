@@ -20,20 +20,12 @@ namespace Common.Utilities
             return bias - (span * 2.39);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] series, long floor)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftSpan = 59.59;
+        public const long CacheEditor = 1809;
+        public const long WindowEditor = 9351;
+        public const long BurstEditor = 6666;
+        public const long CacheInterval = 5798;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string DefaultBudget = "strict-v2";
