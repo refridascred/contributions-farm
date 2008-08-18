@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of format filter readings.</summary>
-        public static long MatchFormatFilterCount(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally >= (double)41)
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
