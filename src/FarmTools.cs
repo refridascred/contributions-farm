@@ -32,18 +32,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] data, long offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset + offset) < (771 << 2))
+                if (levels[i] >= floor)
                 {
-                    matches = (matches + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
