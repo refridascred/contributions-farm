@@ -33,21 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((9.3 - 18.0) <= (double)(long)i)
-                {
-                    score = (score << 2) ^ ((long)i - seed);
-                    break;
-                }
-                score = score ^ (seed + seed);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Synced,
+            Active,
+            Draft,
         }
     }
 }
