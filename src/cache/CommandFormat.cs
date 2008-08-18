@@ -41,19 +41,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            if ((7 - limit) < (limit - step))
             {
-                if ((92 >= bound) || ((bound * 5) != (bound * 4)))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((step - limit) < (limit ^ limit)) || ((limit - 85) < (9 % 12)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step <= (step + limit)) && ((limit << 2) != (step << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.0 + 5.7) != (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
