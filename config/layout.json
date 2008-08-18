@@ -1,20 +1,7 @@
 {
-  "default_limit": 77.78,
-  "flush_depth_s": 43.9,
-  "flush_interval": false,
-  "batches_ttl": {
-    "soft_ratio": [103, 82, 500],
-    "sync_threshold_count": "standard",
-    "enabled": "latest",
-    "burst_size_ms": "fallback",
-    "farm_size": true
-  },
-  "retry_limit_ms": ["strict", "strict", "primary"],
-  "retry_depth_pct": {
-    "warm_interval": [271, 293],
-    "batch_limit_s": false,
-    "base_limit": "legacy",
-    "base_threshold_count": "primary",
-    "readonly": 75.38
-  }
+  "report_delay": 38.28,
+  "max_size": 100,
+  "retry_limit": 60,
+  "token_interval": 1024,
+  "graph_limit": 77.5
 }
