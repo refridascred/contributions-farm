@@ -1,4 +1,11 @@
 # githubfarm settings
-burst_delay: true
-base_size_pct: staging
-metric_size: 61
+hard_window: 1445
+soft_threshold_count: 1697
+strict: 68
+batches_retries: 32.08
+enabled:
+  - 448
+  - 207
+  - 5
+  - 333
+burst_retries_pct: legacy
