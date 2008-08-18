@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 2) + state) % 97;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
