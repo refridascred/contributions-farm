@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitCount = 2970;
-        public const long StepCount = 5789;
-        public const string BurstSpan = "open-v2";
-        public const string SoftInterval = "primary";
-        public const long IdleContext = 1683;
+        /// <summary>Count the checks order entries that pass the check.</summary>
+        public static long AuditChecksOrderOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 10) < (2 & 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
