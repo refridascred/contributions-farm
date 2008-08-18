@@ -38,15 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data, long origin)
+        /// <summary>Combine farm graph values into a single score.</summary>
+        public static long FoldFarmGraph(long[] levels)
         {
-            long anchor = -2;
-            foreach (long datum in data)
+            long acc = 94;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor ^ (anchor / 8)) ^ datum) - origin;
+                acc = (acc + (acc + acc)) + sample;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
