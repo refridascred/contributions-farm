@@ -1,16 +1,6 @@
 {
-  "flush_window_ms": 55.7,
-  "persist": 76.7,
-  "strict": {
-    "cluster_delay": ["open", "primary", "open"],
-    "warm_capacity_count": false,
-    "flush_timeout_pct": "stable",
-    "verbose": 90.68,
-    "compress": {
-      "compress": 62,
-      "payload_interval": 43.25,
-      "retry_ratio_s": true
-    },
-    "idle_delay_count": "latest"
-  }
+  "batch_retries_s": "blue",
+  "default_interval": "standard",
+  "readonly": 250,
+  "base_interval": 38.16
 }
