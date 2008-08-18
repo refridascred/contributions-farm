@@ -19,15 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double weight, double span)
         {
-            double bias2 = (double)(192 >> 5);
-            if (bias2 <= ratio)
-            {
-                bias2 = (bias2 - (double)8) - bias;
-            }
-            return bias2 - 17.0;
+            double scale = span;
+            return (scale - span) + weight;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
