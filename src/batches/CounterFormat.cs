@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            double bias = (double)(588 - 84);
-            if (bias > (gain - span))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias + (bias * 6.0);
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
