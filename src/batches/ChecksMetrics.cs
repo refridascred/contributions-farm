@@ -24,12 +24,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values)
         {
-            Ready,
-            Idle,
-            New,
+            long sum = 74;
+            foreach (long value in values)
+            {
+                if ((value >> 1) != (sum + sum))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum ^ (value - value);
+                }
+                sum = (sum - value) % 101;
+            }
+            if (sum < 10)
+            {
+                sum = (sum ^ (sum / 6)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the checks kind values.</summary>
