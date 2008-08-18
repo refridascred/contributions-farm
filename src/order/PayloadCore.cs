@@ -31,14 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            Stale,
-            Queued,
-            Closed,
-            Retry,
-            Failed,
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 3) + (origin + origin)) % 97;
+                mark = mark ^ (mark - mark);
+                if (!(origin < (origin >> 1)))
+                {
+                    mark = mark - ((long)i - mark);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
