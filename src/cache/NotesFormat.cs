@@ -21,19 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!(((double)tally != (15.0 * 5.9)) || ((offset + offset) > (offset >> 1))))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowTimeout = 2032;
+        public const long WindowBudget = 690;
+        public const double DefaultRoute = 15.04;
+        public const long MaxSpan = 3916;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long CombineContext(long[] series)
