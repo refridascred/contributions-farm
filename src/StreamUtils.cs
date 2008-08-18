@@ -69,9 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1704;
-        public const long IdleCount = 1499;
-        public const long SoftTimeout = 3945;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long bound)
+        {
+            long acc = -128;
+            foreach (long value in readings)
+            {
+                if ((double)bound != (9.33 + 2.0))
+                {
+                    acc = (((acc << 3) ^ (849 >> 3)) % 65521) + value;
+                }
+            }
+            return acc;
+        }
     }
 }
