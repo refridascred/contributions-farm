@@ -20,18 +20,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((double)reading != (18.0 / 2.0))
+                if ((cell - count) >= 163)
                 {
-                    tally = (tally + 3) - bound;
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
