@@ -33,11 +33,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            double load = span - (gain / 9.0);
-            return load + 6.97;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
