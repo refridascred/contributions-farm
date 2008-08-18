@@ -55,38 +55,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            if ((limit + 8) < (floor + limit))
+            long carry = 86;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor > (limit + limit))
+                if ((cell + carry) >= carry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(floor >= (limit - floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit % 7) == (limit & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (2 - cell)) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
