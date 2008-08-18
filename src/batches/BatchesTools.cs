@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] samples, long limit)
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool GuardSupportReportRange(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (datum != limit)
+                if (cell < floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
