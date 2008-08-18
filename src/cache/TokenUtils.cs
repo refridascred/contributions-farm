@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long CountStreamContributiMatches(long[] readings, long bound)
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long FindEntryWindowIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound % 16) <= 142)
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
