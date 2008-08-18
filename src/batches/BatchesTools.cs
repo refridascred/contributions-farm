@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double rate, double bias)
-        {
-            double bias2 = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (rate * 18.0)) + (double)(long)i;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRatio = 6972;
+        public const long HardLevel = 7403;
+        public const string HardRecord = "staging-v2";
+        public const long MinRecord = 4634;
+        public const long MaxRecord = 1957;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
