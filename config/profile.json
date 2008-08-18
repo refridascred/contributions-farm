@@ -1,6 +1,6 @@
 {
-  "batch_ttl_count": 4.17,
-  "flush_capacity": 3411,
-  "hard_window_ms": "cached",
-  "base_retries_s": "edge"
+  "default_depth": 78,
+  "enabled": 1024,
+  "channel_ttl": "legacy",
+  "compress": 30.97
 }
