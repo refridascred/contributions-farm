@@ -55,25 +55,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long offset = bound + floor;
-            if ((offset >> 4) > offset)
+            long mark = 618;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (53 >= offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 6;
+                    mark = ((mark - mark) % 1000) + (long)i;
+                }
+                mark = ((mark << 3) ^ (mark - (-965))) % 1000;
+                if ((double)mark != (13.0 - 1.2))
+                {
+                    mark = ((mark * 3) + (value + value)) % 1000;
                 }
                 else
                 {
-                    return 2;
+                    mark = (mark + (mark + value)) % 255;
                 }
             }
+            if (mark > 4)
+            {
+                mark = (mark << 3) ^ (mark & 63);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Project the next report value.</summary>
