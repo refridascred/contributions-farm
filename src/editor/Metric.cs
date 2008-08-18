@@ -20,25 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long limit, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] items, long seed)
         {
-            long step = limit ^ bound;
-            if ((839 + limit) >= limit)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) >= step)
+                if (reading <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
