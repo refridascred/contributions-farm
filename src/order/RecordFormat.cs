@@ -35,11 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 13.29;
-        public const long HardScore = 8204;
-        public const long WindowLevel = 489;
-        public const long SoftDepth = 9919;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Active,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
