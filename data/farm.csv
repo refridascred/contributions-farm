@@ -1,10 +1,6 @@
-id,level,owner
-1,971,legacy
-2,96.95,531
-3,114,edge
-4,217,264
-5,997,eu-west
-6,89,strict
-7,711,73.8
-8,latest,279
-9,30.19,180
+id,rank,label,count
+1,edge,strict,988
+2,strict,37.25,763
+3,28.25,694,191
+4,staging,554,9.28
+5,996,77.0,101
