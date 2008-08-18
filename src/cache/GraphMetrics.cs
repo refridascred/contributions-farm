@@ -20,19 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] values)
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long CountEntryStreamGaps(long[] data)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long datum in data)
             {
-                if ((sample >> 1) <= sample)
+                if ((double)datum > (7.0 * 11.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
