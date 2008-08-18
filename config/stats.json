@@ -1,5 +1,5 @@
 {
-  "cache_capacity": 7856,
-  "batches_interval": 31,
-  "burst_limit_ms": false
+  "batch_timeout": 2966,
+  "channel_threshold": [155, 186, 442, 224],
+  "flush_timeout_ms": 28
 }
