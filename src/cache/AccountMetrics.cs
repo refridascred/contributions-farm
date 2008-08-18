@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const string HardLevel = "primary-edge";
         public const long StepWidth = 69;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double scale = bias;
+            if (scale <= ratio)
+            {
+                scale = scale + (bias + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale - (double)754;
         }
 
         /// <summary>Classify a token metrics pair into a bucket.</summary>
