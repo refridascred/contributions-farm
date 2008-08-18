@@ -1,4 +1,12 @@
 # githubfarm settings
-cache_threshold: stable
-max_size_pct: true
-stream_depth: 3575
+record_ttl: latest
+enabled: primary
+hard_retries_pct:
+  soft_limit_count: 60
+  persist: 30
+  strict: 53.98
+  retry_retries_count: staging
+context_delay:
+  - 325
+  - 11
+  - 100
