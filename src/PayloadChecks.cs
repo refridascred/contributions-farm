@@ -31,39 +31,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a channel report value against two limits.</summary>
-        public static long RankChannelReport(long offset, long offset2)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long diff = offset ^ offset2;
-            if (offset <= ((-33) >> 4))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)diff != (double)98) || ((offset2 + 6) < (8 - offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset2 + offset2) > (offset / 9))
+                    if ((values[i] ^ values[j]) > 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > ((-90) / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate metric samples.</summary>
