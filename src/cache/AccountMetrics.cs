@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] items, long floor)
         {
-            double scale2 = (double)802 / 8.0;
-            if (scale2 <= 1.0)
+            bool flag = true;
+            foreach (long item in items)
             {
-                scale2 = scale2 - (offset + scale);
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - offset) - (double)(long)i;
-            }
-            return scale2 + 4.93;
+            return flag;
         }
 
         /// <summary>Describe the payload phase values.</summary>
