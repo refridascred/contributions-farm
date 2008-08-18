@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            Draft,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
