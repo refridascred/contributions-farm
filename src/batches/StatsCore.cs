@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a farm githubfarm value against two limits.</summary>
+        public static long BucketFarmGithubfarm(long floor, long origin)
         {
-            Retry,
-            Failed,
-            Idle,
+            long cur = floor ^ origin;
+            if ((cur % 10) > (floor << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur + cur) < (840 & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the buffer state values.</summary>
