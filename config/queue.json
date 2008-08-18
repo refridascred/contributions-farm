@@ -1,8 +1,6 @@
 {
-  "verbose": "local",
-  "graph_ratio": [427, 198],
-  "min_interval_count": true,
-  "entry_threshold": 92,
-  "already_size": false,
-  "already_interval": ["green", "green"]
+  "cache_delay": 40.62,
+  "retry_delay_ms": true,
+  "cache_retries": "legacy",
+  "warm_limit_ms": true
 }
