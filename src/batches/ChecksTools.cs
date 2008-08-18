@@ -38,19 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long origin)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double drift = (double)(3 / 9);
+            if (drift < (double)340)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - bias2) + bias;
             }
-            return valid;
+            return drift - (double)871;
         }
 
         /// <summary>Hold a session entry.</summary>
