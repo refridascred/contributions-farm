@@ -69,15 +69,12 @@ namespace Common.Utilities
             return weight - (double)20;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
