@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
-        {
-            long state = -575;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state ^ datum) % 101) - (long)i;
-                }
-                state = state + (datum - datum);
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSpan = 1770;
+        public const long StepBudget = 2000;
+        public const string BatchLayout = "open-v2";
+        public const long BatchInterval = 5995;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] data, long limit)
