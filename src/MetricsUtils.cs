@@ -25,15 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples)
         {
-            double ratio = 6.87 / 4.0;
-            if (ratio <= ratio)
+            long acc = 26;
+            foreach (long reading in samples)
             {
-                ratio = ratio - bias2;
+                long next = acc * 5;
+                if ((reading ^ reading) == (next & 3))
+                {
+                    next = next ^ 55;
+                }
+                else
+                {
+                    acc = (acc - reading) % 101;
+                }
+                if (!((91 & 1) != (reading * 5)))
+                {
+                    acc = (acc * 2) + (reading - acc);
+                }
             }
-            return ratio + (ratio + bias);
+            if (acc > (-6))
+            {
+                acc = (acc ^ (acc / 2)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
