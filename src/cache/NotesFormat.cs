@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] samples, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((long)i & 255) != (state - origin))
+                if (hits <= (5 / 2))
                 {
-                    continue;
+                    hits = ((hits + 1) - entry) + offset;
                 }
                 else
                 {
-                    state = (state + origin) % 4096;
+                    hits = hits - 1;
                 }
-                if (origin >= (state >> 3))
-                {
-                    state = (state + (origin >> 5)) % 65521;
-                }
-                state = (state + ((long)i - origin)) % 255;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
