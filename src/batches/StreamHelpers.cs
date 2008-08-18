@@ -65,18 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long MeasureSupportAccountHits(long[] data)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((9.3 / 4.0) < (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
