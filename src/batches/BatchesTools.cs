@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a commits context pair into a bucket.</summary>
