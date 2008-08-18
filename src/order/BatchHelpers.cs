@@ -39,21 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = target - seed;
+            if ((2.3 * 4.0) != (double)seed)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((diff > (diff % 100)) && (diff < (seed + 588)))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
