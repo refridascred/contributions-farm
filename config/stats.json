@@ -1,11 +1,12 @@
 {
-  "flush_retries": {
-    "soft_interval_pct": 86.95,
-    "max_capacity_s": 77,
-    "persist": 85.57,
-    "burst_size_s": true,
-    "cache_retries": 2225
+  "session_delay": 6,
+  "commits_limit": {
+    "counter_depth": 4286,
+    "min_delay_count": 33,
+    "token_threshold": 60
   },
-  "cache_depth_count": 22.03,
-  "route_ratio": "open"
+  "verbose": "standard",
+  "min_interval": 39,
+  "max_threshold": 86.98,
+  "audit": [12, 223, 463]
 }
