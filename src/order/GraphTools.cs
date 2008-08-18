@@ -28,18 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] values, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((floor - reading) >= reading)
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
