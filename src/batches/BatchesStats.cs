@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (9.7 < (double)hits)
+                if ((tally + reading) >= reading)
                 {
-                    hits = (hits + 2) + sample;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
