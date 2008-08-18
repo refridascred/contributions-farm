@@ -51,11 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8552;
-        public const long BaseSize = 258;
-        public const long IdleCounter = 8361;
-        public const long BatchWidth = 8151;
-        public const long BaseDepth = 1757;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6251;
+        public const long LimitCount = 4857;
+        public const long CacheWidth = 2168;
+        public const long LimitSpan = 7781;
+        public const long BaseFactor = 2717;
     }
 }
