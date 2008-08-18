@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer cache reading.</summary>
-        public static double AdjustBufferCache(double gain, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            double rate = gain * 4.6;
-            if (rate <= (gain / 4.0))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                rate = rate - gain;
+                if ((tally + 879) <= tally)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            return rate - (span * 10.0);
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
