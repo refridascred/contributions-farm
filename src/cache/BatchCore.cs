@@ -41,18 +41,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample >= (280 / 6)) && ((offset % 64) > (sample ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
