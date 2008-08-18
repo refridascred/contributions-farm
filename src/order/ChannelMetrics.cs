@@ -12,38 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double bias, double span)
         {
-            if ((double)limit >= (8.33 - 1.4))
+            double rate = bias;
+            if (rate > (double)99)
             {
-                return 6;
+                rate = (rate - (bias - bias)) + span;
             }
             else
             {
-                if ((limit - seed) <= seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < (limit + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit & 3) > (limit ^ seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                rate = rate + bias;
             }
+            return rate - (double)46;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
