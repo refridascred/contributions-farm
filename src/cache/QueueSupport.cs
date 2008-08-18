@@ -13,11 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 8689;
-        public const long BurstToken = 9872;
-        public const long BaseRatio = 2573;
-        public const double HardCount = 92.16;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
