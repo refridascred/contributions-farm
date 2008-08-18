@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached strict; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green latest fallback; do
+    log "checking ${item}"
+done
