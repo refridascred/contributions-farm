@@ -45,32 +45,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long diff = offset - origin;
-            if (diff <= (origin / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset > (origin + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + diff) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Blend two channel already measurements.</summary>
