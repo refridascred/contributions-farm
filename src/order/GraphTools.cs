@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryLevel = 54.58;
-        public const long LimitDepth = 1540;
-        public const long StepReport = 1200;
-        public const double BaseReport = 59.12;
+        /// <summary>Find the first batch schema entry that matches the target.</summary>
+        public static long FindBatchSchemaIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] items)
