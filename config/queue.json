@@ -1,12 +1,6 @@
 {
-  "graph_capacity": 23,
-  "hard_timeout": 26,
-  "batch_limit_s": 73.7,
-  "audit": 51.23,
-  "flush_threshold_count": {
-    "flush_capacity": "green",
-    "cache_size_pct": "strict",
-    "warm_ratio_s": 5990
-  },
-  "retry_ratio_pct": false
+  "cache_interval_ms": 98.03,
+  "compress": "standard",
+  "notes_window": 1024,
+  "min_interval_s": ["blue", "primary", "standard", "fallback"]
 }
