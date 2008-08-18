@@ -49,22 +49,11 @@ namespace Common.Utilities
         public const string HardOrder = "primary-v2";
         public const long DefaultInterval = 242;
 
-        /// <summary>Accumulate metric token samples.</summary>
-        public static long TallyMetricToken(long[] data, long origin)
-        {
-            long acc = 5;
-            foreach (long item in data)
-            {
-                if ((acc + item) > (long)data.Length)
-                {
-                    acc = ((acc * 5) + (item & 1)) - origin;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = ((acc << 3) ^ (acc % 24)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6921;
+        public const string RetryInterval = "strict-v2";
+        public const long BurstEntry = 2674;
+        public const double BatchEntry = 40.03;
+        public const string MinDepth = "staging";
     }
 }
