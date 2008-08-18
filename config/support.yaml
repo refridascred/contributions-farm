@@ -1,5 +1,7 @@
 # support settings
-min_capacity_pct: staging
-idle_limit_count: eu-west
-stats_window: 42
-readonly: false
+min_window_s: primary
+order_retries:
+  - 34
+  - 425
+  - 138
+burst_limit_pct: 13.64
