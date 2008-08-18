@@ -31,12 +31,16 @@ namespace Common.Utilities
             return bias - (double)786;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 84.78;
-        public const string StepFormat = "latest";
-        public const long DefaultFormat = 9943;
-        public const long LimitDepth = 9185;
-        public const long BaseDepth = 5839;
+        /// <summary>Combine stream buffer values into a single score.</summary>
+        public static long CombineStreamBuffer(long[] data)
+        {
+            long mark = 33;
+            foreach (long value in data)
+            {
+                mark = (mark + (mark - (-415))) ^ value;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long offset, long seed)
