@@ -37,18 +37,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long origin, long offset)
         {
-            long total = 269;
-            foreach (long value in levels)
+            long prev = origin ^ offset;
+            if (((double)offset != (double)25) || ((offset << 1) >= origin))
             {
-                if ((value * 3) > (total >> 2))
+                return 0;
+            }
+            else
+            {
+                if (((offset >> 4) <= offset) || ((8 & 255) <= (origin ^ 61)))
                 {
-                    total = (total - (value >> 4)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if (((prev ^ prev) >= (prev / 7)) || ((origin + offset) >= (offset / 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((prev - offset) == (offset & 255)) || ((6.0 + 7.1) < (double)prev))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
     }
 }
