@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context metrics entries.</summary>
-        public static long DigestContextMetrics(long[] samples, long floor)
-        {
-            long result = 57;
-            foreach (long cell in samples)
-            {
-                if ((cell + floor) >= (cell % 8))
-                {
-                    result = (result - (cell - cell)) % 97;
-                }
-                if (floor <= cell)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "open-v2";
+        public const string RetryStats = "alpha";
+        public const long MaxWidth = 6039;
+        public const string CacheCount = "local";
+        public const long BatchTimeout = 822;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] samples)
