@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The context helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every route by format.
 
-Run the queue check before changing any report limits.
-The batches module keeps notes values in sync with the record cache.
+Defaults for entry live in the config folder and can be overridden per environment.
+When a already fails, the commits handler retries a few times before giving up.
+Run the format check before changing any notes limits.
 
 ## Guidelines
 
-- Document new record fields
-- Log every graph change
-- Prefer commits defaults
+- Log every cache change
+- Prefer account defaults
+- Review farm limits each release
+- Validate checks input early
