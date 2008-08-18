@@ -44,22 +44,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 4333;
+        public const string HardOrder = "primary-v2";
+        public const long DefaultInterval = 242;
 
         /// <summary>Accumulate metric token samples.</summary>
         public static long TallyMetricToken(long[] data, long origin)
