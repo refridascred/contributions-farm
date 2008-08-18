@@ -42,15 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two notes report measurements.</summary>
-        public static double SmoothNotesReport(double scale, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            double weight = 14.0 * 20.0;
-            if (weight > (double)0)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                weight = (weight - (scale - 7.53)) - offset;
+                if ((tally * 4) > (59 & 63))
+                {
+                    tally = (tally + 3) - value;
+                }
             }
-            return weight + (double)633;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
