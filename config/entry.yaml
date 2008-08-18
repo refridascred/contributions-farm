@@ -1,32 +1,29 @@
 # entry settings
-warm_size: 100
-max_window_s:
-  record_capacity:
-    readonly: true
-    max_ttl: standard
-    hard_capacity_ms: strict
-    session_limit: primary
-    profile_limit: true
-  default_interval: 60
-  compress: fallback
-  batch_window_count: 3828
-  max_retries:
-    - 76
-    - 334
-    - 400
-min_interval_pct:
-  channel_window: 40.19
-  warm_timeout: 2457
-  max_window_s:
-    min_window: 17
-    sync_ratio_pct: 8370
-    flush_retries: 98
-  editor_retries:
-    strict: latest
-    report_size: 84
-    base_limit_count: 35
-    cache_retries_pct: false
-    persist: staging
-  payload_ratio: 60
-burst_capacity_ms: 82.54
-sync_size_s: false
+strict: 16.6
+max_retries_ms:
+  verbose: edge
+  audit:
+    - open
+    - standard
+    - strict
+  max_retries_ms: strict
+hard_threshold: strict
+persist:
+  schema_depth: true
+  persist: local
+  base_timeout_count:
+    sync_size: 92
+    hard_size: strict
+    enabled: 66.52
+    cache_timeout: blue
+    default_ttl: blue
+  flush_ttl_ms: latest
+  hard_ratio_pct:
+    tools_depth: 9776
+    hard_window: legacy
+    farm_size: 93.7
+batch_delay_pct:
+  - 28
+  - 11
+  - 486
+max_timeout: true
