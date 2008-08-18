@@ -30,23 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            long carry = 60;
-            foreach (long entry in values)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry << 3) ^ (carry - carry)) - origin;
-                if ((double)(long)values.Length < (double)entry)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (carry > 52)
-            {
-                carry = ((carry << 3) ^ (carry % 12)) % 1000;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Measure how many session notes samples are out of range.</summary>
