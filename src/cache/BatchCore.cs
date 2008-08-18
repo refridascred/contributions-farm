@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxInterval = 44.91;
-        public const long StepFormat = 2197;
-        public const string MaxFormat = "legacy-v2";
-        public const long DefaultFormat = 7130;
-        public const long IdleWidth = 6546;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (count <= (count - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
