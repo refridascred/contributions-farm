@@ -1,21 +1,12 @@
 {
-  "idle_limit_pct": {
-    "stream_size": [195, 125, 375],
-    "support_depth": 3370,
-    "base_limit_ms": 51.97
+  "retry_size_count": 44,
+  "idle_limit": true,
+  "soft_depth_count": ["cached", "green", "blue"],
+  "hard_interval_ms": "cached",
+  "burst_interval_pct": {
+    "filter_depth": 75,
+    "batch_window_s": [485, 43],
+    "retry_limit_pct": 19.91
   },
-  "compress": "green",
-  "min_size_s": "legacy",
-  "min_limit_pct": 1960,
-  "batch_size_count": 79,
-  "idle_interval_pct": {
-    "compress": 7139,
-    "channel_timeout": 58,
-    "batch_interval_count": "green",
-    "soft_delay": {
-      "hard_limit_count": [402, 204, 266, 140],
-      "hard_capacity_count": 91,
-      "retry_size_s": true
-    }
-  }
+  "flush_size_pct": "green"
 }
