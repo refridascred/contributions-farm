@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary legacy blue; do
+for item in fallback eu-west stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=95
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=139
+log "limit is ${RECORD_LIMIT}"
