@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 4708;
-        public const long WindowSchema = 4035;
-        public const double StepSchema = 96.69;
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double rate, double bias)
+        {
+            double rate2 = (bias * 6.72) * 1.12;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - (double)715;
+            }
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - (double)80) + (double)(long)i;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Rank contributi layout input into a small class.</summary>
         public static long ClassifyContributiLayout(long seed, long offset)
