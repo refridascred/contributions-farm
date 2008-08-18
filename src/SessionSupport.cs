@@ -28,10 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2159;
-        public const long BatchInterval = 6549;
-        public const long HardSpan = 4073;
-        public const string SoftRecord = "legacy-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 590;
+        public const double MaxCount = 13.7;
+        public const long SoftWidth = 1897;
+        public const string MaxDepth = "cached-1";
+        public const string WindowInterval = "primary-1";
     }
 }
