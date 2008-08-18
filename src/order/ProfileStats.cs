@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const string WindowFarm = "primary-1";
         public const long DefaultFarm = 2573;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (readings[i] == bound)
+                if (reading > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
