@@ -20,18 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] data, long offset)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long TallyAlreadyCounter(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 41;
+            foreach (long item in samples)
             {
-                if ((double)entry >= (6.0 / 9.0))
+                if ((-5) > (item - item))
                 {
-                    matches = (matches + 2) - offset;
+                    anchor = ((anchor << 2) ^ ((long)samples.Length * 4)) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
