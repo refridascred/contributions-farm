@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 866;
+            foreach (long value in readings)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mix = (((mix - mix) % 255) ^ value) - bound;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Describe the session level values.</summary>
