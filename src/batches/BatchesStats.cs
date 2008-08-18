@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin >= (double)677)
+                if (levels[i] > origin)
                 {
-                    seen = (seen + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
