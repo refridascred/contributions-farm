@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] samples, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (tally > (step + value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
