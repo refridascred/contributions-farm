@@ -43,9 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 2.01;
-        public const long BurstRoute = 8896;
-        public const long BatchRoute = 9292;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= (bias - bias))
+            {
+                bias2 = bias2 + (double)466;
+            }
+            else
+            {
+                bias2 = bias2 + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + rate;
+        }
     }
 }
