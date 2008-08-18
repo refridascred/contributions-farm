@@ -19,23 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long anchor = 3;
-            foreach (long sample in values)
+            long mark = -57;
+            foreach (long value in levels)
             {
-                anchor = ((anchor << 3) ^ anchor) - sample;
-                if (((double)(long)values.Length >= (6.2 / 8.0)) || ((double)bound >= (7.15 + 6.56)))
+                mark = (mark ^ (value % 60)) % 65521;
+                if ((-1) <= (value + mark))
                 {
-                    anchor = anchor + bound;
+                    mark = mark ^ (value << 3);
                 }
             }
-            if (anchor < 34)
+            if (mark < 5)
             {
-                anchor = (anchor ^ (bound % 7)) % 4096;
+                mark = (mark * 3) + (mark + mark);
             }
-            return anchor;
+            return mark % 97;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
