@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm booking reading by value.</summary>
-        public static long LookupGithubfarmBookingIndex(long[] items, long target)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Match up commits samples.</summary>
