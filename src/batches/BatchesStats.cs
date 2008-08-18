@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Queued,
-            Done,
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 218;
+        public const double SoftReport = 66.23;
+        public const long MaxReport = 4651;
+        public const string IdleReport = "standard-edge";
+        public const long LimitDepth = 8335;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] values)
