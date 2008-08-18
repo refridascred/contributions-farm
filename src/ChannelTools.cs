@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftDepth = 48.54;
-        public const long StepSupport = 8211;
-        public const double IdleSupport = 69.07;
-        public const long CacheSupport = 1326;
-        public const string WindowSupport = "latest-v2";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark << 2) ^ (limit + mark)) ^ (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
