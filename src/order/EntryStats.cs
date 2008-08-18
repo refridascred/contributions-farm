@@ -27,10 +27,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowScore = "cached";
-        public const long DefaultNotes = 8136;
-        public const double HardNotes = 37.0;
+        /// <summary>Derive the next cluster channel value from a seed.</summary>
+        public static long IterateClusterChannel(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] values)
