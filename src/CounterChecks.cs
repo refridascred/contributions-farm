@@ -62,22 +62,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)(-99) < (double)cell) || ((66 < (count * 5)) || (((long)data.Length * 3) > 9)))
+                if (data[i] == origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
