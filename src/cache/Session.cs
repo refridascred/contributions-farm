@@ -54,12 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSpan = 2289;
-        public const double BurstSize = 17.9;
-        public const string SoftBatches = "alpha-v2";
-        public const long WindowBatches = 3769;
-        public const string MaxBatches = "primary";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsBounds(long[] items, long limit)
