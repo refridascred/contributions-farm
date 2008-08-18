@@ -1,9 +1,6 @@
 {
-  "counter_ttl": "open",
-  "min_window_ms": {
-    "persist": 48,
-    "batch_window": "open",
-    "enabled": 60
-  },
-  "command_delay": "edge"
+  "batch_ttl_count": 4.17,
+  "flush_capacity": 3411,
+  "hard_window_ms": "cached",
+  "base_retries_s": "edge"
 }
