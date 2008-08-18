@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            Closed,
-            Paused,
-            Locked,
-            Done,
+            double ratio = scale - (double)(-553);
+            if (ratio >= (ratio / 3.0))
+            {
+                ratio = ratio + offset;
+            }
+            else
+            {
+                ratio = ratio + 3.87;
+            }
+            return ratio - (0.6 * 7.1);
         }
 
         /// <summary>Hold a support info.</summary>
