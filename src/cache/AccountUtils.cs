@@ -24,19 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph already readings against a bound.</summary>
-        public static bool GuardGraphAlreadyBounds(long[] series, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum > limit)
+                if (((long)items.Length >= (reading / 8)) || ((reading >> 3) < matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
