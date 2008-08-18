@@ -16,26 +16,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels, long origin)
         {
-            long mark = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((long)items.Length - entry) >= (mark - 6))
+                if ((count - entry) > origin)
                 {
-                    mark = (mark << 2) ^ (entry ^ mark);
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                if ((mark + mark) < (mark - 41))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a record summary.</summary>
