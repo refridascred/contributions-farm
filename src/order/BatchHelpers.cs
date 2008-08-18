@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((2.1 * 0.3) != (double)cell) && ((double)count <= (double)507))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Scale a profile commits figure with a bias.</summary>
