@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const double BatchNotes = 12.74;
         public const string BatchRatio = "legacy-edge";
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Adjust a schema batches reading.</summary>
+        public static double ScaleSchemaBatches(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (floor - ratio) / 3.0;
+            if (scale >= scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - ratio;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
