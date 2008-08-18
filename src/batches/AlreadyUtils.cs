@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] levels, long bound)
+        /// <summary>Classify a notes record pair into a bucket.</summary>
+        public static long SortNotesRecord(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = floor - floor2;
+            if ((floor2 < (cur << 3)) || ((floor << 1) < 4))
             {
-                if (levels[i] >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((12.0 + 15.0) >= (double)cur)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of checks record entries.</summary>
