@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long step2)
-        {
-            long diff = step - step2;
-            if ((double)step < (8.0 * 3.4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((412 / 8) > diff) || ((7.47 * 9.82) <= (double)diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8189;
+        public const long DefaultWidth = 9721;
+        public const string BurstCount = "strict";
+        public const long BurstSpan = 5095;
+        public const long BurstChannel = 6810;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepContext = 57.72;
