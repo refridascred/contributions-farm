@@ -1,7 +1,8 @@
-id,level,rank
-1,cached,738
-2,blue,80.96
-3,489,fallback
-4,91,stable
-5,open,73.93
-6,primary,78.2
+id,owner,state
+1,93.31,53.45
+2,56.83,edge
+3,local,green
+4,580,open
+5,34.93,local
+6,422,788
+7,primary,513
