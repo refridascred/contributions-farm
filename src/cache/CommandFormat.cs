@@ -39,31 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((double)bound == (14.0 / 7.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + 6) <= (bound + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)limit > (1.55 - 3.15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a schema entry.</summary>
