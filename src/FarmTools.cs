@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double span)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            double bias = (double)(9 - 8);
-            for (int i = 0; i < 6; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (bias + ratio) + (double)(long)i;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return bias - span;
+            return score;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
