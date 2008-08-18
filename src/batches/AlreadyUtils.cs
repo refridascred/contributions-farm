@@ -33,25 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] levels, long origin)
         {
-            long slot = step + limit;
-            if (((step >> 3) != (step + slot)) && ((double)slot > (8.78 - 7.0)))
+            long mark = 954;
+            foreach (long item in levels)
             {
-                return 0;
+                mark = ((mark + origin) % 4096) ^ item;
             }
-            else
-            {
-                if ((double)limit > (2.69 * 6.68))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
