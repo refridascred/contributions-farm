@@ -33,19 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route already entry stays within the limit.</summary>
-        public static bool VerifyRouteAlreadyRange(long[] levels, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = 7;
+            foreach (long reading in items)
             {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ (reading + reading)) % 4096;
             }
-            return ok;
+            return acc;
         }
     }
 }
