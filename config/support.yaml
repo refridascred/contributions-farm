@@ -1,14 +1,6 @@
 # support settings
-dry_run: true
-poll_delay_s:
-  - 421
-  - 444
-  - 190
-  - 418
-queue_ratio:
-  - primary
-  - fallback
-  - primary
-min_window_count: 36.26
-flush_retries: latest
-batch_window_pct: true
+warm_depth_pct:
+  - 387
+  - 14
+persist: 1024
+enabled: 1
