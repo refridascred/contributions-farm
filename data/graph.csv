@@ -1,6 +1,7 @@
-id,weight,rank
-1,63.17,10.96
-2,270,749
-3,388,773
-4,latest,13.88
-5,60.71,27.73
+id,rank,active,label,owner
+1,96.93,primary,775,standard
+2,159,502,257,97.61
+3,green,83,open,20
+4,252,blue,226,stable
+5,748,926,97.73,7.86
+6,eu-west,fallback,82.66,999
