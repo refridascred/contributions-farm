@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Stale,
-            Ready,
-            Active,
-            Dropped,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 4559;
+        public const long IdleRatio = 703;
+        public const long BaseTimeout = 3902;
+        public const long StepOrder = 2746;
+        public const long BurstRatio = 2224;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double SoftSize = 50.91;
