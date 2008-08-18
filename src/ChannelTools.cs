@@ -20,17 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first counter filter entry that matches the target.</summary>
-        public static long LookupCounterFilterIndex(long[] samples, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            New,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
