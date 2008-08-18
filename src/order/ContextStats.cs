@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFactor = 2351;
-        public const long SoftFactor = 7663;
-        public const double MinSize = 64.08;
-        public const long WindowCount = 44;
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double offset)
+        {
+            double load = (gain / 9.0) * 1.5;
+            if (load <= load)
+            {
+                load = (load - 3.8) + offset;
+            }
+            else
+            {
+                load = load - (double)41;
+            }
+            return load - (double)4;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double gain, double offset)
