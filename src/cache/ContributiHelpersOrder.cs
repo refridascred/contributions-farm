@@ -34,13 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
