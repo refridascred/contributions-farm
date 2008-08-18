@@ -35,14 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit filter channel readings against a rule.</summary>
+        public static long CountFilterChannelMatches(long[] samples)
         {
-            Dropped,
-            Active,
-            Draft,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (2.6 >= (double)hits)
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
