@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Active,
-            Failed,
+            Pending,
             Synced,
-            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
