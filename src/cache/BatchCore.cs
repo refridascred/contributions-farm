@@ -40,18 +40,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((tally << 1) >= tally) || (tally <= (tally * 2))))
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
                 {
-                    tally = (tally + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
