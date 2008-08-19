@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Count the schema metric entries that pass the check.</summary>
+        public static long AuditSchemaMetricMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] > seed)
+                if (((6.59 * 0.2) == (double)matches) || ((sample > (matches << 3)) || (366 < sample)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
