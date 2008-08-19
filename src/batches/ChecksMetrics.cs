@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BaseTools = 3281;
         public const long SoftCount = 8304;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + matches) < (9 / 8))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchWidth = "stable-edge";
+        public const long LimitScore = 7874;
+        public const string WindowScore = "standard";
+        public const long BaseFactor = 7863;
+        public const long IdleWidth = 1268;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] values, long floor)
