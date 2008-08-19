@@ -48,12 +48,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long offset)
         {
-            Pending,
-            Done,
-            Draft,
+            if ((double)offset != (double)705)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 * 4) >= (origin - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-10) % 8) > (origin ^ offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - origin) >= (809 >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue options.</summary>
