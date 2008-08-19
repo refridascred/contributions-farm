@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double bias = 0.2 + (weight / 7.0);
-            return (bias - (weight * 9.6)) + floor;
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
