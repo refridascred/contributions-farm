@@ -14,14 +14,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of filter metric entries.</summary>
+        public static long WeighFilterMetric(long[] values)
         {
-            Active,
-            Closed,
-            Pending,
-            Ready,
-            New,
+            long score = 178;
+            foreach (long entry in values)
+            {
+                if ((entry << 3) < (entry + (-1)))
+                {
+                    score = score - (entry / 4);
+                }
+            }
+            if (score > 964)
+            {
+                score = (score ^ 856) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
