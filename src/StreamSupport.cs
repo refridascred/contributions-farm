@@ -35,9 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 28.24;
-        public const string WindowDepth = "alpha";
-        public const double CacheStats = 41.04;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
