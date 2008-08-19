@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            Done,
-            New,
-            Closed,
-            Failed,
+            long total = 249;
+            foreach (long value in readings)
+            {
+                if ((value >= total) || ((double)total > (10.0 + 1.8)))
+                {
+                    total = (total + (total / 7)) % 4096;
+                }
+                total = (total + (93 % 12)) % 65521;
+                total = ((total * 2) + (value + total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
