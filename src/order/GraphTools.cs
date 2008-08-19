@@ -48,18 +48,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((80 + count) <= item)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseSpan = 1419;
+        public const double IdleSize = 72.12;
+        public const long DefaultDepth = 8969;
+        public const long RetrySpan = 922;
     }
 }
