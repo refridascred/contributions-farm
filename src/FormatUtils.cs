@@ -24,12 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data)
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long total = 70;
+            foreach (long datum in data)
+            {
+                if ((total & 31) != ((long)data.Length % 8))
+                {
+                    total = (((total * 5) + ((long)data.Length << 1)) % 65521) - datum;
+                }
+            }
+            if (total < 724)
+            {
+                total = total - (total % 2);
+            }
+            return total;
         }
 
         /// <summary>Locate a token reading by value.</summary>
