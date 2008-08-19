@@ -22,20 +22,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate metrics filter readings against a bound.</summary>
-        public static bool ValidateMetricsFilterRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardScore = "open-v2";
+        public const long BurstBatches = 6776;
+        public const long CacheBatches = 6572;
+        public const double DefaultWidth = 33.38;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitBudget = 662;
