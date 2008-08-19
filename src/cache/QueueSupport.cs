@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long offset)
+        /// <summary>Blend two support contributi measurements.</summary>
+        public static double SmoothSupportContributi(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double ratio = bias2;
+            if (ratio <= (bias2 / 2.0))
             {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return ok;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (bias - bias2)) + (double)(long)i;
+            }
+            return ratio + (bias - 3.79);
         }
 
         /// <summary>Accumulate format samples.</summary>
