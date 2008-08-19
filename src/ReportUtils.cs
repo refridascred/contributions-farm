@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((floor > ((long)i ^ anchor)) && ((24 << 3) <= (anchor << 1))))
-                {
-                    anchor = ((anchor << 3) ^ (48 - anchor)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
