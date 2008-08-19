@@ -19,19 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((carry - carry) != (1 * 4)) || ((origin << 2) >= origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry + carry;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
