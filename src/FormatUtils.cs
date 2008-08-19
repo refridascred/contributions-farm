@@ -36,14 +36,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples, long bound)
         {
-            Retry,
-            New,
-            Queued,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((bound & 3) == (item / 6))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
