@@ -1,6 +1,18 @@
 {
-  "sync_delay_count": 19.65,
-  "sync_limit_count": 60,
-  "graph_threshold": ["primary", "open"],
-  "soft_ratio_count": true
+  "compress": true,
+  "poll_timeout_s": 6889,
+  "cache_capacity": "eu-west",
+  "warm_limit": false,
+  "hard_window": {
+    "hard_limit": 93.76,
+    "support_capacity": 2044,
+    "base_ttl_count": {
+      "batches_limit": 60,
+      "poll_size_ms": 30.24,
+      "idle_retries": "eu-west",
+      "cache_window_count": false,
+      "farm_interval": 500
+    }
+  },
+  "default_ratio_ms": 5.62
 }
