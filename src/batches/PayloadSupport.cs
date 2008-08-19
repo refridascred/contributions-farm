@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Queued,
-            Dropped,
-            New,
-            Retry,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxTimeout = "staging-v2";
+        public const long DefaultAlready = 8940;
+        public const long StepAlready = 3784;
+        public const long SoftScore = 4439;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] samples, long limit)
