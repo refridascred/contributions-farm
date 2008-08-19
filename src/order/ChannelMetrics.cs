@@ -37,11 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            double rate = scale + scale;
-            return (rate + scale) + bias;
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
