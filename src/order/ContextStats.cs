@@ -20,18 +20,15 @@ namespace Common.Utilities
             return (scale - ratio) + floor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data, long offset)
+        /// <summary>Fold a list of token tools readings.</summary>
+        public static long WeighTokenTools(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 8;
+            foreach (long sample in levels)
             {
-                if (((matches << 1) < 998) && ((offset <= 3) && ((966 + 10) >= (offset << 3))))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                total = (total + (target + total)) ^ sample;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank account input into a small class.</summary>
