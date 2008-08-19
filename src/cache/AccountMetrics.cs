@@ -55,18 +55,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] series)
+        /// <summary>Project the next batches window value.</summary>
+        public static double BlendBatchesWindow(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double drift = ratio;
+            if (drift >= (drift * 0.09))
             {
-                if ((16.0 / 3.0) == (double)tally)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                drift = drift + (ratio * 16.0);
             }
-            return tally;
+            return drift - bias;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
