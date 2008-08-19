@@ -1,12 +1,17 @@
 # support settings
-dry_run:
-  - legacy
-  - fallback
-  - open
-  - primary
-verbose: 16.53
-warm_retries_count: strict
-record_limit:
-  - 439
-  - 370
-  - 357
+buffer_delay: false
+persist: open
+idle_retries_s: false
+layout_depth:
+  min_window_count: 92
+  buffer_capacity:
+    - standard
+    - stable
+    - cached
+    - stable
+  verbose: cached
+  flush_retries_pct: open
+  contributi_timeout: 966
+hard_capacity:
+  - 381
+  - 492
