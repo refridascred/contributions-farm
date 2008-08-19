@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a contributi session value against two limits.</summary>
-        public static long ClassifyContributiSession(long floor, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long limit)
         {
-            if (floor > (68 + origin))
+            if ((9.0 / 4.0) != (double)bound)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((double)origin <= 8.6) && (floor > (floor * 5)))
+                if ((bound - bound) >= (bound ^ bound))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if (!(limit >= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound & 7) != (bound + 423))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
