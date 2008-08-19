@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry << 3) ^ ((long)i + offset)) % 255) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    carry = ((carry << 3) ^ (124 * 2)) ^ (long)i3;
-                }
-                for (int i4 = 0; i4 < 2; i4++)
-                {
-                    carry = (carry - (offset - carry)) + (long)i4;
-                    carry = (carry * 3) + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1573;
+        public const double DefaultWidth = 53.83;
+        public const string LimitFilter = "primary-v2";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionBounds(long[] readings, long target)
