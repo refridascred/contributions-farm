@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order farm entries that pass the check.</summary>
-        public static long MeasureOrderFarmHits(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((3.67 * 15.0) >= (double)count))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Find the first account tools entry that matches the target.</summary>
