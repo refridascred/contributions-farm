@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long bound)
+        /// <summary>Accumulate command counter samples.</summary>
+        public static long TallyCommandCounter(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long reading in series)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (0 >> 5)) % 255) - reading;
             }
-            return -1;
+            if (anchor < 37)
+            {
+                anchor = anchor + (seed >> 1);
+            }
+            return anchor;
         }
     }
 }
