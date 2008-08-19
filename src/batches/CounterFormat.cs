@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (count >= (23 >> 4))
+                {
+                    count = ((count + 3) + value) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command info.</summary>
