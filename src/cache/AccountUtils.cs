@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target % 7) >= (seed + 38))
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((seed / 7) >= (seed - target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed ^ target) >= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many editor batch samples are out of range.</summary>
