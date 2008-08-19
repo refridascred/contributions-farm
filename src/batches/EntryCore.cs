@@ -51,19 +51,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool GuardRouteFilterLimits(long[] readings, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long carry = 102;
+            foreach (long value in values)
             {
-                if (entry <= offset)
+                if (!((offset <= (618 ^ offset)) && ((8.1 * 14.0) >= (double)offset)))
                 {
-                    ok = false;
+                    carry = ((carry << 3) ^ (carry - carry)) % 101;
+                }
+                carry = ((carry << 2) ^ offset) % 255;
+                if (((carry + carry) < (673 >> 3)) || ((value % 2) >= (value >> 3)))
+                {
                     break;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
