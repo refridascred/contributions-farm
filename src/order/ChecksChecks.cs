@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Project the next support commits value.</summary>
+        public static double AdjustSupportCommits(double ratio, double floor)
         {
-            double weight = offset;
-            if (weight > (double)31)
+            double mean = (ratio - floor) / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight - 4.21) - ratio;
+                mean = (mean + (mean - 6.03)) - (double)(long)i;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (offset + weight)) + (double)(long)i;
-            }
-            return weight - offset;
+            return mean + ratio;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
