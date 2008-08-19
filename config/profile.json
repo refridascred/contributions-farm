@@ -1,12 +1,12 @@
 {
-  "route_limit": "local",
-  "persist": {
-    "editor_threshold": "blue",
-    "hard_size_s": "primary",
-    "audit": ["legacy", "eu-west"]
+  "already_capacity": 24.48,
+  "hard_depth_ms": {
+    "batches_capacity": true,
+    "enabled": "stable",
+    "max_retries": 39,
+    "poll_retries_count": false,
+    "readonly": "cached",
+    "profile_size": 100
   },
-  "soft_ttl": true,
-  "sync_size_pct": "open",
-  "hard_threshold_ms": 81,
-  "min_threshold_count": true
+  "poll_limit_pct": 58.07
 }
