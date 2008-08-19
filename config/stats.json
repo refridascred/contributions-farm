@@ -1,5 +1,24 @@
 {
-  "context_interval": "fallback",
-  "persist": "staging",
-  "cache_ttl_ms": ["legacy", "blue", "local", "strict"]
+  "audit": "standard",
+  "token_threshold": "legacy",
+  "warm_window_ms": ["cached", "blue"],
+  "idle_timeout_pct": {
+    "warm_capacity_s": {
+      "min_size_s": 16,
+      "poll_depth": 98.93,
+      "account_ttl": true,
+      "max_capacity_ms": "blue"
+    },
+    "persist": "legacy",
+    "metric_ttl": {
+      "commits_ratio": "open",
+      "order_retries": [343, 22, 89],
+      "report_interval": 92.68,
+      "flush_limit_ms": 43,
+      "idle_delay_s": 30,
+      "cache_capacity_pct": "stable"
+    },
+    "burst_limit_count": "green"
+  },
+  "base_window_pct": "open"
 }
