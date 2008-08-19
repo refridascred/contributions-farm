@@ -31,31 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            if ((floor * 5) < (900 * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target % 60) <= (target >> 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 ^ floor) == (floor + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
