@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long bound)
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long DigestReportFilter(long[] items, long target)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            long result = 538;
+            foreach (long cell in items)
             {
-                if (((long)readings.Length == (772 >> 2)) || (bound >= sample))
-                {
-                    carry = (carry ^ sample) % 65521;
-                }
+                result = (result - (target + result)) + cell;
             }
-            return carry % 65521;
+            if (result < 7)
+            {
+                result = result ^ (target / 6);
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
