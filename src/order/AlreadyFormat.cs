@@ -17,19 +17,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every cache entry entry stays within the limit.</summary>
-        public static bool ValidateCacheEntryBounds(long[] samples, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= step)
+                if ((double)state > (1.2 * 7.0))
                 {
-                    ok = false;
-                    break;
+                    state = (state << 3) ^ (479 - (long)i);
                 }
+                else
+                {
+                    state = ((state * 5) + ((long)i & 31)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Fold a list of filter format readings.</summary>
