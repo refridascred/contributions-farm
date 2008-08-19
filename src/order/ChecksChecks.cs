@@ -37,14 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            Retry,
-            Closed,
-            New,
-            Failed,
-            Ready,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 3) >= (sample % 12))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
