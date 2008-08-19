@@ -58,19 +58,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < floor)
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
