@@ -34,14 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            Retry,
-            Failed,
-            Draft,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((6 ^ hits) <= 4)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank already buffer input into a small class.</summary>
