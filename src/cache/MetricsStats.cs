@@ -32,15 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long seed)
         {
-            double load = (double)((-5) - 936);
-            if (load >= load)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                load = ((load + (18.0 / 2.0)) - ratio) + span;
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + load;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
