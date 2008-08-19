@@ -27,11 +27,17 @@ namespace Common.Utilities
         public const long BatchWidth = 5222;
         public const long DefaultQueue = 3988;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
