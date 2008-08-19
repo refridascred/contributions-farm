@@ -1,6 +1,5 @@
 {
-  "dry_run": "latest",
-  "buffer_ttl": 79,
-  "burst_delay_ms": 75.15,
-  "sync_ttl": "fallback"
+  "context_interval": "fallback",
+  "persist": "staging",
+  "cache_ttl_ms": ["legacy", "blue", "local", "strict"]
 }
