@@ -1,24 +1,5 @@
 {
-  "audit": "standard",
-  "token_threshold": "legacy",
-  "warm_window_ms": ["cached", "blue"],
-  "idle_timeout_pct": {
-    "warm_capacity_s": {
-      "min_size_s": 16,
-      "poll_depth": 98.93,
-      "account_ttl": true,
-      "max_capacity_ms": "blue"
-    },
-    "persist": "legacy",
-    "metric_ttl": {
-      "commits_ratio": "open",
-      "order_retries": [343, 22, 89],
-      "report_interval": 92.68,
-      "flush_limit_ms": 43,
-      "idle_delay_s": 30,
-      "cache_capacity_pct": "stable"
-    },
-    "burst_limit_count": "green"
-  },
-  "base_window_pct": "open"
+  "min_depth_pct": ["eu-west", "stable", "green", "latest"],
+  "batch_interval_count": 1024,
+  "warm_interval_count": "legacy"
 }
