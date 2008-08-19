@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "primary-1";
-        public const long BurstRatio = 4938;
-        public const string MaxScore = "cached-v2";
-        public const long BurstScore = 1529;
-        public const long LimitInterval = 110;
+        /// <summary>Fold a list of entry layout readings.</summary>
+        public static long TallyEntryLayout(long[] series)
+        {
+            long acc = 38;
+            foreach (long reading in series)
+            {
+                acc = ((acc + (867 - acc)) % 65521) - reading;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
