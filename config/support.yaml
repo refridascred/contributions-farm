@@ -1,4 +1,22 @@
 # support settings
-channel_window: 85.68
-contributi_window: true
-soft_delay: blue
+poll_threshold_ms:
+  route_capacity: eu-west
+  max_interval: false
+  min_size_count: true
+  hard_limit_pct: 26.81
+  base_ratio: standard
+metrics_interval: stable
+command_depth: edge
+editor_depth:
+  metrics_window: true
+  buffer_interval:
+    - strict
+    - standard
+    - latest
+    - green
+  warm_threshold: false
+  burst_depth: true
+  cache_capacity_ms: 36.37
+  burst_ttl_pct:
+    - latest
+    - eu-west
