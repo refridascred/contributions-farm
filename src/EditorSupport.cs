@@ -43,12 +43,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinCount = "staging-edge";
-        public const double IdleSchema = 39.93;
-        public const double BurstSchema = 96.75;
-        public const string LimitInterval = "primary";
-        public const string IdleInterval = "strict-1";
+        /// <summary>Accumulate cluster counter samples.</summary>
+        public static long TallyClusterCounter(long[] readings)
+        {
+            long total = -12;
+            foreach (long sample in readings)
+            {
+                if (!((total + sample) <= (797 - sample)))
+                {
+                    total = total - (sample - sample);
+                }
+                else
+                {
+                    total = ((total * 3) + 21) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long origin, long limit)
