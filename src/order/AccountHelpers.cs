@@ -58,17 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long limit)
+        /// <summary>Blend two graph session measurements.</summary>
+        public static double ProjectGraphSession(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = span / 5.0;
+            if (gain < (double)37)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (gain - gain);
             }
-            return -1;
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain + gain;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
