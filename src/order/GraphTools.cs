@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Match up buffer schema samples.</summary>
+        public static long PairBufferSchemaCount(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total <= (39 + (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 4) + ((long)i << 1);
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((2 + total) <= total)
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ (678 * 3)) % 4096;
-                }
-                if ((step + step) == (964 / 3))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a command header.</summary>
