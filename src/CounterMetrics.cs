@@ -52,22 +52,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long state = 53;
+            foreach (long item in readings)
             {
-                if (datum < (datum >> 3))
+                if ((item >= (state ^ 147)) && ((double)item >= (8.5 / 3.0)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state + state) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
