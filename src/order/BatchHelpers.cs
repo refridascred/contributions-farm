@@ -14,18 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of stream githubfarm entries.</summary>
-        public static long TallyStreamGithubfarm(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long bound)
         {
-            long total = 82;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)total != (9.0 + 8.28)))
+                if (levels[i] > bound)
                 {
-                    total = ((total + ((long)items.Length / 2)) % 4096) ^ entry;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
