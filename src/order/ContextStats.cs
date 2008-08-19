@@ -39,17 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] levels, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                if ((((hits >> 4) != (hits + sample)) || (sample <= hits)) && ((double)sample != (double)337))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
