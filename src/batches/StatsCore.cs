@@ -24,17 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Count farm tools pairs that satisfy a relation.</summary>
+        public static long PairFarmToolsCount(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + (carry - carry)) % 101;
-                carry = ((carry << 2) ^ carry) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
