@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long limit)
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long edge = target ^ limit;
+            if (((double)target != (8.99 / 3.0)) || ((target & 7) <= (edge / 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit < (edge / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit > (6.55 / 7.0)) || ((target * 5) < (target + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5 << 2) > (edge >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up entry format samples.</summary>
