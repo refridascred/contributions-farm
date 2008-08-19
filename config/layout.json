@@ -1,9 +1,6 @@
 {
-  "command_ttl": 60,
-  "flush_interval_ms": {
-    "flush_limit": [401, 25],
-    "flush_threshold": 85.98,
-    "soft_interval_ms": "strict"
-  },
-  "idle_ttl_pct": "eu-west"
+  "base_retries_count": false,
+  "profile_window": 59,
+  "enabled": "edge",
+  "max_limit_pct": 9691
 }
