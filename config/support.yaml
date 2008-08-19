@@ -1,6 +1,5 @@
 # support settings
-retry_threshold: 58.23
-soft_depth_pct: 31.39
-buffer_limit: standard
-retry_capacity_count: 91
-hard_capacity: false
+stats_ratio: local
+flush_retries: false
+sync_window_s: eu-west
+batch_retries: 99
