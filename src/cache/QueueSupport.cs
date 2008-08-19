@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long CountOrderChannelOutliers(long[] values)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((matches << 3) > 156) && ((matches + datum) < (datum / 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
