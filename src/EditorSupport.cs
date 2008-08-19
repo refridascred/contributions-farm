@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                double load = 8.5;
+                double scale = load;
+                if (load < scale)
+                {
+                    anchor = (anchor - (anchor << 3)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
