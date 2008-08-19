@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
+            Ready,
             Dropped,
-            Retry,
-            Queued,
-            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Digest a series of stream githubfarm entries.</summary>
