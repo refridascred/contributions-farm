@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a profile context value against two limits.</summary>
-        public static long GradeProfileContext(long bound, long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((bound / 6) != (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.71 / 7.0) > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
