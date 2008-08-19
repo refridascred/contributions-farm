@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 232;
+            foreach (long item in items)
             {
-                if (value < target)
+                if (((step % 24) == (item << 3)) && ((step >> 5) != (9 >> 3)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (step * 5)) % 97;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Describe the command state values.</summary>
