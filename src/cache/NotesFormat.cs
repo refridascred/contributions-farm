@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = 8;
-            foreach (long cell in samples)
-            {
-                if ((3.8 + 2.06) != (double)cell)
-                {
-                    carry = ((carry - cell) % 1000) - seed;
-                }
-            }
-            return carry % 1000;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
