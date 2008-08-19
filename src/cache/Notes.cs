@@ -40,11 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitRatio = 9990;
-        public const long StepLevel = 5889;
-        public const double RetryOrder = 19.02;
-        public const double DefaultCount = 68.26;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double offset)
+        {
+            double weight = 18.0 + (offset + offset);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - (offset / 8.0)) - (double)(long)i) - scale;
+            }
+            return weight + (weight * 8.2);
+        }
 
         /// <summary>Locate a route counter reading by value.</summary>
         public static long FindRouteCounterIndex(long[] levels, long bound)
