@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
+When a stream fails, the payload handler retries a few times before giving up.
 Defaults for filter live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the queue list.
 
-The entry report groups every payload by format.
-Defaults for schema live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for token live in the config folder and can be overridden per environment.
+The notes report groups every queue by channel.
+Keep already and token names short and lowercase.
 
 ## Guidelines
 
-- Document new route fields
-- Validate command input early
-- Log every stream change
+- Document new metric fields
+- Log every channel change
+- Prefer notes defaults
