@@ -15,17 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first report stats entry that matches the target.</summary>
-        public static long LocateReportStatsIndex(long[] samples, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long offset2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (offset < (offset2 + offset))
             {
-                if (samples[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if ((offset < (offset % 7)) || ((62 >> 3) < (offset2 / 8)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 << 2) != (offset << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset2 ^ offset2) >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
