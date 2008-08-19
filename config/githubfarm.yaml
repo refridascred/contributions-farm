@@ -1,10 +1,11 @@
 # githubfarm settings
-stats_depth:
-  soft_timeout_s: 46
-  dry_run:
-    hard_depth_pct: standard
-    soft_window_s: 83
-    verbose: 3994
-  batch_limit_count: 30
-cluster_limit: true
-buffer_capacity: 250
+max_ttl_ms: 84.97
+default_depth_count: false
+idle_delay_ms: legacy
+format_threshold:
+  enabled: 7787
+  retry_ratio_ms: 30
+  editor_capacity: false
+  account_retries: stable
+  warm_interval_ms: true
+  buffer_threshold: fallback
