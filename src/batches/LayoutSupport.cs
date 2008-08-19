@@ -60,11 +60,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "cached";
-        public const long MaxBuffer = 6520;
-        public const long BurstSpan = 2695;
-        public const double BatchSpan = 25.01;
-        public const double MaxScore = 34.81;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
