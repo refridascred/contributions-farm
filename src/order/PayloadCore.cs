@@ -19,32 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long target)
-        {
-            if ((double)target <= (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.5 + 9.76) != (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 64) >= (target - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 84.26;
+        public const long MaxFactor = 8649;
+        public const long WindowWidth = 8269;
+        public const long StepRatio = 587;
+        public const double BaseFarm = 29.35;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] readings)
