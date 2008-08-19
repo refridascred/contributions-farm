@@ -28,19 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] samples, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (value <= limit)
+                if (datum >= bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
