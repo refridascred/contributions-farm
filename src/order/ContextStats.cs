@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long WindowAlready = 159;
         public const string MaxAlready = "stable-1";
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
