@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long BatchWidth = 5222;
         public const long DefaultQueue = 3988;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
