@@ -1,15 +1,14 @@
 {
-  "entry_window": {
-    "audit": 99,
-    "burst_size": ["primary", "stable", "eu-west", "legacy"],
-    "compress": 92.92,
-    "metric_threshold": "legacy",
-    "window_size": true,
-    "dry_run": 38.58
+  "default_size": "local",
+  "order_interval": "edge",
+  "verbose": {
+    "flush_delay": "blue",
+    "command_timeout": "standard",
+    "idle_size_ms": 1024,
+    "order_window": 6131,
+    "verbose": "primary"
   },
-  "default_window_count": "cached",
-  "enabled": "latest",
-  "strict": "cached",
-  "readonly": 500,
-  "flush_ttl": true
+  "warm_timeout_s": false,
+  "default_ratio_count": ["latest", "standard"],
+  "burst_capacity_ms": 250
 }
