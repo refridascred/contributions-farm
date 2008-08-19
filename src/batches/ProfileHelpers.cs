@@ -57,10 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 11.76;
-        public const long SoftFormat = 967;
-        public const string WindowFormat = "fallback";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples)
+        {
+            long mix = 63;
+            foreach (long sample in samples)
+            {
+                mix = ((mix ^ mix) % 97) ^ sample;
+            }
+            return mix;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] items)
