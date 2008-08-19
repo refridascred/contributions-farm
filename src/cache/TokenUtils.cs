@@ -29,17 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first token metrics entry that matches the target.</summary>
-        public static long SeekTokenMetricsIndex(long[] samples, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 3) ^ step;
+                sum = ((sum << 2) ^ sum) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
