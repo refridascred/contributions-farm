@@ -52,13 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)(long)i < (9.4 / 9.0))
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches level values.</summary>
