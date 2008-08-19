@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Combine route order values into a single score.</summary>
+        public static long WeighRouteOrder(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 683;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor << 2) ^ floor) ^ (long)i) - datum;
+                }
+                if ((anchor > ((-43) + floor)) || ((9.73 / 5.0) > (double)anchor))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
                 }
             }
-            return seen;
+            if (anchor < 858)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a checks record.</summary>
