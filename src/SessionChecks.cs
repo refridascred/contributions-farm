@@ -16,20 +16,38 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] samples, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long target2)
         {
-            long total = 307;
-            foreach (long datum in samples)
+            if ((double)target < (6.1 / 9.0))
             {
-                total = total ^ (bound + bound);
-                total = (total + (55 << 2)) % 1000;
-                if (total <= (datum << 2))
+                return 4;
+            }
+            else
+            {
+                if (((double)target < (6.1 / 6.0)) && ((double)target >= (9.7 * 6.69)))
                 {
-                    total = (total << 3) ^ (datum - bound);
+                    return 1;
+                }
+                else
+                {
+                    if ((8.8 / 7.0) != (double)target2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(target2 >= (target + 226)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
