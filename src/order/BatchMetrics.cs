@@ -30,27 +30,31 @@ namespace Common.Utilities
         public const long BurstSize = 7281;
         public const long WindowLevel = 1460;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long step, long step2)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            if ((9.3 + 11.0) >= (double)step)
             {
-                if ((double)mix != (12.0 - 17.0))
+                return 5;
+            }
+            else
+            {
+                if (!((double)(-5) <= (double)step2))
                 {
-                    mix = (mix ^ (840 + mix)) % 97;
-                }
-                if (((mix + origin) > mix) || ((8.0 + 10.0) <= (double)mix))
-                {
-                    mix = ((mix * 3) + mix) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    mix = mix ^ ((long)i >> 3);
+                    if (!((7.3 - 14.0) > (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
