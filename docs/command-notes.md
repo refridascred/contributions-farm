@@ -1,13 +1,13 @@
 # Command notes
 
-The window report groups every token by token.
-Each counter is validated before it reaches the stats queue.
+A record that stays idle for too long is moved to the editor list.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-When a metrics fails, the editor handler retries a few times before giving up.
-Each stream is validated before it reaches the contributi queue.
+Each stats is validated before it reaches the notes queue.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate account input early
-- Review metrics limits each release
-- Document new stats fields
+- Review counter limits each release
+- Document new filter fields
+- Prefer command defaults
