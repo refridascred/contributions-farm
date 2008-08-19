@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue staging strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=243
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in legacy latest; do
+    log "checking ${item}"
+done
