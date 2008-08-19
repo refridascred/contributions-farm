@@ -41,24 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((floor - floor) >= (bound << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4 / 5) <= (floor >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the record status values.</summary>
