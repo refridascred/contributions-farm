@@ -29,15 +29,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long bound)
         {
-            double gain = floor;
-            if (gain >= (double)98)
+            if (((floor * 2) > (bound >> 1)) && ((16.0 / 5.0) <= (double)bound))
             {
-                gain = gain + gain;
+                return 6;
             }
-            return gain - scale;
+            else
+            {
+                if ((85 % 24) >= (254 - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a cache checks value against two limits.</summary>
