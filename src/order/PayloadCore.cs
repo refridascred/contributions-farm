@@ -14,21 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Check that every tools channel entry stays within the limit.</summary>
+        public static bool ValidateToolsChannelRange(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < bound)
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
