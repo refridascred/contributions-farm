@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Synced,
-            Retry,
-            Queued,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
