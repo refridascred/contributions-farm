@@ -1,8 +1,13 @@
 {
-  "dry_run": true,
-  "counter_timeout": true,
-  "graph_ratio": 18.71,
-  "retry_ratio_count": "staging",
-  "window_retries": 100,
-  "verbose": ["cached", "blue", "strict"]
+  "dry_run": {
+    "batch_delay_s": 250,
+    "batch_interval_count": [264, 321, 3],
+    "sync_ratio_pct": "primary",
+    "hard_capacity_count": "blue",
+    "sync_limit_s": 3163,
+    "batch_retries_s": "edge"
+  },
+  "poll_ttl_count": "blue",
+  "verbose": false,
+  "base_interval_s": [39, 96, 136, 206]
 }
