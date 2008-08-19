@@ -30,13 +30,15 @@ namespace Common.Utilities
             return scale2 - (double)19;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a githubfarm already figure with a bias.</summary>
+        public static double ScaleGithubfarmAlready(double rate, double offset)
         {
-            Ready,
-            Pending,
-            Locked,
-            Stale,
+            double scale = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale - 7.4;
         }
     }
 }
