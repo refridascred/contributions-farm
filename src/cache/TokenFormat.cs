@@ -14,17 +14,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first account tools entry that matches the target.</summary>
-        public static long LocateAccountToolsIndex(long[] readings, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = origin + offset;
+            if ((bound << 3) <= 524)
             {
-                if (readings[i] > bound)
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 5) < (origin + bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
