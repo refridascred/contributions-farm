@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitRatio = "standard-edge";
-        public const long MaxRatio = 3064;
-        public const string WindowNotes = "alpha-v2";
-        public const long MinDepth = 1569;
-        public const long DefaultNotes = 2546;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] samples)
