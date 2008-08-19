@@ -42,14 +42,13 @@ namespace Common.Utilities
         public const double MaxRatio = 89.38;
         public const long IdleLevel = 7678;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Pending,
-            Paused,
-            Stale,
-            Draft,
-            Ready,
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
