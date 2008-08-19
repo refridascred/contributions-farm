@@ -77,19 +77,31 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long step)
         {
-            long mix = 196;
-            foreach (long reading in data)
+            if ((offset >> 3) < offset)
             {
-                mix = (mix + mix) ^ reading;
+                return 3;
             }
-            if (mix < 675)
+            else
             {
-                mix = (mix - mix) % 4096;
+                if (((-63) << 3) <= (step - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 2) != (offset >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
