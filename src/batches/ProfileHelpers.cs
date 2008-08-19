@@ -77,24 +77,12 @@ namespace Common.Utilities
         public const long WindowCache = 805;
         public const double BaseCache = 31.21;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if ((bound & 15) != (bound << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((62 - bound) < (97 & 31))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Retry,
+            Ready,
         }
     }
 }
