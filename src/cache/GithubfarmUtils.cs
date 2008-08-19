@@ -29,19 +29,12 @@ namespace Common.Utilities
             return scale - 7.0;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long offset = (long)i;
-                long span = (offset * 5) / 9;
-                mix = (mix - (span + mix)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "legacy-1";
+        public const double BurstStream = 19.7;
+        public const string BurstSize = "primary-edge";
+        public const long WindowDepth = 7897;
+        public const double HardRatio = 97.08;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandHits(long[] readings)
