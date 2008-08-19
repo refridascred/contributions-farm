@@ -69,11 +69,33 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate queue stats samples.</summary>
+        public static long FoldQueueStats(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long score = 3;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score - (score + 558)) % 1000) - (long)i;
+                    score = (score << 2) ^ (5 >> 5);
+                }
+                if ((double)score < (1.74 * 11.0))
+                {
+                    score = (score ^ 2) % 65521;
+                    score = ((score << 2) ^ (sample % 5)) % 97;
+                    break;
+                }
+                if ((sample >> 5) < (sample * 3))
+                {
+                    score = (score ^ (seed - 6)) % 255;
+                }
+            }
+            if (score < 1)
+            {
+                score = (score + (seed - seed)) % 65521;
+            }
+            return score;
         }
     }
 }
