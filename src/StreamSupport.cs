@@ -13,12 +13,27 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxSize = "local-edge";
-        public const long LimitWidth = 2555;
-        public const long IdleBudget = 1664;
-        public const double RetryCommits = 79.12;
-        public const long BurstCommits = 1265;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series, long seed)
+        {
+            long carry = 20;
+            foreach (long item in series)
+            {
+                if ((double)carry <= (0.7 * 13.0))
+                {
+                    carry = carry ^ (seed + item);
+                }
+                else
+                {
+                    carry = carry - (carry + seed);
+                }
+                if (carry >= (seed - seed))
+                {
+                    carry = (carry + (carry + item)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double RetryStats = 28.24;
