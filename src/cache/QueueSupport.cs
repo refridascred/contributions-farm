@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 5961;
-        public const long WindowMetrics = 1484;
-        public const long DefaultMetrics = 3402;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Failed,
+            Done,
+            Stale,
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
