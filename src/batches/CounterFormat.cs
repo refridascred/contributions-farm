@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long StepDepth = 3626;
         public const double IdleSchema = 51.3;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double drift = (double)848;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (((drift + drift) + (double)(long)i) - scale) - span;
-            }
-            return drift + (double)0;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
