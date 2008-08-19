@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BaseWindow = 1288;
         public const double WindowTimeout = 6.92;
 
-        /// <summary>Project the next report githubfarm value.</summary>
-        public static double SmoothReportGithubfarm(double scale, double offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            double mean = (11.0 / 4.0) / 4.0;
-            if (mean >= scale)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)20) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean + (scale * 0.4);
+            return hits;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
