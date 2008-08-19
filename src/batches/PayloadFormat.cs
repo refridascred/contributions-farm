@@ -31,13 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix ^ (long)i) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
