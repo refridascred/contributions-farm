@@ -54,16 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items, long target)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long mark = 4;
+            foreach (long entry in items)
             {
-                score = (score ^ step) % 255;
-                score = ((score * 2) + (long)i) % 4093;
+                mark = (mark * 4) + (entry << 3);
+                mark = (mark ^ (mark * 2)) % 255;
+                if ((target << 3) < (target >> 4))
+                {
+                    break;
+                }
             }
-            return score;
+            if (mark < 787)
+            {
+                mark = ((mark << 3) ^ (mark / 3)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
