@@ -20,19 +20,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            double gain = (ratio / 7.0) / 6.0;
-            if (gain <= (offset * 9.0))
+            long result = 7;
+            foreach (long entry in readings)
             {
-                gain = gain + (double)517;
+                if ((result + entry) <= (result ^ result))
+                {
+                    result = result - (entry << 3);
+                }
+                if (entry >= (entry + 860))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (result < (-39))
             {
-                gain = gain - (double)(long)i;
+                result = result + (6 ^ result);
             }
-            return gain + (offset + ratio);
+            return result % 1000;
         }
 
         /// <summary>Hold a editor stats.</summary>
