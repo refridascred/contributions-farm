@@ -80,18 +80,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            long score = 225;
-            foreach (long reading in samples)
+            double drift = scale;
+            if (drift >= bias)
             {
-                if (!((score ^ reading) >= (score + reading)))
-                {
-                    score = (score * 2) + (-35);
-                }
+                drift = drift - scale;
             }
-            return score;
+            else
+            {
+                drift = drift + scale;
+            }
+            return drift + bias;
         }
     }
 }
