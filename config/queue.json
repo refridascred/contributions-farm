@@ -1,8 +1,19 @@
 {
-  "batch_threshold": 1105,
-  "batch_timeout": 55,
-  "enabled": 250,
-  "default_depth_pct": 500,
-  "verbose": 76.7,
-  "audit": [379, 471, 488, 189]
+  "cache_delay": "staging",
+  "verbose": 9265,
+  "max_threshold_s": {
+    "layout_delay": [368, 259],
+    "flush_timeout_ms": "latest",
+    "sync_retries": {
+      "batch_retries": 9823,
+      "soft_ratio": true,
+      "editor_size": [465, 118, 38, 264],
+      "idle_ttl_pct": "stable"
+    },
+    "hard_capacity_ms": "strict",
+    "report_timeout": "fallback",
+    "flush_retries_pct": 36.41
+  },
+  "soft_threshold_ms": "blue",
+  "default_ratio_ms": 36.93
 }
