@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Validate cluster buffer readings against a bound.</summary>
+        public static bool CheckClusterBufferBounds(long[] data, long origin)
         {
-            double mean = (double)(2 + 23);
-            if (mean > (floor + mean))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mean = (mean - (0.38 / 8.0)) - scale;
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean + mean)) + (double)(long)i;
-            }
-            return mean + floor;
+            return ok;
         }
 
         /// <summary>Describe the window status values.</summary>
