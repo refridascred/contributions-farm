@@ -24,24 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long seed)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            if (((double)bound <= (7.3 / 2.0)) || ((seed & 7) != (bound / 5)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
