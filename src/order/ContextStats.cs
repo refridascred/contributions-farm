@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] series, long offset)
+        /// <summary>Count the support token entries that pass the check.</summary>
+        public static long AuditSupportTokenHits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (item > offset)
+                if ((double)bound < 0.04)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
