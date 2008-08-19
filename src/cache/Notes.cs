@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double DefaultEditor = 95.03;
         public const double DefaultRatio = 50.94;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate token session samples.</summary>
+        public static long ScoreTokenSession(long[] samples)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long total = 99;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (3.99 / 7.0))
+                {
+                    total = total - (total & 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
