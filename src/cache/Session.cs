@@ -45,15 +45,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a payload channel counter forward.</summary>
-        public static long SeriesPayloadChannel(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((double)seed < (8.8 / 3.0))
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
