@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long limit)
+        /// <summary>Find the first layout support entry that matches the target.</summary>
+        public static long SeekLayoutSupportIndex(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                if (series[i] < origin)
                 {
                     return (long)i;
                 }
