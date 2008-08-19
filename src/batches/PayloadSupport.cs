@@ -32,19 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] items, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry < target)
+                if (!((146 << 2) < seen) || ((69 + seen) < ((-16) + seen)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
