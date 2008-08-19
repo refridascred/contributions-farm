@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long score = 265;
-            foreach (long datum in readings)
+            long result = 196;
+            foreach (long item in series)
             {
-                score = (((score << 2) ^ (score << 2)) % 97) - datum;
+                result = ((result ^ (result % 8)) % 1000) ^ item;
             }
-            if (score > 13)
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
