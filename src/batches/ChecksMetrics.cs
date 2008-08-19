@@ -79,19 +79,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already queue values into a single score.</summary>
-        public static long DigestAlreadyQueue(long[] samples, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long score = -633;
-            foreach (long sample in samples)
-            {
-                score = (((score * 3) + sample) % 65521) - offset;
-            }
-            if (score > 6)
-            {
-                score = ((score * 3) + (score + score)) % 1000;
-            }
-            return score % 65521;
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
