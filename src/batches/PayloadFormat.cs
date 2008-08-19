@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long limit)
         {
-            long sum = 75;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (((cell + cell) < (cell << 3)) || (sum > (sum % 100)))
+                if (sample < limit)
                 {
-                    sum = (sum + (cell & 3)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
