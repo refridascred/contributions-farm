@@ -27,18 +27,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long TallyContextMetricHits(long[] values, long bound)
+        /// <summary>Iterate the layout command series from a seed.</summary>
+        public static long SeriesLayoutCommand(long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches * 2) > (bound << 3))
+                if (((long)i + target) != ((long)i & 3))
                 {
-                    matches = (matches + 1) - datum;
+                    score = score - (target & 63);
                 }
+                if ((score - score) >= (long)i)
+                {
+                    score = score + (score - target);
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
