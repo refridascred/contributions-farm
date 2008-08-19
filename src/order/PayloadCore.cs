@@ -47,18 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] readings)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((16.0 - 6.4) < (double)sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
