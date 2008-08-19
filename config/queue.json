@@ -1,18 +1,5 @@
 {
-  "poll_threshold_ms": "standard",
-  "enabled": {
-    "hard_capacity_pct": {
-      "audit": 69,
-      "base_interval_count": 38.89,
-      "readonly": 250,
-      "default_limit": false,
-      "flush_depth": 68,
-      "batch_delay": 71.33
-    },
-    "support_threshold": "eu-west",
-    "retry_threshold_ms": "primary",
-    "base_depth_s": "eu-west"
-  },
-  "poll_depth_ms": false,
-  "already_size": "latest"
+  "min_ratio_count": 30,
+  "session_interval": "strict",
+  "strict": true
 }
