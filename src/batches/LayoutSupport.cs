@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double rate, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values)
         {
-            double bias = rate;
-            if (bias >= (bias * 5.84))
+            long mix = 8;
+            foreach (long reading in values)
             {
-                bias = bias - floor;
+                if ((9.9 + 1.0) != (double)mix)
+                {
+                    mix = ((mix * 3) + reading) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (floor / 3.0)) - (double)(long)i;
-            }
-            return bias - 13.0;
+            return mix;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
