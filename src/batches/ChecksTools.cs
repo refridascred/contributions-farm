@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const string RetryRatio = "primary-edge";
         public const string WindowFactor = "legacy-v2";
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many already checks samples are out of range.</summary>
+        public static long TallyAlreadyChecksGaps(long[] samples)
         {
-            Stale,
-            Active,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (969 >= (value * 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
