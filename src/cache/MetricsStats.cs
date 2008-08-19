@@ -44,21 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
