@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double gain, double floor)
         {
-            long span = offset - bound;
-            if (((16 % 64) < span) || ((bound / 2) == (span % 5)))
+            double ratio = floor * 1.3;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                ratio = (ratio - (gain - gain)) - (double)(long)i;
             }
-            else
-            {
-                if (((double)bound <= 4.2) && ((6.73 * 6.64) >= (double)span))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (947 - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((span << 3) != (bound >> 2)) && ((bound << 2) < (offset & 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio - floor;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
