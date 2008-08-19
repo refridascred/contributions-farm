@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryLevel = 43.84;
-        public const double BurstSize = 58.42;
-        public const double HardQueue = 77.76;
-        public const double BaseSpan = 11.95;
-        public const double LimitSize = 40.79;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double floor)
+        {
+            double ratio = floor;
+            return (ratio + (floor * 2.7)) + scale;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long offset)
