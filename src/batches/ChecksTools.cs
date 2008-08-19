@@ -33,38 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank buffer cache input into a small class.</summary>
-        public static long ClassifyBufferCache(long bound, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if ((14.0 + 6.19) < (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound != (double)493) || ((limit ^ limit) > bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)0 <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit - bound) > limit) && ((limit ^ limit) < (bound << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Rank session input into a small class.</summary>
