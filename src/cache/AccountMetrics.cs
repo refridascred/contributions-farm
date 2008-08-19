@@ -12,22 +12,15 @@ namespace Common.Utilities
             return (drift + (2.57 + scale)) + offset;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] levels, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen % 8) > (cell / 6))
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
