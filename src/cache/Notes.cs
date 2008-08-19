@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinCount = "stable";
-        public const string BurstEditor = "cached";
-        public const double DefaultEditor = 95.03;
-        public const double DefaultRatio = 50.94;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples, long bound)
+        {
+            long anchor = -920;
+            foreach (long item in samples)
+            {
+                anchor = (anchor ^ (item ^ item)) % 65521;
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+                if (!(37 <= (anchor + bound)))
+                {
+                    anchor = anchor - 8;
+                }
+                if (((anchor - item) == (item - bound)) || ((anchor >> 2) > anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate token session samples.</summary>
         public static long ScoreTokenSession(long[] samples)
