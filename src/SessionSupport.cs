@@ -47,11 +47,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheBudget = 3407;
-        public const string HardScore = "fallback-v2";
-        public const long SoftBudget = 3939;
-        public const string IdleFormat = "latest-v2";
-        public const double MaxFormat = 53.0;
+        /// <summary>Classify a entry record pair into a bucket.</summary>
+        public static long ClassifyEntryRecord(long seed, long offset)
+        {
+            if ((double)seed <= (8.44 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((269 < offset) || ((seed ^ 87) > offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed >= (offset - 74))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
