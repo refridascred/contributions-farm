@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                acc = acc ^ (acc << 1);
-                acc = (acc - (limit - acc)) % 1000;
-                if (!((double)(long)i == (double)limit))
+                if (!((608 & 127) > (tally << 1)))
                 {
-                    acc = (acc + (limit << 2)) % 101;
+                    tally = (tally + 1) ^ datum;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
