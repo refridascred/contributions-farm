@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of farm buffer entries.</summary>
-        public static long DigestFarmBuffer(long[] series, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            long sum = 7;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                sum = ((sum << 2) ^ ((long)series.Length - sample)) - floor;
-                sum = (sum - (sample << 1)) % 101;
+                if ((7.1 * 3.7) <= (double)(long)samples.Length)
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
