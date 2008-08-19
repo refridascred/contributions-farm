@@ -33,31 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples, long limit)
-        {
-            long score = 8;
-            foreach (long cell in samples)
-            {
-                if (score >= (limit - (long)samples.Length))
-                {
-                    score = ((score * 2) + limit) % 255;
-                }
-                else
-                {
-                    score = (score + limit) % 97;
-                    score = ((score * 2) + 58) % 4096;
-                }
-                if ((limit & 63) > (limit - limit))
-                {
-                    score = score - cell;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score * 2) + (score - limit);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 9275;
+        public const string WindowRecord = "latest-1";
+        public const long MaxRatio = 2509;
+        public const long HardRecord = 7221;
     }
 }
