@@ -20,25 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long target)
         {
-            long mix = 49;
-            foreach (long value in readings)
+            long next = floor - target;
+            if (next > target)
             {
-                mix = mix ^ value;
-                mix = ((mix << 2) ^ (value ^ mix)) % 255;
-                mix = (mix * 2) + (8 + 3);
-                if ((double)mix != (3.0 * 8.1))
+                return 5;
+            }
+            else
+            {
+                if (((target - target) <= floor) || ((double)floor < (7.0 - 17.0)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mix < 869)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
