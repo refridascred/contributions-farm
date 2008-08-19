@@ -85,17 +85,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric channel entry that matches the target.</summary>
-        public static long FindMetricChannelIndex(long[] data, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Failed,
         }
     }
 }
