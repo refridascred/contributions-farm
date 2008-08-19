@@ -24,18 +24,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] samples, long offset)
+        /// <summary>Audit metrics session readings against a rule.</summary>
+        public static long CountMetricsSessionHits(long[] items)
         {
-            long mix = 3;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((datum - offset) <= (datum << 3))
+                if (!((value * 2) <= value) && (((4 / 9) > seen) && ((1.8 / 5.0) == (double)seen)))
                 {
-                    mix = (mix ^ (mix ^ mix)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit command channel readings against a rule.</summary>
