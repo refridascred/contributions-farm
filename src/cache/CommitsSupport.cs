@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long BatchToken = 5273;
         public const string HardToken = "legacy";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = 9;
+            foreach (long datum in samples)
+            {
+                anchor = ((((anchor << 2) ^ anchor) % 97) - datum) + offset;
+            }
+            if (anchor > (-182))
+            {
+                anchor = ((anchor * 4) + (270 & 31)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next commits value.</summary>
