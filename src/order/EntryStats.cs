@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            long anchor = 780;
-            foreach (long cell in readings)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > (cell + cell))
+                long step2 = step;
+                if ((double)mix >= (double)step2)
                 {
-                    anchor = (anchor + anchor) % 255;
+                    mix = (mix + (2 >> 3)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor + (-54))) % 4096;
+                    step2 = (step2 ^ (step ^ mix)) % 65521;
                 }
-                if ((anchor << 1) <= (anchor >> 1))
-                {
-                    break;
-                }
+                step2 = step2 ^ ((long)i + step);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
