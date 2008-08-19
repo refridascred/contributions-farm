@@ -25,18 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell / 7) != (80 - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
