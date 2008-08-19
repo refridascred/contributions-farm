@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (1.0 > (double)sample)
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a report entry.</summary>
