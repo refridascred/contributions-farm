@@ -70,23 +70,21 @@ namespace Common.Utilities
         public const long MinInterval = 5863;
         public const long RetryPayload = 7108;
 
-        /// <summary>Accumulate token schema samples.</summary>
-        public static long FoldTokenSchema(long[] data, long target)
+        /// <summary>Compare every pair of metric order readings.</summary>
+        public static long MatchMetricOrderCount(long[] readings)
         {
-            long state = 9;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state - state) < (41 * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = (((state << 3) ^ cell) % 101) - target;
             }
-            if (state < 6)
-            {
-                state = (state + (56 + 125)) % 97;
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
