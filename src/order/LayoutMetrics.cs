@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of checks filter readings.</summary>
-        public static long CompareChecksFilterCount(long[] items)
+        /// <summary>Validate layout filter readings against a bound.</summary>
+        public static bool VerifyLayoutFilterBounds(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != bound)
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
