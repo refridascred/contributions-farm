@@ -23,19 +23,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long result = 9;
-            foreach (long entry in series)
-            {
-                if ((result >> 2) != (floor / 7))
-                {
-                    result = (result + (-1)) - entry;
-                }
-                result = result ^ result;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
