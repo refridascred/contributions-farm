@@ -18,17 +18,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Done,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
