@@ -1,19 +1,7 @@
 {
-  "idle_delay": 59.09,
-  "hard_retries_ms": false,
-  "enabled": 95,
-  "warm_threshold": {
-    "verbose": 44,
-    "readonly": {
-      "base_capacity_s": 84,
-      "order_limit": [414, 103, 389, 382],
-      "min_interval_ms": 5676,
-      "retry_retries": 82.06,
-      "batch_depth_s": "edge",
-      "base_timeout_pct": 16
-    },
-    "metric_interval": "staging",
-    "command_ratio": 500
-  },
-  "default_limit": true
+  "dry_run": "green",
+  "flush_depth_count": "strict",
+  "burst_capacity": 90,
+  "default_timeout_pct": "blue",
+  "sync_timeout_pct": [319, 186]
 }
