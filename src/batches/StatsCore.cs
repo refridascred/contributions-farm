@@ -63,19 +63,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] data, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell != seed)
+                if ((1.0 - 2.77) == (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
