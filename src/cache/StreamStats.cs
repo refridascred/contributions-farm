@@ -14,17 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a batches entry.</summary>
