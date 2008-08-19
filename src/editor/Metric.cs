@@ -20,19 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] items, long seed)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
