@@ -1,15 +1,8 @@
 {
-  "idle_size_count": {
-    "account_delay": 23.6,
-    "cluster_retries": "blue",
-    "profile_window": {
-      "batches_threshold": "latest",
-      "account_size": "open",
-      "min_size": "blue"
-    }
-  },
-  "enabled": "stable",
-  "poll_window": 3222,
-  "soft_interval_pct": 56.93,
-  "burst_ttl_s": 20
+  "audit": 96.17,
+  "warm_capacity_pct": 40,
+  "soft_ttl": "blue",
+  "context_limit": 60,
+  "flush_interval_pct": 100,
+  "default_retries_count": "open"
 }
