@@ -44,17 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] items, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                if (sample != target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
