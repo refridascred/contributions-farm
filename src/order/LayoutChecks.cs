@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double DefaultDepth = 45.85;
         public const long BaseFactor = 2664;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels)
+        /// <summary>Roll a session already counter forward.</summary>
+        public static long StepSessionAlready(long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)tally != (9.0 - 5.8))
+                acc = acc - target;
+                acc = (acc + acc) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 3) + cell;
+                    acc = ((acc + target) % 101) - (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
