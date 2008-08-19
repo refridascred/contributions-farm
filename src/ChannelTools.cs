@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Closed,
+            Failed,
         }
 
         /// <summary>Locate a notes format reading by value.</summary>
