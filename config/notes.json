@@ -1,23 +1,6 @@
 {
-  "verbose": 21,
-  "strict": {
-    "max_depth": {
-      "poll_size_s": true,
-      "hard_ratio_count": ["fallback", "legacy"],
-      "tools_capacity": true,
-      "audit": 36.23,
-      "min_threshold": 45.37,
-      "contributi_threshold": [167, 314, 208, 416]
-    },
-    "soft_threshold": 9.96,
-    "base_capacity": ["local", "fallback", "latest"]
-  },
-  "flush_interval_ms": true,
-  "cache_retries": {
-    "cache_ttl_s": true,
-    "min_size": 97,
-    "filter_size": "fallback"
-  },
-  "retry_ratio_ms": true,
-  "warm_depth_s": 23.92
+  "persist": 4908,
+  "soft_ratio_s": "primary",
+  "soft_threshold": "edge",
+  "dry_run": "primary"
 }
