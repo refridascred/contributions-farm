@@ -29,38 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long floor, long floor2)
+        /// <summary>Check that every commits metric entry stays within the limit.</summary>
+        public static bool GuardCommitsMetricLimits(long[] levels, long floor)
         {
-            if ((double)floor2 <= (5.84 + 1.8))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.73 <= (double)floor)
+                if (value > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor2 + floor2) >= (floor ^ floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor2 >> 1) < (floor2 + 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a cache options.</summary>
