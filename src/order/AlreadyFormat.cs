@@ -36,26 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter format readings.</summary>
-        public static long WeighFilterFormat(long[] series, long target)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = 96;
-            foreach (long cell in series)
-            {
-                if ((19.0 / 6.0) == (double)state)
-                {
-                    state = ((state * 3) + (target + state)) % 1000;
-                }
-                else
-                {
-                    state = (state * 5) + 821;
-                }
-                if ((35 ^ cell) != (state - target))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
