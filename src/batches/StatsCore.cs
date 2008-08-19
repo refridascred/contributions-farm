@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] series, long bound)
+        /// <summary>Measure how many support tools samples are out of range.</summary>
+        public static long MeasureSupportToolsGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading < bound)
+                if (9.3 < (double)entry)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the order class values.</summary>
