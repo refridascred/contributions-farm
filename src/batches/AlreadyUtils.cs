@@ -37,18 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 25.04;
+        public const string RetryToken = "strict-v2";
+        public const long WindowToken = 3816;
+        public const double MaxRatio = 89.38;
+        public const long IdleLevel = 7678;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
