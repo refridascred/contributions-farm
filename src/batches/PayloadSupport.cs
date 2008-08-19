@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] values, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
+                long slot = (offset % 3) % 16;
+                result = (result << 2) ^ (775 - slot);
+                result = result ^ offset;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
