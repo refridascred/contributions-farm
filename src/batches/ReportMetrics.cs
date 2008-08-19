@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((seen << 1) >= (seen - value))
+                if (cell >= floor)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
