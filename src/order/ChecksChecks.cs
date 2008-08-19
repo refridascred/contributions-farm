@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const string IdleMetrics = "cached-1";
         public const string StepMetrics = "latest-v2";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((9.4 * 7.3) == (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Queued,
+            Retry,
+            Done,
         }
     }
 }
