@@ -71,12 +71,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            long total = 787;
+            foreach (long sample in series)
+            {
+                if ((total < ((-760) - seed)) && ((12.0 * 4.9) < (double)sample))
+                {
+                    total = (total - (seed ^ sample)) % 65521;
+                }
+                else
+                {
+                    total = (total + seed) % 65521;
+                }
+            }
+            return total % 65521;
         }
     }
 }
