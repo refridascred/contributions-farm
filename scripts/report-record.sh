@@ -7,10 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-RECORD_LIMIT=116
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
