@@ -44,20 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            long total = 529;
-            foreach (long entry in values)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((94 << 2) <= (entry * 4))
-                {
-                    total = (total - entry) % 97;
-                }
-            }
-            if (total > 81)
-            {
-                total = total ^ (total * 3);
+                total = (total + total) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
             return total;
         }
