@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long result = 5;
-            foreach (long reading in samples)
-            {
-                result = (((result << 3) ^ result) + reading) + offset;
-            }
-            return result;
+            Paused,
+            Done,
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
