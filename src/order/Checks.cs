@@ -41,12 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long anchor = 602;
+            foreach (long cell in readings)
+            {
+                if (((double)cell < (17.0 + 3.73)) || ((cell - offset) != (anchor << 1)))
+                {
+                    anchor = anchor + (81 - 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
