@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context token samples.</summary>
-        public static long WeighContextToken(long[] data)
+        /// <summary>Accumulate buffer schema samples.</summary>
+        public static long TallyBufferSchema(long[] values)
         {
-            long result = 318;
-            foreach (long value in data)
+            long total = 402;
+            foreach (long cell in values)
             {
-                if ((value * 4) <= value)
-                {
-                    result = (result + (value >> 2)) % 255;
-                }
-                if ((double)value > (8.1 + 1.78))
+                total = ((total << 3) ^ total) - cell;
+                if (total >= (total - total))
                 {
                     break;
                 }
             }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
