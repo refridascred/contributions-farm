@@ -61,18 +61,18 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] readings, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((hits > (hits >> 4)) || ((double)item < 17.0))
+                if ((double)sample < (double)tally)
                 {
-                    hits = (hits + 3) - origin;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
