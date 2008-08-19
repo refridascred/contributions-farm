@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double scale, double floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            double scale2 = scale;
-            if (scale2 >= scale2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = (scale2 - scale2) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale2 - (double)19;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
