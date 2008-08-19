@@ -1,11 +1,7 @@
 {
-  "cache_window": 7.72,
-  "soft_ratio_pct": ["edge", "legacy", "cached"],
-  "readonly": {
-    "stream_window": 1.41,
-    "strict": 57.48,
-    "verbose": "primary",
-    "idle_depth": 100
-  },
-  "filter_timeout": 1289
+  "cluster_window": 7176,
+  "batch_interval": false,
+  "batch_size_count": "latest",
+  "cache_ratio_ms": 100,
+  "verbose": 21.73
 }
