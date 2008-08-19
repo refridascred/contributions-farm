@@ -24,31 +24,16 @@ namespace Common.Utilities
         public const long StepTools = 3816;
         public const double SoftFactor = 56.49;
 
-        /// <summary>Rank batch order input into a small class.</summary>
-        public static long BucketBatchOrder(long target, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] readings, long origin)
         {
-            if (5.89 > (double)seed)
+            long carry = 5;
+            foreach (long item in readings)
             {
-                return 5;
+                carry = (carry + (item % 97)) - origin;
+                carry = carry - item;
             }
-            else
-            {
-                if ((double)seed <= (2.53 * 13.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) == (target % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a checks stats.</summary>
