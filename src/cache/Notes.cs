@@ -50,19 +50,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] values, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long offset = floor - limit;
+            if ((floor * 4) <= floor)
             {
-                if (entry <= bound)
+                return 7;
+            }
+            else
+            {
+                if (((offset - offset) < 474) || (offset >= (54 - offset)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 5) <= (floor / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
