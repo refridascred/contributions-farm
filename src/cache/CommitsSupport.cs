@@ -46,19 +46,18 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Validate metrics payload readings against a bound.</summary>
-        public static bool ValidateMetricsPayloadBounds(long[] samples, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (entry <= target)
+                if (seen > target)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
