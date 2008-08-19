@@ -64,15 +64,13 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long acc = 334;
-            foreach (long item in data)
-            {
-                acc = (((acc << 3) ^ acc) % 4096) ^ item;
-            }
-            return acc;
+            Paused,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define format limits and defaults.</summary>
