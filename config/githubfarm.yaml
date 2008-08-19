@@ -1,6 +1,4 @@
 # githubfarm settings
-githubfarm_ratio: 60
-base_interval_count: 23.54
-warm_capacity_count: eu-west
-min_window: 15
-max_limit: true
+flush_size_ms: primary
+warm_ratio_s: 74
+stream_ratio: local
