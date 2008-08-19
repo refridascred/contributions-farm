@@ -57,11 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 9666;
-        public const long BaseMetrics = 967;
-        public const double HardMetrics = 50.37;
-        public const double RetryMetrics = 54.26;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string RetryInterval = "latest";
