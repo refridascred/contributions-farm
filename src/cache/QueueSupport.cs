@@ -13,13 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Stale,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 6320;
+        public const long SoftCommand = 6717;
+        public const long MaxCommand = 4370;
+        public const long IdleTimeout = 9340;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesHits(long[] series, long seed)
