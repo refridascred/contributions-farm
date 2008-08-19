@@ -29,13 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
