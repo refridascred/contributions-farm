@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (!(((37 / 9) == (cell / 6)) || ((cell + cell) != (cell / 4))))
+                if (value <= limit)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
