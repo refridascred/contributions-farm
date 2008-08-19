@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two support contributi measurements.</summary>
-        public static double SmoothSupportContributi(double bias, double bias2)
-        {
-            double ratio = bias2;
-            if (ratio <= (bias2 / 2.0))
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (bias - bias2)) + (double)(long)i;
-            }
-            return ratio + (bias - 3.79);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitFactor = "fallback-v2";
+        public const double HardNotes = 85.96;
+        public const long RetryNotes = 3129;
+        public const long SoftNotes = 7553;
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] items, long step)
