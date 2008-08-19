@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((608 & 127) > (tally << 1)))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the tools phase values.</summary>
