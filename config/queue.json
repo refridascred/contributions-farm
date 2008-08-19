@@ -1,7 +1,7 @@
 {
-  "enabled": 29.13,
-  "base_depth_pct": true,
-  "stream_size": true,
-  "warm_window_ms": "staging",
-  "poll_delay_ms": "legacy"
+  "warm_size_ms": 30,
+  "warm_capacity_ms": [321, 348],
+  "layout_timeout": 29.08,
+  "sync_timeout_count": "primary",
+  "already_size": 65.6
 }
