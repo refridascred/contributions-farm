@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3515;
-        public const double MaxBudget = 24.22;
-        public const double WindowMetric = 83.97;
-        public const long BatchMetric = 7043;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseTimeout = 61.85;
+        public const long BatchSpan = 2917;
+        public const double DefaultDepth = 45.85;
+        public const long BaseFactor = 2664;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterMatches(long[] levels)
