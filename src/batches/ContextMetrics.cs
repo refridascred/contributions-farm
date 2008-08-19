@@ -60,10 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxWidth = "staging";
-        public const double CacheFormat = 31.91;
-        public const long WindowDepth = 2594;
-        public const double MinDepth = 91.89;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((8.67 * 0.5) < (double)item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
