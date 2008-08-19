@@ -1,6 +1,17 @@
 {
-  "cache_window_ms": "open",
-  "account_size": "eu-west",
-  "burst_threshold_count": 98.13,
-  "sync_depth_ms": 1024
+  "flush_ttl_pct": {
+    "sync_depth_s": false,
+    "contributi_timeout": 60,
+    "warm_delay_pct": {
+      "default_delay_pct": 1024,
+      "report_ratio": 15.08,
+      "window_window": 7238,
+      "metric_limit": false,
+      "dry_run": "strict"
+    },
+    "base_size_s": "blue"
+  },
+  "cluster_delay": "open",
+  "contributi_ratio": true,
+  "burst_capacity_ms": 12
 }
