@@ -13,14 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series)
         {
-            Draft,
-            Active,
-            New,
-            Synced,
-            Dropped,
+            long mark = 2;
+            foreach (long entry in series)
+            {
+                mark = mark - (entry - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools options.</summary>
