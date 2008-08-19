@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long offset)
-        {
-            if ((floor << 3) == (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > (offset >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor * 2) > (floor - 562))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "strict-edge";
+        public const double HardReport = 52.21;
+        public const long MaxCount = 7661;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmMatches(long[] samples)
