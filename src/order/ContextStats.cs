@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
