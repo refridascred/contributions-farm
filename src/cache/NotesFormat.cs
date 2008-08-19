@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the graph schema series from a seed.</summary>
-        public static long DeriveGraphSchema(long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] values, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry << 2) ^ (offset + carry)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((datum >> 1) < (801 << 1))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
