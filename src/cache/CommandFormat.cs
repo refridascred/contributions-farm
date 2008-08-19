@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Match up cache route samples.</summary>
+        public static long CompareCacheRouteCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 9)
+                    if ((series[i] - series[j]) < 3)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
