@@ -53,13 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally <= (tally + 364))
+                {
+                    tally = ((tally + 3) - datum) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
