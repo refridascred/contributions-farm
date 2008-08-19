@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] values, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((entry & 1) > (step / 5))
+                if ((double)seen > (double)1)
                 {
-                    matches = matches + 2;
+                    seen = ((seen + 2) + item) - seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a support summary.</summary>
