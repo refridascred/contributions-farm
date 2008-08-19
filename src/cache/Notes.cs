@@ -38,26 +38,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long step)
-        {
-            long offset = origin - step;
-            if ((origin << 3) < (offset * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((474 + (-47)) != (offset ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 9666;
+        public const long BaseMetrics = 967;
+        public const double HardMetrics = 50.37;
+        public const double RetryMetrics = 54.26;
 
         /// <summary>Count the metrics record entries that pass the check.</summary>
         public static long CountMetricsRecordHits(long[] samples, long floor)
