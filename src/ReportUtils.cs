@@ -40,19 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order counter readings against a bound.</summary>
-        public static bool VerifyOrderCounterLimits(long[] levels, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Ready,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
