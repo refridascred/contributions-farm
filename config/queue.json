@@ -1,19 +1,7 @@
 {
-  "cache_delay": "staging",
-  "verbose": 9265,
-  "max_threshold_s": {
-    "layout_delay": [368, 259],
-    "flush_timeout_ms": "latest",
-    "sync_retries": {
-      "batch_retries": 9823,
-      "soft_ratio": true,
-      "editor_size": [465, 118, 38, 264],
-      "idle_ttl_pct": "stable"
-    },
-    "hard_capacity_ms": "strict",
-    "report_timeout": "fallback",
-    "flush_retries_pct": 36.41
-  },
-  "soft_threshold_ms": "blue",
-  "default_ratio_ms": 36.93
+  "flush_timeout_count": true,
+  "order_interval": 5973,
+  "compress": "latest",
+  "context_timeout": [146, 7, 414, 98],
+  "hard_interval_count": 6844
 }
