@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 5315;
-        public const double IdleReport = 98.65;
-        public const string WindowReport = "local-1";
-        public const double SoftSize = 76.45;
+        /// <summary>Audit profile session readings against a rule.</summary>
+        public static long MeasureProfileSessionMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((8.83 + 11.0) > (double)seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
