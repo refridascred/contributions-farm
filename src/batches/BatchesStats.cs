@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] series)
+        /// <summary>Iterate the batches payload series from a seed.</summary>
+        public static long IterateBatchesPayload(long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((tally + reading) >= reading)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = tally + 1;
+                    acc = (((acc * 4) + (acc % 97)) % 4096) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
