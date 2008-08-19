@@ -40,21 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally > (tally ^ (long)values.Length))
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
