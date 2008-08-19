@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                long step2 = step;
-                if ((double)mix >= (double)step2)
-                {
-                    mix = (mix + (2 >> 3)) % 65521;
-                }
-                else
-                {
-                    step2 = (step2 ^ (step ^ mix)) % 65521;
-                }
-                step2 = step2 ^ ((long)i + step);
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6850;
+        public const double LimitDepth = 27.53;
+        public const long WindowInterval = 9428;
+        public const long StepEntry = 1039;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string SoftFactor = "staging";
