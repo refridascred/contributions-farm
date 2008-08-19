@@ -34,11 +34,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Accumulate stream commits samples.</summary>
+        public static long TotalStreamCommits(long[] samples, long target)
         {
-            double ratio = floor / 3.0;
-            return (ratio + (4.0 + floor)) + rate;
+            long mark = 4;
+            foreach (long cell in samples)
+            {
+                mark = ((((mark * 5) + mark) % 4096) ^ cell) - target;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
