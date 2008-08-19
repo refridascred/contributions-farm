@@ -44,18 +44,13 @@ namespace Common.Utilities
         public const double HardMetrics = 50.37;
         public const double RetryMetrics = 54.26;
 
-        /// <summary>Count the metrics record entries that pass the check.</summary>
-        public static long CountMetricsRecordHits(long[] samples, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen + (long)samples.Length) < (item + floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
