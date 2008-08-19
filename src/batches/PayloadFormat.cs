@@ -20,25 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings, long bound)
         {
-            long next = floor - target;
-            if (next > target)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target - target) <= floor) || ((double)floor < (7.0 - 17.0)))
+                if (!((bound + hits) <= bound))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the tools status values.</summary>
