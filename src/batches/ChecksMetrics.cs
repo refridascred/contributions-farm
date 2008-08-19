@@ -47,13 +47,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Queued,
-            Pending,
+            Done,
             Paused,
-            Draft,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit stats command readings against a rule.</summary>
