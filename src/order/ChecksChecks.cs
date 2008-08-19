@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long seed)
         {
-            long carry = 0;
-            foreach (long cell in series)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((carry + cell) < (carry / 4))
+                if ((seed << 1) == (182 >> 4))
                 {
-                    carry = carry ^ (2 + carry);
+                    result = ((result * 2) + (long)i) % 101;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result << 3) ^ (602 + seed)) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (carry < 975)
-            {
-                carry = carry - (carry >> 4);
-            }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
