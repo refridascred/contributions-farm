@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long bound)
         {
-            Failed,
-            Done,
-            Stale,
+            long offset = limit + bound;
+            if (bound >= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound + offset) <= limit) && ((double)offset >= (5.0 + 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound * 4) == (9 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((745 ^ bound) == (bound << 1)) && ((double)37 > (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
