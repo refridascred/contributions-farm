@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)(long)samples.Length > (9.0 * 7.24))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
