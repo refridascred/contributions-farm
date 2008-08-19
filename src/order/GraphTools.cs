@@ -44,11 +44,21 @@ namespace Common.Utilities
         public const string BatchCount = "staging";
         public const string MinCount = "strict-edge";
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
