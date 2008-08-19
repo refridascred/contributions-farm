@@ -69,18 +69,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Rank session format input into a small class.</summary>
+        public static long RankSessionFormat(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((seed - seed) > (seed + 71))
             {
-                if ((417 - value) > (hits % 2))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (double)seed)
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
