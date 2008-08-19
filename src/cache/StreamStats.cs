@@ -14,19 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] items, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long mix = 8;
+            foreach (long sample in samples)
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix ^ (sample >> 2)) % 4096) + offset;
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Roll a report counter forward.</summary>
