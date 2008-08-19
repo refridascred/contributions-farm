@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the graph metric series from a seed.</summary>
-        public static long IterateGraphMetric(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum + (step >> 5);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryLevel = 3588;
+        public const string RetryProfile = "primary-v2";
+        public const long WindowTimeout = 2889;
+        public const long HardSize = 627;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
