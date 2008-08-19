@@ -40,10 +40,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9831;
-        public const double SoftEntry = 36.37;
-        public const string SoftWidth = "latest-edge";
-        public const long StepInterval = 15;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double offset)
+        {
+            double weight = bias;
+            if (weight >= offset)
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - offset;
+        }
     }
 }
