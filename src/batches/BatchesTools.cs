@@ -57,23 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token entry values into a single score.</summary>
-        public static long TallyTokenEntry(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            long result = 8;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                result = ((result << 2) ^ (result * 4)) % 4096;
-                if ((result ^ entry) < result)
+                if (tally > (661 % 5))
                 {
-                    result = ((result << 2) ^ result) % 1000;
+                    tally = (tally + 3) - datum;
                 }
             }
-            if (result < 1)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return tally;
         }
     }
 }
