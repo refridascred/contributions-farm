@@ -31,23 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 687;
-            foreach (long entry in values)
-            {
-                mark = (mark * 5) + entry;
-                if ((12.0 + 5.1) >= (double)998)
-                {
-                    break;
-                }
-            }
-            if (mark < 38)
-            {
-                mark = (mark ^ ((long)values.Length & 3)) % 255;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
