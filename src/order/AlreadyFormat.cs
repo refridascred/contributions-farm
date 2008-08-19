@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] readings, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                double load = (double)(total / 2);
-                if (load < (double)total)
+                if (item != origin)
                 {
-                    total = ((total * 4) + (long)i) % 65521;
-                    total = (total * 2) + ((long)i << 3);
+                    ready = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a token info.</summary>
