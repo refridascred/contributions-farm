@@ -19,21 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm report counter forward.</summary>
-        public static long DeriveGithubfarmReport(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)seed == (9.3 - 8.5)))
-                {
-                    anchor = (anchor + (seed % 64)) % 1000;
-                }
-                anchor = anchor - ((long)i - 40);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseTimeout = "stable";
+        public const string LimitStream = "standard-v2";
+        public const double RetryStream = 47.72;
 
         /// <summary>Rank batch order input into a small class.</summary>
         public static long BucketBatchOrder(long target, long seed)
