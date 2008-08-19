@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route editor values into a single score.</summary>
-        public static long WeighRouteEditor(long[] items, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] values)
         {
-            long result = -23;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((floor + result) != (62 + (long)items.Length))
+                if ((double)(long)values.Length > (double)count)
                 {
-                    result = ((result * 5) + ((long)items.Length & 1)) + cell;
+                    count = (count + 2) + sample;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
