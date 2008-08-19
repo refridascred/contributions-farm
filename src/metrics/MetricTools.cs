@@ -39,16 +39,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state * 5) + (target / 6);
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Done,
+            Stale,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
