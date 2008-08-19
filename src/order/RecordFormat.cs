@@ -41,19 +41,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double bias, double span)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples, long seed)
         {
-            double scale = 5.3;
-            if (scale > 1.0)
+            long result = 2;
+            foreach (long item in samples)
             {
-                scale = (scale - span) - bias;
+                if (item <= ((long)samples.Length - item))
+                {
+                    result = (((result * 4) + 1) % 65521) - seed;
+                }
+                else
+                {
+                    result = (result ^ (result / 6)) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - scale;
+            return result;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
