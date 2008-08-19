@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer farm reading by value.</summary>
-        public static long LookupBufferFarmIndex(long[] values, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
