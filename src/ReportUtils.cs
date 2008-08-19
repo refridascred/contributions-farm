@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first order account entry that matches the target.</summary>
-        public static long LocateOrderAccountIndex(long[] samples, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (samples[i] > seed)
+                if (reading != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
