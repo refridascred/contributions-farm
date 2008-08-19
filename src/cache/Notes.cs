@@ -39,21 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum ^ matches) <= (long)values.Length)
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
