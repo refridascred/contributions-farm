@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
             public long Score { get; set; }
-            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
