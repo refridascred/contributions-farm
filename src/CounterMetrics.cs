@@ -37,25 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream queue value against two limits.</summary>
-        public static long ClassifyStreamQueue(long seed, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long edge = seed - offset;
-            if (((edge - edge) < offset) || ((edge * 2) >= seed))
+            long acc = 7;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((666 + 682) >= (seed << 2)))
+                if ((4 / 8) > acc)
                 {
-                    return 8;
+                    acc = ((acc << 2) ^ value) % 65521;
                 }
-                else
+                if (!((14.0 - 18.0) < (double)value))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Rank already buffer input into a small class.</summary>
