@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the batches payload series from a seed.</summary>
-        public static long IterateBatchesPayload(long floor)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long TallyBatchCommitsMatches(long[] series, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!(((offset << 2) <= (count + (long)series.Length)) && ((5.9 + 13.0) == (double)count)))
                 {
-                    acc = (((acc * 4) + (acc % 97)) % 4096) ^ (long)i2;
+                    count = (count + 2) ^ value;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
