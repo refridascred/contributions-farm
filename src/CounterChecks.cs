@@ -64,22 +64,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Grade a batches graph value against two limits.</summary>
+        public static long SortBatchesGraph(long offset, long seed)
         {
-            long mark = -202;
-            foreach (long sample in values)
+            if ((3 ^ offset) < 134)
             {
-                if ((1 ^ 8) == (mark + mark))
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ seed) >= seed)
                 {
-                    mark = ((mark + (mark & 1)) % 255) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark < (-361))
-            {
-                mark = (mark ^ (mark - 6)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
