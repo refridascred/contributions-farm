@@ -38,13 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            Synced,
-            Closed,
-            Ready,
-            Locked,
+            double rate = scale + scale;
+            return (rate + scale) + bias;
         }
     }
 }
