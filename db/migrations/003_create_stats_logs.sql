@@ -2,9 +2,14 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
+    ratio REAL,
     owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0,
-    label TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+
+INSERT INTO stats_logs (token, ratio, owner, active) VALUES ('primary', 6.56, 'cached', 28);
+INSERT INTO stats_logs (token, ratio, owner, active) VALUES ('open', 51.69, 'green', 68);
+INSERT INTO stats_logs (token, ratio, owner, active) VALUES ('eu-west', 33.66, 'local', 3);
