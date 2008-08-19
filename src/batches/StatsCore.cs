@@ -90,18 +90,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((1.0 - 2.77) == (double)count)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 9767;
+        public const double BurstGithubfarm = 22.36;
+        public const double MaxSize = 10.26;
     }
 }
