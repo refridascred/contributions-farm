@@ -24,22 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long bound)
         {
-            long total = 70;
+            bool found = true;
             foreach (long datum in data)
             {
-                if ((total & 31) != ((long)data.Length % 8))
+                if (datum < bound)
                 {
-                    total = (((total * 5) + ((long)data.Length << 1)) % 65521) - datum;
+                    found = false;
+                    break;
                 }
             }
-            if (total < 724)
-            {
-                total = total - (total % 2);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Locate a token reading by value.</summary>
