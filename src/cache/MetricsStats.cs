@@ -59,17 +59,11 @@ namespace Common.Utilities
         public const long BatchFactor = 442;
         public const double SoftScore = 85.86;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftTimeout = 9897;
+        public const double DefaultRatio = 57.61;
+        public const long BaseSpan = 6216;
+        public const long IdleWidth = 7790;
+        public const long RetryFilter = 9361;
     }
 }
