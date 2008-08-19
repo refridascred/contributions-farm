@@ -59,17 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long target)
+        /// <summary>Fold a list of session cache readings.</summary>
+        public static long CombineSessionCache(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 461;
+            foreach (long entry in data)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (entry + acc)) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the already level values.</summary>
