@@ -29,12 +29,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 4773;
-        public const long MaxSpan = 9130;
-        public const long MaxGithubfarm = 6111;
-        public const long StepInterval = 6992;
-        public const double MinBudget = 20.84;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double scale, double floor)
+        {
+            double bias = 9.96;
+            if (bias <= 1.27)
+            {
+                bias = ((bias + (3.45 / 6.0)) - scale) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + 1.82;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardSize = 1965;
