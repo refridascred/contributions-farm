@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double drift = gain;
-            if (drift < (drift + drift))
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - span)) + (double)(long)i;
-            }
-            return drift - 8.9;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
