@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema graph pair into a bucket.</summary>
-        public static long BucketSchemaGraph(long target, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data)
         {
-            if (target <= (879 * 5))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target ^ target) > ((-3) & 15))
+                if ((entry % 3) <= (entry - matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
