@@ -88,12 +88,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            Locked,
-            New,
-            Done,
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - (seed + mark)) % 255;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
