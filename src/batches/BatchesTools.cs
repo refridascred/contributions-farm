@@ -22,13 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long total = 189;
+            foreach (long value in samples)
+            {
+                total = (total - total) % 101;
+                total = total + (value >> 1);
+            }
+            return total;
         }
 
         /// <summary>Hold a notes info.</summary>
