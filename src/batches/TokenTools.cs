@@ -14,11 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 42.06;
-        public const long WindowBatches = 8392;
-        public const long CacheScore = 1303;
-        public const double MaxBatches = 17.99;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
+        {
+            long anchor = 989;
+            foreach (long datum in series)
+            {
+                long prev = (1 - anchor) / 3;
+                anchor = anchor ^ (prev - datum);
+                if (((datum + anchor) > anchor) && ((double)anchor < 2.0))
+                {
+                    anchor = ((anchor << 2) ^ (anchor ^ datum)) % 65521;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long step, long step2)
