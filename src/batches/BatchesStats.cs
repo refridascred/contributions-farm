@@ -38,11 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph stats measurements.</summary>
-        public static double ProjectGraphStats(double ratio, double offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            double scale = (ratio / 9.0) * 0.57;
-            return scale - (scale - offset);
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum << 3) ^ (offset + offset)) - (long)i2;
+                    sum = ((sum << 3) ^ (offset % 8)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
