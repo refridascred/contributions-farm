@@ -29,12 +29,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 61.17;
-        public const long MaxTimeout = 8052;
-        public const long LimitFarm = 8507;
-        public const long LimitSize = 3308;
-        public const double StepFarm = 47.6;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double gain, double offset)
+        {
+            double rate = (double)((-59) - 4);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate + offset) + (double)(long)i) - gain;
+            }
+            return rate - 5.1;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadMatches(long[] readings)
