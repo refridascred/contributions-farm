@@ -72,18 +72,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] series)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((mix + offset) <= (sample - mix)) || ((mix + mix) != (sample % 7)))
+                if ((double)value != (2.31 / 2.0))
                 {
-                    mix = (mix ^ (mix - 10)) % 65521;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
