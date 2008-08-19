@@ -1,13 +1,16 @@
 # Command notes
 
-A record that stays idle for too long is moved to the editor list.
 Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for notes live in the config folder and can be overridden per environment.
+Keep schema and metrics names short and lowercase.
 
-Each stats is validated before it reaches the notes queue.
-The command helpers are pure functions, so they are safe to call from any thread.
+Use entry settings to tune how often report data is refreshed.
+When a farm fails, the layout handler retries a few times before giving up.
+Run the support check before changing any graph limits.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new filter fields
-- Prefer command defaults
+- Review profile limits each release
+- Document new buffer fields
+- Prefer support defaults
+- Log every command change
