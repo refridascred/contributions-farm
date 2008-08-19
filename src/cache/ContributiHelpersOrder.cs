@@ -27,39 +27,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] readings, long limit)
         {
-            long gap = limit ^ floor;
-            if ((limit - 579) > (floor & 3))
+            long result = 36;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ floor) > (floor + 27))
+                if (7 <= (result % 100))
                 {
-                    return 5;
+                    result = (result << 3) ^ (result + 9);
                 }
-                else
+                if (limit < (305 << 3))
                 {
-                    if (((limit + floor) <= (725 >> 3)) || (gap < (35 >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((limit >> 5) >= (floor - gap)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = (result * 4) + (result + value);
                 }
             }
+            return result;
         }
     }
 }
