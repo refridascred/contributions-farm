@@ -29,17 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                if (((double)offset < (double)matches) && ((matches * 5) >= (cell + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
