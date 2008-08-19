@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long target, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            if ((target >> 4) < offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 97) != (offset / 5))
+                if (samples[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((14.0 / 7.0) <= (double)offset) || ((6.77 * 12.0) <= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset & 15) >= (offset - 72)) && ((19.0 / 6.0) == (double)target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
