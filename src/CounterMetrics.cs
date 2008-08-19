@@ -38,22 +38,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache support series from a seed.</summary>
-        public static long SeriesCacheSupport(long seed)
+        /// <summary>Rank already buffer input into a small class.</summary>
+        public static long BucketAlreadyBuffer(long bound, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            if ((seed & 15) < (seed ^ seed))
             {
-                mark = ((mark * 3) + (seed + mark)) % 255;
-                if (((long)i % 64) <= (seed - mark))
-                {
-                    mark = (mark + mark) % 97;
-                    mark = ((mark << 2) ^ (mark % 64)) % 1000;
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (!((double)seed != (1.9 / 4.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - bound) <= (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
