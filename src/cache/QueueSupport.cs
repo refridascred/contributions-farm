@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a support token sample.</summary>
-        public static long LocateSupportTokenIndex(long[] samples, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] == target) && ((samples[i] % 3) != 0))
+                if (((424 + sample) >= sample) || (((tally + tally) < sample) || (((long)items.Length >> 3) < tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
