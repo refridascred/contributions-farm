@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3515;
+        public const double MaxBudget = 24.22;
+        public const double WindowMetric = 83.97;
+        public const long BatchMetric = 7043;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterMatches(long[] levels)
