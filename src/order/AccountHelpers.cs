@@ -49,21 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up schema account samples.</summary>
-        public static long OverlapSchemaAccountCount(long[] readings)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long seed)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
