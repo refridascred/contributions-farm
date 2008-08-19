@@ -30,17 +30,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Failed,
+            Queued,
+            New,
         }
     }
 }
