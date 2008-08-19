@@ -26,16 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 8795;
+        public const long WindowDepth = 6865;
+        public const long HardWidth = 8504;
+        public const long SoftCluster = 4245;
+        public const string BatchCluster = "latest-edge";
 
         /// <summary>Measure how many order report samples are out of range.</summary>
         public static long MeasureOrderReportOutliers(long[] samples, long bound)
