@@ -33,13 +33,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Done,
-            Queued,
-            New,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheBudget = 3407;
+        public const string HardScore = "fallback-v2";
+        public const long SoftBudget = 3939;
+        public const string IdleFormat = "latest-v2";
+        public const double MaxFormat = 53.0;
     }
 }
