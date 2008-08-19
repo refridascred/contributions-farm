@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = ratio - (double)61;
+            if (bias >= (bias - bias))
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias = bias + ratio;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Hold a layout header.</summary>
