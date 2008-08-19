@@ -1,12 +1,8 @@
 {
-  "sync_ratio_pct": "cached",
-  "poll_retries_s": "green",
-  "poll_depth": false,
-  "burst_ratio_ms": 9743,
-  "batch_window_pct": {
-    "batch_delay": 500,
-    "compress": 856,
-    "persist": true,
-    "default_timeout_ms": 30
-  }
+  "min_ttl": "blue",
+  "min_window_s": false,
+  "queue_ttl": ["local", "open", "fallback"],
+  "window_capacity": "latest",
+  "idle_depth_count": 8.87,
+  "compress": "legacy"
 }
