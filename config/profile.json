@@ -1,8 +1,5 @@
 {
-  "cache_ratio_count": 20.7,
-  "soft_capacity_count": "edge",
-  "burst_retries_s": true,
-  "record_ratio": 72,
-  "idle_interval_pct": 43.85,
-  "account_depth": 725
+  "batch_ttl": [494, 365, 260, 408],
+  "report_limit": 3942,
+  "dry_run": [93, 418, 416, 163]
 }
