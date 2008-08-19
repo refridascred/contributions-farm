@@ -1,16 +1,5 @@
 {
-  "entry_depth": true,
-  "poll_ttl": "blue",
-  "warm_delay": {
-    "max_window": 60,
-    "warm_delay_pct": 9045,
-    "idle_ttl": 250
-  },
-  "batch_timeout": true,
-  "tools_size": {
-    "max_interval": "latest",
-    "channel_retries": 60,
-    "channel_ttl": ["local", "eu-west", "edge"]
-  },
-  "soft_retries_s": ["eu-west", "cached", "standard"]
+  "retry_timeout": false,
+  "already_interval": 7080,
+  "default_limit": 83.24
 }
