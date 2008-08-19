@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mean + (4.7 / 2.0);
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long CountAlreadyFilterGaps(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
         {
             long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + entry) == (entry * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
