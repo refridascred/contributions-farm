@@ -1,14 +1,19 @@
 {
-  "compress": 4.44,
-  "editor_size": 67.96,
-  "base_ratio_count": 7.84,
-  "batches_ttl": {
-    "retry_ratio_pct": true,
-    "verbose": [449, 272],
-    "burst_threshold": ["open", "strict", "eu-west", "staging"],
-    "entry_ratio": 75.36,
-    "base_window": 3735
+  "idle_delay": 1024,
+  "record_interval": {
+    "strict": "local",
+    "base_ratio_pct": 90.46,
+    "already_window": true,
+    "audit": false,
+    "sync_threshold_s": "latest"
   },
-  "schema_ttl": 317,
-  "strict": "blue"
+  "burst_retries": {
+    "metrics_limit": 29,
+    "soft_window": 98.48,
+    "compress": 77,
+    "idle_timeout_ms": ["legacy", "blue", "standard", "eu-west"],
+    "default_threshold_s": true,
+    "schema_ttl": 2982
+  },
+  "sync_threshold_pct": "open"
 }
