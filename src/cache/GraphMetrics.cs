@@ -57,16 +57,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Derive the next graph support value from a seed.</summary>
+        public static long SeriesGraphSupport(long floor)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state + ((long)i - state)) % 101;
-                state = ((state * 5) + (long)i) % 101;
+                if (!(((long)i % 12) <= ((long)i + floor)))
+                {
+                    result = (result * 5) + (result & 7);
+                    result = ((result << 3) ^ (floor - result)) % 97;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return state;
+            return result;
         }
     }
 }
