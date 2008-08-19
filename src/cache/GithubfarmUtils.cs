@@ -40,14 +40,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long step)
         {
-            Failed,
-            New,
-            Locked,
-            Dropped,
-            Retry,
+            long total = -4;
+            foreach (long datum in data)
+            {
+                if (!((datum << 2) > (total + 9)))
+                {
+                    total = ((total + total) % 65521) - step;
+                    break;
+                }
+                total = ((total << 3) ^ (datum + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
