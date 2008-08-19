@@ -12,21 +12,31 @@ namespace Common.Utilities
         public const double MinCommand = 92.71;
         public const long LimitWidth = 988;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (limit > floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((limit - limit) != (floor + 436)))
                 {
-                    if ((series[i] - series[j]) == 6)
+                    return 5;
+                }
+                else
+                {
+                    if (!(limit <= floor))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
