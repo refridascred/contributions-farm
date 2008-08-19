@@ -52,15 +52,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            long state = 945;
-            foreach (long cell in values)
-            {
-                state = (state + ((-4) + state)) - cell;
-            }
-            return state % 1000;
+            double rate = (double)(90 + 3);
+            return (rate - (bias2 + rate)) + bias;
         }
     }
 }
