@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate counter order samples.</summary>
-        public static long CombineCounterOrder(long[] series, long origin)
-        {
-            long score = 12;
-            foreach (long entry in series)
-            {
-                if (score < (entry << 2))
-                {
-                    score = (((score * 5) + entry) % 1000) + origin;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 9485;
+        public const long SoftScore = 7417;
+        public const long WindowSchema = 6701;
+        public const string SoftSchema = "fallback";
+        public const string SoftRatio = "standard";
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double gain, double bias)
