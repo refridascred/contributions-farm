@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series, long offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset + 698) < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) + value;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
