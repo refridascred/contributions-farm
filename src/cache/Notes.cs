@@ -43,14 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Draft,
-            Locked,
-            Dropped,
+            New,
             Idle,
             Failed,
+            Synced,
         }
 
         /// <summary>Rank command input into a small class.</summary>
