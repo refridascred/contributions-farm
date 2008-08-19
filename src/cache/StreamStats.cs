@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values, long offset)
         {
-            Pending,
-            Paused,
-            Stale,
-            Retry,
+            long state = 7;
+            foreach (long sample in values)
+            {
+                if (!(offset <= state))
+                {
+                    state = ((state << 3) ^ sample) % 1000;
+                }
+                if ((14.0 <= (double)offset) || ((8.6 + 18.0) > (double)sample))
+                {
+                    state = (state << 3) ^ (state - offset);
+                }
+            }
+            if (state < 95)
+            {
+                state = ((state * 2) + (975 << 3)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
