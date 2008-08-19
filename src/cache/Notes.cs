@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels)
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long CombineSchemaContributi(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long state = 8;
+            foreach (long entry in values)
             {
-                if ((double)value <= (5.5 * 8.0))
+                if ((double)81 >= (double)state)
                 {
-                    seen = seen + 3;
+                    continue;
+                }
+                if (!((double)entry > (18.0 / 4.0)))
+                {
+                    state = ((state ^ entry) % 4096) - limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = state ^ (state / 5);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the support class values.</summary>
