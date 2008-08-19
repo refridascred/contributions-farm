@@ -32,19 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the layout mode values.</summary>
