@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
-        public static double SmoothCommitsGithubfarm(double ratio, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double rate = ratio;
-            if (rate >= (1.0 + rate))
-            {
-                rate = (rate + (ratio + ratio)) + span;
-            }
-            return rate + ratio;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
