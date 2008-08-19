@@ -67,12 +67,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the graph layout series from a seed.</summary>
+        public static long StepGraphLayout(long limit)
         {
-            Failed,
-            Draft,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                double scale = (double)limit - (15.0 * 3.9);
+                if (2.3 < (scale - scale))
+                {
+                    scale = scale - (double)(-81);
+                    scale = scale + scale;
+                }
+                else
+                {
+                    scale = scale - scale;
+                }
+                if (55 < (limit & 1))
+                {
+                    score = (score - ((long)i - 1)) % 97;
+                }
+                else
+                {
+                    score = (score << 3) ^ (1 + (long)i);
+                    scale = scale - scale;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
