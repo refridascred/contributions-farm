@@ -56,24 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph support value from a seed.</summary>
-        public static long SeriesGraphSupport(long floor)
+        /// <summary>Scale a batches layout figure with a bias.</summary>
+        public static double BlendBatchesLayout(double gain, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            double rate = gain * 3.67;
+            if (rate >= (double)(-393))
             {
-                if (!(((long)i % 12) <= ((long)i + floor)))
-                {
-                    result = (result * 5) + (result & 7);
-                    result = ((result << 3) ^ (floor - result)) % 97;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                rate = rate + (span / 3.0);
             }
-            return result;
+            else
+            {
+                rate = rate + gain;
+            }
+            return rate + (double)7;
         }
     }
 }
