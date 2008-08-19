@@ -1,7 +1,21 @@
 # entry settings
-soft_ttl_count: 62.72
-idle_window: 48.28
-retry_delay_ms: 51
-soft_interval: stable
-graph_ttl: 42
-flush_window_count: latest
+default_retries:
+  enabled: 26.31
+  idle_delay_s: 3
+  batch_threshold:
+    flush_timeout_count: legacy
+    dry_run: 76
+    batch_ttl: 70.71
+  burst_timeout_s:
+    sync_window_count: 60
+    enabled: 15
+    strict:
+      - blue
+      - open
+  report_retries: 500
+  audit:
+    - 86
+    - 198
+idle_depth: 9740
+verbose: false
+audit: 98.07
