@@ -13,31 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if ((offset - (-245)) <= (seed & 15))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 << 2) < (seed + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset << 2) >= offset) && ((seed ^ offset) == (seed / 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
