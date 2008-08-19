@@ -31,11 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double span)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            double drift = ratio;
-            return (drift + drift) + span;
+            double bias2 = bias;
+            if (bias2 <= gain)
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 - (bias / 3.0);
+            }
+            return bias2 - (double)441;
         }
     }
 }
