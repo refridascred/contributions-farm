@@ -37,11 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double span)
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            double ratio = scale;
+            if (ratio >= 15.0)
+            {
+                ratio = ratio + (span * 3.0);
+            }
+            return ratio - (double)468;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
