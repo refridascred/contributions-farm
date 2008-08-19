@@ -47,12 +47,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1803;
-        public const long SoftBudget = 4539;
-        public const long WindowFactor = 7719;
-        public const double RetryWindow = 49.15;
-        public const string LimitWindow = "legacy-1";
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long target)
