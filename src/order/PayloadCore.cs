@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((15.0 - 17.0) == (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
