@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepBudget = 2417;
-        public const long LimitQueue = 4162;
-        public const double HardLevel = 23.12;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
