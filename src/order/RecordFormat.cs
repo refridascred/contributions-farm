@@ -44,18 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long MeasureSchemaFilterGaps(long[] data, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((double)item > 20.0))
+                if ((tally & 31) >= (tally % 10))
                 {
-                    count = (count + 2) + step;
+                    tally = ((tally + 1) + item) + step;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
