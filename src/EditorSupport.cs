@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
