@@ -1,13 +1,9 @@
 # githubfarm settings
-batch_interval_s:
-  retry_retries_count: 59
-  default_ttl: 8556
-  soft_depth_s: cached
-  dry_run: false
-  audit:
-    - 485
-    - 414
-    - 352
-  cluster_timeout: 9090
-sync_limit_count: legacy
-flush_ttl_count: 1024
+stats_timeout:
+  - 417
+  - 402
+farm_delay: standard
+warm_size_ms: fallback
+counter_retries: 500
+hard_ttl_count: 70.9
+buffer_interval: 74.76
