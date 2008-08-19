@@ -1,38 +1,21 @@
 # support settings
-window_retries: true
-audit: 90.26
-default_ratio_s:
-  burst_interval: 36.76
-  idle_threshold_ms:
-    min_window_ms: green
-    checks_size: false
-    cache_ttl: standard
-    strict:
-      - cached
-      - cached
-      - cached
-    route_size: staging
-    persist: green
-  verbose:
-    flush_delay_pct: standard
-    poll_timeout_pct: 3382
-    account_window: 250
-  warm_window_s: latest
-  counter_timeout: local
-  retry_delay: 1802
-graph_limit:
-  compress: 94
-  audit:
-    batch_limit: 2647
-    max_ratio: 4.3
-    audit: stable
-    poll_ratio_pct: 32
-    verbose: 100
-  warm_interval:
-    - eu-west
-    - local
-  hard_size:
-    - 291
-    - 342
-  flush_limit_s: blue
-default_depth_pct: 500
+idle_capacity_pct:
+  - cached
+  - staging
+  - latest
+retry_depth_s: local
+default_ratio: 25.24
+route_timeout: blue
+entry_ttl:
+  hard_delay: 15.33
+  burst_timeout_count: stable
+  githubfarm_retries:
+    - fallback
+    - fallback
+  batch_threshold: strict
+  verbose: 438
+audit:
+  - 369
+  - 257
+  - 57
+  - 57
