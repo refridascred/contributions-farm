@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (count >= (23 >> 4))
+                if (1.0 >= (double)seen)
                 {
-                    count = ((count + 3) + value) + step;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
