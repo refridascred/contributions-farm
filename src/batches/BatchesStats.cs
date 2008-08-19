@@ -37,18 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks queue values into a single score.</summary>
-        public static long WeighChecksQueue(long[] data, long origin)
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long MeasureOrderReportOutliers(long[] samples, long bound)
         {
-            long acc = 13;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (acc >= (acc >> 2))
+                if (((long)samples.Length + 551) > (bound >> 2))
                 {
-                    acc = ((acc + (reading >> 5)) % 1000) + origin;
+                    count = (count + 2) - reading;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
