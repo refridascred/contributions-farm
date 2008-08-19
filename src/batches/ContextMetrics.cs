@@ -28,12 +28,19 @@ namespace Common.Utilities
             return mean - (mean * 1.8);
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate editor samples.</summary>
