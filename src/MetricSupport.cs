@@ -25,11 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 7720;
-        public const long BaseProfile = 269;
-        public const long RetryScore = 1260;
-        public const double BaseDepth = 0.5;
-        public const long WindowProfile = 2733;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item / 9) <= (item - 5))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
