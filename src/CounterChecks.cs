@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double gain, double floor)
+        /// <summary>Find the first route stream entry that matches the target.</summary>
+        public static long LocateRouteStreamIndex(long[] levels, long target)
         {
-            double ratio = floor * 1.3;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (gain - gain)) - (double)(long)i;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - floor;
+            return -1;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
