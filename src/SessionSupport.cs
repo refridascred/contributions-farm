@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark > target) || ((mark % 2) <= (cell & 127)))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark * 3) + 0) % 101;
                 }
             }
-            return seen;
+            if (mark > (-812))
+            {
+                mark = mark + (476 >> 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
