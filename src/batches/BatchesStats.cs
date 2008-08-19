@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < target)
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the command state values.</summary>
