@@ -62,13 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long step)
         {
-            Idle,
-            Synced,
-            Draft,
-            Failed,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
