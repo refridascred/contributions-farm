@@ -1,7 +1,17 @@
 {
-  "cache_threshold_ms": "green",
-  "format_ttl": "edge",
-  "default_depth": false,
-  "warm_timeout_s": true,
-  "hard_threshold_ms": "staging"
+  "already_size": 19,
+  "poll_delay_ms": "legacy",
+  "hard_threshold_s": {
+    "record_ttl": 72.16,
+    "channel_retries": 7,
+    "strict": "open"
+  },
+  "strict": {
+    "burst_ratio": false,
+    "audit": 500,
+    "enabled": ["strict", "latest"],
+    "readonly": 9473,
+    "warm_ratio": 250,
+    "cache_ttl_pct": ["eu-west", "fallback"]
+  }
 }
