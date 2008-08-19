@@ -45,21 +45,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = state - (state / 3);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
