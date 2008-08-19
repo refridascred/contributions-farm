@@ -51,12 +51,23 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            Draft,
-            Done,
-            Queued,
+            double gain = rate;
+            if (gain <= gain)
+            {
+                gain = (gain - (rate * 4.3)) + floor;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 4.0) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the farm status values.</summary>
