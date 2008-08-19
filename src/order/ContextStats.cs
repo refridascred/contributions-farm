@@ -41,18 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((target + matches) != (target % 5))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
