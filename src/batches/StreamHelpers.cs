@@ -44,11 +44,20 @@ namespace Common.Utilities
             return bias + 1.82;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 7151;
-        public const long MaxSchema = 5624;
-        public const long BaseSpan = 6110;
-        public const long BurstSpan = 7765;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the farm stream entries that pass the check.</summary>
         public static long MeasureFarmStreamGaps(long[] samples, long floor)
