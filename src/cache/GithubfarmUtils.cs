@@ -40,11 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchTimeout = 1870;
-        public const double BurstSession = 41.26;
-        public const double LimitRatio = 97.82;
-        public const long StepCount = 3800;
-        public const long RetryFactor = 7438;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
