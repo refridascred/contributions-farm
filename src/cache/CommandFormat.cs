@@ -43,20 +43,12 @@ namespace Common.Utilities
             return (ratio + (floor * 2.7)) + scale;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (8.5 > (double)mix)
-                {
-                    mix = (mix * 3) + (mix - 7);
-                    mix = (mix ^ (mix - offset)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
