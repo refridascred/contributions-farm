@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            double gain = (weight * 4.4) / 8.0;
-            if (gain <= gain)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                gain = (gain - (7.14 * 10.0)) + floor;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (17.0 + 6.7);
-            }
-            return gain - (double)0;
+            return ok;
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
