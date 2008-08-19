@@ -28,10 +28,17 @@ namespace Common.Utilities
         public const long CacheBatches = 6572;
         public const double DefaultWidth = 33.38;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitBudget = 662;
-        public const double BaseSpan = 58.32;
-        public const long SoftFactor = 6185;
+        /// <summary>Derive the next record commits value from a seed.</summary>
+        public static long StepRecordCommits(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor << 2) ^ ((long)i - (-396))) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the route order entries that pass the check.</summary>
         public static long TallyRouteOrderOutliers(long[] levels, long seed)
