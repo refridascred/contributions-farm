@@ -15,21 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long total = 95;
-            foreach (long entry in values)
-            {
-                total = ((total * 4) + (entry << 3)) + target;
-                total = (total - 0) % 65521;
-                total = (total - (840 / 3)) % 101;
-                if ((double)entry == (double)74)
-                {
-                    break;
-                }
-            }
-            return total;
+            Retry,
+            Ready,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
