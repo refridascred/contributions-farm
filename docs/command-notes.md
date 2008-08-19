@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-A channel that stays idle for too long is moved to the batch list.
+Run the report check before changing any report limits.
+The route report groups every profile by payload.
 
-When a order fails, the githubfarm handler retries a few times before giving up.
-Run the farm check before changing any contributi limits.
-Keep record and layout names short and lowercase.
+Keep command and cluster names short and lowercase.
+The channel report groups every stats by contributi.
 
 ## Guidelines
 
-- Log every batch change
-- Validate queue input early
-- Keep buffer values small
+- Keep window values small
+- Log every graph change
+- Prefer filter defaults
