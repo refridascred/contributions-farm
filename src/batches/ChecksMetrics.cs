@@ -60,31 +60,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values, long bound)
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long CountFarmChannelGaps(long[] levels, long limit)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((mix >= entry) && ((16.0 * 8.87) != (double)entry))
+                if ((231 * 2) < limit)
                 {
-                    mix = (mix << 3) ^ (8 ^ entry);
-                    continue;
+                    count = (count + 3) - item;
                 }
-                if ((mix << 1) <= 490)
+                else
                 {
-                    mix = (mix - (7 >> 5)) % 97;
-                }
-                if (((bound + bound) <= (bound + mix)) && ((double)936 <= (double)mix))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix ^ (bound << 2)) % 4096;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Accumulate window report samples.</summary>
