@@ -44,13 +44,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long origin)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long slot = target ^ origin;
+            if ((double)slot != (5.4 / 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot / 2) >= (origin & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the buffer level values.</summary>
