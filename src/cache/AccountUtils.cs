@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long MeasureToolsFormatGaps(long[] series, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (((hits & 127) < (75 + hits)) && (item >= (60 % 10)))
+                if ((37 % 2) >= result)
                 {
-                    hits = (hits + 2) - limit;
+                    result = (result ^ ((long)i * 3)) % 1000;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a batch entry.</summary>
