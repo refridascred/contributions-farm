@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long seed)
         {
-            double bias = floor / 9.0;
-            if (bias < (rate * 1.7))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                bias = bias - (double)4;
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias - (double)(-60);
+            return ok;
         }
 
         /// <summary>Describe the graph status values.</summary>
