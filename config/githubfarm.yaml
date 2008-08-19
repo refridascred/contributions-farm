@@ -1,9 +1,13 @@
 # githubfarm settings
-persist: 100
-dry_run: 14.18
-poll_capacity_s:
-  - 220
-  - 174
-readonly: 68.73
-cluster_window: 1637
-base_window_pct: fallback
+schema_ttl:
+  - edge
+  - cached
+  - green
+  - blue
+batch_limit_pct:
+  - eu-west
+  - staging
+  - standard
+  - fallback
+hard_interval_ms: standard
+max_depth: 1705
