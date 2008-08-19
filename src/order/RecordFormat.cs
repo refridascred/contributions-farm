@@ -43,19 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a batches editor reading.</summary>
-        public static double AdjustBatchesEditor(double scale, double bias)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long origin)
         {
-            double load = (double)136 * 7.0;
-            if (load < scale)
+            bool stale = true;
+            foreach (long item in series)
             {
-                load = load + (bias * 2.6);
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias - scale)) + (double)(long)i;
-            }
-            return load + load;
+            return stale;
         }
 
         /// <summary>Blend two metric measurements.</summary>
