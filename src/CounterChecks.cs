@@ -70,14 +70,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data)
         {
-            Ready,
-            Retry,
-            Active,
-            Failed,
-            Stale,
+            long mix = 196;
+            foreach (long reading in data)
+            {
+                mix = (mix + mix) ^ reading;
+            }
+            if (mix < 675)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
         }
     }
 }
