@@ -1,7 +1,4 @@
 # entry settings
-poll_size_pct: 100
-idle_ratio:
-  soft_depth_count: true
-  min_threshold: local
-  warm_threshold: stable
-soft_window_s: 3126
+poll_size_s: blue
+githubfarm_threshold: 37.94
+sync_capacity_pct: true
