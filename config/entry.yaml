@@ -1,6 +1,18 @@
 # entry settings
-persist: 23.53
-enabled: local
-poll_size: eu-west
-channel_ttl: 2057
-flush_window_count: 75.22
+warm_window_s: local
+readonly:
+  compress: green
+  persist:
+    - 124
+    - 374
+    - 80
+  contributi_delay: 3411
+  graph_window:
+    batch_timeout_count: 19.76
+    burst_depth_count: true
+    checks_capacity: true
+  editor_ttl: 9.59
+warm_retries_pct: true
+flush_size_s: cached
+compress: edge
+retry_retries_pct: 20.01
