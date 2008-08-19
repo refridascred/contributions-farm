@@ -38,10 +38,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleLevel = 9170;
-        public const string RetryRatio = "primary-edge";
-        public const string WindowFactor = "legacy-v2";
+        /// <summary>Project the next batches counter value.</summary>
+        public static double AdjustBatchesCounter(double scale, double bias)
+        {
+            double rate = (double)40 / 6.0;
+            if (rate > (6.9 + rate))
+            {
+                rate = rate - scale;
+            }
+            else
+            {
+                rate = rate - (bias * 7.17);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (bias - rate)) - (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
         public static long TallyAlreadyChecksGaps(long[] samples)
