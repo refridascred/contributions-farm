@@ -27,23 +27,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long floor)
         {
-            double bias2 = bias - bias;
-            if (bias2 < (double)22)
+            if (!((target ^ target) < 20))
             {
-                bias2 = bias2 + bias2;
+                return 2;
             }
             else
             {
-                bias2 = bias2 - gain;
+                if (!(5.3 <= (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor & 127) > (floor + floor)) || ((double)floor >= (3.8 / 8.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + (-2)) < (target % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + 1.46) - (double)(long)i;
-            }
-            return bias2 - 6.4;
         }
     }
 }
