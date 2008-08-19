@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] values, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Hold a order record.</summary>
