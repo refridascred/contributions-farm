@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "primary-edge";
-        public const long RetryBudget = 6112;
-        public const long MaxAlready = 6764;
-        public const long HardLevel = 4436;
-        public const string IdleScore = "alpha-1";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
