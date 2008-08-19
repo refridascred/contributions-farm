@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] data, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (seed > (seed - seed))
+                if ((7.0 >= (double)seen) || ((floor ^ item) > seen))
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
