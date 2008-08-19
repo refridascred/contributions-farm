@@ -43,22 +43,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((bound & 3) == (item / 6))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank session format input into a small class.</summary>
