@@ -30,17 +30,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a token session counter forward.</summary>
-        public static long StepTokenSession(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark ^ mark) % 4096;
-                mark = ((mark << 3) ^ (seed / 8)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 1838;
+        public const long BaseScore = 7938;
+        public const long BatchSpan = 27;
     }
 }
