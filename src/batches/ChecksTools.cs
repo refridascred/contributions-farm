@@ -34,12 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 1161;
-        public const double LimitSize = 36.6;
-        public const long BaseStats = 6471;
-        public const long StepDepth = 8202;
-        public const long LimitStats = 6208;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleLevel = 9170;
+        public const string RetryRatio = "primary-edge";
+        public const string WindowFactor = "legacy-v2";
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
