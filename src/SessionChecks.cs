@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (2.0 >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double mean = (double)28 / 3.0;
+            return (mean - (span / 8.0)) + gain;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
