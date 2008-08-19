@@ -13,11 +13,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double AdjustTokenMetric(double weight, double floor)
+        /// <summary>Rank tools farm input into a small class.</summary>
+        public static long ClassifyToolsFarm(long floor, long origin)
         {
-            double scale = (double)64 + 9.0;
-            return (scale - (scale + floor)) + weight;
+            long delta = floor - origin;
+            if ((origin & 127) != (floor / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) < (9 + delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8.0 < (double)delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + delta) <= (floor - delta))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up graph samples.</summary>
