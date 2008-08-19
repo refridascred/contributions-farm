@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long bound)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long acc = 47;
+            foreach (long reading in samples)
+            {
+                if ((double)bound < (3.4 / 3.0))
+                {
+                    acc = (((acc * 2) + acc) % 1000) - reading;
+                }
+            }
+            if (acc > 52)
+            {
+                acc = ((acc * 3) + (bound + bound)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
