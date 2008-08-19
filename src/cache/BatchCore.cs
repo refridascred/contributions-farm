@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            Done,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 5) > (matches - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
