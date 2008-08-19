@@ -48,19 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Blend two contributi filter measurements.</summary>
+        public static double AdjustContributiFilter(double rate, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            double drift = (span * 5.5) - rate;
+            if (drift <= (span * 2.0))
             {
-                if (!((double)mark != (9.8 - 1.4)))
-                {
-                    mark = ((mark << 2) ^ seed) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                drift = drift + (rate + span);
             }
-            return mark;
+            else
+            {
+                drift = drift + 7.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 3.0) - (double)(long)i;
+            }
+            return drift + (13.0 * 5.5);
         }
 
         /// <summary>Match up schema account samples.</summary>
