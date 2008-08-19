@@ -50,19 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (matches > value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitBudget = 662;
+        public const double BaseSpan = 58.32;
+        public const long SoftFactor = 6185;
 
         /// <summary>Count the route order entries that pass the check.</summary>
         public static long TallyRouteOrderOutliers(long[] levels, long seed)
