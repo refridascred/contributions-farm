@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many stream profile samples are out of range.</summary>
+        public static long TallyStreamProfileGaps(long[] items)
         {
-            Closed,
-            Ready,
-            Draft,
-            Queued,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item * 3) < item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every tools channel entry stays within the limit.</summary>
