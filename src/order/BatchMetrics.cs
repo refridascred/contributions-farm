@@ -14,15 +14,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data, long origin)
         {
-            double ratio2 = (double)(9 + 5);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                ratio2 = (((ratio2 + 6.0) + (double)(long)i) - ratio) - offset;
+                if (origin > (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio2 + (double)21;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
