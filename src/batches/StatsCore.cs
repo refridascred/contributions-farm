@@ -31,39 +31,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long bound2 = bound - target;
-            if (14.0 < (double)target)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 1) <= (target + 1))
+                long step = carry;
+                if (((double)step > 2.0) && ((carry + 51) >= (step + sample)))
                 {
-                    return 4;
+                    carry = (carry * 5) + (step % 16);
+                }
+                if (sample <= (sample - sample))
+                {
+                    carry = (carry << 3) ^ (1 ^ 40);
                 }
                 else
                 {
-                    if ((4.73 + 2.3) > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound2 >= target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (carry + sample) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a context snapshot.</summary>
