@@ -56,18 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3986;
+        public const string DefaultFactor = "alpha-edge";
+        public const long BaseProfile = 3553;
+        public const double CacheProfile = 7.36;
+        public const long MaxDepth = 4667;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long seed)
