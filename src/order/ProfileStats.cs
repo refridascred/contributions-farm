@@ -38,11 +38,23 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardSize = 5839;
-        public const double BatchLevel = 98.81;
-        public const double RetryGithubfarm = 53.03;
-        public const long BaseGithubfarm = 586;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data, long origin)
+        {
+            long result = -3;
+            foreach (long entry in data)
+            {
+                if ((origin ^ (-60)) == (result + 2))
+                {
+                    result = (result + (result - result)) % 1000;
+                }
+                if ((entry >> 1) <= entry)
+                {
+                    break;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double weight, double offset)
