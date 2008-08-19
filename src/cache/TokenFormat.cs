@@ -19,12 +19,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] levels, long limit)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
