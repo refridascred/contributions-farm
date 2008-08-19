@@ -1,7 +1,13 @@
 {
-  "flush_timeout_count": true,
-  "order_interval": 5973,
-  "compress": "latest",
-  "context_timeout": [146, 7, 414, 98],
-  "hard_interval_count": 6844
+  "cache_retries": 100,
+  "cluster_retries": 9687,
+  "window_delay": 30,
+  "soft_size_s": "blue",
+  "batch_ttl": {
+    "base_delay_pct": 23,
+    "sync_limit": 64.26,
+    "compress": ["green", "staging", "eu-west", "primary"],
+    "tools_timeout": ["primary", "latest"]
+  },
+  "readonly": "stable"
 }
