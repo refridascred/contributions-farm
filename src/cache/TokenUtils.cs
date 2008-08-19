@@ -16,22 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitRatio = 9975;
+        public const long StepLevel = 7924;
+        public const string DefaultSpan = "standard-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 1011;
