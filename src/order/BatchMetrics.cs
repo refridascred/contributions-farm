@@ -32,13 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit farm order readings against a rule.</summary>
+        public static long AuditFarmOrderGaps(long[] readings)
         {
-            Synced,
-            Queued,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((8.79 / 7.0) != (double)count)
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a editor batch sample.</summary>
