@@ -49,12 +49,13 @@ namespace Common.Utilities
         public const long SoftWindow = 634;
         public const long LimitWindow = 2129;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 9173;
-        public const double DefaultRatio = 48.28;
-        public const long BatchMetric = 8055;
-        public const long RetryMetric = 1414;
-        public const long LimitMetric = 3868;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] data, long step)
