@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long origin2)
+        /// <summary>Digest a series of farm buffer entries.</summary>
+        public static long DigestFarmBuffer(long[] series, long floor)
         {
-            if (!((origin + origin) >= (1 ^ origin)))
+            long sum = 7;
+            foreach (long sample in series)
             {
-                return 6;
+                sum = ((sum << 2) ^ ((long)series.Length - sample)) - floor;
+                sum = (sum - (sample << 1)) % 101;
             }
-            else
-            {
-                if ((origin ^ 41) <= (origin2 & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin2 + 1) != (origin2 << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every cache entry entry stays within the limit.</summary>
