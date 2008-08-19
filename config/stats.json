@@ -1,8 +1,7 @@
 {
-  "batch_ttl_count": false,
-  "session_delay": 83.54,
-  "soft_capacity": 69,
-  "batch_size_ms": true,
-  "burst_capacity": [40, 254],
-  "hard_ratio": 7.74
+  "warm_ttl_count": 60,
+  "hard_threshold_ms": 9851,
+  "readonly": 6.09,
+  "tools_retries": "standard",
+  "default_window": 1024
 }
