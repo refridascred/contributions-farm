@@ -30,11 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "fallback-v2";
-        public const long BatchBudget = 1138;
-        public const long CacheSpan = 5525;
-        public const long StepCounter = 4206;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Synced,
+            Pending,
+            Active,
+            Stale,
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ProjectCommits(double gain, double span)
