@@ -44,23 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = 102;
-            foreach (long value in values)
-            {
-                if (!((offset <= (618 ^ offset)) && ((8.1 * 14.0) >= (double)offset)))
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 101;
-                }
-                carry = ((carry << 2) ^ offset) % 255;
-                if (((carry + carry) < (673 >> 3)) || ((value % 2) >= (value >> 3)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            New,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the format state values.</summary>
