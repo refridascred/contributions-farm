@@ -33,15 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the order mode values.</summary>
