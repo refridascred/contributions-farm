@@ -20,11 +20,39 @@ namespace Common.Utilities
             return bias2 + 3.77;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 3819;
-        public const long StepContext = 9408;
-        public const double MaxContext = 46.97;
-        public const long HardSize = 9611;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long step)
+        {
+            if ((step * 2) >= (step % 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin * 2) <= step) || (step >= 41))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(64 > (step ^ step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (132 > (origin + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
