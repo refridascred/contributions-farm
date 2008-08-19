@@ -38,23 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batches counter value.</summary>
-        public static double AdjustBatchesCounter(double scale, double bias)
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long MeasureProfileChannelHits(long[] values, long target)
         {
-            double rate = (double)40 / 6.0;
-            if (rate > (6.9 + rate))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                rate = rate - scale;
+                if (((double)reading > (3.2 / 4.0)) && ((double)reading < (4.3 * 20.0)))
+                {
+                    seen = (seen + 3) + target;
+                }
             }
-            else
-            {
-                rate = rate - (bias * 7.17);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (bias - rate)) - (double)(long)i;
-            }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Measure how many already checks samples are out of range.</summary>
