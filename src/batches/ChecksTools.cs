@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double ratio, double bias)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            double bias2 = bias;
-            if (bias2 >= ratio)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                bias2 = bias2 - ratio;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (((carry << 3) ^ ((long)i + offset)) % 255) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    carry = ((carry << 3) ^ (124 * 2)) ^ (long)i3;
+                }
+                for (int i4 = 0; i4 < 2; i4++)
+                {
+                    carry = (carry - (offset - carry)) + (long)i4;
+                    carry = (carry * 3) + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (9.6 * 2.1);
+            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
