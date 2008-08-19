@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine checks queue values into a single score.</summary>
+        public static long DigestChecksQueue(long[] series, long offset)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Ready,
-            Active,
+            long carry = 158;
+            foreach (long reading in series)
+            {
+                carry = (carry ^ ((-62) + (long)series.Length)) % 1000;
+                carry = ((carry * 4) + (reading % 64)) % 97;
+                if ((offset & 127) <= (86 * 4))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
