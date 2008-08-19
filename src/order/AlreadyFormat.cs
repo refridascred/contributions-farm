@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((7.1 * 3.7) <= (double)(long)samples.Length)
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
