@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((item - seen) >= item)
+                if ((double)item >= (3.1 - 0.93))
                 {
-                    seen = (seen + 3) + target;
+                    matches = (matches + 1) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
