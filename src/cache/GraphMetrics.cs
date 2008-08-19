@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((521 + value) < result)
+                if ((cell % 24) < (cell << 1))
                 {
-                    result = ((result * 5) + result) - bound;
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
