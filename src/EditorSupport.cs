@@ -29,12 +29,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Grade a farm buffer value against two limits.</summary>
+        public static long BucketFarmBuffer(long floor, long floor2)
         {
-            Locked,
-            Draft,
-            Paused,
+            if (floor < (floor2 / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor2 + (-8)) < (floor & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((316 & 31) != (floor2 % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
