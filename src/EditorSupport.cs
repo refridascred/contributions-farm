@@ -61,23 +61,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long origin, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long step, long target)
         {
-            long bound = origin ^ limit;
-            if ((origin + bound) != (limit % 60))
+            if ((target + step) > (step + step))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((bound << 2) < (488 << 2))
+                if ((double)target == (5.38 - 8.32))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 5;
+                    if ((target - target) < (step - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
