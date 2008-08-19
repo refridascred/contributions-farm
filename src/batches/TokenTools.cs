@@ -40,10 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "stable-1";
-        public const string SoftInterval = "local";
-        public const double DefaultEditor = 86.89;
-        public const long StepEditor = 2018;
+        /// <summary>Audit channel session readings against a rule.</summary>
+        public static long AuditChannelSessionGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (5 > (reading << 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
