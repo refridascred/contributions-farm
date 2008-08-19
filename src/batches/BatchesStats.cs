@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long TallyBatchCommitsMatches(long[] series, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!(((offset << 2) <= (count + (long)series.Length)) && ((5.9 + 13.0) == (double)count)))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
