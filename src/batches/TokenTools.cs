@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series, long offset)
         {
-            Closed,
-            Locked,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((offset + 698) < offset)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
