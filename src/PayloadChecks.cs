@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next order tools value from a seed.</summary>
+        public static long RollOrderTools(long offset)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Ready,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
