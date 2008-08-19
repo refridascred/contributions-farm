@@ -1,12 +1,7 @@
 {
-  "persist": true,
-  "min_ttl": 56.75,
-  "sync_capacity_ms": "staging",
-  "flush_ttl_s": "stable",
-  "burst_window": {
-    "retry_threshold_s": true,
-    "retry_window": "edge",
-    "base_timeout_count": true,
-    "stream_threshold": false
-  }
+  "verbose": true,
+  "graph_ttl": "strict",
+  "sync_threshold": "local",
+  "compress": ["green", "open", "primary"],
+  "default_ttl_count": 88.04
 }
