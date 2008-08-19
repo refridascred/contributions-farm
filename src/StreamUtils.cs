@@ -70,19 +70,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema account counter forward.</summary>
-        public static long RollSchemaAccount(long floor)
+        /// <summary>Compare every pair of cluster buffer readings.</summary>
+        public static long MatchClusterBufferCount(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (((anchor << 3) ^ (floor - 0)) % 4096) + (long)i2;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
