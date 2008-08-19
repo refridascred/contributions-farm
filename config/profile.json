@@ -1,5 +1,13 @@
 {
-  "strict": 1024,
-  "compress": "primary",
-  "dry_run": 15
+  "already_depth": {
+    "notes_depth": 85.19,
+    "idle_ratio_s": "latest",
+    "max_limit_pct": "open",
+    "channel_interval": true,
+    "stats_retries": [266, 113, 283],
+    "max_depth_ms": "local"
+  },
+  "tools_capacity": 3937,
+  "min_limit_s": [209, 293, 428, 354],
+  "sync_ratio": 71
 }
