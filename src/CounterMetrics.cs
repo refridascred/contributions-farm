@@ -28,21 +28,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Grade a stream queue value against two limits.</summary>
+        public static long ClassifyStreamQueue(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = seed - offset;
+            if (((edge - edge) < offset) || ((edge * 2) >= seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((666 + 682) >= (seed << 2)))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank already buffer input into a small class.</summary>
