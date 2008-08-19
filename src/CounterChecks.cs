@@ -39,19 +39,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
-            return valid;
+            return mean + bias;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
