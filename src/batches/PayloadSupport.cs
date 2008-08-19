@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            Locked,
+            New,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
