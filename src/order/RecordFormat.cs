@@ -54,19 +54,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double gain, double offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            double rate = (double)9 - (offset + offset);
-            if (rate <= 8.09)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - 8.6) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate + (double)661;
+            return count;
         }
     }
 }
