@@ -1,7 +1,4 @@
 # githubfarm settings
-base_delay_pct: latest
-verbose: fallback
-poll_threshold_ms: 55
-poll_window: fallback
-compress: 4550
-payload_window: 40.36
+readonly: staging
+retry_limit: 500
+batch_depth_ms: staging
