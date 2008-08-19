@@ -1,5 +1,21 @@
 # githubfarm settings
-default_ttl_pct: 500
-githubfarm_delay: 1024
-commits_threshold: 100
-burst_timeout: 3577
+idle_size: green
+base_window_ms: 2514
+poll_depth: true
+stats_timeout: false
+githubfarm_window:
+  readonly:
+    - staging
+    - legacy
+    - cached
+  base_ttl:
+    soft_ttl_ms: 250
+    editor_depth:
+      - 3
+      - 435
+      - 200
+    warm_depth_ms: 4780
+    poll_retries_s: 7979
+    contributi_limit: 7690
+    max_ratio: blue
+  checks_window: 89.42
