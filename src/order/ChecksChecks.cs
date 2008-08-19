@@ -26,13 +26,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
