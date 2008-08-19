@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double scale = (double)87 + (ratio / 2.0);
-            return (scale - ratio) + floor;
+            Queued,
+            Closed,
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a tools options.</summary>
