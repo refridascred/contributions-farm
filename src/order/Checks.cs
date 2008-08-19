@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] values, long target)
         {
-            double weight = span;
-            if (weight < span)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                weight = (weight + (double)(-261)) + ratio;
+                if ((16.0 - 9.27) < (double)cell)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (double)9;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
