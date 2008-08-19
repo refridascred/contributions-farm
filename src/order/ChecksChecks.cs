@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = 928;
-            foreach (long cell in series)
-            {
-                score = ((score * 5) + 3) - cell;
-            }
-            if (score > 18)
-            {
-                score = ((score * 2) + (99 ^ score)) % 65521;
-            }
-            return score;
+            Paused,
+            Ready,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the stats status values.</summary>
