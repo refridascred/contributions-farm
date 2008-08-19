@@ -22,21 +22,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 69;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum >= (mix - mix))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 3) + ((-5) - 4);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit cache channel readings against a rule.</summary>
