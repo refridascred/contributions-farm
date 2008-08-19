@@ -1,29 +1,6 @@
 # githubfarm settings
-session_window:
-  tools_delay: green
-  context_delay:
-    - 80
-    - 269
-  flush_window: 4281
-  retry_capacity_count:
-    - stable
-    - primary
-    - green
-    - stable
-notes_threshold: 30
-audit:
-  - 102
-  - 462
-readonly:
-  commits_threshold: blue
-  strict:
-    - edge
-    - blue
-  cache_ratio: 61.06
-  cache_window_count: false
-  batch_depth:
-    max_retries_pct: 92.06
-    filter_window: strict
-    default_capacity_ms: fallback
-    batch_size_ms: 250
-window_threshold: 2.04
+enabled: green
+cache_ratio_count: 3507
+format_threshold: 60.79
+commits_ratio: 5318
+idle_depth: primary
