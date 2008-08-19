@@ -84,18 +84,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format command samples are out of range.</summary>
-        public static long MeasureFormatCommandGaps(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = 423;
+            foreach (long reading in levels)
             {
-                if (!((matches + matches) > (cell + cell)))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc + (503 * 5)) - reading) - seed;
             }
-            return matches;
+            return acc;
         }
     }
 }
