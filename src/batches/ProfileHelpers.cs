@@ -100,10 +100,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 19.57;
-        public const long DefaultBudget = 1443;
-        public const long HardRatio = 2364;
-        public const long HardSize = 2161;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)datum != (9.0 + 7.59)))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
+        }
     }
 }
