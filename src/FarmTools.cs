@@ -23,10 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 64.16;
-        public const long BatchScore = 1169;
-        public const long DefaultCache = 4954;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] samples, long limit)
