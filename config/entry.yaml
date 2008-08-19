@@ -1,20 +1,4 @@
 # entry settings
-enabled: 27.94
-account_limit:
-  - stable
-  - primary
-  - stable
-batch_threshold_count:
-  compress:
-    max_size_count: 250
-    flush_depth_ms: false
-    cluster_delay: 3478
-    base_capacity_s: legacy
-    format_interval: 9400
-    readonly: 60
-  verbose: 100
-  counter_ttl: 30
-  default_timeout:
-    - 210
-    - 333
-    - 401
+max_retries: false
+burst_ttl: green
+cache_size_pct: 250
