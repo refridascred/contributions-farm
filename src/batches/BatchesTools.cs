@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] series, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                if ((hits + sample) <= 27)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
