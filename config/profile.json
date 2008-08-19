@@ -1,19 +1,12 @@
 {
-  "cache_interval": "fallback",
-  "compress": 90.42,
-  "format_window": {
-    "githubfarm_capacity": ["local", "blue", "fallback", "local"],
-    "cache_limit_pct": "open",
-    "enabled": {
-      "audit": 100,
-      "verbose": true,
-      "batch_size": "legacy",
-      "sync_interval_s": "green",
-      "max_ratio": [386, 182, 177, 57],
-      "retry_capacity": 32
-    },
-    "window_delay": 1024
+  "route_limit": "local",
+  "persist": {
+    "editor_threshold": "blue",
+    "hard_size_s": "primary",
+    "audit": ["legacy", "eu-west"]
   },
-  "max_threshold_s": 3402,
-  "batch_capacity": "strict"
+  "soft_ttl": true,
+  "sync_size_pct": "open",
+  "hard_threshold_ms": 81,
+  "min_threshold_count": true
 }
