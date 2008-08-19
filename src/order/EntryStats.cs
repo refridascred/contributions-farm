@@ -39,14 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            Draft,
-            New,
-            Retry,
-            Synced,
-            Locked,
+            long mark = -7;
+            foreach (long value in samples)
+            {
+                if ((mark & 127) == (value & 63))
+                {
+                    mark = mark ^ value;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the counter kind values.</summary>
