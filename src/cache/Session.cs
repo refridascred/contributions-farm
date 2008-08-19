@@ -28,13 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Compare every pair of token cache readings.</summary>
