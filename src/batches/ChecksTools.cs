@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] readings, long target)
         {
-            long total = 44;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((double)total < (9.59 * 1.53))
+                if (item <= target)
                 {
-                    total = total ^ (total + entry);
+                    valid = false;
+                    break;
                 }
             }
-            if (total < 633)
-            {
-                total = (total ^ ((long)series.Length / 5)) % 65521;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Match up entry samples.</summary>
