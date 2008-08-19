@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] levels, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (offset >= (648 * 2))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the graph mode values.</summary>
