@@ -1,18 +1,21 @@
 # entry settings
-warm_window_s: local
-readonly:
-  compress: green
+order_limit:
+  route_retries: 5352
   persist:
-    - 124
-    - 374
-    - 80
-  contributi_delay: 3411
-  graph_window:
-    batch_timeout_count: 19.76
-    burst_depth_count: true
-    checks_capacity: true
-  editor_ttl: 9.59
-warm_retries_pct: true
-flush_size_s: cached
-compress: edge
-retry_retries_pct: 20.01
+    - eu-west
+    - standard
+    - legacy
+  poll_ratio_ms:
+    - green
+    - blue
+    - standard
+  sync_depth_ms: 1024
+  verbose: 27.27
+  burst_depth_s: cached
+compress: 1024
+max_interval_count: 65
+default_capacity_ms: 76
+default_delay: blue
+readonly:
+  - staging
+  - eu-west
