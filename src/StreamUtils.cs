@@ -66,13 +66,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a schema account counter forward.</summary>
+        public static long RollSchemaAccount(long floor)
         {
-            Active,
-            Dropped,
-            Done,
-            Pending,
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = (((anchor << 3) ^ (floor - 0)) % 4096) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
