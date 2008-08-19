@@ -36,13 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double gain, double floor)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            double gain2 = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (double)98) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
     }
 }
