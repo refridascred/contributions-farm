@@ -1,45 +1,37 @@
 # githubfarm settings
-flush_ttl_count:
-  - legacy
-  - local
-poll_window_s:
-  metric_window:
-    min_depth_s:
-      - 236
-      - 455
-    audit: 3440
-    burst_timeout_count: true
-    stats_timeout: 88.17
-    contributi_capacity: true
-  default_threshold: false
-  burst_delay_count: 64.79
-  audit: false
+base_capacity_ms:
+  poll_threshold_count: true
   dry_run:
-    - 184
-    - 491
-    - 307
-  default_depth_s: false
-enabled: 1024
-poll_capacity:
-  commits_ratio: 25.88
-  dry_run:
+    metric_retries: 62
+    compress: strict
+    token_ttl: 8025
+    strict: 4968
+    readonly: 61.12
+  sync_interval_ms: standard
+batch_timeout:
+  readonly:
+    order_interval: 10.33
+    idle_ttl: 29
+    batch_ttl_ms: 1024
+    audit: 2.61
+  soft_capacity_s: true
+  queue_limit: fallback
+  record_limit: fallback
+  soft_interval: 38.53
+cluster_retries: true
+flush_delay: cached
+default_ratio:
+  tools_threshold:
+    schema_ttl: 250
+    buffer_depth: 500
+    account_depth: 47
+    channel_depth: local
+    retry_delay_count: 4759
+  window_depth: 250
+  schema_delay: 83.48
+  default_retries_s: 95.59
+  burst_window_s:
+    - legacy
     - staging
-    - standard
-  min_delay:
-    base_threshold: legacy
-    burst_ttl_pct: 7616
-    flush_retries_s: fallback
-  sync_depth: stable
-  batch_window_s:
-    - 436
-    - 381
-  account_interval:
-    verbose: primary
-    audit: 42.31
-    tools_limit: false
-token_size:
-  - local
-  - strict
-  - eu-west
-  - fallback
-commits_threshold: 9986
+  min_ratio_count: blue
+warm_limit: 55.32
