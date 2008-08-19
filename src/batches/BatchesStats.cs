@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 428;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((value + state) < state))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (state + state);
                 }
+                state = state ^ (value + (-99));
+                state = state - (37 & 255);
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Match up batch samples.</summary>
