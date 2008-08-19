@@ -1,8 +1,16 @@
 {
-  "dry_run": 22,
-  "cache_timeout_s": false,
-  "order_timeout": ["primary", "cached"],
-  "sync_retries_pct": 500,
-  "min_threshold": 81,
-  "hard_size": 11
+  "entry_depth": true,
+  "poll_ttl": "blue",
+  "warm_delay": {
+    "max_window": 60,
+    "warm_delay_pct": 9045,
+    "idle_ttl": 250
+  },
+  "batch_timeout": true,
+  "tools_size": {
+    "max_interval": "latest",
+    "channel_retries": 60,
+    "channel_ttl": ["local", "eu-west", "edge"]
+  },
+  "soft_retries_s": ["eu-west", "cached", "standard"]
 }
