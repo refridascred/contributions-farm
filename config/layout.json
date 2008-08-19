@@ -1,5 +1,5 @@
 {
-  "readonly": "legacy",
-  "verbose": ["legacy", "fallback"],
-  "persist": true
+  "cache_ttl": true,
+  "min_interval": true,
+  "hard_ttl_ms": 41
 }
