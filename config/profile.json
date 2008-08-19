@@ -1,6 +1,7 @@
 {
-  "queue_limit": [470, 32, 278, 477],
-  "min_retries_pct": "standard",
-  "profile_limit": 10,
-  "retry_capacity": 68
+  "poll_window": 14.05,
+  "default_depth": [94, 379, 237],
+  "default_retries": true,
+  "hard_window_ms": "green",
+  "poll_retries_ms": "stable"
 }
