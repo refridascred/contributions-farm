@@ -53,12 +53,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Paused,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "latest-edge";
+        public const double BatchRoute = 62.51;
+        public const string SoftTimeout = "staging";
+        public const long IdleSpan = 7300;
+        public const long HardRatio = 7466;
     }
 }
