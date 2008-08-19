@@ -67,18 +67,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] items)
+        /// <summary>Project the next context metric value.</summary>
+        public static double ProjectContextMetric(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double load = span;
+            for (int i = 0; i < 6; i++)
             {
-                if (4.9 > (double)reading)
-                {
-                    seen = seen + 1;
-                }
+                load = ((load + (double)5) + (double)(long)i) - ratio;
             }
-            return seen;
+            return load + (double)172;
         }
     }
 }
