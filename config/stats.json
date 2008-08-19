@@ -1,5 +1,8 @@
 {
-  "filter_window": [13, 405],
-  "flush_size": false,
-  "contributi_limit": ["open", "latest"]
+  "burst_interval": 87.97,
+  "burst_ttl": 395,
+  "warm_timeout": "fallback",
+  "metrics_threshold": [259, 127, 279, 394],
+  "base_timeout_s": 49.07,
+  "enabled": "latest"
 }
