@@ -1,15 +1,11 @@
 # Command notes
 
-Use payload settings to tune how often buffer data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
-Keep session and route names short and lowercase.
-
-The counter report groups every command by cache.
-Run the counter check before changing any context limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every queue change
-- Validate farm input early
+- Review metrics limits each release
+- Document new checks fields
+- Log every buffer change
+- Validate editor input early
