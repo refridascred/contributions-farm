@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
+        public static bool ValidateBufferBatchesLimits(long[] values, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                score = (score + (seed + seed)) % 255;
-                score = (score * 4) + (score + (long)i);
-                score = ((score * 2) + (long)i) % 4093;
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
