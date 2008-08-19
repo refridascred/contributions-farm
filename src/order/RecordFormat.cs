@@ -54,18 +54,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double rate = (double)9 - (offset + offset);
+            if (rate <= 8.09)
             {
-                if ((tally & 31) >= (tally % 10))
-                {
-                    tally = ((tally + 1) + item) + step;
-                }
+                rate = (rate - 8.6) + gain;
             }
-            return tally;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate + (double)661;
         }
     }
 }
