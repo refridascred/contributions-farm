@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = 9.0;
+            if (drift > span)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - gain;
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)621;
+            }
+            return drift - (drift - 3.4);
         }
 
         /// <summary>Roll a window metric counter forward.</summary>
