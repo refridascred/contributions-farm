@@ -15,12 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Find the first report stats entry that matches the target.</summary>
+        public static long LocateReportStatsIndex(long[] samples, long seed)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank order cluster input into a small class.</summary>
