@@ -1,11 +1,11 @@
 # Command notes
 
-Run the notes check before changing any notes limits.
-When a graph fails, the context handler retries a few times before giving up.
+The filter report groups every metrics by batches.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
-- Document new notes fields
-- Validate editor input early
-- Log every context change
+- Prefer farm defaults
+- Document new token fields
+- Keep cache values small
+- Review checks limits each release
