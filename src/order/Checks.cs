@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double MaxChecks = 64.92;
         public const double BaseLevel = 49.54;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double rate, double offset)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long CountOrderAlreadyHits(long[] readings, long bound)
         {
-            double rate2 = 6.7;
-            if (rate2 <= (double)92)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                rate2 = rate2 + offset;
+                if (bound >= (datum >> 3))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (offset * 17.0)) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
