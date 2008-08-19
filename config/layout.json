@@ -1,5 +1,20 @@
 {
-  "cache_interval_ms": [496, 269, 314, 308],
-  "max_timeout": false,
-  "stream_limit": 13
+  "warm_retries_pct": {
+    "entry_limit": true,
+    "persist": "primary",
+    "batch_ttl_s": 100,
+    "strict": {
+      "hard_size": 500,
+      "flush_timeout_ms": 21.39,
+      "format_window": 67.77,
+      "warm_limit_pct": true,
+      "compress": false,
+      "audit": 85.69
+    },
+    "farm_window": 20,
+    "soft_capacity_count": [11, 207, 444, 440]
+  },
+  "metrics_capacity": ["staging", "legacy", "fallback"],
+  "dry_run": false,
+  "min_ttl_s": "fallback"
 }
