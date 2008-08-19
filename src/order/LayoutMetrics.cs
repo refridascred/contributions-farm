@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command counter samples.</summary>
-        public static long TallyCommandCounter(long[] series, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 3;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor + (0 >> 5)) % 255) - reading;
-            }
-            if (anchor < 37)
-            {
-                anchor = anchor + (seed >> 1);
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
