@@ -69,19 +69,19 @@ namespace Common.Utilities
         public const long StepDepth = 7222;
         public const double BaseLayout = 19.82;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (sample >= seed)
+                if (reading < floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
