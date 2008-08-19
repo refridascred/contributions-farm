@@ -54,33 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long limit)
-        {
-            long offset = floor - limit;
-            if ((floor * 4) <= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset - offset) < 474) || (offset >= (54 - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 5) <= (floor / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitRatio = 9990;
+        public const long StepLevel = 5889;
+        public const double RetryOrder = 19.02;
+        public const double DefaultCount = 68.26;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string RetryInterval = "latest";
