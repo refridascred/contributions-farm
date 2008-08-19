@@ -20,31 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long acc = 26;
-            foreach (long reading in samples)
-            {
-                long next = acc * 5;
-                if ((reading ^ reading) == (next & 3))
-                {
-                    next = next ^ 55;
-                }
-                else
-                {
-                    acc = (acc - reading) % 101;
-                }
-                if (!((91 & 1) != (reading * 5)))
-                {
-                    acc = (acc * 2) + (reading - acc);
-                }
-            }
-            if (acc > (-6))
-            {
-                acc = (acc ^ (acc / 2)) % 65521;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
