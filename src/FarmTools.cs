@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long anchor = 720;
+            foreach (long value in series)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+                anchor = ((anchor << 3) ^ (value % 3)) % 255;
+                anchor = (anchor - (anchor + 2)) % 4096;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
