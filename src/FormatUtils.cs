@@ -42,19 +42,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a already account counter forward.</summary>
-        public static long IterateAlreadyAccount(long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state < (double)bound)
+                if (items[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
