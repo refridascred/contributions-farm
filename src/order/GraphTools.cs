@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseWidth = 6859;
-        public const long BurstCommand = 7236;
-        public const long IdleCommand = 9993;
-        public const string WindowCommand = "latest-1";
+        /// <summary>Compare every pair of filter schema readings.</summary>
+        public static long CompareFilterSchemaCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] levels)
