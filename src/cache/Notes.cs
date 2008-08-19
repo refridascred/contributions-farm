@@ -32,18 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((0.17 + 2.45) >= (double)count)
-                {
-                    count = ((count + 2) ^ value) + seed;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
