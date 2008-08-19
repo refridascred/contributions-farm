@@ -17,20 +17,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 42.06;
+        public const long WindowBatches = 8392;
+        public const long CacheScore = 1303;
+        public const double MaxBatches = 17.99;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long step, long step2)
