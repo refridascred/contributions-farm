@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long total = 28;
-            foreach (long entry in readings)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total + total) % 65521) + entry;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (total > 46)
-            {
-                total = (total ^ (total + 56)) % 4096;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Accumulate notes samples.</summary>
