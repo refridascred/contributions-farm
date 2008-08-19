@@ -88,11 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            Locked,
+            New,
+            Done,
         }
     }
 }
