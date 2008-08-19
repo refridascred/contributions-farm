@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 9485;
-        public const long SoftScore = 7417;
-        public const long WindowSchema = 6701;
-        public const string SoftSchema = "fallback";
-        public const string SoftRatio = "standard";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepLevel = 340;
+        public const long BatchCount = 6744;
+        public const long BatchLevel = 1951;
+        public const double BurstTimeout = 10.9;
+        public const long MaxRatio = 4233;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] levels, long target)
