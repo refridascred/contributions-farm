@@ -44,15 +44,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mark = 305;
-            foreach (long sample in values)
-            {
-                mark = ((mark ^ (0 >> 4)) - sample) - limit;
-            }
-            return mark;
+            Idle,
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a metric info.</summary>
