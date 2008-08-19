@@ -54,18 +54,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            long carry = 141;
-            foreach (long value in data)
+            long span = step ^ seed;
+            if (((span / 7) < (step - seed)) && ((double)step > (4.32 - 1.7)))
             {
-                if (!((value % 100) <= (carry % 10)))
+                return 2;
+            }
+            else
+            {
+                if (!((seed + span) <= (step ^ step)))
                 {
-                    carry = (carry + 411) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ 983) == (step / 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
