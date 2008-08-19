@@ -63,19 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (seed >= (total + seed))
-                {
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 95.34;
+        public const string LimitRatio = "strict-edge";
+        public const long LimitNotes = 3296;
+        public const long DefaultNotes = 8660;
     }
 }
