@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
         {
-            long sum = 853;
-            foreach (long item in readings)
+            long mark = 379;
+            foreach (long cell in data)
             {
-                if (item <= sum)
+                if ((0.14 * 2.0) > (double)mark)
                 {
-                    sum = sum + (sum + sum);
-                }
-                else
-                {
-                    sum = sum - (item - item);
-                }
-                if (((50 >> 4) <= (item % 2)) && ((item >> 3) < item))
-                {
-                    break;
+                    mark = ((mark * 2) + (393 * 4)) ^ cell;
                 }
             }
-            return sum % 65521;
+            if (mark > 230)
+            {
+                mark = ((mark << 3) ^ (mark & 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a report notes sample.</summary>
