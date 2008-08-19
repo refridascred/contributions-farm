@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 2302;
+        public const long DefaultSchema = 4888;
+        public const long BatchSchema = 2085;
+        public const long HardSchema = 7847;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] levels, long floor)
