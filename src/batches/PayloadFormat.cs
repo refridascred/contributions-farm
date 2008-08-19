@@ -46,15 +46,14 @@ namespace Common.Utilities
         public const long MaxContext = 4665;
         public const long BatchContext = 1960;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double weight = rate + (8.15 + rate);
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (rate * 0.53)) + (double)(long)i) + span;
-            }
-            return weight - (double)1;
+            Pending,
+            Synced,
+            Idle,
+            New,
+            Active,
         }
     }
 }
