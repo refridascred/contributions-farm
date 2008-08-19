@@ -1,11 +1,6 @@
 {
-  "min_interval_count": "strict",
-  "base_depth_s": {
-    "format_threshold": false,
-    "counter_window": [222, 269, 15],
-    "audit": true,
-    "poll_capacity_ms": false
-  },
-  "compress": 1024,
-  "soft_retries": "stable"
+  "sync_delay_count": 19.65,
+  "sync_limit_count": 60,
+  "graph_threshold": ["primary", "open"],
+  "soft_ratio_count": true
 }
