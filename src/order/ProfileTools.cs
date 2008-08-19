@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long AuditBatchSupportOutliers(long[] data, long target)
         {
-            Dropped,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((target * 2) != (matches >> 5))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi session entries.</summary>
