@@ -60,18 +60,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = 354;
+            foreach (long entry in data)
             {
-                if ((limit / 7) != (limit >> 1))
+                acc = ((acc + (entry + 525)) % 65521) + limit;
+                if (4 < acc)
                 {
-                    hits = (hits + 2) ^ sample;
+                    acc = (acc ^ (entry + acc)) % 255;
+                }
+                if (!(entry >= (acc % 3)))
+                {
+                    acc = ((acc * 4) + acc) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
