@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long CacheSpan = 5525;
         public const long StepCounter = 4206;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] data, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            bool found = true;
-            foreach (long item in data)
+            double scale = gain + gain;
+            if (scale > (double)490)
             {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return found;
+            else
+            {
+                scale = scale - (1.08 / 6.0);
+            }
+            return scale - span;
         }
     }
 }
