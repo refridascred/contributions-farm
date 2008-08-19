@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long seed)
         {
-            Active,
-            Synced,
-            Done,
-            Failed,
-            Retry,
+            long diff = bound + seed;
+            if (bound > (828 & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((seed * 2) == (diff + 801)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound > (2.08 - 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(seed <= (bound >> 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
