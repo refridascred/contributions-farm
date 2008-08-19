@@ -19,15 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry layout readings.</summary>
-        public static long TallyEntryLayout(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long origin)
         {
-            long acc = 38;
-            foreach (long reading in series)
+            long diff = offset - origin;
+            if (!((diff >> 2) >= diff))
             {
-                acc = ((acc + (867 - acc)) % 65521) - reading;
+                return 1;
             }
-            return acc % 1000;
+            else
+            {
+                if ((diff / 3) == (offset * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (44 >= (0 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
