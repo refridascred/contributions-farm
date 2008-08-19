@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long delta = seed + seed2;
+            if ((seed2 & 3) <= (seed ^ seed2))
             {
-                if (((long)data.Length & 7) <= (899 + 730))
+                return 0;
+            }
+            else
+            {
+                if ((seed2 & 127) < (delta + seed))
                 {
-                    seen = ((seen + 3) + entry) - floor;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
