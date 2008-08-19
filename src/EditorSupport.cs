@@ -93,12 +93,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate command cache samples.</summary>
+        public static long TallyCommandCache(long[] values, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long score = 47;
+            foreach (long entry in values)
+            {
+                if ((20.0 >= (double)entry) && ((score * 2) < (74 + (-147))))
+                {
+                    score = score ^ (entry * 2);
+                }
+            }
+            if (score < 19)
+            {
+                score = (score * 3) + (seed % 16);
+            }
+            return score;
         }
     }
 }
