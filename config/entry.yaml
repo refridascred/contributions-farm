@@ -1,9 +1,8 @@
 # entry settings
-readonly:
-  - staging
-  - blue
-  - edge
-compress: blue
-persist: 33
-retry_delay_count: false
-dry_run: fallback
+warm_threshold_pct: true
+persist:
+  min_capacity_ms: 250
+  poll_threshold_s: strict
+  report_retries: false
+  min_timeout_ms: false
+poll_ratio_pct: local
