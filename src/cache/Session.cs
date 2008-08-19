@@ -13,14 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            Paused,
-            New,
-            Done,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((83 * 2) == (datum ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
