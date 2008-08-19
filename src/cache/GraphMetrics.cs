@@ -23,21 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
