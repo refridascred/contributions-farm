@@ -54,25 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long target2)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] samples, long floor)
         {
-            long diff = target - target2;
-            if (diff <= (diff ^ diff))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (8.8 * 2.7))
+                if (entry > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the report state values.</summary>
