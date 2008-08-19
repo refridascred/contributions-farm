@@ -1,6 +1,10 @@
-id,state,rank
-1,73.67,794
-2,standard,47.57
-3,eu-west,latest
-4,blue,980
-5,staging,open
+id,active,token,label
+1,74.49,edge,standard
+2,stable,local,fallback
+3,1.51,704,993
+4,2.93,228,601
+5,600,487,223
+6,632,edge,883
+7,strict,91.14,965
+8,931,open,13.42
+9,98.03,695,10.94
