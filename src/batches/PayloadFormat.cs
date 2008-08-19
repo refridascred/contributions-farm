@@ -41,20 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload entry readings against a bound.</summary>
-        public static bool VerifyPayloadEntryRange(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitRatio = 1785;
+        public const long MaxContext = 4665;
+        public const long BatchContext = 1960;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double rate, double span)
