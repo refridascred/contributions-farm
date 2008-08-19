@@ -35,22 +35,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits entry entries that pass the check.</summary>
-        public static long CountCommitsEntryHits(long[] values, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((1.68 / 9.0) == (double)count)
-                {
-                    count = ((count + 1) ^ entry) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Accumulate metric report samples.</summary>
