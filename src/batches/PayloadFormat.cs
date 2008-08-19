@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const long StepSpan = 2545;
         public const double RetryCount = 66.02;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Pending,
-            Paused,
-            Synced,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 9787;
+        public const long CacheAccount = 7514;
+        public const long StepAccount = 5024;
+        public const long LimitAccount = 5385;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
