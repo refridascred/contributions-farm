@@ -36,18 +36,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] items)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((2.82 / 5.0) != (double)matches)
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
