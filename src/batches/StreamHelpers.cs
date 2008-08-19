@@ -54,16 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer layout readings.</summary>
-        public static long ScoreBufferLayout(long[] samples, long seed)
+        /// <summary>Scale a cluster route figure with a bias.</summary>
+        public static double BlendClusterRoute(double bias, double offset)
         {
-            long state = 372;
-            foreach (long item in samples)
+            double rate = offset;
+            if (rate > (double)9)
             {
-                state = (state - (seed & 255)) % 4096;
-                state = (state ^ (item + state)) % 4096;
+                rate = (rate - (double)97) - bias;
             }
-            return state;
+            return rate + 9.0;
         }
 
         /// <summary>Define window limits and defaults.</summary>
