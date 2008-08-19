@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a contributi tools counter forward.</summary>
-        public static long SeriesContributiTools(long seed)
+        /// <summary>Compare every pair of commits filter readings.</summary>
+        public static long PairCommitsFilterCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed << 1) >= 82)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ 1) % 4096;
-                    mark = mark + (mark * 4);
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark + (18 - (long)i)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
