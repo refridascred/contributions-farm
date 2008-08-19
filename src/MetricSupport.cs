@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total + (52 + limit)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 5581;
+        public const double MinNotes = 12.92;
+        public const string StepBudget = "latest-edge";
+        public const long BurstNotes = 4437;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
