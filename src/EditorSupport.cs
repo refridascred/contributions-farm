@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double mean = bias;
+            if (mean < (bias / 3.0))
             {
-                if ((6.16 * 18.0) <= (double)datum)
-                {
-                    seen = seen + 1;
-                }
+                mean = mean - (double)21;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean - (double)40;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
