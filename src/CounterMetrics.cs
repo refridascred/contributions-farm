@@ -21,11 +21,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseFactor = 7191;
-        public const long CacheRatio = 7874;
-        public const long BurstBuffer = 1248;
-        public const long MaxBuffer = 513;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Closed,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Iterate the cache support series from a seed.</summary>
         public static long SeriesCacheSupport(long seed)
