@@ -29,22 +29,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((146 << 2) < seen) || ((69 + seen) < ((-16) + seen)))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstLevel = 620;
+        public const string CacheGithubfarm = "cached-edge";
+        public const string BatchGithubfarm = "local-1";
     }
 }
