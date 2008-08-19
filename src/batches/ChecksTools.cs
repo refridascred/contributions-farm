@@ -71,24 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long floor)
+        /// <summary>Count the profile context entries that pass the check.</summary>
+        public static long AuditProfileContextGaps(long[] samples)
         {
-            if (((double)floor != (18.0 - 0.47)) || (floor >= (floor % 8)))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((17 << 3) == (floor / 2)))
+                if ((seen >> 2) >= (seen << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 2) + reading;
                 }
             }
+            return seen;
         }
     }
 }
