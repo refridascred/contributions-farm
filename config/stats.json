@@ -1,7 +1,11 @@
 {
-  "retry_size_count": 3070,
-  "route_delay": ["local", "eu-west"],
-  "warm_ratio": 40.0,
-  "strict": [468, 455, 280],
-  "soft_retries_count": 7.68
+  "compress": 30,
+  "batch_ratio": {
+    "batch_ttl": "latest",
+    "min_retries": "strict",
+    "persist": "open"
+  },
+  "dry_run": "primary",
+  "base_window_s": false,
+  "queue_ratio": 30
 }
