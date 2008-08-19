@@ -24,18 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm route samples are out of range.</summary>
-        public static long AuditFarmRouteHits(long[] values, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((bound + hits) != (hits + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
