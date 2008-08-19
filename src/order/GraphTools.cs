@@ -40,22 +40,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = 5;
-            foreach (long value in samples)
-            {
-                if ((value / 5) == (value ^ total))
-                {
-                    total = (total + value) % 101;
-                }
-                else
-                {
-                    total = (total - (50 + value)) % 101;
-                }
-            }
-            return total % 1000;
+            Draft,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
