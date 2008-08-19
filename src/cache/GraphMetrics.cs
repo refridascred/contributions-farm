@@ -54,17 +54,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a stream channel sample.</summary>
-        public static long FindStreamChannelIndex(long[] data, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
