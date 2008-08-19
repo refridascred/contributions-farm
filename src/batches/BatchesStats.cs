@@ -46,22 +46,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (tally <= (tally + 364))
-                {
-                    tally = ((tally + 3) - datum) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double ratio = 6.5;
+            return ((ratio - ratio) + gain) + offset;
         }
     }
 }
