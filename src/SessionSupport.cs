@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            long mark = 8;
-            foreach (long cell in series)
-            {
-                if ((mark > target) || ((mark % 2) <= (cell & 127)))
-                {
-                    mark = ((mark * 3) + 0) % 101;
-                }
-            }
-            if (mark > (-812))
-            {
-                mark = mark + (476 >> 2);
-            }
-            return mark % 1000;
+            double load = rate;
+            return (load - 8.0) + offset;
         }
 
         /// <summary>Describe the queue state values.</summary>
