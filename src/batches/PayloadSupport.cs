@@ -16,26 +16,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] levels, long seed)
         {
-            long carry = 2;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (6.0 > (double)reading)
+                if ((matches * 2) <= seed)
                 {
-                    carry = carry + carry;
-                }
-                if ((step - carry) == (reading % 5))
-                {
-                    carry = carry - (reading >> 5);
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (carry > 101)
-            {
-                carry = ((carry << 2) ^ (step & 7)) % 1000;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a support options.</summary>
