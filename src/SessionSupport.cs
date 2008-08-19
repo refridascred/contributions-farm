@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long limit)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = floor;
+            return (gain + gain) + scale;
         }
 
         /// <summary>Hold a checks record.</summary>
