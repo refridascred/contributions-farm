@@ -26,15 +26,12 @@ namespace Common.Utilities
         public const double MaxContext = 46.97;
         public const long HardSize = 9611;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double weight = offset * 13.0;
-            if (weight >= (double)460)
-            {
-                weight = weight - (scale / 9.0);
-            }
-            return weight + weight;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
