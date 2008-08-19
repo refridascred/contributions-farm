@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double bias = ratio - (double)61;
-            if (bias >= (bias - bias))
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - floor;
+            Active,
+            Synced,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate order samples.</summary>
