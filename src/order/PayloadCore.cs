@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a format tools sample.</summary>
-        public static long FindFormatToolsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstFactor = 9373;
+        public const long MinLevel = 1611;
+        public const string MaxRoute = "fallback";
+        public const long IdleRoute = 8773;
+        public const long BurstRoute = 5280;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
