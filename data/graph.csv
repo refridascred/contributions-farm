@@ -1,8 +1,6 @@
-id,region,ratio,token,owner
-1,12.69,19.67,5,93
-2,688,93.86,stable,32.17
-3,49.8,576,74.03,staging
-4,783,15.36,566,87.65
-5,58.58,62.65,31.85,84.92
-6,standard,stable,35.15,321
-7,669,blue,strict,646
+id,region,score,weight
+1,963,primary,526
+2,377,5.59,901
+3,48.76,fallback,893
+4,346,68.17,staging
+5,47.37,20.94,standard
