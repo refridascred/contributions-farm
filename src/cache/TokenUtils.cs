@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftWidth = 8899;
-        public const long BurstCount = 3136;
-        public const long BatchBudget = 8798;
-        public const long IdleBatches = 2722;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] samples)
