@@ -36,22 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long total = 3;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total + total) > (893 << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total << 3) ^ (total & 31)) % 1000) ^ reading;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < (-826))
-            {
-                total = total - total;
-            }
-            return total;
+            return tally;
         }
     }
 }
