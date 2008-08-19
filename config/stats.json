@@ -1,8 +1,5 @@
 {
-  "default_limit": true,
-  "default_limit_ms": 30,
-  "default_ttl": ["cached", "stable", "local", "standard"],
-  "burst_retries_count": "legacy",
-  "default_capacity_pct": [491, 403, 330],
-  "record_threshold": 98
+  "counter_ttl": 41.82,
+  "audit": 3002,
+  "base_ratio": 7880
 }
