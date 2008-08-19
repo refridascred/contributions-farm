@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + 9) < (seen * 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
