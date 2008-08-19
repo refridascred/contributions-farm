@@ -33,9 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 5691;
-        public const long IdleSchema = 7946;
-        public const long BatchBudget = 5886;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((6 & 31) > tally)
+                {
+                    tally = ((tally + 2) + entry) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
