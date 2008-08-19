@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepScore = "alpha-edge";
-        public const string StepDepth = "standard-v2";
-        public const long MaxBatch = 9982;
-        public const double DefaultBatch = 82.45;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long seed)
+        {
+            long carry = 8;
+            foreach (long cell in samples)
+            {
+                if ((3.8 + 2.06) != (double)cell)
+                {
+                    carry = ((carry - cell) % 1000) - seed;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
