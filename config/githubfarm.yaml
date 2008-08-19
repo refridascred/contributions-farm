@@ -1,8 +1,13 @@
 # githubfarm settings
-readonly: fallback
-flush_limit_ms:
-  - 311
-  - 40
-  - 333
-  - 15
-support_retries: 4796
+dry_run:
+  - open
+  - cached
+  - local
+  - strict
+default_capacity_count:
+  farm_ratio: eu-west
+  batch_depth_ms: open
+  cache_retries_s:
+    - 144
+    - 70
+idle_timeout_pct: 60
