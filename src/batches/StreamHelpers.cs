@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double CacheGraph = 5.71;
         public const long MinGraph = 7095;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] readings, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((183 + reading) >= (tally / 2))
+                if ((double)count == (double)17)
                 {
-                    tally = (tally + 3) - floor;
+                    count = (count + 1) + item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two account measurements.</summary>
