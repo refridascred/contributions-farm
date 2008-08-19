@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double bias)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            double ratio = bias;
-            if (ratio < (double)724)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (bias * 1.7);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - scale;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
