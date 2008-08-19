@@ -32,17 +32,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
