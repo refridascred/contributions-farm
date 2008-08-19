@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile githubfarm readings against a bound.</summary>
-        public static bool ValidateProfileGithubfarmLimits(long[] items, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (entry <= offset)
+                if (cell != limit)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
