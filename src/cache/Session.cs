@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series, long target)
         {
-            long total = 8;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (item * 5)) % 97;
-                if ((item & 127) == (item / 4))
+                if (((target + (long)series.Length) >= (count ^ count)) && ((6 << 2) <= cell))
                 {
-                    total = (total + item) % 255;
+                    count = count + 3;
                 }
             }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
