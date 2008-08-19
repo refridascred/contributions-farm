@@ -1,6 +1,12 @@
 {
-  "base_retries_count": false,
-  "profile_window": 59,
-  "enabled": "edge",
-  "max_limit_pct": 9691
+  "soft_delay": {
+    "format_window": true,
+    "tools_retries": 4467,
+    "persist": 46
+  },
+  "poll_timeout_ms": 15,
+  "flush_ttl": 7543,
+  "cache_limit_ms": "latest",
+  "batch_retries": true,
+  "warm_threshold": 8134
 }
