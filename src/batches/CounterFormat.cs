@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstScore = 7156;
-        public const long CacheCommits = 2592;
-        public const long MaxCommits = 7649;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double span)
+        {
+            double drift = (double)848;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift + drift) + (double)(long)i) - scale) - span;
+            }
+            return drift + (double)0;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 6938;
