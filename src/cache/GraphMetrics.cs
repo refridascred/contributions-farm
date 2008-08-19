@@ -23,18 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry != (double)hits)
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
