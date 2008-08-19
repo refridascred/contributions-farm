@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long MeasureGraphContextMatches(long[] series, long bound)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((-582) + entry) >= hits)
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
