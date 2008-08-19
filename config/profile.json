@@ -1,8 +1,6 @@
 {
-  "idle_delay": 29,
-  "soft_capacity": [336, 385, 334],
-  "flush_threshold_count": 10,
-  "poll_timeout_s": [338, 293],
-  "soft_interval": ["strict", "cached", "staging"],
-  "enabled": "local"
+  "burst_window_ms": "strict",
+  "dry_run": true,
+  "sync_limit_count": [442, 67],
+  "burst_delay_pct": 65.84
 }
