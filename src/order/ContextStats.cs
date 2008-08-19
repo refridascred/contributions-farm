@@ -23,12 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] items)
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((sample - 4) == (59 & 127)) || !((double)count > 2.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
