@@ -1,8 +1,9 @@
-id,score,token,rank,count
-1,cached,eu-west,63.97,latest
-2,green,67.44,51.94,668
-3,359,805,48.96,149
-4,16.42,785,18.62,legacy
-5,30.12,2.63,520,legacy
-6,918,fallback,227,stable
-7,26.43,511,local,604
+id,label,ratio
+1,39,legacy
+2,16.65,62.18
+3,53.79,48
+4,eu-west,18.39
+5,69,31
+6,619,803
+7,local,232
+8,87.33,primary
