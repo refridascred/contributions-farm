@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Paused,
-            Draft,
-            Active,
-            Failed,
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
