@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel buffer entries.</summary>
-        public static long TotalChannelBuffer(long[] items, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            long result = 111;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                long bound = (seed % 7) - (long)items.Length;
-                if (!((double)bound > (double)result))
+                if (((count - count) > (57 & 255)) || (((item << 1) <= (5 - item)) && ((count / 5) != (count + 46))))
                 {
-                    bound = bound - (4 % 97);
-                    bound = (bound - (293 % 8)) % 4096;
-                }
-                if (seed >= (datum & 255))
-                {
-                    result = result + datum;
+                    count = count + 2;
                 }
             }
-            if (result > 1)
-            {
-                result = ((result << 2) ^ (seed - seed)) % 65521;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two payload measurements.</summary>
