@@ -32,22 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long AuditFarmOrderGaps(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = 4;
+            foreach (long cell in samples)
             {
-                if ((8.79 / 7.0) != (double)count)
+                if ((6.2 / 2.0) > (double)cell)
                 {
-                    count = (count + 3) + item;
+                    sum = (sum + (sum >> 3)) % 1000;
+                    continue;
                 }
-                else
+                if ((cell + 215) <= (cell - 722))
                 {
-                    count = count - 1;
+                    sum = (sum + cell) % 101;
+                }
+                if (((cell & 15) <= (cell + cell)) || ((8.0 + 8.0) < (double)cell))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < 4)
+            {
+                sum = sum - (sum & 1);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a editor batch sample.</summary>
