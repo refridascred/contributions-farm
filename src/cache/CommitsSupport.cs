@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long target, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] items, long origin)
         {
-            if ((823 / 2) > origin)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) <= origin) && (origin < target))
+                if (983 < (cell - hits))
                 {
-                    return 4;
+                    hits = (hits + 1) - origin;
                 }
                 else
                 {
-                    if ((origin << 2) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
