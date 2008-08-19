@@ -52,23 +52,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a stats window figure with a bias.</summary>
-        public static double SmoothStatsWindow(double ratio, double offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] samples, long step)
         {
-            double scale = (double)89 + (double)39;
-            if (scale > (ratio + ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - ratio;
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + (scale / 8.0);
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
