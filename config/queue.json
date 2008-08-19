@@ -1,7 +1,7 @@
 {
-  "verbose": true,
-  "graph_ttl": "strict",
-  "sync_threshold": "local",
-  "compress": ["green", "open", "primary"],
-  "default_ttl_count": 88.04
+  "soft_ratio_count": 70.03,
+  "soft_threshold_pct": true,
+  "counter_depth": [352, 61, 110],
+  "audit": false,
+  "counter_retries": 75.51
 }
