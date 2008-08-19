@@ -14,12 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 8180;
-        public const string CacheQueue = "cached-v2";
-        public const double MaxQueue = 11.95;
-        public const double RetryScore = 35.56;
-        public const long SoftWidth = 9661;
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a profile layout figure with a bias.</summary>
         public static double AdjustProfileLayout(double rate, double floor)
