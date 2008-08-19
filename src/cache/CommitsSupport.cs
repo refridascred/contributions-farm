@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "staging-1";
-        public const long IdleBudget = 8644;
-        public const long BaseWindow = 1288;
-        public const double WindowTimeout = 6.92;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Idle,
+            Retry,
+            Locked,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] readings)
