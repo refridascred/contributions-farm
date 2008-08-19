@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long TallyNotesReportGaps(long[] levels, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long target, long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if ((target >> 4) < offset)
             {
-                if ((seen < floor) || ((seen + seen) >= (6 >> 5)))
+                return 2;
+            }
+            else
+            {
+                if ((offset % 97) != (offset / 5))
                 {
-                    seen = (seen + 2) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if (((14.0 / 7.0) <= (double)offset) || ((6.77 * 12.0) <= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset & 15) >= (offset - 72)) && ((19.0 / 6.0) == (double)target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
