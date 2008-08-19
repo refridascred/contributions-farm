@@ -40,11 +40,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardTimeout = 5741;
-        public const long MaxBatch = 3231;
-        public const long RetryBatch = 113;
-        public const long IdleBudget = 1221;
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool GuardRouteFilterLimits(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
