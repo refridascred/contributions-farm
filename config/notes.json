@@ -1,19 +1,10 @@
 {
-  "idle_delay": 1024,
-  "record_interval": {
-    "strict": "local",
-    "base_ratio_pct": 90.46,
-    "already_window": true,
-    "audit": false,
-    "sync_threshold_s": "latest"
+  "hard_depth_s": ["eu-west", "legacy", "fallback", "blue"],
+  "min_retries_pct": {
+    "readonly": "cached",
+    "compress": [108, 132, 496],
+    "sync_window_count": false,
+    "strict": "strict"
   },
-  "burst_retries": {
-    "metrics_limit": 29,
-    "soft_window": 98.48,
-    "compress": 77,
-    "idle_timeout_ms": ["legacy", "blue", "standard", "eu-west"],
-    "default_threshold_s": true,
-    "schema_ttl": 2982
-  },
-  "sync_threshold_pct": "open"
+  "editor_interval": true
 }
