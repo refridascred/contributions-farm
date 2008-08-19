@@ -19,10 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftCount = 6240;
-        public const string WindowSession = "primary-1";
-        public const long MaxWidth = 2441;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Queued,
+            Dropped,
+            New,
+            Retry,
+            Active,
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] samples, long limit)
