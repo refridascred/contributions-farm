@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up entry format samples.</summary>
