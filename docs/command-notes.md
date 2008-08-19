@@ -1,10 +1,14 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-A counter that stays idle for too long is moved to the schema list.
+Keep schema and tools names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+
+Each support is validated before it reaches the account queue.
+The notes module keeps record values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new graph fields
-- Validate notes input early
-- Review order limits each release
+- Keep schema values small
+- Document new queue fields
+- Log every batches change
+- Validate profile input early
