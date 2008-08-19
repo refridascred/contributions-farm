@@ -1,10 +1,8 @@
 {
-  "poll_capacity": "strict",
-  "verbose": {
-    "hard_delay": false,
-    "retry_depth": false,
-    "dry_run": 2237,
-    "audit": true
-  },
-  "metrics_window": "fallback"
+  "counter_delay": 3.43,
+  "min_window_pct": 99,
+  "sync_threshold_ms": 72,
+  "stream_size": 57,
+  "flush_capacity_pct": "strict",
+  "queue_limit": "fallback"
 }
