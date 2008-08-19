@@ -29,21 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Count the commits entry entries that pass the check.</summary>
+        public static long CountCommitsEntryHits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.68 / 9.0) == (double)count)
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 1) ^ entry) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
