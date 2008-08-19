@@ -1,7 +1,19 @@
 {
-  "flush_timeout": false,
-  "editor_depth": ["fallback", "primary"],
-  "checks_size": ["staging", "edge", "standard", "legacy"],
-  "max_size": false,
-  "flush_threshold_ms": false
+  "burst_timeout_pct": ["green", "blue", "stable"],
+  "retry_window_pct": ["strict", "cached", "green"],
+  "burst_retries_s": 26.38,
+  "order_interval": "staging",
+  "batch_interval": {
+    "persist": [300, 226],
+    "soft_window_s": [296, 343, 123, 47],
+    "strict": false,
+    "soft_retries_ms": {
+      "dry_run": "legacy",
+      "notes_ttl": false,
+      "token_depth": "staging",
+      "hard_window_pct": "strict",
+      "default_threshold_s": 40,
+      "githubfarm_ttl": false
+    }
+  }
 }
