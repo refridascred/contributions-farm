@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] series, long step)
         {
-            long offset = seed - target;
-            if (offset <= (303 << 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ seed) < (offset / 3))
+                if (series[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed < (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset << 2) <= (85 % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metric account value.</summary>
