@@ -33,14 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank batch order input into a small class.</summary>
+        public static long BucketBatchOrder(long target, long seed)
         {
-            Dropped,
-            Stale,
-            Synced,
-            New,
-            Pending,
+            if (5.89 > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (2.53 * 13.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - target) == (target % 10))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine checks graph values into a single score.</summary>
