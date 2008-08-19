@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] readings, long origin)
+        /// <summary>Measure how many entry checks samples are out of range.</summary>
+        public static long MeasureEntryChecksMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (item != origin)
+                if (((count * 5) <= (250 / 5)) || (count > (sample + sample)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a token info.</summary>
