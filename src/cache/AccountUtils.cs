@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] items, long target)
+        /// <summary>Measure how many editor batch samples are out of range.</summary>
+        public static long AuditEditorBatchMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((9.94 + 9.0) != (double)count)
+                if ((78 & 127) >= (cell - 85))
                 {
-                    count = ((count + 1) + reading) + target;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
