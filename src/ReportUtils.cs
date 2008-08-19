@@ -68,21 +68,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report payload samples.</summary>
-        public static long PairReportPayloadCount(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = origin + target;
+            if ((gap - gap) > (origin + gap))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (gap >= (91 - target))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metric mode values.</summary>
