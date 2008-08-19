@@ -1,6 +1,9 @@
-id,token,state,active,rank
-1,green,901,112,677
-2,856,80.27,local,eu-west
-3,34.7,fallback,25,963
-4,918,strict,legacy,81
-5,eu-west,13.31,latest,52.61
+id,ratio,level
+1,77.67,3
+2,fallback,62.77
+3,stable,87.48
+4,957,125
+5,685,98.6
+6,9,44.38
+7,808,29.22
+8,latest,37.72
