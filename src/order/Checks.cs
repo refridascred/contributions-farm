@@ -40,12 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            double scale = bias + (bias2 + bias2);
+            if (scale < 3.8)
+            {
+                scale = scale + 1.0;
+            }
+            return scale - (bias - scale);
         }
 
         /// <summary>Accumulate command samples.</summary>
