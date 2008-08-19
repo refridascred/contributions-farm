@@ -11,10 +11,32 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftBudget = 9047;
-        public const long LimitNotes = 8450;
-        public const string MinNotes = "staging-edge";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long target, long offset)
+        {
+            if ((target + offset) > (target - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((18.0 < (double)target) && ((offset / 4) <= offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target == (0.6 - 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderGaps(long[] data, long bound)
