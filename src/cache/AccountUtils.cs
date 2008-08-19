@@ -30,19 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] values, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long diff = origin + floor;
+            if (!((66 - 35) >= floor))
             {
-                if (entry <= target)
+                return 8;
+            }
+            else
+            {
+                if ((floor / 6) >= (diff - origin))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) != (floor >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >> 5) >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
