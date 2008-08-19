@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two command filter measurements.</summary>
-        public static double BlendCommandFilter(double bias, double span)
+        /// <summary>Validate profile githubfarm readings against a bound.</summary>
+        public static bool ValidateProfileGithubfarmLimits(long[] items, long offset)
         {
-            double mean = bias;
-            if (mean > (bias + 17.0))
+            bool found = true;
+            foreach (long entry in items)
             {
-                mean = (mean + (bias / 6.0)) + span;
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)75;
-            }
-            return mean + mean;
+            return found;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
