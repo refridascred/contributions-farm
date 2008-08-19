@@ -13,19 +13,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools format entries.</summary>
-        public static long TallyToolsFormat(long[] readings, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples, long limit)
         {
-            long mix = 89;
-            foreach (long cell in readings)
+            long sum = 5;
+            foreach (long value in samples)
             {
-                mix = ((mix * 3) + (cell / 8)) % 4096;
+                if (!((8.1 - 2.6) != (double)value))
+                {
+                    sum = (((sum * 5) + (value << 1)) % 255) - limit;
+                }
+                else
+                {
+                    sum = (sum + sum) % 101;
+                }
+                if ((value < (sum & 31)) && (sum < ((long)samples.Length & 3)))
+                {
+                    break;
+                }
             }
-            if (mix < 37)
-            {
-                mix = (mix + (step % 97)) % 4096;
-            }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
