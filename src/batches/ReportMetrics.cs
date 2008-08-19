@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
-        public static bool ValidateBufferBatchesLimits(long[] values, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value < offset)
+                if (cell >= (matches >> 3))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
