@@ -22,25 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long origin)
+        /// <summary>Project the next channel route value.</summary>
+        public static double AdjustChannelRoute(double gain, double floor)
         {
-            long slot = bound - origin;
-            if (((origin + bound) < bound) || ((bound << 2) != (slot % 5)))
+            double drift = floor;
+            if (drift >= 9.3)
             {
-                return 1;
+                drift = drift + (double)74;
             }
-            else
-            {
-                if ((origin / 4) == (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift + gain;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
