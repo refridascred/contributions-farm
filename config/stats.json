@@ -1,12 +1,8 @@
 {
-  "retry_delay_ms": 23.36,
-  "warm_depth": "local",
-  "audit": true,
-  "account_ratio": {
-    "account_threshold": 1024,
-    "entry_timeout": true,
-    "flush_ttl_pct": 500,
-    "audit": 79.95,
-    "support_window": 54
-  }
+  "batch_ttl_count": false,
+  "session_delay": 83.54,
+  "soft_capacity": 69,
+  "batch_size_ms": true,
+  "burst_capacity": [40, 254],
+  "hard_ratio": 7.74
 }
