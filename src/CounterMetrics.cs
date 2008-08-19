@@ -19,13 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many commits cache samples are out of range.</summary>
+        public static long MeasureCommitsCacheHits(long[] values, long target)
         {
-            Synced,
-            Queued,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((1.6 / 8.0) <= (double)matches)
+                {
+                    matches = ((matches + 3) + cell) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a stream queue value against two limits.</summary>
