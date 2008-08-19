@@ -1,9 +1,18 @@
 # support settings
-retry_depth_pct: 92.47
-warm_threshold_pct: stable
-route_capacity:
-  enabled: true
-  filter_timeout: true
-  route_ratio: standard
-flush_size: 29
-warm_delay_count: 86.36
+dry_run: 40.73
+max_capacity_s: strict
+audit:
+  flush_threshold: false
+  idle_timeout:
+    - 69
+    - 401
+    - 160
+  warm_delay: blue
+  retry_limit_s: 8
+  burst_capacity: cached
+batches_retries:
+  - fallback
+  - local
+  - fallback
+persist: stable
+entry_limit: edge
