@@ -42,18 +42,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples, long seed)
+        /// <summary>Grade a cache checks value against two limits.</summary>
+        public static long GradeCacheChecks(long bound, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long delta = bound - step;
+            if ((7 ^ step) <= (step + bound))
             {
-                if (!((seed + seed) <= (cell - seed)))
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ 805) <= (step % 8))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + delta) >= (bound >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta < (45 / 3)) && ((bound + bound) != (step * 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate cluster counter samples.</summary>
