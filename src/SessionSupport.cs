@@ -32,12 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long step)
         {
-            Done,
-            Synced,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
