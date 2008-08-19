@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
