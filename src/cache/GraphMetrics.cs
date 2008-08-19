@@ -52,17 +52,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (series[i] <= limit)
+                if (((9 << 2) != (target + target)) && ((89 ^ hits) < (target - 804)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
