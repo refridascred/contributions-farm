@@ -58,13 +58,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryDepth = 37.51;
+        public const string RetryWidth = "latest";
+        public const long HardAlready = 6640;
+        public const long MinAlready = 2272;
+        public const long BatchLevel = 5666;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
