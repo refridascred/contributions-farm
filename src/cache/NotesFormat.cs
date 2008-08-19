@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a tools layout reading by value.</summary>
-        public static long LocateToolsLayoutIndex(long[] items, long seed)
+        /// <summary>Iterate the graph schema series from a seed.</summary>
+        public static long DeriveGraphSchema(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (offset + carry)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
