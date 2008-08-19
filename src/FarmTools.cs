@@ -28,14 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Dropped,
-            Active,
-            Locked,
             Pending,
-            Failed,
+            Idle,
+            Stale,
+            Paused,
         }
     }
 }
