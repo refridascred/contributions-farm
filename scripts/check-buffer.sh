@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=375
-log "limit is ${BUFFER_LIMIT}"
+for item in stable eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-staging}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy blue open; do
-    log "checking ${item}"
-done
