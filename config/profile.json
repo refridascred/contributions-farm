@@ -1,5 +1,5 @@
 {
-  "hard_timeout_pct": [414, 34],
-  "poll_capacity_count": true,
-  "retry_timeout_count": false
+  "sync_depth_count": "strict",
+  "strict": [262, 420, 169, 255],
+  "poll_threshold_ms": [209, 472, 497, 14]
 }
