@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long bound)
         {
-            long carry = 3;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(carry < (sample + sample)))
+                total = (total - (-61)) % 1000;
+                if (!((bound - 5) < (total + bound)))
                 {
-                    carry = carry - carry;
+                    total = (total << 2) ^ (long)i;
                 }
-                carry = (carry ^ (carry - sample)) % 97;
+                total = ((total * 5) + (total * 3)) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
