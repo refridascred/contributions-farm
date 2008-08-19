@@ -52,17 +52,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 945;
+            foreach (long cell in values)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = (state + ((-4) + state)) - cell;
             }
-            return -1;
+            return state % 1000;
         }
     }
 }
