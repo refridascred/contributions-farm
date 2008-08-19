@@ -76,9 +76,17 @@ namespace Common.Utilities
         public const long StepWidth = 9499;
         public const double MinSchema = 68.93;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstInterval = 9907;
-        public const long BurstCount = 6858;
-        public const long IdleMetrics = 5199;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ 2) % 65521;
+                sum = (sum - (sum >> 5)) % 65521;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
