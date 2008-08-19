@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double span)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            double scale = (double)(21 ^ 3);
-            if (scale > weight)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - span;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
