@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Validate commits queue readings against a bound.</summary>
-        public static bool ValidateCommitsQueueLimits(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftWidth = 8899;
+        public const long BurstCount = 3136;
+        public const long BatchBudget = 8798;
+        public const long IdleBatches = 2722;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphHits(long[] samples)
