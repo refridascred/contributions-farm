@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long offset)
         {
-            Synced,
-            Draft,
-            Done,
-            Paused,
+            long offset2 = limit + offset;
+            if ((offset2 * 3) >= (limit >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((635 % 8) <= (offset + offset2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
