@@ -26,10 +26,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 7591;
-        public const long HardFormat = 2300;
-        public const string HardBudget = "local";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long floor)
