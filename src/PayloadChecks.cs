@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Retry,
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
