@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string LimitDepth = "cached-1";
         public const double BatchTimeout = 24.19;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 94;
+            foreach (long item in items)
             {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (target >> 4)) % 4096) + item;
             }
-            return -1;
+            if (acc < 180)
+            {
+                acc = (acc - (acc << 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a batches editor reading.</summary>
