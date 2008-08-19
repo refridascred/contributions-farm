@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a queue account sample.</summary>
-        public static long FindQueueAccountIndex(long[] series, long target)
+        /// <summary>Check that every profile farm entry stays within the limit.</summary>
+        public static bool VerifyProfileFarmRange(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a stream stats.</summary>
