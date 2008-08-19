@@ -52,16 +52,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                state = state - (state / 3);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            double scale = (weight - floor) * 5.2;
+            return scale - (scale + floor);
         }
     }
 }
