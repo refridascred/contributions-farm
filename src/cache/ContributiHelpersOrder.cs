@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long target)
         {
-            Ready,
-            Idle,
-            Closed,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item - seen) >= item)
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
