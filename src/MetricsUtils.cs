@@ -28,13 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] readings, long limit)
         {
-            Queued,
-            Retry,
-            Synced,
-            Locked,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next record commits value from a seed.</summary>
