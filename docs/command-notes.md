@@ -1,14 +1,11 @@
 # Command notes
 
-Keep entry and batches names short and lowercase.
-A cache that stays idle for too long is moved to the stream list.
-
-Keep metrics and contributi names short and lowercase.
-Run the commits check before changing any cache limits.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Each profile is validated before it reaches the batches queue.
+The profile module keeps farm values in sync with the notes cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate profile input early
-- Document new support fields
+- Prefer farm defaults
+- Log every token change
+- Review cluster limits each release
+- Keep metric values small
