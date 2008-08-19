@@ -74,21 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Hold a booking snapshot.</summary>
+        public sealed class BookingSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi filter samples.</summary>
