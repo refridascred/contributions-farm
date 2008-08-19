@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (seen < (datum >> 1))
+                if (entry <= target)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
