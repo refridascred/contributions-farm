@@ -1,6 +1,6 @@
 {
-  "stats_size": true,
-  "verbose": 60,
-  "account_window": 46.28,
-  "contributi_interval": 3594
+  "min_interval_s": 41,
+  "strict": "blue",
+  "max_delay": 29.07,
+  "enabled": 97.45
 }
