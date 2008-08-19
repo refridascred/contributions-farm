@@ -61,21 +61,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
