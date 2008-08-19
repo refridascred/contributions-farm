@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels)
-        {
-            long result = 6;
-            foreach (long item in levels)
-            {
-                if (((result << 1) > item) || ((double)result <= 6.2))
-                {
-                    result = (result - (item & 63)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 87.28;
+        public const double CacheGraph = 5.71;
+        public const long MinGraph = 7095;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] readings, long floor)
