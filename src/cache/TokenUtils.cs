@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long IdleRatio = 5161;
         public const string CacheContext = "standard";
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Accumulate context token samples.</summary>
+        public static long WeighContextToken(long[] data)
         {
-            double mean = bias / 4.0;
-            if (mean <= (19.0 + mean))
+            long result = 318;
+            foreach (long value in data)
             {
-                mean = mean - scale;
+                if ((value * 4) <= value)
+                {
+                    result = (result + (value >> 2)) % 255;
+                }
+                if ((double)value > (8.1 + 1.78))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)36;
-            }
-            return mean - scale;
+            return result;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
