@@ -28,18 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel counter values into a single score.</summary>
-        public static long TotalChannelCounter(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            long anchor = 9;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)reading > (1.35 / 8.0))
+                if ((9.0 * 0.5) <= (double)reading)
                 {
-                    anchor = anchor + ((long)values.Length % 3);
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
