@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double span)
-        {
-            double rate = span / 9.0;
-            return rate + (gain / 4.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxCount = 3631;
+        public const long RetryInterval = 8043;
+        public const string CacheContext = "cached-v2";
+        public const string IdleRatio = "fallback-edge";
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long step)
