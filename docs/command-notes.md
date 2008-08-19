@@ -1,15 +1,10 @@
 # Command notes
 
-Each notes is validated before it reaches the already queue.
-The support report groups every graph by support.
-Keep batches and account names short and lowercase.
-
-Each metrics is validated before it reaches the format queue.
-The token module keeps metric values in sync with the stream cache.
+A route that stays idle for too long is moved to the buffer list.
+Keep githubfarm and contributi names short and lowercase.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer tools defaults
-- Document new cache fields
-- Log every channel change
+- Document new queue fields
+- Prefer batches defaults
+- Keep contributi values small
