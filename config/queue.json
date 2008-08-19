@@ -1,7 +1,7 @@
 {
-  "account_ttl": 60,
-  "verbose": true,
-  "soft_window_ms": 65.61,
-  "enabled": 3480,
-  "hard_delay": [101, 13, 164, 113]
+  "enabled": 29.13,
+  "base_depth_pct": true,
+  "stream_size": true,
+  "warm_window_ms": "staging",
+  "poll_delay_ms": "legacy"
 }
