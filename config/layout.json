@@ -1,7 +1,6 @@
 {
-  "report_delay": 38.28,
-  "max_size": 100,
-  "retry_limit": 60,
-  "token_interval": 1024,
-  "graph_limit": 77.5
+  "format_delay": "stable",
+  "flush_delay": ["strict", "staging"],
+  "poll_depth_count": "latest",
+  "verbose": "local"
 }
