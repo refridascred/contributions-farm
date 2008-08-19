@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                long slot = score;
+                if (!((447 >> 1) < (offset % 2)))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ slot) % 65521;
                 }
+                score = (score * 2) + ((long)i << 3);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the support mode values.</summary>
