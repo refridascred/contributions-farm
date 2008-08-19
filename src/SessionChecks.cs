@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long OverlapClusterChecksCount(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 3;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item * 3) != (carry - carry))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 5) + (carry << 3)) % 255;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
