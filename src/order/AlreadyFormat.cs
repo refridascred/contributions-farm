@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long RetryPayload = 7988;
         public const long WindowBudget = 9077;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] readings, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
