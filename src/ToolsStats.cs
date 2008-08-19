@@ -57,24 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm metrics pair into a bucket.</summary>
-        public static long RankFarmMetrics(long origin, long offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            if ((double)offset < (13.0 / 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 3) > 3)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
