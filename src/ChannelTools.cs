@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items, long bound)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long TotalToolsQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 1;
+            foreach (long reading in readings)
             {
-                if ((-3) <= (hits & 127))
+                if ((440 * 3) == (score % 16))
                 {
-                    hits = ((hits + 1) - cell) - bound;
+                    score = (score + (score ^ score)) - reading;
                 }
+                else
+                {
+                    score = ((score * 4) + 69) % 255;
+                }
+                score = (score ^ (score + score)) % 1000;
             }
-            return hits;
+            if (score < 0)
+            {
+                score = ((score << 3) ^ (score * 3)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
