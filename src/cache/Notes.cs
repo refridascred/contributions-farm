@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long carry = 161;
+            foreach (long cell in series)
+            {
+                if ((carry << 3) <= origin)
+                {
+                    carry = ((carry - (origin ^ origin)) % 255) - cell;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = (carry * 5) + (origin / 5);
+            }
+            return carry;
         }
 
         /// <summary>Describe the support class values.</summary>
