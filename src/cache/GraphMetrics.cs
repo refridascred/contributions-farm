@@ -45,19 +45,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] levels, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Locked,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
