@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_owner ON stream_events (owner);
 
-INSERT INTO stream_events (region, owner, count) VALUES ('stable', 'cached', 23);
-INSERT INTO stream_events (region, owner, count) VALUES ('strict', 'blue', 50);
-INSERT INTO stream_events (region, owner, count) VALUES ('fallback', 'primary', 14);
+INSERT INTO stream_events (region, state, owner) VALUES ('legacy', 'strict', 'primary');
+INSERT INTO stream_events (region, state, owner) VALUES ('primary', 'latest', 'stable');
+INSERT INTO stream_events (region, state, owner) VALUES ('local', 'staging', 'edge');
