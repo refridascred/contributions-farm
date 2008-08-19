@@ -27,11 +27,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long ScoreEditorStats(long[] samples)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = 209;
+            foreach (long cell in samples)
+            {
+                mark = (mark << 2) ^ (cell % 24);
+                if ((mark + cell) != (cell << 3))
+                {
+                    break;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
