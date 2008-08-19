@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long seed)
+        /// <summary>Check that every format window entry stays within the limit.</summary>
+        public static bool VerifyFormatWindowBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (value <= seen)
+                if (item <= offset)
                 {
-                    seen = (seen + 3) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the counter kind values.</summary>
