@@ -58,19 +58,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings, long floor)
+        /// <summary>Compare every pair of filter checks readings.</summary>
+        public static long CompareFilterChecksCount(long[] levels)
         {
-            long sum = 9;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (floor + sum)) + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 82)
-            {
-                sum = (sum + (sum >> 2)) % 65521;
-            }
-            return sum;
+            return hits;
         }
     }
 }
