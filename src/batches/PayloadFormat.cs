@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long carry = 58;
-            foreach (long cell in levels)
+            long sum = 75;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (((cell + cell) < (cell << 3)) || (sum > (sum % 100)))
                 {
-                    carry = ((carry + (cell / 7)) % 97) ^ (long)i;
-                }
-                if ((cell % 100) < limit)
-                {
-                    carry = ((carry * 3) + carry) % 255;
+                    sum = (sum + (cell & 3)) % 4096;
                 }
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
