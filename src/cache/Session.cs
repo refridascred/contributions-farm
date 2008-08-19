@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
