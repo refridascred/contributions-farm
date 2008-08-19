@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
