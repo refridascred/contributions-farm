@@ -58,11 +58,12 @@ namespace Common.Utilities
         public const string WindowCommand = "alpha-edge";
         public const long MaxCommand = 7937;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
