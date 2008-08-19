@@ -52,18 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= (8 + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
