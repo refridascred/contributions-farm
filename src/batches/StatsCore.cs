@@ -54,13 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            Closed,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine support values into a single score.</summary>
