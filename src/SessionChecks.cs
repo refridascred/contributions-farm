@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long step, long step2)
         {
-            long carry = 3;
-            foreach (long item in samples)
+            long cur = step ^ step2;
+            if ((step2 & 127) >= step2)
             {
-                if ((item * 3) != (carry - carry))
+                return 4;
+            }
+            else
+            {
+                if ((step < (step2 + cur)) && ((cur >> 2) < (cur >> 3)))
                 {
-                    carry = ((carry * 5) + (carry << 3)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if ((step % 24) >= (cur ^ cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
