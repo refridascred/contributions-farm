@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] levels, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = 95;
+            foreach (long entry in values)
             {
-                if ((matches * 2) <= seed)
+                total = ((total * 4) + (entry << 3)) + target;
+                total = (total - 0) % 65521;
+                total = (total - (840 / 3)) % 101;
+                if ((double)entry == (double)74)
                 {
-                    matches = (matches + 2) ^ cell;
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
