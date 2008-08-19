@@ -77,10 +77,24 @@ namespace Common.Utilities
         public const long WindowCache = 805;
         public const double BaseCache = 31.21;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 2284;
-        public const long LimitBatches = 6772;
-        public const long DefaultBatches = 8646;
-        public const long SoftSize = 6163;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long bound)
+        {
+            if ((bound & 15) != (bound << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((62 - bound) < (97 & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
