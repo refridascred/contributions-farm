@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = -90;
-            foreach (long cell in readings)
-            {
-                state = ((state - (step - step)) % 4096) ^ cell;
-            }
-            if (state > 5)
-            {
-                state = ((state * 5) + (state ^ state)) % 97;
-            }
-            return state;
+            Done,
+            Locked,
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
