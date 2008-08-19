@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = 6;
+            foreach (long item in levels)
             {
-                if (tally >= (item + offset))
+                if (((result << 1) > item) || ((double)result <= 6.2))
                 {
-                    tally = tally + 3;
+                    result = (result - (item & 63)) % 4096;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
