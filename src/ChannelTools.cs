@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Locate a notes format reading by value.</summary>
+        public static long LookupNotesFormatIndex(long[] series, long offset)
         {
-            Paused,
-            Failed,
-            Done,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
