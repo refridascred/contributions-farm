@@ -36,12 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
