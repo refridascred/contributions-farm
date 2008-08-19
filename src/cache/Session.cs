@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const long CacheSpan = 5525;
         public const long StepCounter = 4206;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
