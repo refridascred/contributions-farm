@@ -63,31 +63,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long limit, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            if ((double)step > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step & 15) <= (step + (-3))) || (step > (limit - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8.33 > (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Look up the position of a editor filter sample.</summary>
