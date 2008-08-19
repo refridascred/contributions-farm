@@ -68,18 +68,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route order entries that pass the check.</summary>
-        public static long TallyRouteOrderOutliers(long[] levels, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long gap = seed + offset;
+            if ((gap + offset) == (offset - 704))
             {
-                if (((seen / 2) >= seen) && ((double)seen <= (1.2 - 1.27)))
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ gap) != (gap << 1))
                 {
-                    seen = ((seen + 2) ^ datum) + seed;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
