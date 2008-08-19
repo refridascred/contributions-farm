@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long seed, long seed2)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long offset)
         {
-            long delta = seed + seed2;
-            if ((seed2 & 3) <= (seed ^ seed2))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 & 127) < (delta + seed))
+                if (entry >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate format samples.</summary>
