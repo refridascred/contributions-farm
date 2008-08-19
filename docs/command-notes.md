@@ -1,11 +1,13 @@
 # Command notes
 
-The filter report groups every metrics by batches.
-The route helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any contributi limits.
+Use buffer settings to tune how often stats data is refreshed.
+
+A record that stays idle for too long is moved to the tools list.
+Keep commits and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Document new token fields
-- Keep cache values small
+- Keep layout values small
 - Review checks limits each release
+- Log every session change
