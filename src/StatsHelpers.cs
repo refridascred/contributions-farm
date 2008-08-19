@@ -38,17 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry tools reading by value.</summary>
-        public static long SeekEntryToolsIndex(long[] series, long target)
+        /// <summary>Audit command channel readings against a rule.</summary>
+        public static long CountCommandChannelHits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if ((658 - count) != (item + (long)samples.Length))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
