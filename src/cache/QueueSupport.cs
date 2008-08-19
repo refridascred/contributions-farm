@@ -35,18 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long CountOrderChannelOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((matches << 3) > 156) && ((matches + datum) < (datum / 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleSize = "staging-1";
+        public const double IdleFormat = 72.96;
+        public const long RetryFormat = 6810;
+        public const long BaseSpan = 775;
     }
 }
