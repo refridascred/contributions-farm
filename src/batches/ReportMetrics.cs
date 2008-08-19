@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            Retry,
-            Closed,
-            Pending,
+            double gain = weight / 4.0;
+            if (gain <= weight)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - gain;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
