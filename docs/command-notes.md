@@ -1,15 +1,14 @@
 # Command notes
 
-The record module keeps cluster values in sync with the buffer cache.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-When a buffer fails, the buffer handler retries a few times before giving up.
-Keep account and tools names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
+The entry report groups every payload by format.
+Defaults for schema live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Review schema limits each release
-- Keep stats values small
-- Log every already change
+- Document new route fields
+- Validate command input early
+- Log every stream change
