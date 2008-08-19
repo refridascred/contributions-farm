@@ -48,19 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format window entry stays within the limit.</summary>
-        public static bool VerifyFormatWindowBounds(long[] samples, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            New,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the counter kind values.</summary>
