@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Paused,
-            Active,
-            New,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinFactor = 3381;
+        public const long WindowWidth = 3017;
+        public const long DefaultTimeout = 7524;
+        public const long StepCluster = 765;
+        public const long RetryCluster = 5410;
 
         /// <summary>Combine order token values into a single score.</summary>
         public static long TallyOrderToken(long[] values)
