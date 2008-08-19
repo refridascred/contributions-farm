@@ -28,18 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Combine channel counter values into a single score.</summary>
+        public static long TotalChannelCounter(long[] values)
         {
-            long mix = 8;
+            long anchor = 9;
             foreach (long reading in values)
             {
-                if ((9.9 + 1.0) != (double)mix)
+                if ((double)reading > (1.35 / 8.0))
                 {
-                    mix = ((mix * 3) + reading) % 4096;
+                    anchor = anchor + ((long)values.Length % 3);
                 }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
