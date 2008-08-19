@@ -29,19 +29,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] items, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long mix = 2;
+            foreach (long datum in data)
             {
-                if (reading != step)
+                if ((datum % 8) >= (964 + 1))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix * 4) + (datum * 3);
+                }
+                else
+                {
+                    mix = (mix * 3) + datum;
                 }
             }
-            return valid;
+            if (mix > 41)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
