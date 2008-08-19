@@ -34,12 +34,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            double ratio = floor / 3.0;
+            return (ratio + (4.0 + floor)) + rate;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
