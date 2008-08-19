@@ -16,18 +16,10 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepWidth = 74.29;
+        public const long StepAlready = 5995;
+        public const long RetryAlready = 1483;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesRange(long[] readings, long limit)
