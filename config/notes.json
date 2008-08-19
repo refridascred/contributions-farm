@@ -1,5 +1,7 @@
 {
-  "enabled": ["green", "primary", "fallback"],
-  "readonly": 67,
-  "warm_capacity": ["blue", "fallback", "fallback", "standard"]
+  "soft_capacity": false,
+  "strict": 92.1,
+  "audit": 20.56,
+  "verbose": [243, 361],
+  "cache_depth_pct": 94
 }
