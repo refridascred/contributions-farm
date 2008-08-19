@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
