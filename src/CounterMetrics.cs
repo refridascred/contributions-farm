@@ -42,19 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] readings, long seed)
+        /// <summary>Iterate the cache support series from a seed.</summary>
+        public static long SeriesCacheSupport(long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell >= seed)
+                mark = ((mark * 3) + (seed + mark)) % 255;
+                if (((long)i % 64) <= (seed - mark))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + mark) % 97;
+                    mark = ((mark << 2) ^ (mark % 64)) % 1000;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
     }
 }
