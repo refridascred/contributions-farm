@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleInterval = "stable-edge";
-        public const long LimitSize = 5568;
-        public const string MaxCache = "local-edge";
+        /// <summary>Validate graph already readings against a bound.</summary>
+        public static bool GuardGraphAlreadyBounds(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsRange(long[] series, long floor)
