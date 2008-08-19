@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long TallyNotesReportGaps(long[] levels, long floor)
         {
-            long total = 78;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((total + total) >= 97))
+                if ((seen < floor) || ((seen + seen) >= (6 >> 5)))
                 {
-                    total = ((total << 2) ^ (total & 1)) % 4096;
-                }
-                if ((entry + total) != (entry ^ entry))
-                {
-                    total = (total - (total - total)) % 65521;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
