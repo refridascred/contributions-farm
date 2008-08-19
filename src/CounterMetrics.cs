@@ -19,13 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Active,
-            New,
             Synced,
-            Done,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up profile samples.</summary>
