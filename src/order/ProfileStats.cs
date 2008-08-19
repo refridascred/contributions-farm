@@ -29,20 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every commits metric entry stays within the limit.</summary>
-        public static bool GuardCommitsMetricLimits(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardSize = 5839;
+        public const double BatchLevel = 98.81;
+        public const double RetryGithubfarm = 53.03;
+        public const long BaseGithubfarm = 586;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double weight, double offset)
