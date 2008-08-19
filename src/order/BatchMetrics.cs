@@ -37,31 +37,14 @@ namespace Common.Utilities
         public const long BurstSize = 7281;
         public const long WindowLevel = 1460;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long step, long step2)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((9.3 + 11.0) >= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)(-5) <= (double)step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((7.3 - 14.0) > (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
