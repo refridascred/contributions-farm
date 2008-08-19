@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (entry != limit)
+                if (!(((37 / 9) == (cell / 6)) || ((cell + cell) != (cell / 4))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
