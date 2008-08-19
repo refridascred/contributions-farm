@@ -37,15 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings, long seed)
         {
-            double ratio = floor;
-            for (int i = 0; i < 3; i++)
+            long carry = 9;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + (rate - rate)) + (double)(long)i;
+                carry = carry ^ (carry + seed);
+                if (!((double)cell != (3.93 / 7.0)))
+                {
+                    carry = (carry - 93) % 4096;
+                    carry = (carry ^ (carry ^ carry)) % 255;
+                    break;
+                }
+                carry = ((carry << 3) ^ seed) % 255;
             }
-            return ratio + (double)705;
+            return carry % 65521;
         }
     }
 }
