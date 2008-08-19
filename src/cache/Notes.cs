@@ -39,19 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] items)
+        /// <summary>Count the record schema entries that pass the check.</summary>
+        public static long AuditRecordSchemaMatches(long[] values)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long entry in values)
             {
-                if (!(((datum * 5) == (datum * 3)) && ((20.0 / 6.0) == (double)datum)))
+                if (!((double)entry >= (6.4 * 0.4)))
                 {
                     count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
