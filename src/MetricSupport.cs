@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long CountCacheTokenGaps(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                total = total + (total - (long)i);
-                total = ((total * 5) + (long)i) % 97;
+                if (sample >= (471 << 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
