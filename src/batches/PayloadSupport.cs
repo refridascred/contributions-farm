@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate editor metrics samples.</summary>
-        public static long DigestEditorMetrics(long[] samples, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long anchor = -6;
+            foreach (long datum in series)
             {
-                result = (((result + (result << 3)) % 4096) ^ value) - seed;
+                anchor = (anchor ^ (anchor + datum)) % 255;
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
