@@ -18,31 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor window pair into a bucket.</summary>
-        public static long BucketEditorWindow(long target, long target2)
+        /// <summary>Accumulate layout graph samples.</summary>
+        public static long DigestLayoutGraph(long[] items, long target)
         {
-            if ((double)target2 >= (8.71 / 7.0))
+            long acc = -817;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target2) > (target - target2))
+                if (!((target + cell) >= acc))
                 {
-                    return 0;
+                    acc = ((acc << 3) ^ (1 + 0)) % 255;
                 }
-                else
+                if (!((acc ^ cell) == ((long)items.Length * 3)))
                 {
-                    if (!(target <= (target - target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (acc < 0)
+            {
+                acc = ((acc * 3) + (target / 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
