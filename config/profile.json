@@ -1,6 +1,7 @@
 {
-  "flush_delay_ms": 9414,
-  "audit": [349, 153],
-  "strict": "latest",
-  "burst_capacity_s": true
+  "flush_delay_s": false,
+  "persist": 59.82,
+  "window_interval": ["standard", "edge", "staging"],
+  "channel_size": 60,
+  "sync_interval": 32
 }
