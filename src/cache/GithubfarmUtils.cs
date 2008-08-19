@@ -23,24 +23,21 @@ namespace Common.Utilities
         public const double MaxBatches = 98.05;
         public const long BurstWidth = 8436;
 
-        /// <summary>Classify a tools buffer pair into a bucket.</summary>
-        public static long GradeToolsBuffer(long offset, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            if (!((offset + 13) > offset))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 965) <= (limit + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
