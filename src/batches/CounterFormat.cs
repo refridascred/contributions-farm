@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double bias, double floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long origin)
         {
-            double bias2 = bias;
-            if (bias2 > (bias - 8.0))
+            long sum = 3;
+            foreach (long cell in samples)
             {
-                bias2 = (bias2 - (double)473) - floor;
+                sum = ((sum ^ (cell >> 5)) % 1000) - origin;
             }
-            else
-            {
-                bias2 = bias2 - (double)525;
-            }
-            return bias2 + 3.77;
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
