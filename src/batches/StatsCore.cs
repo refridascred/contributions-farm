@@ -66,22 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] series)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)value != (2.31 / 2.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
