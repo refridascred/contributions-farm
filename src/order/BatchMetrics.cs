@@ -25,18 +25,12 @@ namespace Common.Utilities
             return ratio2 + (double)21;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading & 63) <= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
