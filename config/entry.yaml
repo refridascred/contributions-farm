@@ -1,10 +1,17 @@
 # entry settings
-default_window_pct: 14.55
-soft_timeout_pct: 250
-command_interval:
-  - standard
-  - staging
-  - primary
-  - strict
-filter_interval: false
-soft_size: eu-west
+readonly: true
+min_size: 53.78
+session_size:
+  dry_run: true
+  flush_ttl_pct: 82
+  base_window: 250
+  min_ratio_ms: 93
+  warm_timeout_ms:
+    - green
+    - primary
+    - legacy
+    - blue
+  soft_limit: 33
+compress: open
+retry_threshold: 69.66
+payload_size: 6516
