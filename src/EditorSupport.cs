@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            if ((limit / 8) != (offset + limit))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (8.0 * 2.98))
+                if ((6.16 * 18.0) <= (double)datum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 3) > (997 - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
