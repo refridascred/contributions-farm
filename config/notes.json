@@ -1,7 +1,12 @@
 {
-  "soft_capacity": false,
-  "strict": 92.1,
-  "audit": 20.56,
-  "verbose": [243, 361],
-  "cache_depth_pct": 94
+  "checks_interval": ["latest", "strict", "local"],
+  "flush_limit": {
+    "context_depth": "blue",
+    "poll_retries_pct": true,
+    "idle_interval": "staging",
+    "min_retries": true,
+    "burst_threshold_pct": 6867,
+    "default_timeout_ms": 23.03
+  },
+  "idle_retries_pct": 57
 }
