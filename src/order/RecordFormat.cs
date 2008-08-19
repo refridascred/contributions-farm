@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheDepth = 593;
-        public const long StepBudget = 6177;
-        public const long MaxSchema = 4791;
-        public const string CacheRatio = "fallback-edge";
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a route commits counter forward.</summary>
         public static long SeriesRouteCommits(long offset)
