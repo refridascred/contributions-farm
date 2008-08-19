@@ -1,7 +1,7 @@
 {
-  "order_threshold": ["cached", "fallback", "cached"],
-  "compress": "cached",
-  "dry_run": "staging",
-  "retry_delay": ["open", "stable", "strict"],
-  "tools_timeout": ["blue", "staging", "eu-west"]
+  "flush_timeout": false,
+  "editor_depth": ["fallback", "primary"],
+  "checks_size": ["staging", "edge", "standard", "legacy"],
+  "max_size": false,
+  "flush_threshold_ms": false
 }
