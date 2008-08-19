@@ -51,12 +51,17 @@ namespace Common.Utilities
         public const long BatchFactor = 442;
         public const double SoftScore = 85.86;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
