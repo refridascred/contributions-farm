@@ -1,8 +1,12 @@
 {
-  "burst_interval": 87.97,
-  "burst_ttl": 395,
-  "warm_timeout": "fallback",
-  "metrics_threshold": [259, 127, 279, 394],
-  "base_timeout_s": 49.07,
-  "enabled": "latest"
+  "retry_delay_ms": 23.36,
+  "warm_depth": "local",
+  "audit": true,
+  "account_ratio": {
+    "account_threshold": 1024,
+    "entry_timeout": true,
+    "flush_ttl_pct": 500,
+    "audit": 79.95,
+    "support_window": 54
+  }
 }
