@@ -1,20 +1,5 @@
 {
-  "base_interval_s": {
-    "retry_retries": "blue",
-    "flush_ttl": false,
-    "base_ratio_ms": 68.36
-  },
-  "strict": 2591,
-  "min_threshold_ms": {
-    "readonly": {
-      "verbose": "eu-west",
-      "burst_ttl_count": "local",
-      "batch_size": false,
-      "batch_ttl_count": "primary"
-    },
-    "persist": 30,
-    "hard_interval_count": 8140,
-    "dry_run": 30,
-    "min_depth": 250
-  }
+  "hard_timeout_pct": [414, 34],
+  "poll_capacity_count": true,
+  "retry_timeout_count": false
 }
