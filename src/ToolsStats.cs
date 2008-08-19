@@ -59,18 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] data, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (99 <= (matches / 2))
+                if (samples[i] == target)
                 {
-                    matches = ((matches + 1) ^ datum) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
