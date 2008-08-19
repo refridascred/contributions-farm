@@ -25,22 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long limit)
         {
-            long sum = 82;
-            foreach (long entry in items)
+            long total = 310;
+            foreach (long value in levels)
             {
-                if ((8.44 * 5.1) >= (double)entry)
-                {
-                    sum = (sum + step) % 97;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
+                total = ((total * 4) + (total - limit)) ^ value;
             }
-            return sum;
+            if (total > 474)
+            {
+                total = (total * 4) + (total >> 3);
+            }
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
