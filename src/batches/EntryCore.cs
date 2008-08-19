@@ -13,21 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of layout queue readings.</summary>
-        public static long PairLayoutQueueCount(long[] readings)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the format kind values.</summary>
