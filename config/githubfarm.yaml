@@ -1,22 +1,16 @@
 # githubfarm settings
-audit: latest
-verbose: edge
-min_delay_s: false
-readonly: 853
-filter_timeout:
-  retry_size_count:
-    - strict
-    - standard
-    - green
-    - blue
-  sync_limit_pct:
-    - 357
-    - 210
-    - 206
-  flush_limit_s: 250
-  sync_limit_s:
-    - local
-    - edge
-    - eu-west
-  soft_size: false
-  hard_window_count: staging
+flush_threshold:
+  batches_capacity: 7938
+  readonly: 18.51
+  burst_capacity_pct:
+    - 337
+    - 352
+    - 363
+    - 312
+  batch_threshold_s: stable
+  batch_size_ms: blue
+  default_window_count: 60
+readonly:
+  - primary
+  - fallback
+layout_retries: 250
