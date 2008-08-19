@@ -55,12 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Pending,
-            Locked,
-            Draft,
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
