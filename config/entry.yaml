@@ -1,17 +1,9 @@
 # entry settings
-readonly: true
-min_size: 53.78
-session_size:
-  dry_run: true
-  flush_ttl_pct: 82
-  base_window: 250
-  min_ratio_ms: 93
-  warm_timeout_ms:
-    - green
-    - primary
-    - legacy
-    - blue
-  soft_limit: 33
-compress: open
-retry_threshold: 69.66
-payload_size: 6516
+readonly:
+  - staging
+  - blue
+  - edge
+compress: blue
+persist: 33
+retry_delay_count: false
+dry_run: fallback
