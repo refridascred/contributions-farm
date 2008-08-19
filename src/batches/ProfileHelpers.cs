@@ -15,19 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long score = 15;
-            foreach (long entry in levels)
-            {
-                if ((11.0 - 4.84) > (double)entry)
-                {
-                    score = score - (312 + score);
-                }
-                score = ((score * 2) + (entry - entry)) % 1000;
-            }
-            return score;
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
