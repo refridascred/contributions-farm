@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ (carry & 127);
-                carry = ((carry * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
