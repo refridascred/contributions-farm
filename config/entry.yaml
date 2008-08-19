@@ -1,8 +1,6 @@
 # entry settings
-warm_threshold_pct: true
-persist:
-  min_capacity_ms: 250
-  poll_threshold_s: strict
-  report_retries: false
-  min_timeout_ms: false
-poll_ratio_pct: local
+persist: 23.53
+enabled: local
+poll_size: eu-west
+channel_ttl: 2057
+flush_window_count: 75.22
