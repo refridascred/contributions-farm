@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long target)
         {
-            Stale,
-            Closed,
-            Failed,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a notes format reading by value.</summary>
