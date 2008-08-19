@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine counter profile values into a single score.</summary>
-        public static long WeighCounterProfile(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long mix = 7;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix << 3) ^ ((long)i + cell)) % 4096;
-                }
-                if ((mix / 8) < (cell - 599))
-                {
-                    mix = ((mix * 4) + ((long)readings.Length & 255)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ mix) % 1000;
-                }
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
