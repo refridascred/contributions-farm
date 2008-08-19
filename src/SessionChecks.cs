@@ -45,24 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long bound, long offset)
-        {
-            if ((bound * 5) > (bound >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "cached-1";
+        public const string BatchStream = "primary-1";
+        public const long HardStream = 6231;
+        public const double BurstSize = 35.85;
+        public const long MinStream = 1250;
     }
 }
