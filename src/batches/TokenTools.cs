@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long MeasureMetricsRouteHits(long[] items, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((tally ^ tally) <= floor)
+                if (item > (floor + count))
                 {
-                    tally = (tally + 1) ^ reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of command readings.</summary>
