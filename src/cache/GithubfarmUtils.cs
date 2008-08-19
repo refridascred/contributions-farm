@@ -22,10 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseRatio = 61.02;
-        public const double MaxBatches = 98.05;
-        public const long BurstWidth = 8436;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] items, long floor)
