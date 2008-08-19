@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Closed,
+            Draft,
             Active,
-            Pending,
-            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
