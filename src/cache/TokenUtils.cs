@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] samples, long bound)
+        /// <summary>Validate commits queue readings against a bound.</summary>
+        public static bool ValidateCommitsQueueLimits(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (value > bound)
+                if (entry >= limit)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
