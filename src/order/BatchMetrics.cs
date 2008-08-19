@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
