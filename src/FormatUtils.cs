@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = 818;
-            foreach (long reading in readings)
-            {
-                carry = (carry ^ (reading >> 4)) % 97;
-                if (carry < ((long)readings.Length + carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Retry,
+            Ready,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a report options.</summary>
