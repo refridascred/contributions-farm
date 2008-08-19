@@ -40,17 +40,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] items, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
