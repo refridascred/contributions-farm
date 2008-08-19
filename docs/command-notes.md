@@ -1,11 +1,11 @@
 # Command notes
 
-Use entry settings to tune how often context data is refreshed.
-Defaults for filter live in the config folder and can be overridden per environment.
-Keep batch and farm names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
+Run the buffer check before changing any editor limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every graph change
-- Review contributi limits each release
+- Document new profile fields
+- Keep channel values small
+- Review token limits each release
+- Prefer report defaults
