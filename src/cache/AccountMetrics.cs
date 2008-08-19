@@ -19,38 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (limit > ((-14) + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (484 <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(target >= (target >> 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4.43 - 17.0) > (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
