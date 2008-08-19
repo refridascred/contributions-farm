@@ -21,25 +21,11 @@ namespace Common.Utilities
             return ((mean + (double)8) + bias) + span;
         }
 
-        /// <summary>Rank format session input into a small class.</summary>
-        public static long GradeFormatSession(long floor, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long next = floor ^ offset;
-            if ((double)offset <= (9.7 / 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + next) <= 131)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
