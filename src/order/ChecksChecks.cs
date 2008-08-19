@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            double weight = offset;
+            if (weight > (double)31)
             {
-                if ((seed << 1) == (182 >> 4))
-                {
-                    result = ((result * 2) + (long)i) % 101;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result << 3) ^ (602 + seed)) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                weight = (weight - 4.21) - ratio;
             }
-            return result;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (offset + weight)) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
