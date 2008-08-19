@@ -26,18 +26,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((20 + datum) > ((long)levels.Length << 3))
+                if (!((value % 16) > (seen & 63)))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
