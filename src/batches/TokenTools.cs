@@ -36,15 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long result = 573;
-            foreach (long sample in items)
-            {
-                result = ((result - (result - result)) % 97) + sample;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
