@@ -1,11 +1,10 @@
 {
-  "soft_threshold_ms": {
-    "flush_ratio_ms": 1629,
-    "schema_ratio": 500,
-    "hard_window": 250,
-    "max_window_count": 75,
-    "warm_retries_pct": "standard"
+  "burst_limit_s": {
+    "base_retries": "open",
+    "tools_limit": [361, 239, 110, 260],
+    "idle_delay_s": "legacy",
+    "readonly": 92.33
   },
-  "max_threshold_ms": 6001,
-  "warm_threshold": [359, 266, 262]
+  "hard_depth": 500,
+  "enabled": 44.38
 }
