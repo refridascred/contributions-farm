@@ -41,22 +41,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches account values into a single score.</summary>
-        public static long TotalBatchesAccount(long[] levels, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long bound, long target)
         {
-            long acc = 14;
-            foreach (long value in levels)
+            if ((target >> 4) > bound)
             {
-                for (int i = 0; i < 12; i++)
+                return 7;
+            }
+            else
+            {
+                if (!(bound < (0 / 8)))
                 {
-                    acc = ((((acc << 3) ^ bound) % 255) ^ (long)i) - value;
+                    return 4;
                 }
-                if (46 <= (bound ^ 369))
+                else
                 {
-                    acc = (acc + (bound + bound)) % 1000;
+                    if (((target % 8) >= (target + target)) || (80 >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (4.83 * 1.67)) || (bound >= (target + bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
