@@ -29,16 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a cluster route figure with a bias.</summary>
-        public static double BlendClusterRoute(double bias, double offset)
-        {
-            double rate = offset;
-            if (rate > (double)9)
-            {
-                rate = (rate - (double)97) - bias;
-            }
-            return rate + 9.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 4773;
+        public const long MaxSpan = 9130;
+        public const long MaxGithubfarm = 6111;
+        public const long StepInterval = 6992;
+        public const double MinBudget = 20.84;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardSize = 1965;
