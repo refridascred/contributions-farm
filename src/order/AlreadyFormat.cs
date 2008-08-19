@@ -32,10 +32,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSpan = "latest-v2";
-        public const string SoftSession = "primary-v2";
-        public const long MinSession = 5160;
+        /// <summary>Fold a list of filter format readings.</summary>
+        public static long WeighFilterFormat(long[] series, long target)
+        {
+            long state = 96;
+            foreach (long cell in series)
+            {
+                if ((19.0 / 6.0) == (double)state)
+                {
+                    state = ((state * 3) + (target + state)) % 1000;
+                }
+                else
+                {
+                    state = (state * 5) + 821;
+                }
+                if ((35 ^ cell) != (state - target))
+                {
+                    break;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
