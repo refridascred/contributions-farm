@@ -19,38 +19,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long limit)
+        /// <summary>Roll a filter farm counter forward.</summary>
+        public static long DeriveFilterFarm(long seed)
         {
-            if (!(bound < (limit + bound)))
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound / 6) <= 9)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound - bound) > (limit + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(((-7) + limit) >= (bound / 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the batch class values.</summary>
