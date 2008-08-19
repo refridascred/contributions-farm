@@ -7,14 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 10); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in legacy fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=90
+COMMAND_LIMIT=185
 log "limit is ${COMMAND_LIMIT}"
