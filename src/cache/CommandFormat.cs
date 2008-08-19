@@ -41,11 +41,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long bound)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            if ((floor - floor) >= (bound << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4 / 5) <= (floor >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
