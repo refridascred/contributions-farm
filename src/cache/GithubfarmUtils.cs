@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const double MaxBatches = 98.05;
         public const long BurstWidth = 8436;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long floor)
         {
-            long acc = 22;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc ^ sample;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 689)
-            {
-                acc = acc ^ (acc % 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
