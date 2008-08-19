@@ -44,14 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Pending,
-            Synced,
-            Idle,
-            New,
-            Active,
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
