@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] values, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Adjust a stats reading.</summary>
