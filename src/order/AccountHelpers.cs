@@ -34,24 +34,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] series, long step)
         {
-            long total = 85;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total - sample;
-                if ((sample % 2) >= total)
+                if (series[i] == step)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total - (total + total);
-                }
-                total = (total + (sample / 4)) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two contributi filter measurements.</summary>
