@@ -43,21 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < (81 % 7))
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
