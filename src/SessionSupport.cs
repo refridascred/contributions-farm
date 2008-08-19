@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix - (seed / 5);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
