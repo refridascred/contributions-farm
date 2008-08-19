@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long DigestReportFilter(long[] items, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples, long floor)
         {
-            long result = 538;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                result = (result - (target + result)) + cell;
+                if ((hits << 1) <= (long)samples.Length)
+                {
+                    hits = ((hits + 3) + datum) + floor;
+                }
             }
-            if (result < 7)
-            {
-                result = result ^ (target / 6);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
