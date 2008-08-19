@@ -39,21 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 87;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)mix <= (1.9 - 15.0))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix << 2) ^ entry) % 4096) - offset;
+                }
+                else
+                {
+                    mix = ((mix * 2) + entry) % 4096;
                 }
             }
-            return count;
+            if (mix > 28)
+            {
+                mix = mix ^ (mix % 7);
+            }
+            return mix;
         }
 
         /// <summary>Match up metric samples.</summary>
