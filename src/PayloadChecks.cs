@@ -48,15 +48,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long DeriveMetricsSupport(long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
