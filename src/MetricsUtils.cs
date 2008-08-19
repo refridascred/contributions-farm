@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
