@@ -50,17 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account metric entry that matches the target.</summary>
-        public static long LookupAccountMetricIndex(long[] data, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Stale,
+            Draft,
+            Ready,
         }
     }
 }
