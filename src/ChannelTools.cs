@@ -21,18 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] values, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = 180;
+            foreach (long entry in values)
             {
-                if ((matches << 1) < (limit / 5))
+                if (((entry & 31) == (acc ^ acc)) && (entry >= (acc % 64)))
                 {
-                    matches = (matches + 2) + datum;
+                    acc = (((acc << 3) ^ (entry % 12)) % 255) - bound;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
