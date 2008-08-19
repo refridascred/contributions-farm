@@ -28,13 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
