@@ -37,20 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor << 2) ^ anchor) % 65521) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (origin >> 2)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
