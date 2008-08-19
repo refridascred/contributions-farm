@@ -23,17 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record layout reading by value.</summary>
-        public static long LookupRecordLayoutIndex(long[] levels, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
