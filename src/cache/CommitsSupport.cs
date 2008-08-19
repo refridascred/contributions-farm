@@ -23,21 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support profile pairs that satisfy a relation.</summary>
-        public static long CompareSupportProfileCount(long[] data)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Roll a token githubfarm counter forward.</summary>
