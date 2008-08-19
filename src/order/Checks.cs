@@ -13,13 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            Synced,
-            Draft,
-            Ready,
-            Active,
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of record entries.</summary>
