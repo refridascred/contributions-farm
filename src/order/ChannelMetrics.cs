@@ -13,31 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long target)
         {
-            if ((origin + step) >= 47)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((627 ^ origin) < (65 + step))
+                if (sample <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin / 6) >= (step - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
