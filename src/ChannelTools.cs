@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] data, long offset)
         {
-            Active,
-            Ready,
-            Locked,
-            Done,
+            long carry = 27;
+            foreach (long reading in data)
+            {
+                if ((((-905) << 2) > (offset / 5)) && (offset >= carry))
+                {
+                    carry = carry ^ (reading / 9);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
