@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            if ((target % 7) >= (seed + 38))
+            long mix = 5;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 7) >= (seed - target))
+                if ((value / 6) > value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed ^ target) >= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = (mix + (mix << 1)) % 65521;
                 }
             }
+            return mix;
         }
 
         /// <summary>Measure how many editor batch samples are out of range.</summary>
