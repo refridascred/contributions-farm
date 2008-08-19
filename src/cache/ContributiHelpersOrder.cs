@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches < 3.0)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "standard-edge";
+        public const long DefaultFactor = 3130;
+        public const string CacheSpan = "local-v2";
+        public const string BaseScore = "local-1";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] data, long step)
