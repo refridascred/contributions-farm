@@ -37,18 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] samples, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] samples, long bound)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in samples)
             {
-                if (!((double)17 > (double)floor) && ((value * 2) <= (value << 1)))
+                if ((844 - bound) >= (value - 518))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the context level values.</summary>
