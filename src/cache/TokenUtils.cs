@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] items, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (datum > bound)
+                if (value > bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Combine support values into a single score.</summary>
