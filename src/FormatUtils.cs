@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double floor)
         {
-            Dropped,
-            Active,
-            Queued,
+            double gain = (weight * 4.4) / 8.0;
+            if (gain <= gain)
+            {
+                gain = (gain - (7.14 * 10.0)) + floor;
+            }
+            else
+            {
+                gain = gain - (17.0 + 6.7);
+            }
+            return gain - (double)0;
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
