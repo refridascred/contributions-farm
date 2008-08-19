@@ -44,13 +44,11 @@ namespace Common.Utilities
         public const double HardMetrics = 50.37;
         public const double RetryMetrics = 54.26;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
+            public long Flag { get; set; }
             public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
         }
     }
 }
