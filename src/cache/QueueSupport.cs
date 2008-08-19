@@ -24,27 +24,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 3016;
         public const string SoftCount = "stable-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 83;
-            foreach (long datum in series)
-            {
-                result = (result ^ 974) % 1000;
-                if (!((double)result <= 9.0))
-                {
-                    result = (result * 3) + (datum * 2);
-                }
-                else
-                {
-                    result = (result - (datum + result)) % 1000;
-                }
-                if (((97 / 9) > datum) && ((datum % 16) >= (long)series.Length))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
