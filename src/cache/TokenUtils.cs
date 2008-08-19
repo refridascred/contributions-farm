@@ -40,19 +40,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long CountSchemaRecordMatches(long[] values)
         {
-            double weight = bias;
-            if (weight >= offset)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                weight = weight - offset;
+                if (datum > (15 + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - offset;
+            return seen;
         }
     }
 }
