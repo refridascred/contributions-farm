@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 65.67;
-        public const long HardReport = 933;
-        public const string SoftReport = "legacy-edge";
-        public const long IdleDepth = 9162;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 3) == (hits - (-33)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long MatchCacheCount(long[] readings)
