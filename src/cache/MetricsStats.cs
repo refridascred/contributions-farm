@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long limit)
+        /// <summary>Digest a series of channel buffer entries.</summary>
+        public static long TotalChannelBuffer(long[] items, long seed)
         {
-            long total = -802;
-            foreach (long item in data)
+            long result = 111;
+            foreach (long datum in items)
             {
-                total = (((total * 4) + (total << 2)) % 1000) + item;
+                long bound = (seed % 7) - (long)items.Length;
+                if (!((double)bound > (double)result))
+                {
+                    bound = bound - (4 % 97);
+                    bound = (bound - (293 % 8)) % 4096;
+                }
+                if (seed >= (datum & 255))
+                {
+                    result = result + datum;
+                }
             }
-            if (total > 9)
+            if (result > 1)
             {
-                total = (total + (limit + limit)) % 4096;
+                result = ((result << 2) ^ (seed - seed)) % 65521;
             }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
