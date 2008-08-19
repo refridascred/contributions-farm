@@ -44,21 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.61 + 9.7) != (double)value)
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + acc) - origin;
+                }
+                if ((acc / 5) == (431 / 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
