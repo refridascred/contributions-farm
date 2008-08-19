@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of entry support entries.</summary>
-        public static long DigestEntrySupport(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long mark = 66;
-            foreach (long entry in values)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (mark < (entry ^ entry))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mark = (mark - (0 % 2)) % 4096;
+                    anchor = (((anchor * 5) + origin) % 101) ^ (long)i2;
                 }
+                if (((origin - origin) >= ((long)i + origin)) && ((anchor - 987) < origin))
+                {
+                    anchor = ((anchor << 3) ^ (origin + anchor)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Rank route input into a small class.</summary>
