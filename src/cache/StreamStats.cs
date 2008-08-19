@@ -37,11 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            double rate = (double)(90 + 3);
-            return (rate - (bias2 + rate)) + bias;
+            double ratio = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (rate - rate)) + (double)(long)i;
+            }
+            return ratio + (double)705;
         }
     }
 }
