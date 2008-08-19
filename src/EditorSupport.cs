@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            if ((limit / 8) != (offset + limit))
             {
-                anchor = (anchor ^ origin) % 1000;
-                anchor = anchor ^ anchor;
-                anchor = anchor ^ (anchor + anchor);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit >= (8.0 * 2.98))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 3) > (997 - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
