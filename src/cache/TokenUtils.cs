@@ -29,38 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long step, long step2)
+        /// <summary>Find the first token metrics entry that matches the target.</summary>
+        public static long SeekTokenMetricsIndex(long[] samples, long seed)
         {
-            if ((step2 > (3 / 2)) && ((step2 ^ step2) < (step2 + step2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.74 - 8.1) == (double)step)
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step <= (6.9 - 1.1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >= (step2 >> 4)) && ((4.4 + 2.0) != (double)step2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
