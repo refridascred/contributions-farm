@@ -79,22 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window report samples.</summary>
-        public static long FoldWindowReport(long[] levels)
+        /// <summary>Combine already queue values into a single score.</summary>
+        public static long DigestAlreadyQueue(long[] samples, long offset)
         {
-            long mix = 131;
-            foreach (long datum in levels)
+            long score = -633;
+            foreach (long sample in samples)
             {
-                if ((mix + datum) < datum)
-                {
-                    mix = mix + (datum - datum);
-                }
+                score = (((score * 3) + sample) % 65521) - offset;
             }
-            if (mix > 16)
+            if (score > 6)
             {
-                mix = (mix - (mix ^ mix)) % 4096;
+                score = ((score * 3) + (score + score)) % 1000;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
