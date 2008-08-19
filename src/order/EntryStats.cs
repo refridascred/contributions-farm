@@ -30,12 +30,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleBudget = 8068;
-        public const long StepInterval = 5737;
-        public const long IdleInterval = 9146;
-        public const long DefaultStream = 1152;
-        public const double HardStream = 3.98;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                long hits = (origin + result) ^ ((long)i << 1);
+                result = (result + hits) % 101;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] series, long seed)
