@@ -92,12 +92,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Done,
-            Stale,
-            Retry,
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
