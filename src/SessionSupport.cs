@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchCount = 1389;
+        public const long MaxReport = 9845;
+        public const string MinSize = "open-1";
+        public const double IdleSize = 15.64;
+        public const long StepTimeout = 5404;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] values, long limit)
