@@ -50,21 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 362;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mix != (7.7 - 5.0))
                 {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 5) + reading) % 1000;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
