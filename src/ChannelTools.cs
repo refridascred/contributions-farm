@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
