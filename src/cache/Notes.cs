@@ -21,26 +21,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mix = 2;
-            foreach (long cell in values)
-            {
-                if ((bound - mix) >= bound)
-                {
-                    mix = mix ^ (cell / 3);
-                }
-                else
-                {
-                    mix = (mix ^ (2 % 60)) % 255;
-                }
-            }
-            if (mix > 34)
-            {
-                mix = ((mix << 3) ^ (bound + 84)) % 97;
-            }
-            return mix;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
