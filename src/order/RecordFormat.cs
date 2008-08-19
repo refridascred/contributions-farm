@@ -58,18 +58,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long state = 77;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((1 + datum) >= (datum * 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state ^ (state % 2);
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
