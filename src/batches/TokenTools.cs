@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a notes account value against two limits.</summary>
-        public static long ClassifyNotesAccount(long bound, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((bound + bound) >= ((-458) & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((((-67) * 2) > (floor + floor)) || ((double)floor <= 15.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound < 20.0) || ((bound ^ 79) < bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
