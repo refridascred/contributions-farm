@@ -64,18 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "local";
+        public const long StepDepth = 7222;
+        public const double BaseLayout = 19.82;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] samples, long seed)
