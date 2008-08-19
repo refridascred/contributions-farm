@@ -35,19 +35,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor window readings against a bound.</summary>
-        public static bool VerifyEditorWindowBounds(long[] series, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long span = bound + origin;
+            if ((span ^ 1) >= (26 - bound))
             {
-                if (cell != target)
+                return 7;
+            }
+            else
+            {
+                if ((2.59 + 0.61) != (double)span)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - span) > (span >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
