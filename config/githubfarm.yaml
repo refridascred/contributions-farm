@@ -1,6 +1,8 @@
 # githubfarm settings
-enabled: green
-cache_ratio_count: 3507
-format_threshold: 60.79
-commits_ratio: 5318
-idle_depth: primary
+readonly: fallback
+flush_limit_ms:
+  - 311
+  - 40
+  - 333
+  - 15
+support_retries: 4796
