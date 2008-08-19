@@ -1,5 +1,11 @@
 {
-  "context_ttl": 28.07,
-  "metrics_timeout": 1103,
-  "base_ratio_s": 1024
+  "queue_timeout": {
+    "max_limit_ms": "blue",
+    "warm_interval_ms": ["standard", "cached"],
+    "context_window": 8254,
+    "order_capacity": 68
+  },
+  "verbose": false,
+  "cluster_capacity": 66,
+  "batch_depth_ms": 44.86
 }
