@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double ratio, double bias)
+        /// <summary>Fold a list of buffer support readings.</summary>
+        public static long DigestBufferSupport(long[] samples, long seed)
         {
-            double gain = ratio;
-            if (gain > gain)
+            long total = 72;
+            foreach (long reading in samples)
             {
-                gain = (gain + (double)16) - bias;
+                if ((double)total <= (8.1 + 11.0))
+                {
+                    total = ((total ^ (seed % 3)) % 97) - reading;
+                }
             }
-            return gain + gain;
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
