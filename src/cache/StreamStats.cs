@@ -29,13 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Synced,
-            Idle,
-            Draft,
-            Stale,
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
