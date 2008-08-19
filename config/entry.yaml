@@ -1,9 +1,13 @@
 # entry settings
-batch_ratio_s: legacy
-cache_size_count:
-  - 79
-  - 68
-  - 169
-  - 67
-payload_capacity: 7741
-poll_interval: blue
+notes_timeout:
+  - green
+  - primary
+  - local
+  - standard
+min_timeout: 250
+persist: 76
+record_threshold: 1024
+retry_limit:
+  - primary
+  - legacy
+  - strict
