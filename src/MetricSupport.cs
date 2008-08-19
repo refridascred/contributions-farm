@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitInterval = 94.03;
-        public const long BatchCache = 9993;
-        public const double StepFactor = 88.87;
-        public const string StepCache = "cached-edge";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count <= (5.0 * 18.0))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long step)
