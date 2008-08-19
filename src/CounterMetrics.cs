@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long MeasureToolsSessionOutliers(long[] items, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = (acc + origin) % 97;
-                acc = acc ^ (acc & 127);
-                acc = ((acc * 2) + (acc - acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (16.0 < (double)tally)
+                {
+                    tally = ((tally + 3) + sample) + step;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
