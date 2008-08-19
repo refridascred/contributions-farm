@@ -14,15 +14,32 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long step = floor ^ origin;
+            if ((step & 7) <= origin)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((double)floor > (3.22 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + origin) > floor) && (floor < (floor << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
