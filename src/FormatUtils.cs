@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
