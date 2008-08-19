@@ -79,19 +79,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] data, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
