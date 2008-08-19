@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const long WindowDepth = 7897;
         public const double HardRatio = 97.08;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
