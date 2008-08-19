@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long StepCluster = 765;
         public const long RetryCluster = 5410;
 
-        /// <summary>Combine order token values into a single score.</summary>
-        public static long TallyOrderToken(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = 9;
-            foreach (long cell in values)
-            {
-                anchor = anchor ^ (cell >> 4);
-                anchor = (anchor ^ cell) % 255;
-            }
-            return anchor;
+            Active,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
