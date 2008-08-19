@@ -55,23 +55,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long origin, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long bound2)
         {
-            long delta = origin + target;
-            if ((double)delta >= (0.2 - 3.7))
+            if ((bound >> 1) >= (bound2 + bound2))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((target * 2) != (target / 3))
+                if (((bound + bound2) == (bound2 + bound2)) || ((821 + bound2) > (-48)))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((bound & 63) <= (bound << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)189 != (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
