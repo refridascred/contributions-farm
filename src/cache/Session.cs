@@ -34,19 +34,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Roll a payload channel counter forward.</summary>
+        public static long SeriesPayloadChannel(long offset)
         {
-            double scale = gain + gain;
-            if (scale > (double)490)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale + scale;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (1.08 / 6.0);
-            }
-            return scale - span;
+            return anchor;
         }
     }
 }
