@@ -6,11 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue stable staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=207
+CHANNEL_LIMIT=113
 log "limit is ${CHANNEL_LIMIT}"
 
 count=0
