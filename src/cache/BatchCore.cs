@@ -26,15 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double span)
+        /// <summary>Look up the position of a queue account sample.</summary>
+        public static long FindQueueAccountIndex(long[] series, long target)
         {
-            double ratio = scale;
-            if (ratio >= 15.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (span * 3.0);
+                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)468;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
