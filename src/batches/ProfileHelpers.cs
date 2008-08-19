@@ -69,19 +69,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Accumulate account filter samples.</summary>
+        public static long CombineAccountFilter(long[] items)
         {
-            long sum = 86;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long value in items)
             {
-                sum = sum ^ (cell + sum);
+                if (!((value + total) != (6 << 2)))
+                {
+                    total = (total * 2) + (665 + value);
+                }
             }
-            if (sum < 98)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 4096;
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
