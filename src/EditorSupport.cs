@@ -49,24 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if (((floor * 2) > (bound >> 1)) && ((16.0 / 5.0) <= (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((85 % 24) >= (254 - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate stream githubfarm readings against a bound.</summary>
