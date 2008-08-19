@@ -20,25 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a window metric counter forward.</summary>
-        public static long IterateWindowMetric(long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] series, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix ^ target;
-                mix = (mix * 5) + target;
-                if ((double)mix >= (7.0 * 0.6))
+                if (series[i] > target)
                 {
-                    mix = ((mix << 2) ^ ((long)i - mix)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix ^ ((long)i - mix)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Match up context queue samples.</summary>
