@@ -43,22 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long sum = 9;
-            foreach (long datum in readings)
-            {
-                if ((9 ^ datum) >= datum)
-                {
-                    sum = sum - sum;
-                }
-                else
-                {
-                    sum = sum - (sum << 3);
-                }
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
