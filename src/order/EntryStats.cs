@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long anchor = 780;
+            foreach (long cell in readings)
             {
-                if (sample != bound)
+                if (cell > (cell + cell))
                 {
-                    valid = false;
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor + (-54))) % 4096;
+                }
+                if ((anchor << 1) <= (anchor >> 1))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
