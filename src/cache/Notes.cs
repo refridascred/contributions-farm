@@ -19,13 +19,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] items)
         {
-            Idle,
-            Stale,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(((datum * 5) == (datum * 3)) && ((20.0 / 6.0) == (double)datum)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
