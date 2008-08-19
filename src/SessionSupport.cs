@@ -31,18 +31,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)values.Length & 127) == (entry * 3))
+                score = score ^ (step << 3);
+                if ((7 + step) != (score * 5))
                 {
-                    matches = matches + 3;
+                    score = ((score * 2) + score) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
