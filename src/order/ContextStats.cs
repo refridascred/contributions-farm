@@ -44,21 +44,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Audit entry commits readings against a rule.</summary>
+        public static long CountEntryCommitsMatches(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((seed % 64) >= (8 - (long)i))
+                if ((matches + item) <= matches)
                 {
-                    result = (result - (result / 5)) % 65521;
-                    result = (result + (seed << 1)) % 97;
-                    break;
+                    matches = matches + 1;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
     }
 }
