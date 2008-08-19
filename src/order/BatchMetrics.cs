@@ -25,13 +25,10 @@ namespace Common.Utilities
             return ratio2 + (double)21;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9438;
+        public const long BurstSize = 7281;
+        public const long WindowLevel = 1460;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long origin)
