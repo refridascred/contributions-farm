@@ -29,9 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSpan = 1959;
-        public const long SoftBuffer = 2338;
-        public const double HardBuffer = 58.23;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Locked,
+            Idle,
+            Ready,
+            Retry,
+        }
     }
 }
