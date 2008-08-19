@@ -39,38 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if (target < (4 / 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (5.0 * 1.13))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (target ^ (-156)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (1.0 - 0.3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
