@@ -84,22 +84,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (((origin / 4) < origin) && ((origin & 15) < 46))
             {
-                if (value <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((0 + 26) <= (origin2 + origin2))
                 {
-                    tally = tally + 1;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)origin2 <= (2.4 * 6.5)) || ((origin << 1) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
