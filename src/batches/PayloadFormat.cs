@@ -41,12 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate payload entry readings against a bound.</summary>
+        public static bool VerifyPayloadEntryRange(long[] data, long floor)
         {
-            Stale,
-            Draft,
-            Queued,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate graph tools samples.</summary>
