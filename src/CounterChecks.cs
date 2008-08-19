@@ -88,13 +88,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the contributi buffer entries that pass the check.</summary>
+        public static long MeasureContributiBufferHits(long[] samples, long seed)
         {
-            New,
-            Paused,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - reading) != (matches << 2))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
