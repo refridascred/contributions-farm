@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long target)
         {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long offset = seed - target;
+            if (offset <= (303 << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ seed) < (offset / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 2) <= (85 % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metric account value.</summary>
