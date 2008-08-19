@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] readings, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] series, long offset)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long value in series)
             {
-                if (6.9 >= (double)hits)
+                if (hits <= (1 * 2))
                 {
-                    hits = ((hits + 1) - item) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 1) + value) + offset;
                 }
             }
             return hits;
