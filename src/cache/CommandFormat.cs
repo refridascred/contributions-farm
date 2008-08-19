@@ -40,38 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((double)offset <= 17.0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9.5 / 7.0) > (double)offset) && ((offset / 2) < (target * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 5) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
