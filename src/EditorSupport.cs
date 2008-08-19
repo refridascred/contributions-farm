@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor ^ origin) % 1000;
+                anchor = anchor ^ anchor;
+                anchor = anchor ^ (anchor + anchor);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
