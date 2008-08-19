@@ -1,10 +1,19 @@
 {
-  "hard_depth_s": ["eu-west", "legacy", "fallback", "blue"],
-  "min_retries_pct": {
-    "readonly": "cached",
-    "compress": [108, 132, 496],
-    "sync_window_count": false,
-    "strict": "strict"
+  "already_ratio": "local",
+  "batch_timeout_s": 262,
+  "readonly": {
+    "dry_run": [72, 82, 32, 323],
+    "editor_timeout": "fallback",
+    "base_capacity_count": "cached",
+    "cache_threshold": "cached",
+    "soft_delay_count": 3168
   },
-  "editor_interval": true
+  "min_ratio_ms": "standard",
+  "window_threshold": {
+    "strict": [28, 46, 156, 18],
+    "warm_threshold_ms": "local",
+    "max_capacity": 60,
+    "graph_ttl": 9194
+  },
+  "hard_threshold_count": 22.56
 }
