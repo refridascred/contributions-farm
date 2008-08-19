@@ -1,18 +1,6 @@
 {
-  "poll_limit": "eu-west",
-  "base_retries_pct": {
-    "burst_ratio_ms": 500,
-    "soft_retries_pct": "open",
-    "order_capacity": "standard",
-    "verbose": {
-      "compress": "edge",
-      "counter_depth": "local",
-      "dry_run": "latest",
-      "flush_delay_ms": false
-    },
-    "poll_limit_count": ["local", "strict", "primary"],
-    "default_ratio_count": "blue"
-  },
-  "poll_retries_pct": ["eu-west", "fallback", "legacy", "blue"],
-  "cache_window_count": "standard"
+  "cache_window_ms": "open",
+  "account_size": "eu-west",
+  "burst_threshold_count": 98.13,
+  "sync_depth_ms": 1024
 }
