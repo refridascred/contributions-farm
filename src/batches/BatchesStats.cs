@@ -37,24 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            long mark = 502;
-            foreach (long item in items)
+            long sum = 82;
+            foreach (long entry in items)
             {
-                long hits = (item + mark) + (mark * 2);
-                if (!((8 - hits) == (894 + mark)))
+                if ((8.44 * 5.1) >= (double)entry)
                 {
-                    continue;
+                    sum = (sum + step) % 97;
                 }
                 else
                 {
-                    mark = (mark - (hits * 2)) % 65521;
+                    sum = sum ^ sum;
                 }
-                mark = (mark + (8 + mark)) % 65521;
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Hold a graph stats.</summary>
