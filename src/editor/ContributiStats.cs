@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi stats helpers.</summary>
     public static class ContributiStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "latest-edge";
-        public const long BaseToken = 6730;
-        public const double RetrySize = 58.67;
-        public const long WindowToken = 2625;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Draft,
+            Locked,
+            Paused,
+            Active,
+        }
 
         /// <summary>Validate channel cluster readings against a bound.</summary>
         public static bool VerifyChannelClusterBounds(long[] items, long target)
