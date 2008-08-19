@@ -62,21 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Adjust a command buffer reading.</summary>
+        public static double ScaleCommandBuffer(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = 6.58;
+            if (rate >= rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + ratio) - floor;
             }
-            return seen;
+            return rate - (ratio / 5.0);
         }
     }
 }
