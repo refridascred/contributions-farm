@@ -45,18 +45,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache channel readings against a rule.</summary>
-        public static long AuditCacheChannelGaps(long[] items, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((seed << 2) < (seed2 + seed))
             {
-                if (!(((-690) << 3) < (hits ^ sample)))
+                return 8;
+            }
+            else
+            {
+                if (((double)seed2 < (double)seed) && (seed >= (seed >> 4)))
                 {
-                    hits = (hits + 2) - bound;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
