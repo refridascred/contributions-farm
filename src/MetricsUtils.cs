@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two command order measurements.</summary>
-        public static double SmoothCommandOrder(double bias, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long floor)
         {
-            double load = (bias - bias) - (double)506;
-            if (load >= (offset * 8.1))
+            if (((seed % 12) <= (seed << 1)) || (floor > (seed >> 3)))
             {
-                load = load - offset;
+                return 7;
             }
-            return load + load;
+            else
+            {
+                if (floor <= (floor + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor << 3) > (floor + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
