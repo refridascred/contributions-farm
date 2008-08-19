@@ -14,24 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Audit payload notes readings against a rule.</summary>
+        public static long AuditPayloadNotesHits(long[] samples, long step)
         {
-            long anchor = 989;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                long prev = (1 - anchor) / 3;
-                anchor = anchor ^ (prev - datum);
-                if (((datum + anchor) > anchor) && ((double)anchor < 2.0))
+                if ((entry - entry) != (step ^ 75))
                 {
-                    anchor = ((anchor << 2) ^ (anchor ^ datum)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor * 5) + anchor) % 101;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
