@@ -16,17 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first tools context entry that matches the target.</summary>
-        public static long FindToolsContextIndex(long[] levels, long floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
