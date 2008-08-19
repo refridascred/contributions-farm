@@ -52,17 +52,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                if (tally > (cell * 4))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
