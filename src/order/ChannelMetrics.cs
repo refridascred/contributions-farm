@@ -35,15 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
