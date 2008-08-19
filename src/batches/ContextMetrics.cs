@@ -62,19 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double span)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double drift = rate;
-            if (drift >= rate)
-            {
-                drift = drift + (drift - drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - rate;
+            Idle,
+            Synced,
+            Draft,
+            Failed,
         }
     }
 }
