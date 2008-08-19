@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 8039;
-        public const double BatchCounter = 37.41;
-        public const double CacheCounter = 16.48;
-        public const long LimitCounter = 8771;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Stale,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Accumulate graph tools samples.</summary>
         public static long FoldGraphTools(long[] data, long step)
