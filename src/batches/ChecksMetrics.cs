@@ -26,17 +26,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (samples[i] < offset)
+                if ((672 >> 1) < (item % 60))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
