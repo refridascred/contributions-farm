@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "strict-1";
-        public const long RetryChecks = 1879;
-        public const double MaxChecks = 64.92;
-        public const double BaseLevel = 49.54;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Ready,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Count the order already entries that pass the check.</summary>
         public static long CountOrderAlreadyHits(long[] readings, long bound)
