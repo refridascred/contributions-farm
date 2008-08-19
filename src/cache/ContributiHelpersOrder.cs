@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric editor readings against a bound.</summary>
-        public static bool VerifyMetricEditorRange(long[] values, long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double mean = span;
+            if (mean <= (double)46)
             {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean - (double)1) + weight;
             }
-            return ready;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + span;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
