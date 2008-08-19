@@ -71,12 +71,13 @@ namespace Common.Utilities
         public const long SoftWindow = 634;
         public const long LimitWindow = 2129;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepWidth = 91.33;
-        public const string DefaultSpan = "fallback-v2";
-        public const string IdleMetrics = "fallback-v2";
-        public const long MaxSize = 6403;
-        public const double BurstMetrics = 35.36;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] data, long step)
