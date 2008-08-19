@@ -44,18 +44,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long step)
         {
-            long mark = -7;
-            foreach (long value in samples)
+            if ((seed * 2) <= step)
             {
-                if ((mark & 127) == (value & 63))
+                return 4;
+            }
+            else
+            {
+                if (((seed & 127) < step) || ((step % 16) <= (seed * 3)))
                 {
-                    mark = mark ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (((step - seed) != (step + (-593))) || ((step << 3) <= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
