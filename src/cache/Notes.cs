@@ -49,11 +49,23 @@ namespace Common.Utilities
         public const double HardMetrics = 50.37;
         public const double RetryMetrics = 54.26;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a cache stream counter forward.</summary>
+        public static long StepCacheStream(long step)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i * 3) > carry)
+                {
+                    carry = carry - (carry / 9);
+                }
+                else
+                {
+                    carry = ((carry * 3) + carry) % 101;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
