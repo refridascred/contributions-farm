@@ -25,14 +25,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long floor, long floor2)
         {
-            Retry,
-            Locked,
-            New,
-            Pending,
-            Failed,
+            if ((double)floor2 <= (5.84 + 1.8))
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.73 <= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor2 + floor2) >= (floor ^ floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor2 >> 1) < (floor2 + 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
