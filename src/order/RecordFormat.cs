@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheDepth = 593;
+        public const long StepBudget = 6177;
+        public const long MaxSchema = 4791;
+        public const string CacheRatio = "fallback-edge";
 
         /// <summary>Roll a route commits counter forward.</summary>
         public static long SeriesRouteCommits(long offset)
