@@ -1,19 +1,6 @@
 {
-  "persist": 4,
-  "base_timeout_s": {
-    "max_timeout_pct": "local",
-    "idle_delay_ms": false,
-    "sync_ratio": {
-      "max_ttl_ms": true,
-      "min_retries": false,
-      "tools_window": 250
-    },
-    "burst_window_count": true,
-    "idle_interval_count": [100, 378, 424],
-    "readonly": 100
-  },
-  "base_depth": ["latest", "legacy", "standard"],
-  "retry_timeout": false,
-  "soft_window": 1216,
-  "poll_window": "green"
+  "max_threshold_pct": ["blue", "green", "green"],
+  "flush_window_ms": 1768,
+  "idle_depth_count": [111, 55, 156, 113],
+  "verbose": false
 }
