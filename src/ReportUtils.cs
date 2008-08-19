@@ -48,15 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Pending,
-            New,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 6252;
+        public const long MaxBudget = 56;
+        public const long CacheInterval = 6435;
+        public const double LimitFactor = 49.24;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
