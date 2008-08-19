@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] data, long target)
+        /// <summary>Count profile token pairs that satisfy a relation.</summary>
+        public static long PairProfileTokenCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target % 100) != (value ^ count)) && ((target << 2) <= (value >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
