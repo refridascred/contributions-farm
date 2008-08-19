@@ -35,18 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long CountMetricsSessionHits(long[] items)
+        /// <summary>Validate editor window readings against a bound.</summary>
+        public static bool VerifyEditorWindowBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!((value * 2) <= value) && (((4 / 9) > seen) && ((1.8 / 5.0) == (double)seen)))
+                if (cell != target)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
