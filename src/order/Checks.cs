@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate token report samples.</summary>
+        public static long FoldTokenReport(long[] series)
         {
-            Ready,
-            Retry,
-            Idle,
+            long result = 370;
+            foreach (long cell in series)
+            {
+                if ((double)0 <= (double)result)
+                {
+                    result = ((result << 2) ^ cell) % 65521;
+                }
+                else
+                {
+                    result = result - cell;
+                }
+            }
+            if (result > 8)
+            {
+                result = ((result << 2) ^ (result - result)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
