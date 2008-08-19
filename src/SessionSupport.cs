@@ -21,13 +21,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length & 127) == (entry * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
