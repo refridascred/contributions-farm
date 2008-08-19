@@ -41,10 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitRatio = 1785;
-        public const long MaxContext = 4665;
-        public const long BatchContext = 1960;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Dropped,
+            Stale,
+            Synced,
+            New,
+            Pending,
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
