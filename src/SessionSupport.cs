@@ -36,20 +36,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score ^ (step << 3);
-                if ((7 + step) != (score * 5))
-                {
-                    score = ((score * 2) + score) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
