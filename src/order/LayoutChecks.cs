@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Grade a profile context value against two limits.</summary>
+        public static long GradeProfileContext(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound / 6) != (floor + floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((3.71 / 7.0) > (double)floor)
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
