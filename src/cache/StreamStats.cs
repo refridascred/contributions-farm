@@ -14,14 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] data, long bound)
         {
-            Queued,
-            Draft,
-            Retry,
-            Paused,
-            Idle,
+            long carry = 1;
+            foreach (long item in data)
+            {
+                if ((double)item < 2.01)
+                {
+                    carry = (((carry * 5) + item) % 97) - bound;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
