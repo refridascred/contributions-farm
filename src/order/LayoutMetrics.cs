@@ -34,31 +34,18 @@ namespace Common.Utilities
             return mean + (17.0 * 4.2);
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long limit)
+        /// <summary>Fold a list of format githubfarm readings.</summary>
+        public static long CombineFormatGithubfarm(long[] levels, long target)
         {
-            if ((floor + limit) > limit)
+            long total = 16;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 59) <= limit)
+                if (((-69) - entry) <= total)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - 95) < (814 / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = (total - (target - target)) % 255;
                 }
             }
+            return total;
         }
     }
 }
