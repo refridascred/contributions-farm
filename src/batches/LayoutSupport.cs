@@ -54,13 +54,10 @@ namespace Common.Utilities
             return bias - 13.0;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseDepth = 4085;
+        public const long MaxWidth = 16;
+        public const string IdleScore = "primary-edge";
 
         /// <summary>Roll a filter session counter forward.</summary>
         public static long RollFilterSession(long limit)
