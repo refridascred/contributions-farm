@@ -52,12 +52,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                if (values[i] <= limit)
                 {
                     return (long)i;
                 }
