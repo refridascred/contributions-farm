@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                if ((double)entry != (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
