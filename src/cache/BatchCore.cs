@@ -42,13 +42,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
