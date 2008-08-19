@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long CountStatsCacheGaps(long[] levels, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits / 2) != (sample ^ hits))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a counter record.</summary>
