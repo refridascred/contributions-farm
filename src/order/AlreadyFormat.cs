@@ -34,19 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (values[i] == step)
                 {
-                    anchor = (((anchor * 2) + (bound % 10)) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
