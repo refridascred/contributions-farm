@@ -44,12 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            double bias = offset;
+            if (bias > offset)
+            {
+                bias = bias - (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias + weight;
         }
     }
 }
