@@ -5,25 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long limit, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long seed)
         {
-            long offset2 = limit + offset;
-            if ((offset2 * 3) >= (limit >> 4))
+            long result = -7;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((635 % 8) <= (offset + offset2)))
+                result = ((result << 3) ^ (datum % 100)) % 255;
+                if (((datum + seed) > (result + datum)) || ((5 << 2) == (datum - datum)))
                 {
-                    return 0;
+                    result = (result * 4) + 848;
                 }
                 else
                 {
-                    return 1;
+                    result = (result + seed) % 255;
                 }
             }
+            if (result > 396)
+            {
+                result = ((result << 3) ^ (seed + seed)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
