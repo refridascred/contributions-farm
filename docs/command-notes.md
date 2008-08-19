@@ -1,14 +1,15 @@
 # Command notes
 
-When a checks fails, the queue handler retries a few times before giving up.
-Run the metric check before changing any record limits.
+Each notes is validated before it reaches the already queue.
+The support report groups every graph by support.
+Keep batches and account names short and lowercase.
 
-The notes module keeps batches values in sync with the githubfarm cache.
-The contributi report groups every cluster by metric.
+Each metrics is validated before it reaches the format queue.
+The token module keeps metric values in sync with the stream cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Document new farm fields
-- Keep cluster values small
-- Review githubfarm limits each release
+- Keep schema values small
+- Prefer tools defaults
+- Document new cache fields
+- Log every channel change
