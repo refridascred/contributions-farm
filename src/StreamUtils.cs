@@ -37,23 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 8;
-            foreach (long value in readings)
-            {
-                mark = (mark * 5) + (5 + mark);
-                if (value >= (1 % 2))
-                {
-                    mark = (mark + (mark - value)) % 4096;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
