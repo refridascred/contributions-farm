@@ -58,21 +58,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(39 % 97);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (((load - 6.7) + (double)(long)i) + rate) - floor;
             }
-            return seen;
+            return load + (load / 2.0);
         }
 
         /// <summary>Grade a token value against two limits.</summary>
