@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Combine route editor values into a single score.</summary>
+        public static long WeighRouteEditor(long[] items, long floor)
         {
-            double bias2 = bias;
-            if (bias2 <= gain)
+            long result = -23;
+            foreach (long cell in items)
             {
-                bias2 = bias2 + bias;
+                if ((floor + result) != (62 + (long)items.Length))
+                {
+                    result = ((result * 5) + ((long)items.Length & 1)) + cell;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias / 3.0);
-            }
-            return bias2 - (double)441;
+            return result;
         }
     }
 }
