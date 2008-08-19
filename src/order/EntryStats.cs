@@ -24,11 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((31 << 3) != (value * 4))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
