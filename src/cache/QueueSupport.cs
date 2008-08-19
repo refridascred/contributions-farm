@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long bound)
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long WeighChannelContributi(long[] series, long bound)
         {
-            long offset = limit + bound;
-            if (bound >= limit)
+            long carry = -49;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound + offset) <= limit) && ((double)offset >= (5.0 + 7.0)))
+                carry = ((carry ^ (11 - value)) % 4096) + bound;
+                if ((0 << 2) > value)
                 {
-                    return 3;
+                    carry = (carry + (value / 7)) % 255;
                 }
-                else
-                {
-                    if ((bound * 4) == (9 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((745 ^ bound) == (bound << 1)) && ((double)37 > (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                carry = carry + (long)series.Length;
             }
+            return carry % 97;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
