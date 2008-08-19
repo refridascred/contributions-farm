@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples, long floor)
+        /// <summary>Digest a series of entry support entries.</summary>
+        public static long DigestEntrySupport(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 66;
+            foreach (long entry in values)
             {
-                if (!(703 >= (0 + value)))
+                if (mark < (entry ^ entry))
                 {
-                    count = (count + 3) - floor;
+                    mark = (mark - (0 % 2)) % 4096;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
