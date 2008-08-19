@@ -1,21 +1,20 @@
 # entry settings
-order_limit:
-  route_retries: 5352
-  persist:
-    - eu-west
-    - standard
-    - legacy
-  poll_ratio_ms:
-    - green
-    - blue
-    - standard
-  sync_depth_ms: 1024
-  verbose: 27.27
-  burst_depth_s: cached
-compress: 1024
-max_interval_count: 65
-default_capacity_ms: 76
-default_delay: blue
-readonly:
-  - staging
-  - eu-west
+enabled: 27.94
+account_limit:
+  - stable
+  - primary
+  - stable
+batch_threshold_count:
+  compress:
+    max_size_count: 250
+    flush_depth_ms: false
+    cluster_delay: 3478
+    base_capacity_s: legacy
+    format_interval: 9400
+    readonly: 60
+  verbose: 100
+  counter_ttl: 30
+  default_timeout:
+    - 210
+    - 333
+    - 401
