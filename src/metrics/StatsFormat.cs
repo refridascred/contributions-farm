@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long IterateBufferOrder(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                double load = (double)(score % 7);
+                if ((load * 1.2) != (5.3 - load))
                 {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score - bound;
+                    score = (score ^ (bound >> 3)) % 255;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a checks header.</summary>
