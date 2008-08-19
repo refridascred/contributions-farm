@@ -15,23 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((66 & 255) <= (floor >> 2)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 5950;
+        public const double CacheInterval = 12.13;
+        public const long BatchStream = 5880;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] values, long floor)
