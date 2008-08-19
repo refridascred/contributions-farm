@@ -27,19 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values)
-        {
-            long mix = 69;
-            foreach (long datum in values)
-            {
-                if (datum >= (mix - mix))
-                {
-                    mix = (mix * 3) + ((-5) - 4);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 7221;
+        public const long BaseLayout = 2171;
+        public const double RetryDepth = 50.62;
+        public const long SoftBudget = 5081;
+        public const long IdleLayout = 6479;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long seed, long seed2)
