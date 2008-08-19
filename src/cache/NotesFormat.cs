@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 1) < (801 << 1))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepScore = "alpha-edge";
+        public const string StepDepth = "standard-v2";
+        public const long MaxBatch = 9982;
+        public const double DefaultBatch = 82.45;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
