@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long TallySupportBufferGaps(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches / 8) != (0 + reading))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
