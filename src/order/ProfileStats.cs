@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double bias = floor / 9.0;
+            if (bias < (rate * 1.7))
+            {
+                bias = bias - (double)4;
+            }
+            return bias - (double)(-60);
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
