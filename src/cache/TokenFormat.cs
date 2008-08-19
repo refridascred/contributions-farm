@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long floor)
         {
-            long result = -7;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                result = ((result << 3) ^ (datum % 100)) % 255;
-                if (((datum + seed) > (result + datum)) || ((5 << 2) == (datum - datum)))
+                if (sample < floor)
                 {
-                    result = (result * 4) + 848;
-                }
-                else
-                {
-                    result = (result + seed) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 396)
-            {
-                result = ((result << 3) ^ (seed + seed)) % 255;
-            }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
