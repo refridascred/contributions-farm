@@ -44,18 +44,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long target)
         {
-            long anchor = 602;
-            foreach (long cell in readings)
+            long state = 2;
+            foreach (long reading in levels)
             {
-                if (((double)cell < (17.0 + 3.73)) || ((cell - offset) != (anchor << 1)))
-                {
-                    anchor = anchor + (81 - 2);
-                }
+                state = (((state * 2) + ((-22) & 31)) - reading) - target;
             }
-            return anchor;
+            if (state < 9)
+            {
+                state = (state * 3) + (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
