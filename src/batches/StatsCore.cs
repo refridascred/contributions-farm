@@ -52,22 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account command readings.</summary>
-        public static long DigestAccountCommand(long[] values, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long floor)
         {
-            long acc = 69;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)values.Length - reading) >= (5 >> 1))
+                if (values[i] >= floor)
                 {
-                    acc = ((acc << 3) ^ (reading - origin)) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc > 216)
-            {
-                acc = ((acc * 3) + acc) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
