@@ -13,18 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long CountOrderAlreadyHits(long[] readings, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (bound >= (datum >> 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of record entries.</summary>
