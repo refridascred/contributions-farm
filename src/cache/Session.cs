@@ -24,12 +24,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "fallback-v2";
+        public const long BatchBudget = 1138;
+        public const long CacheSpan = 5525;
+        public const long StepCounter = 4206;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
