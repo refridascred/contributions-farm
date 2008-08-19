@@ -49,23 +49,17 @@ namespace Common.Utilities
         public const double HardMetrics = 50.37;
         public const double RetryMetrics = 54.26;
 
-        /// <summary>Roll a cache stream counter forward.</summary>
-        public static long StepCacheStream(long step)
+        /// <summary>Look up the position of a order queue sample.</summary>
+        public static long SeekOrderQueueIndex(long[] series, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i * 3) > carry)
+                if (series[i] > seed)
                 {
-                    carry = carry - (carry / 9);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry * 3) + carry) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
