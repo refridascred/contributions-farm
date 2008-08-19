@@ -43,12 +43,18 @@ namespace Common.Utilities
             return (ratio + (floor * 2.7)) + scale;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)value != (double)90))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
