@@ -1,7 +1,6 @@
 # entry settings
-enabled: eu-west
-hard_timeout_ms: 93.54
-hard_interval_ms: cached
-persist: false
-max_retries_s: false
-warm_size_count: 5.47
+dry_run: legacy
+enabled: 30
+metrics_threshold: 2.16
+flush_depth_count: 30
+flush_delay_pct: 1.26
