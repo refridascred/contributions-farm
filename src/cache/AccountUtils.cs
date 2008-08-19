@@ -24,12 +24,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] readings)
         {
-            Idle,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seen < (datum >> 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
