@@ -37,23 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue route values into a single score.</summary>
-        public static long CombineQueueRoute(long[] data, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long anchor = 813;
-            foreach (long cell in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (((anchor * 4) + floor) ^ (long)i) - cell;
-                }
-                anchor = (anchor << 2) ^ (774 % 7);
-                if ((324 <= anchor) && ((41 % 12) >= (floor >> 3)))
-                {
-                    anchor = (anchor << 3) ^ (floor - anchor);
-                }
-            }
-            return anchor % 97;
+            Retry,
+            Closed,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
