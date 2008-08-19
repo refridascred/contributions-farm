@@ -54,10 +54,19 @@ namespace Common.Utilities
             return bias - 13.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseDepth = 4085;
-        public const long MaxWidth = 16;
-        public const string IdleScore = "primary-edge";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.5 - 7.59) == (double)datum)
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a filter session counter forward.</summary>
         public static long RollFilterSession(long limit)
