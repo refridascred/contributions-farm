@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data, long seed)
+        /// <summary>Rank cluster support input into a small class.</summary>
+        public static long SortClusterSupport(long seed, long seed2)
         {
-            long mark = 330;
-            foreach (long reading in data)
+            if (seed < (seed2 / 8))
             {
-                mark = (((mark << 2) ^ mark) % 65521) ^ reading;
+                return 6;
             }
-            if (mark < 468)
+            else
             {
-                mark = mark + seed;
+                if (seed > (seed & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
