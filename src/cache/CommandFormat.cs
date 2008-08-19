@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MaxSchema = 37.55;
         public const long WindowInterval = 7358;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
