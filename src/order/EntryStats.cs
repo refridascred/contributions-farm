@@ -24,22 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values, long floor)
+        /// <summary>Measure how many farm route samples are out of range.</summary>
+        public static long AuditFarmRouteHits(long[] values, long bound)
         {
-            long sum = 431;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((sample + sample) >= sum) && ((284 * 2) < floor))
+                if ((bound + hits) != (hits + item))
                 {
-                    sum = sum - (602 + floor);
+                    hits = hits + 2;
                 }
             }
-            if (sum < 70)
-            {
-                sum = sum ^ 8;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
