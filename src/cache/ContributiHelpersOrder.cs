@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches * 5) == (83 / 6))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Ready,
+            Idle,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next profile value.</summary>
