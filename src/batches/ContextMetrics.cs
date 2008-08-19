@@ -48,12 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((limit / 7) != (limit >> 1))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
