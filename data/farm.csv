@@ -1,7 +1,6 @@
-id,rank,token
-1,763,423
-2,566,85.16
-3,84.39,10.95
-4,strict,96.33
-5,708,local
-6,908,20.73
+id,state,rank
+1,73.67,794
+2,standard,47.57
+3,eu-west,latest
+4,blue,980
+5,staging,open
