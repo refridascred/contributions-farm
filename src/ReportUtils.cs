@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long span = offset + offset2;
+            if (((double)span <= (double)862) && ((offset2 & 255) > (32 / 5)))
             {
-                if (reading >= offset)
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 2) > offset))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
