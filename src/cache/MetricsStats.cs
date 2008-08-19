@@ -29,19 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long mix = 495;
+            foreach (long datum in levels)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix ^ datum)) % 97;
+                mix = ((mix << 3) ^ datum) % 4096;
             }
-            return flag;
+            if (mix < 992)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
