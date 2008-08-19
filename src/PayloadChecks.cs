@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (offset >= (648 * 2))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph mode values.</summary>
