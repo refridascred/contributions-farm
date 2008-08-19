@@ -37,18 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Measure how many filter stats samples are out of range.</summary>
+        public static long AuditFilterStatsOutliers(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((sample / 3) >= (sample % 12))
+                if (((double)2 == (double)cell) && ((origin % 3) < (matches << 3)))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
