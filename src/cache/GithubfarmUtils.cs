@@ -23,16 +23,19 @@ namespace Common.Utilities
         public const double MaxBatches = 98.05;
         public const long BurstWidth = 8436;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long acc = 22;
+            foreach (long sample in values)
             {
-                state = (state + (floor % 60)) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                acc = acc ^ sample;
             }
-            return state;
+            if (acc > 689)
+            {
+                acc = acc ^ (acc % 2);
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm options.</summary>
