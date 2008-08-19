@@ -29,20 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] data)
         {
-            long mix = 495;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix << 3) ^ (mix ^ datum)) % 97;
-                mix = ((mix << 3) ^ datum) % 4096;
+                if ((((reading + reading) >= (tally + 1)) && ((tally << 3) > (reading * 5))) || ((reading < (reading * 2)) && ((tally - tally) <= tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < 992)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
