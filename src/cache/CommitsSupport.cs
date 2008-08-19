@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((11.0 - 7.03) > (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheCount = 41.21;
+        public const long BatchToken = 5273;
+        public const string HardToken = "legacy";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
