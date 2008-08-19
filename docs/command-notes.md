@@ -1,10 +1,14 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the metric handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+The metric report groups every profile by schema.
+
+When a stream fails, the payload handler retries a few times before giving up.
+Keep support and report names short and lowercase.
+When a command fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep farm values small
-- Review metric limits each release
-- Validate session input early
+- Validate command input early
+- Prefer counter defaults
+- Keep commits values small
