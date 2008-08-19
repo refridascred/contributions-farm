@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "stable-v2";
-        public const string LimitDepth = "cached-1";
-        public const double BatchTimeout = 24.19;
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
+        {
+            long mix = 6;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix * 3) + (entry - 80)) - (long)i;
+                }
+                if (mix <= entry)
+                {
+                    mix = (mix ^ entry) % 97;
+                }
+                mix = mix ^ (entry % 64);
+            }
+            if (mix > 754)
+            {
+                mix = (mix * 5) + (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] items, long target)
