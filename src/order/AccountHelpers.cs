@@ -70,15 +70,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long acc = 423;
-            foreach (long reading in levels)
-            {
-                acc = ((acc + (503 * 5)) - reading) - seed;
-            }
-            return acc;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
