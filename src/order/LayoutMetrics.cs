@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
