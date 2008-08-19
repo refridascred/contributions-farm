@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            double drift = (double)(39 << 3);
-            return (drift + (2.57 + scale)) + offset;
+            double rate = span / 9.0;
+            return rate + (gain / 4.0);
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
