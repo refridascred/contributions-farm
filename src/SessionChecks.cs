@@ -52,11 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "cached-1";
-        public const string BatchStream = "primary-1";
-        public const long HardStream = 6231;
-        public const double BurstSize = 35.85;
-        public const long MinStream = 1250;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Retry,
+            Idle,
+            Closed,
+            Ready,
+            Stale,
+        }
     }
 }
