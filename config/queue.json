@@ -1,7 +1,7 @@
 {
-  "dry_run": "green",
-  "flush_depth_count": "strict",
-  "burst_capacity": 90,
-  "default_timeout_pct": "blue",
-  "sync_timeout_pct": [319, 186]
+  "flush_retries_ms": 5978,
+  "base_limit_s": 6487,
+  "stats_size": [264, 14, 200],
+  "base_threshold": "local",
+  "burst_interval": true
 }
