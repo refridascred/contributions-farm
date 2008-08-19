@@ -26,15 +26,18 @@ namespace Common.Utilities
             return scale2 - (double)19;
         }
 
-        /// <summary>Scale a githubfarm already figure with a bias.</summary>
-        public static double ScaleGithubfarmAlready(double rate, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] samples)
         {
-            double scale = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                scale = (scale - rate) + (double)(long)i;
+                if (86 <= (datum >> 4))
+                {
+                    count = count + 1;
+                }
             }
-            return scale - 7.4;
+            return count;
         }
     }
 }
