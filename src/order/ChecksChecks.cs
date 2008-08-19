@@ -25,12 +25,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long floor)
         {
-            Queued,
-            Idle,
-            Locked,
+            long bound = offset + floor;
+            if ((floor ^ 0) <= (offset + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((12 + bound) >= (floor >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (28 <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ bound) > (bound ^ 676))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
