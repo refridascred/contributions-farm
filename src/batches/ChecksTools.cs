@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (samples[i] <= origin)
+                if (1.6 > (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
