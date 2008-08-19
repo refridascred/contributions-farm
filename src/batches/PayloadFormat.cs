@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 58;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry + (cell / 7)) % 97) ^ (long)i;
+                }
+                if ((cell % 100) < limit)
+                {
+                    carry = ((carry * 3) + carry) % 255;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
