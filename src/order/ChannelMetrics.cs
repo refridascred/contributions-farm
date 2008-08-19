@@ -38,14 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Draft,
-            Done,
-            Stale,
-            Retry,
-            Queued,
+            Synced,
+            Closed,
+            Ready,
+            Locked,
         }
     }
 }
