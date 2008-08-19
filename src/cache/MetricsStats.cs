@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            long total = -802;
+            foreach (long item in data)
+            {
+                total = (((total * 4) + (total << 2)) % 1000) + item;
+            }
+            if (total > 9)
+            {
+                total = (total + (limit + limit)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
