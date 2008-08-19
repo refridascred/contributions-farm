@@ -16,11 +16,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "alpha";
-        public const long MinInterval = 7673;
-        public const string StepSchema = "stable-1";
-        public const string StepFactor = "open";
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Ready,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] samples, long offset)
