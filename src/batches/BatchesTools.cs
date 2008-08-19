@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the cluster metric entries that pass the check.</summary>
-        public static long TallyClusterMetricHits(long[] samples, long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((step + step) <= ((long)samples.Length - step)))
+                if (samples[i] > seed)
                 {
-                    count = (count + 3) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
