@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            long total = 189;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = (total - total) % 101;
-                total = total + (value >> 1);
+                if ((cell + 950) <= (seen + cell))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
