@@ -11,10 +11,24 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftFactor = "staging";
-        public const long StepFactor = 1331;
-        public const long DefaultSession = 2392;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data, long origin)
+        {
+            long mix = 986;
+            foreach (long value in data)
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+                if (value > (mix + 290))
+                {
+                    break;
+                }
+            }
+            if (mix < 758)
+            {
+                mix = (mix * 2) + (origin - origin);
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long IdleBudget = 8068;
