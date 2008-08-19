@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in latest primary standard cached; do
+for item in blue standard open; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=49
+log "limit is ${CHANNEL_LIMIT}"
