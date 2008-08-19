@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many filter stats samples are out of range.</summary>
