@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Adjust a payload route reading.</summary>
+        public static double BlendPayloadRoute(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = span;
+            if (mean >= mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - scale;
             }
-            return hits;
+            return mean + (4.7 / 2.0);
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
