@@ -82,9 +82,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstSpan = "open-edge";
-        public const string DefaultOrder = "alpha-1";
-        public const long MaxWidth = 9485;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result << 2) ^ (result & 1)) % 4096;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result ^ (origin & 1)) + (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
