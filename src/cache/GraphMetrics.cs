@@ -63,11 +63,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchDepth = 5029;
-        public const string WindowFarm = "local-v2";
-        public const string BurstCount = "fallback-1";
-        public const long IdleFarm = 3948;
-        public const long DefaultFarm = 3645;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
+        {
+            long anchor = 38;
+            foreach (long item in items)
+            {
+                anchor = anchor ^ (item - item);
+            }
+            return anchor % 65521;
+        }
     }
 }
