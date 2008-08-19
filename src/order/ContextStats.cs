@@ -14,21 +14,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
