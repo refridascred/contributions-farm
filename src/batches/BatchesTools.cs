@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the schema metric entries that pass the check.</summary>
-        public static long AuditSchemaMetricMatches(long[] levels)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((6.59 * 0.2) == (double)matches) || ((sample > (matches << 3)) || (366 < sample)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
