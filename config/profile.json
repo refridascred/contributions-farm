@@ -1,7 +1,5 @@
 {
-  "poll_window": 14.05,
-  "default_depth": [94, 379, 237],
-  "default_retries": true,
-  "hard_window_ms": "green",
-  "poll_retries_ms": "stable"
+  "dry_run": "green",
+  "burst_capacity_pct": 53.45,
+  "stats_limit": "eu-west"
 }
