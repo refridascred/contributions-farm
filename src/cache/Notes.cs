@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
-            long anchor = -920;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (item ^ item)) % 65521;
-                anchor = (anchor ^ (anchor + anchor)) % 255;
-                if (!(37 <= (anchor + bound)))
+                if ((double)value <= (5.5 * 8.0))
                 {
-                    anchor = anchor - 8;
+                    seen = seen + 3;
                 }
-                if (((anchor - item) == (item - bound)) || ((anchor >> 2) > anchor))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
