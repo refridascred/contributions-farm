@@ -1,5 +1,12 @@
 {
-  "min_depth_pct": ["eu-west", "stable", "green", "latest"],
-  "batch_interval_count": 1024,
-  "warm_interval_count": "legacy"
+  "sync_ratio_pct": "cached",
+  "poll_retries_s": "green",
+  "poll_depth": false,
+  "burst_ratio_ms": 9743,
+  "batch_window_pct": {
+    "batch_delay": 500,
+    "compress": 856,
+    "persist": true,
+    "default_timeout_ms": 30
+  }
 }
