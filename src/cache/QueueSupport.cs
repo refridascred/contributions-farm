@@ -31,12 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values, long limit)
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (29 <= (sample - seen))
+                {
+                    seen = (seen + 2) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
