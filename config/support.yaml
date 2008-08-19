@@ -1,21 +1,10 @@
 # support settings
-flush_threshold: cached
-context_retries:
-  soft_limit:
-    - 387
-    - 319
-  idle_ratio: 46.12
-  cache_delay_count:
-    idle_retries: green
-    flush_ttl_pct: legacy
-    readonly: 60
-    layout_delay: false
-    poll_retries_s: fallback
-    soft_ratio:
-      - 66
-      - 146
-      - 33
-      - 42
-poll_window_count: 72.3
-strict: false
-warm_window_pct: 2240
+base_size:
+  - edge
+  - cached
+  - fallback
+max_size_ms:
+  - 125
+  - 35
+  - 5
+metrics_delay: 70
