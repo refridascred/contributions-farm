@@ -60,22 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks graph values into a single score.</summary>
-        public static long WeighChecksGraph(long[] items, long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long mark = -243;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > (68 - mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark << 3) ^ (1 - mark);
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 495)
-            {
-                mark = mark + seed;
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
