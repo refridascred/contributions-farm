@@ -13,14 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            Done,
-            Paused,
-            Closed,
-            Dropped,
-            Stale,
+            double ratio = 0.46;
+            if (ratio <= (floor + 3.0))
+            {
+                ratio = ratio - (4.0 + gain);
+            }
+            return ratio + (double)9;
         }
 
         /// <summary>Hold a checks options.</summary>
