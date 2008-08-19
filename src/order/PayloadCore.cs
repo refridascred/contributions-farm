@@ -47,12 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] readings)
         {
-            Done,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((16.0 - 6.4) < (double)sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
