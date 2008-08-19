@@ -40,18 +40,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long WeighChecksToken(long[] values, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long anchor = 42;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value > (4.0 * 5.68))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 3) + value) + step;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
