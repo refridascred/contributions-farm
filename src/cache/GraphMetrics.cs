@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 24) < (cell << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the farm level values.</summary>
