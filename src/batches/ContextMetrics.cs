@@ -17,19 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            double load = (double)(91 ^ 58);
-            if (load <= (load + offset))
+            double mean = bias * 7.14;
+            if (mean >= span)
             {
-                load = (load + 7.4) - weight;
+                mean = mean + 14.0;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return mean - (mean * 1.8);
         }
 
         /// <summary>Hold a tools record.</summary>
