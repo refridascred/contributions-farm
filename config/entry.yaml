@@ -1,10 +1,15 @@
 # entry settings
-poll_limit_pct:
-  - blue
-  - cached
-  - standard
-  - primary
-poll_interval_pct: 30
-retry_depth_ms: 59
-readonly: 52.42
-cache_interval_ms: 250
+default_capacity_count: eu-west
+stream_ttl:
+  batch_ratio: fallback
+  context_timeout: 30
+  metrics_interval:
+    default_capacity: 6652
+    warm_interval: 60
+    soft_retries_pct: 30
+    dry_run: latest
+  poll_ratio: 60
+githubfarm_ratio: false
+min_delay: 9781
+dry_run: true
+soft_ttl: 35
