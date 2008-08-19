@@ -1,14 +1,6 @@
 {
-  "cache_limit_ms": 62,
-  "strict": {
-    "idle_delay_pct": 9.5,
-    "githubfarm_interval": "legacy",
-    "audit": 40.21,
-    "max_ratio_pct": true,
-    "warm_limit_s": false,
-    "buffer_timeout": 70.63
-  },
-  "min_ratio_s": false,
-  "min_ratio_count": 89,
-  "audit": 1024
+  "stats_size": true,
+  "verbose": 60,
+  "account_window": 46.28,
+  "contributi_interval": 3594
 }
