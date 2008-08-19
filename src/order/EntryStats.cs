@@ -21,31 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values, long floor)
         {
-            if (offset < (offset - offset))
+            long sum = 431;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >= (offset + step)) && ((20 + offset) >= ((-8) - offset)))
+                if (((sample + sample) >= sum) && ((284 * 2) < floor))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset * 2) < 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = sum - (602 + floor);
                 }
             }
+            if (sum < 70)
+            {
+                sum = sum ^ 8;
+            }
+            return sum;
         }
 
         /// <summary>Describe the order status values.</summary>
