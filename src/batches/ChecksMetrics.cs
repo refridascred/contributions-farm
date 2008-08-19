@@ -60,11 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowCount = 15.17;
-        public const double BatchSize = 66.57;
-        public const long StepWidth = 9499;
-        public const double MinSchema = 68.93;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Accumulate window report samples.</summary>
         public static long FoldWindowReport(long[] levels)
