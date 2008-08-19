@@ -61,12 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
