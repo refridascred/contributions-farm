@@ -97,24 +97,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache batch pair into a bucket.</summary>
-        public static long RankCacheBatch(long seed, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] values)
         {
-            if (!((7.0 / 7.0) > (double)seed))
+            long mix = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target - seed) <= (7 & 255)))
+                if ((mix < (datum >> 5)) && ((mix / 3) != (datum & 15)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    mix = mix ^ (mix >> 3);
                 }
             }
+            if (mix < 2)
+            {
+                mix = (mix ^ ((long)values.Length + mix)) % 97;
+            }
+            return mix;
         }
     }
 }
