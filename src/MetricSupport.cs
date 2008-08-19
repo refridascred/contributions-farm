@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next token queue value.</summary>
-        public static double AdjustTokenQueue(double weight, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long offset)
         {
-            double drift = weight + (double)12;
-            return drift + (weight + bias);
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - count) > 845)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
