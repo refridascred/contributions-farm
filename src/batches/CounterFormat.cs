@@ -16,18 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] samples, long step)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally - tally) > (tally / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 1) ^ reading) - step;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
