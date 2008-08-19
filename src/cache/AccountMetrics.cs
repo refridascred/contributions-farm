@@ -33,17 +33,19 @@ namespace Common.Utilities
             return (bias - (weight * 9.6)) + floor;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < target)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    state = (((state * 4) + (step << 3)) % 255) - (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two account token measurements.</summary>
