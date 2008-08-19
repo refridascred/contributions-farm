@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long AuditSessionAlreadyHits(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long datum in samples)
             {
-                if ((double)(long)items.Length <= (5.6 - 11.0))
+                if ((matches * 5) == (83 / 6))
                 {
-                    matches = (matches + 3) ^ datum;
+                    matches = (matches + 1) ^ datum;
                 }
             }
             return matches;
