@@ -1,20 +1,5 @@
 # support settings
-dry_run:
-  - eu-west
-  - staging
-soft_threshold_s: 250
-compress: cached
-command_limit:
-  payload_retries: primary
-  soft_retries_s: 61.39
-  flush_depth_count: 21
-  strict:
-    batch_window_count: strict
-    strict: 500
-    enabled: legacy
-  cache_size: false
-  route_size:
-    - 136
-    - 442
-    - 138
-    - 346
+sync_retries: stable
+poll_ratio_count: 57.56
+retry_window: standard
+cache_ttl_s: strict
