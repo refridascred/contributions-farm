@@ -43,9 +43,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 1815;
-        public const long HardBudget = 5168;
-        public const long HardRatio = 2512;
+        /// <summary>Find the first counter support entry that matches the target.</summary>
+        public static long LocateCounterSupportIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
