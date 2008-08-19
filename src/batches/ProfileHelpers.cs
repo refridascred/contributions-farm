@@ -15,18 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series, long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((offset + 7) < (item & 31))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
