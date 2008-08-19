@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long origin)
         {
-            double gain = weight / 4.0;
-            if (gain <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + gain;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
