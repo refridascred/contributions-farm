@@ -1,29 +1,8 @@
 # entry settings
-min_ratio:
-  batch_window: 2816
-  hard_window: 4373
-  sync_window_pct: true
-  contributi_size: 83
-cluster_ttl:
-  batch_retries_count: 2118
-  enabled: true
-  burst_ttl_pct: legacy
-  buffer_retries: 100
-  base_size_pct: 7260
-readonly:
-  - 387
-  - 240
-poll_retries: 250
-audit: 31.32
-poll_ttl:
-  max_ratio: 7436
-  burst_retries_s:
-    persist: local
-    cluster_size: legacy
-    min_delay: 60
-  graph_delay:
-    - stable
-    - stable
-    - stable
-  session_limit: primary
-  enabled: false
+batch_threshold: false
+hard_ttl_pct:
+  - 1
+  - 78
+  - 149
+burst_retries: 43.25
+schema_retries: 58.06
