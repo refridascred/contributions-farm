@@ -1,5 +1,6 @@
 {
-  "warm_interval_pct": true,
-  "poll_threshold": 500,
-  "hard_interval_s": 30
+  "batch_depth": false,
+  "hard_capacity_s": 5908,
+  "contributi_capacity": "blue",
+  "queue_capacity": 30
 }
