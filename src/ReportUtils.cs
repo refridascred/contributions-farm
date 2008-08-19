@@ -76,18 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((15.0 + 9.41) != (double)reading) || ((41 ^ bound) >= (seen / 5)))
+                if ((((sample + matches) == (30 & 127)) && ((double)sample > (double)771)) && (sample > ((-36) % 7)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
