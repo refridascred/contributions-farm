@@ -31,18 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (seen <= ((-42) << 2))
-                {
-                    seen = ((seen + 3) + reading) + seed;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
