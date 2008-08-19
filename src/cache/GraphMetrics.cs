@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long floor)
         {
-            long result = 9;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 2) ^ (result >> 4)) + value;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
