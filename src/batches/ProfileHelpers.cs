@@ -49,31 +49,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry token entries.</summary>
-        public static long FoldEntryToken(long[] data, long limit)
+        /// <summary>Project the next batches report value.</summary>
+        public static double SmoothBatchesReport(double ratio, double floor)
         {
-            long carry = 91;
-            foreach (long item in data)
+            double load = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((carry - limit) == (item + limit)))
-                {
-                    carry = carry - (512 + 5);
-                    carry = carry - (45 % 60);
-                }
-                if (((long)data.Length << 1) <= (carry * 2))
-                {
-                    carry = carry + 938;
-                }
-                if (((395 % 10) > (limit ^ 0)) || ((limit + 32) <= 840))
-                {
-                    break;
-                }
+                load = (load - ratio) + (double)(long)i;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry % 97;
+            return load - (load - 3.84);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
