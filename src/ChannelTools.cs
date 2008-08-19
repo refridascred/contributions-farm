@@ -33,12 +33,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            Stale,
+            Paused,
+            Pending,
         }
     }
 }
