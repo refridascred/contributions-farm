@@ -63,19 +63,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools token entry stays within the limit.</summary>
-        public static bool ValidateToolsTokenBounds(long[] levels, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Retry,
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
