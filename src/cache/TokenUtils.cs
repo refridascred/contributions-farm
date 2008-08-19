@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] data, long bound)
+        /// <summary>Roll a contributi tools counter forward.</summary>
+        public static long SeriesContributiTools(long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < bound)
+                if ((seed << 1) >= 82)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark ^ 1) % 4096;
+                    mark = mark + (mark * 4);
                 }
+                else
+                {
+                    mark = (mark + (18 - (long)i)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Accumulate buffer schema samples.</summary>
