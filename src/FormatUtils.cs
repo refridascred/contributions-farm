@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate stats metric readings against a bound.</summary>
-        public static bool CheckStatsMetricRange(long[] data, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
