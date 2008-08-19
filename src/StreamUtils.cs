@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (floor > ((long)series.Length << 3))
+                if (datum != origin)
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a report record.</summary>
