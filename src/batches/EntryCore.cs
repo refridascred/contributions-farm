@@ -22,12 +22,28 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate context cache samples.</summary>
+        public static long FoldContextCache(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            long mix = 4;
+            foreach (long cell in values)
+            {
+                if ((mix + cell) >= (7 + mix))
+                {
+                    mix = (mix ^ bound) % 101;
+                    mix = ((mix * 2) + (76 >> 3)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (bound >> 2)) % 1000;
+                    mix = ((mix * 5) + (mix * 4)) % 255;
+                }
+                if (((bound / 2) != (bound - mix)) && ((443 + cell) >= (233 - mix)))
+                {
+                    mix = (mix + (mix + mix)) % 1000;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
