@@ -14,26 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long DigestBufferMetric(long[] values, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            double gain = (ratio / 7.0) / 6.0;
+            if (gain <= (offset * 9.0))
             {
-                if ((double)mark >= (20.0 - 9.29))
-                {
-                    mark = (mark - (8 * 2)) ^ entry;
-                }
-                else
-                {
-                    mark = (mark * 5) + (seed + mark);
-                }
+                gain = gain + (double)517;
             }
-            if (mark > 311)
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark << 2) ^ seed) % 1000;
+                gain = gain - (double)(long)i;
             }
-            return mark % 65521;
+            return gain + (offset + ratio);
         }
 
         /// <summary>Hold a editor stats.</summary>
