@@ -16,10 +16,12 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepWidth = 74.29;
-        public const long StepAlready = 5995;
-        public const long RetryAlready = 1483;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 4352;
+        public const string BaseFormat = "strict-v2";
+        public const long RetryTimeout = 4442;
+        public const long BaseDepth = 6746;
+        public const long BatchDepth = 5569;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool ValidateBatchesRange(long[] readings, long limit)
