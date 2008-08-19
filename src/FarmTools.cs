@@ -15,17 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long step, long target)
         {
-            long anchor = 720;
-            foreach (long value in series)
+            if ((step - step) > (step / 6))
             {
-                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-                anchor = ((anchor << 3) ^ (value % 3)) % 255;
-                anchor = (anchor - (anchor + 2)) % 4096;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((step - step) != (target >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank order cluster input into a small class.</summary>
