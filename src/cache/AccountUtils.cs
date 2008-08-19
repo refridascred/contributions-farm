@@ -24,22 +24,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((6 & 31) > tally)
-                {
-                    tally = ((tally + 2) + entry) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
