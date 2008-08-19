@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long offset)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
