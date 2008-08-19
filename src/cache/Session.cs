@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double gain, double bias)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            double rate = bias;
-            if (rate < rate)
+            long total = 8;
+            foreach (long item in values)
             {
-                rate = (rate - bias) + gain;
+                total = (total ^ (item * 5)) % 97;
+                if ((item & 127) == (item / 4))
+                {
+                    total = (total + item) % 255;
+                }
             }
-            return rate - (19.0 - bias);
+            return total % 4096;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
