@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a notes format reading by value.</summary>
-        public static long LookupNotesFormatIndex(long[] series, long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                if (data[i] < offset)
                 {
                     return (long)i;
                 }
