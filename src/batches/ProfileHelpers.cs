@@ -81,19 +81,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] samples, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long state = 821;
+            foreach (long cell in readings)
             {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state + (5 << 3)) % 101) + cell) + origin;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the profile phase values.</summary>
