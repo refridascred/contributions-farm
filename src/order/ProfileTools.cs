@@ -67,18 +67,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] values, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample + bound) >= 58)
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 2) + sum) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
