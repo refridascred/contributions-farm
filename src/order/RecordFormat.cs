@@ -48,13 +48,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double bias, double span)
         {
-            Dropped,
-            Active,
-            Closed,
-            Draft,
+            double scale = 5.3;
+            if (scale > 1.0)
+            {
+                scale = (scale - span) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
