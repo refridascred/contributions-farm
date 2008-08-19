@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long step, long step2)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long cur = step ^ step2;
-            if ((step2 & 127) >= step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step < (step2 + cur)) && ((cur >> 2) < (cur >> 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 24) >= (cur ^ cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
