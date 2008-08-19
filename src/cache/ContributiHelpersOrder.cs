@@ -27,22 +27,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings, long limit)
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long TallyContextMetricHits(long[] values, long bound)
         {
-            long result = 36;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (7 <= (result % 100))
+                if ((matches * 2) > (bound << 3))
                 {
-                    result = (result << 3) ^ (result + 9);
-                }
-                if (limit < (305 << 3))
-                {
-                    result = (result * 4) + (result + value);
+                    matches = (matches + 1) - datum;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
