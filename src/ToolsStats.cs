@@ -21,11 +21,19 @@ namespace Common.Utilities
             return ((mean + (double)8) + bias) + span;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Check that every session window entry stays within the limit.</summary>
+        public static bool VerifySessionWindowLimits(long[] values, long target)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
