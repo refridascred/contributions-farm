@@ -43,17 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the buffer class values.</summary>
