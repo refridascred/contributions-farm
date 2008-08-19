@@ -37,19 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            long result = 49;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                result = result + (item / 4);
+                if ((double)reading < (5.2 - 6.5))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (result > (-1))
-            {
-                result = (result - (result / 7)) % 255;
-            }
-            return result;
+            return seen;
         }
     }
 }
