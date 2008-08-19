@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] series, long origin)
         {
-            long score = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)score > (2.9 - 4.6))
+                if (value >= origin)
                 {
-                    score = (score - (item + score)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
