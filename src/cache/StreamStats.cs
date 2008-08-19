@@ -14,18 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] data, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)item < 2.01)
+                if (seed <= (seed ^ 812))
                 {
-                    carry = (((carry * 5) + item) % 97) - bound;
+                    mix = ((mix * 3) + seed) % 65521;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return mix;
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
