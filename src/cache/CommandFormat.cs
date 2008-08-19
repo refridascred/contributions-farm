@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double bias)
-        {
-            double ratio = 4.0;
-            if (ratio <= (double)280)
-            {
-                ratio = ratio - weight;
-            }
-            else
-            {
-                ratio = ratio - (double)11;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (double)3) + (double)(long)i;
-            }
-            return ratio - (bias - ratio);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowDepth = 9320;
+        public const double BurstStream = 39.67;
+        public const long CacheInterval = 774;
+        public const string BatchStream = "primary-edge";
+        public const long CacheScore = 8361;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long CompareFilterCount(long[] items)
