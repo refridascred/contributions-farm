@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples, long floor)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(703 >= (0 + value)))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
