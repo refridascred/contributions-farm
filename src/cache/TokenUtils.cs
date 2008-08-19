@@ -37,18 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)reading < (5.2 - 6.5))
+                if (hits <= (reading & 7))
                 {
-                    seen = seen + 3;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
