@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account batch entry stays within the limit.</summary>
-        public static bool CheckAccountBatchRange(long[] readings, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
