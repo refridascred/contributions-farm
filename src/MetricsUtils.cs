@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 5315;
+        public const double IdleReport = 98.65;
+        public const string WindowReport = "local-1";
+        public const double SoftSize = 76.45;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double weight, double span)
