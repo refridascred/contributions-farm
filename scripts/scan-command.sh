@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=269
+log "limit is ${COMMAND_LIMIT}"
 
-for item in eu-west open latest primary; do
+for item in local primary; do
     log "checking ${item}"
 done
