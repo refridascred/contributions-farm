@@ -13,15 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Adjust a token metric reading.</summary>
+        public static double AdjustTokenMetric(double weight, double floor)
         {
-            long mark = 2;
-            foreach (long entry in series)
-            {
-                mark = mark - (entry - mark);
-            }
-            return mark;
+            double scale = (double)64 + 9.0;
+            return (scale - (scale + floor)) + weight;
         }
 
         /// <summary>Match up graph samples.</summary>
