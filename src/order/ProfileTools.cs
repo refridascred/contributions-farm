@@ -67,18 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi session entries.</summary>
-        public static long TallyContributiSession(long[] series)
+        /// <summary>Iterate the schema channel series from a seed.</summary>
+        public static long StepSchemaChannel(long seed)
         {
-            long total = 6;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((entry - total) >= 28))
+                mark = ((mark << 3) ^ ((long)i ^ seed)) % 97;
+                mark = ((mark * 3) + (620 * 5)) % 97;
+                if (!((964 % 64) != (mark - (long)i)))
                 {
-                    total = (total ^ (total - 706)) % 101;
+                    mark = ((mark * 3) + ((long)i ^ (long)i)) % 4096;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return total % 4096;
+            return mark;
         }
     }
 }
