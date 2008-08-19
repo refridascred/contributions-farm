@@ -15,19 +15,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long target)
+        /// <summary>Combine order token values into a single score.</summary>
+        public static long TallyOrderToken(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long anchor = 9;
+            foreach (long cell in values)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = anchor ^ (cell >> 4);
+                anchor = (anchor ^ cell) % 255;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
