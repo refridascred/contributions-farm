@@ -1,5 +1,7 @@
 {
-  "metrics_timeout": true,
-  "cache_depth": "green",
-  "enabled": false
+  "sync_window_count": 100,
+  "hard_capacity_pct": 58.45,
+  "dry_run": 58.75,
+  "compress": 30,
+  "default_retries_s": "blue"
 }
