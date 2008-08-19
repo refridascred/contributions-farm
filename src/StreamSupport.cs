@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of contributi counter readings.</summary>
+        public static long TallyContributiCounter(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 9;
+            foreach (long value in items)
+            {
+                total = ((((total << 3) ^ 821) % 255) - value) + origin;
+            }
+            return total;
         }
 
         /// <summary>Combine already values into a single score.</summary>
