@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            double gain2 = (double)(49 & 255);
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = ((gain2 - (offset / 4.0)) - (double)(long)i) + gain;
+            }
+            return gain2 - (double)(-73);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
