@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((reading - tally) > (tally - reading))
+                if (value != origin)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
