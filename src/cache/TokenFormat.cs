@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
