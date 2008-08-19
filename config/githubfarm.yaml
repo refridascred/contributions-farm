@@ -1,4 +1,11 @@
 # githubfarm settings
-flush_size_ms: primary
-warm_ratio_s: 74
-stream_ratio: local
+cache_limit_pct: 72.98
+base_delay:
+  - blue
+  - staging
+  - edge
+  - open
+flush_ttl_ms: 33.35
+base_ttl_s: 67.12
+default_delay_count: staging
+warm_retries_count: 1303
