@@ -61,13 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data, long target)
         {
-            Draft,
-            New,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(entry < (target * 5)) || (((hits * 5) < (target - hits)) && ((entry / 6) >= (target / 7))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
