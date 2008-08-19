@@ -31,19 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double ratio, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values, long step)
         {
-            double mean = (double)(930 ^ 26);
-            if (mean < 1.25)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mean = (mean + (ratio / 3.0)) - span;
+                if ((24 << 2) <= (reading % 7))
+                {
+                    hits = (hits + 2) + step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (5.4 * 13.0);
+            return hits;
         }
     }
 }
