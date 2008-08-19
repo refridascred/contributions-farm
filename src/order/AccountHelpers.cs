@@ -36,23 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi channel readings.</summary>
-        public static long TotalContributiChannel(long[] readings, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long origin)
         {
-            long acc = 319;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((cell - acc) != (cell - limit))
+                if ((double)matches != (8.94 + 3.43))
                 {
-                    acc = (acc ^ (limit >> 2)) % 4096;
-                }
-                acc = (acc ^ (cell + 14)) % 65521;
-                if (((limit / 5) >= (acc + 28)) && ((double)acc <= (4.7 / 3.0)))
-                {
-                    acc = acc ^ (limit / 2);
+                    matches = ((matches + 3) + datum) + origin;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a account summary.</summary>
