@@ -46,31 +46,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long bound)
         {
-            if ((target >> 4) >= 189)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((97 + bound) > (target % 5))
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound > (6.0 - 3.5)) || ((double)target < (6.97 - 3.2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
