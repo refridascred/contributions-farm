@@ -43,24 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long step2)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long bound)
         {
-            if ((((-617) << 3) <= step2) || ((step2 + step) > 518))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 >= (step * 4)) || ((step2 + step2) < (step * 4)))
+                if (data[i] >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
