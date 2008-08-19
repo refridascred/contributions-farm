@@ -66,21 +66,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= bound)
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
