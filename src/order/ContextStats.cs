@@ -13,39 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank tools farm input into a small class.</summary>
-        public static long ClassifyToolsFarm(long floor, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] series, long offset)
         {
-            long delta = floor - origin;
-            if ((origin & 127) != (floor / 8))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) < (9 + delta))
+                if (item > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (8.0 < (double)delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + delta) <= (floor - delta))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
