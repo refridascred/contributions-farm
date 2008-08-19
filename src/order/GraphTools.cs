@@ -50,23 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (972 <= (step - 95))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstScore = "cached-v2";
+        public const string BatchCount = "staging";
+        public const string MinCount = "strict-edge";
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
