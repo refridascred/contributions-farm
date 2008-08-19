@@ -39,10 +39,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3779;
-        public const string MaxInterval = "strict-v2";
-        public const double BatchSpan = 38.85;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] series, long seed)
