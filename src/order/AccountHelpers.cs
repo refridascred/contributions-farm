@@ -45,12 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long seed)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)mark != (9.8 - 1.4)))
+                {
+                    mark = ((mark << 2) ^ seed) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
