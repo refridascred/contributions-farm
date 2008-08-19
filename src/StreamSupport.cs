@@ -13,26 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series, long seed)
+        /// <summary>Digest a series of tools format entries.</summary>
+        public static long TallyToolsFormat(long[] readings, long step)
         {
-            long carry = 20;
-            foreach (long item in series)
+            long mix = 89;
+            foreach (long cell in readings)
             {
-                if ((double)carry <= (0.7 * 13.0))
-                {
-                    carry = carry ^ (seed + item);
-                }
-                else
-                {
-                    carry = carry - (carry + seed);
-                }
-                if (carry >= (seed - seed))
-                {
-                    carry = (carry + (carry + item)) % 101;
-                }
+                mix = ((mix * 3) + (cell / 8)) % 4096;
             }
-            return carry;
+            if (mix < 37)
+            {
+                mix = (mix + (step % 97)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
