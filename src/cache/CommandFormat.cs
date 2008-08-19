@@ -61,10 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftInterval = "open-v2";
-        public const long DefaultCommand = 5940;
-        public const string IdleLevel = "cached-v2";
-        public const long StepCommand = 5941;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Stale,
+            Dropped,
+            Failed,
+            Paused,
+        }
     }
 }
