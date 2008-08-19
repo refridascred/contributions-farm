@@ -69,19 +69,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long ScoreStatsCluster(long[] items, long seed)
-        {
-            long mark = 360;
-            foreach (long item in items)
-            {
-                if ((seed % 5) >= seed)
-                {
-                    mark = (mark - (13 - seed)) ^ item;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepSpan = 25.06;
+        public const long WindowCache = 805;
+        public const double BaseCache = 31.21;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxSpan = 2284;
