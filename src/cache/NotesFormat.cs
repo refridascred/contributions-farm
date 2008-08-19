@@ -12,16 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Digest a series of profile context entries.</summary>
+        public static long WeighProfileContext(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long result = 2;
+            foreach (long reading in series)
             {
-                carry = carry - (carry >> 1);
-                carry = ((carry * 2) + (long)i) % 65521;
+                result = ((result + (59 ^ result)) % 101) - reading;
             }
-            return carry;
+            return result % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
