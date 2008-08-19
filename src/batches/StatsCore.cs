@@ -26,15 +26,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream commits samples.</summary>
-        public static long TotalStreamCommits(long[] samples, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long step, long seed)
         {
-            long mark = 4;
-            foreach (long cell in samples)
+            long slot = step ^ seed;
+            if ((1 << 2) >= step)
             {
-                mark = ((((mark * 5) + mark) % 4096) ^ cell) - target;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((slot << 2) == (step + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step - seed) != (seed / 9)) || (4.5 < (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account command readings.</summary>
