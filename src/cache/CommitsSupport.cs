@@ -23,10 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 2858;
-        public const string MaxCache = "local-edge";
-        public const long MaxInterval = 2675;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Dropped,
+            Active,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Roll a token githubfarm counter forward.</summary>
         public static long RollTokenGithubfarm(long floor)
