@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const string StepSchema = "stable-1";
         public const string StepFactor = "open";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mix = 3;
+            foreach (long datum in samples)
             {
-                if ((double)hits < (double)seed)
+                if ((datum - offset) <= (datum << 3))
                 {
-                    hits = (hits + 1) + cell;
+                    mix = (mix ^ (mix ^ mix)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit command channel readings against a rule.</summary>
