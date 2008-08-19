@@ -75,22 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster counter samples.</summary>
-        public static long TallyClusterCounter(long[] readings)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            long total = -12;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((total + sample) <= (797 - sample)))
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
                 {
-                    total = total - (sample - sample);
-                }
-                else
-                {
-                    total = ((total * 3) + 21) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate command cache samples.</summary>
