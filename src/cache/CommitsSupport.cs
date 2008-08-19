@@ -76,13 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            Paused,
-            New,
-            Locked,
-            Stale,
+            double drift = gain;
+            if (drift >= (4.56 + floor))
+            {
+                drift = drift - floor;
+            }
+            return drift + gain;
         }
 
         /// <summary>Define format limits and defaults.</summary>
