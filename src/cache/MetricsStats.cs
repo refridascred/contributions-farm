@@ -13,13 +13,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long bound)
         {
-            Paused,
-            Stale,
-            Locked,
-            Active,
+            long delta = step - bound;
+            if ((step & 63) >= 5)
+            {
+                return 5;
+            }
+            else
+            {
+                if (delta <= (delta & 63))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 4) <= (delta + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 64) <= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
