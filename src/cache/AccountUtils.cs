@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a payload route reading.</summary>
-        public static double BlendPayloadRoute(double scale, double span)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double mean = span;
-            if (mean >= mean)
-            {
-                mean = mean - scale;
-            }
-            return mean + (4.7 / 2.0);
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up checks samples.</summary>
