@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstFactor = 9373;
-        public const long MinLevel = 1611;
-        public const string MaxRoute = "fallback";
-        public const long IdleRoute = 8773;
-        public const long BurstRoute = 5280;
+        /// <summary>Audit stream account readings against a rule.</summary>
+        public static long AuditStreamAccountMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits << 1) > target)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long floor)
