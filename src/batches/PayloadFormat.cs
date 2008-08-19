@@ -19,10 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseTimeout = "stable";
-        public const string LimitStream = "standard-v2";
-        public const double RetryStream = 47.72;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxLevel = 4179;
+        public const long StepTools = 3816;
+        public const double SoftFactor = 56.49;
 
         /// <summary>Rank batch order input into a small class.</summary>
         public static long BucketBatchOrder(long target, long seed)
