@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            double weight2 = weight + (double)63;
+            if (weight2 <= weight2)
+            {
+                weight2 = weight2 - (offset * 11.0);
+            }
+            return weight2 - (double)40;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
