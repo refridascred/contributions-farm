@@ -13,19 +13,31 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if ((offset - (-245)) <= (seed & 15))
             {
-                if (sample <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((6 << 2) < (seed + offset))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset << 2) >= offset) && ((seed ^ offset) == (seed / 8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next stream value.</summary>
