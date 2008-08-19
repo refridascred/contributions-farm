@@ -23,12 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] values, long step)
         {
-            Paused,
-            New,
-            Failed,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the graph state values.</summary>
