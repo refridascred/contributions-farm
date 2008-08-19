@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = 428;
-            foreach (long value in data)
-            {
-                if (!((value + state) < state))
-                {
-                    state = state - (state + state);
-                }
-                state = state ^ (value + (-99));
-                state = state - (37 & 255);
-            }
-            return state % 65521;
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
