@@ -40,18 +40,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long CountSchemaRecordMatches(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = 49;
+            foreach (long item in items)
             {
-                if (datum > (15 + seen))
-                {
-                    seen = seen + 1;
-                }
+                result = result + (item / 4);
             }
-            return seen;
+            if (result > (-1))
+            {
+                result = (result - (result / 7)) % 255;
+            }
+            return result;
         }
     }
 }
