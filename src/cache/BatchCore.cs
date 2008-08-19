@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up commits graph samples.</summary>
-        public static long MatchCommitsGraphCount(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((6.6 + 9.36) > (double)step) && (hits >= sample))
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
