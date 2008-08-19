@@ -19,18 +19,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 41;
+            foreach (long entry in levels)
             {
-                if ((value * 3) >= (value ^ value))
+                if ((entry << 1) >= (entry + entry))
                 {
-                    hits = hits + 1;
+                    mix = (mix * 3) + (entry / 9);
                 }
             }
-            return hits;
+            if (mix < 98)
+            {
+                mix = mix - (mix ^ mix);
+            }
+            return mix % 97;
         }
     }
 }
