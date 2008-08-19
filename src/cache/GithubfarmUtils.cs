@@ -14,15 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            double scale = floor;
+            if (scale <= (bias / 6.0))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                scale = scale - (double)2;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale - 2.24)) + (double)(long)i;
+            }
+            return scale - 7.0;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
