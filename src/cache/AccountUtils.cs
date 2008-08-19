@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Hold a batch entry.</summary>
