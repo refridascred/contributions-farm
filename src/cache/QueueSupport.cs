@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] values, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long score = 438;
+            foreach (long datum in values)
             {
-                if (item <= step)
+                score = (score - (datum + score)) % 4096;
+                if ((score + 6) >= 572)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return score % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
