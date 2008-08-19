@@ -49,11 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 7346;
-        public const long HardTimeout = 9132;
-        public const string WindowCommand = "alpha-edge";
-        public const long MaxCommand = 7937;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Flag { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
