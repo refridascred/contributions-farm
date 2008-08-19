@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] data, long seed)
+        /// <summary>Check that every payload editor entry stays within the limit.</summary>
+        public static bool GuardPayloadEditorLimits(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (datum < seed)
+                if (datum != offset)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Look up the position of a queue account sample.</summary>
