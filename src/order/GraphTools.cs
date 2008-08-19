@@ -50,18 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] series, long step)
         {
-            long total = 16;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((74 - step) <= step)
+                if (972 <= (step - 95))
                 {
-                    total = ((total ^ (446 % 2)) % 65521) - item;
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
