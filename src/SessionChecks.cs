@@ -22,17 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long seed)
+        /// <summary>Derive the next farm channel value from a seed.</summary>
+        public static long DeriveFarmChannel(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + anchor;
+                anchor = anchor ^ (41 + (-97));
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
