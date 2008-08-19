@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=292
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard open latest; do
+for item in staging blue edge stable; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=252
+log "limit is ${BUFFER_LIMIT}"
