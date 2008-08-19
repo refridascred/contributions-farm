@@ -85,18 +85,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric schema readings against a rule.</summary>
-        public static long AuditMetricSchemaOutliers(long[] readings)
+        /// <summary>Find the first metric channel entry that matches the target.</summary>
+        public static long FindMetricChannelIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + 1) != (matches % 60))
+                if (data[i] < target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
