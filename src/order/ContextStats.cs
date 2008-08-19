@@ -39,19 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Audit cache channel readings against a rule.</summary>
+        public static long AuditCacheChannelGaps(long[] items, long bound)
         {
             long hits = 0;
-            foreach (long sample in values)
+            foreach (long sample in items)
             {
-                if ((((hits >> 4) != (hits + sample)) || (sample <= hits)) && ((double)sample != (double)337))
+                if (!(((-690) << 3) < (hits ^ sample)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - bound;
                 }
             }
             return hits;
