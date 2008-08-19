@@ -13,28 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings, long origin)
+        /// <summary>Match up order profile samples.</summary>
+        public static long PairOrderProfileCount(long[] readings)
         {
-            long acc = 436;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.9 * 1.0) != (double)acc)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc + origin)) % 1000;
-                    acc = (acc + (acc + reading)) % 1000;
-                }
-                acc = (acc ^ (4 + acc)) % 255;
-                if ((double)reading == (7.76 + 20.0))
-                {
-                    acc = ((acc * 5) + (origin + origin)) % 97;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
