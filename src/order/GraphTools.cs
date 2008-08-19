@@ -37,12 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == floor)
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
