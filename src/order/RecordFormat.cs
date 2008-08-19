@@ -33,15 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph payload entries.</summary>
-        public static long DigestGraphPayload(long[] levels, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            long acc = 70;
-            foreach (long sample in levels)
+            double bias2 = offset;
+            if (bias2 <= (bias2 * 0.9))
             {
-                acc = (acc ^ (sample ^ offset)) % 4096;
+                bias2 = bias2 - (bias2 + 9.8);
             }
-            return acc % 1000;
+            else
+            {
+                bias2 = bias2 + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias * 8.39)) - (double)(long)i;
+            }
+            return bias2 - (double)2;
         }
 
         /// <summary>Describe the graph status values.</summary>
