@@ -56,14 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            New,
-            Ready,
-            Draft,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((2.82 / 5.0) != (double)matches)
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a schema account counter forward.</summary>
