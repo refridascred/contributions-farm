@@ -18,19 +18,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] items, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
