@@ -24,11 +24,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            Idle,
+            New,
+            Done,
         }
     }
 }
