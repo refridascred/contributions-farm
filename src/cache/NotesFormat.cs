@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const long MaxFormat = 494;
         public const string RetryFormat = "local-v2";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] series)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
