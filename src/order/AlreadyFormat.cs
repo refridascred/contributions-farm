@@ -37,15 +37,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long target)
         {
-            long mark = -6;
-            foreach (long sample in series)
+            long gap = bound ^ target;
+            if (!((12.0 - 6.9) < (double)target))
             {
-                mark = ((mark + (origin + mark)) % 65521) ^ sample;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((gap >= (target - 9)) && ((target ^ bound) >= (gap / 9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
