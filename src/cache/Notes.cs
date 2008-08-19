@@ -15,21 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of checks stats readings.</summary>
-        public static long PairChecksStatsCount(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 2;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound - mix) >= bound)
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix ^ (cell / 3);
+                }
+                else
+                {
+                    mix = (mix ^ (2 % 60)) % 255;
                 }
             }
-            return seen;
+            if (mix > 34)
+            {
+                mix = ((mix << 3) ^ (bound + 84)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order status values.</summary>
