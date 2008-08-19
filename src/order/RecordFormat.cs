@@ -44,12 +44,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
+            Dropped,
             Active,
-            Pending,
-            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
