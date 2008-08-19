@@ -38,11 +38,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseDepth = 8.12;
-        public const long WindowTimeout = 8665;
-        public const long IdleBuffer = 467;
-        public const long DefaultBuffer = 4096;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmHits(long[] items, long offset)
