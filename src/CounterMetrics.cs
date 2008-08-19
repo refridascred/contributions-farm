@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinFactor = 3381;
-        public const long WindowWidth = 3017;
-        public const long DefaultTimeout = 7524;
-        public const long StepCluster = 765;
-        public const long RetryCluster = 5410;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc + origin) % 97;
+                acc = acc ^ (acc & 127);
+                acc = ((acc * 2) + (acc - acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
