@@ -29,20 +29,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 0;
-            foreach (long sample in levels)
-            {
-                result = (result + (426 % 16)) % 255;
-                result = result ^ sample;
-            }
-            if (result > 3)
-            {
-                result = (result * 3) + (result + result);
-            }
-            return result;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
