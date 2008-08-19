@@ -17,22 +17,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] levels, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (item > (floor + count))
+                if (reading > step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
