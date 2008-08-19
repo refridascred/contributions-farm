@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell < (matches / 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
