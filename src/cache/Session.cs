@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((83 * 2) == (datum ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the token phase values.</summary>
