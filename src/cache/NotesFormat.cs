@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits ^ hits) != (cell - 696))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
