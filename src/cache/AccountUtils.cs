@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell & 127) < (cell + (-604)))
-                {
-                    count = count + 1;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count profile token pairs that satisfy a relation.</summary>
