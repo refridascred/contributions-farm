@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of route queue entries.</summary>
+        public static long TallyRouteQueue(long[] readings)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Failed,
+            long score = 7;
+            foreach (long entry in readings)
+            {
+                if (((entry + score) >= 7) || (score < (score + entry)))
+                {
+                    score = score + score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
