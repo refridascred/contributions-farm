@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitFactor = "fallback-v2";
-        public const double HardNotes = 85.96;
-        public const long RetryNotes = 3129;
-        public const long SoftNotes = 7553;
+        /// <summary>Look up the position of a support token sample.</summary>
+        public static long LocateSupportTokenIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowCache = 5160;
