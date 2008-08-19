@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9762;
-        public const long SoftContext = 5953;
-        public const long IdleRatio = 5161;
-        public const string CacheContext = "standard";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate context token samples.</summary>
         public static long WeighContextToken(long[] data)
