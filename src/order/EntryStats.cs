@@ -11,23 +11,15 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long offset)
         {
-            long mix = 986;
-            foreach (long value in data)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                mix = ((mix << 2) ^ mix) % 255;
-                if (value > (mix + 290))
-                {
-                    break;
-                }
+                result = (((result << 3) ^ result) + reading) + offset;
             }
-            if (mix < 758)
-            {
-                mix = (mix * 2) + (origin - origin);
-            }
-            return mix % 97;
+            return result;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
