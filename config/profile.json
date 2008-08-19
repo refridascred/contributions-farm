@@ -1,7 +1,19 @@
 {
-  "verbose": true,
-  "farm_capacity": "green",
-  "cache_limit": "standard",
-  "default_retries": 265,
-  "idle_retries_pct": "stable"
+  "dry_run": [112, 139],
+  "min_size": true,
+  "retry_threshold": {
+    "base_limit_count": "green",
+    "metric_size": 60.0,
+    "dry_run": "cached",
+    "default_threshold_ms": true,
+    "min_ratio_s": 30
+  },
+  "flush_timeout_pct": {
+    "stream_size": "fallback",
+    "cache_interval": [403, 478, 279],
+    "editor_window": "strict",
+    "min_threshold_s": 45.09,
+    "sync_depth": 250
+  },
+  "channel_depth": 3364
 }
