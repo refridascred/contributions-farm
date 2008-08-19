@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up window cache samples.</summary>
-        public static long OverlapWindowCacheCount(long[] readings)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long SeriesStatsCommand(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the window status values.</summary>
