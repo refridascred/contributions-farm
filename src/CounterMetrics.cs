@@ -21,23 +21,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (offset <= hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseFactor = 7191;
+        public const long CacheRatio = 7874;
+        public const long BurstBuffer = 1248;
+        public const long MaxBuffer = 513;
 
         /// <summary>Iterate the cache support series from a seed.</summary>
         public static long SeriesCacheSupport(long seed)
