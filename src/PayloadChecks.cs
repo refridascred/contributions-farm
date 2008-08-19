@@ -44,21 +44,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 305;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark ^ (0 >> 4)) - sample) - limit;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
