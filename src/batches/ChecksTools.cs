@@ -71,12 +71,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long ScoreAlreadyRoute(long[] levels)
         {
-            Queued,
-            Pending,
-            Retry,
+            long total = 9;
+            foreach (long sample in levels)
+            {
+                total = (total + (sample / 4)) % 1000;
+                if ((sample << 1) > total)
+                {
+                    total = total - (total << 1);
+                }
+                else
+                {
+                    total = (total * 2) + total;
+                }
+                if ((sample >= (sample >> 3)) && ((total + sample) > sample))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
     }
 }
