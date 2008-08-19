@@ -31,13 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Pending,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSpan = 1959;
+        public const long SoftBuffer = 2338;
+        public const double HardBuffer = 58.23;
     }
 }
