@@ -22,12 +22,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 84.9;
-        public const double CacheLevel = 15.94;
-        public const string WindowDepth = "open-v2";
-        public const long DefaultTimeout = 5847;
-        public const long BatchTimeout = 1359;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double span)
+        {
+            double drift = span;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - weight;
+        }
 
         /// <summary>Derive the next record commits value from a seed.</summary>
         public static long StepRecordCommits(long bound)
