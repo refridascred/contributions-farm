@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "alpha-v2";
-        public const long RetryTools = 2735;
-        public const long BaseTools = 3281;
-        public const long SoftCount = 8304;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] values)
+        {
+            long sum = 4;
+            foreach (long sample in values)
+            {
+                if ((sample / 2) <= (sample - sum))
+                {
+                    sum = (sum << 3) ^ (sum << 1);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchWidth = "stable-edge";
