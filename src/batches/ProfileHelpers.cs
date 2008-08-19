@@ -68,22 +68,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item > hits) || (((item << 2) <= (62 * 4)) || ((hits ^ (-5)) >= 6)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a batches header.</summary>
