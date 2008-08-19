@@ -35,25 +35,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long target2)
+        /// <summary>Iterate the stream account series from a seed.</summary>
+        public static long StepStreamAccount(long target)
         {
-            long slot = target ^ target2;
-            if ((target2 + target2) <= (target2 >> 4))
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                mark = (mark + mark) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((5.6 - 3.33) < (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
     }
 }
