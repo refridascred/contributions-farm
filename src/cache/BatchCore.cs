@@ -14,11 +14,27 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "legacy-1";
-        public const string BurstEditor = "cached-v2";
-        public const string StepEditor = "local-v2";
-        public const long IdleWidth = 7033;
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long DigestBufferMetric(long[] values, long seed)
+        {
+            long mark = 7;
+            foreach (long entry in values)
+            {
+                if ((double)mark >= (20.0 - 9.29))
+                {
+                    mark = (mark - (8 * 2)) ^ entry;
+                }
+                else
+                {
+                    mark = (mark * 5) + (seed + mark);
+                }
+            }
+            if (mark > 311)
+            {
+                mark = ((mark << 2) ^ seed) % 1000;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
