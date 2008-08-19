@@ -31,19 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long limit)
         {
-            long total = 310;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 4) + (total - limit)) ^ value;
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 474)
-            {
-                total = (total * 4) + (total >> 3);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
