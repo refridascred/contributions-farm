@@ -1,14 +1,13 @@
 # githubfarm settings
-burst_limit: 85
-sync_delay_ms:
-  readonly: true
-  checks_retries: green
-  compress:
-    - 494
-    - 479
-    - 323
-  batch_ratio:
-    - eu-west
-    - legacy
-  audit: local
-format_window: latest
+record_delay: open
+counter_interval:
+  dry_run:
+    - strict
+    - stable
+  cache_timeout: false
+  hard_window:
+    - local
+    - stable
+payload_window: 93.54
+batch_delay_pct: true
+enabled: eu-west
