@@ -28,19 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] levels, long bound)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
