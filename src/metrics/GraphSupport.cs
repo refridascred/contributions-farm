@@ -26,19 +26,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items, long target)
+        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
+        public static bool GuardClusterCacheLimits(long[] series, long seed)
         {
-            long sum = -6;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = ((sum << 3) ^ target) ^ datum;
-                if (!((double)target < (double)sum))
+                if (entry > seed)
                 {
-                    sum = (sum * 3) + (-21);
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return valid;
         }
     }
 }
