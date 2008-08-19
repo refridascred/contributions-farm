@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const string WindowReport = "local-1";
         public const double SoftSize = 76.45;
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift - weight;
+            Queued,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Derive the next record commits value from a seed.</summary>
