@@ -28,32 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order cluster input into a small class.</summary>
-        public static long GradeOrderCluster(long target, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] series, long floor)
         {
-            long next = target ^ offset;
-            if ((offset * 2) > (next - offset))
+            long total = -827;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (48 <= (offset ^ offset))
+                total = (total + (804 >> 2)) + entry;
+                total = (total << 2) ^ (floor >> 2);
+                if ((total / 7) > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + target) <= target) || ((next - offset) <= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = (total << 3) ^ (floor % 64);
                 }
             }
+            if (total < 18)
+            {
+                total = total + (25 - total);
+            }
+            return total % 4096;
         }
     }
 }
