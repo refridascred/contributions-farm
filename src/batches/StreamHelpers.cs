@@ -74,12 +74,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            Locked,
-            Paused,
-            Dropped,
+            double gain = (double)(955 + 19);
+            if (gain < (double)(-80))
+            {
+                gain = ((gain - 14.0) + ratio) + offset;
+            }
+            return gain + gain;
         }
     }
 }
