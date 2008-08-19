@@ -29,39 +29,18 @@ namespace Common.Utilities
             return ((mean + (double)8) + bias) + span;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] values)
         {
-            long delta = bound - floor;
-            if (((delta ^ floor) > 806) && ((933 >> 3) > bound))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)delta != (9.0 - 8.53)) && (floor >= (floor / 8)))
+                if (!((datum >> 5) <= (5 + 6)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.0 / 9.0) <= (double)delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((delta - bound) != (floor & 63)) || ((551 - floor) < delta))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
