@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
+        public static double SmoothCommitsGithubfarm(double ratio, double span)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Paused,
-            Draft,
+            double rate = ratio;
+            if (rate >= (1.0 + rate))
+            {
+                rate = (rate + (ratio + ratio)) + span;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Accumulate notes samples.</summary>
