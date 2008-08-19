@@ -1,16 +1,14 @@
 {
-  "batch_capacity": 28,
-  "max_threshold_count": "fallback",
-  "soft_ratio_count": {
-    "metric_capacity": ["blue", "stable", "open"],
-    "stream_window": "green",
-    "verbose": 22.21,
-    "max_depth": {
-      "soft_ttl_s": ["stable", "primary", "staging", "latest"],
-      "batch_depth": "legacy",
-      "base_threshold": "staging"
-    },
-    "cluster_window": 51.9,
-    "record_limit": "primary"
-  }
+  "cache_limit_ms": 62,
+  "strict": {
+    "idle_delay_pct": 9.5,
+    "githubfarm_interval": "legacy",
+    "audit": 40.21,
+    "max_ratio_pct": true,
+    "warm_limit_s": false,
+    "buffer_timeout": 70.63
+  },
+  "min_ratio_s": false,
+  "min_ratio_count": 89,
+  "audit": 1024
 }
