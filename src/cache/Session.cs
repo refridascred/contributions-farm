@@ -14,18 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((target + (long)series.Length) >= (count ^ count)) && ((6 << 2) <= cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a route info.</summary>
