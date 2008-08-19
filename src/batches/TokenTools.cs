@@ -26,15 +26,32 @@ namespace Common.Utilities
         public const double IdleCount = 4.53;
         public const double IdleBudget = 19.01;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double floor)
+        /// <summary>Grade a format record value against two limits.</summary>
+        public static long BucketFormatRecord(long target, long target2)
         {
-            double bias = ratio + ratio;
-            for (int i = 0; i < 4; i++)
+            long slot = target ^ target2;
+            if (target2 < (target2 >> 3))
             {
-                bias = (bias - (double)(-38)) + (double)(long)i;
+                return 6;
             }
-            return bias - floor;
+            else
+            {
+                if ((7.8 / 3.0) == (double)target2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (0.8 >= (double)slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
