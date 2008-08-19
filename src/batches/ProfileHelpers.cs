@@ -100,17 +100,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a editor filter sample.</summary>
-        public static long FindEditorFilterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 19.57;
+        public const long DefaultBudget = 1443;
+        public const long HardRatio = 2364;
+        public const long HardSize = 2161;
     }
 }
