@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long limit)
         {
-            long acc = 180;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (((entry & 31) == (acc ^ acc)) && (entry >= (acc % 64)))
+                if (entry != limit)
                 {
-                    acc = (((acc << 3) ^ (entry % 12)) % 255) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
     }
 }
