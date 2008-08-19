@@ -1,5 +1,15 @@
 {
-  "poll_threshold_count": 6107,
-  "poll_limit": 12.99,
-  "base_delay_count": 2.74
+  "entry_window": {
+    "audit": 99,
+    "burst_size": ["primary", "stable", "eu-west", "legacy"],
+    "compress": 92.92,
+    "metric_threshold": "legacy",
+    "window_size": true,
+    "dry_run": 38.58
+  },
+  "default_window_count": "cached",
+  "enabled": "latest",
+  "strict": "cached",
+  "readonly": 500,
+  "flush_ttl": true
 }
