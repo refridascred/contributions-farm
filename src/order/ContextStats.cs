@@ -43,18 +43,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit entry commits readings against a rule.</summary>
-        public static long CountEntryCommitsMatches(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                if ((matches + item) <= matches)
+                sum = sum + (entry % 60);
+                sum = (sum ^ (-35)) % 4096;
+                if (((limit - 6) < (limit + limit)) || (limit < (limit + sum)))
                 {
-                    matches = matches + 1;
+                    sum = sum - (13 * 4);
+                }
+                else
+                {
+                    sum = sum ^ 167;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
