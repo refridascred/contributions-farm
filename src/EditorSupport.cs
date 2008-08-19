@@ -83,22 +83,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long TallyCommandCache(long[] values, long seed)
+        /// <summary>Classify a cache batch pair into a bucket.</summary>
+        public static long RankCacheBatch(long seed, long target)
         {
-            long score = 47;
-            foreach (long entry in values)
+            if (!((7.0 / 7.0) > (double)seed))
             {
-                if ((20.0 >= (double)entry) && ((score * 2) < (74 + (-147))))
+                return 5;
+            }
+            else
+            {
+                if (!((target - seed) <= (7 & 255)))
                 {
-                    score = score ^ (entry * 2);
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (score < 19)
-            {
-                score = (score * 3) + (seed % 16);
-            }
-            return score;
         }
     }
 }
