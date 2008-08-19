@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BaseBudget = "legacy-v2";
-        public const string SoftInterval = "alpha-1";
-        public const long BatchPayload = 3987;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 127) < (cell + (-604)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] data, long target)
