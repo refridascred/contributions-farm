@@ -29,15 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two support already measurements.</summary>
-        public static double ScaleSupportAlready(double bias, double offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double rate = bias;
-            if (rate <= (bias + 12.0))
-            {
-                rate = rate + bias;
-            }
-            return rate - offset;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit report tools readings against a rule.</summary>
