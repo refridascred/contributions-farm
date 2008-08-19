@@ -46,17 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 573;
+            foreach (long sample in items)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result - result)) % 97) + sample;
             }
-            return -1;
+            return result;
         }
     }
 }
