@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings, long bound)
+        /// <summary>Roll a githubfarm report counter forward.</summary>
+        public static long DeriveGithubfarmReport(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((bound + hits) <= bound))
+                if (!((double)seed == (9.3 - 8.5)))
                 {
-                    hits = (hits + 2) + sample;
+                    anchor = (anchor + (seed % 64)) % 1000;
                 }
+                anchor = anchor - ((long)i - 40);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Rank batch order input into a small class.</summary>
