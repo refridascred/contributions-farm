@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mean - (mean * 15.0);
         }
 
-        /// <summary>Roll a graph contributi counter forward.</summary>
-        public static long StepGraphContributi(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((long)samples.Length + 9) <= (864 >> 4))
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a notes options.</summary>
