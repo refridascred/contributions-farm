@@ -30,12 +30,13 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
