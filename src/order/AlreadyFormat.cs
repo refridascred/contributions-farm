@@ -19,26 +19,21 @@ namespace Common.Utilities
         public const double SoftWidth = 42.14;
         public const string SoftFactor = "open-v2";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long mark = 920;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset / 6) == (939 / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark << 2) ^ (mark + mark);
-                }
-                else
-                {
-                    mark = (mark ^ (offset & 255)) % 97;
-                }
-                if (!((datum - offset) > (offset - datum)))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
