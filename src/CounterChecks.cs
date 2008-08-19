@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const string MaxInterval = "strict-v2";
         public const double BatchSpan = 38.85;
 
-        /// <summary>Locate a batch stream reading by value.</summary>
-        public static long LocateBatchStreamIndex(long[] readings, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
