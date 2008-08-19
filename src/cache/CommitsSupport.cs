@@ -52,16 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double bias2)
-        {
-            double bias3 = (double)1 / 7.0;
-            if (bias3 < (double)724)
-            {
-                bias3 = (bias3 + (bias2 * 0.3)) - bias;
-            }
-            return bias3 - bias3;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3077;
+        public const long MaxDepth = 9611;
+        public const double HardPayload = 75.72;
+        public const long WindowDepth = 478;
+        public const long DefaultPayload = 925;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
