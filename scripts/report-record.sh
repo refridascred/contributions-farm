@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=95
-log "limit is ${RECORD_LIMIT}"
-
-for item in edge local latest stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=135
+log "limit is ${RECORD_LIMIT}"
