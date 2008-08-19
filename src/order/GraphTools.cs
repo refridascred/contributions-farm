@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up buffer schema samples.</summary>
-        public static long PairBufferSchemaCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseWidth = 6859;
+        public const long BurstCommand = 7236;
+        public const long IdleCommand = 9993;
+        public const string WindowCommand = "latest-1";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool VerifyCacheBounds(long[] levels, long target)
