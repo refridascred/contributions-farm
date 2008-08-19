@@ -19,12 +19,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardRatio = 54.75;
-        public const long BatchReport = 5915;
-        public const long MinInterval = 812;
-        public const double CacheRatio = 47.05;
-        public const string WindowLevel = "fallback-v2";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long seed)
+        {
+            if (((double)bound <= (7.3 / 2.0)) || ((seed & 7) != (bound / 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] samples)
