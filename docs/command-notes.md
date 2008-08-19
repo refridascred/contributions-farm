@@ -1,11 +1,10 @@
 # Command notes
 
-When a report fails, the stats handler retries a few times before giving up.
-The buffer report groups every cache by route.
-Keep channel and profile names short and lowercase.
+Use metrics settings to tune how often stats data is refreshed.
+When a editor fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep command values small
-- Prefer context defaults
+- Document new tools fields
+- Log every channel change
+- Review githubfarm limits each release
