@@ -1,5 +1,18 @@
 {
-  "enabled": "eu-west",
-  "token_limit": 77,
-  "persist": 39
+  "idle_limit_s": "primary",
+  "warm_timeout": 500,
+  "burst_interval_s": {
+    "poll_retries_count": ["primary", "staging", "edge"],
+    "audit": 60,
+    "window_interval": 10.6,
+    "session_depth": true,
+    "min_timeout": "fallback",
+    "compress": 1024
+  },
+  "idle_ttl_pct": 0.47,
+  "warm_interval_s": {
+    "retry_delay": 76.51,
+    "idle_interval_pct": 29.54,
+    "strict": 7201
+  }
 }
