@@ -24,11 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
