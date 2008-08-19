@@ -20,13 +20,14 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            Locked,
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
