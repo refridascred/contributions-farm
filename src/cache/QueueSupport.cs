@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long WeighChannelContributi(long[] series, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data, long floor)
         {
-            long carry = -49;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                carry = ((carry ^ (11 - value)) % 4096) + bound;
-                if ((0 << 2) > value)
+                if (((long)data.Length & 7) <= (899 + 730))
                 {
-                    carry = (carry + (value / 7)) % 255;
+                    seen = ((seen + 3) + entry) - floor;
                 }
-                carry = carry + (long)series.Length;
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
