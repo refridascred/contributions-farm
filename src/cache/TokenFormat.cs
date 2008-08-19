@@ -22,13 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Failed,
+            Active,
             Done,
-            Stale,
-            Ready,
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
