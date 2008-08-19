@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long target)
+        /// <summary>Blend two command order measurements.</summary>
+        public static double SmoothCommandOrder(double bias, double offset)
         {
-            long sum = 13;
-            foreach (long value in values)
+            double load = (bias - bias) - (double)506;
+            if (load >= (offset * 8.1))
             {
-                if ((2.82 * 9.2) == (double)value)
-                {
-                    sum = (sum - (target - 161)) % 4096;
-                }
-                if ((2 - value) >= (value % 7))
-                {
-                    sum = sum - (value + sum);
-                }
+                load = load - offset;
             }
-            return sum;
+            return load + load;
         }
 
         /// <summary>Hold a filter stats.</summary>
