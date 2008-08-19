@@ -17,15 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double mean = bias * 7.14;
-            if (mean >= span)
-            {
-                mean = mean + 14.0;
-            }
-            return mean - (mean * 1.8);
+            Draft,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
