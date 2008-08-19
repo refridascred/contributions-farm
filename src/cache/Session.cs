@@ -62,17 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support payload entry that matches the target.</summary>
-        public static long SeekSupportPayloadIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryInterval = 3907;
+        public const long CacheMetrics = 776;
+        public const long RetryFactor = 6331;
+        public const long SoftFactor = 6039;
     }
 }
