@@ -58,21 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter checks readings.</summary>
-        public static long CompareFilterChecksCount(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Synced,
         }
     }
 }
