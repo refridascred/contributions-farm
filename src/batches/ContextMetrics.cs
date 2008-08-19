@@ -40,11 +40,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxBudget = 5582;
-        public const long BaseEditor = 1294;
-        public const double BatchEditor = 92.45;
-        public const string CacheDepth = "strict";
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] data, long limit)
