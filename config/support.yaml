@@ -1,21 +1,20 @@
 # support settings
-idle_capacity_pct:
-  - cached
+dry_run:
+  - eu-west
   - staging
-  - latest
-retry_depth_s: local
-default_ratio: 25.24
-route_timeout: blue
-entry_ttl:
-  hard_delay: 15.33
-  burst_timeout_count: stable
-  githubfarm_retries:
-    - fallback
-    - fallback
-  batch_threshold: strict
-  verbose: 438
-audit:
-  - 369
-  - 257
-  - 57
-  - 57
+soft_threshold_s: 250
+compress: cached
+command_limit:
+  payload_retries: primary
+  soft_retries_s: 61.39
+  flush_depth_count: 21
+  strict:
+    batch_window_count: strict
+    strict: 500
+    enabled: legacy
+  cache_size: false
+  route_size:
+    - 136
+    - 442
+    - 138
+    - 346
