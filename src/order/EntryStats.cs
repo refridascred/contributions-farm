@@ -64,18 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long acc = -369;
-            foreach (long value in readings)
-            {
-                if ((double)limit == (double)value)
-                {
-                    acc = acc + (value - acc);
-                }
-            }
-            return acc;
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
