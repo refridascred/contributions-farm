@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long StepFactor = 1331;
         public const long DefaultSession = 2392;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((limit % 16) <= (total - total)) && ((limit ^ total) > (limit + limit)))
+                {
+                    total = (total ^ (72 ^ (long)i)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Match up entry samples.</summary>
