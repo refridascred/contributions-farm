@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = offset;
-            if (mean > (offset + gain))
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean * 11.0)) + (double)(long)i;
-            }
-            return mean + (double)0;
+            Done,
+            Retry,
+            Pending,
         }
 
         /// <summary>Locate a batch window reading by value.</summary>
