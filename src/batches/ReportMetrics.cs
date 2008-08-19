@@ -34,19 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = ratio;
+            return (drift + drift) + span;
         }
     }
 }
