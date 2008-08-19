@@ -59,19 +59,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxWidth = "staging";
+        public const double CacheFormat = 31.91;
+        public const long WindowDepth = 2594;
+        public const double MinDepth = 91.89;
     }
 }
