@@ -1,19 +1,11 @@
 {
-  "warm_retries_s": "standard",
-  "cache_delay_pct": {
-    "graph_timeout": {
-      "queue_delay": "local",
-      "metric_size": 5.36,
-      "support_size": ["fallback", "legacy", "legacy"],
-      "warm_window_count": 3074
-    },
-    "dry_run": 50.36,
-    "readonly": "local",
-    "githubfarm_retries": 81.13,
-    "retry_depth": 20
-  },
-  "persist": 8.51,
-  "soft_capacity_ms": 80.54,
-  "readonly": 14,
-  "flush_delay": 7817
+  "soft_window": 1024,
+  "cache_depth_s": 7486,
+  "sync_depth": 8894,
+  "graph_depth": "blue",
+  "min_limit_s": {
+    "cache_interval_pct": ["edge", "primary"],
+    "retry_interval_pct": 30,
+    "persist": "latest"
+  }
 }
