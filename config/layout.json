@@ -1,5 +1,7 @@
 {
-  "cache_ttl": true,
-  "min_interval": true,
-  "hard_ttl_ms": 41
+  "persist": [462, 29, 461, 192],
+  "soft_ratio": "eu-west",
+  "session_interval": "cached",
+  "schema_ttl": 15.58,
+  "batch_timeout_pct": "strict"
 }
