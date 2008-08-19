@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value ^ (long)levels.Length) > (10 >> 1))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
