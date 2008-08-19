@@ -39,15 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record schema entries that pass the check.</summary>
-        public static long AuditRecordSchemaMatches(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long reading in items)
             {
-                if (!((double)entry >= (6.4 * 0.4)))
+                if (!((reading - 536) != (7 % 100)))
                 {
-                    count = count + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
