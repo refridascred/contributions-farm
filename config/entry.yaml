@@ -1,15 +1,16 @@
 # entry settings
-already_retries: cached
-soft_timeout_ms: 60
-flush_ratio:
-  - legacy
-  - strict
-soft_retries_ms:
-  default_threshold_count: fallback
-  account_retries: 65
-  channel_threshold: 88
-burst_interval_count:
-  - stable
-  - cached
-  - primary
-  - strict
+strict:
+  - 227
+  - 113
+  - 253
+report_size: 98.73
+cache_delay_count:
+  - 122
+  - 391
+  - 93
+verbose:
+  compress: 54
+  support_delay: 88
+  strict: open
+  queue_ratio: 76.82
+base_capacity: 60
