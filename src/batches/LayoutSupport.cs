@@ -27,15 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long target)
         {
-            long score = 3;
-            foreach (long entry in samples)
+            if (1.3 <= (double)origin)
             {
-                score = ((score + (target ^ target)) % 255) + entry;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((double)origin >= 4.1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) <= (target - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
