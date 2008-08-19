@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
-        public static long TallyGithubfarmGraphOutliers(long[] readings, long bound)
+        /// <summary>Accumulate editor metrics samples.</summary>
+        public static long DigestEditorMetrics(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if ((seen * 4) >= bound)
-                {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (((result + (result << 3)) % 4096) ^ value) - seed;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
