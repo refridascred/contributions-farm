@@ -54,18 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Combine token entry values into a single score.</summary>
+        public static long TallyTokenEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = 8;
+            foreach (long entry in values)
             {
-                if (reading > ((long)samples.Length - hits))
+                result = ((result << 2) ^ (result * 4)) % 4096;
+                if ((result ^ entry) < result)
                 {
-                    hits = hits + 3;
+                    result = ((result << 2) ^ result) % 1000;
                 }
             }
-            return hits;
+            if (result < 1)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
     }
 }
