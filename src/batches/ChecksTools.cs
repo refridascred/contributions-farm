@@ -33,12 +33,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank buffer cache input into a small class.</summary>
+        public static long ClassifyBufferCache(long bound, long limit)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            if ((14.0 + 6.19) < (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound != (double)493) || ((limit ^ limit) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)0 <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit - bound) > limit) && ((limit ^ limit) < (bound << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank session input into a small class.</summary>
