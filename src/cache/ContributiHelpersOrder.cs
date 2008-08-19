@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Validate metric editor readings against a bound.</summary>
+        public static bool VerifyMetricEditorRange(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != step)
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
