@@ -1,18 +1,7 @@
 {
-  "batch_ttl": true,
-  "default_size_count": {
-    "default_size": false,
-    "graph_threshold": 78.86,
-    "burst_depth_count": "legacy",
-    "hard_timeout": 1024,
-    "cluster_limit": {
-      "max_limit_s": 90.01,
-      "warm_timeout": "legacy",
-      "base_size_s": true,
-      "support_depth": 60
-    },
-    "token_size": 30.27
-  },
-  "poll_delay": false,
-  "idle_ttl": "stable"
+  "session_retries": 9.26,
+  "profile_ratio": ["edge", "stable", "open"],
+  "base_window": 63.32,
+  "hard_limit_count": 250,
+  "payload_retries": 500
 }
