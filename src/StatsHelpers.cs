@@ -53,32 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long origin)
+        /// <summary>Check that every account batch entry stays within the limit.</summary>
+        public static bool CheckAccountBatchRange(long[] readings, long bound)
         {
-            long span = bound + origin;
-            if ((span ^ 1) >= (26 - bound))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.59 + 0.61) != (double)span)
+                if (item < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - span) > (span >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
