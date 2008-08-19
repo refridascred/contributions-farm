@@ -37,22 +37,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Compare every pair of token cache readings.</summary>
+        public static long PairTokenCacheCount(long[] levels)
         {
-            long state = 9;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state - 22) < state)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 4) + (5 + state)) - value;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < (-60))
-            {
-                state = ((state * 2) + state) % 97;
-            }
-            return state;
+            return tally;
         }
     }
 }
