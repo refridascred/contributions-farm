@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const string StepEditor = "local-v2";
         public const long IdleWidth = 7033;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double rate = weight;
-            if (rate <= weight)
-            {
-                rate = rate - (double)311;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - weight;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
