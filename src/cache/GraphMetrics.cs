@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
         {
-            Failed,
-            Stale,
-            Paused,
+            long result = 9;
+            foreach (long value in series)
+            {
+                result = ((result << 2) ^ (result >> 4)) + value;
+            }
+            return result;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
