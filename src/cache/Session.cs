@@ -28,32 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long step2 = target ^ step;
-            if ((step2 << 1) > (step & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step << 2) < step) || ((double)target == (18.0 * 0.9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.1 - 3.4) <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
