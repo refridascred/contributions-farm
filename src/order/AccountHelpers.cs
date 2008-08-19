@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally + 879) <= tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
