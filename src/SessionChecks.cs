@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            double bias2 = (double)(5 * 4);
+            if (bias2 >= 6.0)
             {
-                result = ((result << 3) ^ (seed / 3)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
+                bias2 = ((bias2 + (bias2 * 1.0)) + bias) - span;
             }
-            return result;
+            return bias2 - 2.9;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
