@@ -1,11 +1,8 @@
 {
-  "compress": 30,
-  "batch_ratio": {
-    "batch_ttl": "latest",
-    "min_retries": "strict",
-    "persist": "open"
-  },
-  "dry_run": "primary",
-  "base_window_s": false,
-  "queue_ratio": 30
+  "default_limit": true,
+  "default_limit_ms": 30,
+  "default_ttl": ["cached", "stable", "local", "standard"],
+  "burst_retries_count": "legacy",
+  "default_capacity_pct": [491, 403, 330],
+  "record_threshold": 98
 }
