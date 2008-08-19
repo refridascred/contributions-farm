@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((6.6 + 9.36) > (double)step) && (hits >= sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
