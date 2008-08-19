@@ -1,19 +1,22 @@
 # githubfarm settings
-max_ratio:
-  retry_limit:
-    batch_interval_ms: 7443
-    cache_interval_ms: 76
-    cache_ttl_s: staging
-  burst_size_count: green
-  idle_depth_s: 4155
-  soft_window: 1149
-  retry_ttl_count: strict
-tools_ratio: 8351
-hard_ttl_s: 6207
-default_limit: legacy
-readonly: 6
-idle_retries_s:
-  - 154
-  - 88
-  - 119
-  - 448
+audit: latest
+verbose: edge
+min_delay_s: false
+readonly: 853
+filter_timeout:
+  retry_size_count:
+    - strict
+    - standard
+    - green
+    - blue
+  sync_limit_pct:
+    - 357
+    - 210
+    - 206
+  flush_limit_s: 250
+  sync_limit_s:
+    - local
+    - edge
+    - eu-west
+  soft_size: false
+  hard_window_count: staging
