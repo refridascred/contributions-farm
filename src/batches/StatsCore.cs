@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values, long offset)
         {
-            Queued,
-            Stale,
-            Draft,
+            long anchor = 61;
+            foreach (long item in values)
+            {
+                if ((double)anchor == (2.8 + 5.7))
+                {
+                    anchor = (((anchor * 2) + 38) % 4096) ^ item;
+                }
+                anchor = ((anchor * 2) + (offset << 2)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine window values into a single score.</summary>
