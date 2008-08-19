@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
         {
-            long mix = 362;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((double)mix != (7.7 - 5.0))
+                if (2.0 >= (double)sample)
                 {
-                    mix = ((mix * 5) + reading) % 1000;
+                    matches = matches + 2;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
