@@ -25,9 +25,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 9740;
-        public const string WindowScore = "standard-1";
-        public const string WindowRatio = "stable-edge";
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
