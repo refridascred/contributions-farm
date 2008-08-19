@@ -1,16 +1,7 @@
 # entry settings
-strict:
-  - 227
-  - 113
-  - 253
-report_size: 98.73
-cache_delay_count:
-  - 122
-  - 391
-  - 93
-verbose:
-  compress: 54
-  support_delay: 88
-  strict: open
-  queue_ratio: 76.82
-base_capacity: 60
+flush_window: 8095
+metrics_interval: 100
+verbose: 86
+dry_run: true
+min_timeout_pct: true
+window_depth: 4785
