@@ -45,10 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstScore = "cached-v2";
-        public const string BatchCount = "staging";
-        public const string MinCount = "strict-edge";
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data)
+        {
+            long acc = 842;
+            foreach (long cell in data)
+            {
+                acc = ((acc ^ (acc + acc)) % 97) ^ cell;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] levels)
