@@ -1,15 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the filter queue.
-A batch that stays idle for too long is moved to the cache list.
-The counter report groups every format by checks.
+Defaults for tools live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the batch list.
 
-A route that stays idle for too long is moved to the farm list.
-Keep token and stream names short and lowercase.
-The session report groups every queue by stats.
+When a order fails, the githubfarm handler retries a few times before giving up.
+Run the farm check before changing any contributi limits.
+Keep record and layout names short and lowercase.
 
 ## Guidelines
 
-- Document new profile fields
-- Review order limits each release
-- Log every session change
+- Log every batch change
+- Validate queue input early
+- Keep buffer values small
