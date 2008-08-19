@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((16 + matches) < (matches + reading))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
