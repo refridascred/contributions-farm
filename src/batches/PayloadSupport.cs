@@ -30,22 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long state = 7;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum - datum))
-                {
-                    continue;
-                }
-                if (state <= datum)
-                {
-                    state = ((state << 2) ^ datum) % 65521;
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
