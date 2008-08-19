@@ -28,12 +28,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4187;
+        public const long LimitRatio = 8457;
+        public const double BatchDepth = 48.95;
+        public const string BurstGraph = "primary-v2";
     }
 }
