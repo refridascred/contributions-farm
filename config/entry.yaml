@@ -1,13 +1,4 @@
 # entry settings
-notes_timeout:
-  - green
-  - primary
-  - local
-  - standard
-min_timeout: 250
-persist: 76
-record_threshold: 1024
-retry_limit:
-  - primary
-  - legacy
-  - strict
+format_capacity: false
+idle_threshold_count: standard
+max_capacity: 72.94
