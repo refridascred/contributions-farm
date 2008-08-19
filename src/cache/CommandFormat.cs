@@ -44,10 +44,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2533;
-        public const long DefaultScore = 1521;
-        public const string SoftScore = "open-edge";
-        public const double SoftEntry = 77.28;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)limit > (0.9 - 1.4))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
