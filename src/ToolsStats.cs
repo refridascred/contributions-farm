@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric account value.</summary>
-        public static double AdjustMetricAccount(double bias, double span)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long step)
         {
-            double mean = (double)(91 * 4);
-            return ((mean + (double)8) + bias) + span;
+            long total = 9;
+            foreach (long datum in series)
+            {
+                if (!(total > (step & 255)))
+                {
+                    total = (total + total) % 97;
+                }
+                if (((datum + step) == (step - step)) || ((4.9 + 2.93) != (double)total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
