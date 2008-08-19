@@ -23,12 +23,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data, long origin)
         {
-            Ready,
-            Active,
-            Paused,
+            long score = 672;
+            foreach (long sample in data)
+            {
+                long tally = sample;
+                if ((sample ^ tally) < (sample + sample))
+                {
+                    tally = (tally * 2) + (origin - score);
+                    tally = (tally - (sample & 63)) % 97;
+                }
+                if ((long)data.Length == (40 + score))
+                {
+                    score = ((score * 5) + sample) % 97;
+                }
+            }
+            if (score > 123)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the record mode values.</summary>
