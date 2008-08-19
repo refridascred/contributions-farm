@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data, long bound)
         {
-            long mark = 379;
-            foreach (long cell in data)
+            long total = 517;
+            foreach (long reading in data)
             {
-                if ((0.14 * 2.0) > (double)mark)
-                {
-                    mark = ((mark * 2) + (393 * 4)) ^ cell;
-                }
+                total = (((total * 5) + bound) % 65521) ^ reading;
             }
-            if (mark > 230)
+            if (total < 271)
             {
-                mark = ((mark << 3) ^ (mark & 3)) % 97;
+                total = total - total;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Look up the position of a report notes sample.</summary>
