@@ -1,10 +1,10 @@
 # Command notes
 
-Use metrics settings to tune how often stats data is refreshed.
-When a editor fails, the support handler retries a few times before giving up.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+When a payload fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every channel change
-- Review githubfarm limits each release
+- Keep farm values small
+- Review metric limits each release
+- Validate session input early
