@@ -23,26 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout graph samples.</summary>
-        public static long DigestLayoutGraph(long[] items, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] data, long target)
         {
-            long acc = -817;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (!((target + cell) >= acc))
+                if (cell < target)
                 {
-                    acc = ((acc << 3) ^ (1 + 0)) % 255;
-                }
-                if (!((acc ^ cell) == ((long)items.Length * 3)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 3) + (target / 4)) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the record level values.</summary>
