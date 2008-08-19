@@ -47,17 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
