@@ -1,18 +1,33 @@
 # support settings
-dry_run: 40.73
-max_capacity_s: strict
-audit:
-  flush_threshold: false
-  idle_timeout:
-    - 69
-    - 401
-    - 160
-  warm_delay: blue
-  retry_limit_s: 8
-  burst_capacity: cached
-batches_retries:
-  - fallback
-  - local
-  - fallback
-persist: stable
-entry_limit: edge
+burst_window_count: 21.56
+poll_window:
+  audit:
+    flush_depth:
+      - 38
+      - 282
+    min_delay_pct:
+      - latest
+      - open
+    soft_window_ms:
+      - 77
+      - 108
+      - 165
+      - 250
+    sync_threshold_ms: cached
+    graph_ttl:
+      - blue
+      - local
+      - fallback
+    retry_timeout: 72.43
+  default_limit_ms:
+    - legacy
+    - local
+    - blue
+    - legacy
+  already_depth: 4195
+burst_timeout_ms: 3394
+min_timeout_pct: 1593
+warm_delay_pct:
+  - 438
+  - 330
+schema_interval: 250
