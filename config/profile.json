@@ -1,6 +1,5 @@
 {
-  "soft_timeout": [460, 437, 28, 138],
-  "max_capacity": "local",
-  "audit": "open",
-  "retry_delay_s": "green"
+  "context_ttl": 28.07,
+  "metrics_timeout": 1103,
+  "base_ratio_s": 1024
 }
