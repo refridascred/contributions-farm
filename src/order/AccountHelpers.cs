@@ -23,12 +23,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
             Paused,
+            Retry,
             Queued,
-            Synced,
+            Closed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
