@@ -44,18 +44,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long TallyWindowClusterMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count << 1) <= cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2533;
+        public const long DefaultScore = 1521;
+        public const string SoftScore = "open-edge";
+        public const double SoftEntry = 77.28;
     }
 }
