@@ -79,15 +79,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session cache readings.</summary>
-        public static long CombineSessionCache(long[] data)
+        /// <summary>Classify a farm metrics pair into a bucket.</summary>
+        public static long RankFarmMetrics(long origin, long offset)
         {
-            long acc = 461;
-            foreach (long entry in data)
+            if ((double)offset < (13.0 / 8.0))
             {
-                acc = (acc ^ (entry + acc)) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((origin & 3) > 3)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
