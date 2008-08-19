@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            Failed,
+            Dropped,
             Retry,
-            Queued,
-            Paused,
-            Idle,
         }
 
         /// <summary>Describe the tools level values.</summary>
