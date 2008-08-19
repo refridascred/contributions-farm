@@ -13,11 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 6320;
-        public const long SoftCommand = 6717;
-        public const long MaxCommand = 4370;
-        public const long IdleTimeout = 9340;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long CountBatchesHits(long[] series, long seed)
