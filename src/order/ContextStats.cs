@@ -43,24 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long target)
         {
-            long sum = 7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                sum = sum + (entry % 60);
-                sum = (sum ^ (-35)) % 4096;
-                if (((limit - 6) < (limit + limit)) || (limit < (limit + sum)))
+                if ((target + matches) != (target % 5))
                 {
-                    sum = sum - (13 * 4);
-                }
-                else
-                {
-                    sum = sum ^ 167;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
     }
 }
