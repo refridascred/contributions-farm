@@ -1,18 +1,19 @@
 {
-  "default_window_pct": 500,
-  "tools_ratio": 500,
-  "hard_timeout": {
-    "base_timeout_ms": true,
-    "retry_retries_s": {
-      "batch_size": 98.4,
-      "hard_timeout_count": "primary",
-      "retry_limit": 60
-    },
-    "format_delay": 13.88,
-    "contributi_threshold": 500,
-    "verbose": 49.01
+  "channel_limit": {
+    "checks_retries": 17,
+    "compress": "legacy",
+    "base_depth_count": true
   },
-  "strict": "legacy",
-  "max_ratio": false,
-  "stream_size": 37
+  "compress": {
+    "flush_limit": 500,
+    "default_interval_s": 8660,
+    "max_delay_count": 500,
+    "idle_threshold": false,
+    "min_threshold_ms": 4247
+  },
+  "metrics_capacity": {
+    "batch_limit_ms": 52.13,
+    "default_threshold_pct": true,
+    "strict": 100
+  }
 }
