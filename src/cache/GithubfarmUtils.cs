@@ -36,18 +36,11 @@ namespace Common.Utilities
         public const long WindowDepth = 7897;
         public const double HardRatio = 97.08;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (8.2 + 8.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
