@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double bias, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double rate = bias;
-            if (rate <= bias)
-            {
-                rate = (rate + 5.0) + span;
-            }
-            else
-            {
-                rate = rate - 4.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (rate / 9.0)) - (double)(long)i;
-            }
-            return rate - (double)2;
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
