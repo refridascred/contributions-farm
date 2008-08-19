@@ -27,18 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)(long)values.Length > (double)count)
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
