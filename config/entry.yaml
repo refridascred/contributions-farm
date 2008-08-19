@@ -1,6 +1,11 @@
 # entry settings
-dry_run: legacy
-enabled: 30
-metrics_threshold: 2.16
-flush_depth_count: 30
-flush_delay_pct: 1.26
+buffer_threshold:
+  - primary
+  - green
+  - legacy
+cache_window_count: 98
+format_delay: 60
+base_ttl_count:
+  - blue
+  - eu-west
+batch_timeout_s: 88.12
