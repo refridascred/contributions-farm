@@ -20,38 +20,18 @@ namespace Common.Utilities
             return bias2 + 3.77;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] samples, long step)
         {
-            if ((step * 2) >= (step % 5))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin * 2) <= step) || (step >= 41))
+                if ((tally - tally) > (tally / 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(64 > (step ^ step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (132 > (origin + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = ((tally + 1) ^ reading) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
