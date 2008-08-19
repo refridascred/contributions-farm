@@ -29,11 +29,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchWidth = 2880;
-        public const string BaseCount = "staging-edge";
-        public const long RetryPayload = 7988;
-        public const long WindowBudget = 9077;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels)
+        {
+            long result = 0;
+            foreach (long sample in levels)
+            {
+                result = (result + (426 % 16)) % 255;
+                result = result ^ sample;
+            }
+            if (result > 3)
+            {
+                result = (result * 3) + (result + result);
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] series, long origin)
