@@ -27,19 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Count the commits entry entries that pass the check.</summary>
