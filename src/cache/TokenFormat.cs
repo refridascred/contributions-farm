@@ -36,12 +36,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            Idle,
+            Retry,
+            Active,
+            Synced,
         }
     }
 }
