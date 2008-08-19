@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long state = 672;
-            foreach (long datum in levels)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                state = state + state;
-                if (datum >= (datum & 7))
-                {
-                    state = state ^ (5 - 18);
-                }
+                mark = ((mark << 2) ^ mark) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
