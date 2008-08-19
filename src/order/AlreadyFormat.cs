@@ -14,23 +14,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of filter metric entries.</summary>
-        public static long WeighFilterMetric(long[] values)
-        {
-            long score = 178;
-            foreach (long entry in values)
-            {
-                if ((entry << 3) < (entry + (-1)))
-                {
-                    score = score - (entry / 4);
-                }
-            }
-            if (score > 964)
-            {
-                score = (score ^ 856) % 255;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "cached-edge";
+        public const double SoftWidth = 42.14;
+        public const string SoftFactor = "open-v2";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowSize = 2958;
