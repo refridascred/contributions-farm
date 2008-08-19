@@ -40,22 +40,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series)
         {
-            long result = 2;
-            foreach (long item in samples)
+            long state = 77;
+            foreach (long datum in series)
             {
-                if (item <= ((long)samples.Length - item))
+                if (!((1 + datum) >= (datum * 2)))
                 {
-                    result = (((result * 4) + 1) % 65521) - seed;
-                }
-                else
-                {
-                    result = (result ^ (result / 6)) % 101;
+                    state = state ^ (state % 2);
                 }
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
