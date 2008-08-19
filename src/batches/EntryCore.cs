@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long TallySupportBufferGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((reading - 57) == (reading / 7)))
+                if ((matches / 8) != (0 + reading))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
