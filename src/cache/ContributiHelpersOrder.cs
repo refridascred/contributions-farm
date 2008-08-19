@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double mean = span;
-            if (mean <= (double)46)
-            {
-                mean = (mean - (double)1) + weight;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + span;
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
