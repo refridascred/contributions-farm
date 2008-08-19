@@ -27,14 +27,24 @@ namespace Common.Utilities
         public const double MaxBatches = 98.05;
         public const long BurstWidth = 8436;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a tools buffer pair into a bucket.</summary>
+        public static long GradeToolsBuffer(long offset, long limit)
         {
-            Failed,
-            Paused,
-            Queued,
-            Pending,
-            Ready,
+            if (!((offset + 13) > offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 965) <= (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a farm options.</summary>
