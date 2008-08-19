@@ -1,36 +1,13 @@
 # githubfarm settings
-soft_retries: true
-filter_depth: 5.86
-burst_window_ms:
-  verbose: 9430
-  warm_capacity:
-    - 99
-    - 477
-  strict: eu-west
-  persist: 28
-  readonly: 42.61
-hard_ratio:
-  enabled:
-    burst_limit: 14
-    verbose: 5008
-    flush_size_count: 4743
-    command_delay: eu-west
-    tools_limit: fallback
-  burst_capacity_s:
-    - 72
-    - 342
-  batches_retries: 1305
-  hard_threshold_count:
-    tools_ttl: 44
-    channel_limit:
-      - local
-      - primary
-      - stable
-    flush_interval:
-      - open
-      - latest
-      - stable
-  retry_depth_pct: 100
-  format_size: 29.81
-audit: 4995
-warm_capacity_pct: open
+batch_interval_s:
+  retry_retries_count: 59
+  default_ttl: 8556
+  soft_depth_s: cached
+  dry_run: false
+  audit:
+    - 485
+    - 414
+    - 352
+  cluster_timeout: 9090
+sync_limit_count: legacy
+flush_ttl_count: 1024
