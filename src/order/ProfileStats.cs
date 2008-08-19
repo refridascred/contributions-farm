@@ -16,16 +16,18 @@ namespace Common.Utilities
             return bias - (double)(-60);
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long anchor = 0;
+            foreach (long sample in samples)
             {
-                total = (total - (total - total)) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                if ((anchor % 16) >= (anchor - sample))
+                {
+                    anchor = (anchor - (sample >> 3)) % 65521;
+                }
             }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
