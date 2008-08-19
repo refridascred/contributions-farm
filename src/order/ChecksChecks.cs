@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double ratio = 0.46;
-            if (ratio <= (floor + 3.0))
-            {
-                ratio = ratio - (4.0 + gain);
-            }
-            return ratio + (double)9;
+            public string Owner { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
