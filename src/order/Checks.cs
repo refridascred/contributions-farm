@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate commits channel samples.</summary>
+        public static long CombineCommitsChannel(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long mix = -753;
+            foreach (long cell in samples)
+            {
+                if (!((mix / 2) < (origin & 255)))
+                {
+                    mix = ((mix + (754 * 2)) % 101) - cell;
+                }
+            }
+            if (mix > 58)
+            {
+                mix = (mix + origin) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Match up stream order samples.</summary>
