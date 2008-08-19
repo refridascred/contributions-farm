@@ -13,12 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 8409;
+        public const long DefaultWidth = 4364;
+        public const long HardLevel = 7470;
+        public const double SoftNotes = 41.29;
+        public const long BurstLevel = 7124;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long floor)
