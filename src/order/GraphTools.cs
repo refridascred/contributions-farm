@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of filter schema readings.</summary>
-        public static long CompareFilterSchemaCount(long[] readings)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
