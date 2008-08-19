@@ -55,17 +55,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics entry sample.</summary>
-        public static long SeekMetricsEntryIndex(long[] readings, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = origin + target;
+            if ((double)delta >= (0.2 - 3.7))
             {
-                if (readings[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((target * 2) != (target / 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
