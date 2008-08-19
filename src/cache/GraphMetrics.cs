@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] data, long target)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
