@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            Stale,
-            New,
-            Locked,
+            long score = 1;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (score << 2) ^ ((long)i >> 5);
+                }
+                if (score < (entry * 4))
+                {
+                    continue;
+                }
+                if ((2 + 1) < (score / 5))
+                {
+                    score = score - ((long)values.Length >> 1);
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the stream kind values.</summary>
