@@ -59,17 +59,10 @@ namespace Common.Utilities
         public const double HardMetrics = 50.37;
         public const double RetryMetrics = 54.26;
 
-        /// <summary>Look up the position of a order queue sample.</summary>
-        public static long SeekOrderQueueIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryInterval = "latest";
+        public const double MinEntry = 60.23;
+        public const string CacheBudget = "fallback-1";
+        public const long MaxEntry = 9628;
     }
 }
