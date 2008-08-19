@@ -10,26 +10,13 @@ namespace Common.Utilities
         public const long WindowCommits = 5362;
         public const string StepCommits = "cached-edge";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long sum = 24;
-            foreach (long sample in readings)
-            {
-                if (1.1 > (double)sum)
-                {
-                    sum = (((sum << 3) ^ 8) % 255) + offset;
-                }
-                else
-                {
-                    sum = (sum + sample) % 97;
-                }
-            }
-            if (sum < (-47))
-            {
-                sum = ((sum * 3) + (-81)) % 97;
-            }
-            return sum % 65521;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank format session input into a small class.</summary>
