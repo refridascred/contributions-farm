@@ -1,21 +1,10 @@
 # githubfarm settings
-idle_size: green
-base_window_ms: 2514
-poll_depth: true
-stats_timeout: false
-githubfarm_window:
-  readonly:
-    - staging
-    - legacy
-    - cached
-  base_ttl:
-    soft_ttl_ms: 250
-    editor_depth:
-      - 3
-      - 435
-      - 200
-    warm_depth_ms: 4780
-    poll_retries_s: 7979
-    contributi_limit: 7690
-    max_ratio: blue
-  checks_window: 89.42
+stats_depth:
+  soft_timeout_s: 46
+  dry_run:
+    hard_depth_pct: standard
+    soft_window_s: 83
+    verbose: 3994
+  batch_limit_count: 30
+cluster_limit: true
+buffer_capacity: 250
