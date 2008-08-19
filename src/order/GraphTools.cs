@@ -37,12 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] data, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
