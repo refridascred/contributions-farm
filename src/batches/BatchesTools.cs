@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] values, long step)
+        /// <summary>Fold a list of profile record readings.</summary>
+        public static long FoldProfileRecord(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = 612;
+            foreach (long entry in data)
             {
-                if ((24 << 2) <= (reading % 7))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = (hits + 2) + step;
+                    mix = ((mix - entry) % 255) - (long)i2;
                 }
+                mix = (mix ^ mix) % 255;
             }
-            return hits;
+            return mix;
         }
     }
 }
