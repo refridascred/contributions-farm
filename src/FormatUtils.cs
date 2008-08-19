@@ -65,14 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Synced,
-            Paused,
-            Dropped,
-            Active,
-            Ready,
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
