@@ -17,13 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Draft,
+            Failed,
             Ready,
-            Paused,
             Done,
+            Retry,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
