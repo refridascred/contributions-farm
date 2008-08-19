@@ -23,11 +23,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
