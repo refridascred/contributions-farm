@@ -55,14 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] items, long bound)
         {
-            Idle,
-            Closed,
-            Stale,
-            Synced,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
