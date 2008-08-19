@@ -13,22 +13,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 44;
-            foreach (long value in items)
-            {
-                if (!((-1) >= (mark << 3)))
-                {
-                    mark = (((mark << 3) ^ (limit + 260)) % 1000) ^ value;
-                }
-            }
-            if (mark > 11)
-            {
-                mark = (mark - (limit + limit)) % 101;
-            }
-            return mark;
+            Draft,
+            Active,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a tools options.</summary>
