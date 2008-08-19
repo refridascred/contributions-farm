@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next buffer checks value.</summary>
-        public static double ProjectBufferChecks(double rate, double bias)
-        {
-            double load = rate / 3.0;
-            if (load < bias)
-            {
-                load = load - (rate * 6.0);
-            }
-            else
-            {
-                load = load + (4.8 - rate);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (rate / 2.0)) - (double)(long)i;
-            }
-            return load - 19.0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitDepth = 8753;
+        public const long WindowCommits = 5362;
+        public const string StepCommits = "cached-edge";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] readings, long offset)
