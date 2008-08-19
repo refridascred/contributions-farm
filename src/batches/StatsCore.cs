@@ -38,12 +38,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
