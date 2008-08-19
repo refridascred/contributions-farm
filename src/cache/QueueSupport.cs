@@ -21,9 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 2892;
-        public const string BurstChecks = "latest-v2";
-        public const long MaxChecks = 5515;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen <= ((-42) << 2))
+                {
+                    seen = ((seen + 3) + reading) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
