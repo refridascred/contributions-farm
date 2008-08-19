@@ -1,5 +1,16 @@
 {
-  "min_ratio_count": 30,
-  "session_interval": "strict",
-  "strict": true
+  "burst_threshold_ms": {
+    "counter_threshold": "fallback",
+    "default_delay": true,
+    "editor_ratio": 7542,
+    "window_ratio": ["blue", "local", "strict", "stable"]
+  },
+  "hard_size_ms": "edge",
+  "report_size": 5.96,
+  "githubfarm_delay": {
+    "buffer_ratio": 57,
+    "graph_delay": "fallback",
+    "cache_timeout_pct": 75.9
+  },
+  "max_retries_count": 1024
 }
