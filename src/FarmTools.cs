@@ -28,13 +28,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Rank order cluster input into a small class.</summary>
+        public static long GradeOrderCluster(long target, long offset)
         {
-            Pending,
-            Idle,
-            Stale,
-            Paused,
+            long next = target ^ offset;
+            if ((offset * 2) > (next - offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (48 <= (offset ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + target) <= target) || ((next - offset) <= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
