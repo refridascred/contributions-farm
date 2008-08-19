@@ -30,22 +30,17 @@ namespace Common.Utilities
         public const long BaseWidth = 1469;
         public const long DefaultLayout = 8175;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
-            long state = 1;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((0 + 97) > (state + 641)) && (datum > state))
+                if (series[i] < target)
                 {
-                    state = (state * 3) + datum;
+                    return (long)i;
                 }
             }
-            if (state > 8)
-            {
-                state = ((state << 3) ^ (state & 63)) % 255;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Project the next batches window value.</summary>
