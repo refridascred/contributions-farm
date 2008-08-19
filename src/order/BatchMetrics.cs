@@ -32,10 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 9438;
-        public const long BurstSize = 7281;
-        public const long WindowLevel = 1460;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Synced,
+            Queued,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Look up the position of a editor batch sample.</summary>
         public static long FindEditorBatchIndex(long[] values, long origin)
