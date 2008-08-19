@@ -53,12 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] readings, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] == target)
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
