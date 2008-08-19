@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            long slot = floor + step;
-            if ((step * 4) <= (step << 3))
+            long span = offset - bound;
+            if (((16 % 64) < span) || ((bound / 2) == (span % 5)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (((54 << 1) > (step / 4)) || ((slot % 60) >= (978 + slot)))
+                if (((double)bound <= 4.2) && ((6.73 * 6.64) >= (double)span))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if (((step * 4) != (floor + floor)) || (((-482) + step) >= 7))
+                    if (offset >= (947 - bound))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 4;
+                        if (((span << 3) != (bound >> 2)) && ((bound << 2) < (offset & 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
