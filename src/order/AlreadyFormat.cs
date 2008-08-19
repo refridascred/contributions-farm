@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long total = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                double load = (double)(total / 2);
+                if (load < (double)total)
+                {
+                    total = ((total * 4) + (long)i) % 65521;
+                    total = (total * 2) + ((long)i << 3);
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a token info.</summary>
