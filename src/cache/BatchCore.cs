@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 5) > (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
