@@ -2,13 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    ratio REAL,
-    label TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
     rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (ratio, label, rank) VALUES (4.11, 'fallback', 55);
-INSERT INTO commits_records (ratio, label, rank) VALUES (34.04, 'stable', 36);
-INSERT INTO commits_records (ratio, label, rank) VALUES (73.13, 'standard', 45);
+INSERT INTO commits_records (active, rank) VALUES (33, 29);
