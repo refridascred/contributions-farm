@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultContext = 4192;
         public const long HardContext = 1851;
 
-        /// <summary>Audit profile session readings against a rule.</summary>
-        public static long MeasureProfileSessionMatches(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((8.83 + 11.0) > (double)seen)
+                if ((double)sample <= (4.46 + 1.62))
                 {
-                    seen = (seen + 3) ^ cell;
+                    hits = (hits + 3) + target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
