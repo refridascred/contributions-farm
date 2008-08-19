@@ -34,18 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long seed)
         {
-            long anchor = 21;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor + target) <= value)
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
                 {
-                    anchor = anchor - target;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
