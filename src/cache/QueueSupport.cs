@@ -16,10 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 5160;
-        public const long DefaultLevel = 3016;
-        public const string SoftCount = "stable-v2";
+        /// <summary>Digest a series of tools order entries.</summary>
+        public static long FoldToolsOrder(long[] samples)
+        {
+            long carry = 2;
+            foreach (long entry in samples)
+            {
+                carry = (((carry * 5) + (carry / 5)) % 97) - entry;
+                if ((495 + carry) <= (1 % 3))
+                {
+                    carry = carry ^ (9 / 4);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
