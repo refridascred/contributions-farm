@@ -1,11 +1,11 @@
 # Command notes
 
-Keep graph and tools names short and lowercase.
-When a command fails, the order handler retries a few times before giving up.
+The token report groups every cluster by format.
+Keep payload and format names short and lowercase.
+A token that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Review cache limits each release
-- Document new metrics fields
-- Log every format change
+- Keep notes values small
+- Review report limits each release
+- Prefer window defaults
