@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
-        {
-            long carry = -89;
-            foreach (long cell in items)
-            {
-                carry = (carry - (66 - cell)) % 4096;
-            }
-            if (carry > 9)
-            {
-                carry = (carry + (carry % 24)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseRatio = 61.02;
+        public const double MaxBatches = 98.05;
+        public const long BurstWidth = 8436;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
