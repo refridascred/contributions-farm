@@ -20,17 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (step + anchor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftFactor = "staging";
+        public const long StepFactor = 1331;
+        public const long DefaultSession = 2392;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
