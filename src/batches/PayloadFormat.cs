@@ -46,14 +46,22 @@ namespace Common.Utilities
         public const long StepAccount = 5024;
         public const long LimitAccount = 5385;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate graph tools samples.</summary>
+        public static long FoldGraphTools(long[] data, long step)
         {
-            Ready,
-            Active,
-            Draft,
-            Pending,
-            Closed,
+            long mark = -809;
+            foreach (long datum in data)
+            {
+                if ((step - datum) == (datum << 2))
+                {
+                    mark = (mark - ((long)data.Length % 16)) % 4096;
+                }
+            }
+            if (mark > (-31))
+            {
+                mark = (mark + (69 << 2)) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
