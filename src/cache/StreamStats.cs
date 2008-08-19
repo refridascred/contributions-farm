@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 196;
-            foreach (long item in series)
-            {
-                result = ((result ^ (result % 8)) % 1000) ^ item;
-            }
-            return result;
+            Pending,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
