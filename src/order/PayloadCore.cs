@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 84.26;
-        public const long MaxFactor = 8649;
-        public const long WindowWidth = 8269;
-        public const long StepRatio = 587;
-        public const double BaseFarm = 29.35;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Paused,
+            Failed,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] readings)
