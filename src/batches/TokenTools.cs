@@ -14,18 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload notes readings against a rule.</summary>
-        public static long AuditPayloadNotesHits(long[] samples, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long slot = bound - origin;
+            if (((origin + bound) < bound) || ((bound << 2) != (slot % 5)))
             {
-                if ((entry - entry) != (step ^ 75))
+                return 1;
+            }
+            else
+            {
+                if ((origin / 4) == (bound << 2))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
