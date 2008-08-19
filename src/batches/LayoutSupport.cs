@@ -42,11 +42,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5347;
-        public const long WindowFactor = 2223;
-        public const long MinRatio = 6494;
-        public const long SoftContext = 6719;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long target)
+        {
+            if (!((double)floor >= (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (3.1 + 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (target >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target & 1) >= (floor * 3)) || (floor >= (floor + target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long floor)
