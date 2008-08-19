@@ -28,16 +28,13 @@ namespace Common.Utilities
         public const long HardLevel = 4436;
         public const string IdleScore = "alpha-1";
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result << 3) ^ (407 / 2);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
