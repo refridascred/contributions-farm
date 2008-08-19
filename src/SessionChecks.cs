@@ -49,14 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long seed)
         {
-            Retry,
-            Idle,
-            Closed,
-            Ready,
-            Stale,
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (seed >= (total + seed))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
