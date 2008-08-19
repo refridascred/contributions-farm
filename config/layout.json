@@ -1,6 +1,7 @@
 {
-  "batch_depth": false,
-  "hard_capacity_s": 5908,
-  "contributi_capacity": "blue",
-  "queue_capacity": 30
+  "cache_threshold_ms": "green",
+  "format_ttl": "edge",
+  "default_depth": false,
+  "warm_timeout_s": true,
+  "hard_threshold_ms": "staging"
 }
