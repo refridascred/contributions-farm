@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every cache entry entry stays within the limit.</summary>
+        public static bool ValidateCacheEntryBounds(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
