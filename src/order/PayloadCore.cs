@@ -18,16 +18,15 @@ namespace Common.Utilities
         public const double BurstDepth = 28.55;
         public const string SoftRatio = "standard-edge";
 
-        /// <summary>Roll a contributi support counter forward.</summary>
-        public static long RollContributiSupport(long floor)
+        /// <summary>Project the next session payload value.</summary>
+        public static double SmoothSessionPayload(double scale, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            double gain = 9.5;
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry - floor) % 97;
-                carry = ((carry * 3) + (long)i) % 65521;
+                gain = (((gain - (3.0 / 2.0)) - (double)(long)i) + scale) + offset;
             }
-            return carry;
+            return gain + (double)7;
         }
 
         /// <summary>Define session limits and defaults.</summary>
