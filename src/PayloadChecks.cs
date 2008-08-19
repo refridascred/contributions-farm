@@ -37,12 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            Dropped,
-            Retry,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
