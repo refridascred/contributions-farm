@@ -1,13 +1,7 @@
 {
-  "dry_run": {
-    "batch_delay_s": 250,
-    "batch_interval_count": [264, 321, 3],
-    "sync_ratio_pct": "primary",
-    "hard_capacity_count": "blue",
-    "sync_limit_s": 3163,
-    "batch_retries_s": "edge"
-  },
-  "poll_ttl_count": "blue",
-  "verbose": false,
-  "base_interval_s": [39, 96, 136, 206]
+  "account_ttl": 60,
+  "verbose": true,
+  "soft_window_ms": 65.61,
+  "enabled": 3480,
+  "hard_delay": [101, 13, 164, 113]
 }
