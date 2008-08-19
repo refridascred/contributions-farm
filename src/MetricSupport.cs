@@ -34,21 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
