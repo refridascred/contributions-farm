@@ -19,19 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] values, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            long anchor = 61;
-            foreach (long item in values)
+            double ratio = (gain * 8.0) - gain;
+            if (ratio <= (double)64)
             {
-                if ((double)anchor == (2.8 + 5.7))
-                {
-                    anchor = (((anchor * 2) + 38) % 4096) ^ item;
-                }
-                anchor = ((anchor * 2) + (offset << 2)) % 65521;
+                ratio = ratio + (bias / 7.0);
             }
-            return anchor % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Accumulate stream commits samples.</summary>
