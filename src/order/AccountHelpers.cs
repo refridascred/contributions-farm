@@ -25,18 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile channel entries that pass the check.</summary>
-        public static long AuditProfileChannelOutliers(long[] items)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count << 2) == (count - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
