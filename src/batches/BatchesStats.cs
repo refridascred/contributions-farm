@@ -37,11 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long mark = 502;
+            foreach (long item in items)
+            {
+                long hits = (item + mark) + (mark * 2);
+                if (!((8 - hits) == (894 + mark)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (hits * 2)) % 65521;
+                }
+                mark = (mark + (8 + mark)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a graph stats.</summary>
