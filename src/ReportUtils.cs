@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] items)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long mark = -93;
+            foreach (long entry in items)
+            {
+                mark = (((mark << 3) ^ mark) % 4096) ^ entry;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
