@@ -47,15 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Measure how many notes record samples are out of range.</summary>
+        public static long AuditNotesRecordHits(long[] data)
         {
-            long result = 41;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                result = ((result << 2) ^ (result - result)) - reading;
+                if ((double)reading <= 10.0)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
