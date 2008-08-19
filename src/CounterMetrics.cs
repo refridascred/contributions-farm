@@ -37,22 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = 7;
-            foreach (long value in data)
-            {
-                if ((4 / 8) > acc)
-                {
-                    acc = ((acc << 2) ^ value) % 65521;
-                }
-                if (!((14.0 - 18.0) < (double)value))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            Failed,
+            Draft,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank already buffer input into a small class.</summary>
