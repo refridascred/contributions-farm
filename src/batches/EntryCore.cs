@@ -48,13 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] items, long step)
         {
-            New,
-            Queued,
-            Done,
-            Synced,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the format state values.</summary>
