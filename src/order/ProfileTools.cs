@@ -63,16 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                sum = ((sum * 2) + sum) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
