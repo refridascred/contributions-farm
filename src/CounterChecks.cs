@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Iterate the commits channel series from a seed.</summary>
+        public static long RollCommitsChannel(long target)
         {
-            double drift = 9.0;
-            if (drift > span)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - gain;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry - (72 + target)) % 65521) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - (double)621;
-            }
-            return drift - (drift - 3.4);
+            return carry;
         }
 
         /// <summary>Roll a window metric counter forward.</summary>
