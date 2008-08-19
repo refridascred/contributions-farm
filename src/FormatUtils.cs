@@ -22,14 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Iterate the graph metric series from a seed.</summary>
+        public static long IterateGraphMetric(long step)
         {
-            Retry,
-            Ready,
-            Failed,
-            Active,
-            Stale,
+            long sum = step;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum + (step >> 5);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token entry.</summary>
