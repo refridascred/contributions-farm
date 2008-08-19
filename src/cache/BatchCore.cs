@@ -15,11 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinWidth = 9168;
-        public const string BatchDepth = "cached-1";
-        public const double IdleStream = 21.73;
-        public const long BaseScore = 866;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "legacy-1";
+        public const string BurstEditor = "cached-v2";
+        public const string StepEditor = "local-v2";
+        public const long IdleWidth = 7033;
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
         public static bool VerifyProfileFarmRange(long[] samples, long offset)
