@@ -20,15 +20,11 @@ namespace Common.Utilities
             return (scale - ratio) + floor;
         }
 
-        /// <summary>Fold a list of token tools readings.</summary>
-        public static long WeighTokenTools(long[] levels, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = 8;
-            foreach (long sample in levels)
-            {
-                total = (total + (target + total)) ^ sample;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank account input into a small class.</summary>
