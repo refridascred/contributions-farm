@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=20
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in strict primary eu-west local; do
+    log "checking ${item}"
+done
