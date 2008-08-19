@@ -37,19 +37,25 @@ namespace Common.Utilities
         public const long BatchToken = 5273;
         public const string HardToken = "legacy";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples, long offset)
+        /// <summary>Roll a token githubfarm counter forward.</summary>
+        public static long RollTokenGithubfarm(long floor)
         {
-            long anchor = 9;
-            foreach (long datum in samples)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((((anchor << 2) ^ anchor) % 97) - datum) + offset;
+                bool ready = (double)60 <= (double)floor;
+                if (!(ready && (floor >= (mix >> 5))))
+                {
+                    ready = floor > (mix / 3);
+                    ready = (3 * 4) < ((long)i - mix);
+                }
+                if (!((0 * 4) <= floor))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (anchor > (-182))
-            {
-                anchor = ((anchor * 4) + (270 & 31)) % 65521;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
