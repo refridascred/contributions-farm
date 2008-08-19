@@ -1,8 +1,9 @@
-id,region,weight
-1,52,515
-2,19.13,84
-3,44.26,latest
-4,942,strict
-5,673,edge
-6,eu-west,primary
-7,24.03,86.52
+id,score,label
+1,102,608
+2,359,edge
+3,54.98,51.28
+4,primary,91.9
+5,strict,94.23
+6,cached,blue
+7,60.21,524
+8,330,60.86
