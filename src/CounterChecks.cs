@@ -39,25 +39,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a batches graph value against two limits.</summary>
-        public static long SortBatchesGraph(long offset, long seed)
-        {
-            if ((3 ^ offset) < 134)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ seed) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3779;
+        public const string MaxInterval = "strict-v2";
+        public const double BatchSpan = 38.85;
 
         /// <summary>Locate a batch stream reading by value.</summary>
         public static long LocateBatchStreamIndex(long[] readings, long origin)
