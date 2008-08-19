@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of commits filter readings.</summary>
-        public static long PairCommitsFilterCount(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(2 + 23);
+            if (mean > (floor + mean))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (0.38 / 8.0)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean + mean)) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Validate commits queue readings against a bound.</summary>
