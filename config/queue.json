@@ -1,7 +1,5 @@
 {
-  "soft_ratio_count": 70.03,
-  "soft_threshold_pct": true,
-  "counter_depth": [352, 61, 110],
-  "audit": false,
-  "counter_retries": 75.51
+  "readonly": 6877,
+  "flush_threshold_count": [336, 170, 325],
+  "flush_threshold_ms": "eu-west"
 }
