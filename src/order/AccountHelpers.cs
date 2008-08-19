@@ -34,23 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi filter measurements.</summary>
-        public static double AdjustContributiFilter(double rate, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long step)
         {
-            double drift = (span * 5.5) - rate;
-            if (drift <= (span * 2.0))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                drift = drift + (rate + span);
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 7.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 3.0) - (double)(long)i;
-            }
-            return drift + (13.0 * 5.5);
+            return ready;
         }
 
         /// <summary>Match up schema account samples.</summary>
