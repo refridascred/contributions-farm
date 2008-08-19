@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long RetryPayload = 7988;
         public const long WindowBudget = 9077;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] readings, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = -6;
+            foreach (long sample in series)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark + (origin + mark)) % 65521) ^ sample;
             }
-            return valid;
+            return mark;
         }
     }
 }
