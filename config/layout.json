@@ -1,6 +1,15 @@
 {
-  "default_ratio_pct": true,
-  "order_threshold": 46.42,
-  "burst_capacity_s": 8454,
-  "hard_ratio_s": 11
+  "idle_size_count": {
+    "account_delay": 23.6,
+    "cluster_retries": "blue",
+    "profile_window": {
+      "batches_threshold": "latest",
+      "account_size": "open",
+      "min_size": "blue"
+    }
+  },
+  "enabled": "stable",
+  "poll_window": 3222,
+  "soft_interval_pct": 56.93,
+  "burst_ttl_s": 20
 }
