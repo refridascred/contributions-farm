@@ -47,32 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long span = step ^ seed;
-            if (((span / 7) < (step - seed)) && ((double)step > (4.32 - 1.7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + span) <= (step ^ step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ 983) == (step / 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
