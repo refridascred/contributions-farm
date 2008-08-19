@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate session already readings against a bound.</summary>
-        public static bool CheckSessionAlreadyLimits(long[] samples, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long acc = 35;
+            foreach (long item in readings)
             {
-                if (entry != step)
+                if ((item ^ acc) >= item)
                 {
-                    ok = false;
+                    break;
+                }
+                if ((item * 2) >= acc)
+                {
+                    acc = (acc + 6) % 255;
+                }
+                if ((item ^ item) > (640 - 562))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
