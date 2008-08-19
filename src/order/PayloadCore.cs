@@ -42,22 +42,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Roll a contributi support counter forward.</summary>
+        public static long RollContributiSupport(long floor)
         {
-            long carry = 842;
-            foreach (long item in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6.35 - 3.2) <= (double)carry)
-                {
-                    carry = carry ^ (item / 7);
-                    break;
-                }
-                if (item <= (carry << 2))
-                {
-                    carry = (carry << 3) ^ (9 ^ carry);
-                }
-                carry = carry + (3 * 4);
+                carry = (carry - floor) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
             return carry;
         }
