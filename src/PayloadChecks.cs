@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two filter entry measurements.</summary>
-        public static double SmoothFilterEntry(double scale, double bias)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double scale2 = (double)(-68) / 7.0;
-            if (scale2 < (scale2 - 5.71))
-            {
-                scale2 = (scale2 + (scale + scale2)) - bias;
-            }
-            else
-            {
-                scale2 = scale2 - (scale2 - scale);
-            }
-            return scale2 - 1.74;
+            Pending,
+            Synced,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
