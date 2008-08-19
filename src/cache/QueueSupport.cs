@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Digest a series of support commits entries.</summary>
+        public static long WeighSupportCommits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long acc = 825;
+            foreach (long sample in values)
             {
-                if (((424 + sample) >= sample) || (((tally + tally) < sample) || (((long)items.Length >> 3) < tally)))
+                if ((sample < (sample - acc)) || ((sample >> 4) > (target >> 1)))
                 {
-                    tally = tally + 1;
+                    acc = (acc - (974 & 15)) % 1000;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
