@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleScore = 341;
-        public const long BurstContext = 9120;
-        public const long DefaultContext = 4192;
-        public const long HardContext = 1851;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] items, long target)
