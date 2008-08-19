@@ -79,12 +79,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Paused,
+            Dropped,
         }
     }
 }
