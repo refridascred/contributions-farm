@@ -60,19 +60,14 @@ namespace Common.Utilities
             return load - (load - 3.84);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] samples, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Look up the position of a editor filter sample.</summary>
