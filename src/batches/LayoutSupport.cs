@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (-61)) % 1000;
-                if (!((bound - 5) < (total + bound)))
+                if (samples[i] == limit)
                 {
-                    total = (total << 2) ^ (long)i;
+                    return (long)i;
                 }
-                total = ((total * 5) + (total * 3)) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a batch header.</summary>
