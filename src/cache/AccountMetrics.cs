@@ -63,19 +63,18 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (sample >= seed)
+                if ((hits > (hits >> 4)) || ((double)item < 17.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
