@@ -44,10 +44,11 @@ namespace Common.Utilities
             return bias + 1.82;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSize = 1965;
-        public const long SoftWindow = 634;
-        public const long LimitWindow = 2129;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 7151;
+        public const long MaxSchema = 5624;
+        public const long BaseSpan = 6110;
+        public const long BurstSpan = 7765;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
