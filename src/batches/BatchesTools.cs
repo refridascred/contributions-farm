@@ -31,16 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double ratio, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)(930 ^ 26);
+            if (mean < 1.25)
             {
-                mark = mark + ((long)i - 9);
-                mark = ((mark * 2) + (long)i) % 1000;
+                mean = (mean + (ratio / 3.0)) - span;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (5.4 * 13.0);
         }
     }
 }
