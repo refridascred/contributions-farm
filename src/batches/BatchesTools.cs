@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples)
         {
-            if ((9.0 / 4.0) != (double)bound)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound ^ bound))
+                if ((3.8 / 7.0) > (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit >= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound & 7) != (bound + 423))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
