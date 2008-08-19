@@ -14,20 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] items, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (seed <= (seed ^ 812))
+                if (item <= floor)
                 {
-                    mix = ((mix * 3) + seed) % 65521;
+                    valid = false;
                     break;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Roll a report counter forward.</summary>
