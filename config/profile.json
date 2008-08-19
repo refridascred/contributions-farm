@@ -1,5 +1,8 @@
 {
-  "batch_ttl": [494, 365, 260, 408],
-  "report_limit": 3942,
-  "dry_run": [93, 418, 416, 163]
+  "flush_ratio_count": ["green", "standard", "local"],
+  "retry_retries": [127, 113, 325],
+  "max_threshold": 68.08,
+  "retry_interval": "eu-west",
+  "min_delay_pct": 60.18,
+  "default_capacity_count": 44.47
 }
