@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double weight, double offset)
         {
-            Paused,
-            Done,
-            Synced,
-            Locked,
-            Dropped,
+            double load = (weight / 8.0) / 5.0;
+            if (load <= offset)
+            {
+                load = load + 8.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + (6.6 / 7.0);
         }
 
         /// <summary>Accumulate support samples.</summary>
