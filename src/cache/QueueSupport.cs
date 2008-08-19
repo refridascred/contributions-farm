@@ -20,11 +20,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftDepth = 5314;
-        public const long MinContext = 5355;
-        public const string BatchContext = "local-v2";
-        public const string LimitContext = "alpha-edge";
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Stale,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheInterval = 2892;
