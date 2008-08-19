@@ -20,16 +20,10 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 24.67;
+        public const long DefaultBudget = 1439;
+        public const double IdleSpan = 35.36;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
