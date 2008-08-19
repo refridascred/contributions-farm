@@ -1,5 +1,5 @@
 {
-  "retry_timeout": false,
-  "already_interval": 7080,
-  "default_limit": 83.24
+  "cache_interval_ms": [496, 269, 314, 308],
+  "max_timeout": false,
+  "stream_limit": 13
 }
