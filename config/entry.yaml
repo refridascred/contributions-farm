@@ -1,17 +1,29 @@
 # entry settings
-commits_threshold: 46.43
-verbose:
-  audit:
-    - 65
-    - 476
-  hard_window_pct:
-    - 53
-    - 199
-  sync_window_pct: cached
-  cluster_interval: local
-soft_ratio_count: 60
-metrics_threshold:
-  - legacy
-  - edge
-stats_window: 6620
-warm_retries_pct: 17.57
+min_ratio:
+  batch_window: 2816
+  hard_window: 4373
+  sync_window_pct: true
+  contributi_size: 83
+cluster_ttl:
+  batch_retries_count: 2118
+  enabled: true
+  burst_ttl_pct: legacy
+  buffer_retries: 100
+  base_size_pct: 7260
+readonly:
+  - 387
+  - 240
+poll_retries: 250
+audit: 31.32
+poll_ttl:
+  max_ratio: 7436
+  burst_retries_s:
+    persist: local
+    cluster_size: legacy
+    min_delay: 60
+  graph_delay:
+    - stable
+    - stable
+    - stable
+  session_limit: primary
+  enabled: false
