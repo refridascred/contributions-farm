@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] levels, long bound)
         {
-            Locked,
-            Idle,
-            Ready,
-            Retry,
+            long state = 318;
+            foreach (long entry in levels)
+            {
+                if (((double)bound >= (4.8 / 8.0)) && ((2.33 + 3.64) != (double)state))
+                {
+                    state = (state - entry) % 1000;
+                }
+            }
+            if (state > 744)
+            {
+                state = (state - (bound & 15)) % 1000;
+            }
+            return state;
         }
     }
 }
