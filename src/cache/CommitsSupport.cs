@@ -46,18 +46,15 @@ namespace Common.Utilities
             return bias3 - bias3;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] series, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = 334;
+            foreach (long item in data)
             {
-                if (seen > target)
-                {
-                    seen = (seen + 3) + item;
-                }
+                acc = (((acc << 3) ^ acc) % 4096) ^ item;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
