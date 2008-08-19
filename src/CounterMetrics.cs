@@ -52,13 +52,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < (datum >> 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
