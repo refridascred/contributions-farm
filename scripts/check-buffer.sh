@@ -7,16 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=110
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in legacy eu-west cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
