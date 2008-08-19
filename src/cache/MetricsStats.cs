@@ -43,19 +43,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count the contributi entry entries that pass the check.</summary>
-        public static long MeasureContributiEntryGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((7.2 + 4.0) > (double)target) && ((count >> 4) == (target + target)))
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1803;
+        public const long SoftBudget = 4539;
+        public const long WindowFactor = 7719;
+        public const double RetryWindow = 49.15;
+        public const string LimitWindow = "legacy-1";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] samples)
