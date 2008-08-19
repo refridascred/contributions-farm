@@ -1,5 +1,36 @@
 # support settings
-stats_ratio: local
-flush_retries: false
-sync_window_s: eu-west
-batch_retries: 99
+schema_size:
+  dry_run: 1024
+  audit:
+    - cached
+    - stable
+  soft_depth:
+    - 488
+    - 193
+    - 241
+    - 123
+command_depth: false
+verbose: 85.21
+sync_delay_ms:
+  strict:
+    retry_size_ms: true
+    soft_timeout: true
+    support_size: 4946
+    soft_retries_s: open
+    hard_delay_count: 50.54
+    route_retries: false
+  already_timeout:
+    support_retries: 54
+    base_size_pct: legacy
+    cache_ratio_pct: true
+    sync_window: 3579
+    flush_size: 4476
+    burst_ttl: false
+  base_threshold:
+    - open
+    - fallback
+    - eu-west
+    - blue
+  idle_window_count: 500
+schema_capacity: 1024
+enabled: 6321
