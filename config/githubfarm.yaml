@@ -1,4 +1,8 @@
 # githubfarm settings
-readonly: staging
-retry_limit: 500
-batch_depth_ms: staging
+base_interval_ms: 87.31
+retry_ratio_count: 2572
+counter_interval:
+  - primary
+  - fallback
+  - strict
+  - latest
