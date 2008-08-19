@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
