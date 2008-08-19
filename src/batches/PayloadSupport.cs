@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = -6;
-            foreach (long datum in series)
-            {
-                anchor = (anchor ^ (anchor + datum)) % 255;
-            }
-            return anchor % 1000;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
