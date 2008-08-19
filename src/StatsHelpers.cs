@@ -48,24 +48,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long origin2)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long offset)
         {
-            if ((origin / 5) != (origin2 ^ origin2))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin * 2))
+                if (item >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
