@@ -19,15 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            if (limit > ((-14) + target))
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (484 <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(target >= (target >> 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4.43 - 17.0) > (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two layout measurements.</summary>
