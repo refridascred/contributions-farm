@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cluster buffer readings against a bound.</summary>
-        public static bool CheckClusterBufferBounds(long[] data, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the window status values.</summary>
