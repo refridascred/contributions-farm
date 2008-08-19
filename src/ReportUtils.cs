@@ -13,20 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate account graph readings against a bound.</summary>
-        public static bool ValidateAccountGraphBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchInterval = 18.65;
+        public const long DefaultRatio = 2165;
+        public const long BaseCache = 9226;
+        public const long StepCount = 5687;
+        public const long StepLevel = 1399;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long target)
