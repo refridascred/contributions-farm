@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Done,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 8678;
+        public const double StepProfile = 48.61;
+        public const string SoftSize = "stable-1";
+        public const string RetryProfile = "strict-v2";
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long step)
