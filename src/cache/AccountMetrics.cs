@@ -13,11 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the editor level values.</summary>
