@@ -62,15 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command buffer reading.</summary>
-        public static double ScaleCommandBuffer(double ratio, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double rate = 6.58;
-            if (rate >= rate)
-            {
-                rate = (rate + ratio) - floor;
-            }
-            return rate - (ratio / 5.0);
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
