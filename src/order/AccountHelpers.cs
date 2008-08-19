@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= seed)
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the queue status values.</summary>
