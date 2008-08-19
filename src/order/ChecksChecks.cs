@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = 928;
+            foreach (long cell in series)
             {
-                if ((15.0 / 6.0) == (double)sample)
-                {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + 3) - cell;
             }
-            return hits;
+            if (score > 18)
+            {
+                score = ((score * 2) + (99 ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the stats status values.</summary>
