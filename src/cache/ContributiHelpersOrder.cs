@@ -46,12 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
         {
-            Idle,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
