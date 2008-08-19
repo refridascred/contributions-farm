@@ -22,11 +22,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardScore = "open-v2";
-        public const long BurstBatches = 6776;
-        public const long CacheBatches = 6572;
-        public const double DefaultWidth = 33.38;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 84.9;
+        public const double CacheLevel = 15.94;
+        public const string WindowDepth = "open-v2";
+        public const long DefaultTimeout = 5847;
+        public const long BatchTimeout = 1359;
 
         /// <summary>Derive the next record commits value from a seed.</summary>
         public static long StepRecordCommits(long bound)
