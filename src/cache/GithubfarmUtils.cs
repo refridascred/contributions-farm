@@ -14,13 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
         {
-            Retry,
-            Closed,
-            Done,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
