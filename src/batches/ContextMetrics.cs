@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long TotalEditorWindow(long[] samples, long target)
         {
-            Draft,
-            Closed,
-            Pending,
+            long sum = 8;
+            foreach (long entry in samples)
+            {
+                if ((double)sum == (17.0 * 1.0))
+                {
+                    sum = (sum * 5) + (642 >> 5);
+                    sum = sum + (234 + entry);
+                }
+                sum = ((sum * 4) + (sum / 5)) % 97;
+                if ((double)target >= (double)9)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Project the next context value.</summary>
