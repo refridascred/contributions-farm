@@ -22,22 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((datum ^ matches) <= (long)values.Length)
+                if ((0.17 + 2.45) >= (double)count)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = ((count + 2) ^ value) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
