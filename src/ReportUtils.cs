@@ -48,39 +48,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long bound2)
-        {
-            if ((bound >> 1) >= (bound2 + bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound + bound2) == (bound2 + bound2)) || ((821 + bound2) > (-48)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound & 63) <= (bound << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)189 != (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleDepth = 4769;
+        public const string MinLevel = "local-edge";
+        public const string SoftStream = "standard-1";
+        public const long MaxDepth = 7049;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] values)
