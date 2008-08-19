@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Adjust a farm profile reading.</summary>
+        public static double ScaleFarmProfile(double gain, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            double ratio = offset;
+            if (ratio >= (ratio / 6.0))
             {
-                mark = ((mark << 2) ^ mark) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
+                ratio = (ratio + (double)2) - gain;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + (double)39;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Describe the format status values.</summary>
