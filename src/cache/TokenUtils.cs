@@ -40,17 +40,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum << 3) ^ step;
-                sum = ((sum << 2) ^ sum) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9831;
+        public const double SoftEntry = 36.37;
+        public const string SoftWidth = "latest-edge";
+        public const long StepInterval = 15;
     }
 }
