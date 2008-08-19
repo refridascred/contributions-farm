@@ -26,23 +26,9 @@ namespace Common.Utilities
             return ((weight - weight) + scale) + offset;
         }
 
-        /// <summary>Iterate the layout command series from a seed.</summary>
-        public static long SeriesLayoutCommand(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i + target) != ((long)i & 3))
-                {
-                    score = score - (target & 63);
-                }
-                if ((score - score) >= (long)i)
-                {
-                    score = score + (score - target);
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2406;
+        public const string WindowCount = "open-v2";
+        public const long MaxEditor = 1313;
     }
 }
