@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a support metric pair into a bucket.</summary>
-        public static long GradeSupportMetric(long target, long seed)
-        {
-            if ((seed << 3) < (81 % 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((6.7 - 1.1) > (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "legacy-edge";
+        public const double LimitMetrics = 24.0;
+        public const long CacheScore = 7493;
+        public const long CacheMetrics = 2443;
+        public const string CacheCount = "latest";
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
