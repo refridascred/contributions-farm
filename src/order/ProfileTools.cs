@@ -39,12 +39,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of contributi session entries.</summary>
+        public static long TallyContributiSession(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long total = 6;
+            foreach (long entry in series)
+            {
+                if (!((entry - total) >= 28))
+                {
+                    total = (total ^ (total - 706)) % 101;
+                }
+            }
+            return total % 4096;
         }
     }
 }
