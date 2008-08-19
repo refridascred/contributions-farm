@@ -36,15 +36,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 4)
+                    if ((values[i] - values[j]) != 4)
                     {
                         tally = tally + 1;
                     }
