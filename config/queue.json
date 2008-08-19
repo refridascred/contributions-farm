@@ -1,16 +1,8 @@
 {
-  "burst_threshold_ms": {
-    "counter_threshold": "fallback",
-    "default_delay": true,
-    "editor_ratio": 7542,
-    "window_ratio": ["blue", "local", "strict", "stable"]
-  },
-  "hard_size_ms": "edge",
-  "report_size": 5.96,
-  "githubfarm_delay": {
-    "buffer_ratio": 57,
-    "graph_delay": "fallback",
-    "cache_timeout_pct": 75.9
-  },
-  "max_retries_count": 1024
+  "batch_threshold": 1105,
+  "batch_timeout": 55,
+  "enabled": 250,
+  "default_depth_pct": 500,
+  "verbose": 76.7,
+  "audit": [379, 471, 488, 189]
 }
