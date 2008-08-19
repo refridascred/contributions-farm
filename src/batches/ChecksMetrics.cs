@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long BaseTools = 3281;
         public const long SoftCount = 8304;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (reading >= floor)
+                if ((cell + matches) < (9 / 8))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
