@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long OverlapClusterChecksCount(long[] series)
         {
-            long acc = 35;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item ^ acc) >= item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
-                }
-                if ((item * 2) >= acc)
-                {
-                    acc = (acc + 6) % 255;
-                }
-                if ((item ^ item) > (640 - 562))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
