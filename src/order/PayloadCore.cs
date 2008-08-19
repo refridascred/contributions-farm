@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many stream profile samples are out of range.</summary>
-        public static long TallyStreamProfileGaps(long[] items)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item * 3) < item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
