@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string WindowCommits = "primary-edge";
         public const string IdleWidth = "local-edge";
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] data, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double scale2 = scale * 6.4;
+            if (scale2 < (scale2 / 2.0))
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                scale2 = scale2 - (scale2 - scale2);
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (double)(-9)) + (double)(long)i;
+            }
+            return scale2 + (floor - 7.74);
         }
 
         /// <summary>Match up window samples.</summary>
