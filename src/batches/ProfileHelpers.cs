@@ -15,23 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] series, long offset)
         {
-            double ratio = (double)(6 - 3);
-            if (ratio < (double)746)
+            long matches = 0;
+            foreach (long item in series)
             {
-                ratio = (ratio + (16.0 - offset)) - gain;
+                if ((offset + 7) < (item & 31))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)79) + (double)(long)i;
-            }
-            return ratio + (double)5;
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
