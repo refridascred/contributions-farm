@@ -1,16 +1,45 @@
 # githubfarm settings
-flush_threshold:
-  batches_capacity: 7938
-  readonly: 18.51
-  burst_capacity_pct:
-    - 337
-    - 352
-    - 363
-    - 312
-  batch_threshold_s: stable
-  batch_size_ms: blue
-  default_window_count: 60
-readonly:
-  - primary
+flush_ttl_count:
+  - legacy
+  - local
+poll_window_s:
+  metric_window:
+    min_depth_s:
+      - 236
+      - 455
+    audit: 3440
+    burst_timeout_count: true
+    stats_timeout: 88.17
+    contributi_capacity: true
+  default_threshold: false
+  burst_delay_count: 64.79
+  audit: false
+  dry_run:
+    - 184
+    - 491
+    - 307
+  default_depth_s: false
+enabled: 1024
+poll_capacity:
+  commits_ratio: 25.88
+  dry_run:
+    - staging
+    - standard
+  min_delay:
+    base_threshold: legacy
+    burst_ttl_pct: 7616
+    flush_retries_s: fallback
+  sync_depth: stable
+  batch_window_s:
+    - 436
+    - 381
+  account_interval:
+    verbose: primary
+    audit: 42.31
+    tools_limit: false
+token_size:
+  - local
+  - strict
+  - eu-west
   - fallback
-layout_retries: 250
+commits_threshold: 9986
