@@ -48,18 +48,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)limit > (0.9 - 1.4))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftInterval = "open-v2";
+        public const long DefaultCommand = 5940;
+        public const string IdleLevel = "cached-v2";
+        public const long StepCommand = 5941;
     }
 }
