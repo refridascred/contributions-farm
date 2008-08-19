@@ -54,12 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
