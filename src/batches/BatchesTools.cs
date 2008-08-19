@@ -53,9 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2197;
-        public const double HardRatio = 48.19;
-        public const long SoftContext = 3031;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
