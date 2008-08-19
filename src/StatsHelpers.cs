@@ -73,19 +73,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] samples, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long score = 225;
+            foreach (long reading in samples)
             {
-                if (cell <= target)
+                if (!((score ^ reading) >= (score + reading)))
                 {
-                    stale = false;
-                    break;
+                    score = (score * 2) + (-35);
                 }
             }
-            return stale;
+            return score;
         }
     }
 }
