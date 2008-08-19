@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] items, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long score = 7;
+            foreach (long value in readings)
             {
-                if (value <= seed)
+                if (((origin << 2) >= 55) || (8.44 >= (double)origin))
                 {
-                    ok = false;
-                    break;
+                    score = (score - 41) ^ value;
+                }
+                else
+                {
+                    score = score + (origin % 60);
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the stats kind values.</summary>
