@@ -57,29 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((double)(long)i > 5.28) && ((carry ^ target) <= (-645)))
-                {
-                    carry = (carry * 2) + (carry >> 2);
-                    break;
-                }
-                else
-                {
-                    carry = carry + (target - target);
-                }
-                if (!(((carry & 1) != (long)i) || ((double)target <= (6.82 - 8.11))))
-                {
-                    carry = (carry << 2) ^ (target >> 3);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 11.76;
+        public const long SoftFormat = 967;
+        public const string WindowFormat = "fallback";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] items)
