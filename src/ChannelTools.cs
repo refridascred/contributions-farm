@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleTimeout = "strict-1";
+        public const string StepSpan = "local-1";
+        public const string HardBuffer = "fallback";
+        public const long BatchTimeout = 5010;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsLimits(long[] samples, long limit)
