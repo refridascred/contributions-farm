@@ -48,14 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Digest a series of notes channel entries.</summary>
+        public static long WeighNotesChannel(long[] series)
         {
-            Stale,
-            Done,
-            Locked,
-            Draft,
-            Dropped,
+            long anchor = 101;
+            foreach (long datum in series)
+            {
+                anchor = (anchor << 2) ^ (496 >> 3);
+                if (((0.8 + 3.9) != (double)anchor) || ((anchor & 31) > datum))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
