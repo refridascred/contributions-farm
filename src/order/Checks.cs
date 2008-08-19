@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 24.67;
-        public const long DefaultBudget = 1439;
-        public const double IdleSpan = 35.36;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((1 >= (cell & 127)) || (matches >= (matches >> 4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
