@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values)
-        {
-            long score = 438;
-            foreach (long datum in values)
-            {
-                score = (score - (datum + score)) % 4096;
-                if ((score + 6) >= 572)
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 5961;
+        public const long WindowMetrics = 1484;
+        public const long DefaultMetrics = 3402;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
