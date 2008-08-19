@@ -67,21 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema channel series from a seed.</summary>
-        public static long StepSchemaChannel(long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] values, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark << 3) ^ ((long)i ^ seed)) % 97;
-                mark = ((mark * 3) + (620 * 5)) % 97;
-                if (!((964 % 64) != (mark - (long)i)))
+                if ((sample + bound) >= 58)
                 {
-                    mark = ((mark * 3) + ((long)i ^ (long)i)) % 4096;
+                    matches = matches + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
     }
 }
