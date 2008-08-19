@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings, long step)
         {
-            Draft,
-            Paused,
-            Stale,
-            Closed,
+            long state = -90;
+            foreach (long cell in readings)
+            {
+                state = ((state - (step - step)) % 4096) ^ cell;
+            }
+            if (state > 5)
+            {
+                state = ((state * 5) + (state ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
