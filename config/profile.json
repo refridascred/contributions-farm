@@ -1,12 +1,6 @@
 {
-  "already_capacity": 24.48,
-  "hard_depth_ms": {
-    "batches_capacity": true,
-    "enabled": "stable",
-    "max_retries": 39,
-    "poll_retries_count": false,
-    "readonly": "cached",
-    "profile_size": 100
-  },
-  "poll_limit_pct": 58.07
+  "soft_timeout": [460, 437, 28, 138],
+  "max_capacity": "local",
+  "audit": "open",
+  "retry_delay_s": "green"
 }
