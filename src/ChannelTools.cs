@@ -13,18 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Look up the position of a layout token sample.</summary>
+        public static long LocateLayoutTokenIndex(long[] readings, long seed)
         {
-            long carry = 27;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((-905) << 2) > (offset / 5)) && (offset >= carry))
+                if (readings[i] >= seed)
                 {
-                    carry = carry ^ (reading / 9);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
