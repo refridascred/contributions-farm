@@ -1,9 +1,6 @@
-id,label,ratio
-1,39,legacy
-2,16.65,62.18
-3,53.79,48
-4,eu-west,18.39
-5,69,31
-6,619,803
-7,local,232
-8,87.33,primary
+id,count,label,state,level
+1,19,27.9,latest,eu-west
+2,759,899,51.83,383
+3,583,cached,369,63.32
+4,463,5.14,60.32,blue
+5,strict,stable,79.57,327
