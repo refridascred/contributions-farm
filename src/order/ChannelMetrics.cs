@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long BatchWidth = 5222;
         public const long DefaultQueue = 3988;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
