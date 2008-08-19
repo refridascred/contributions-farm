@@ -34,15 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((20 + datum) > ((long)levels.Length << 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
