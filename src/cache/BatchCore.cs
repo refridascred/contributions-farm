@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two graph schema measurements.</summary>
-        public static double ProjectGraphSchema(double scale, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            double bias = offset;
-            if (bias < (double)402)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                bias = bias + (offset - offset);
+                if (!((998 ^ seed) != (seed + (long)i)))
+                {
+                    mark = ((mark * 5) + mark) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (offset * 5.8)) + (double)(long)i;
-            }
-            return bias - offset;
+            return mark;
         }
 
         /// <summary>Adjust a notes reading.</summary>
