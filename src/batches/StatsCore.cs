@@ -35,18 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] series, long bound)
+        /// <summary>Fold a list of account command readings.</summary>
+        public static long DigestAccountCommand(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long acc = 69;
+            foreach (long reading in values)
             {
-                if ((double)reading < (1.59 - 1.0))
+                if (((long)values.Length - reading) >= (5 >> 1))
                 {
-                    matches = (matches + 3) - bound;
+                    acc = ((acc << 3) ^ (reading - origin)) % 1000;
                 }
             }
-            return matches;
+            if (acc > 216)
+            {
+                acc = ((acc * 3) + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
