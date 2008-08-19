@@ -28,14 +28,27 @@ namespace Common.Utilities
         public const long WindowTimeout = 2889;
         public const long HardSize = 627;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of window context readings.</summary>
+        public static long TallyWindowContext(long[] items)
         {
-            Locked,
-            Done,
-            Active,
-            Retry,
-            New,
+            long mix = 95;
+            foreach (long datum in items)
+            {
+                mix = (mix ^ (mix + mix)) % 4096;
+                if ((7.0 - 19.0) < (3.0 + 8.99))
+                {
+                    mix = (mix - datum) % 1000;
+                }
+                if ((double)mix <= (1.0 * 5.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 964)
+            {
+                mix = ((mix * 5) + (mix & 15)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
