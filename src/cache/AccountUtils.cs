@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Classify a tools notes pair into a bucket.</summary>
+        public static long SortToolsNotes(long bound, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            if ((seed - bound) < (bound + 996))
             {
-                total = (total << 2) ^ (long)i;
-                if ((step << 1) <= total)
-                {
-                    total = (total * 5) + total;
-                    total = (total + (step >> 1)) % 97;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((bound - bound) == (bound ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >= ((-34) % 16)) || ((829 & 31) > (bound / 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
