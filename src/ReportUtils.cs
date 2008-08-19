@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Validate account graph readings against a bound.</summary>
+        public static bool ValidateAccountGraphBounds(long[] data, long offset)
         {
-            long mix = 2;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((datum % 8) >= (964 + 1))
+                if (sample > offset)
                 {
-                    mix = (mix * 4) + (datum * 3);
-                }
-                else
-                {
-                    mix = (mix * 3) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 41)
-            {
-                mix = ((mix << 3) ^ mix) % 1000;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
