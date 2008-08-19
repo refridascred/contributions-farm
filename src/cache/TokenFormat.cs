@@ -19,22 +19,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mix = 41;
-            foreach (long entry in levels)
-            {
-                if ((entry << 1) >= (entry + entry))
-                {
-                    mix = (mix * 3) + (entry / 9);
-                }
-            }
-            if (mix < 98)
-            {
-                mix = mix - (mix ^ mix);
-            }
-            return mix % 97;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
