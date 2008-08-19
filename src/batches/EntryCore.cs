@@ -33,15 +33,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Dropped,
-            Failed,
-            Active,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftFactor = 7229;
+        public const long CacheDepth = 1793;
+        public const long LimitTimeout = 4185;
+        public const long DefaultTools = 4942;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] values, long offset)
