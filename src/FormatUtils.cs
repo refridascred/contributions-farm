@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
