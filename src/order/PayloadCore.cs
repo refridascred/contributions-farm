@@ -30,13 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a token session counter forward.</summary>
+        public static long StepTokenSession(long seed)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark ^ mark) % 4096;
+                mark = ((mark << 3) ^ (seed / 8)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
