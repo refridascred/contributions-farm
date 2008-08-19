@@ -25,19 +25,39 @@ namespace Common.Utilities
             return ((mean + (double)8) + bias) + span;
         }
 
-        /// <summary>Check that every session window entry stays within the limit.</summary>
-        public static bool VerifySessionWindowLimits(long[] values, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long delta = bound - floor;
+            if (((delta ^ floor) > 806) && ((933 >> 3) > bound))
             {
-                if (reading > target)
+                return 1;
+            }
+            else
+            {
+                if (((double)delta != (9.0 - 8.53)) && (floor >= (floor / 8)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 / 9.0) <= (double)delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((delta - bound) != (floor & 63)) || ((551 - floor) < delta))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
