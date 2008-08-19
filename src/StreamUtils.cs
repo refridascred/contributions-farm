@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!(((long)samples.Length & 63) == ((-6) & 255)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
