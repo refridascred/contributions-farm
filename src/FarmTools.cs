@@ -15,11 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 48.53;
-        public const long SoftPayload = 6538;
-        public const long RetryScore = 2433;
-        public const long BurstBudget = 4563;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank order cluster input into a small class.</summary>
         public static long GradeOrderCluster(long target, long offset)
