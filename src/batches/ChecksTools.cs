@@ -34,15 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Ready,
-            Locked,
-            Stale,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 1161;
+        public const double LimitSize = 36.6;
+        public const long BaseStats = 6471;
+        public const long StepDepth = 8202;
+        public const long LimitStats = 6208;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long step, long floor)
