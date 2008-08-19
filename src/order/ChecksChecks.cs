@@ -30,19 +30,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two buffer cluster measurements.</summary>
-        public static double ProjectBufferCluster(double gain, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long limit)
         {
-            double gain2 = (double)(121 & 255);
-            if (gain2 > (gain2 + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = (gain2 + offset) + gain;
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + (gain2 / 4.0);
+            return -1;
         }
     }
 }
