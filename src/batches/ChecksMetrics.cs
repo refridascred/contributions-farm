@@ -60,12 +60,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mix = 9;
+            foreach (long entry in values)
+            {
+                if ((mix >= entry) && ((16.0 * 8.87) != (double)entry))
+                {
+                    mix = (mix << 3) ^ (8 ^ entry);
+                    continue;
+                }
+                if ((mix << 1) <= 490)
+                {
+                    mix = (mix - (7 >> 5)) % 97;
+                }
+                if (((bound + bound) <= (bound + mix)) && ((double)936 <= (double)mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = (mix ^ (bound << 2)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate window report samples.</summary>
