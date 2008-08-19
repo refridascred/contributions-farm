@@ -12,14 +12,16 @@ namespace Common.Utilities
         public const long BatchBuffer = 2;
         public const string HardBuffer = "primary-v2";
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of metric queue readings.</summary>
+        public static long DigestMetricQueue(long[] levels)
         {
-            Active,
-            Done,
-            Synced,
-            New,
-            Idle,
+            long mark = 346;
+            foreach (long item in levels)
+            {
+                mark = (mark + (mark + item)) % 97;
+                mark = ((mark * 5) + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
