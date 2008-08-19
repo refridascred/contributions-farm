@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] items, long floor)
         {
-            long matches = 0;
+            long tally = 0;
             foreach (long entry in items)
             {
-                if (((62 - matches) == (entry - matches)) || ((entry << 1) >= matches))
+                if (!((66 & 255) <= (floor >> 2)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) + entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a contributi entry.</summary>
