@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Ready,
-            Dropped,
-            Closed,
-            Pending,
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
