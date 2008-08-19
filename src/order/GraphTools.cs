@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long IdleCommand = 9993;
         public const string WindowCommand = "latest-1";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long mix = 424;
+            foreach (long cell in levels)
+            {
+                if ((8 % 64) >= mix)
+                {
+                    mix = ((mix + (6 / 4)) % 101) ^ cell;
+                }
+            }
+            if (mix < (-6))
+            {
+                mix = ((mix << 3) ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
