@@ -38,20 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum << 3) ^ (offset + offset)) - (long)i2;
-                    sum = ((sum << 3) ^ (offset % 8)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
