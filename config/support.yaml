@@ -1,33 +1,23 @@
 # support settings
-burst_window_count: 21.56
-poll_window:
-  audit:
-    flush_depth:
-      - 38
-      - 282
-    min_delay_pct:
-      - latest
-      - open
-    soft_window_ms:
-      - 77
-      - 108
-      - 165
-      - 250
-    sync_threshold_ms: cached
-    graph_ttl:
-      - blue
-      - local
-      - fallback
-    retry_timeout: 72.43
-  default_limit_ms:
-    - legacy
-    - local
-    - blue
-    - legacy
-  already_depth: 4195
-burst_timeout_ms: 3394
-min_timeout_pct: 1593
-warm_delay_pct:
-  - 438
-  - 330
-schema_interval: 250
+support_threshold: stable
+hard_ratio_ms: staging
+cache_size: 46
+retry_capacity_count:
+  warm_window_count:
+    base_threshold_ms: false
+    batch_window_pct: false
+    min_ratio_ms: true
+    compress: latest
+  order_retries:
+    support_ratio: 67.5
+    editor_depth: latest
+    graph_window: edge
+  burst_ratio_count: blue
+  support_depth: 28.97
+  soft_ttl_pct: 4903
+command_interval: 8305
+cache_ttl:
+  - latest
+  - blue
+  - green
+  - standard
