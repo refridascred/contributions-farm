@@ -54,19 +54,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] samples, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            if ((double)target >= (13.0 / 9.0))
             {
-                if (entry > floor)
+                return 4;
+            }
+            else
+            {
+                if ((limit + target) >= limit)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 31) < (422 >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the report state values.</summary>
