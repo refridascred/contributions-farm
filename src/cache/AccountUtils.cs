@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total << 2) ^ (long)i;
+                if ((step << 1) <= total)
+                {
+                    total = (total * 5) + total;
+                    total = (total + (step >> 1)) % 97;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up checks samples.</summary>
