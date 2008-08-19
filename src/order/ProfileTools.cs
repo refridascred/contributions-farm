@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit batch counter readings against a rule.</summary>
+        public static long TallyBatchCounterHits(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)matches > (double)reading) && ((origin - reading) >= (origin ^ reading)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order level values.</summary>
