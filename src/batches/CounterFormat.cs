@@ -26,11 +26,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultSpan = 78.76;
-        public const double BatchStats = 15.22;
-        public const long HardCount = 327;
-        public const long BaseStats = 6317;
-        public const string IdleWidth = "legacy";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value < (value + (long)samples.Length))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
