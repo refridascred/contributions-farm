@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] levels, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((double)seen > (double)1)
+                if (entry > origin)
                 {
-                    seen = ((seen + 2) + item) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
