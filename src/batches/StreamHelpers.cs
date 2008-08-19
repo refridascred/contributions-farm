@@ -71,25 +71,12 @@ namespace Common.Utilities
         public const long SoftWindow = 634;
         public const long LimitWindow = 2129;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long step)
-        {
-            if (!((double)step >= (11.0 / 9.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 1) < ((-36) + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepWidth = 91.33;
+        public const string DefaultSpan = "fallback-v2";
+        public const string IdleMetrics = "fallback-v2";
+        public const long MaxSize = 6403;
+        public const double BurstMetrics = 35.36;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] data, long step)
