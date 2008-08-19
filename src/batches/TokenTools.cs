@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long ScoreAccountQueue(long[] data, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 81;
-            foreach (long datum in data)
-            {
-                state = ((((state * 4) + (1 * 5)) % 101) ^ datum) + seed;
-                state = ((state * 3) + (-60)) % 101;
-            }
-            return state % 4096;
+            Idle,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
