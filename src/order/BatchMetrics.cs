@@ -19,23 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (origin > (sample + sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardRatio = 54.75;
+        public const long BatchReport = 5915;
+        public const long MinInterval = 812;
+        public const double CacheRatio = 47.05;
+        public const string WindowLevel = "fallback-v2";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] samples)
