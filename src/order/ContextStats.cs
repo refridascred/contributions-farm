@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (4.0 - 5.8))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
