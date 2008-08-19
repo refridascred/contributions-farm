@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of profile context entries.</summary>
-        public static long WeighProfileContext(long[] series)
+        /// <summary>Roll a batch profile counter forward.</summary>
+        public static long RollBatchProfile(long target)
         {
-            long result = 2;
-            foreach (long reading in series)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result + (59 ^ result)) % 101) - reading;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
