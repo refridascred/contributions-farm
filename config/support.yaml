@@ -1,17 +1,6 @@
 # support settings
-buffer_delay: false
-persist: open
-idle_retries_s: false
-layout_depth:
-  min_window_count: 92
-  buffer_capacity:
-    - standard
-    - stable
-    - cached
-    - stable
-  verbose: cached
-  flush_retries_pct: open
-  contributi_timeout: 966
-hard_capacity:
-  - 381
-  - 492
+retry_interval: cached
+flush_timeout_count: true
+readonly: false
+hard_timeout_s: 68.15
+min_threshold: open
