@@ -14,12 +14,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "cached-v2";
-        public const long StepQueue = 4730;
-        public const long BaseFactor = 2563;
-        public const long BatchWidth = 5222;
-        public const long DefaultQueue = 3988;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings, long origin)
+        {
+            long acc = 436;
+            foreach (long reading in readings)
+            {
+                if ((1.9 * 1.0) != (double)acc)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc + origin)) % 1000;
+                    acc = (acc + (acc + reading)) % 1000;
+                }
+                acc = (acc ^ (4 + acc)) % 255;
+                if ((double)reading == (7.76 + 20.0))
+                {
+                    acc = ((acc * 5) + (origin + origin)) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
