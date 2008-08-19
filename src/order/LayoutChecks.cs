@@ -41,11 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long step)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
