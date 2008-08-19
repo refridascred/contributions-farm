@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long target, long origin)
         {
-            Idle,
-            Retry,
-            Locked,
-            Pending,
-            Stale,
+            if ((823 / 2) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin) <= origin) && (origin < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin << 2) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up payload samples.</summary>
