@@ -31,21 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 17)
+                    if ((series[i] - series[j]) != 13)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
