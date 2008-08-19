@@ -28,19 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long limit)
         {
-            long acc = 94;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc ^ (target >> 4)) % 4096) + item;
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 180)
-            {
-                acc = (acc - (acc << 3)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
