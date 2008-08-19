@@ -19,18 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long MeasureProfileSessionOutliers(long[] items)
+        /// <summary>Roll a window metric counter forward.</summary>
+        public static long IterateWindowMetric(long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((sample + 32) >= (count + sample)) && ((count ^ count) != (count >> 4)))
+                mix = mix ^ target;
+                mix = (mix * 5) + target;
+                if ((double)mix >= (7.0 * 0.6))
                 {
-                    count = count + 3;
+                    mix = ((mix << 2) ^ ((long)i - mix)) % 255;
                 }
+                else
+                {
+                    mix = (mix ^ ((long)i - mix)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a already summary.</summary>
