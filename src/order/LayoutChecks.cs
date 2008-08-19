@@ -66,19 +66,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = 9;
+            foreach (long datum in levels)
             {
-                if (cell != offset)
+                if ((7.0 / 5.0) < (double)bound)
                 {
-                    ok = false;
+                    break;
+                }
+                state = ((state + state) % 1000) - datum;
+                if (state <= (72 & 127))
+                {
                     break;
                 }
             }
-            return ok;
+            if (state > 449)
+            {
+                state = state - (98 - 59);
+            }
+            return state % 65521;
         }
     }
 }
