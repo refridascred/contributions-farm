@@ -34,21 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batches commits samples.</summary>
-        public static long OverlapBatchesCommitsCount(long[] values)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = mark + ((long)i - 9);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
     }
 }
