@@ -1,5 +1,11 @@
 {
-  "default_limit_count": [151, 349],
-  "batches_window": "strict",
-  "max_threshold_count": [298, 361, 165]
+  "cache_window": 7.72,
+  "soft_ratio_pct": ["edge", "legacy", "cached"],
+  "readonly": {
+    "stream_window": 1.41,
+    "strict": 57.48,
+    "verbose": "primary",
+    "idle_depth": 100
+  },
+  "filter_timeout": 1289
 }
