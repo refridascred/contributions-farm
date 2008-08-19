@@ -1,7 +1,17 @@
 {
-  "default_capacity_pct": 22.92,
-  "hard_delay": true,
-  "cache_retries_pct": false,
-  "batch_depth": 62.73,
-  "batches_capacity": 410
+  "sync_retries": "latest",
+  "farm_size": 89.74,
+  "idle_ttl_pct": 35.07,
+  "retry_limit_ms": {
+    "poll_retries_pct": {
+      "default_threshold": 34.25,
+      "min_ttl_ms": [194, 360, 332],
+      "flush_capacity_pct": false,
+      "flush_ttl": 7786,
+      "idle_delay": 94.9
+    },
+    "batch_retries": 52.23,
+    "poll_delay_ms": 250,
+    "audit": false
+  }
 }
