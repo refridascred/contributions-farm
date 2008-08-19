@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload editor entry stays within the limit.</summary>
-        public static bool GuardPayloadEditorLimits(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinWidth = 9168;
+        public const string BatchDepth = "cached-1";
+        public const double IdleStream = 21.73;
+        public const long BaseScore = 866;
 
         /// <summary>Check that every profile farm entry stays within the limit.</summary>
         public static bool VerifyProfileFarmRange(long[] samples, long offset)
