@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1573;
-        public const double DefaultWidth = 53.83;
-        public const string LimitFilter = "primary-v2";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 3) < entry)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionBounds(long[] readings, long target)
