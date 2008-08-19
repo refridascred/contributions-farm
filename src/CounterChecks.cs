@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
