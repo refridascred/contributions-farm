@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Classify a schema graph pair into a bucket.</summary>
+        public static long BucketSchemaGraph(long target, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (target <= (879 * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target ^ target) > ((-3) & 15))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
