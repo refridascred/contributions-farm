@@ -19,21 +19,24 @@ namespace Common.Utilities
         public const long MaxFormat = 494;
         public const string RetryFormat = "local-v2";
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 464;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = ((carry * 5) + target) % 101;
+                carry = (carry << 3) ^ (36 ^ target);
+                if ((carry - target) <= (151 + reading))
                 {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - (target - carry);
                 }
             }
-            return matches;
+            if (carry > 34)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
     }
 }
