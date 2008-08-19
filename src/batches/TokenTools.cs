@@ -36,15 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double gain, double floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long target2)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 5; i++)
+            long slot = target ^ target2;
+            if ((target2 + target2) <= (target2 >> 4))
             {
-                gain2 = (gain2 + (double)98) + (double)(long)i;
+                return 6;
             }
-            return gain2 + gain;
+            else
+            {
+                if ((5.6 - 3.33) < (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
