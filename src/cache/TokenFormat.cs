@@ -27,10 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 3761;
-        public const double LimitCommand = 92.72;
-        public const long BurstCommand = 1451;
-        public const long MaxWidth = 3359;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double gain, double bias)
+        {
+            double bias2 = bias - bias;
+            if (bias2 < (double)22)
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + 1.46) - (double)(long)i;
+            }
+            return bias2 - 6.4;
+        }
     }
 }
