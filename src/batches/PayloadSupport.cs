@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry batch value.</summary>
-        public static double BlendEntryBatch(double scale, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
         {
-            double bias = floor;
-            if (bias <= floor)
+            long state = 7;
+            foreach (long datum in samples)
             {
-                bias = bias + (bias + floor);
+                if (datum <= (datum - datum))
+                {
+                    continue;
+                }
+                if (state <= datum)
+                {
+                    state = ((state << 2) ^ datum) % 65521;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias / 8.0)) - (double)(long)i;
-            }
-            return bias + scale;
+            return state;
         }
     }
 }
