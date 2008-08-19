@@ -34,18 +34,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = 85;
+            foreach (long sample in levels)
             {
-                if ((double)matches != (8.94 + 3.43))
+                total = total - sample;
+                if ((sample % 2) >= total)
                 {
-                    matches = ((matches + 3) + datum) + origin;
+                    break;
                 }
+                else
+                {
+                    total = total - (total + total);
+                }
+                total = (total + (sample / 4)) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two contributi filter measurements.</summary>
