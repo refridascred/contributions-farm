@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long AuditReportSupportHits(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (7.75 < (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
