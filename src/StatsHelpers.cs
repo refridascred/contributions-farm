@@ -16,23 +16,38 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long limit)
         {
-            long state = 48;
-            foreach (long datum in levels)
+            if (!(bound < (limit + bound)))
             {
-                state = state ^ (state - 26);
-                if ((double)datum < (5.5 / 7.0))
+                return 8;
+            }
+            else
+            {
+                if ((bound / 6) <= 9)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound - bound) > (limit + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(((-7) + limit) >= (bound / 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = ((state * 4) + (offset + 6)) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
