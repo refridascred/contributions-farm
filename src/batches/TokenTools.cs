@@ -46,22 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel session readings against a rule.</summary>
-        public static long AuditChannelSessionGaps(long[] values)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5 > (reading << 3))
+                if (series[i] <= limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
