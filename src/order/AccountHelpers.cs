@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long IdleBuffer = 467;
         public const long DefaultBuffer = 4096;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = mark - 15;
-                mark = mark - mark;
-                if (((long)i % 97) > 95)
+                if ((datum & 15) <= offset)
                 {
-                    mark = mark + 50;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
