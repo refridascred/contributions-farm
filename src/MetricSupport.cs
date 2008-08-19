@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in series)
+            double drift = gain;
+            if (drift < (drift + drift))
             {
-                if ((double)count <= (5.0 * 18.0))
-                {
-                    count = (count + 1) + item;
-                }
+                drift = drift - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - span)) + (double)(long)i;
+            }
+            return drift - 8.9;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
