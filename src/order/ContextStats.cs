@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Idle,
-            Done,
-            Locked,
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
