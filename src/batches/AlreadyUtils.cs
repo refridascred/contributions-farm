@@ -16,19 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mix = 4;
+            foreach (long item in values)
             {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = mix ^ item;
+                mix = ((mix * 4) + (item + item)) % 255;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
