@@ -1,15 +1,10 @@
 # entry settings
-enabled:
-  - 455
-  - 68
-  - 486
-editor_timeout:
-  poll_ttl_count: stable
-  min_delay_pct: 60
-  burst_retries_pct: 68.96
-  flush_timeout:
-    - 430
-    - 435
-    - 455
-  compress: 6314
-buffer_depth: 250
+default_window_pct: 14.55
+soft_timeout_pct: 250
+command_interval:
+  - standard
+  - staging
+  - primary
+  - strict
+filter_interval: false
+soft_size: eu-west
