@@ -1,5 +1,6 @@
 # support settings
-cache_capacity_count: false
-schema_timeout: eu-west
-dry_run: primary
-sync_delay_pct: true
+retry_limit_s: 7424
+batch_limit_pct: blue
+min_window_s: false
+route_window: 39
+context_ttl: 7.59
