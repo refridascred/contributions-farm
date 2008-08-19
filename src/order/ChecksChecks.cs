@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((69 + (-19)) <= (reading - target))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a stream reading.</summary>
