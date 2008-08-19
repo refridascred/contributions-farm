@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const string SoftSchema = "fallback";
         public const string SoftRatio = "standard";
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double bias)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            double ratio = (gain * 8.0) - gain;
-            if (ratio <= (double)64)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio + (bias / 7.0);
+                sum = (sum << 3) ^ ((long)i / 4);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio - gain;
+            return sum;
         }
 
         /// <summary>Accumulate stream commits samples.</summary>
