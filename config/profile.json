@@ -1,7 +1,8 @@
 {
-  "dry_run": false,
-  "default_retries_ms": ["standard", "cached"],
-  "persist": 8251,
-  "cache_limit_pct": ["local", "standard", "primary", "staging"],
-  "flush_size": ["latest", "strict", "latest", "standard"]
+  "cache_ratio_count": 20.7,
+  "soft_capacity_count": "edge",
+  "burst_retries_s": true,
+  "record_ratio": 72,
+  "idle_interval_pct": 43.85,
+  "account_depth": 725
 }
