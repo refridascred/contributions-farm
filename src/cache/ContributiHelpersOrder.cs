@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "standard-edge";
-        public const long DefaultFactor = 3130;
-        public const string CacheSpan = "local-v2";
-        public const string BaseScore = "local-1";
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Failed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] data, long step)
