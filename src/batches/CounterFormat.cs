@@ -24,22 +24,11 @@ namespace Common.Utilities
         public const long CacheCommits = 2592;
         public const long MaxCommits = 7649;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value < (value + (long)samples.Length))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 6938;
+        public const double RetryOrder = 22.53;
+        public const long LimitOrder = 9462;
+        public const long MinFactor = 6963;
+        public const long RetryDepth = 6435;
     }
 }
