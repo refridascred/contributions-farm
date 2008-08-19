@@ -19,19 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools channel entry stays within the limit.</summary>
-        public static bool ValidateToolsChannelRange(long[] levels, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((double)target <= (double)target)
             {
-                if (item < bound)
+                return 8;
+            }
+            else
+            {
+                if ((1.5 + 9.76) != (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 64) >= (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
