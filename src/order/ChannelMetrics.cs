@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long BaseBudget = 3068;
         public const long WindowScore = 6726;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] values, long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((double)offset < (double)matches) && ((matches * 5) >= (cell + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
