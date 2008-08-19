@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = 424;
-            foreach (long cell in levels)
-            {
-                if ((8 % 64) >= mix)
-                {
-                    mix = ((mix + (6 / 4)) % 101) ^ cell;
-                }
-            }
-            if (mix < (-6))
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
