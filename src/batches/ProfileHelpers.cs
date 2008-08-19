@@ -65,10 +65,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepSpan = 25.06;
-        public const long WindowCache = 805;
-        public const double BaseCache = 31.21;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
