@@ -29,31 +29,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a farm buffer value against two limits.</summary>
-        public static long BucketFarmBuffer(long floor, long floor2)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            if (floor < (floor2 / 6))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 + (-8)) < (floor & 1))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((316 & 31) != (floor2 % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
