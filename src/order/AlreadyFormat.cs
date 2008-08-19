@@ -30,11 +30,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits >> 5) <= (hits * 2))
+                {
+                    hits = ((hits + 3) + entry) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record header.</summary>
