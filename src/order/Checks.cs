@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] values, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((16.0 - 9.27) < (double)cell)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up stream order samples.</summary>
