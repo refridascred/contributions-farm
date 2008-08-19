@@ -38,27 +38,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long carry = 7;
-            foreach (long sample in samples)
-            {
-                long step = carry;
-                if (((double)step > 2.0) && ((carry + 51) >= (step + sample)))
-                {
-                    carry = (carry * 5) + (step % 16);
-                }
-                if (sample <= (sample - sample))
-                {
-                    carry = (carry << 3) ^ (1 ^ 40);
-                }
-                else
-                {
-                    carry = (carry + sample) % 255;
-                }
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
