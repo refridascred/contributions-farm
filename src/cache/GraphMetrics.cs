@@ -38,15 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Closed,
-            Locked,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 7944;
+        public const double BaseAccount = 84.0;
+        public const string RetryTimeout = "cached-edge";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] data)
