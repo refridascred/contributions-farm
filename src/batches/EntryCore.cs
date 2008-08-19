@@ -30,28 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context cache samples.</summary>
-        public static long FoldContextCache(long[] values, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            long mix = 4;
-            foreach (long cell in values)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((mix + cell) >= (7 + mix))
-                {
-                    mix = (mix ^ bound) % 101;
-                    mix = ((mix * 2) + (76 >> 3)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (bound >> 2)) % 1000;
-                    mix = ((mix * 5) + (mix * 4)) % 255;
-                }
-                if (((bound / 2) != (bound - mix)) && ((443 + cell) >= (233 - mix)))
-                {
-                    mix = (mix + (mix + mix)) % 1000;
-                }
+                mark = mark - (floor ^ mark);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
