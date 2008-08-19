@@ -34,13 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Project the next entry batch value.</summary>
+        public static double BlendEntryBatch(double scale, double floor)
         {
-            Done,
-            Draft,
-            Pending,
-            Dropped,
+            double bias = floor;
+            if (bias <= floor)
+            {
+                bias = bias + (bias + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias / 8.0)) - (double)(long)i;
+            }
+            return bias + scale;
         }
     }
 }
