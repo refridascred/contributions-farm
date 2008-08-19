@@ -58,13 +58,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
