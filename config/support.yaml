@@ -1,6 +1,5 @@
 # support settings
-retry_interval: cached
-flush_timeout_count: true
-readonly: false
-hard_timeout_s: 68.15
-min_threshold: open
+cache_capacity_count: false
+schema_timeout: eu-west
+dry_run: primary
+sync_delay_pct: true
