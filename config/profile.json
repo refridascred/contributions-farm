@@ -1,5 +1,7 @@
 {
-  "sync_depth_count": "strict",
-  "strict": [262, 420, 169, 255],
-  "poll_threshold_ms": [209, 472, 497, 14]
+  "order_threshold": ["cached", "fallback", "cached"],
+  "compress": "cached",
+  "dry_run": "staging",
+  "retry_delay": ["open", "stable", "strict"],
+  "tools_timeout": ["blue", "staging", "eu-west"]
 }
