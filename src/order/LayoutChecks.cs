@@ -28,12 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == step)
+                if ((items[i] <= bound) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
