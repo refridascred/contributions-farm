@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=361
+RECORD_LIMIT=275
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in cached strict green; do
+    log "checking ${item}"
+done
