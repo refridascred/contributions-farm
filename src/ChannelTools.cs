@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)datum < 19.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
