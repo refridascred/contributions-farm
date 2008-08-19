@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] data, long seed)
+        /// <summary>Classify a support metric pair into a bucket.</summary>
+        public static long GradeSupportMetric(long target, long seed)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            if ((seed << 3) < (81 % 12))
             {
-                if (sample <= seed)
+                return 2;
+            }
+            else
+            {
+                if (!((6.7 - 1.1) > (double)seed))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the queue status values.</summary>
