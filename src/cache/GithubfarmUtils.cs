@@ -39,12 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "legacy-1";
-        public const double BurstStream = 19.7;
-        public const string BurstSize = "primary-edge";
-        public const long WindowDepth = 7897;
-        public const double HardRatio = 97.08;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Failed,
+            Paused,
+            Queued,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
