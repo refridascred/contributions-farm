@@ -32,11 +32,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long step2)
         {
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            if ((((-617) << 3) <= step2) || ((step2 + step) > 518))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 >= (step * 4)) || ((step2 + step2) < (step * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
