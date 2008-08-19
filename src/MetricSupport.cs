@@ -22,18 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (6.17 > (double)hits)
-                {
-                    hits = ((hits + 3) ^ reading) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 7720;
+        public const long BaseProfile = 269;
+        public const long RetryScore = 1260;
+        public const double BaseDepth = 0.5;
+        public const long WindowProfile = 2733;
     }
 }
