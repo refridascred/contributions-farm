@@ -19,22 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits cache samples are out of range.</summary>
-        public static long MeasureCommitsCacheHits(long[] values, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((1.6 / 8.0) <= (double)matches)
+                if (sample >= step)
                 {
-                    matches = ((matches + 3) + cell) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the context class values.</summary>
