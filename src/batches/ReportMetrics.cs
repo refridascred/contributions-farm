@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry format samples.</summary>
-        public static long PairEntryFormatCount(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= origin)
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Project the next stream value.</summary>
