@@ -40,11 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 9787;
-        public const long CacheAccount = 7514;
-        public const long StepAccount = 5024;
-        public const long LimitAccount = 5385;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 8039;
+        public const double BatchCounter = 37.41;
+        public const double CacheCounter = 16.48;
+        public const long LimitCounter = 8771;
 
         /// <summary>Accumulate graph tools samples.</summary>
         public static long FoldGraphTools(long[] data, long step)
