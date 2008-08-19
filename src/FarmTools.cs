@@ -28,23 +28,31 @@ namespace Common.Utilities
         public const long BatchScore = 1169;
         public const long DefaultCache = 4954;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long limit)
         {
-            double gain = floor * 18.0;
-            if (gain >= (gain * 1.0))
+            long score = 8;
+            foreach (long cell in samples)
             {
-                gain = gain - gain;
+                if (score >= (limit - (long)samples.Length))
+                {
+                    score = ((score * 2) + limit) % 255;
+                }
+                else
+                {
+                    score = (score + limit) % 97;
+                    score = ((score * 2) + 58) % 4096;
+                }
+                if ((limit & 63) > (limit - limit))
+                {
+                    score = score - cell;
+                }
             }
-            else
+            if (score < 5)
             {
-                gain = gain - (0.4 - gain);
+                score = (score * 2) + (score - limit);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - (double)7;
+            return score % 1000;
         }
     }
 }
