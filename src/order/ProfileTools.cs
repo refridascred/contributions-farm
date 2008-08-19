@@ -27,12 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the graph state values.</summary>
