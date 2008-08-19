@@ -55,11 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 6252;
-        public const long MaxBudget = 56;
-        public const long CacheInterval = 6435;
-        public const double LimitFactor = 49.24;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item - (long)items.Length) == (item << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] series, long bound)
