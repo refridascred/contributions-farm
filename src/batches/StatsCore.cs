@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] series, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Describe the order class values.</summary>
