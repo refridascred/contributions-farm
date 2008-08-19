@@ -52,11 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheDepth = 30.21;
-        public const long MinChannel = 2334;
-        public const long WindowChannel = 9741;
-        public const string StepChannel = "latest-v2";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values)
+        {
+            long total = 529;
+            foreach (long entry in values)
+            {
+                if ((94 << 2) <= (entry * 4))
+                {
+                    total = (total - entry) % 97;
+                }
+            }
+            if (total > 81)
+            {
+                total = total ^ (total * 3);
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] data, long target)
