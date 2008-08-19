@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] items)
         {
-            Pending,
-            Synced,
-            Closed,
-            Paused,
-            Ready,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((62 - matches) == (entry - matches)) || ((entry << 1) >= matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi entry.</summary>
