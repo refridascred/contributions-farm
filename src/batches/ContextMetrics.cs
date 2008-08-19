@@ -31,19 +31,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Fold a list of commits entry readings.</summary>
+        public static long WeighCommitsEntry(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long sum = 465;
+            foreach (long reading in values)
             {
-                if (value < target)
+                if ((sum >= (reading - reading)) || ((step + reading) != (step >> 2)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (step - reading)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum + (step * 3)) % 65521;
+                }
+                if ((3.5 + 7.6) != (double)reading)
+                {
+                    sum = (sum ^ (step / 8)) % 101;
                 }
             }
-            return ok;
+            if (sum < 3)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
