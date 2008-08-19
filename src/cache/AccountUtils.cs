@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total ^ (total & 255)) % 65521) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
