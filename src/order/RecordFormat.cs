@@ -33,23 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Adjust a batches editor reading.</summary>
+        public static double AdjustBatchesEditor(double scale, double bias)
         {
-            double bias2 = offset;
-            if (bias2 <= (bias2 * 0.9))
+            double load = (double)136 * 7.0;
+            if (load < scale)
             {
-                bias2 = bias2 - (bias2 + 9.8);
+                load = load + (bias * 2.6);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + offset;
+                load = (load + (bias - scale)) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (bias * 8.39)) - (double)(long)i;
-            }
-            return bias2 - (double)2;
+            return load + load;
         }
 
         /// <summary>Describe the graph status values.</summary>
