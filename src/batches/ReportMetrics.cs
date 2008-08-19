@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen << 1) >= (seen - value))
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
