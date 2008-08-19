@@ -71,27 +71,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long ScoreAlreadyRoute(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long floor)
         {
-            long total = 9;
-            foreach (long sample in levels)
+            if (((double)floor != (18.0 - 0.47)) || (floor >= (floor % 8)))
             {
-                total = (total + (sample / 4)) % 1000;
-                if ((sample << 1) > total)
+                return 4;
+            }
+            else
+            {
+                if (!((17 << 3) == (floor / 2)))
                 {
-                    total = total - (total << 1);
+                    return 2;
                 }
                 else
                 {
-                    total = (total * 2) + total;
-                }
-                if ((sample >= (sample >> 3)) && ((total + sample) > sample))
-                {
-                    break;
+                    return 5;
                 }
             }
-            return total % 1000;
         }
     }
 }
