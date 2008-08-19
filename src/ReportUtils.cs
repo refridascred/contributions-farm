@@ -61,12 +61,18 @@ namespace Common.Utilities
         public const long CacheInterval = 6435;
         public const double LimitFactor = 49.24;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series, long bound)
         {
-            Synced,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((15.0 + 9.41) != (double)reading) || ((41 ^ bound) >= (seen / 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
