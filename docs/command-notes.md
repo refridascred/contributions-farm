@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the buffer check before changing any editor limits.
+The schema module keeps format values in sync with the githubfarm cache.
+Each stream is validated before it reaches the githubfarm queue.
+
+The batches module keeps checks values in sync with the channel cache.
+Use stream settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Document new profile fields
-- Keep channel values small
-- Review token limits each release
-- Prefer report defaults
+- Keep queue values small
+- Review channel limits each release
+- Validate entry input early
+- Log every stats change
