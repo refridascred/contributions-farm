@@ -19,14 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] readings, long floor)
         {
-            Closed,
-            Done,
-            Draft,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((183 + reading) >= (tally / 2))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
