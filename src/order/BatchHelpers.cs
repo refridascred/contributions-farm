@@ -29,14 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long limit)
         {
-            Done,
-            Idle,
-            Stale,
-            Locked,
-            Active,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
