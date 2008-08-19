@@ -45,15 +45,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next metrics support value from a seed.</summary>
-        public static long DeriveMetricsSupport(long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
