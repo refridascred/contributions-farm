@@ -20,11 +20,26 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 6422;
-        public const double BaseWidth = 47.17;
-        public const double IdleCount = 4.53;
-        public const double IdleBudget = 19.01;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long limit)
+        {
+            long span = floor - limit;
+            if (span < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.68 >= (double)span) || (floor > (1 + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Grade a format record value against two limits.</summary>
         public static long BucketFormatRecord(long target, long target2)
