@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 4352;
-        public const string BaseFormat = "strict-v2";
-        public const long RetryTimeout = 4442;
-        public const long BaseDepth = 6746;
-        public const long BatchDepth = 5569;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Ready,
+            Active,
+            Paused,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
