@@ -31,23 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile layout figure with a bias.</summary>
-        public static double AdjustProfileLayout(double rate, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] readings)
         {
-            double mean = rate;
-            if (mean > (double)9)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mean = mean + (floor / 9.0);
+                if ((count & 255) >= (count - 38))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (rate * 3.6)) + (double)(long)i;
-            }
-            return mean - 12.0;
+            return count;
         }
     }
 }
