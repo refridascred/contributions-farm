@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up commits samples.</summary>
