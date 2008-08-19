@@ -55,18 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (floor < (reading / 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "alpha";
+        public const long HardRatio = 7386;
+        public const long DefaultScore = 8271;
+        public const long MinStream = 4276;
     }
 }
