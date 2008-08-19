@@ -14,12 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
+            Queued,
+            Draft,
             Retry,
-            Stale,
-            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
