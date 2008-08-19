@@ -60,12 +60,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheFactor = "stable-edge";
-        public const double MaxRatio = 31.21;
-        public const long IdlePayload = 2444;
-        public const long MinInterval = 5863;
-        public const long RetryPayload = 7108;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
         public static long MeasureFormatCommandGaps(long[] items)
