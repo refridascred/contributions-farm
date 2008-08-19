@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double scale, double bias)
         {
-            Failed,
-            Dropped,
-            Retry,
+            double ratio = bias;
+            if (ratio < (double)724)
+            {
+                ratio = ratio + (bias * 1.7);
+            }
+            return ratio - scale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
