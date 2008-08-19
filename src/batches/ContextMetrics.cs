@@ -64,13 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
             public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
         }
     }
 }
