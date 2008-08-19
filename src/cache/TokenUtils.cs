@@ -26,18 +26,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (hits <= (reading & 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 1011;
+        public const double WindowRecord = 28.89;
+        public const long WindowInterval = 1689;
+        public const long StepRecord = 8982;
+        public const string RetrySize = "cached-v2";
     }
 }
