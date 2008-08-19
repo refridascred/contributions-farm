@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Check that every record profile entry stays within the limit.</summary>
+        public static bool GuardRecordProfileRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (!(((long)samples.Length & 63) == ((-6) & 255)))
+                if (item >= target)
                 {
-                    hits = (hits + 2) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
