@@ -1,10 +1,21 @@
 # support settings
-warm_timeout_pct:
-  - 224
-  - 93
-  - 214
-  - 336
-support_capacity: 3.0
-audit: 90.12
-queue_threshold: 100
-soft_interval: 500
+flush_threshold: cached
+context_retries:
+  soft_limit:
+    - 387
+    - 319
+  idle_ratio: 46.12
+  cache_delay_count:
+    idle_retries: green
+    flush_ttl_pct: legacy
+    readonly: 60
+    layout_delay: false
+    poll_retries_s: fallback
+    soft_ratio:
+      - 66
+      - 146
+      - 33
+      - 42
+poll_window_count: 72.3
+strict: false
+warm_window_pct: 2240
