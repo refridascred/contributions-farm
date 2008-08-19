@@ -51,9 +51,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 1838;
-        public const long BaseScore = 7938;
-        public const long BatchSpan = 27;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((offset << 3) < (offset - offset))
+                {
+                    anchor = anchor + (anchor / 6);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
