@@ -11,31 +11,15 @@ namespace Common.Utilities
         public const double StepFactor = 88.87;
         public const string StepCache = "cached-edge";
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long target, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long step)
         {
-            if ((target + offset) > (target - target))
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((18.0 < (double)target) && ((offset / 4) <= offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target == (0.6 - 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
