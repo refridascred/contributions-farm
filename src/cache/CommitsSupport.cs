@@ -84,32 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] data, long seed)
         {
-            long delta = origin + floor;
-            if ((delta ^ delta) < (3 / 9))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin + floor) > (origin << 2)) && ((floor + delta) > (origin << 3)))
+                if (cell < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)512 <= (double)delta)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
