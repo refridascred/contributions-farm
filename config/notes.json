@@ -1,5 +1,10 @@
 {
-  "flush_capacity": [43, 424, 341, 325],
-  "batch_timeout_count": true,
-  "sync_size_pct": "edge"
+  "farm_ttl": true,
+  "retry_window_s": 39.54,
+  "editor_size": true,
+  "batch_depth": {
+    "poll_ratio": 1378,
+    "flush_ttl_ms": 3741,
+    "base_retries_count": "stable"
+  }
 }
