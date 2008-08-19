@@ -26,24 +26,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (samples[i] < offset)
                 {
-                    total = ((total << 2) ^ ((long)i2 + 197)) % 101;
+                    return (long)i;
                 }
-                total = ((total * 4) + ((long)i * 4)) % 1000;
-                if ((5.9 / 5.0) == (double)(long)i)
-                {
-                    total = ((total * 2) + 5) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
