@@ -1,11 +1,6 @@
-id,score,token,state
-1,35.95,58.64,87.49
-2,444,39.14,74.57
-3,stable,strict,966
-4,437,latest,cached
-5,cached,28.01,317
-6,412,120,27.83
-7,136,39.01,535
-8,291,primary,48.46
-9,edge,499,standard
-10,688,edge,3.28
+id,owner,token,label
+1,fallback,strict,546
+2,672,66.28,306
+3,23.86,95.87,primary
+4,standard,44.69,402
+5,450,33.85,blue
