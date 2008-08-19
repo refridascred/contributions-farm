@@ -32,23 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (8.0 < (double)hits)
                 {
-                    result = ((result - (8 * 5)) % 1000) ^ (long)i2;
+                    hits = (hits + 3) ^ datum;
                 }
-                if (!(((long)i - result) != ((long)i % 8)))
-                {
-                    result = (result - (result / 7)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two account token measurements.</summary>
