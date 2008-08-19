@@ -57,13 +57,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long bound, long limit)
         {
-            Locked,
-            Paused,
-            Stale,
-            Ready,
+            if ((4.74 - 6.0) <= (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit < (limit * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound < (8 + limit)) || ((bound << 3) <= (bound + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
