@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long seed)
         {
-            double weight = (double)1 / 8.0;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                weight = (((weight + (weight - 8.0)) + (double)(long)i) + scale) - offset;
+                if (value >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight - (weight * 12.0);
+            return flag;
         }
 
         /// <summary>Iterate the metrics stats series from a seed.</summary>
