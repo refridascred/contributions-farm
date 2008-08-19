@@ -41,24 +41,13 @@ namespace Common.Utilities
         public const long StepDepth = 8202;
         public const long LimitStats = 6208;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (((14 % 97) != (step & 127)) && ((7 - floor) < (17 * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step * 5) != (step + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Active,
+            Retry,
+            Synced,
         }
     }
 }
