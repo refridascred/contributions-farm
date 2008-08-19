@@ -48,21 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((80 + count) <= item)
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
