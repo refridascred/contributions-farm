@@ -18,30 +18,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long state = 5;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state << 2) ^ (cell ^ cell)) % 101) + (long)i;
-                }
-                if ((cell >> 4) >= (state >> 4))
-                {
-                    state = state ^ state;
-                }
-                if ((state - state) > (state & 1))
-                {
-                    state = (state + ((-44) + state)) % 1000;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 7)
-            {
-                state = (state * 5) + (state ^ state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
