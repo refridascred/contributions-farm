@@ -61,13 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Done,
-            Closed,
-            Pending,
-            Ready,
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
