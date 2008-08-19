@@ -88,31 +88,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long offset, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if ((offset >> 3) < offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-63) << 3) <= (step - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 2) != (offset >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Retry,
+            Queued,
         }
     }
 }
