@@ -62,21 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long IterateTokenPayload(long floor)
+        /// <summary>Find the first support payload entry that matches the target.</summary>
+        public static long SeekSupportPayloadIndex(long[] items, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long tally = floor;
-                tally = (tally * 5) + ((long)i << 2);
-                if (((1.2 * 7.6) <= (double)result) || ((result & 127) <= tally))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    result = (result + (result >> 2)) % 97;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
