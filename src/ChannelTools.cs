@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleTimeout = "strict-1";
-        public const string StepSpan = "local-1";
-        public const string HardBuffer = "fallback";
-        public const long BatchTimeout = 5010;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values, long seed)
+        {
+            long carry = 888;
+            foreach (long entry in values)
+            {
+                if (!(3 > (carry >> 3)))
+                {
+                    carry = ((carry << 3) ^ 871) + seed;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                carry = (carry + entry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsLimits(long[] samples, long limit)
