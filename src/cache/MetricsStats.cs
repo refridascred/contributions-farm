@@ -70,15 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
     }
 }
