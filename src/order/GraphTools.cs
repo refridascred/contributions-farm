@@ -30,14 +30,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Draft,
-            Stale,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 6068;
+        public const long IdleNotes = 1854;
+        public const string BaseTimeout = "cached";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] series, long origin)
