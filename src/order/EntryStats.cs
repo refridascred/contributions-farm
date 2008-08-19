@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every context batches entry stays within the limit.</summary>
-        public static bool CheckContextBatchesLimits(long[] values, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long acc = -369;
+            foreach (long value in readings)
             {
-                if (item > bound)
+                if ((double)limit == (double)value)
                 {
-                    valid = false;
-                    break;
+                    acc = acc + (value - acc);
                 }
             }
-            return valid;
+            return acc;
         }
     }
 }
