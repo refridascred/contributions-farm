@@ -46,15 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            double drift = (weight * 7.46) * 3.96;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift + (double)(-19)) + (double)(long)i) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (8.17 / 9.0);
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
