@@ -35,12 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            Dropped,
+            Active,
+            Locked,
+            Pending,
+            Failed,
         }
     }
 }
