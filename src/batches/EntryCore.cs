@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data, long seed)
         {
-            long result = 4;
-            foreach (long item in items)
+            long mark = 330;
+            foreach (long reading in data)
             {
-                if (seed > result)
-                {
-                    result = ((result - (long)items.Length) % 255) ^ item;
-                }
+                mark = (((mark << 2) ^ mark) % 65521) ^ reading;
             }
-            return result;
+            if (mark < 468)
+            {
+                mark = mark + seed;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
