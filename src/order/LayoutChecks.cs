@@ -55,13 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] readings, long limit)
         {
-            Retry,
-            Stale,
-            Closed,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
