@@ -39,11 +39,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long bound)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
