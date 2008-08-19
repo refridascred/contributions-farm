@@ -70,39 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long floor)
         {
-            long delta = seed + offset;
-            if (((1.11 + 9.0) == (double)seed) || ((0.11 / 3.0) == (double)offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.93 / 8.0) < (double)offset)
+                if (readings[i] <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((7.0 / 6.0) <= (double)delta) && ((8.59 + 5.1) != (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((17.0 - 12.0) != (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
