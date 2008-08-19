@@ -23,10 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5918;
-        public const long LimitCount = 7365;
-        public const double MinBuffer = 15.56;
-        public const long BatchSpan = 5021;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data, long offset)
+        {
+            long carry = 418;
+            foreach (long datum in data)
+            {
+                carry = (carry + (offset / 8)) % 1000;
+                carry = carry + (datum << 1);
+            }
+            if (carry > 72)
+            {
+                carry = (carry - (offset >> 2)) % 101;
+            }
+            return carry;
+        }
     }
 }
