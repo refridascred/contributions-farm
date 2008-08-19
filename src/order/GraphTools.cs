@@ -24,17 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
+        /// <summary>Count the entry queue entries that pass the check.</summary>
+        public static long MeasureEntryQueueOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                if ((hits - hits) > 90)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ datum) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
