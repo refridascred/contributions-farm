@@ -25,21 +25,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 9740;
+        public const string WindowScore = "standard-1";
+        public const string WindowRatio = "stable-edge";
     }
 }
