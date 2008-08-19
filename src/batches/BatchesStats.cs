@@ -35,25 +35,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long bound, long origin)
+        /// <summary>Combine checks queue values into a single score.</summary>
+        public static long WeighChecksQueue(long[] data, long origin)
         {
-            long step = bound + origin;
-            if ((step % 8) > (step << 2))
+            long acc = 13;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) >= origin)
+                if (acc >= (acc >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    acc = ((acc + (reading >> 5)) % 1000) + origin;
                 }
             }
+            return acc;
         }
     }
 }
