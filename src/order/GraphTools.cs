@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((entry - matches) > entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
