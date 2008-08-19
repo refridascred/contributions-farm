@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long offset)
         {
-            Dropped,
-            Locked,
-            Ready,
+            if ((floor << 3) == (floor + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (offset >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor * 2) > (floor - 562))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
