@@ -55,39 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long offset)
-        {
-            if ((double)offset != (double)705)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 * 4) >= (origin - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-10) % 8) > (origin ^ offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - origin) >= (809 >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 8851;
+        public const long DefaultFactor = 1517;
+        public const long RetryLevel = 4697;
+        public const long LimitEditor = 4579;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long seed)
