@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((37 % 2) >= result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ ((long)i * 3)) % 1000;
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
