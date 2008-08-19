@@ -46,12 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinTimeout = 9774;
-        public const double BatchCount = 2.13;
-        public const string WindowWidth = "legacy-1";
-        public const double RetryRoute = 10.74;
-        public const long IdleRoute = 2255;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitBudget = 6275;
