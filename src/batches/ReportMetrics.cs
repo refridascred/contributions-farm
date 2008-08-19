@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long limit)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long edge = target ^ limit;
-            if (((double)target != (8.99 / 3.0)) || ((target & 7) <= (edge / 8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit < (edge / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit > (6.55 / 7.0)) || ((target * 5) < (target + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 << 2) > (edge >> 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
