@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long offset)
+        /// <summary>Project the next token queue value.</summary>
+        public static double AdjustTokenQueue(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = weight + (double)12;
+            return drift + (weight + bias);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
