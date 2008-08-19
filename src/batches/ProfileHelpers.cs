@@ -69,18 +69,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate account filter samples.</summary>
-        public static long CombineAccountFilter(long[] items)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long ScoreStatsCluster(long[] items, long seed)
         {
-            long total = 0;
-            foreach (long value in items)
+            long mark = 360;
+            foreach (long item in items)
             {
-                if (!((value + total) != (6 << 2)))
+                if ((seed % 5) >= seed)
                 {
-                    total = (total * 2) + (665 + value);
+                    mark = (mark - (13 - seed)) ^ item;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
