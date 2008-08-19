@@ -55,10 +55,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "alpha";
-        public const long HardRatio = 7386;
-        public const long DefaultScore = 8271;
-        public const long MinStream = 4276;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long limit, long step)
+        {
+            if ((3.35 * 8.9) == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step >= 4.17)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ limit) <= (step - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step > 8)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
