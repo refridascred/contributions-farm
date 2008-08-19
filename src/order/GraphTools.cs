@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long IdleCommand = 9993;
         public const string WindowCommand = "latest-1";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long target)
+        /// <summary>Look up the position of a account metric sample.</summary>
+        public static long SeekAccountMetricIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > target)
+                if (levels[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
