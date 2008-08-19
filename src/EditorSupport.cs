@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long origin)
         {
-            long result = 52;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                result = ((result * 2) + (sample + result)) + limit;
-                result = ((result << 3) ^ (result - result)) % 1000;
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a account stats.</summary>
