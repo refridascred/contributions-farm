@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Queued,
-            Stale,
-            Active,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseInterval = "local";
+        public const double DefaultRatio = 34.46;
+        public const double SoftWidth = 53.75;
+        public const long DefaultScore = 7962;
+        public const long MaxFactor = 7504;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] series, long floor)
