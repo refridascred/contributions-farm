@@ -29,18 +29,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (datum + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardWidth = 5684;
+        public const long MinLevel = 4392;
+        public const string LimitBudget = "staging";
     }
 }
