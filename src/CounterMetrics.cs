@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (sample >= step)
+                if ((reading - tally) > (tally - reading))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
