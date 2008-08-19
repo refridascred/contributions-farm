@@ -18,19 +18,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the entry queue entries that pass the check.</summary>
-        public static long MeasureEntryQueueOutliers(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits - hits) > 90)
-                {
-                    hits = ((hits + 2) ^ datum) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheInterval = "open";
+        public const long BaseAccount = 8344;
+        public const double RetryFactor = 90.1;
+        public const long RetryDepth = 4776;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BurstScore = "cached-v2";
