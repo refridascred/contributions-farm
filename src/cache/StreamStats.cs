@@ -30,26 +30,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm context values into a single score.</summary>
-        public static long TotalGithubfarmContext(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            long carry = 59;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > (293 >> 1))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = carry + (carry - sample);
-                }
-                if ((sample + carry) <= (carry + sample))
-                {
-                    break;
-                }
+                result = result + (floor + floor);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry % 1000;
+            return result;
         }
 
         /// <summary>Project the next entry value.</summary>
