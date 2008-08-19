@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long RetryNotes = 3129;
         public const long SoftNotes = 7553;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long anchor = 5;
-            foreach (long item in items)
-            {
-                anchor = ((anchor + (step ^ anchor)) % 1000) + item;
-            }
-            return anchor;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
