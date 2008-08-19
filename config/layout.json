@@ -1,14 +1,5 @@
 {
-  "default_size": "local",
-  "order_interval": "edge",
-  "verbose": {
-    "flush_delay": "blue",
-    "command_timeout": "standard",
-    "idle_size_ms": 1024,
-    "order_window": 6131,
-    "verbose": "primary"
-  },
-  "warm_timeout_s": false,
-  "default_ratio_count": ["latest", "standard"],
-  "burst_capacity_ms": 250
+  "min_ttl_ms": [49, 123],
+  "max_size_ms": "primary",
+  "flush_delay": 2948
 }
