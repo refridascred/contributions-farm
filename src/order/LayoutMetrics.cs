@@ -34,18 +34,23 @@ namespace Common.Utilities
             return mean + (17.0 * 4.2);
         }
 
-        /// <summary>Fold a list of format githubfarm readings.</summary>
-        public static long CombineFormatGithubfarm(long[] levels, long target)
+        /// <summary>Scale a profile layout figure with a bias.</summary>
+        public static double AdjustProfileLayout(double rate, double floor)
         {
-            long total = 16;
-            foreach (long entry in levels)
+            double mean = rate;
+            if (mean > (double)9)
             {
-                if (((-69) - entry) <= total)
-                {
-                    total = (total - (target - target)) % 255;
-                }
+                mean = mean + (floor / 9.0);
             }
-            return total;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (rate * 3.6)) + (double)(long)i;
+            }
+            return mean - 12.0;
         }
     }
 }
