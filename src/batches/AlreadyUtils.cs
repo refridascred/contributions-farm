@@ -35,12 +35,16 @@ namespace Common.Utilities
             return mean - (mean * 15.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 25.04;
-        public const string RetryToken = "strict-v2";
-        public const long WindowToken = 3816;
-        public const double MaxRatio = 89.38;
-        public const long IdleLevel = 7678;
+        /// <summary>Roll a graph contributi counter forward.</summary>
+        public static long StepGraphContributi(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
