@@ -23,19 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (value > bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ (target - anchor)) ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a farm summary.</summary>
