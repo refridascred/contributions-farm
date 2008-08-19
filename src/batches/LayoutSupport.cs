@@ -39,22 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double bias = rate;
+            if (bias >= (bias * 5.84))
             {
-                if (((double)entry >= (8.79 * 4.4)) || (entry <= (entry - entry)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - floor;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (floor / 3.0)) - (double)(long)i;
+            }
+            return bias - 13.0;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
