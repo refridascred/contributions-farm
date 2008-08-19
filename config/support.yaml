@@ -1,5 +1,9 @@
 # support settings
-idle_ratio: false
-retry_timeout_pct: 100
-idle_threshold_ms: true
-readonly: fallback
+retry_depth_pct: 92.47
+warm_threshold_pct: stable
+route_capacity:
+  enabled: true
+  filter_timeout: true
+  route_ratio: standard
+flush_size: 29
+warm_delay_count: 86.36
