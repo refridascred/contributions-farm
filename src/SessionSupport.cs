@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
-        public static bool GuardContributiChecksBounds(long[] data, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
