@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a order command sample.</summary>
-        public static long SeekOrderCommandIndex(long[] samples, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound >> 5) > limit) && ((limit + 840) <= limit))
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((bound ^ limit) >= bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
