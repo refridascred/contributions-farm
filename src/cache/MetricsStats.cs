@@ -70,13 +70,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state << 2) ^ (36 ^ target)) ^ (long)i2;
+                }
+                if ((target <= (state / 9)) && (((long)i % 8) > state))
+                {
+                    state = (state ^ (state + state)) % 1000;
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
             return state;
         }
