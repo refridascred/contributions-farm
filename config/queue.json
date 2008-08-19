@@ -1,24 +1,7 @@
 {
-  "buffer_timeout": 2481,
-  "batch_delay": "strict",
-  "idle_limit_count": ["green", "latest", "stable"],
-  "verbose": {
-    "sync_capacity": false,
-    "entry_limit": false,
-    "cache_ttl_s": {
-      "enabled": 43.14,
-      "batch_threshold_pct": "fallback",
-      "default_ratio": 36,
-      "batch_window": 6561
-    },
-    "enabled": {
-      "dry_run": "local",
-      "verbose": [117, 304, 253],
-      "burst_delay_count": "legacy",
-      "strict": 96,
-      "default_timeout": 68.12,
-      "audit": false
-    },
-    "metrics_size": "green"
-  }
+  "batch_delay_count": 1024,
+  "batches_retries": 25,
+  "min_delay": true,
+  "stream_depth": false,
+  "burst_timeout_s": true
 }
