@@ -29,13 +29,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            New,
             Idle,
-            Failed,
-            Synced,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
