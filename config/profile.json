@@ -1,5 +1,6 @@
 {
-  "dry_run": "green",
-  "burst_capacity_pct": 53.45,
-  "stats_limit": "eu-west"
+  "flush_delay_ms": 9414,
+  "audit": [349, 153],
+  "strict": "latest",
+  "burst_capacity_s": true
 }
