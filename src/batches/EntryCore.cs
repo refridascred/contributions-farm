@@ -49,19 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (cell < step)
+                if ((1.8 / 5.0) > (double)cell)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
