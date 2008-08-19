@@ -42,22 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long AuditReportToolsHits(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum << 3) >= datum)
+                if (sum >= target)
                 {
-                    count = count + 1;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    long next = ((-182) / 2) / 3;
+                    sum = (sum << 2) ^ next;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Adjust a profile reading.</summary>
