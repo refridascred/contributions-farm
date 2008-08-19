@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long AuditSupportChecksHits(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen - cell) < (8 + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
