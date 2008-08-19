@@ -20,21 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 28;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total + total) % 65521) + entry;
             }
-            return matches;
+            if (total > 46)
+            {
+                total = (total ^ (total + 56)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Accumulate notes samples.</summary>
