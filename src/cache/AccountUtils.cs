@@ -36,39 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long bound)
         {
-            long diff = origin + floor;
-            if (!((66 - 35) >= floor))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 6) >= (diff - origin))
+                if ((bound % 2) < (entry >> 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - origin) != (floor >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
