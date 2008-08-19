@@ -50,21 +50,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster buffer readings.</summary>
-        public static long MatchClusterBufferCount(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = seed - target;
+            if ((seed - slot) > (target ^ seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((-654) <= slot)
                 {
-                    if ((data[i] ^ data[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 - 9.0) <= (double)target)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
