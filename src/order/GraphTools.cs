@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long IdleCommand = 9993;
         public const string WindowCommand = "latest-1";
 
-        /// <summary>Look up the position of a account metric sample.</summary>
-        public static long SeekAccountMetricIndex(long[] levels, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the entry queue entries that pass the check.</summary>
