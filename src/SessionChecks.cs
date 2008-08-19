@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 94.21;
-        public const long WindowChecks = 1877;
-        public const long SoftInterval = 7634;
-        public const string BaseSize = "local-edge";
+        /// <summary>Validate session already readings against a bound.</summary>
+        public static bool CheckSessionAlreadyLimits(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] values)
