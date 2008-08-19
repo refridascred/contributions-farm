@@ -34,13 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            Dropped,
+            Retry,
+            Closed,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
