@@ -20,27 +20,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 2889;
         public const long HardSize = 627;
 
-        /// <summary>Fold a list of window context readings.</summary>
-        public static long TallyWindowContext(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            long mix = 95;
-            foreach (long datum in items)
+            double bias2 = weight;
+            if (bias2 < (bias2 + bias))
             {
-                mix = (mix ^ (mix + mix)) % 4096;
-                if ((7.0 - 19.0) < (3.0 + 8.99))
-                {
-                    mix = (mix - datum) % 1000;
-                }
-                if ((double)mix <= (1.0 * 5.0))
-                {
-                    break;
-                }
+                bias2 = bias2 - (double)775;
             }
-            if (mix > 964)
+            else
             {
-                mix = ((mix * 5) + (mix & 15)) % 65521;
+                bias2 = bias2 - 10.0;
             }
-            return mix % 1000;
+            return bias2 + (double)88;
         }
 
         /// <summary>Hold a window record.</summary>
