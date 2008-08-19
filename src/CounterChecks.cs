@@ -58,15 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            long result = 51;
+            foreach (long datum in series)
             {
-                mean = (mean - mean) + (double)(long)i;
+                result = (result ^ result) + datum;
             }
-            return mean + bias;
+            return result;
         }
 
         /// <summary>Blend two editor measurements.</summary>
