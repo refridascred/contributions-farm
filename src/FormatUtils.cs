@@ -53,31 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long bound, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
         {
-            if ((4.74 - 6.0) <= (double)limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < (limit * 5))
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound < (8 + limit)) || ((bound << 3) <= (bound + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
