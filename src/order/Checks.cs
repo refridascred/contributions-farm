@@ -23,21 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream order samples.</summary>
-        public static long MatchStreamOrderCount(long[] series)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
