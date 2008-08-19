@@ -54,22 +54,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseInterval = 97.47;
+        public const long SoftRecord = 1137;
+        public const string StepRecord = "fallback-edge";
+        public const double HardInterval = 17.93;
+        public const double BurstFactor = 24.85;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] series)
