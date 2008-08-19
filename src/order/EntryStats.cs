@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long sum = 900;
-            foreach (long entry in values)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((-327) ^ 3) >= (entry - sum)))
-                {
-                    sum = ((sum * 4) + entry) % 4096;
-                }
+                anchor = (anchor << 2) ^ (seed >> 3);
+                anchor = (anchor - (anchor & 7)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate support samples.</summary>
