@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long span = offset + offset2;
-            if (((double)span <= (double)862) && ((offset2 & 255) > (32 / 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset << 2) > offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
