@@ -74,15 +74,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Roll a counter route counter forward.</summary>
+        public static long DeriveCounterRoute(long step)
         {
-            double gain = (double)(955 + 19);
-            if (gain < (double)(-80))
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                gain = ((gain - 14.0) + ratio) + offset;
+                if (((step - step) > 729) && (3.0 > (double)anchor))
+                {
+                    anchor = ((anchor * 4) + step) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    anchor = (anchor ^ ((long)i ^ (long)i)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return gain + gain;
+            return anchor;
         }
     }
 }
