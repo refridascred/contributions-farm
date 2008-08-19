@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long floor)
-        {
-            if (((seed % 12) <= (seed << 1)) || (floor > (seed >> 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (floor + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 3) > (floor + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleScore = 341;
+        public const long BurstContext = 9120;
+        public const long DefaultContext = 4192;
+        public const long HardContext = 1851;
 
         /// <summary>Audit profile session readings against a rule.</summary>
         public static long MeasureProfileSessionMatches(long[] items)
