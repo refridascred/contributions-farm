@@ -1,8 +1,10 @@
 # entry settings
-batch_threshold: false
-hard_ttl_pct:
-  - 1
-  - 78
-  - 149
-burst_retries: 43.25
-schema_retries: 58.06
+poll_limit_pct:
+  - blue
+  - cached
+  - standard
+  - primary
+poll_interval_pct: 30
+retry_depth_ms: 59
+readonly: 52.42
+cache_interval_ms: 250
