@@ -16,31 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi layout input into a small class.</summary>
-        public static long ClassifyContributiLayout(long seed, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long limit)
         {
-            if (!((seed - offset) == (seed + offset)))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((18.0 * 2.3) >= (double)offset)
+                if (cell < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((117 ^ (-916)) > (seed ^ offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
