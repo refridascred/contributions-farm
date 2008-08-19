@@ -25,19 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer schema samples.</summary>
-        public static long TallyBufferSchema(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] items, long bound)
         {
-            long total = 402;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                total = ((total << 3) ^ total) - cell;
-                if (total >= (total - total))
+                if (datum > bound)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Combine support values into a single score.</summary>
