@@ -1,7 +1,5 @@
 {
-  "soft_size_s": 2326,
-  "report_timeout": 500,
-  "command_depth": 42.95,
-  "schema_limit": 5975,
-  "cache_interval_s": true
+  "enabled": ["green", "primary", "fallback"],
+  "readonly": 67,
+  "warm_capacity": ["blue", "fallback", "fallback", "standard"]
 }
