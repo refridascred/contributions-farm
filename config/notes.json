@@ -1,7 +1,12 @@
 {
-  "flush_timeout_s": 78,
-  "account_depth": "stable",
-  "readonly": true,
-  "enabled": "open",
-  "tools_size": 39.14
+  "default_ratio_s": 100,
+  "burst_delay": {
+    "cache_timeout_ms": false,
+    "persist": 5.36,
+    "soft_timeout_s": true,
+    "retry_capacity_count": "primary",
+    "stream_timeout": false
+  },
+  "batch_interval_count": false,
+  "batch_ttl_s": false
 }
