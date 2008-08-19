@@ -48,17 +48,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                mark = mark - 15;
+                mark = mark - mark;
+                if (((long)i % 97) > 95)
                 {
-                    return (long)i;
+                    mark = mark + 50;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a token summary.</summary>
