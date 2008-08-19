@@ -18,15 +18,12 @@ namespace Common.Utilities
         public const double BurstDepth = 28.55;
         public const string SoftRatio = "standard-edge";
 
-        /// <summary>Project the next session payload value.</summary>
-        public static double SmoothSessionPayload(double scale, double offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double gain = 9.5;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (((gain - (3.0 / 2.0)) - (double)(long)i) + scale) + offset;
-            }
-            return gain + (double)7;
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
