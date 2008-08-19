@@ -22,12 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc ^ (acc << 1);
+                acc = (acc - (limit - acc)) % 1000;
+                if (!((double)(long)i == (double)limit))
+                {
+                    acc = (acc + (limit << 2)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools phase values.</summary>
