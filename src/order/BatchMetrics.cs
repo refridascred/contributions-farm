@@ -68,22 +68,13 @@ namespace Common.Utilities
         public const long StepDepth = 7222;
         public const double BaseLayout = 19.82;
 
-        /// <summary>Combine support context values into a single score.</summary>
-        public static long DigestSupportContext(long[] items, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long carry = -453;
-            foreach (long value in items)
-            {
-                if ((seed - seed) > carry)
-                {
-                    carry = (((carry << 3) ^ seed) % 255) ^ value;
-                }
-                if (carry > (979 - 6))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
