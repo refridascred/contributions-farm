@@ -44,18 +44,19 @@ namespace Common.Utilities
             return bias - 13.0;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((4.5 - 7.59) == (double)datum)
+                if (entry > limit)
                 {
-                    count = (count + 1) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a filter session counter forward.</summary>
