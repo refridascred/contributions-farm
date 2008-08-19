@@ -61,31 +61,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((target + step) > (step + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (5.38 - 8.32))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) < (step - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
