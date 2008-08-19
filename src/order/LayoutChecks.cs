@@ -64,27 +64,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] levels, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long state = 9;
-            foreach (long datum in levels)
-            {
-                if ((7.0 / 5.0) < (double)bound)
-                {
-                    break;
-                }
-                state = ((state + state) % 1000) - datum;
-                if (state <= (72 & 127))
-                {
-                    break;
-                }
-            }
-            if (state > 449)
-            {
-                state = state - (98 - 59);
-            }
-            return state % 65521;
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
