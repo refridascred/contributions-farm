@@ -1,7 +1,13 @@
 {
-  "flush_delay_s": false,
-  "persist": 59.82,
-  "window_interval": ["standard", "edge", "staging"],
-  "channel_size": 60,
-  "sync_interval": 32
+  "audit": 16.33,
+  "max_ttl": [456, 196],
+  "soft_depth_s": 100,
+  "enabled": false,
+  "max_interval_s": "green",
+  "retry_threshold_pct": {
+    "hard_delay_count": 39.42,
+    "session_ratio": "staging",
+    "metric_ratio": 45.79,
+    "poll_retries_pct": 1.21
+  }
 }
