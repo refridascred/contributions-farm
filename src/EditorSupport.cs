@@ -29,17 +29,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor;
+            if (gain >= (double)98)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            return gain - scale;
         }
 
         /// <summary>Grade a cache checks value against two limits.</summary>
