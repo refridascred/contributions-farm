@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((6 ^ hits) <= 4)
+                if (sample != target)
                 {
-                    hits = (hits + 2) + value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a support header.</summary>
