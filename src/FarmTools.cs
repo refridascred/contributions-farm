@@ -35,10 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 9275;
-        public const string WindowRecord = "latest-1";
-        public const long MaxRatio = 2509;
-        public const long HardRecord = 7221;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Retry,
+            Closed,
+            Ready,
+            Dropped,
+        }
     }
 }
