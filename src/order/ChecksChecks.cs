@@ -25,19 +25,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate command buffer readings against a bound.</summary>
-        public static bool CheckCommandBufferRange(long[] data, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Idle,
+            Locked,
         }
     }
 }
