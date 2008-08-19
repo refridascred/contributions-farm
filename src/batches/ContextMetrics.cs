@@ -56,21 +56,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = rate;
+            if (drift >= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift + (drift - drift);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
