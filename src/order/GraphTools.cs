@@ -22,12 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = (((score * 4) + score) % 1000) ^ (long)i2;
+                    score = ((score * 5) + step) % 65521;
+                }
+                if (!((6 ^ step) <= (7 + 82)))
+                {
+                    score = score + (step + 88);
+                    score = ((score << 3) ^ (score / 5)) % 1000;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
