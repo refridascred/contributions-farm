@@ -56,15 +56,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] samples, long origin)
+        /// <summary>Audit stats command readings against a rule.</summary>
+        public static long TallyStatsCommandGaps(long[] items)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            foreach (long value in items)
             {
-                if (((origin << 1) < (origin * 4)) || ((double)(long)samples.Length > (4.3 * 8.9)))
+                if (((value ^ hits) != (hits ^ 55)) || ((value & 15) >= (66 << 2)))
                 {
-                    hits = (hits + 2) ^ datum;
+                    hits = hits + 3;
                 }
             }
             return hits;
