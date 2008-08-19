@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=38
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    standard)
+    strict)
         log "fast path"
         ;;
     *)
@@ -20,7 +17,10 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+BUFFER_LIMIT=274
+log "limit is ${BUFFER_LIMIT}"
