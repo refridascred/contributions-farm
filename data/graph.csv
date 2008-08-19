@@ -1,8 +1,8 @@
-id,ratio
-1,primary
-2,605
-3,74.38
-4,open
-5,fallback
-6,31
-7,464
+id,owner,level,score
+1,open,57.0,47.09
+2,legacy,61.98,834
+3,edge,196,64
+4,85.11,stable,776
+5,strict,78.94,54.46
+6,13.56,369,cached
+7,930,45.47,32.76
