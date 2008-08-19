@@ -59,17 +59,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                if (cell <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
