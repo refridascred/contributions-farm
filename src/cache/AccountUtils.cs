@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long CountAlreadyFilterGaps(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((tally + entry) == (entry * 2))
                 {
-                    total = ((total ^ (total & 255)) % 65521) - (long)i2;
+                    tally = tally + 3;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
