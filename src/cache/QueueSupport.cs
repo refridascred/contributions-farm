@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long RetryNotes = 3129;
         public const long SoftNotes = 7553;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Retry,
-            Closed,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 5160;
+        public const long DefaultLevel = 3016;
+        public const string SoftCount = "stable-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleSize = "staging-1";
