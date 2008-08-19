@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
