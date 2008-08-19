@@ -71,11 +71,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitBudget = 6275;
-        public const double CacheSize = 53.06;
-        public const string StepSchema = "standard-edge";
-        public const string DefaultSchema = "latest-1";
-        public const long SoftSchema = 2826;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 3) >= reading)
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
