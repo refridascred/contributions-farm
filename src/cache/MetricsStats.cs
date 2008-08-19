@@ -48,22 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((((reading + reading) >= (tally + 1)) && ((tally << 3) > (reading * 5))) || ((reading < (reading * 2)) && ((tally - tally) <= tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
