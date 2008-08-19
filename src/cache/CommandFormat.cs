@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double MaxSchema = 37.55;
         public const long WindowInterval = 7358;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] values, long origin)
+        /// <summary>Look up the position of a report notes sample.</summary>
+        public static long FindReportNotesIndex(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != origin)
+                if (items[i] >= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
