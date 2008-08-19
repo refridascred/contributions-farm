@@ -55,10 +55,21 @@ namespace Common.Utilities
             return (mean - (span / 8.0)) + gain;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 95.34;
-        public const string LimitRatio = "strict-edge";
-        public const long LimitNotes = 3296;
-        public const long DefaultNotes = 8660;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
