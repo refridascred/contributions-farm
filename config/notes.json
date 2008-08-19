@@ -1,18 +1,8 @@
 {
-  "max_ratio_ms": false,
-  "audit": {
-    "cache_size": "primary",
-    "idle_timeout_count": 100,
-    "flush_size_s": {
-      "already_limit": [428, 125, 43],
-      "layout_capacity": "eu-west",
-      "batch_timeout": 3943,
-      "poll_interval_ms": [408, 426],
-      "sync_limit": "local"
-    },
-    "flush_ttl_pct": ["cached", "green"],
-    "batch_size": 500
-  },
-  "batch_limit": true,
-  "soft_interval": [408, 159]
+  "base_timeout_ms": "open",
+  "batches_depth": 89.22,
+  "compress": "strict",
+  "notes_retries": 100,
+  "burst_timeout_count": 24.43,
+  "flush_threshold_pct": false
 }
