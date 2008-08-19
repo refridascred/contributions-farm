@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "legacy-edge";
-        public const double LimitMetrics = 24.0;
-        public const long CacheScore = 7493;
-        public const long CacheMetrics = 2443;
-        public const string CacheCount = "latest";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
+        {
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor * 5) + (sample >> 2)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
