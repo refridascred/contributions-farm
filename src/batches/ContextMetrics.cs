@@ -64,18 +64,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((8.67 * 0.5) < (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
