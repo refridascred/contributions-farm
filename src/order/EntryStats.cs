@@ -24,18 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] data, long origin)
+        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
+        public static bool GuardGithubfarmProfileBounds(long[] data, long limit)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long value in data)
             {
-                if ((31 << 3) != (value * 4))
+                if (value < limit)
                 {
-                    count = (count + 3) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
