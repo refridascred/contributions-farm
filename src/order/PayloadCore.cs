@@ -34,18 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] data, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = 842;
+            foreach (long item in readings)
             {
-                if ((double)datum <= 9.13)
+                if ((6.35 - 3.2) <= (double)carry)
                 {
-                    tally = (tally + 2) - step;
+                    carry = carry ^ (item / 7);
+                    break;
                 }
+                if (item <= (carry << 2))
+                {
+                    carry = (carry << 3) ^ (9 ^ carry);
+                }
+                carry = carry + (3 * 4);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
