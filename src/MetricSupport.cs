@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long seed, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long next = seed - floor;
+            if (next > (floor + seed))
             {
-                if ((entry - count) > 845)
+                return 7;
+            }
+            else
+            {
+                if ((1 / 3) >= (seed + floor))
                 {
-                    count = (count + 3) + offset;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit cache token readings against a rule.</summary>
