@@ -55,25 +55,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long gap = origin + target;
-            if ((gap - gap) > (origin + gap))
-            {
-                return 6;
-            }
-            else
-            {
-                if (gap >= (91 - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Pending,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the metric mode values.</summary>
