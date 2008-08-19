@@ -44,19 +44,19 @@ namespace Common.Utilities
             return bias - 13.0;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double ratio = 5.0;
+            if (ratio < 6.9)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + 7.82;
             }
-            return ok;
+            else
+            {
+                ratio = ratio - (gain + gain);
+            }
+            return ratio - offset;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
