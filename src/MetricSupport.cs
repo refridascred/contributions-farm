@@ -12,15 +12,16 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            long carry = step;
+            long acc = target;
             for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                acc = ((acc * 3) + (target + (long)i)) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Match up support samples.</summary>
