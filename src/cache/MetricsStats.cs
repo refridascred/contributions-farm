@@ -29,40 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long bound)
-        {
-            long delta = step - bound;
-            if ((step & 63) >= 5)
-            {
-                return 5;
-            }
-            else
-            {
-                if (delta <= (delta & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 4) <= (delta + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 64) <= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 61.17;
+        public const long MaxTimeout = 8052;
+        public const long LimitFarm = 8507;
+        public const long LimitSize = 3308;
+        public const double StepFarm = 47.6;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadMatches(long[] readings)
