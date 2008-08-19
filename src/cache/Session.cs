@@ -62,19 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample < floor)
+                if (floor < (reading / 4))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
