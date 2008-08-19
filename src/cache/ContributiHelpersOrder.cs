@@ -20,22 +20,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long gap = limit ^ floor;
+            if ((limit - 579) > (floor & 3))
             {
-                if (!((value % 16) > (seen & 63)))
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ floor) > (floor + 27))
                 {
-                    seen = (seen + 3) + origin;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((limit + floor) <= (725 >> 3)) || (gap < (35 >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit >> 5) >= (floor - gap)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
