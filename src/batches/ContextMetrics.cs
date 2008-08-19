@@ -41,23 +41,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long acc = 354;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc + (entry + 525)) % 65521) + limit;
-                if (4 < acc)
+                if (2.05 <= (double)tally)
                 {
-                    acc = (acc ^ (entry + acc)) % 255;
+                    tally = (tally + 2) ^ entry;
                 }
-                if (!(entry >= (acc % 3)))
+                else
                 {
-                    acc = ((acc * 4) + acc) % 101;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
