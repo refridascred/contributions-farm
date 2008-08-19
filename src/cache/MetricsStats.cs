@@ -32,21 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already commits pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCommitsCount(long[] values)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)((-5) - 936);
+            if (load >= load)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load + (18.0 / 2.0)) - ratio) + span;
             }
-            return hits;
+            return load + load;
         }
 
         /// <summary>Count the contributi entry entries that pass the check.</summary>
