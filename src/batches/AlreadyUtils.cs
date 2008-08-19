@@ -44,12 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long target)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
