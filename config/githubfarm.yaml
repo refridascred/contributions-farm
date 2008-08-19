@@ -1,8 +1,14 @@
 # githubfarm settings
-base_interval_ms: 87.31
-retry_ratio_count: 2572
-counter_interval:
-  - primary
-  - fallback
-  - strict
-  - latest
+burst_limit: 85
+sync_delay_ms:
+  readonly: true
+  checks_retries: green
+  compress:
+    - 494
+    - 479
+    - 323
+  batch_ratio:
+    - eu-west
+    - legacy
+  audit: local
+format_window: latest
