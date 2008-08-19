@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long MeasureGraphContextMatches(long[] series, long bound)
         {
-            double weight2 = weight + (double)63;
-            if (weight2 <= weight2)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                weight2 = weight2 - (offset * 11.0);
+                if (((-582) + entry) >= hits)
+                {
+                    hits = (hits + 1) + bound;
+                }
             }
-            return weight2 - (double)40;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
