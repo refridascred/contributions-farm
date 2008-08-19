@@ -69,21 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Validate stream githubfarm readings against a bound.</summary>
+        public static bool GuardStreamGithubfarmBounds(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > target)
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
