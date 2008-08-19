@@ -1,4 +1,9 @@
 # entry settings
-poll_size_s: blue
-githubfarm_threshold: 37.94
-sync_capacity_pct: true
+batch_ratio_s: legacy
+cache_size_count:
+  - 79
+  - 68
+  - 169
+  - 67
+payload_capacity: 7741
+poll_interval: blue
