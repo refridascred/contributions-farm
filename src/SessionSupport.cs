@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] series, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (hits <= (1 * 2))
+                if (reading <= limit)
                 {
-                    hits = ((hits + 1) + value) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Project the next stream value.</summary>
