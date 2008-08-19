@@ -22,13 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long step)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            if (((double)step < (double)5) && ((double)bound == (17.0 * 5.8)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.15 / 4.0) <= (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 2) > (bound + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
