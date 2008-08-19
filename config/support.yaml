@@ -1,5 +1,10 @@
 # support settings
-burst_timeout_pct: primary
-strict: legacy
-burst_size_s: latest
-audit: true
+schema_limit:
+  githubfarm_retries: true
+  soft_limit: 52.12
+  readonly: true
+  dry_run: false
+sync_delay_ms: 29.61
+cache_limit_pct: 500
+poll_interval_count: true
+cache_retries_ms: false
