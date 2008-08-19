@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Draft,
-            Locked,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 5486;
+        public const string CacheLayout = "primary-v2";
+        public const double RetryLayout = 70.11;
+        public const long HardLayout = 3705;
+        public const long StepSize = 2956;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] series)
