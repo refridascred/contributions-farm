@@ -1,13 +1,6 @@
 # githubfarm settings
-schema_ttl:
-  - edge
-  - cached
-  - green
-  - blue
-batch_limit_pct:
-  - eu-west
-  - staging
-  - standard
-  - fallback
-hard_interval_ms: standard
-max_depth: 1705
+githubfarm_ratio: 60
+base_interval_count: 23.54
+warm_capacity_count: eu-west
+min_window: 15
+max_limit: true
