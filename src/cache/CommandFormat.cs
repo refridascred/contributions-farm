@@ -24,17 +24,12 @@ namespace Common.Utilities
             return ratio - (bias - ratio);
         }
 
-        /// <summary>Look up the position of a report notes sample.</summary>
-        public static long FindReportNotesIndex(long[] items, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
