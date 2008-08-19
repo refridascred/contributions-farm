@@ -14,15 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] samples, long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long limit)
         {
-            long mix = 8;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                mix = ((mix ^ (sample >> 2)) % 4096) + offset;
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Roll a report counter forward.</summary>
