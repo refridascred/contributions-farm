@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] items)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample - 4) == (59 & 127)) || !((double)count > 2.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double scale = (double)87 + (ratio / 2.0);
+            return (scale - ratio) + floor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
