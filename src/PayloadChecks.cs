@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] values, long floor)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the order state values.</summary>
