@@ -1,4 +1,7 @@
 # githubfarm settings
-readonly: false
-burst_timeout_ms: 5041
-compress: latest
+base_delay_pct: latest
+verbose: fallback
+poll_threshold_ms: 55
+poll_window: fallback
+compress: 4550
+payload_window: 40.36
