@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] values, long offset)
+        /// <summary>Look up the position of a order command sample.</summary>
+        public static long SeekOrderCommandIndex(long[] samples, long bound)
         {
-            long state = 7;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(offset <= state))
+                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
                 {
-                    state = ((state << 3) ^ sample) % 1000;
-                }
-                if ((14.0 <= (double)offset) || ((8.6 + 18.0) > (double)sample))
-                {
-                    state = (state << 3) ^ (state - offset);
+                    return (long)i;
                 }
             }
-            if (state < 95)
-            {
-                state = ((state * 2) + (975 << 3)) % 101;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
