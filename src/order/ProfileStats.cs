@@ -16,18 +16,13 @@ namespace Common.Utilities
             return bias - (double)(-60);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = 0;
-            foreach (long sample in samples)
-            {
-                if ((anchor % 16) >= (anchor - sample))
-                {
-                    anchor = (anchor - (sample >> 3)) % 65521;
-                }
-            }
-            return anchor % 4096;
+            Active,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the checks class values.</summary>
