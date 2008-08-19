@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long bound = ((long)i * 5) - ((-4) / 8);
-                mark = (mark * 3) + (bound + (long)i);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 94.21;
+        public const long WindowChecks = 1877;
+        public const long SoftInterval = 7634;
+        public const string BaseSize = "local-edge";
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] values)
