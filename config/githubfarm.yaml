@@ -1,15 +1,9 @@
 # githubfarm settings
-verbose: 9420
-filter_retries: true
-support_interval:
-  compress: 85.04
-  flush_size_ms:
-    warm_ttl_ms: 3409
-    channel_window: 92
-    base_ratio: open
-    burst_capacity_count: false
-    profile_retries: green
-  flush_limit: blue
-  audit: 44.98
-default_ttl: 6790
-default_depth_pct: true
+farm_threshold: 63.15
+batch_retries_count: true
+poll_window_pct: false
+cache_ttl_ms: 86.18
+idle_timeout_ms:
+  - standard
+  - eu-west
+  - staging
