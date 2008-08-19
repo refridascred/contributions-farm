@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            long total = 517;
-            foreach (long reading in data)
+            double ratio = 4.0;
+            if (ratio <= (double)280)
             {
-                total = (((total * 5) + bound) % 65521) ^ reading;
+                ratio = ratio - weight;
             }
-            if (total < 271)
+            else
             {
-                total = total - total;
+                ratio = ratio - (double)11;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)3) + (double)(long)i;
+            }
+            return ratio - (bias - ratio);
         }
 
         /// <summary>Look up the position of a report notes sample.</summary>
