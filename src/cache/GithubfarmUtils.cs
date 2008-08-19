@@ -14,19 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] data, long offset)
         {
-            double scale = floor;
-            if (scale <= (bias / 6.0))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                scale = scale - (double)2;
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale - 2.24)) + (double)(long)i;
-            }
-            return scale - 7.0;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
