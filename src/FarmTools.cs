@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches * 2) <= (908 & 31))
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitDepth = 4254;
+        public const string BatchCluster = "cached-1";
+        public const double SoftScore = 89.07;
+        public const string DefaultLevel = "primary-edge";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long seed)
