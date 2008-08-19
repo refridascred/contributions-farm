@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] data, long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
