@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long MeasureProfileSessionOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((sample + 32) >= (count + sample)) && ((count ^ count) != (count >> 4)))
                 {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
