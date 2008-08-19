@@ -23,21 +23,16 @@ namespace Common.Utilities
         public const double MaxBatches = 98.05;
         public const long BurstWidth = 8436;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (floor % 60)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a farm options.</summary>
