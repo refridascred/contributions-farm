@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = bound - limit;
+            if (((limit + limit) >= (0 * 4)) && ((bound % 2) >= (bound2 & 63)))
             {
-                if (values[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((bound / 7) >= (limit << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound2 < (9.87 * 0.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of route queue entries.</summary>
