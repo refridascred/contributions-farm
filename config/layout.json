@@ -1,7 +1,6 @@
 {
-  "default_capacity_pct": 54.2,
-  "audit": [44, 427, 233, 50],
-  "batch_retries": ["legacy", "stable"],
-  "token_retries": "edge",
-  "dry_run": "stable"
+  "notes_delay": ["fallback", "edge"],
+  "idle_depth_s": 5944,
+  "sync_limit_s": 4390,
+  "contributi_threshold": 37
 }
