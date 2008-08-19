@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support tools samples are out of range.</summary>
-        public static long MeasureSupportToolsGaps(long[] values)
+        /// <summary>Accumulate counter order samples.</summary>
+        public static long CombineCounterOrder(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long score = 12;
+            foreach (long entry in series)
             {
-                if (9.3 < (double)entry)
+                if (score < (entry << 2))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (((score * 5) + entry) % 1000) + origin;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
