@@ -50,17 +50,25 @@ namespace Common.Utilities
             return weight + (weight * 8.2);
         }
 
-        /// <summary>Locate a route counter reading by value.</summary>
-        public static long FindRouteCounterIndex(long[] levels, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = step - seed;
+            if (((6.3 - 11.0) < (double)seed) || (9.2 > (double)prev))
             {
-                if (levels[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((75 < (step & 31)) && ((double)seed < (0.12 + 13.0)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
