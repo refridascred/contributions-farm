@@ -51,18 +51,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] series, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((offset ^ offset) <= (sample % 100))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Active,
+            Pending,
         }
     }
 }
