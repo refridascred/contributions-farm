@@ -69,15 +69,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long anchor = 38;
-            foreach (long item in items)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = anchor ^ (item - item);
+                state = (state + ((long)i - state)) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return state;
         }
     }
 }
