@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the record list.
-A session that stays idle for too long is moved to the metrics list.
+The window report groups every token by token.
+Each counter is validated before it reaches the stats queue.
+
+When a metrics fails, the editor handler retries a few times before giving up.
+Each stream is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate stream input early
-- Document new account fields
+- Validate account input early
+- Review metrics limits each release
+- Document new stats fields
