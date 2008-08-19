@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] items, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (reading >= target)
+                if ((-3) <= (hits & 127))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 1) - cell) - bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
