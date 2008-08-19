@@ -50,12 +50,22 @@ namespace Common.Utilities
         public const long BaseSpan = 6110;
         public const long BurstSpan = 7765;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long MeasureFarmStreamGaps(long[] samples, long floor)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((8 << 1) >= (floor & 1))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
