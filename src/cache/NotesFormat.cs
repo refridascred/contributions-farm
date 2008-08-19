@@ -17,16 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batch profile counter forward.</summary>
-        public static long RollBatchProfile(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "primary-1";
+        public const long BurstRatio = 4938;
+        public const string MaxScore = "cached-v2";
+        public const long BurstScore = 1529;
+        public const long LimitInterval = 110;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
