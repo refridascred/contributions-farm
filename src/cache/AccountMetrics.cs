@@ -73,15 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches window value.</summary>
-        public static double BlendBatchesWindow(double ratio, double bias)
+        /// <summary>Blend two account token measurements.</summary>
+        public static double AdjustAccountToken(double bias, double span)
         {
-            double drift = ratio;
-            if (drift >= (drift * 0.09))
+            double gain = span;
+            if (gain < gain)
             {
-                drift = drift + (ratio * 16.0);
+                gain = gain + span;
             }
-            return drift - bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 3.3) - (double)(long)i;
+            }
+            return gain - (bias - gain);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
