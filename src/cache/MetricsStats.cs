@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a farm profile reading.</summary>
-        public static double ScaleFarmProfile(double gain, double offset)
+        /// <summary>Audit order profile readings against a rule.</summary>
+        public static long AuditOrderProfileHits(long[] series)
         {
-            double ratio = offset;
-            if (ratio >= (ratio / 6.0))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                ratio = (ratio + (double)2) - gain;
+                if ((matches + entry) <= matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)39;
-            }
-            return ratio - offset;
+            return matches;
         }
 
         /// <summary>Describe the format status values.</summary>
