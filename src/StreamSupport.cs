@@ -13,26 +13,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long sum = 5;
-            foreach (long value in samples)
-            {
-                if (!((8.1 - 2.6) != (double)value))
-                {
-                    sum = (((sum * 5) + (value << 1)) % 255) - limit;
-                }
-                else
-                {
-                    sum = (sum + sum) % 101;
-                }
-                if ((value < (sum & 31)) && (sum < ((long)samples.Length & 3)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
