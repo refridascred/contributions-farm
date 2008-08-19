@@ -73,18 +73,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items, long target)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 5) > (489 * 3))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
