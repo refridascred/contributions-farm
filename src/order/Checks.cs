@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((1 >= (cell & 127)) || (matches >= (matches >> 4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
