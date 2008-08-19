@@ -1,6 +1,7 @@
 {
-  "min_interval_s": 41,
-  "strict": "blue",
-  "max_delay": 29.07,
-  "enabled": 97.45
+  "default_capacity_pct": 54.2,
+  "audit": [44, 427, 233, 50],
+  "batch_retries": ["legacy", "stable"],
+  "token_retries": "edge",
+  "dry_run": "stable"
 }
