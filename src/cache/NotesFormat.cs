@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 94.38;
-        public const double StepFormat = 31.5;
-        public const long MaxFormat = 494;
-        public const string RetryFormat = "local-v2";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] series, long target)
