@@ -30,16 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = mark - (floor ^ mark);
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
