@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
