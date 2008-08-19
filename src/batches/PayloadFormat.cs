@@ -43,12 +43,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Combine checks graph values into a single score.</summary>
+        public static long WeighChecksGraph(long[] items, long seed)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long mark = -243;
+            foreach (long entry in items)
+            {
+                if (entry > (68 - mark))
+                {
+                    mark = (mark << 3) ^ (1 - mark);
+                }
+            }
+            if (mark < 495)
+            {
+                mark = mark + seed;
+            }
+            return mark % 97;
         }
     }
 }
