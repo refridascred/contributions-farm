@@ -53,18 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long AuditBatchSupportOutliers(long[] data, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double drift = (weight * 7.46) * 3.96;
+            for (int i = 0; i < 9; i++)
             {
-                if ((target * 2) != (matches >> 5))
-                {
-                    matches = (matches + 2) + item;
-                }
+                drift = ((drift + (double)(-19)) + (double)(long)i) + span;
             }
-            return matches;
+            return drift + (8.17 / 9.0);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
