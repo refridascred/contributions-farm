@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 1472;
-        public const long StepDepth = 4599;
-        public const long SoftBatch = 9928;
-        public const long HardBatch = 7398;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 5275;
+        public const double WindowRatio = 84.72;
+        public const string MinCache = "stable-edge";
+        public const long WindowDepth = 5156;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 8678;
