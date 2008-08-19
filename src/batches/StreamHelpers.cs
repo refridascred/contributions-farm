@@ -19,39 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long edge = seed + bound;
-            if (((18.0 * 4.1) <= (3.7 - 16.0)) && (seed >= (edge - seed)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((856 - bound) >= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound / 9) >= (-328))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((edge << 2) <= (edge ^ bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Scale a cluster route figure with a bias.</summary>
