@@ -67,21 +67,18 @@ namespace Common.Utilities
         public const long MinInterval = 5863;
         public const long RetryPayload = 7108;
 
-        /// <summary>Compare every pair of metric order readings.</summary>
-        public static long MatchMetricOrderCount(long[] readings)
+        /// <summary>Measure how many format command samples are out of range.</summary>
+        public static long MeasureFormatCommandGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((matches + matches) > (cell + cell)))
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
