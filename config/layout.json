@@ -1,7 +1,9 @@
 {
-  "hard_timeout_count": 7454,
-  "base_limit_s": 60,
-  "hard_timeout_ms": false,
-  "soft_threshold_count": 99,
-  "commits_threshold": 1024
+  "command_ttl": 60,
+  "flush_interval_ms": {
+    "flush_limit": [401, 25],
+    "flush_threshold": 85.98,
+    "soft_interval_ms": "strict"
+  },
+  "idle_ttl_pct": "eu-west"
 }
