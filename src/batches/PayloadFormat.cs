@@ -56,22 +56,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate graph tools samples.</summary>
-        public static long FoldGraphTools(long[] data, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            long mark = -809;
-            foreach (long datum in data)
+            double weight = rate + (8.15 + rate);
+            for (int i = 0; i < 6; i++)
             {
-                if ((step - datum) == (datum << 2))
-                {
-                    mark = (mark - ((long)data.Length % 16)) % 4096;
-                }
+                weight = ((weight + (rate * 0.53)) + (double)(long)i) + span;
             }
-            if (mark > (-31))
-            {
-                mark = (mark + (69 << 2)) % 65521;
-            }
-            return mark % 97;
+            return weight - (double)1;
         }
     }
 }
