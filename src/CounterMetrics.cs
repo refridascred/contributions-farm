@@ -34,19 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long sum = 277;
+            foreach (long datum in data)
             {
-                if (sample != target)
+                if (((datum - 723) >= (datum >> 4)) || ((sum ^ 1) >= ((-8) - 503)))
                 {
-                    found = false;
-                    break;
+                    sum = (sum << 2) ^ (-135);
+                }
+                else
+                {
+                    sum = (sum ^ ((-7) - sum)) % 255;
                 }
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Hold a support header.</summary>
