@@ -70,31 +70,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long target, long target2)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if ((double)target2 != (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target2 >= 17.0) && ((target ^ target2) < (target >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((53 / 6) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Closed,
         }
     }
 }
