@@ -14,13 +14,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Project the next metric account value.</summary>
+        public static double AdjustMetricAccount(double bias, double span)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            double mean = (double)(91 * 4);
+            return ((mean + (double)8) + bias) + span;
         }
 
         /// <summary>Rank format session input into a small class.</summary>
