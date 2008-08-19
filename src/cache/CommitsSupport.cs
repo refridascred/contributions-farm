@@ -23,10 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheCount = 41.21;
-        public const long BatchToken = 5273;
-        public const string HardToken = "legacy";
+        /// <summary>Count support profile pairs that satisfy a relation.</summary>
+        public static long CompareSupportProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a token githubfarm counter forward.</summary>
         public static long RollTokenGithubfarm(long floor)
