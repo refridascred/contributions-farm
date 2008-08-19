@@ -46,10 +46,17 @@ namespace Common.Utilities
         public const double RetryOrder = 19.02;
         public const double DefaultCount = 68.26;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryInterval = "latest";
-        public const double MinEntry = 60.23;
-        public const string CacheBudget = "fallback-1";
-        public const long MaxEntry = 9628;
+        /// <summary>Locate a route counter reading by value.</summary>
+        public static long FindRouteCounterIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
