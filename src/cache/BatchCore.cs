@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const string StepEditor = "local-v2";
         public const long IdleWidth = 7033;
 
-        /// <summary>Check that every profile farm entry stays within the limit.</summary>
-        public static bool VerifyProfileFarmRange(long[] samples, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double rate = weight;
+            if (rate <= weight)
             {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (double)311;
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
