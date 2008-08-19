@@ -13,21 +13,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up order profile samples.</summary>
-        public static long PairOrderProfileCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin + step) >= 47)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((627 ^ origin) < (65 + step))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin / 6) >= (step - origin))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
