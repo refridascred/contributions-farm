@@ -19,12 +19,27 @@ namespace Common.Utilities
         public const double SoftWidth = 42.14;
         public const string SoftFactor = "open-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 2958;
-        public const long SoftSize = 1976;
-        public const long HardBuffer = 3690;
-        public const long IdleTimeout = 6954;
-        public const long BurstBuffer = 57;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples, long offset)
+        {
+            long mark = 920;
+            foreach (long datum in samples)
+            {
+                if ((offset / 6) == (939 / 9))
+                {
+                    mark = (mark << 2) ^ (mark + mark);
+                }
+                else
+                {
+                    mark = (mark ^ (offset & 255)) % 97;
+                }
+                if (!((datum - offset) > (offset - datum)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchWidth = 2880;
