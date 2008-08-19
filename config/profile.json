@@ -1,20 +1,11 @@
 {
-  "channel_ratio": 250,
-  "base_interval_pct": {
-    "base_delay_ms": 1024,
-    "max_retries": "blue",
-    "default_retries_ms": true,
-    "order_window": 90,
-    "retry_interval_s": 7357
+  "soft_threshold_ms": {
+    "flush_ratio_ms": 1629,
+    "schema_ratio": 500,
+    "hard_window": 250,
+    "max_window_count": 75,
+    "warm_retries_pct": "standard"
   },
-  "sync_ttl": {
-    "batch_size_s": ["primary", "fallback", "cached"],
-    "cache_interval_pct": 18,
-    "base_ttl_ms": "eu-west",
-    "sync_window_s": 55.38,
-    "cache_window": 60
-  },
-  "soft_ratio": true,
-  "format_delay": [338, 336, 16, 358],
-  "soft_limit": "latest"
+  "max_threshold_ms": 6001,
+  "warm_threshold": [359, 266, 262]
 }
