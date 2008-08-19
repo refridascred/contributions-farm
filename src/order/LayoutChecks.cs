@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((long)data.Length <= (542 - item)) && ((9.48 + 6.4) >= (double)item))
+                if (((13.0 / 6.0) <= (double)bound) && ((bound & 63) <= value))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a format reading by value.</summary>
