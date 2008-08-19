@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 5486;
-        public const string CacheLayout = "primary-v2";
-        public const double RetryLayout = 70.11;
-        public const long HardLayout = 3705;
-        public const long StepSize = 2956;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "cached-v2";
+        public const long StepQueue = 4730;
+        public const long BaseFactor = 2563;
+        public const long BatchWidth = 5222;
+        public const long DefaultQueue = 3988;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
