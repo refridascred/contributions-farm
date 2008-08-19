@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                long slot = (offset % 3) % 16;
-                result = (result << 2) ^ (775 - slot);
-                result = result ^ offset;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            New,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
