@@ -40,21 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Roll a already account counter forward.</summary>
+        public static long IterateAlreadyAccount(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)state < (double)bound)
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the stats phase values.</summary>
