@@ -22,15 +22,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            if (offset < (offset - offset))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((step >= (offset + step)) && ((20 + offset) >= ((-8) - offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset * 2) < 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
