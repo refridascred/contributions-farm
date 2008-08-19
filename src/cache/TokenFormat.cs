@@ -42,11 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8265;
-        public const string BatchGithubfarm = "legacy-v2";
-        public const long RetryGithubfarm = 405;
-        public const long IdleLevel = 6456;
-        public const double IdleInterval = 50.26;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings)
+        {
+            long sum = 9;
+            foreach (long datum in readings)
+            {
+                if ((9 ^ datum) >= datum)
+                {
+                    sum = sum - sum;
+                }
+                else
+                {
+                    sum = sum - (sum << 3);
+                }
+            }
+            return sum;
+        }
     }
 }
