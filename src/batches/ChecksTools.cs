@@ -33,21 +33,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = bound + target;
+            if (761 <= (offset ^ offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)bound >= (0.8 + 3.0)) && ((target << 1) == (target - bound)))
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
+                    return 0;
+                }
+                else
+                {
+                    if (5.84 < (double)offset)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((15.0 / 5.0) == (double)target) && ((bound - target) >= bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the profile context entries that pass the check.</summary>
