@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long carry = 888;
-            foreach (long entry in values)
-            {
-                if (!(3 > (carry >> 3)))
-                {
-                    carry = ((carry << 3) ^ 871) + seed;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                carry = (carry + entry) % 1000;
-            }
-            return carry;
+            Active,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
