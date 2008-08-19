@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 13.23;
-        public const double StepLevel = 84.04;
-        public const long HardBatch = 36;
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long AuditToolsSupportMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((floor + 3) > (item / 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long StepSchema(long step)
