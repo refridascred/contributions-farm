@@ -22,10 +22,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowFactor = 6126;
-        public const double MaxDepth = 21.7;
-        public const long HardChannel = 9299;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double floor)
+        {
+            double bias = 0.2 + (weight / 7.0);
+            return (bias - (weight * 9.6)) + floor;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] series, long target)
