@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 8753;
-        public const long WindowCommits = 5362;
-        public const string StepCommits = "cached-edge";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.3 * 0.8) >= (double)sample)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
