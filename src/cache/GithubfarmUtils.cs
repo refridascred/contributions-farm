@@ -36,22 +36,14 @@ namespace Common.Utilities
         public const long WindowDepth = 7897;
         public const double HardRatio = 97.08;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((13.0 / 5.0) > (double)cell)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Stale,
+            Failed,
+            Synced,
         }
     }
 }
