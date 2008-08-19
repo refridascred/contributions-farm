@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long BatchBuffer = 2;
         public const string HardBuffer = "primary-v2";
 
-        /// <summary>Fold a list of metric queue readings.</summary>
-        public static long DigestMetricQueue(long[] levels)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 346;
-            foreach (long item in levels)
-            {
-                mark = (mark + (mark + item)) % 97;
-                mark = ((mark * 5) + mark) % 4096;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
