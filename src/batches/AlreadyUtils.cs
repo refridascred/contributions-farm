@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const string SoftSize = "stable-1";
         public const string RetryProfile = "strict-v2";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Blend two editor command measurements.</summary>
+        public static double ScaleEditorCommand(double bias, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            double mean = (double)(-85) - 4.6;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                mean = (mean + (bias + offset)) + (double)(long)i;
             }
-            return score;
+            return mean - (mean * 15.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
