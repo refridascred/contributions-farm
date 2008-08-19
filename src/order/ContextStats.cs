@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= step)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Rank account input into a small class.</summary>
