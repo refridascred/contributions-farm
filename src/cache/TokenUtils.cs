@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinLevel = 4625;
-        public const long BatchDepth = 2780;
-        public const double BurstBudget = 76.37;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long seed)
