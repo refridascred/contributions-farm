@@ -1,6 +1,6 @@
 {
-  "persist": 4908,
-  "soft_ratio_s": "primary",
-  "soft_threshold": "edge",
-  "dry_run": "primary"
+  "warm_retries": 1919,
+  "persist": false,
+  "queue_window": "local",
+  "poll_capacity_pct": "cached"
 }
