@@ -12,16 +12,16 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc * 3) + (target + (long)i)) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
+                total = total + (total - (long)i);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Match up support samples.</summary>
