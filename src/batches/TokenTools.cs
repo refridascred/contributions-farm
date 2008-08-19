@@ -41,32 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format record value against two limits.</summary>
-        public static long BucketFormatRecord(long target, long target2)
+        /// <summary>Combine batches account values into a single score.</summary>
+        public static long TotalBatchesAccount(long[] levels, long bound)
         {
-            long slot = target ^ target2;
-            if (target2 < (target2 >> 3))
+            long acc = 14;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.8 / 3.0) == (double)target2)
+                for (int i = 0; i < 12; i++)
                 {
-                    return 0;
+                    acc = ((((acc << 3) ^ bound) % 255) ^ (long)i) - value;
                 }
-                else
+                if (46 <= (bound ^ 369))
                 {
-                    if (0.8 >= (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc + (bound + bound)) % 1000;
                 }
             }
+            return acc;
         }
     }
 }
