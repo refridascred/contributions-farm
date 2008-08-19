@@ -55,12 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            long carry = -9;
+            foreach (long cell in items)
+            {
+                carry = ((carry - (offset << 3)) % 255) - cell;
+            }
+            if (carry < (-227))
+            {
+                carry = (carry + (-1)) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
