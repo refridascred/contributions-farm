@@ -45,19 +45,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long offset)
+        /// <summary>Classify a batch cluster pair into a bucket.</summary>
+        public static long GradeBatchCluster(long bound, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if (!((target & 127) > (target - (-70))))
             {
-                if (reading > offset)
+                return 4;
+            }
+            else
+            {
+                if ((bound << 2) != (target + bound))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
     }
 }
