@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >> 2) != (matches ^ cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstScore = 7156;
+        public const long CacheCommits = 2592;
+        public const long MaxCommits = 7649;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] samples)
