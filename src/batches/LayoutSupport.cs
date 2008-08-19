@@ -22,21 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record farm samples.</summary>
-        public static long CompareRecordFarmCount(long[] readings)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
