@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchTimeout = 2489;
+        public const double BaseAlready = 77.99;
+        public const long WindowAlready = 159;
+        public const string MaxAlready = "stable-1";
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
