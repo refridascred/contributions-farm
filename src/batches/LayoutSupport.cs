@@ -34,31 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
-            if (1.3 <= (double)origin)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= 4.1)
+                if (((double)entry >= (8.79 * 4.4)) || (entry <= (entry - entry)))
                 {
-                    return 6;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((origin << 2) <= (target - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
