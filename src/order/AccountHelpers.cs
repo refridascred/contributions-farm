@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] readings, long bound)
         {
-            Synced,
-            Draft,
-            Done,
-            Failed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue status values.</summary>
