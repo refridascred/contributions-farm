@@ -1,7 +1,19 @@
 {
-  "session_retries": 9.26,
-  "profile_ratio": ["edge", "stable", "open"],
-  "base_window": 63.32,
-  "hard_limit_count": 250,
-  "payload_retries": 500
+  "cache_interval": "fallback",
+  "compress": 90.42,
+  "format_window": {
+    "githubfarm_capacity": ["local", "blue", "fallback", "local"],
+    "cache_limit_pct": "open",
+    "enabled": {
+      "audit": 100,
+      "verbose": true,
+      "batch_size": "legacy",
+      "sync_interval_s": "green",
+      "max_ratio": [386, 182, 177, 57],
+      "retry_capacity": 32
+    },
+    "window_delay": 1024
+  },
+  "max_threshold_s": 3402,
+  "batch_capacity": "strict"
 }
