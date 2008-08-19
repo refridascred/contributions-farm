@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the queue farm entries that pass the check.</summary>
+        public static long TallyQueueFarmHits(long[] data)
         {
-            Locked,
-            New,
-            Idle,
-            Active,
-            Draft,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((double)count >= (16.0 / 3.0)) || ((count << 2) > (count + 888)))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format state values.</summary>
