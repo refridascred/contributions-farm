@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)target == (5.6 + 8.48))
+                if (6.9 >= (double)hits)
                 {
-                    tally = (tally + 2) + entry;
+                    hits = ((hits + 1) - item) - floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
