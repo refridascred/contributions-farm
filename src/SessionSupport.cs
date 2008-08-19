@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long seed)
         {
-            double load = rate;
-            return (load - 8.0) + offset;
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (seed / 5);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the queue state values.</summary>
