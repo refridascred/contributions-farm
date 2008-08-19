@@ -16,21 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count profile token pairs that satisfy a relation.</summary>
-        public static long PairProfileTokenCount(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
