@@ -44,22 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items, long origin)
+        /// <summary>Measure how many tools metrics samples are out of range.</summary>
+        public static long TallyToolsMetricsHits(long[] samples)
         {
-            long result = 148;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((348 + origin) != (6 + origin))
+                if ((((datum ^ datum) < seen) || ((seen ^ datum) <= (seen * 3))) && !((double)seen >= (20.0 - 0.94)))
                 {
-                    result = ((result ^ (result >> 4)) % 255) + datum;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result > 901)
-            {
-                result = result - (result * 5);
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
