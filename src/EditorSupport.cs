@@ -47,39 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache checks value against two limits.</summary>
-        public static long GradeCacheChecks(long bound, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            long delta = bound - step;
-            if ((7 ^ step) <= (step + bound))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound ^ 805) <= (step % 8))
+                if (!((datum - datum) > matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + delta) >= (bound >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta < (45 / 3)) && ((bound + bound) != (step * 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
