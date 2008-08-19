@@ -1,5 +1,5 @@
 {
-  "counter_ttl": 41.82,
-  "audit": 3002,
-  "base_ratio": 7880
+  "farm_limit": 22.78,
+  "readonly": 60,
+  "warm_capacity_s": 45.91
 }
