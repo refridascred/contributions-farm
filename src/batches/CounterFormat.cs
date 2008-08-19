@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long sum = 3;
-            foreach (long cell in samples)
-            {
-                sum = ((sum ^ (cell >> 5)) % 1000) - origin;
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
