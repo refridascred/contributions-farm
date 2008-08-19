@@ -1,7 +1,5 @@
 {
-  "poll_timeout_count": "eu-west",
-  "cache_limit_ms": "local",
-  "graph_ratio": 88.36,
-  "compress": 38.99,
-  "warm_limit_s": "local"
+  "retry_depth_s": 70,
+  "cluster_limit": 28.02,
+  "audit": 17.1
 }
