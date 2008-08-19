@@ -31,12 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long target)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
