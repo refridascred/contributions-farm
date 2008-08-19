@@ -12,11 +12,29 @@ namespace Common.Utilities
         public const long IdleRoute = 8773;
         public const long BurstRoute = 5280;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepDepth = 6262;
-        public const double CacheFormat = 96.67;
-        public const double BurstDepth = 28.55;
-        public const string SoftRatio = "standard-edge";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                long hits = (floor + (long)i) + floor;
+                if (anchor >= (hits + hits))
+                {
+                    anchor = (anchor << 2) ^ (long)i;
+                }
+                if ((20.0 * 4.4) < (double)anchor)
+                {
+                    hits = (hits - (long)i) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 3)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
