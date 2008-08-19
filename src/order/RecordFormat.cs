@@ -52,11 +52,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long origin)
         {
-            double scale = (weight - floor) * 5.2;
-            return scale - (scale + floor);
+            long gap = offset - origin;
+            if ((offset > (origin ^ gap)) && ((5.4 - 8.21) != (double)gap))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.96 - 9.0) == (double)gap)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
