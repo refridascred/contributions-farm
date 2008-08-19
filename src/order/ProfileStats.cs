@@ -28,22 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long acc = 873;
-            foreach (long entry in items)
-            {
-                if (((10 * 4) >= (231 + entry)) && (limit <= (entry + limit)))
-                {
-                    acc = (acc ^ entry) % 65521;
-                }
-            }
-            if (acc < 53)
-            {
-                acc = acc ^ (3 ^ limit);
-            }
-            return acc % 4096;
+            Retry,
+            Locked,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
