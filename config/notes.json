@@ -1,20 +1,6 @@
 {
-  "verbose": {
-    "hard_threshold_ms": 26.84,
-    "audit": "latest",
-    "default_threshold_ms": false,
-    "strict": true,
-    "min_delay_s": "edge"
-  },
-  "strict": ["eu-west", "legacy"],
-  "retry_retries": 93.5,
-  "hard_timeout": 250,
-  "compress": 74,
-  "idle_retries_count": {
-    "burst_interval_pct": 5907,
-    "stats_retries": 33.95,
-    "idle_size": 250,
-    "verbose": 45.0,
-    "strict": true
-  }
+  "batch_ratio_ms": 4.4,
+  "dry_run": 15,
+  "warm_limit": [372, 439, 309],
+  "verbose": 60
 }
