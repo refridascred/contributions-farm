@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            long mark = -93;
-            foreach (long entry in items)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (((mark << 3) ^ mark) % 4096) ^ entry;
+                if (!((floor > ((long)i ^ anchor)) && ((24 << 3) <= (anchor << 1))))
+                {
+                    anchor = ((anchor << 3) ^ (48 - anchor)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
