@@ -47,38 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry record pair into a bucket.</summary>
-        public static long ClassifyEntryRecord(long seed, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            if ((double)seed <= (8.44 / 5.0))
+            long total = 3;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((269 < offset) || ((seed ^ 87) > offset))
+                if ((total + total) > (893 << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed >= (offset - 74))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (((total << 3) ^ (total & 31)) % 1000) ^ reading;
                 }
             }
+            if (total < (-826))
+            {
+                total = total - total;
+            }
+            return total;
         }
     }
 }
