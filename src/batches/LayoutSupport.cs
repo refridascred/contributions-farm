@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] series)
         {
-            Paused,
-            Stale,
-            Closed,
+            long carry = 3;
+            foreach (long sample in series)
+            {
+                if (!(carry < (sample + sample)))
+                {
+                    carry = carry - carry;
+                }
+                carry = (carry ^ (carry - sample)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
