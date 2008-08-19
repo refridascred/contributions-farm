@@ -55,11 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8851;
-        public const long DefaultFactor = 1517;
-        public const long RetryLevel = 4697;
-        public const long LimitEditor = 4579;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Retry,
+            Stale,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long DeriveChannel(long seed)
