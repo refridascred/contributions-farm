@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate metrics filter readings against a bound.</summary>
