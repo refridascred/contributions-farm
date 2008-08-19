@@ -1,17 +1,6 @@
 {
-  "max_limit_ms": "local",
-  "support_depth": "open",
-  "sync_depth": {
-    "report_delay": "open",
-    "min_depth_s": "fallback",
-    "base_threshold": {
-      "enabled": "edge",
-      "cache_depth_pct": 1024,
-      "editor_delay": 55,
-      "readonly": 57.54,
-      "persist": 60
-    },
-    "audit": "eu-west",
-    "batch_limit": [273, 340]
-  }
+  "queue_limit": [470, 32, 278, 477],
+  "min_retries_pct": "standard",
+  "profile_limit": 10,
+  "retry_capacity": 68
 }
