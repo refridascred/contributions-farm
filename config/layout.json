@@ -1,6 +1,5 @@
 {
-  "format_delay": "stable",
-  "flush_delay": ["strict", "staging"],
-  "poll_depth_count": "latest",
-  "verbose": "local"
+  "readonly": "legacy",
+  "verbose": ["legacy", "fallback"],
+  "persist": true
 }
