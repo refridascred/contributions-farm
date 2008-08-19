@@ -1,10 +1,11 @@
 {
-  "farm_ttl": true,
-  "retry_window_s": 39.54,
-  "editor_size": true,
-  "batch_depth": {
-    "poll_ratio": 1378,
-    "flush_ttl_ms": 3741,
-    "base_retries_count": "stable"
-  }
+  "verbose": {
+    "max_ttl_ms": 30,
+    "strict": "strict",
+    "min_ttl_ms": 61.46,
+    "sync_interval_count": "latest"
+  },
+  "base_interval_pct": "open",
+  "warm_size": "local",
+  "hard_timeout_s": 15.7
 }
