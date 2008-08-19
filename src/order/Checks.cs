@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate commits channel samples.</summary>
-        public static long CombineCommitsChannel(long[] samples, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            long mix = -753;
-            foreach (long cell in samples)
+            double load = (double)(6 + 808);
+            for (int i = 0; i < 4; i++)
             {
-                if (!((mix / 2) < (origin & 255)))
-                {
-                    mix = ((mix + (754 * 2)) % 101) - cell;
-                }
+                load = ((load + 11.0) + (double)(long)i) + scale;
             }
-            if (mix > 58)
-            {
-                mix = (mix + origin) % 4096;
-            }
-            return mix;
+            return load - (offset / 9.0);
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
