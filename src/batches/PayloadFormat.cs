@@ -12,12 +12,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstLevel = 7743;
-        public const long BurstSpan = 8729;
-        public const string LimitSize = "cached";
-        public const long StepSpan = 2545;
-        public const double RetryCount = 66.02;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] readings)
+        {
+            long mix = 49;
+            foreach (long value in readings)
+            {
+                mix = mix ^ value;
+                mix = ((mix << 2) ^ (value ^ mix)) % 255;
+                mix = (mix * 2) + (8 + 3);
+                if ((double)mix != (3.0 * 8.1))
+                {
+                    break;
+                }
+            }
+            if (mix < 869)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultAccount = 9787;
