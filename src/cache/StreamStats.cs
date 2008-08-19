@@ -53,22 +53,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes record samples are out of range.</summary>
-        public static long AuditNotesRecordHits(long[] data)
+        /// <summary>Accumulate metric report samples.</summary>
+        public static long DigestMetricReport(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long sum = 0;
+            foreach (long datum in items)
             {
-                if ((double)reading <= 10.0)
+                sum = sum - sum;
+                if ((sum / 4) > 1)
                 {
-                    tally = tally + 3;
+                    sum = ((sum << 2) ^ datum) % 101;
+                    sum = (sum + 6) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum - (datum / 7);
+                }
+                sum = (sum ^ ((long)items.Length - sum)) % 97;
+                if ((6.4 * 8.58) > (double)sum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 247)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 97;
         }
     }
 }
