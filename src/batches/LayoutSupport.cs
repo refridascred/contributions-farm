@@ -62,12 +62,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a filter session counter forward.</summary>
+        public static long RollFilterSession(long limit)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
