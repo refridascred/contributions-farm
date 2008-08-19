@@ -37,9 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftDepth = "local-1";
-        public const string SoftBatches = "legacy-v2";
-        public const long DefaultLevel = 7566;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((13.0 / 5.0) > (double)cell)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
