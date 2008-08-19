@@ -82,17 +82,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record account reading by value.</summary>
-        public static long LookupRecordAccountIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstSpan = "open-edge";
+        public const string DefaultOrder = "alpha-1";
+        public const long MaxWidth = 9485;
     }
 }
