@@ -40,18 +40,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((double)offset <= 17.0)
             {
-                if (tally > (tally ^ (long)values.Length))
+                return 0;
+            }
+            else
+            {
+                if (((9.5 / 7.0) > (double)offset) && ((offset / 2) < (target * 3)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 5) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
