@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The metric report groups every profile by schema.
+The record module keeps cluster values in sync with the buffer cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
-When a stream fails, the payload handler retries a few times before giving up.
-Keep support and report names short and lowercase.
-When a command fails, the farm handler retries a few times before giving up.
+When a buffer fails, the buffer handler retries a few times before giving up.
+Keep account and tools names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer counter defaults
-- Keep commits values small
+- Prefer payload defaults
+- Review schema limits each release
+- Keep stats values small
+- Log every already change
