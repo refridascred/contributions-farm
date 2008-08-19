@@ -1,13 +1,10 @@
 # Command notes
 
-Run the githubfarm check before changing any contributi limits.
-Use buffer settings to tune how often stats data is refreshed.
-
-A record that stays idle for too long is moved to the tools list.
-Keep commits and metric names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Keep layout values small
-- Review checks limits each release
-- Log every session change
+- Document new graph fields
+- Validate notes input early
+- Review order limits each release
