@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string CacheDepth = "latest";
         public const double SoftInterval = 7.7;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Audit route window readings against a rule.</summary>
+        public static long TallyRouteWindowMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)matches != (8.0 - 9.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) + reading) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
