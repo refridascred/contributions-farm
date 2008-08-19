@@ -19,32 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long target, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long gap = target + step;
-            if (!((target - 85) < step))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - gap) != (9 + gap))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + gap) > (step + gap))
+                    if ((items[i] + items[j]) < 2)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
