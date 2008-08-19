@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long anchor = 0;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 5) + (sample >> 2)) % 1000;
-            }
-            return anchor;
+            Synced,
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the queue status values.</summary>
