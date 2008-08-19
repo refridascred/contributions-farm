@@ -14,32 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long origin, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long bound = origin + offset;
-            if ((bound << 3) <= 524)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 5) < (origin + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
