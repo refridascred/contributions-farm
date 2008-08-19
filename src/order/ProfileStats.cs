@@ -59,30 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long acc = 26;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (((acc * 5) + (seed / 5)) % 101) ^ (long)i;
-                }
-                if (!((8.36 / 4.0) <= (8.6 / 2.0)))
-                {
-                    acc = (acc - 2) % 101;
-                }
-                else
-                {
-                    acc = (acc - (cell & 1)) % 97;
-                }
-            }
-            if (acc > 767)
-            {
-                acc = (acc * 3) + (acc << 3);
-            }
-            return acc % 4096;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
