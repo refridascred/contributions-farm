@@ -1,6 +1,25 @@
 {
-  "payload_depth": "green",
-  "soft_timeout_pct": 23,
-  "hard_interval_s": 30,
-  "poll_timeout_count": true
+  "command_window": true,
+  "verbose": {
+    "payload_capacity": "blue",
+    "sync_ratio_s": 77,
+    "burst_size": {
+      "hard_delay_pct": 5959,
+      "channel_retries": 25,
+      "sync_capacity_count": 25.72
+    },
+    "retry_limit": "edge",
+    "poll_size_pct": {
+      "base_threshold_s": 73.67,
+      "max_limit": 7506,
+      "soft_delay_pct": [379, 30, 192],
+      "buffer_threshold": 1024,
+      "dry_run": 100,
+      "cache_ratio_pct": false
+    }
+  },
+  "entry_capacity": false,
+  "route_size": 34.01,
+  "filter_ttl": 2.43,
+  "cache_threshold_s": ["standard", "eu-west"]
 }
