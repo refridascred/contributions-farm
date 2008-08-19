@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long score = 1;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (!((reading - 57) == (reading / 7)))
                 {
-                    score = (score << 2) ^ ((long)i >> 5);
-                }
-                if (score < (entry * 4))
-                {
-                    continue;
-                }
-                if ((2 + 1) < (score / 5))
-                {
-                    score = score - ((long)values.Length >> 1);
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
