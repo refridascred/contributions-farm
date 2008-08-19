@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftSpan = "cached-1";
-        public const string StepScore = "staging-v2";
-        public const double IdleSize = 92.34;
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double span)
+        {
+            double scale = (double)(21 ^ 3);
+            if (scale > weight)
+            {
+                scale = scale + weight;
+            }
+            return scale - span;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long FindCounterIndex(long[] levels, long bound)
