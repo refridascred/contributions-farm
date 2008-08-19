@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long anchor = -927;
+            foreach (long entry in values)
             {
-                if (1.0 >= (double)seen)
+                if ((anchor & 3) == (origin << 3))
                 {
-                    seen = (seen + 2) ^ cell;
+                    anchor = (anchor * 3) + (entry - anchor);
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
