@@ -40,11 +40,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleDepth = 4769;
-        public const string MinLevel = "local-edge";
-        public const string SoftStream = "standard-1";
-        public const long MaxDepth = 7049;
+        /// <summary>Validate order counter readings against a bound.</summary>
+        public static bool VerifyOrderCounterLimits(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelHits(long[] values)
