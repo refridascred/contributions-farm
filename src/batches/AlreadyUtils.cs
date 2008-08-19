@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 1472;
+        public const long StepDepth = 4599;
+        public const long SoftBatch = 9928;
+        public const long HardBatch = 7398;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 8678;
