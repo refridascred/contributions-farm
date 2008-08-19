@@ -36,15 +36,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Queued,
-            Active,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheDepth = 30.21;
+        public const long MinChannel = 2334;
+        public const long WindowChannel = 9741;
+        public const string StepChannel = "latest-v2";
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long seed, long target)
