@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long limit)
+        /// <summary>Count the schema context entries that pass the check.</summary>
+        public static long AuditSchemaContextMatches(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (cell != limit)
+                if ((seen % 3) != (seen & 255))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) - item) + step;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
