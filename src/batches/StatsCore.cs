@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepLevel = 340;
-        public const long BatchCount = 6744;
-        public const long BatchLevel = 1951;
-        public const double BurstTimeout = 10.9;
-        public const long MaxRatio = 4233;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5166;
+        public const long CacheLevel = 1282;
+        public const long IdleEntry = 6495;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] levels, long target)
