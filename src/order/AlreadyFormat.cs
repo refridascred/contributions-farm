@@ -42,12 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = (((anchor * 2) + (bound % 10)) % 101) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
