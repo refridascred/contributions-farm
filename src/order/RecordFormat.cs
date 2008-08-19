@@ -44,22 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long MeasureSchemaFilterGaps(long[] data, long step)
         {
-            long carry = 18;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((value % 100) >= (carry << 3)))
+                if (!((double)item > 20.0))
                 {
-                    carry = (carry ^ (carry + value)) % 1000;
-                }
-                if ((double)carry > 0.6)
-                {
-                    carry = (carry - (6 - carry)) % 4096;
+                    count = (count + 2) + step;
                 }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
