@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = 0;
+            foreach (long cell in series)
             {
-                if ((69 + (-19)) <= (reading - target))
+                if ((carry + cell) < (carry / 4))
                 {
-                    count = count + 3;
+                    carry = carry ^ (2 + carry);
                 }
             }
-            return count;
+            if (carry < 975)
+            {
+                carry = carry - (carry >> 4);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a profile info.</summary>
