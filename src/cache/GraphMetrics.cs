@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] levels, long seed)
         {
-            Ready,
-            Pending,
-            Stale,
-            Active,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
