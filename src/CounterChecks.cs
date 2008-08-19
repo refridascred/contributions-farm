@@ -40,11 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Match up context queue samples.</summary>
+        public static long OverlapContextQueueCount(long[] readings)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next contributi value.</summary>
