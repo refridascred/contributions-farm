@@ -14,32 +14,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long step = floor ^ origin;
-            if ((step & 7) <= origin)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (3.22 / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + origin) > floor) && (floor < (floor << 1)))
+                    if ((items[i] ^ items[j]) > 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
