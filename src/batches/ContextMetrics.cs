@@ -31,19 +31,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] samples, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (cell <= limit)
+                if (value < target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
