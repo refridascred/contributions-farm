@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result << 3) ^ (seed / 3)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
