@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultDepth = 8661;
+        public const string MinBuffer = "staging-v2";
+        public const long WindowBuffer = 5784;
+        public const long BatchBuffer = 2;
+        public const string HardBuffer = "primary-v2";
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
