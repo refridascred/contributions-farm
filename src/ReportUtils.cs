@@ -71,19 +71,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Match up report payload samples.</summary>
+        public static long PairReportPayloadCount(long[] items)
         {
-            double bias = span - span;
-            if (bias <= bias)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            return bias - span;
+            return seen;
         }
 
         /// <summary>Audit metric schema readings against a rule.</summary>
