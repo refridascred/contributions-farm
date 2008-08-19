@@ -1,14 +1,11 @@
 # Command notes
 
-The schema module keeps format values in sync with the githubfarm cache.
-Each stream is validated before it reaches the githubfarm queue.
-
-The batches module keeps checks values in sync with the channel cache.
-Use stream settings to tune how often context data is refreshed.
+Run the notes check before changing any notes limits.
+When a graph fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Review channel limits each release
-- Validate entry input early
-- Log every stats change
+- Keep session values small
+- Document new notes fields
+- Validate editor input early
+- Log every context change
