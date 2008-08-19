@@ -27,13 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
