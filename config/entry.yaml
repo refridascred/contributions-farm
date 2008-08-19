@@ -1,11 +1,30 @@
 # entry settings
-buffer_threshold:
-  - primary
-  - green
-  - legacy
-cache_window_count: 98
-format_delay: 60
-base_ttl_count:
+max_size_s: edge
+default_timeout: 23
+cache_window_ms:
   - blue
-  - eu-west
-batch_timeout_s: 88.12
+  - blue
+  - cached
+editor_depth:
+  batch_window_ms:
+    max_limit: fallback
+    warm_interval:
+      - 375
+      - 478
+      - 152
+      - 347
+    compress: 100
+    verbose: false
+    idle_timeout_s: 68.26
+  burst_retries: fallback
+  batch_threshold_count: local
+  hard_threshold:
+    - local
+    - blue
+    - edge
+    - edge
+  dry_run: 6712
+  hard_capacity_s:
+    - 194
+    - 306
+audit: true
