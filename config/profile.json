@@ -1,10 +1,6 @@
 {
-  "soft_timeout_s": 33,
-  "command_retries": 1024,
-  "audit": {
-    "audit": "local",
-    "poll_ttl": [448, 284, 383, 320],
-    "cache_capacity_count": 20.15,
-    "verbose": "latest"
-  }
+  "audit": [191, 236, 313],
+  "cache_retries": ["standard", "local"],
+  "tools_retries": ["local", "legacy"],
+  "cache_capacity": "latest"
 }
