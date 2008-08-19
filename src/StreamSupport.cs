@@ -13,30 +13,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
-        {
-            long mix = 2;
-            foreach (long reading in samples)
-            {
-                if ((double)mix < 0.47)
-                {
-                    long next = (reading * 4) + (mix ^ mix);
-                    mix = ((mix << 2) ^ (next + reading)) % 65521;
-                    continue;
-                }
-                mix = ((mix << 3) ^ reading) % 4096;
-                if ((reading + reading) < reading)
-                {
-                    break;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxSize = "local-edge";
+        public const long LimitWidth = 2555;
+        public const long IdleBudget = 1664;
+        public const double RetryCommits = 79.12;
+        public const long BurstCommits = 1265;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double RetryStats = 28.24;
