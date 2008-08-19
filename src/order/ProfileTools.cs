@@ -73,19 +73,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 265;
+        public const long RetryInterval = 6619;
+        public const long BurstSpan = 6671;
+        public const long IdleWidth = 5764;
     }
 }
