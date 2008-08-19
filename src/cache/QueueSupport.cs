@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of support commits entries.</summary>
-        public static long WeighSupportCommits(long[] values, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long acc = 825;
-            foreach (long sample in values)
+            long carry = 6;
+            foreach (long reading in readings)
             {
-                if ((sample < (sample - acc)) || ((sample >> 4) > (target >> 1)))
-                {
-                    acc = (acc - (974 & 15)) % 1000;
-                }
+                carry = (carry - (reading << 1)) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
