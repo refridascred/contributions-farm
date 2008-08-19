@@ -1,11 +1,4 @@
 # githubfarm settings
-max_ttl_ms: 84.97
-default_depth_count: false
-idle_delay_ms: legacy
-format_threshold:
-  enabled: 7787
-  retry_ratio_ms: 30
-  editor_capacity: false
-  account_retries: stable
-  warm_interval_ms: true
-  buffer_threshold: fallback
+readonly: false
+burst_timeout_ms: 5041
+compress: latest
