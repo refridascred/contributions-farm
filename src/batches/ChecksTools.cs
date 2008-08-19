@@ -74,11 +74,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBudget = "fallback-1";
-        public const double StepBatches = 74.76;
-        public const double HardBatches = 26.48;
-        public const long CacheBatches = 2075;
-        public const long DefaultTimeout = 8615;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Queued,
+            Pending,
+            Retry,
+        }
     }
 }
