@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema context entries that pass the check.</summary>
-        public static long AuditSchemaContextMatches(long[] items, long step)
+        /// <summary>Grade a notes account value against two limits.</summary>
+        public static long ClassifyNotesAccount(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((bound + bound) >= ((-458) & 255))
             {
-                if ((seen % 3) != (seen & 255))
+                return 4;
+            }
+            else
+            {
+                if ((((-67) * 2) > (floor + floor)) || ((double)floor <= 15.0))
                 {
-                    seen = ((seen + 2) - item) + step;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound < 20.0) || ((bound ^ 79) < bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
