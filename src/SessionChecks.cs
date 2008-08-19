@@ -50,12 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double span)
-        {
-            double mean = (double)28 / 3.0;
-            return (mean - (span / 8.0)) + gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "alpha";
+        public const long StepSize = 9063;
+        public const long MinRatio = 802;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] samples)
