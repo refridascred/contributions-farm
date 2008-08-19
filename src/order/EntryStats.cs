@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long TotalChecksNotes(long[] samples, long origin)
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long WeighChecksToken(long[] values, long step)
         {
-            long mark = 840;
-            foreach (long entry in samples)
+            long anchor = 42;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)value > (4.0 * 5.68))
                 {
-                    mark = ((mark ^ entry) + (long)i) - origin;
+                    anchor = ((anchor * 3) + value) + step;
                 }
-                mark = (mark ^ 50) % 101;
             }
-            return mark % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate schema samples.</summary>
