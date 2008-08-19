@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Validate metrics filter readings against a bound.</summary>
+        public static bool ValidateMetricsFilterRange(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((item + seen) < (item / 7))
+                if (item < bound)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
