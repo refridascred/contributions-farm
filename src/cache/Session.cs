@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = -8;
+            foreach (long sample in values)
+            {
+                if (acc > (floor + 7))
+                {
+                    acc = ((acc - (floor - (long)values.Length)) % 65521) ^ sample;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the token phase values.</summary>
