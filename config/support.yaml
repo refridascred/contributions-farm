@@ -1,24 +1,10 @@
 # support settings
-soft_size_ms: false
-readonly:
-  audit:
-    warm_ratio_s: false
-    poll_ratio_pct: open
-    dry_run: 100
-    compress: false
-    enabled: false
-  editor_delay:
-    record_timeout: local
-    poll_limit_s: 94.33
-    profile_limit: green
-    default_ratio: 60
-    soft_ttl_count: 51
-    burst_delay_count:
-      - standard
-      - standard
-      - latest
-  metrics_timeout: 2898
-  window_capacity: cached
-  farm_ratio: edge
-batch_retries: open
-default_retries: true
+warm_timeout_pct:
+  - 224
+  - 93
+  - 214
+  - 336
+support_capacity: 3.0
+audit: 90.12
+queue_threshold: 100
+soft_interval: 500
