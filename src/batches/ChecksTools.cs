@@ -68,18 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile context entries that pass the check.</summary>
-        public static long AuditProfileContextGaps(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if (((14 % 97) != (step & 127)) && ((7 - floor) < (17 * 3)))
             {
-                if ((seen >> 2) >= (seen << 3))
+                return 3;
+            }
+            else
+            {
+                if ((step * 5) != (step + step))
                 {
-                    seen = (seen + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
