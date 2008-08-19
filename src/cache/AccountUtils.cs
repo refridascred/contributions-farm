@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long MeasureToolsFormatGaps(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((hits & 127) < (75 + hits)) && (item >= (60 % 10)))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
