@@ -43,18 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings, long step)
         {
-            long result = 314;
-            foreach (long cell in series)
+            long total = 16;
+            foreach (long item in readings)
             {
-                if (((cell << 1) > (origin << 1)) && ((result >> 5) > 12))
+                if ((74 - step) <= step)
                 {
-                    result = ((result * 5) + (origin >> 1)) % 97;
+                    total = ((total ^ (446 % 2)) % 65521) - item;
                 }
             }
-            return result;
+            return total % 97;
         }
 
         /// <summary>Hold a route header.</summary>
