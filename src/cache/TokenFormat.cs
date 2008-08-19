@@ -28,10 +28,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheSize = 2756;
-        public const string HardBuffer = "latest-v2";
-        public const long IdleBudget = 1025;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
