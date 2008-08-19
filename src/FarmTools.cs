@@ -35,13 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Retry,
-            Closed,
-            Ready,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
