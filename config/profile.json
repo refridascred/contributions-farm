@@ -1,10 +1,12 @@
 {
-  "burst_limit_s": {
-    "base_retries": "open",
-    "tools_limit": [361, 239, 110, 260],
-    "idle_delay_s": "legacy",
-    "readonly": 92.33
+  "soft_capacity_pct": 69.18,
+  "sync_depth": "primary",
+  "max_ratio_s": {
+    "metric_retries": 500,
+    "metrics_ratio": "latest",
+    "session_window": "primary",
+    "min_ratio": 1.09,
+    "cache_delay": false
   },
-  "hard_depth": 500,
-  "enabled": 44.38
+  "poll_delay_ms": ["cached", "legacy", "local"]
 }
