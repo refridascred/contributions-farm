@@ -1,10 +1,5 @@
 # support settings
-base_size:
-  - edge
-  - cached
-  - fallback
-max_size_ms:
-  - 125
-  - 35
-  - 5
-metrics_delay: 70
+burst_timeout_pct: primary
+strict: legacy
+burst_size_s: latest
+audit: true
