@@ -37,14 +37,17 @@ namespace Common.Utilities
         public const long BurstSize = 7281;
         public const long WindowLevel = 1460;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Look up the position of a editor batch sample.</summary>
+        public static long FindEditorBatchIndex(long[] values, long origin)
         {
-            Retry,
-            Pending,
-            Ready,
-            Failed,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
