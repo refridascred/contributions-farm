@@ -44,38 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            if (!((double)floor >= (double)target))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (3.1 + 6.0))
+                if ((816 + count) < (4 + 53))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (target >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target & 1) >= (floor * 3)) || (floor >= (floor + target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
