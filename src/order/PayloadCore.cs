@@ -40,19 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((offset << 3) < (offset - offset))
+                if (value != seed)
                 {
-                    anchor = anchor + (anchor / 6);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
     }
 }
