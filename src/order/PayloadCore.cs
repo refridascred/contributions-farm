@@ -33,21 +33,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = ((sum << 2) ^ (sum / 8)) % 4096;
+                if (offset > (offset >> 2))
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum << 2) ^ offset) % 1000;
+                    sum = sum + (32 << 3);
                 }
+                if (!(((long)i - (long)i) >= (offset ^ offset)))
+                {
+                    sum = ((sum * 5) + (offset / 2)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
