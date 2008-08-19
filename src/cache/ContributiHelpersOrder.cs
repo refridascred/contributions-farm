@@ -13,12 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 8409;
-        public const long DefaultWidth = 4364;
-        public const long HardLevel = 7470;
-        public const double SoftNotes = 41.29;
-        public const long BurstLevel = 7124;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long floor)
