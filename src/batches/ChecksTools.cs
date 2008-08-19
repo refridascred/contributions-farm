@@ -52,18 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already checks samples are out of range.</summary>
-        public static long TallyAlreadyChecksGaps(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (969 >= (value * 3))
+                if (value != floor)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
