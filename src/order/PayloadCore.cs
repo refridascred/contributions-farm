@@ -19,28 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long hits = (floor + (long)i) + floor;
-                if (anchor >= (hits + hits))
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
                 {
-                    anchor = (anchor << 2) ^ (long)i;
+                    return (long)i;
                 }
-                if ((20.0 * 4.4) < (double)anchor)
-                {
-                    hits = (hits - (long)i) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor << 3)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
