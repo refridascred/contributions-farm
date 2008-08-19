@@ -46,13 +46,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] series, long bound)
         {
-            Closed,
-            Active,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (1.59 - 1.0))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
