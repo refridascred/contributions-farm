@@ -66,19 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((floor * 2) == (long)i)
+                if (sample >= seed)
                 {
-                    total = ((total * 3) + floor) % 65521;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
     }
 }
