@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 7059;
-        public const long MaxNotes = 8305;
-        public const long BaseBudget = 7672;
-        public const string CacheDepth = "latest";
-        public const double SoftInterval = 7.7;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Audit route window readings against a rule.</summary>
         public static long TallyRouteWindowMatches(long[] samples, long seed)
