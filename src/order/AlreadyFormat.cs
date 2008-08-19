@@ -58,12 +58,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryDepth = 37.51;
-        public const string RetryWidth = "latest";
-        public const long HardAlready = 6640;
-        public const long MinAlready = 2272;
-        public const long BatchLevel = 5666;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] values, long step)
