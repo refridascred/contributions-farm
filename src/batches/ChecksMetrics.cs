@@ -24,27 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long limit)
         {
-            long sum = 74;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((value >> 1) != (sum + sum))
+                if (item >= limit)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    sum = sum ^ (value - value);
-                }
-                sum = (sum - value) % 101;
             }
-            if (sum < 10)
-            {
-                sum = (sum ^ (sum / 6)) % 255;
-            }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Describe the layout kind values.</summary>
