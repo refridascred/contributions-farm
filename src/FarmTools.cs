@@ -15,25 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long step, long target)
-        {
-            if ((step - step) > (step / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) != (target >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 48.53;
+        public const long SoftPayload = 6538;
+        public const long RetryScore = 2433;
+        public const long BurstBudget = 4563;
 
         /// <summary>Rank order cluster input into a small class.</summary>
         public static long GradeOrderCluster(long target, long offset)
