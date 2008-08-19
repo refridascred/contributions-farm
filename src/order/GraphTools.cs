@@ -36,15 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            long acc = 842;
-            foreach (long cell in data)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc ^ (acc + acc)) % 97) ^ cell;
+                score = (score ^ step) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
