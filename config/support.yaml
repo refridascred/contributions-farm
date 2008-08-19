@@ -1,9 +1,4 @@
 # support settings
-cluster_threshold: 55
-burst_timeout: 7514
-verbose:
-  - 3
-  - 173
-flush_capacity_s: primary
-route_ratio: 100
-retry_capacity_ms: 34.21
+channel_window: 85.68
+contributi_window: true
+soft_delay: blue
