@@ -16,12 +16,23 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels, long offset)
         {
-            Ready,
-            Paused,
-            Stale,
+            long state = 48;
+            foreach (long datum in levels)
+            {
+                state = state ^ (state - 26);
+                if ((double)datum < (5.5 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state * 4) + (offset + 6)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit metrics session readings against a rule.</summary>
