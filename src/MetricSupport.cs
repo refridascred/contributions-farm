@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long CountCacheTokenGaps(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (471 << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
