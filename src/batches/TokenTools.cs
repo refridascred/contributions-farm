@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long offset)
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long ScoreAccountQueue(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 81;
+            foreach (long datum in data)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                state = ((((state * 4) + (1 * 5)) % 101) ^ datum) + seed;
+                state = ((state * 3) + (-60)) % 101;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
