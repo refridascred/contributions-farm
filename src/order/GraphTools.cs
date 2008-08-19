@@ -64,19 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double bias = (double)(701 & 1);
-            if (bias <= (double)6)
-            {
-                bias = (bias + gain) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - gain) - (double)(long)i;
-            }
-            return bias - bias;
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
