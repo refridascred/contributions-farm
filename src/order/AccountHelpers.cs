@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items, long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 15) <= offset)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
