@@ -23,14 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long target, long step)
         {
-            Active,
-            Locked,
-            New,
-            Closed,
-            Queued,
+            long gap = target + step;
+            if (!((target - 85) < step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - gap) != (9 + gap))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + gap) > (step + gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
