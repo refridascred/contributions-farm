@@ -55,19 +55,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (tally > (cell * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinBudget = 6630;
+        public const long MinFactor = 1641;
+        public const double MaxLevel = 11.21;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long target)
