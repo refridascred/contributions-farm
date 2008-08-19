@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double span)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double bias2 = (double)(5 * 4);
-            if (bias2 >= 6.0)
-            {
-                bias2 = ((bias2 + (bias2 * 1.0)) + bias) - span;
-            }
-            return bias2 - 2.9;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
