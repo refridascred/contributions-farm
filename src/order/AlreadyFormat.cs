@@ -65,14 +65,17 @@ namespace Common.Utilities
         public const long MinAlready = 2272;
         public const long BatchLevel = 5666;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long step)
         {
-            New,
-            Stale,
-            Ready,
-            Dropped,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
