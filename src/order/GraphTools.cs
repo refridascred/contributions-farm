@@ -30,10 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 6068;
-        public const long IdleNotes = 1854;
-        public const string BaseTimeout = "cached";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] series, long origin)
