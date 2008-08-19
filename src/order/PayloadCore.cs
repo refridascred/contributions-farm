@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryRatio = 115;
-        public const long StepQueue = 2287;
-        public const long WindowCount = 6100;
-        public const long RetryQueue = 4396;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= 9.13)
+                {
+                    tally = (tally + 2) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] data, long offset)
