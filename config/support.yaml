@@ -1,6 +1,38 @@
 # support settings
-retry_limit_s: 7424
-batch_limit_pct: blue
-min_window_s: false
-route_window: 39
-context_ttl: 7.59
+window_retries: true
+audit: 90.26
+default_ratio_s:
+  burst_interval: 36.76
+  idle_threshold_ms:
+    min_window_ms: green
+    checks_size: false
+    cache_ttl: standard
+    strict:
+      - cached
+      - cached
+      - cached
+    route_size: staging
+    persist: green
+  verbose:
+    flush_delay_pct: standard
+    poll_timeout_pct: 3382
+    account_window: 250
+  warm_window_s: latest
+  counter_timeout: local
+  retry_delay: 1802
+graph_limit:
+  compress: 94
+  audit:
+    batch_limit: 2647
+    max_ratio: 4.3
+    audit: stable
+    poll_ratio_pct: 32
+    verbose: 100
+  warm_interval:
+    - eu-west
+    - local
+  hard_size:
+    - 291
+    - 342
+  flush_limit_s: blue
+default_depth_pct: 500
