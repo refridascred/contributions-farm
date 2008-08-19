@@ -1,8 +1,5 @@
 {
-  "flush_ratio_count": ["green", "standard", "local"],
-  "retry_retries": [127, 113, 325],
-  "max_threshold": 68.08,
-  "retry_interval": "eu-west",
-  "min_delay_pct": 60.18,
-  "default_capacity_count": 44.47
+  "strict": 1024,
+  "compress": "primary",
+  "dry_run": 15
 }
