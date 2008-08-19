@@ -1,14 +1,11 @@
 # Command notes
 
-Keep schema and tools names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-
-Each support is validated before it reaches the account queue.
-The notes module keeps record values in sync with the entry cache.
+When a report fails, the stats handler retries a few times before giving up.
+The buffer report groups every cache by route.
+Keep channel and profile names short and lowercase.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new queue fields
-- Log every batches change
-- Validate profile input early
+- Validate stream input early
+- Keep command values small
+- Prefer context defaults
