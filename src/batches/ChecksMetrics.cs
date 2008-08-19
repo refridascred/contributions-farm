@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BaseTools = 3281;
         public const long SoftCount = 8304;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (item >= limit)
+                if (reading >= floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Roll a token counter forward.</summary>
