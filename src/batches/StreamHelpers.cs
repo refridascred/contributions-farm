@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const long SoftWindow = 634;
         public const long LimitWindow = 2129;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 9173;
+        public const double DefaultRatio = 48.28;
+        public const long BatchMetric = 8055;
+        public const long RetryMetric = 1414;
+        public const long LimitMetric = 3868;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] data, long step)
