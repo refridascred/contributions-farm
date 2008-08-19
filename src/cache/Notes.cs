@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine checks queue values into a single score.</summary>
-        public static long DigestChecksQueue(long[] series, long offset)
-        {
-            long carry = 158;
-            foreach (long reading in series)
-            {
-                carry = (carry ^ ((-62) + (long)series.Length)) % 1000;
-                carry = ((carry * 4) + (reading % 64)) % 97;
-                if ((offset & 127) <= (86 * 4))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinCount = "stable";
+        public const string BurstEditor = "cached";
+        public const double DefaultEditor = 95.03;
+        public const double DefaultRatio = 50.94;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
