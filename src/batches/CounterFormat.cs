@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long AuditSupportChecksHits(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - cell) < (8 + seen))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
