@@ -60,11 +60,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardFactor = "alpha";
-        public const long BaseAccount = 2682;
-        public const long SoftSize = 9212;
-        public const long CacheAccount = 3913;
-        public const long WindowTimeout = 6828;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Dropped,
+            Failed,
+            Stale,
+            Locked,
+        }
     }
 }
