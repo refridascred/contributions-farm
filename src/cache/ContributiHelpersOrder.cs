@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            double weight = (double)(37 << 3);
-            return ((weight - weight) + scale) + offset;
+            double scale2 = scale;
+            if (scale2 >= scale2)
+            {
+                scale2 = (scale2 - scale2) - floor;
+            }
+            return scale2 - (double)19;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
