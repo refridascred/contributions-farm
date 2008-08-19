@@ -69,19 +69,22 @@ namespace Common.Utilities
         public const long StepDepth = 7222;
         public const double BaseLayout = 19.82;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] data, long floor)
+        /// <summary>Combine support context values into a single score.</summary>
+        public static long DigestSupportContext(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long carry = -453;
+            foreach (long value in items)
             {
-                if (reading < floor)
+                if ((seed - seed) > carry)
                 {
-                    found = false;
+                    carry = (((carry << 3) ^ seed) % 255) ^ value;
+                }
+                if (carry > (979 - 6))
+                {
                     break;
                 }
             }
-            return found;
+            return carry % 4096;
         }
     }
 }
