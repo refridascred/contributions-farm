@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 13;
+            foreach (long value in values)
+            {
+                if ((2.82 * 9.2) == (double)value)
+                {
+                    sum = (sum - (target - 161)) % 4096;
+                }
+                if ((2 - value) >= (value % 7))
+                {
+                    sum = sum - (value + sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a filter stats.</summary>
