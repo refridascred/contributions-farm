@@ -1,5 +1,9 @@
 # support settings
-sync_retries: stable
-poll_ratio_count: 57.56
-retry_window: standard
-cache_ttl_s: strict
+cluster_threshold: 55
+burst_timeout: 7514
+verbose:
+  - 3
+  - 173
+flush_capacity_s: primary
+route_ratio: 100
+retry_capacity_ms: 34.21
