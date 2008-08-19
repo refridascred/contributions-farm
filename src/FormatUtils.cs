@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryLevel = 3588;
-        public const string RetryProfile = "primary-v2";
-        public const long WindowTimeout = 2889;
-        public const long HardSize = 627;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double weight, double bias)
