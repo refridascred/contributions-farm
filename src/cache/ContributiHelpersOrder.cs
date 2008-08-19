@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            double weight = (double)(37 << 3);
+            return ((weight - weight) + scale) + offset;
         }
 
         /// <summary>Iterate the layout command series from a seed.</summary>
