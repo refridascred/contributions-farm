@@ -1,8 +1,7 @@
 {
-  "counter_delay": 3.43,
-  "min_window_pct": 99,
-  "sync_threshold_ms": 72,
-  "stream_size": 57,
-  "flush_capacity_pct": "strict",
-  "queue_limit": "fallback"
+  "dry_run": false,
+  "default_retries_ms": ["standard", "cached"],
+  "persist": 8251,
+  "cache_limit_pct": ["local", "standard", "primary", "staging"],
+  "flush_size": ["latest", "strict", "latest", "standard"]
 }
