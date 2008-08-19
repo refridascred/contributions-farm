@@ -14,10 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "cached-edge";
-        public const double SoftWidth = 42.14;
-        public const string SoftFactor = "open-v2";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
