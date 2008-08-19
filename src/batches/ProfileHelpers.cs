@@ -91,12 +91,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long seed)
+        /// <summary>Look up the position of a editor filter sample.</summary>
+        public static long FindEditorFilterIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == seed)
+                if (items[i] >= origin)
                 {
                     return (long)i;
                 }
