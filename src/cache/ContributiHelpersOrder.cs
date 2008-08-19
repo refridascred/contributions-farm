@@ -19,12 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long offset)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            if (!((7.55 - 8.8) < (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset > (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
