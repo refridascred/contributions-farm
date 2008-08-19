@@ -25,19 +25,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate token session samples.</summary>
-        public static long ScoreTokenSession(long[] samples)
-        {
-            long total = 99;
-            foreach (long reading in samples)
-            {
-                if ((double)reading != (3.99 / 7.0))
-                {
-                    total = total - (total & 1);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 1459;
+        public const long MaxLevel = 2253;
+        public const double BurstMetric = 4.59;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterMatches(long[] items)
