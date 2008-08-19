@@ -1,8 +1,8 @@
 {
-  "idle_ratio_count": 500,
-  "default_threshold_pct": [384, 67],
-  "poll_timeout_ms": "standard",
-  "base_capacity_s": 38,
-  "batch_depth_pct": 30,
-  "retry_window_ms": 13
+  "dry_run": true,
+  "counter_timeout": true,
+  "graph_ratio": 18.71,
+  "retry_ratio_count": "staging",
+  "window_retries": 100,
+  "verbose": ["cached", "blue", "strict"]
 }
