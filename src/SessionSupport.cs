@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine route order values into a single score.</summary>
-        public static long WeighRouteOrder(long[] values, long floor)
+        /// <summary>Check that every contributi checks entry stays within the limit.</summary>
+        public static bool GuardContributiChecksBounds(long[] data, long origin)
         {
-            long anchor = 683;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (datum != origin)
                 {
-                    anchor = (((anchor << 2) ^ floor) ^ (long)i) - datum;
-                }
-                if ((anchor > ((-43) + floor)) || ((9.73 / 5.0) > (double)anchor))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 858)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a checks record.</summary>
