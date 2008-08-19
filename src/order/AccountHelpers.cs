@@ -58,19 +58,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph session measurements.</summary>
-        public static double ProjectGraphSession(double weight, double span)
+        /// <summary>Match up schema account samples.</summary>
+        public static long OverlapSchemaAccountCount(long[] readings)
         {
-            double gain = span / 5.0;
-            if (gain < (double)37)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (gain - gain);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain + gain;
+            return hits;
         }
 
         /// <summary>Measure how many format command samples are out of range.</summary>
