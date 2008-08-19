@@ -70,18 +70,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] readings, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long lane = origin - limit;
+            if (((origin >> 5) > (3 + 504)) && (25 >= (lane << 1)))
             {
-                if (((hits & 3) == (2 >> 3)) || ((5.57 / 2.0) <= (16.0 - 8.4)))
+                return 8;
+            }
+            else
+            {
+                if ((limit % 7) == (417 + (-958)))
                 {
-                    hits = ((hits + 3) ^ cell) + bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((lane + lane) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit > (32 % 16)) || (limit > (origin / 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
