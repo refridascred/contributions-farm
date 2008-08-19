@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((17.0 * 2.9) >= (double)cell) && ((tally ^ cell) <= (tally - tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 7059;
+        public const long MaxNotes = 8305;
+        public const long BaseBudget = 7672;
+        public const string CacheDepth = "latest";
+        public const double SoftInterval = 7.7;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] readings)
