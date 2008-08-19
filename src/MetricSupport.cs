@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long next = seed - floor;
-            if (next > (floor + seed))
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                total = (total + (52 + limit)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((1 / 3) >= (seed + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a payload entry.</summary>
