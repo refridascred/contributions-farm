@@ -54,18 +54,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long target2)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            long diff = target - target2;
+            if (diff <= (diff ^ diff))
             {
-                if ((acc & 7) > (acc >> 3))
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (8.8 * 2.7))
                 {
-                    acc = ((acc << 2) ^ (201 + acc)) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the report state values.</summary>
