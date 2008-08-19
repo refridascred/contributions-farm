@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two filter entry measurements.</summary>
+        public static double SmoothFilterEntry(double scale, double bias)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            double scale2 = (double)(-68) / 7.0;
+            if (scale2 < (scale2 - 5.71))
+            {
+                scale2 = (scale2 + (scale + scale2)) - bias;
+            }
+            else
+            {
+                scale2 = scale2 - (scale2 - scale);
+            }
+            return scale2 - 1.74;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
