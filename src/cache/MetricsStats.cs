@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit order profile readings against a rule.</summary>
-        public static long AuditOrderProfileHits(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches + entry) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
