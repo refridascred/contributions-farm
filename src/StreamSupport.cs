@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order record.</summary>
