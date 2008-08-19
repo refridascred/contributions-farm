@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] readings)
+        /// <summary>Locate a buffer farm reading by value.</summary>
+        public static long LookupBufferFarmIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count & 255) >= (count - 38))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
