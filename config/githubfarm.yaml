@@ -1,9 +1,15 @@
 # githubfarm settings
-retry_ratio_pct:
-  warm_retries_pct: primary
-  soft_capacity: 56.02
-  burst_ratio_pct:
-    - primary
-    - eu-west
-batch_threshold: 93.65
-command_capacity: 100
+verbose: 9420
+filter_retries: true
+support_interval:
+  compress: 85.04
+  flush_size_ms:
+    warm_ttl_ms: 3409
+    channel_window: 92
+    base_ratio: open
+    burst_capacity_count: false
+    profile_retries: green
+  flush_limit: blue
+  audit: 44.98
+default_ttl: 6790
+default_depth_pct: true
