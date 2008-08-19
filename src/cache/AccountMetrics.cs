@@ -13,12 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            Done,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading >> 1) <= (matches + matches)) && (((reading % 2) < (546 << 3)) || (matches <= (matches % 97))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor level values.</summary>
