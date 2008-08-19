@@ -49,13 +49,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long limit)
         {
-            Failed,
-            Draft,
-            Active,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
