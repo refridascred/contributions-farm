@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Locate a tools layout reading by value.</summary>
+        public static long LocateToolsLayoutIndex(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batch profile counter forward.</summary>
