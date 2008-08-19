@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster command readings.</summary>
-        public static long CompareClusterCommandCount(long[] items)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -89;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (66 - cell)) % 4096;
             }
-            return seen;
+            if (carry > 9)
+            {
+                carry = (carry + (carry % 24)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the checks phase values.</summary>
