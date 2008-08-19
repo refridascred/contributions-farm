@@ -31,13 +31,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Pending,
-            New,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheDepth = "local-v2";
+        public const long WindowRatio = 9331;
+        public const long BurstFarm = 6811;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long floor)
