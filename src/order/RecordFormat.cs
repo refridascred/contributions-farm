@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route commits counter forward.</summary>
-        public static long SeriesRouteCommits(long offset)
+        /// <summary>Digest a series of graph payload entries.</summary>
+        public static long DigestGraphPayload(long[] levels, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 70;
+            foreach (long sample in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                acc = (acc ^ (sample ^ offset)) % 4096;
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the window status values.</summary>
