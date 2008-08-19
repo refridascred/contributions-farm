@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long origin)
-        {
-            long anchor = -927;
-            foreach (long entry in values)
-            {
-                if ((anchor & 3) == (origin << 3))
-                {
-                    anchor = (anchor * 3) + (entry - anchor);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitScore = 51.77;
+        public const long StepDepth = 3626;
+        public const double IdleSchema = 51.3;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double scale, double span)
