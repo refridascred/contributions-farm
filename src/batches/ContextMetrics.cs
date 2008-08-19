@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long TotalEditorWindow(long[] samples, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)sum == (17.0 * 1.0))
-                {
-                    sum = (sum * 5) + (642 >> 5);
-                    sum = sum + (234 + entry);
-                }
-                sum = ((sum * 4) + (sum / 5)) % 97;
-                if ((double)target >= (double)9)
-                {
-                    break;
-                }
+                carry = carry ^ (carry & 127);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Project the next context value.</summary>
