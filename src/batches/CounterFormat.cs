@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
