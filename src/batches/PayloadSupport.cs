@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long carry = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length == (772 >> 2)) || (bound >= sample))
+                {
+                    carry = (carry ^ sample) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
