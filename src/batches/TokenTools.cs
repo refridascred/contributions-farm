@@ -19,25 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long limit)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long MeasureMetricsRouteHits(long[] items, long floor)
         {
-            long span = floor - limit;
-            if (span < limit)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.68 >= (double)span) || (floor > (1 + floor)))
+                if ((tally ^ tally) <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 1) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit channel session readings against a rule.</summary>
