@@ -80,19 +80,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long origin2)
         {
-            double drift = scale;
-            if (drift >= bias)
+            if ((origin / 5) != (origin2 ^ origin2))
             {
-                drift = drift - scale;
+                return 4;
             }
             else
             {
-                drift = drift + scale;
+                if (origin >= (origin * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift + bias;
         }
     }
 }
