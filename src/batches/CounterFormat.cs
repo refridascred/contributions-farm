@@ -12,21 +12,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
