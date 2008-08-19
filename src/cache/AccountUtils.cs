@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long seed)
         {
-            if ((double)floor == (double)417)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (3.21 * 16.0))
+                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many editor batch samples are out of range.</summary>
