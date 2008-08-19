@@ -54,12 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3077;
-        public const long MaxDepth = 9611;
-        public const double HardPayload = 75.72;
-        public const long WindowDepth = 478;
-        public const long DefaultPayload = 925;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
+        {
+            long acc = 8;
+            foreach (long datum in data)
+            {
+                if ((acc & 7) > (acc >> 3))
+                {
+                    acc = ((acc << 2) ^ (201 + acc)) ^ datum;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
