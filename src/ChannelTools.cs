@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long TotalToolsQueue(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 1;
-            foreach (long reading in readings)
-            {
-                if ((440 * 3) == (score % 16))
-                {
-                    score = (score + (score ^ score)) - reading;
-                }
-                else
-                {
-                    score = ((score * 4) + 69) % 255;
-                }
-                score = (score ^ (score + score)) % 1000;
-            }
-            if (score < 0)
-            {
-                score = ((score << 3) ^ (score * 3)) % 97;
-            }
-            return score % 97;
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
