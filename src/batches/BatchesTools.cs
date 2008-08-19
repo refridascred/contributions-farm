@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] samples)
         {
-            Failed,
-            Idle,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > ((long)samples.Length - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
