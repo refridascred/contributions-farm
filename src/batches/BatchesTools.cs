@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] items, long limit)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits + sample) <= 27)
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
