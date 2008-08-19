@@ -24,32 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long step, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long slot = step ^ seed;
-            if ((1 << 2) >= step)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                carry = (carry + (carry - carry)) % 101;
+                carry = ((carry << 2) ^ carry) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((slot << 2) == (step + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step - seed) != (seed / 9)) || (4.5 < (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
