@@ -76,15 +76,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long floor)
         {
-            double drift = gain;
-            if (drift >= (4.56 + floor))
+            long delta = origin + floor;
+            if ((delta ^ delta) < (3 / 9))
             {
-                drift = drift - floor;
+                return 4;
             }
-            return drift + gain;
+            else
+            {
+                if (((origin + floor) > (origin << 2)) && ((floor + delta) > (origin << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)512 <= (double)delta)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
