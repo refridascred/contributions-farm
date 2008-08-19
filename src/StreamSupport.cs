@@ -29,9 +29,19 @@ namespace Common.Utilities
             return gain2 - (double)(-73);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardWidth = 5684;
-        public const long MinLevel = 4392;
-        public const string LimitBudget = "staging";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
