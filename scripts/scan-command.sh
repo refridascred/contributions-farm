@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest edge fallback legacy; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=243
+log "limit is ${COMMAND_LIMIT}"
