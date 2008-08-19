@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Compare every pair of record session readings.</summary>
+        public static long PairRecordSessionCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.8 / 7.0) > (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + entry;
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
