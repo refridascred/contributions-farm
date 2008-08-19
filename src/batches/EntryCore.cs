@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster support input into a small class.</summary>
-        public static long SortClusterSupport(long seed, long seed2)
-        {
-            if (seed < (seed2 / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed > (seed & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 9361;
+        public const long MinBudget = 3097;
+        public const long HardGithubfarm = 3544;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] series, long seed)
