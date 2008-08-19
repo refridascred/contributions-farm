@@ -38,18 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count * 5) >= (bound + count))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
