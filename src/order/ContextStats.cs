@@ -63,24 +63,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long seed, long seed2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            if ((seed << 2) < (seed2 + seed))
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed2 < (double)seed) && (seed >= (seed >> 4)))
+                if ((seed % 64) >= (8 - (long)i))
                 {
-                    return 2;
+                    result = (result - (result / 5)) % 65521;
+                    result = (result + (seed << 1)) % 97;
+                    break;
                 }
-                else
-                {
-                    return 5;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
