@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool ValidateChecksRecordRange(long[] data, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (sample > origin)
+                if (((17.0 * 2.9) >= (double)cell) && ((tally ^ cell) <= (tally - tally)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Locate a record layout reading by value.</summary>
