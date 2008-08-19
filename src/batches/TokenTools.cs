@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Idle,
-            Failed,
-            Retry,
+            Closed,
+            Locked,
+            Paused,
             Done,
         }
 
