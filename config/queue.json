@@ -1,7 +1,8 @@
 {
-  "flush_retries_ms": 5978,
-  "base_limit_s": 6487,
-  "stats_size": [264, 14, 200],
-  "base_threshold": "local",
-  "burst_interval": true
+  "default_threshold_pct": 92.36,
+  "base_delay_pct": 5281,
+  "base_size_pct": 51.15,
+  "sync_interval_s": 30,
+  "readonly": 30,
+  "retry_capacity": 9490
 }
