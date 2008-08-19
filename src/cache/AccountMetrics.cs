@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long AuditToolsSupportMatches(long[] items, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((floor + 3) > (item / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a metric record.</summary>
