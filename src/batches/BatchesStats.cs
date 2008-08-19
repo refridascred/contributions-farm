@@ -26,12 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            Pending,
-            Done,
-            Synced,
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine checks queue values into a single score.</summary>
