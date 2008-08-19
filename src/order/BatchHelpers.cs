@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long BaseDepth = 6746;
         public const long BatchDepth = 5569;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
