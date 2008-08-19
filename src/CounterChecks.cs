@@ -81,14 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Locate a batch stream reading by value.</summary>
+        public static long LocateBatchStreamIndex(long[] readings, long origin)
         {
-            Active,
-            Done,
-            Closed,
-            Failed,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools token entry stays within the limit.</summary>
