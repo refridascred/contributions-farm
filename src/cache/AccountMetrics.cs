@@ -54,19 +54,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = (((state * 4) + (step << 3)) % 255) - (long)i2;
+                    result = ((result - (8 * 5)) % 1000) ^ (long)i2;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                if (!(((long)i - result) != ((long)i % 8)))
+                {
+                    result = (result - (result / 7)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Blend two account token measurements.</summary>
