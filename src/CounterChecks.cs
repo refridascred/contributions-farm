@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long LocateRouteStreamIndex(long[] levels, long target)
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long TallyFilterRouteHits(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] > target)
+                if ((double)matches == (double)datum)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
