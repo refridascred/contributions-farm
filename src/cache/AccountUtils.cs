@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a tools notes pair into a bucket.</summary>
-        public static long SortToolsNotes(long bound, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long floor)
         {
-            if ((seed - bound) < (bound + 996))
+            if ((double)floor == (double)417)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((bound - bound) == (bound ^ bound))
+                if ((double)floor != (3.21 * 16.0))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed >= ((-34) % 16)) || ((829 & 31) > (bound / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 6;
                 }
             }
         }
