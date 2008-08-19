@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of record session readings.</summary>
-        public static long PairRecordSessionCount(long[] items)
+        /// <summary>Count the cluster metric entries that pass the check.</summary>
+        public static long TallyClusterMetricHits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((step + step) <= ((long)samples.Length - step)))
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
