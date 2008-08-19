@@ -17,13 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
