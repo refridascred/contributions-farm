@@ -12,38 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long target2)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((double)target < (6.1 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)target < (6.1 / 6.0)) && ((double)target >= (9.7 * 6.69)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.8 / 7.0) != (double)target2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(target2 >= (target + 226)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
