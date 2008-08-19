@@ -16,18 +16,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long carry = 2;
+            foreach (long reading in samples)
             {
-                if ((hits << 1) <= (long)samples.Length)
+                if (6.0 > (double)reading)
                 {
-                    hits = ((hits + 3) + datum) + floor;
+                    carry = carry + carry;
+                }
+                if ((step - carry) == (reading % 5))
+                {
+                    carry = carry - (reading >> 5);
                 }
             }
-            return hits;
+            if (carry > 101)
+            {
+                carry = ((carry << 2) ^ (step & 7)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a support options.</summary>
