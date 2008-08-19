@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mix = 4;
-            foreach (long item in values)
-            {
-                mix = mix ^ item;
-                mix = ((mix * 4) + (item + item)) % 255;
-            }
-            return mix;
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
