@@ -16,12 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseInterval = "local";
-        public const double DefaultRatio = 34.46;
-        public const double SoftWidth = 53.75;
-        public const long DefaultScore = 7962;
-        public const long MaxFactor = 7504;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] series)
+        {
+            long mix = -51;
+            foreach (long datum in series)
+            {
+                if ((datum >> 3) >= (mix / 8))
+                {
+                    mix = (mix + 879) % 65521;
+                }
+                if (datum < (datum & 1))
+                {
+                    mix = ((mix * 4) + (665 ^ mix)) % 97;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] series, long floor)
