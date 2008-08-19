@@ -1,4 +1,43 @@
 # entry settings
-max_retries: false
-burst_ttl: green
-cache_size_pct: 250
+enabled:
+  githubfarm_size: 2
+  batch_depth_s: 39.51
+  cache_capacity: green
+  queue_timeout: 5.9
+  retry_size_pct:
+    hard_capacity_pct: 250
+    dry_run: eu-west
+    enabled:
+      - standard
+      - blue
+      - blue
+      - local
+    cache_delay: 5196
+    min_window_count: 53
+    warm_depth_s: 2384
+retry_size:
+  idle_interval: 97.81
+  strict:
+    compress: 33.07
+    hard_threshold_pct: false
+    base_ratio_ms: true
+    default_timeout: false
+    base_retries_count: blue
+    verbose: legacy
+  min_capacity: standard
+  profile_delay: false
+  idle_ttl_pct:
+    compress: false
+    filter_interval: 60
+    poll_ttl: 67.92
+    idle_ttl_ms: false
+    retry_size: 1024
+  burst_retries_count: 4.61
+strict:
+  - 299
+  - 429
+  - 20
+  - 463
+max_retries: 30
+default_limit_count: staging
+min_threshold: false
