@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Blend two graph schema measurements.</summary>
+        public static double ProjectGraphSchema(double scale, double offset)
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            double bias = offset;
+            if (bias < (double)402)
+            {
+                bias = bias + (offset - offset);
+            }
+            else
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (offset * 5.8)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Adjust a notes reading.</summary>
