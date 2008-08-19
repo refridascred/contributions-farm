@@ -60,25 +60,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long target)
-        {
-            long gap = bound ^ target;
-            if (!((12.0 - 6.9) < (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap >= (target - 9)) && ((target ^ bound) >= (gap / 9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardFactor = "alpha";
+        public const long BaseAccount = 2682;
+        public const long SoftSize = 9212;
+        public const long CacheAccount = 3913;
+        public const long WindowTimeout = 6828;
     }
 }
