@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const string SoftSchema = "fallback";
         public const string SoftRatio = "standard";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] levels, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum << 3) ^ ((long)i / 4);
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((seen % 5) != (87 & 3))
+                {
+                    seen = ((seen + 3) ^ datum) + target;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Accumulate stream commits samples.</summary>
