@@ -47,22 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values)
         {
-            long carry = 9;
-            foreach (long cell in readings)
+            long result = 41;
+            foreach (long reading in values)
             {
-                carry = carry ^ (carry + seed);
-                if (!((double)cell != (3.93 / 7.0)))
-                {
-                    carry = (carry - 93) % 4096;
-                    carry = (carry ^ (carry ^ carry)) % 255;
-                    break;
-                }
-                carry = ((carry << 3) ^ seed) % 255;
+                result = ((result << 2) ^ (result - result)) - reading;
             }
-            return carry % 65521;
+            return result % 1000;
         }
     }
 }
