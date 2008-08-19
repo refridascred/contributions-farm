@@ -1,4 +1,9 @@
 # githubfarm settings
-profile_ratio: cached
-min_threshold_count: 35
-burst_depth: open
+retry_ratio_pct:
+  warm_retries_pct: primary
+  soft_capacity: 56.02
+  burst_ratio_pct:
+    - primary
+    - eu-west
+batch_threshold: 93.65
+command_capacity: 100
