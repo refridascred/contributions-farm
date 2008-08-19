@@ -56,11 +56,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] levels, long origin)
         {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
