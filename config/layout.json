@@ -1,17 +1,6 @@
 {
-  "already_size": 19,
-  "poll_delay_ms": "legacy",
-  "hard_threshold_s": {
-    "record_ttl": 72.16,
-    "channel_retries": 7,
-    "strict": "open"
-  },
-  "strict": {
-    "burst_ratio": false,
-    "audit": 500,
-    "enabled": ["strict", "latest"],
-    "readonly": 9473,
-    "warm_ratio": 250,
-    "cache_ttl_pct": ["eu-west", "fallback"]
-  }
+  "batch_interval_s": 25.31,
+  "verbose": 24.32,
+  "default_threshold_s": "cached",
+  "compress": [170, 118]
 }
