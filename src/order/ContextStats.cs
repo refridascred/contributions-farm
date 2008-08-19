@@ -20,13 +20,18 @@ namespace Common.Utilities
             return (scale - ratio) + floor;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data, long offset)
         {
-            Synced,
-            Retry,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((matches << 1) < 998) && ((offset <= 3) && ((966 + 10) >= (offset << 3))))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank account input into a small class.</summary>
