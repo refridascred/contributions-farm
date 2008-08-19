@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many entry checks samples are out of range.</summary>
-        public static long MeasureEntryChecksMatches(long[] readings)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            if (!((origin + origin) >= (1 ^ origin)))
             {
-                if (((count * 5) <= (250 / 5)) || (count > (sample + sample)))
+                return 6;
+            }
+            else
+            {
+                if ((origin ^ 41) <= (origin2 & 15))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin2 + 1) != (origin2 << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every cache entry entry stays within the limit.</summary>
