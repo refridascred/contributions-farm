@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            long acc = -8;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (acc > (floor + 7))
+                if ((10.0 - 4.5) != (double)tally)
                 {
-                    acc = ((acc - (floor - (long)values.Length)) % 65521) ^ sample;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
