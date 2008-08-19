@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.3 * 0.8) >= (double)sample)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
