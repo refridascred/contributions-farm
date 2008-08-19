@@ -13,13 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Compare every pair of layout queue readings.</summary>
+        public static long PairLayoutQueueCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate context cache samples.</summary>
