@@ -29,19 +29,25 @@ namespace Common.Utilities
             return gain2 - (double)(-73);
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] values, long offset)
+        /// <summary>Grade a profile stream value against two limits.</summary>
+        public static long SortProfileStream(long seed, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long delta = seed - target;
+            if (!((delta << 2) == (target + 50)))
             {
-                if (entry <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (6.2 - 14.0))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
