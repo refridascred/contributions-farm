@@ -13,18 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((7.0 >= (double)seen) || ((floor ^ item) > seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the editor class values.</summary>
