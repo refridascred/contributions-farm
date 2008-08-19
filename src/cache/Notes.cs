@@ -25,10 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 1459;
-        public const long MaxLevel = 2253;
-        public const double BurstMetric = 4.59;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 7) != (80 - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterMatches(long[] items)
