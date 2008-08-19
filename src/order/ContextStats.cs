@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchTimeout = 2489;
-        public const double BaseAlready = 77.99;
-        public const long WindowAlready = 159;
-        public const string MaxAlready = "stable-1";
+        /// <summary>Audit profile contributi readings against a rule.</summary>
+        public static long AuditProfileContributiOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (target > count)
+                {
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
