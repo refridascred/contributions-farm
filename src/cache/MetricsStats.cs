@@ -54,10 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 42.87;
-        public const long BatchFactor = 442;
-        public const double SoftScore = 85.86;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items, long origin)
+        {
+            long result = 148;
+            foreach (long datum in items)
+            {
+                if ((348 + origin) != (6 + origin))
+                {
+                    result = ((result ^ (result >> 4)) % 255) + datum;
+                }
+            }
+            if (result > 901)
+            {
+                result = result - (result * 5);
+            }
+            return result % 97;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftTimeout = 9897;
