@@ -1,15 +1,7 @@
 # entry settings
-default_capacity_count: eu-west
-stream_ttl:
-  batch_ratio: fallback
-  context_timeout: 30
-  metrics_interval:
-    default_capacity: 6652
-    warm_interval: 60
-    soft_retries_pct: 30
-    dry_run: latest
-  poll_ratio: 60
-githubfarm_ratio: false
-min_delay: 9781
-dry_run: true
-soft_ttl: 35
+soft_ttl_count: 62.72
+idle_window: 48.28
+retry_delay_ms: 51
+soft_interval: stable
+graph_ttl: 42
+flush_window_count: latest
