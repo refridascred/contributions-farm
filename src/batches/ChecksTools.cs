@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] data)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double bias2 = bias;
+            if (bias2 >= ratio)
             {
-                if (1.6 > (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                bias2 = bias2 - ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (9.6 * 2.1);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
