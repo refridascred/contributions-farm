@@ -23,21 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - (result & 31);
+                result = ((result * 3) + (result + result)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
