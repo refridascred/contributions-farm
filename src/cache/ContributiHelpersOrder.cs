@@ -30,9 +30,11 @@ namespace Common.Utilities
             return scale2 - (double)19;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2406;
-        public const string WindowCount = "open-v2";
-        public const long MaxEditor = 1313;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "legacy-v2";
+        public const double RetryCount = 61.01;
+        public const long BatchSpan = 3921;
+        public const double RetryBudget = 44.44;
+        public const double SoftRatio = 48.94;
     }
 }
