@@ -55,12 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
