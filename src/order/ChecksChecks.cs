@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            New,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
