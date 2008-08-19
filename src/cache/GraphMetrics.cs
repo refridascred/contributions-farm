@@ -52,18 +52,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long target)
+        /// <summary>Scale a stats window figure with a bias.</summary>
+        public static double SmoothStatsWindow(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double scale = (double)89 + (double)39;
+            if (scale > (ratio + ratio))
             {
-                if (((9 << 2) != (target + target)) && ((89 ^ hits) < (target - 804)))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                scale = scale - ratio;
             }
-            return hits;
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (scale / 8.0);
         }
 
         /// <summary>Fold a list of report readings.</summary>
