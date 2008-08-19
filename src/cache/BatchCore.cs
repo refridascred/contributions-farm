@@ -13,17 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch window reading by value.</summary>
-        public static long LookupBatchWindowIndex(long[] data, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                if (datum < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a queue account sample.</summary>
