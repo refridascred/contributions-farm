@@ -74,11 +74,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "cached-edge";
-        public const double BaseLayout = 43.09;
-        public const long RetryRatio = 9373;
-        public const long MinLayout = 5888;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples, long offset)
+        {
+            long mix = 4;
+            foreach (long sample in samples)
+            {
+                if (((mix + offset) <= (sample - mix)) || ((mix + mix) != (sample % 7)))
+                {
+                    mix = (mix ^ (mix - 10)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] data, long seed)
