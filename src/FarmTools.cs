@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((target + target) == (count % 5)) || ((count / 9) < (450 - count)))
+                if ((matches * 2) <= (908 & 31))
                 {
-                    count = (count + 1) - value;
+                    matches = (matches + 3) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
