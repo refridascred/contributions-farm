@@ -1,6 +1,9 @@
-id,count,label,state,level
-1,19,27.9,latest,eu-west
-2,759,899,51.83,383
-3,583,cached,369,63.32
-4,463,5.14,60.32,blue
-5,strict,stable,79.57,327
+id,region,active
+1,719,blue
+2,401,90.81
+3,32.94,26.7
+4,20.94,strict
+5,standard,903
+6,64.32,68.25
+7,34.31,39.77
+8,76.75,local
