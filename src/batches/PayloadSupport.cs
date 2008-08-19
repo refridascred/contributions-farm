@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long TallyGithubfarmGraphOutliers(long[] readings, long bound)
         {
-            Pending,
-            New,
-            Queued,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen * 4) >= bound)
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
