@@ -26,14 +26,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            Done,
-            Paused,
-            Stale,
-            Active,
-            Dropped,
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total << 2) ^ ((long)i2 + 197)) % 101;
+                }
+                total = ((total * 4) + ((long)i * 4)) % 1000;
+                if ((5.9 / 5.0) == (double)(long)i)
+                {
+                    total = ((total * 2) + 5) % 97;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit stats command readings against a rule.</summary>
