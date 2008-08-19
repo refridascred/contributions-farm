@@ -27,23 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long ScoreEditorStats(long[] samples)
+        /// <summary>Find the first stream payload entry that matches the target.</summary>
+        public static long FindStreamPayloadIndex(long[] data, long target)
         {
-            long mark = 209;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 2) ^ (cell % 24);
-                if ((mark + cell) != (cell << 3))
+                if (data[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 7)
-            {
-                mark = mark + (mark ^ mark);
-            }
-            return mark;
+            return -1;
         }
     }
 }
