@@ -39,11 +39,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long limit, long bound)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            if ((limit * 5) <= (6 & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((31 + bound) > (8 * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + 838) > (0 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
