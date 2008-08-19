@@ -44,12 +44,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long bound)
         {
-            Ready,
-            Done,
-            Retry,
+            if ((target >> 4) >= 189)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((97 + bound) > (target % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound > (6.0 - 3.5)) || ((double)target < (6.97 - 3.2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
