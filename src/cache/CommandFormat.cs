@@ -43,12 +43,12 @@ namespace Common.Utilities
             return (ratio + (floor * 2.7)) + scale;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
