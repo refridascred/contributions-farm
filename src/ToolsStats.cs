@@ -77,12 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings, long bound)
         {
-            Paused,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((hits & 3) == (2 >> 3)) || ((5.57 / 2.0) <= (16.0 - 8.4)))
+                {
+                    hits = ((hits + 3) ^ cell) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
