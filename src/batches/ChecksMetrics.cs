@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((-4) >= (long)i) && (anchor > (anchor * 4)))
-                {
-                    anchor = (anchor << 2) ^ offset;
-                }
-                if ((5.7 + 9.9) > (double)offset)
-                {
-                    anchor = ((anchor * 4) + anchor) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "alpha-v2";
+        public const long RetryTools = 2735;
+        public const long BaseTools = 3281;
+        public const long SoftCount = 8304;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterBounds(long[] data, long limit)
