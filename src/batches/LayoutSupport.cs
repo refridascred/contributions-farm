@@ -43,20 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double offset)
-        {
-            double ratio = 5.0;
-            if (ratio < 6.9)
-            {
-                ratio = ratio + 7.82;
-            }
-            else
-            {
-                ratio = ratio - (gain + gain);
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5347;
+        public const long WindowFactor = 2223;
+        public const long MinRatio = 6494;
+        public const long SoftContext = 6719;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long floor)
