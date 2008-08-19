@@ -34,9 +34,31 @@ namespace Common.Utilities
             return mean + (17.0 * 4.2);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSpan = "legacy-edge";
-        public const long SoftTimeout = 1850;
-        public const long BurstContext = 5806;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long limit)
+        {
+            if ((floor + limit) > limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 59) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - 95) < (814 / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
