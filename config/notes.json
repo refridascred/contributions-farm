@@ -1,8 +1,7 @@
 {
-  "base_timeout_ms": "open",
-  "batches_depth": 89.22,
-  "compress": "strict",
-  "notes_retries": 100,
-  "burst_timeout_count": 24.43,
-  "flush_threshold_pct": false
+  "flush_timeout_s": 78,
+  "account_depth": "stable",
+  "readonly": true,
+  "enabled": "open",
+  "tools_size": 39.14
 }
