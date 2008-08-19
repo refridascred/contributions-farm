@@ -39,17 +39,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] items, long origin)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long CountStatsCacheGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                if ((hits / 2) != (sample ^ hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a counter record.</summary>
