@@ -39,31 +39,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long limit, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            if ((limit * 5) <= (6 & 1))
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((31 + bound) > (8 * 2))
+                if ((double)mix != (12.0 - 17.0))
                 {
-                    return 7;
+                    mix = (mix ^ (840 + mix)) % 97;
+                }
+                if (((mix + origin) > mix) || ((8.0 + 10.0) <= (double)mix))
+                {
+                    mix = ((mix * 3) + mix) % 65521;
                 }
                 else
                 {
-                    if ((limit + 838) > (0 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = mix ^ ((long)i >> 3);
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
