@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate token report samples.</summary>
-        public static long FoldTokenReport(long[] series)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long result = 370;
-            foreach (long cell in series)
+            double weight = span;
+            if (weight < span)
             {
-                if ((double)0 <= (double)result)
-                {
-                    result = ((result << 2) ^ cell) % 65521;
-                }
-                else
-                {
-                    result = result - cell;
-                }
+                weight = (weight + (double)(-261)) + ratio;
             }
-            if (result > 8)
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 2) ^ (result - result)) % 4096;
+                weight = (weight + weight) + (double)(long)i;
             }
-            return result % 4096;
+            return weight - (double)9;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
