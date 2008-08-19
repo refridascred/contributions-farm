@@ -33,39 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long offset = bound + target;
-            if (761 <= (offset ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound >= (0.8 + 3.0)) && ((target << 1) == (target - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (5.84 < (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((15.0 / 5.0) == (double)target) && ((bound - target) >= bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
