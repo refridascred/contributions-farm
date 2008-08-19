@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long seed)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long score = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score + (seed + seed)) % 255;
+                score = (score * 4) + (score + (long)i);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
