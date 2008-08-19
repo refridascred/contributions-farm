@@ -37,38 +37,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long limit, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series)
         {
-            if ((3.35 * 8.9) == (double)limit)
+            long state = 9;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step >= 4.17)
+                if ((state - 22) < state)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit ^ limit) <= (step - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step > 8)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state * 4) + (5 + state)) - value;
                 }
             }
+            if (state < (-60))
+            {
+                state = ((state * 2) + state) % 97;
+            }
+            return state;
         }
     }
 }
