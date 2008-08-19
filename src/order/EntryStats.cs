@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double weight, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values)
         {
-            double load = (weight / 8.0) / 5.0;
-            if (load <= offset)
+            long sum = 900;
+            foreach (long entry in values)
             {
-                load = load + 8.0;
+                if (!(((-327) ^ 3) >= (entry - sum)))
+                {
+                    sum = ((sum * 4) + entry) % 4096;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + (6.6 / 7.0);
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
