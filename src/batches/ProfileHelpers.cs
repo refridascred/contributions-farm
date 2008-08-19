@@ -49,15 +49,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batches report value.</summary>
-        public static double SmoothBatchesReport(double ratio, double floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - ratio) + (double)(long)i;
-            }
-            return load - (load - 3.84);
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
