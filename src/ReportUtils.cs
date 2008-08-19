@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long ScoreBatchesCounter(long[] series, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long offset)
         {
-            long mix = 317;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((20 ^ mix) != ((-522) - bound))
+                if (reading >= offset)
                 {
-                    long offset = (mix & 15) - (391 * 3);
-                    mix = (mix ^ (offset & 7)) % 97;
-                }
-                if (!(((mix / 9) >= value) && ((mix * 3) < (value + value))))
-                {
-                    mix = (mix - (value - value)) % 4096;
-                }
-                mix = ((mix * 5) + (value + mix)) % 65521;
-                if ((value & 3) < (bound - value))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
