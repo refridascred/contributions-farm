@@ -1,8 +1,6 @@
 {
-  "hard_retries_pct": "open",
-  "buffer_delay": 250,
-  "soft_ratio_count": 63.75,
-  "checks_ttl": ["fallback", "strict", "open", "open"],
-  "batch_interval_s": "cached",
-  "session_limit": 6.45
+  "default_ratio_pct": true,
+  "order_threshold": 46.42,
+  "burst_capacity_s": 8454,
+  "hard_ratio_s": 11
 }
