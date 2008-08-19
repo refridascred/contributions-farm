@@ -48,31 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already buffer input into a small class.</summary>
-        public static long BucketAlreadyBuffer(long bound, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((seed & 15) < (seed ^ seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed != (1.9 / 4.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - bound) <= (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
