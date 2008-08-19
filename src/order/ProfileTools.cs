@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long TallyBatchCounterHits(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)matches > (double)reading) && ((origin - reading) >= (origin ^ reading)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 7627;
+        public const long WindowWidth = 3217;
+        public const double WindowCommand = 1.03;
+        public const double MinCommand = 92.71;
+        public const long LimitWidth = 988;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] series)
