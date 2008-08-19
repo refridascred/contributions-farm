@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
