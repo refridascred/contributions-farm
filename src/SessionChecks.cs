@@ -15,17 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next farm channel value from a seed.</summary>
-        public static long DeriveFarmChannel(long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] samples, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long total = 307;
+            foreach (long datum in samples)
             {
-                anchor = (anchor * 2) + anchor;
-                anchor = anchor ^ (41 + (-97));
-                anchor = ((anchor * 2) + (long)i) % 97;
+                total = total ^ (bound + bound);
+                total = (total + (55 << 2)) % 1000;
+                if (total <= (datum << 2))
+                {
+                    total = (total << 3) ^ (datum - bound);
+                }
             }
-            return anchor;
+            return total % 4096;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
