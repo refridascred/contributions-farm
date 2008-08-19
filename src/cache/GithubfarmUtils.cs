@@ -40,13 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchTimeout = 1870;
+        public const double BurstSession = 41.26;
+        public const double LimitRatio = 97.82;
+        public const long StepCount = 3800;
+        public const long RetryFactor = 7438;
     }
 }
