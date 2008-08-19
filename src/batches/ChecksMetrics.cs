@@ -43,22 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Validate route report readings against a bound.</summary>
+        public static bool CheckRouteReportBounds(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (datum < (81 % 7))
+                if (value > origin)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
