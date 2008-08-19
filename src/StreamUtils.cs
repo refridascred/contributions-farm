@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every record profile entry stays within the limit.</summary>
-        public static bool GuardRecordProfileRange(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardBudget = 3783;
+        public const string StepCommits = "alpha";
+        public const string BatchCommits = "alpha-edge";
+        public const string WindowCommits = "primary-edge";
+        public const string IdleWidth = "local-edge";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmRange(long[] data, long origin)
