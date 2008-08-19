@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
 
-INSERT INTO layout_items (token, score, label, active) VALUES ('fallback', 6.4, 'legacy', 3);
-INSERT INTO layout_items (token, score, label, active) VALUES ('cached', 70.94, 'fallback', 0);
+INSERT INTO layout_items (token, active, region, count, ratio) VALUES ('fallback', 92, 'primary', 74, 4.02);
+INSERT INTO layout_items (token, active, region, count, ratio) VALUES ('primary', 40, 'blue', 16, 76.23);
