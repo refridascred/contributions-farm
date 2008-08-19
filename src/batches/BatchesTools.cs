@@ -34,13 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Match up batches commits samples.</summary>
+        public static long OverlapBatchesCommitsCount(long[] values)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
