@@ -57,32 +57,22 @@ namespace Common.Utilities
         public const long WindowChannel = 9741;
         public const string StepChannel = "latest-v2";
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data, long target)
         {
-            long slot = seed - target;
-            if ((seed - slot) > (target ^ seed))
+            long mark = 79;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-654) <= slot)
+                if ((double)item < 9.18)
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                if (item >= (target * 4))
                 {
-                    if ((11.0 - 9.0) <= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark + (45 >> 3)) % 97;
                 }
             }
+            return mark;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
