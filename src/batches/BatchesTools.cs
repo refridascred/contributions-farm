@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long step, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long lane = step ^ target;
+            if ((903 % 64) < (target - 32))
             {
-                if ((cell + 950) <= (seen + cell))
+                return 1;
+            }
+            else
+            {
+                if (((446 + 52) > lane) || (19.0 <= (double)step))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 4) > 82)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.8 + 3.7) != (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
