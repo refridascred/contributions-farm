@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile record readings.</summary>
-        public static long FoldProfileRecord(long[] data)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long mix = 612;
-            foreach (long entry in data)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix - entry) % 255) - (long)i2;
-                }
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            Failed,
+            Idle,
+            Paused,
+            Done,
         }
     }
 }
