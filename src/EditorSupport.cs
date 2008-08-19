@@ -84,31 +84,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            if (((origin / 4) < origin) && ((origin & 15) < 46))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 + 26) <= (origin2 + origin2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin2 <= (2.4 * 6.5)) || ((origin << 1) < origin))
+                    if ((values[i] + values[j]) == 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
