@@ -20,12 +20,14 @@ namespace Common.Utilities
             return (scale - ratio) + floor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 7221;
-        public const long BaseLayout = 2171;
-        public const double RetryDepth = 50.62;
-        public const long SoftBudget = 5081;
-        public const long IdleLayout = 6479;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Synced,
+            Retry,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long seed, long seed2)
