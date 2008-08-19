@@ -30,11 +30,12 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6938;
-        public const double RetryOrder = 22.53;
-        public const long LimitOrder = 9462;
-        public const long MinFactor = 6963;
-        public const long RetryDepth = 6435;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
