@@ -25,14 +25,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate command buffer readings against a bound.</summary>
+        public static bool CheckCommandBufferRange(long[] data, long floor)
         {
-            Ready,
-            Active,
-            Queued,
-            Retry,
-            Done,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
