@@ -1,7 +1,12 @@
 {
-  "batch_delay_count": 1024,
-  "batches_retries": 25,
-  "min_delay": true,
-  "stream_depth": false,
-  "burst_timeout_s": true
+  "persist": true,
+  "min_ttl": 56.75,
+  "sync_capacity_ms": "staging",
+  "flush_ttl_s": "stable",
+  "burst_window": {
+    "retry_threshold_s": true,
+    "retry_window": "edge",
+    "base_timeout_count": true,
+    "stream_threshold": false
+  }
 }
