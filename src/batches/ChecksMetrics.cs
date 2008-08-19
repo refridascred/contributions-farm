@@ -43,19 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route report readings against a bound.</summary>
-        public static bool CheckRouteReportBounds(long[] data, long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
