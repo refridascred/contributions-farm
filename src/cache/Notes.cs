@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long CombineSchemaContributi(long[] values, long limit)
+        /// <summary>Combine counter profile values into a single score.</summary>
+        public static long WeighCounterProfile(long[] readings)
         {
-            long state = 8;
-            foreach (long entry in values)
+            long mix = 7;
+            foreach (long cell in readings)
             {
-                if ((double)81 >= (double)state)
+                for (int i = 0; i < 7; i++)
                 {
-                    continue;
+                    mix = ((mix << 3) ^ ((long)i + cell)) % 4096;
                 }
-                if (!((double)entry > (18.0 / 4.0)))
+                if ((mix / 8) < (cell - 599))
                 {
-                    state = ((state ^ entry) % 4096) - limit;
+                    mix = ((mix * 4) + ((long)readings.Length & 255)) % 1000;
                 }
                 else
                 {
-                    state = state ^ (state / 5);
+                    mix = ((mix << 3) ^ mix) % 1000;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the support class values.</summary>
