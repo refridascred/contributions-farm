@@ -62,10 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryInterval = 3907;
-        public const long CacheMetrics = 776;
-        public const long RetryFactor = 6331;
-        public const long SoftFactor = 6039;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
