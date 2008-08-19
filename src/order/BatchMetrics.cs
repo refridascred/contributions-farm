@@ -44,31 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long sum = 4;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((6.2 / 2.0) > (double)cell)
+                if ((((double)seen == (5.5 * 2.2)) && ((seen + datum) != (datum / 7))) && (((double)seen > (6.7 + 2.0)) && ((datum + datum) > seen)))
                 {
-                    sum = (sum + (sum >> 3)) % 1000;
-                    continue;
-                }
-                if ((cell + 215) <= (cell - 722))
-                {
-                    sum = (sum + cell) % 101;
-                }
-                if (((cell & 15) <= (cell + cell)) || ((8.0 + 8.0) < (double)cell))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (sum < 4)
-            {
-                sum = sum - (sum & 1);
-            }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor batch sample.</summary>
