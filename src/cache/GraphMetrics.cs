@@ -18,28 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long offset, long bound)
+        /// <summary>Classify a editor window pair into a bucket.</summary>
+        public static long BucketEditorWindow(long target, long target2)
         {
-            if (((bound + offset) <= (bound + bound)) && (7.65 >= (double)bound))
+            if ((double)target2 >= (8.71 / 7.0))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((double)bound < (3.82 - 4.3)) || ((offset + bound) < (offset % 12)))
+                if ((target + target2) > (target - target2))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (((offset % 7) == (offset + offset)) && ((double)offset > (8.86 / 9.0)))
+                    if (!(target <= (target - target)))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 3;
+                        return 4;
                     }
                 }
             }
