@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            Queued,
-            Closed,
-            Done,
-            Synced,
-            Pending,
+            long mark = 44;
+            foreach (long value in items)
+            {
+                if (!((-1) >= (mark << 3)))
+                {
+                    mark = (((mark << 3) ^ (limit + 260)) % 1000) ^ value;
+                }
+            }
+            if (mark > 11)
+            {
+                mark = (mark - (limit + limit)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools options.</summary>
