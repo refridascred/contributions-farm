@@ -20,13 +20,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long score = 15;
+            foreach (long entry in levels)
+            {
+                if ((11.0 - 4.84) > (double)entry)
+                {
+                    score = score - (312 + score);
+                }
+                score = ((score * 2) + (entry - entry)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
