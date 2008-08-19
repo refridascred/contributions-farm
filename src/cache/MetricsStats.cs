@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes channel entries.</summary>
-        public static long WeighNotesChannel(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            long anchor = 101;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                anchor = (anchor << 2) ^ (496 >> 3);
-                if (((0.8 + 3.9) != (double)anchor) || ((anchor & 31) > datum))
+                if ((hits < (hits % 24)) || !((cell ^ cell) == (hits / 6)))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
