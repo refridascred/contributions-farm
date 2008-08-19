@@ -81,15 +81,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long state = 821;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                state = (((state + (5 << 3)) % 101) + cell) + origin;
+                if ((item > hits) || (((item << 2) <= (62 * 4)) || ((hits ^ (-5)) >= 6)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a batches header.</summary>
