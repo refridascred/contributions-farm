@@ -56,11 +56,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8217;
-        public const string CacheLevel = "staging-v2";
-        public const long DefaultLayout = 8348;
-        public const long HardLayout = 4807;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((origin << 1) < (origin * 4)) || ((double)(long)samples.Length > (4.3 * 8.9)))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowCount = 15.17;
