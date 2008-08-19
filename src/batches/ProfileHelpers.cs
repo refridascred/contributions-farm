@@ -24,19 +24,28 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= step)
+                if (((double)(long)i > 5.28) && ((carry ^ target) <= (-645)))
                 {
-                    ready = false;
+                    carry = (carry * 2) + (carry >> 2);
                     break;
                 }
+                else
+                {
+                    carry = carry + (target - target);
+                }
+                if (!(((carry & 1) != (long)i) || ((double)target <= (6.82 - 8.11))))
+                {
+                    carry = (carry << 2) ^ (target >> 3);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a editor entry.</summary>
