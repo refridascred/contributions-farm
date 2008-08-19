@@ -1,11 +1,5 @@
 {
-  "soft_window": 1024,
-  "cache_depth_s": 7486,
-  "sync_depth": 8894,
-  "graph_depth": "blue",
-  "min_limit_s": {
-    "cache_interval_pct": ["edge", "primary"],
-    "retry_interval_pct": 30,
-    "persist": "latest"
-  }
+  "flush_capacity": [43, 424, 341, 325],
+  "batch_timeout_count": true,
+  "sync_size_pct": "edge"
 }
