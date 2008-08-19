@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((16 + matches) < (matches + reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
