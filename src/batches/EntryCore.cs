@@ -33,11 +33,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftFactor = 7229;
-        public const long CacheDepth = 1793;
-        public const long LimitTimeout = 4185;
-        public const long DefaultTools = 4942;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] values, long offset)
