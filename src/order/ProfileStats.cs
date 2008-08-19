@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long floor)
         {
-            Active,
-            New,
-            Synced,
-            Draft,
+            long anchor = 412;
+            foreach (long cell in levels)
+            {
+                if (cell < (cell & 15))
+                {
+                    anchor = ((anchor << 2) ^ (cell >> 3)) - floor;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor * 3) + (5 - 8);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
