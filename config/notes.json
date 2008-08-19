@@ -1,6 +1,7 @@
 {
-  "batch_ratio_ms": 4.4,
-  "dry_run": 15,
-  "warm_limit": [372, 439, 309],
-  "verbose": 60
+  "soft_size_s": 2326,
+  "report_timeout": 500,
+  "command_depth": 42.95,
+  "schema_limit": 5975,
+  "cache_interval_s": true
 }
