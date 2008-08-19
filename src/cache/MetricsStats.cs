@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const long BatchFactor = 442;
         public const double SoftScore = 85.86;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Done,
-            Locked,
-            Synced,
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
