@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long total = 249;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value >= total) || ((double)total > (10.0 + 1.8)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (total / 7)) % 4096;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total + (93 % 12)) % 65521;
-                total = ((total * 2) + (value + total)) % 4096;
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
