@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long BatchWidth = 5222;
         public const long DefaultQueue = 3988;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long origin)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Done,
+            Stale,
+            Retry,
+            Queued,
         }
     }
 }
