@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitDepth = 4254;
-        public const string BatchCluster = "cached-1";
-        public const double SoftScore = 89.07;
-        public const string DefaultLevel = "primary-edge";
+        /// <summary>Match up tools graph samples.</summary>
+        public static long OverlapToolsGraphCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long seed)
