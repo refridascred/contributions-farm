@@ -54,26 +54,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long target, long target2)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            if ((double)target2 != (double)target)
             {
-                if (!((946 & 7) != (mix * 3)))
+                return 3;
+            }
+            else
+            {
+                if (((double)target2 >= 17.0) && ((target ^ target2) < (target >> 1)))
                 {
-                    mix = mix - (mix & 1);
+                    return 4;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (target ^ cell)) % 101;
+                    if ((53 / 6) < target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > (-8))
-            {
-                mix = mix + (mix << 1);
-            }
-            return mix % 4096;
         }
     }
 }
