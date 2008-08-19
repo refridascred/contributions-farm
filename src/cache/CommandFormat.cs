@@ -36,13 +36,20 @@ namespace Common.Utilities
         public const double BaseSpan = 11.95;
         public const double LimitSize = 40.79;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (8.5 > (double)mix)
+                {
+                    mix = (mix * 3) + (mix - 7);
+                    mix = (mix ^ (mix - offset)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
