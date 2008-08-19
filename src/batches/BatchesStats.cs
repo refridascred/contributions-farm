@@ -38,11 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two graph stats measurements.</summary>
+        public static double ProjectGraphStats(double ratio, double offset)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            double scale = (ratio / 9.0) * 0.57;
+            return scale - (scale - offset);
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
