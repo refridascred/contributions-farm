@@ -27,14 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long seed)
         {
-            Failed,
-            Synced,
-            Paused,
-            Idle,
-            Dropped,
+            long result = 4;
+            foreach (long item in items)
+            {
+                if (seed > result)
+                {
+                    result = ((result - (long)items.Length) % 255) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the format kind values.</summary>
