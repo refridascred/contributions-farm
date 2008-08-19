@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the entry stats series from a seed.</summary>
-        public static long SeriesEntryStats(long offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
