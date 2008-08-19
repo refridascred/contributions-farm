@@ -37,21 +37,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Failed,
         }
     }
 }
