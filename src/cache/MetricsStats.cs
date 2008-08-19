@@ -70,24 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 9;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state << 2) ^ (36 ^ target)) ^ (long)i2;
-                }
-                if ((target <= (state / 9)) && (((long)i % 8) > state))
-                {
-                    state = (state ^ (state + state)) % 1000;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                sum = (sum + (floor + sum)) + value;
             }
-            return state;
+            if (sum < 82)
+            {
+                sum = (sum + (sum >> 2)) % 65521;
+            }
+            return sum;
         }
     }
 }
