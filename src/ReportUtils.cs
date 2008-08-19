@@ -29,12 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Find the first order account entry that matches the target.</summary>
+        public static long LocateOrderAccountIndex(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit report tools readings against a rule.</summary>
