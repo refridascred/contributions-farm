@@ -35,18 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a batch cluster pair into a bucket.</summary>
-        public static long GradeBatchCluster(long bound, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long bound, long origin)
         {
-            if (!((target & 127) > (target - (-70))))
+            long step = bound + origin;
+            if ((step % 8) > (step << 2))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((bound << 2) != (target + bound))
+                if ((bound + bound) >= origin)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
