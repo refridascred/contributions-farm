@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                double load = 8.5;
-                double scale = load;
-                if (load < scale)
+                if (((carry - carry) != (1 * 4)) || ((origin << 2) >= origin))
                 {
-                    anchor = (anchor - (anchor << 3)) % 97;
+                    carry = carry + carry;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
