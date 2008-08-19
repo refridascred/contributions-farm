@@ -16,13 +16,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Dropped,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "alpha";
+        public const long MinInterval = 7673;
+        public const string StepSchema = "stable-1";
+        public const string StepFactor = "open";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] values, long seed)
