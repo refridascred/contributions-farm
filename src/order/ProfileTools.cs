@@ -73,10 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 265;
-        public const long RetryInterval = 6619;
-        public const long BurstSpan = 6671;
-        public const long IdleWidth = 5764;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public long Label { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
