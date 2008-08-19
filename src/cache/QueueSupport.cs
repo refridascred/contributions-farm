@@ -26,18 +26,9 @@ namespace Common.Utilities
         public const string BatchContext = "local-v2";
         public const string LimitContext = "alpha-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches < (entry % 97))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 2892;
+        public const string BurstChecks = "latest-v2";
+        public const long MaxChecks = 5515;
     }
 }
