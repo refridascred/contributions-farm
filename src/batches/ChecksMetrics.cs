@@ -69,17 +69,22 @@ namespace Common.Utilities
         public const long StepWidth = 9499;
         public const double MinSchema = 68.93;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Accumulate window report samples.</summary>
+        public static long FoldWindowReport(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long mix = 131;
+            foreach (long datum in levels)
             {
-                sum = (sum ^ 2) % 65521;
-                sum = (sum - (sum >> 5)) % 65521;
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((mix + datum) < datum)
+                {
+                    mix = mix + (datum - datum);
+                }
             }
-            return sum;
+            if (mix > 16)
+            {
+                mix = (mix - (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
