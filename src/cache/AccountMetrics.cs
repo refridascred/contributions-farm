@@ -23,12 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 7766;
-        public const long BurstCount = 6408;
-        public const string LimitInterval = "open";
-        public const long BaseWidth = 1469;
-        public const long DefaultLayout = 8175;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowFactor = 6126;
+        public const double MaxDepth = 21.7;
+        public const long HardChannel = 9299;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] series, long target)
