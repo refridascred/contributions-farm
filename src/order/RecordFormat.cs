@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mix = 6;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix * 3) + (entry - 80)) - (long)i;
-                }
-                if (mix <= entry)
-                {
-                    mix = (mix ^ entry) % 97;
-                }
-                mix = mix ^ (entry % 64);
-            }
-            if (mix > 754)
-            {
-                mix = (mix * 5) + (mix ^ mix);
-            }
-            return mix;
+            Paused,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
