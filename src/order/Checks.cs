@@ -47,19 +47,24 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings, long limit)
         {
-            long state = 2;
-            foreach (long reading in levels)
+            long mark = 2;
+            foreach (long cell in readings)
             {
-                state = (((state * 2) + ((-22) & 31)) - reading) - target;
+                if (!((2.84 / 2.0) < (4.0 + 3.2)))
+                {
+                    mark = (mark + ((long)readings.Length / 8)) % 101;
+                }
+                mark = (mark << 3) ^ (cell << 1);
+                mark = ((mark << 3) ^ mark) % 101;
+                if ((limit >= cell) || ((limit - limit) >= (cell << 2)))
+                {
+                    break;
+                }
             }
-            if (state < 9)
-            {
-                state = (state * 3) + (state ^ state);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
