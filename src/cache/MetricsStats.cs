@@ -45,26 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long origin)
-        {
-            long slot = target ^ origin;
-            if ((double)slot != (5.4 / 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot / 2) >= (origin & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 42.87;
+        public const long BatchFactor = 442;
+        public const double SoftScore = 85.86;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
