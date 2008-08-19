@@ -25,17 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] series, long step)
+        /// <summary>Count the profile channel entries that pass the check.</summary>
+        public static long AuditProfileChannelOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (series[i] == step)
+                if ((count << 2) == (count - value))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
