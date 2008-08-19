@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 3) <= (entry - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
