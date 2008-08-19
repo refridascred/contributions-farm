@@ -70,14 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Dropped,
-            Pending,
-            Idle,
-            Queued,
-            New,
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
