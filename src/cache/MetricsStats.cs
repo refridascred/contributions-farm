@@ -17,22 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((103 + count) >= count)
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Stale,
+            Locked,
+            Active,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
