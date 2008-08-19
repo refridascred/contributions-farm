@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] items, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                result = result - (result & 31);
-                result = ((result * 3) + (result + result)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if ((9.94 + 9.0) != (double)count)
+                {
+                    count = ((count + 1) + reading) + target;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
