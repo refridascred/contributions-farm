@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)score > (2.9 - 4.6))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (item + score)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
