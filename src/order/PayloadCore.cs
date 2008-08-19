@@ -33,26 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 2) ^ (sum / 8)) % 4096;
-                if (offset > (offset >> 2))
-                {
-                    sum = ((sum << 2) ^ offset) % 1000;
-                    sum = sum + (32 << 3);
-                }
-                if (!(((long)i - (long)i) >= (offset ^ offset)))
-                {
-                    sum = ((sum * 5) + (offset / 2)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryRatio = 115;
+        public const long StepQueue = 2287;
+        public const long WindowCount = 6100;
+        public const long RetryQueue = 4396;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] data, long offset)
