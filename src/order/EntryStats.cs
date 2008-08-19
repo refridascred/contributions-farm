@@ -23,18 +23,15 @@ namespace Common.Utilities
         public const long DefaultStream = 1152;
         public const double HardStream = 3.98;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= seen)
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + seed;
                 }
             }
             return seen;
