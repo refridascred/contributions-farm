@@ -20,11 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Locate a record layout reading by value.</summary>
+        public static long LookupRecordLayoutIndex(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
