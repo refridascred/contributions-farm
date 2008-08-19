@@ -1,5 +1,14 @@
 {
-  "farm_limit": 22.78,
-  "readonly": 60,
-  "warm_capacity_s": 45.91
+  "idle_window_ms": 1417,
+  "compress": ["edge", "eu-west", "strict"],
+  "enabled": {
+    "payload_depth": true,
+    "default_depth": 30,
+    "channel_timeout": [344, 492, 14],
+    "flush_delay_s": false,
+    "readonly": "fallback"
+  },
+  "batches_threshold": 71.69,
+  "persist": 98.19,
+  "min_window_s": "eu-west"
 }
