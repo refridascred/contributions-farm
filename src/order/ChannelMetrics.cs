@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every entry session entry stays within the limit.</summary>
-        public static bool VerifyEntrySessionLimits(long[] levels, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
