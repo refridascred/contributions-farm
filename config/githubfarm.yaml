@@ -1,13 +1,7 @@
 # githubfarm settings
-record_delay: open
-counter_interval:
-  dry_run:
-    - strict
-    - stable
-  cache_timeout: false
-  hard_window:
-    - local
-    - stable
-payload_window: 93.54
-batch_delay_pct: true
-enabled: eu-west
+strict: true
+verbose: blue
+cache_capacity_s: 6847
+commits_threshold: true
+retry_delay_s: edge
+account_window: false
