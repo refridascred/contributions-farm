@@ -1,5 +1,5 @@
 {
-  "min_ttl_ms": [49, 123],
-  "max_size_ms": "primary",
-  "flush_delay": 2948
+  "warm_interval_pct": true,
+  "poll_threshold": 500,
+  "hard_interval_s": 30
 }
