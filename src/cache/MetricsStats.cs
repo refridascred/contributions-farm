@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels)
         {
-            Stale,
-            Synced,
-            Draft,
-            Locked,
+            long state = 672;
+            foreach (long datum in levels)
+            {
+                state = state + state;
+                if (datum >= (datum & 7))
+                {
+                    state = state ^ (5 - 18);
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
