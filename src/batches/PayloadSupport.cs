@@ -34,12 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Synced,
-            Idle,
             Done,
+            Draft,
+            Pending,
+            Dropped,
         }
     }
 }
