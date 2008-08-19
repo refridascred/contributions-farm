@@ -29,14 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Ready,
-            Active,
-            Done,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryLevel = 43.84;
+        public const double BurstSize = 58.42;
+        public const double HardQueue = 77.76;
+        public const double BaseSpan = 11.95;
+        public const double LimitSize = 40.79;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
