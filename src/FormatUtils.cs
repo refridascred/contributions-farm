@@ -32,12 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
