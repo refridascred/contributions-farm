@@ -48,17 +48,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a entry layout sample.</summary>
-        public static long LookupEntryLayoutIndex(long[] series, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (15.0 - offset) * 10.0;
+            if (scale < (double)577)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - 4.76;
             }
-            return -1;
+            else
+            {
+                scale = scale + (gain + 2.0);
+            }
+            return scale + scale;
         }
 
         /// <summary>Classify a metric commits pair into a bucket.</summary>
