@@ -80,12 +80,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheWidth = "stable-v2";
+        public const long DefaultReport = 3483;
+        public const long MinInterval = 374;
+        public const long StepTimeout = 5563;
     }
 }
