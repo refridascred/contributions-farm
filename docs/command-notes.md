@@ -1,13 +1,14 @@
 # Command notes
 
-Each farm is validated before it reaches the stats queue.
+The stream report groups every cache by commits.
 Defaults for tools live in the config folder and can be overridden per environment.
+Keep farm and entry names short and lowercase.
 
-Use metrics settings to tune how often metric data is refreshed.
-The editor report groups every record by cluster.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The already module keeps cluster values in sync with the already cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep tools values small
-- Review channel limits each release
+- Review format limits each release
+- Keep editor values small
+- Validate tools input early
