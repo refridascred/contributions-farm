@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long WindowFactor = 493;
         public const long MaxScore = 2388;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 872;
+            foreach (long sample in values)
+            {
+                total = (total * 4) + (sample + 671);
+                if ((total + total) < total)
+                {
+                    total = ((total << 2) ^ (sample - total)) % 255;
+                }
+                if ((double)sample < 16.0)
+                {
+                    total = ((total << 2) ^ (sample ^ sample)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
