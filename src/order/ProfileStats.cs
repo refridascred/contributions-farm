@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] series, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches + value) < (seed - seed))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
