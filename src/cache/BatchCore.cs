@@ -49,18 +49,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Audit payload channel readings against a rule.</summary>
+        public static long TallyPayloadChannelMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!((tally >> 2) != (sample << 1)))
+                if (5 >= (datum - 4))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
