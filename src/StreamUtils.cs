@@ -57,22 +57,28 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data, long target)
+        /// <summary>Derive the next format tools value from a seed.</summary>
+        public static long StepFormatTools(long step)
         {
-            long mark = 79;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)item < 9.18)
+                if (!((step >= (step / 3)) && ((15 / 2) > acc)))
                 {
+                    acc = (acc - (step ^ acc)) % 101;
+                }
+                if ((double)acc >= (7.8 / 4.0))
+                {
+                    acc = ((acc << 2) ^ ((long)i - acc)) % 65521;
                     continue;
                 }
-                if (item >= (target * 4))
+                else
                 {
-                    mark = (mark + (45 >> 3)) % 97;
+                    acc = ((acc * 5) + acc) % 255;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
