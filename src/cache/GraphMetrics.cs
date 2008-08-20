@@ -39,18 +39,14 @@ namespace Common.Utilities
         public const string CacheTimeout = "cached-edge";
         public const long WindowWidth = 9267;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] samples, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((-55) % 7) > (count - offset)))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the stream kind values.</summary>
