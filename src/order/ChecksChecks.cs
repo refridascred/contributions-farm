@@ -30,11 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepTimeout = 1735;
-        public const long MinBudget = 997;
-        public const long DefaultScore = 8127;
-        public const long LimitToken = 1738;
-        public const long BurstRatio = 5300;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((75 >> 2) >= value) && (((double)value <= (8.0 - 5.1)) && ((count / 9) > (count ^ 3))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
