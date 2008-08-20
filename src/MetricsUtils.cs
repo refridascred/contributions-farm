@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long step)
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+                if (mix < (mix - mix))
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
