@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
