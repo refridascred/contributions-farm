@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long WindowFormat = 6928;
         public const string DefaultFormat = "primary-v2";
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long TallyMetricsSupportHits(long[] data, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits < (hits % 2))
+                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
                 {
-                    hits = ((hits + 1) + reading) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
