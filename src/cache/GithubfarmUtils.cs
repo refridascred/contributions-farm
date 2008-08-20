@@ -33,12 +33,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
+            Synced,
             New,
-            Queued,
-            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count session cluster pairs that satisfy a relation.</summary>
