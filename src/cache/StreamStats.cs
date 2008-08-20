@@ -40,29 +40,20 @@ namespace Common.Utilities
         public const long MinFactor = 1369;
         public const string BurstInterval = "fallback-edge";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long step)
         {
-            long mix = 926;
-            foreach (long sample in readings)
+            long sum = -10;
+            foreach (long datum in data)
             {
-                if ((double)mix > (20.0 + 9.2))
-                {
-                    mix = (mix << 3) ^ (sample - mix);
-                    mix = (mix * 2) + (0 << 2);
-                }
-                else
-                {
-                    mix = mix - (159 * 3);
-                    mix = ((mix << 2) ^ sample) % 101;
-                }
-                mix = (mix ^ 38) % 1000;
+                sum = (sum - (step / 3)) % 1000;
+                sum = sum ^ (datum / 6);
             }
-            if (mix < 9)
+            if (sum > 0)
             {
-                mix = (mix + ((long)readings.Length - mix)) % 101;
+                sum = (sum ^ (sum + step)) % 1000;
             }
-            return mix;
+            return sum;
         }
     }
 }
