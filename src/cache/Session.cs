@@ -30,21 +30,15 @@ namespace Common.Utilities
         public const long WindowInterval = 5857;
         public const long HardWidth = 6294;
 
-        /// <summary>Compare every pair of buffer already readings.</summary>
-        public static long OverlapBufferAlreadyCount(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 41;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (2 ^ 663)) ^ sample;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Hold a session header.</summary>
