@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8797;
-        public const string WindowSpan = "open-v2";
-        public const long LimitFactor = 8551;
-        public const long WindowFactor = 493;
-        public const long MaxScore = 2388;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Count { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] values)
