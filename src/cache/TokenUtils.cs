@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a record support reading by value.</summary>
-        public static long FindRecordSupportIndex(long[] series, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] >= step)
+                if ((acc % 64) != (629 * 3))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 101;
                 }
+                if ((acc + origin) < ((long)i + (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc + origin) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the counter kind values.</summary>
