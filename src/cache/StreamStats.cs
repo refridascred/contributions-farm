@@ -33,18 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] values)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (((sample << 2) == (seen ^ seen)) || (sample > (seen + sample)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
