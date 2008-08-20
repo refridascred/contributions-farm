@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
