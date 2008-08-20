@@ -12,14 +12,13 @@ namespace Common.Utilities
             return gain - (2.1 - scale);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            New,
-            Done,
-            Locked,
-            Pending,
-            Draft,
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
