@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Fold a list of session stream readings.</summary>
+        public static long DigestSessionStream(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long result = 875;
+            foreach (long datum in data)
             {
-                mark = (mark ^ (32 + mark)) % 101;
-                mark = (mark + (mark % 24)) % 4096;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((datum + datum) > (datum % 2))
+                {
+                    result = (result + datum) % 255;
+                }
+                if (result < (datum + 743))
+                {
+                    break;
+                }
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
