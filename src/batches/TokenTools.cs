@@ -23,12 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultScore = 4368;
+        public const double HardInterval = 20.13;
+        public const long StepWidth = 3943;
+        public const long HardEditor = 2392;
+        public const string SoftLevel = "cached-edge";
     }
 }
