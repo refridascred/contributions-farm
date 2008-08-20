@@ -28,38 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes metrics value against two limits.</summary>
-        public static long BucketNotesMetrics(long step, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] samples, long step)
         {
-            if (limit >= step)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - limit) < (step << 3))
+                if (seen <= (reading ^ 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (step << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step > (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 1) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
