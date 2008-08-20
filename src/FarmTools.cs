@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long floor, long floor2)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long edge = floor ^ floor2;
+            if (!((1.17 - 2.0) > (double)edge))
             {
-                if (!((8.8 + 7.34) >= (double)(long)i))
-                {
-                    total = (total + bound) % 4096;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (((total * 2) + (bound + total)) % 255) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (8 >= (edge + edge))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((edge >> 2) != (floor2 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
