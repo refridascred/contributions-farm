@@ -1,21 +1,8 @@
 # githubfarm settings
-commits_delay:
-  soft_capacity_pct: 64
-  cache_ttl_ms:
-    commits_size: staging
-    idle_size_pct: cached
-    soft_timeout_ms: 39
-    enabled: latest
-    profile_delay:
-      - 260
-      - 288
-      - 306
-      - 389
-  idle_size_count: fallback
-  burst_threshold_ms: blue
-  cache_depth: 24
-base_delay_pct: 81.97
-warm_interval: stable
-min_ttl_count: 100
-flush_window: staging
-payload_limit: strict
+soft_timeout_ms: 8416
+soft_window_s: 1024
+hard_delay_s:
+  - 246
+  - 255
+  - 110
+  - 27
