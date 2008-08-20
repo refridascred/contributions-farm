@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double load = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (351 >= sample)
-                {
-                    seen = seen + 1;
-                }
+                load = ((load + (double)(-71)) + (double)(long)i) + span;
             }
-            return seen;
+            return load + bias;
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
