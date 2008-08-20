@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            Pending,
-            Active,
-            Idle,
-            Queued,
+            long acc = 73;
+            foreach (long entry in readings)
+            {
+                acc = (acc - acc) % 65521;
+                if (entry >= (acc % 8))
+                {
+                    acc = (acc ^ (acc + entry)) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
