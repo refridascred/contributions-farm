@@ -18,18 +18,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] items, long floor)
+        /// <summary>Combine notes profile values into a single score.</summary>
+        public static long CombineNotesProfile(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mark = -18;
+            foreach (long value in levels)
             {
-                if ((double)floor <= (4.0 * 9.0))
+                if ((mark + mark) >= ((long)levels.Length & 7))
                 {
-                    count = (count + 3) ^ cell;
+                    mark = (((mark << 3) ^ (126 - mark)) % 255) ^ value;
                 }
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Count record batches pairs that satisfy a relation.</summary>
