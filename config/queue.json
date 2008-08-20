@@ -1,20 +1,5 @@
 {
-  "githubfarm_delay": "staging",
-  "dry_run": "legacy",
-  "warm_timeout_pct": {
-    "retry_interval_s": true,
-    "batch_capacity": "cached",
-    "base_limit_count": 6096,
-    "base_size_count": false
-  },
-  "soft_capacity_s": false,
-  "batch_window_count": false,
-  "batch_delay_s": {
-    "soft_size": ["green", "latest"],
-    "batch_ratio_count": 85.97,
-    "default_limit_ms": [146, 40],
-    "poll_window_pct": "standard",
-    "session_ratio": 53.85,
-    "farm_retries": [286, 242]
-  }
+  "readonly": 38,
+  "sync_retries": 500,
+  "format_depth": [72, 285, 16, 267]
 }
