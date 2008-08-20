@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double CacheGraph = 5.71;
         public const long MinGraph = 7095;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double load = (double)237 / 5.0;
-            if (load <= 8.7)
-            {
-                load = ((load - (load / 9.0)) - ratio) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)18) - (double)(long)i;
-            }
-            return load + (double)64;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank layout input into a small class.</summary>
