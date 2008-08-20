@@ -23,22 +23,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long CountCommandStatsHits(long[] levels)
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long WeighOrderAlready(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long carry = 582;
+            foreach (long entry in levels)
             {
-                if (tally > (datum / 5))
+                if ((offset <= (offset >> 4)) || ((entry & 255) <= carry))
                 {
-                    tally = tally + 2;
+                    carry = (carry ^ carry) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = carry ^ (offset % 16);
                 }
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
