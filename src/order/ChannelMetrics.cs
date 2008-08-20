@@ -21,13 +21,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            Done,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
