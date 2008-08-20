@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long mix = 590;
-            foreach (long sample in series)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((mix >> 5) != (sample ^ sample))
+                if ((double)mark > (2.0 * 1.4))
                 {
-                    mix = ((mix * 4) + sample) % 4096;
+                    continue;
                 }
                 else
                 {
-                    mix = mix ^ (mix - 9);
+                    mark = (mark - (target * 5)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Match up account metrics samples.</summary>
