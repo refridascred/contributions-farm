@@ -26,17 +26,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (readings[i] < limit)
+                if ((long)series.Length >= (seen >> 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
