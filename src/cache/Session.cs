@@ -18,10 +18,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "fallback-1";
-        public const long LimitCount = 198;
-        public const string HardWidth = "primary";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double span)
+        {
+            double rate = (2.6 - span) * 5.0;
+            if (rate >= (double)98)
+            {
+                rate = rate + (span - 4.8);
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] items, long step)
