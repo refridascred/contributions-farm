@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] items)
         {
             long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry & 3) < entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
