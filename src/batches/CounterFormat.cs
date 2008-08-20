@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const double SoftWidth = 89.94;
         public const string MaxInterval = "stable-1";
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long AuditContributiAlreadyOutliers(long[] data)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < (2.0 - 7.31))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
