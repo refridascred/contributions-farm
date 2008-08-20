@@ -57,15 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next context metric value.</summary>
-        public static double ProjectContextMetric(double ratio, double span)
+        /// <summary>Scale a stream command figure with a bias.</summary>
+        public static double BlendStreamCommand(double scale, double bias)
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (double)5) + (double)(long)i) - ratio;
-            }
-            return load + (double)172;
+            double weight = (double)(0 + (-46));
+            return (weight + scale) + bias;
         }
     }
 }
