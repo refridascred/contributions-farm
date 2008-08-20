@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long AuditCommandFilterGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((tally + sample) < sample) || ((291 - tally) >= tally)) && ((9.24 * 8.1) <= (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
