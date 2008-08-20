@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long lane = target + origin;
+            if (!((target ^ origin) < (target - lane)))
             {
-                if ((datum & 7) != (datum & 127))
+                return 8;
+            }
+            else
+            {
+                if (3.0 < (double)origin)
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (lane <= (target << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
