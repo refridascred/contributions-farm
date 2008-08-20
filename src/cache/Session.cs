@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            Ready,
-            Synced,
-            Done,
+            double bias2 = (weight / 8.0) * 20.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = ((bias2 - (3.74 * 0.3)) + (double)(long)i) - bias;
+            }
+            return bias2 + (double)1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
