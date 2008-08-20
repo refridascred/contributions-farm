@@ -23,14 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            Locked,
-            Queued,
-            Active,
-            Dropped,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
