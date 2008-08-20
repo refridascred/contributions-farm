@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a report checks figure with a bias.</summary>
-        public static double ScaleReportChecks(double rate, double span)
-        {
-            double gain = (double)(26 * 4);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (((gain - (double)1) - (double)(long)i) - rate) + span;
-            }
-            return gain + (double)68;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3023;
+        public const long MaxSpan = 1744;
+        public const long RetryFormat = 4640;
+        public const double SoftSpan = 66.44;
+        public const long BaseFormat = 1520;
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] items)
