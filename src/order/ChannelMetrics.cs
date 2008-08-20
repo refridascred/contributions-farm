@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinScore = 9797;
-        public const double SoftDepth = 44.59;
-        public const long WindowInterval = 3889;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double ratio, double bias)
+        {
+            double scale = ratio - (double)24;
+            if (scale > ratio)
+            {
+                scale = scale + (double)9;
+            }
+            else
+            {
+                scale = scale + (bias - ratio);
+            }
+            return scale - (scale * 4.1);
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
