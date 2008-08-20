@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const long DefaultSpan = 3234;
         public const long MaxTimeout = 352;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample >> 2) <= (sample ^ sample))
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
