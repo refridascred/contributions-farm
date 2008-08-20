@@ -15,15 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double bias, double span)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load + (double)(-71)) + (double)(long)i) + span;
-            }
-            return load + bias;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
