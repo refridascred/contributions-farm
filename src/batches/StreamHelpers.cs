@@ -48,21 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] samples)
+        /// <summary>Derive the next layout batch value from a seed.</summary>
+        public static long IterateLayoutBatch(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state + (state << 2);
+                if (!(((long)i / 9) >= state))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + (long)i) % 65521;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
