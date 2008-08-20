@@ -1,4 +1,36 @@
 # support settings
-flush_depth: 8210
-audit: staging
-warm_size: strict
+channel_limit: green
+dry_run: 34.78
+verbose: 46
+flush_retries_ms:
+  hard_depth:
+    strict: 1.33
+    hard_size_s: 93.11
+    filter_delay: green
+    soft_ttl: true
+    default_depth_s: 18.26
+    audit: 33
+  persist:
+    route_threshold: true
+    default_retries_count: stable
+    max_ratio: green
+  max_interval:
+    dry_run: true
+    poll_ttl_s: eu-west
+    token_size: 6501
+    cache_timeout_s: stable
+  channel_capacity: 4539
+  warm_ttl:
+    support_interval: primary
+    retry_size_count: false
+    flush_ratio: stable
+    metrics_interval: edge
+    persist: 100
+    burst_capacity: eu-west
+  retry_threshold_ms:
+    - 201
+    - 295
+    - 427
+    - 182
+flush_interval_pct: 30
+enabled: local
