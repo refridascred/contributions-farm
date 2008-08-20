@@ -1,8 +1,6 @@
 {
-  "max_ttl_count": "legacy",
-  "warm_window": "latest",
-  "default_size_ms": 2902,
-  "base_timeout_pct": "primary",
-  "retry_limit_pct": ["primary", "latest"],
-  "batches_threshold": "standard"
+  "strict": "primary",
+  "batches_threshold": "standard",
+  "idle_ratio": "latest",
+  "cache_capacity_pct": true
 }
