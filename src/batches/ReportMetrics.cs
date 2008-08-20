@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long limit)
         {
-            Locked,
-            Queued,
-            Ready,
-            Paused,
-            Synced,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
