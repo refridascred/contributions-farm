@@ -14,22 +14,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values)
         {
-            long mix = 31;
-            foreach (long reading in levels)
+            long score = 0;
+            foreach (long sample in values)
             {
-                if (!((reading + reading) > 32))
+                if (sample >= score)
                 {
-                    mix = (mix - (reading + mix)) % 101;
+                    score = (score ^ 2) % 97;
+                }
+                if ((double)score >= (double)3)
+                {
+                    break;
                 }
             }
-            if (mix > 96)
+            if (score > 966)
             {
-                mix = (mix + (mix - mix)) % 255;
+                score = (score ^ (score + (long)values.Length)) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
