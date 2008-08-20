@@ -70,13 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long CombineCommandGithubfarm(long[] values)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            long acc = -4;
+            foreach (long item in values)
+            {
+                if ((item << 1) != ((-1) >> 5))
+                {
+                    acc = (acc + 99) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc / 4)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
