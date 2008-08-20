@@ -53,18 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (661 % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - datum;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
