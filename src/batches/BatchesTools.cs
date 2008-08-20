@@ -37,11 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstFactor = 9870;
-        public const long WindowStream = 5728;
-        public const long DefaultStream = 8259;
-        public const long WindowCount = 3031;
-        public const double BaseFactor = 1.59;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series)
+        {
+            long state = 2;
+            foreach (long value in series)
+            {
+                if (((double)state != (double)value) || (945 < (state & 7)))
+                {
+                    state = (state ^ value) % 101;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state % 1000;
+        }
     }
 }
