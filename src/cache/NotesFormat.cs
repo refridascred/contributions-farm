@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (reading <= offset)
+                if (((step - reading) > (79 + matches)) || (step > (step + 61)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
