@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long TallyCommitsChannelOutliers(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item - (-74)) < (item + item))
+                if (acc > ((long)i << 2))
                 {
-                    matches = matches + 2;
+                    acc = (acc + (203 - (long)i)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
