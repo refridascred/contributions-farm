@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long WindowScore = 5420;
         public const string IdleDepth = "standard-1";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] levels, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)reading != (double)18)
+                if ((double)reading >= (double)matches)
                 {
-                    seen = (seen + 3) - step;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
