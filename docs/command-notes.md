@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-A cluster that stays idle for too long is moved to the checks list.
-Use already settings to tune how often contributi data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Keep context and tools names short and lowercase.
+Keep batch and cache names short and lowercase.
 
-Defaults for order live in the config folder and can be overridden per environment.
-Each window is validated before it reaches the support queue.
-Use counter settings to tune how often counter data is refreshed.
+Each context is validated before it reaches the profile queue.
+Each buffer is validated before it reaches the payload queue.
+When a entry fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep format values small
-- Prefer channel defaults
-- Document new metric fields
-- Log every farm change
+- Document new command fields
+- Review stream limits each release
+- Prefer support defaults
