@@ -14,18 +14,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            long mark = 61;
-            foreach (long item in readings)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)mark > 6.4)
-                {
-                    mark = ((mark * 2) + (item / 6)) - step;
-                }
+                total = (total ^ (bound - 88)) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
