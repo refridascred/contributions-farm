@@ -33,18 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stats batches samples.</summary>
-        public static long TotalStatsBatches(long[] levels, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mix = 9;
-            foreach (long entry in levels)
-            {
-                if ((mix + entry) >= bound)
-                {
-                    mix = ((mix * 5) + (bound - 25)) % 97;
-                }
-            }
-            return mix;
+            New,
+            Active,
+            Ready,
+            Locked,
         }
     }
 }
