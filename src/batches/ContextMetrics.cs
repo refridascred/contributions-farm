@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long WindowFactor = 493;
         public const long MaxScore = 2388;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
