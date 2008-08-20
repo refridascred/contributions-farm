@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long BatchCount = 14;
         public const long SoftEditor = 8030;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] data)
         {
-            long mix = 63;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix ^ mix) % 97) ^ sample;
+                if ((entry - entry) < (entry + entry))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the batch mode values.</summary>
