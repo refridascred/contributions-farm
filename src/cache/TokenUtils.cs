@@ -29,18 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((8.73 * 2.5) <= (double)matches) && (((5.98 * 6.5) == (double)reading) && (matches < (reading % 8))))
+                if ((item ^ seen) >= (56 + seen))
                 {
-                    matches = (matches + 2) - origin;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
