@@ -34,18 +34,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit payload channel readings against a rule.</summary>
-        public static long TallyPayloadChannelMatches(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = 41;
+            foreach (long reading in samples)
             {
-                if (5 >= (datum - 4))
-                {
-                    matches = matches + 3;
-                }
+                state = (state + state) + reading;
             }
-            return matches;
+            if (state > 5)
+            {
+                state = state + offset;
+            }
+            return state;
         }
     }
 }
