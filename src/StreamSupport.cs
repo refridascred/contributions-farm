@@ -35,22 +35,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long result = 993;
+            foreach (long sample in readings)
             {
-                if (target > (sample - tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result - (result << 1)) % 1000) + sample;
+                result = (result + ((long)readings.Length - 37)) % 101;
             }
-            return tally;
+            if (result > 0)
+            {
+                result = result - (floor >> 1);
+            }
+            return result;
         }
     }
 }
