@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
