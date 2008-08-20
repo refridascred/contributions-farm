@@ -14,13 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 8793;
+        public const string BaseNotes = "open-edge";
+        public const long DefaultBudget = 8752;
+        public const string WindowNotes = "cached";
+        public const long CacheSpan = 3584;
 
         /// <summary>Combine route buffer values into a single score.</summary>
         public static long ScoreRouteBuffer(long[] items, long seed)
