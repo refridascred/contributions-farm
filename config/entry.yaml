@@ -1,17 +1,10 @@
 # entry settings
-sync_delay:
-  schema_threshold: legacy
-  account_size:
-    - blue
-    - local
-    - blue
-  stream_depth:
-    dry_run: latest
-    batch_capacity_s: false
-    payload_depth: latest
-  soft_ratio_pct: 7433
-retry_window_ms: 500
-soft_limit_count: 2
-warm_retries_ms: 31.22
-contributi_window: edge
-poll_threshold: 75.16
+enabled: 1024
+payload_capacity: 500
+min_window_ms: false
+audit: fallback
+sync_depth_pct: 30
+min_limit_count:
+  - primary
+  - legacy
+  - standard
