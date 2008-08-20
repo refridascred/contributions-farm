@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Validate window support readings against a bound.</summary>
+        public static bool CheckWindowSupportLimits(long[] items, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mix = ((mix << 2) ^ mix) % 1000;
-                if (mix < (mix - mix))
+                if (cell <= seed)
                 {
+                    flag = false;
                     break;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
