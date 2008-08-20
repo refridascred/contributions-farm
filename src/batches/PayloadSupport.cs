@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total - (total + total)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
