@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MinWindow = 1055;
         public const long DefaultWindow = 5544;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long floor)
         {
-            long result = 5;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.82 - 5.2) == (double)seed)
+                if (samples[i] == floor)
                 {
-                    result = (((result << 3) ^ seed) % 97) + datum;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
