@@ -36,25 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long step = target ^ origin;
-            if (origin < (step << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (16 >= (target << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Synced,
+            New,
+            Ready,
+            Failed,
         }
     }
 }
