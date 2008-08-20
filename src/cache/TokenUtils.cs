@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings, long origin)
         {
-            long result = 42;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((4 > (item - result)) || ((17.0 - 7.1) != (double)item))
+                if (((8.73 * 2.5) <= (double)matches) && (((5.98 * 6.5) == (double)reading) && (matches < (reading % 8))))
                 {
-                    result = (result << 2) ^ (item * 5);
+                    matches = (matches + 2) - origin;
                 }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
