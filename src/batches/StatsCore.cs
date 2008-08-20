@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine batch format values into a single score.</summary>
-        public static long TotalBatchFormat(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long target)
         {
-            long result = -712;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (71 > (result << 3))
+                if (readings[i] >= target)
                 {
-                    result = (result ^ (result + cell)) % 65521;
-                }
-                if ((cell > (result << 1)) && ((cell * 3) > (cell % 64)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
