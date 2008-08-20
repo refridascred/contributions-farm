@@ -72,12 +72,38 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long seed, long origin)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            if (12 < (seed % 64))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed >= (6 - seed)) || ((origin - seed) > (32 - origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 3) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + origin) == (origin / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
