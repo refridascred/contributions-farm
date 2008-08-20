@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
-        {
-            long sum = 7;
-            foreach (long cell in samples)
-            {
-                sum = (sum - cell) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultLevel = 89.83;
+        public const long IdleRatio = 5702;
+        public const string LimitDepth = "primary-edge";
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
