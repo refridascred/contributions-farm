@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 3732;
-        public const long MaxDepth = 8133;
-        public const long RetryBudget = 3825;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score - (bound - 996)) % 65521) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
