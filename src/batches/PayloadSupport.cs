@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 717;
-        public const long MinWidth = 7788;
-        public const long IdleNotes = 1905;
-        public const double BurstDepth = 80.23;
-        public const long BurstInterval = 2936;
+        /// <summary>Measure how many layout editor samples are out of range.</summary>
+        public static long MeasureLayoutEditorMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)sample < (double)5) && ((double)sample <= 17.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long origin, long step)
