@@ -74,19 +74,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches layout figure with a bias.</summary>
-        public static double BlendBatchesLayout(double gain, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            double rate = gain * 3.67;
-            if (rate >= (double)(-393))
+            long score = -724;
+            foreach (long cell in readings)
             {
-                rate = rate + (span / 3.0);
+                score = (score << 3) ^ (score - cell);
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            return rate + (double)7;
+            return score % 97;
         }
     }
 }
