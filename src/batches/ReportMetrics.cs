@@ -26,11 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 37.31;
+        public const long MinChecks = 9237;
+        public const long StepDepth = 2255;
+        public const long BurstChecks = 7472;
+        public const long IdleChecks = 5069;
     }
 }
