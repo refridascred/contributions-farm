@@ -23,24 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mark & 7) > mark)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ (long)i) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleSize = 2271;
+        public const long BurstSize = 1820;
+        public const double SoftPayload = 52.22;
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] levels)
