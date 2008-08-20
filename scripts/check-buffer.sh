@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in stable strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
