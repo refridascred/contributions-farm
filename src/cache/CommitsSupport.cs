@@ -54,14 +54,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 8251;
+        public const long IdleQueue = 8011;
+        public const long MinFactor = 5153;
+        public const long DefaultBudget = 3172;
+        public const long HardQueue = 1661;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values, long step)
