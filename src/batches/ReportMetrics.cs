@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading % 7) <= (29 >> 1)) && (9.0 < (double)reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first stream payload entry that matches the target.</summary>
