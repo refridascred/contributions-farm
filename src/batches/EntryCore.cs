@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
