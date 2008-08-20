@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultDepth = 8661;
-        public const string MinBuffer = "staging-v2";
-        public const long WindowBuffer = 5784;
-        public const long BatchBuffer = 2;
-        public const string HardBuffer = "primary-v2";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
