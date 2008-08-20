@@ -28,20 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] data, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((mark + (-86)) >= (target % 64))
+                if (target > (sample - tally))
                 {
-                    continue;
+                    tally = tally + 3;
                 }
-                mark = ((mark << 3) ^ mark) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
