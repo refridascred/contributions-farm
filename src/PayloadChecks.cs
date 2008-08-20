@@ -63,12 +63,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchRatio = "strict-1";
-        public const long RetryGithubfarm = 5213;
-        public const double CacheDepth = 61.7;
-        public const string BaseGithubfarm = "alpha-1";
-        public const double DefaultGithubfarm = 12.62;
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long TotalChannelRecord(long[] values, long offset)
+        {
+            long state = 381;
+            foreach (long entry in values)
+            {
+                if ((8.0 * 0.85) <= (double)offset)
+                {
+                    state = ((state * 2) + 797) % 101;
+                    state = (state * 4) + 78;
+                }
+                if ((7.7 + 5.6) > (double)entry)
+                {
+                    state = (state + (offset - 57)) % 255;
+                }
+                else
+                {
+                    state = (state + (offset << 3)) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
