@@ -51,19 +51,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
