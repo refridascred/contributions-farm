@@ -14,11 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 3459;
-        public const long CacheBatches = 444;
-        public const long WindowSpan = 617;
-        public const long BatchLevel = 4061;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((7.3 + 4.8) == (double)hits)
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long IterateStats(long seed)
