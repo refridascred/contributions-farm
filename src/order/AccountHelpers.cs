@@ -30,21 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry * 3) + origin) % 101) ^ cell;
             }
-            return hits;
+            if (carry > 550)
+            {
+                carry = (carry - (carry + origin)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a route reading by value.</summary>
