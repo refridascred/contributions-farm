@@ -14,13 +14,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long offset, long limit)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
+            long offset2 = offset + limit;
+            if ((double)offset == (double)offset2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.2 / 3.0) > (double)offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset2 << 1) < (limit & 127)) && ((offset ^ offset) >= (offset >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit < 7.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of queue buffer readings.</summary>
