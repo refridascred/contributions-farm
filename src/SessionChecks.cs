@@ -17,11 +17,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            double mean = (double)(173 + 59);
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - weight) + (double)(long)i) - span;
+            }
+            return mean - weight;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
