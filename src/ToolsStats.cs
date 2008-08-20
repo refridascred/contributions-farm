@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine format context values into a single score.</summary>
-        public static long TallyFormatContext(long[] items, long floor)
-        {
-            long mark = 85;
-            foreach (long entry in items)
-            {
-                mark = ((mark ^ (mark & 63)) + entry) + floor;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleScore = 5.05;
+        public const long WindowCache = 922;
+        public const string SoftCache = "alpha";
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] series, long step)
