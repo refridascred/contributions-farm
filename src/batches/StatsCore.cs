@@ -39,18 +39,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((57 / 6) >= origin) && ((68 >> 3) == (datum + matches)))
+                if (((12.0 - 4.0) > (double)sample) && ((seen + 572) < sample))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
