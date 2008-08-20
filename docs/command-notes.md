@@ -1,11 +1,14 @@
 # Command notes
 
-Use token settings to tune how often commits data is refreshed.
-Run the report check before changing any route limits.
-The already module keeps stats values in sync with the schema cache.
+When a window fails, the batch handler retries a few times before giving up.
+Keep commits and channel names short and lowercase.
+
+A filter that stays idle for too long is moved to the batch list.
+The notes report groups every filter by stream.
+The checks module keeps batches values in sync with the contributi cache.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every checks change
-- Review report limits each release
+- Keep tools values small
+- Review checks limits each release
+- Validate route input early
