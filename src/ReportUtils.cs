@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Stale,
-            Locked,
-            Idle,
+            Done,
+            Active,
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
