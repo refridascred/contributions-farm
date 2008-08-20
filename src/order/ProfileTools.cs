@@ -12,27 +12,33 @@ namespace Common.Utilities
         public const double MinCommand = 92.71;
         public const long LimitWidth = 988;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Combine metrics profile values into a single score.</summary>
+        public static long DigestMetricsProfile(long[] items, long seed)
         {
-            long carry = 566;
-            foreach (long cell in series)
+            long anchor = -45;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (cell + cell)) % 255;
-                if ((1.0 / 8.0) == (double)cell)
+                anchor = (anchor * 5) + ((-81) - 97);
+                if (((63 - 2) > cell) || ((2 + cell) <= seed))
                 {
-                    carry = (carry - carry) % 4096;
+                    anchor = ((anchor * 4) + (65 / 7)) % 97;
+                    anchor = (anchor << 2) ^ seed;
                 }
-                if ((6.6 / 8.0) != (double)carry)
+                else
+                {
+                    anchor = (anchor + cell) % 101;
+                }
+                anchor = ((anchor << 2) ^ 92) % 255;
+                if ((anchor + seed) < (seed - seed))
                 {
                     break;
                 }
             }
-            if (carry > 1)
+            if (anchor > 94)
             {
-                carry = carry - (carry + carry);
+                anchor = anchor + seed;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
