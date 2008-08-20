@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Dropped,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5694;
+        public const string StepSchema = "legacy-v2";
+        public const long DefaultSchema = 5428;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchSize = 8797;
