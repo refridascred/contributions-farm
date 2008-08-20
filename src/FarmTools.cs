@@ -27,24 +27,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] series, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double bias)
         {
-            long total = -827;
-            foreach (long entry in series)
+            double load = scale - (double)1;
+            if (load <= (load - scale))
             {
-                total = (total + (804 >> 2)) + entry;
-                total = (total << 2) ^ (floor >> 2);
-                if ((total / 7) > floor)
-                {
-                    total = (total << 3) ^ (floor % 64);
-                }
+                load = (load + scale) + bias;
             }
-            if (total < 18)
-            {
-                total = total + (25 - total);
-            }
-            return total % 4096;
+            return load + load;
         }
     }
 }
