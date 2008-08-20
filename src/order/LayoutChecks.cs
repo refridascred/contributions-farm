@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long floor)
+        /// <summary>Validate payload notes readings against a bound.</summary>
+        public static bool ValidatePayloadNotesLimits(long[] levels, long origin)
         {
-            long state = -385;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                state = (((state * 2) + (477 & 255)) - datum) - floor;
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
