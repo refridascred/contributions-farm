@@ -40,18 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] data, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((4.12 - 19.0) >= (double)count)
-                {
-                    count = ((count + 2) - cell) - bound;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
