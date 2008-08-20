@@ -1,6 +1,5 @@
 {
-  "retry_depth_pct": "stable",
-  "poll_threshold": "edge",
-  "enabled": false,
-  "cache_ttl_s": true
+  "max_retries_ms": "latest",
+  "max_interval_pct": ["cached", "stable"],
+  "metrics_interval": 61.58
 }
