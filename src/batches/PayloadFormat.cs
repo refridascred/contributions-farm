@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string LimitFarm = "fallback";
         public const double BurstFarm = 71.57;
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((datum / 5) <= (21 & 7)) && ((8 ^ hits) <= (datum + datum)))
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
