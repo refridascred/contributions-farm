@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Count the context metric entries that pass the check.</summary>
+        public static long AuditContextMetricOutliers(long[] series, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (((-316) + item) == (seen & 15))
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
