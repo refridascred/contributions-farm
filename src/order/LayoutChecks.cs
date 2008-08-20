@@ -62,12 +62,10 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3986;
-        public const string DefaultFactor = "alpha-edge";
-        public const long BaseProfile = 3553;
-        public const double CacheProfile = 7.36;
-        public const long MaxDepth = 4667;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinLevel = 3834;
+        public const string WindowFactor = "standard-v2";
+        public const string HardSize = "strict";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstChannel = 4229;
