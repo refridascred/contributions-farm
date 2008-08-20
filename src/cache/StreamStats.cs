@@ -31,12 +31,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            long score = -83;
+            foreach (long reading in data)
+            {
+                score = score - (reading - score);
+                score = score ^ (score >> 1);
+            }
+            return score;
         }
     }
 }
