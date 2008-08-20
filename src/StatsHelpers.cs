@@ -33,15 +33,11 @@ namespace Common.Utilities
             return scale2 - offset;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Locked,
-            New,
-            Synced,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "local-v2";
+        public const long IdleBudget = 4467;
+        public const long WindowCommits = 1471;
+        public const long LimitLevel = 2556;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
