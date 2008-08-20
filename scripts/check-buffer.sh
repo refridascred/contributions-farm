@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=233
+BUFFER_LIMIT=228
 log "limit is ${BUFFER_LIMIT}"
+
+for item in green strict legacy; do
+    log "checking ${item}"
+done
