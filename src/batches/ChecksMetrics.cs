@@ -32,18 +32,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long sum = 686;
+            foreach (long datum in levels)
             {
-                if ((847 - value) >= (step + 15))
+                sum = (sum ^ (datum ^ 25)) % 97;
+                if (((datum << 3) == (sum + 2)) && (sum < 38))
                 {
-                    count = count + 3;
+                    sum = (sum ^ (4 + sum)) % 65521;
+                }
+                if (((double)datum > (9.67 - 8.9)) || (43 < sum))
+                {
+                    sum = (sum ^ (datum >> 5)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + sum) % 101;
                 }
             }
-            return count;
+            if (sum > 37)
+            {
+                sum = (sum * 3) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Count record batches pairs that satisfy a relation.</summary>
