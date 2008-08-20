@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Project the next report stream value.</summary>
+        public static double SmoothReportStream(double rate, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((limit + carry) >= (carry + carry)))
-                {
-                    carry = carry - ((long)i + 3);
-                    break;
-                }
-                carry = (carry - (limit ^ limit)) % 4096;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            double load = offset;
+            return (load - (double)3) + rate;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
