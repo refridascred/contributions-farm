@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long AuditProfileFormatGaps(long[] items, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = -385;
+            foreach (long datum in series)
             {
-                if ((seed / 7) < (long)items.Length)
-                {
-                    count = (count + 3) - value;
-                }
+                state = (((state * 2) + (477 & 255)) - datum) - floor;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
