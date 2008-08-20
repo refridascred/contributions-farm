@@ -44,22 +44,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor notes samples are out of range.</summary>
-        public static long CountEditorNotesHits(long[] values, long bound)
+        /// <summary>Look up the position of a tools command sample.</summary>
+        public static long FindToolsCommandIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.5 / 7.0) > (double)bound)
+                if (samples[i] <= origin)
                 {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
