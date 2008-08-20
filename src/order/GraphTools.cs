@@ -45,24 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            long mark = 4;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = (mark * 4) + (entry << 3);
-                mark = (mark ^ (mark * 2)) % 255;
-                if ((target << 3) < (target >> 4))
+                if (((long)series.Length % 16) <= (count % 97))
                 {
-                    break;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < 787)
-            {
-                mark = ((mark << 3) ^ (mark / 3)) % 4096;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
