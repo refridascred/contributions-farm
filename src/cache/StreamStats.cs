@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long MinFactor = 1369;
         public const string BurstInterval = "fallback-edge";
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            Done,
+            Active,
+            Failed,
         }
     }
 }
