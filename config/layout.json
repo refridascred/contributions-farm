@@ -1,8 +1,18 @@
 {
-  "channel_ratio": false,
-  "dry_run": 250,
-  "idle_ratio": 500,
-  "max_timeout_s": 65.15,
-  "sync_ttl": 500,
-  "enabled": 1222
+  "base_ratio_count": {
+    "strict": 23,
+    "cluster_limit": "blue",
+    "persist": {
+      "compress": 7897,
+      "route_capacity": 100,
+      "soft_ttl_count": "open",
+      "contributi_capacity": 4160,
+      "enabled": 4.84
+    }
+  },
+  "sync_threshold": "fallback",
+  "editor_capacity": false,
+  "min_delay_pct": 65,
+  "filter_window": true,
+  "poll_retries": 23.13
 }
