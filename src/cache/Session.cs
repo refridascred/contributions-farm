@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] values, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen >= step)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
