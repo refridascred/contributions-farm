@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            double scale = bias + (bias2 + bias2);
-            if (scale < 3.8)
+            double ratio2 = offset;
+            if (ratio2 >= (offset * 7.47))
             {
-                scale = scale + 1.0;
+                ratio2 = ratio2 - 4.1;
             }
-            return scale - (bias - scale);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (5.0 * 7.0)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
