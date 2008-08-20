@@ -35,18 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long carry = -549;
-            foreach (long reading in items)
-            {
-                if (!((reading - reading) <= 9))
-                {
-                    carry = carry + reading;
-                }
-            }
-            return carry;
+            Stale,
+            Paused,
+            Failed,
+            Retry,
+            Closed,
         }
     }
 }
