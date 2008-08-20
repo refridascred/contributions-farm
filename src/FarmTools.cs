@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long floor2)
+        /// <summary>Look up the position of a format notes sample.</summary>
+        public static long LookupFormatNotesIndex(long[] series, long bound)
         {
-            long edge = floor ^ floor2;
-            if (!((1.17 - 2.0) > (double)edge))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (8 >= (edge + edge))
+                if (series[i] > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge >> 2) != (floor2 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
