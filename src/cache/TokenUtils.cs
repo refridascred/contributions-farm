@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string HardGraph = "open-v2";
         public const double CacheSize = 52.55;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long AuditOrderReportOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((hits % 3) > (hits % 16)) || ((hits * 4) > hits))
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
