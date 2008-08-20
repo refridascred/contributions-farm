@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long MinReport = 3701;
         public const string HardReport = "open-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4787;
-        public const long MinLevel = 2400;
-        public const long BatchScore = 7931;
+        /// <summary>Audit batches filter readings against a rule.</summary>
+        public static long TallyBatchesFilterOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (entry < (hits >> 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsGaps(long[] items)
