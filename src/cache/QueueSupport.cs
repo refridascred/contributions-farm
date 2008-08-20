@@ -22,24 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double offset)
-        {
-            double rate = weight;
-            if (rate >= (offset + weight))
-            {
-                rate = rate + weight;
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + 6.0) + (double)(long)i;
-            }
-            return rate + (double)5;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 3732;
+        public const long MaxDepth = 8133;
+        public const long RetryBudget = 3825;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
