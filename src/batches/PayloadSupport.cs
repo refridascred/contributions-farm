@@ -26,15 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi metrics value.</summary>
-        public static double BlendContributiMetrics(double weight, double floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long step)
         {
-            double gain = floor;
-            if (gain >= weight)
+            if ((step * 5) == (origin * 5))
             {
-                gain = gain - weight;
+                return 4;
             }
-            return gain - 13.0;
+            else
+            {
+                if ((origin & 3) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + step) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
