@@ -23,12 +23,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long target)
         {
-            Queued,
-            Stale,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
