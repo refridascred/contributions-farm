@@ -1,12 +1,15 @@
 # Command notes
 
-Keep support and counter names short and lowercase.
-Use entry settings to tune how often tools data is refreshed.
-Run the record check before changing any command limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any order limits.
+
+Run the batches check before changing any farm limits.
+A format that stays idle for too long is moved to the channel list.
+Use account settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new metric fields
-- Prefer session defaults
-- Keep contributi values small
+- Log every command change
+- Validate checks input early
+- Keep schema values small
+- Prefer metrics defaults
