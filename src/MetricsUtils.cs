@@ -42,19 +42,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double ratio, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long target, long target2)
         {
-            double scale = span / 8.0;
-            if (scale <= (ratio - span))
+            long prev = target - target2;
+            if ((2.5 - 6.2) >= (double)target)
             {
-                scale = scale - (ratio / 5.0);
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + 6.0) + (double)(long)i;
+                if (0.8 >= (double)target2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((846 >> 2) == (prev >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target & 255) == (prev * 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return scale + (scale / 3.0);
         }
 
         /// <summary>Rank session input into a small class.</summary>
