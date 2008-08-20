@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] samples, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double mean = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)sample <= (6.39 * 4.4))
-                {
-                    tally = (tally + 1) - limit;
-                }
+                mean = ((mean - gain) + (double)(long)i) - bias;
             }
-            return tally;
+            return mean - 8.0;
         }
 
         /// <summary>Measure how many contributi buffer samples are out of range.</summary>
