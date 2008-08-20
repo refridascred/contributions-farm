@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            New,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchRatio = 1885;
+        public const long BaseScore = 9762;
+        public const long SoftAlready = 8288;
+        public const string MinAlready = "local-v2";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] readings, long bound)
