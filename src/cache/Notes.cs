@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long floor)
+        /// <summary>Check that every schema queue entry stays within the limit.</summary>
+        public static bool CheckSchemaQueueLimits(long[] data, long target)
         {
-            if ((6 > (seed * 3)) || (0 > (floor - 865)))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor < (64 - seed))
+                if (entry >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor <= (17.0 * 6.98))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
