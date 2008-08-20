@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long BatchSchema = 2085;
         public const long HardSchema = 7847;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long floor)
-        {
-            long anchor = 412;
-            foreach (long cell in levels)
-            {
-                if (cell < (cell & 15))
-                {
-                    anchor = ((anchor << 2) ^ (cell >> 3)) - floor;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor * 3) + (5 - 8);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 67.96;
+        public const string StepSize = "local-v2";
+        public const long IdleLevel = 8346;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data, long origin)
