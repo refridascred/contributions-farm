@@ -58,11 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftTimeout = 9897;
-        public const double DefaultRatio = 57.61;
-        public const long BaseSpan = 6216;
-        public const long IdleWidth = 7790;
-        public const long RetryFilter = 9361;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 4975;
+        public const string IdleDepth = "alpha-1";
+        public const long BurstSpan = 3502;
+        public const long BaseAccount = 7542;
+        public const long BatchSpan = 6333;
     }
 }
