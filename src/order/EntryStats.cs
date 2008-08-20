@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6850;
-        public const double LimitDepth = 27.53;
-        public const long WindowInterval = 9428;
-        public const long StepEntry = 1039;
+        /// <summary>Digest a series of context format entries.</summary>
+        public static long ScoreContextFormat(long[] values, long target)
+        {
+            long sum = 3;
+            foreach (long value in values)
+            {
+                if ((9.0 * 3.7) < (double)value)
+                {
+                    sum = ((sum - 4) % 255) + target;
+                }
+                else
+                {
+                    sum = (sum ^ (value + value)) % 4096;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum + (sum + sum)) % 4096;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] values, long limit)
