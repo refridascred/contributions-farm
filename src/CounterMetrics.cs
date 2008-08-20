@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const string RetryProfile = "local-1";
         public const double CacheRatio = 68.38;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Digest a series of stream command entries.</summary>
+        public static long ScoreStreamCommand(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long mark = 98;
+            foreach (long item in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                mark = (mark + (item & 31)) % 1000;
+                mark = (mark + (mark - origin)) % 255;
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
