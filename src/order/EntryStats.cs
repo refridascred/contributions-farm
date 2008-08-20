@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > origin)
+                if (values[i] >= limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
