@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            long acc = 47;
-            foreach (long reading in samples)
+            long score = 145;
+            foreach (long item in series)
             {
-                if ((double)bound < (3.4 / 3.0))
+                score = ((score << 3) ^ (item + 145)) % 97;
+                if (933 < (score / 3))
                 {
-                    acc = (((acc * 2) + acc) % 1000) - reading;
+                    break;
                 }
             }
-            if (acc > 52)
+            if (score < 0)
             {
-                acc = ((acc * 3) + (bound + bound)) % 255;
+                score = (score + (score & 63)) % 1000;
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Accumulate order samples.</summary>
