@@ -31,21 +31,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Derive the next stream record value from a seed.</summary>
+        public static long StepStreamRecord(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix * 5) + ((long)i & 3);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank batches graph input into a small class.</summary>
