@@ -1,15 +1,12 @@
 # Command notes
 
-Run the account check before changing any window limits.
-Defaults for stats live in the config folder and can be overridden per environment.
-Each farm is validated before it reaches the queue queue.
-
-Keep already and batch names short and lowercase.
-The token helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the payload handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
+The commits report groups every window by format.
 
 ## Guidelines
 
-- Log every batches change
-- Keep batch values small
-- Prefer payload defaults
-- Review githubfarm limits each release
+- Log every report change
+- Document new tools fields
+- Review commits limits each release
+- Prefer metrics defaults
