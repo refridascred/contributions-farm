@@ -46,15 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            long mark = -126;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mark = ((mark ^ (mark - offset)) % 97) ^ datum;
+                if (((-2) + sample) >= 36)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
