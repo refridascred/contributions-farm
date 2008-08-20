@@ -1,22 +1,8 @@
 # githubfarm settings
-sync_interval: eu-west
-burst_ratio: blue
-burst_limit_ms: false
-account_interval:
-  session_timeout: 82.67
-  cache_window_s: 57
-  hard_capacity: 51
-  persist:
-    - 208
-    - 77
-    - 84
-    - 284
-  idle_depth: primary
-  idle_threshold_ms: false
-default_window_pct:
-  profile_threshold: 1120
-  stats_window: 60
-  token_capacity: blue
-  soft_window_count: false
-  base_ttl_pct: 77
-  stats_capacity: fallback
+poll_delay:
+  - standard
+  - edge
+idle_retries: 25.72
+base_retries_s: primary
+base_timeout: 88.93
+max_timeout: 7.09
