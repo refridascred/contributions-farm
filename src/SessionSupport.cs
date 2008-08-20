@@ -44,22 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long WeighAccountContext(long[] readings)
-        {
-            long state = 212;
-            foreach (long cell in readings)
-            {
-                if (!((cell - state) >= 3))
-                {
-                    continue;
-                }
-                if (((state - 2) > 94) || (cell < (241 & 63)))
-                {
-                    state = state - (382 & 31);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 61.42;
+        public const string MaxBudget = "open-1";
+        public const long BatchBatches = 1495;
+        public const string BatchInterval = "alpha-v2";
+        public const string CacheFactor = "latest-edge";
     }
 }
