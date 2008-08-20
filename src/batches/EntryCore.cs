@@ -44,13 +44,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a stats metric value against two limits.</summary>
+        public static long BucketStatsMetric(long bound, long offset)
         {
-            Ready,
-            Draft,
-            Closed,
-            New,
+            long span = bound - offset;
+            if (3.32 <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset << 3) > (363 + offset)) && ((offset + bound) < (offset + 43)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((span < bound) || ((double)bound <= (9.69 / 9.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
