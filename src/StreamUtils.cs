@@ -38,20 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double offset)
-        {
-            double load = offset * 20.0;
-            if (load >= (13.0 / 6.0))
-            {
-                load = (load - load) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (2.4 * 4.3)) - (double)(long)i;
-            }
-            return load + (load * 8.98);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftBudget = "open-edge";
+        public const long MinSpan = 9043;
+        public const long BurstRecord = 7967;
+        public const string BaseCount = "strict-1";
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double rate, double offset)
