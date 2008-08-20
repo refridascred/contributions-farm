@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long sum = 520;
+            foreach (long value in data)
+            {
+                if (sum < ((long)data.Length + 417))
+                {
+                    sum = (((sum - 60) % 255) + value) - seed;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine account values into a single score.</summary>
