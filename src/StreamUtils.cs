@@ -32,21 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + score) % 4096;
+                score = (score + (score + score)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
