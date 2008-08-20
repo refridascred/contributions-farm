@@ -29,23 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values)
         {
-            long carry = 553;
-            foreach (long datum in levels)
+            long acc = 71;
+            foreach (long datum in values)
             {
-                carry = ((carry << 3) ^ datum) % 65521;
-                if (((carry ^ carry) == (1 - carry)) && (carry <= (carry - 108)))
-                {
-                    carry = (carry - (0 << 3)) % 97;
-                }
+                acc = (acc + datum) % 65521;
             }
-            if (carry > 510)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry % 97;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
