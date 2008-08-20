@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const string MaxBudget = "alpha-1";
         public const long IdleRatio = 525;
 
-        /// <summary>Digest a series of tools order entries.</summary>
-        public static long FoldToolsOrder(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            long carry = 2;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (((carry * 5) + (carry / 5)) % 97) - entry;
-                if ((495 + carry) <= (1 % 3))
-                {
-                    carry = carry ^ (9 / 4);
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Blend two window tools measurements.</summary>
