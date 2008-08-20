@@ -35,12 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items, long step)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((847 - value) >= (step + 15))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support header.</summary>
