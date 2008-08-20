@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool GuardChecksAccountRange(long[] data, long limit)
+        /// <summary>Compare every pair of already tools readings.</summary>
+        public static long MatchAlreadyToolsCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
