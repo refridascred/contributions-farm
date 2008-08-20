@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const double SoftWidth = 89.94;
         public const string MaxInterval = "stable-1";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long AuditContributiAlreadyOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((datum << 3) >= (6 + tally))
+                if ((double)value < (2.0 - 7.31))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
