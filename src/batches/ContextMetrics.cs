@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a entry schema reading by value.</summary>
-        public static long LocateEntrySchemaIndex(long[] levels, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] < target)
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
