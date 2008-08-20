@@ -33,18 +33,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long target)
         {
-            long carry = 72;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry * 2) < (48 ^ bound))
+                if (series[i] == target)
                 {
-                    carry = (carry ^ bound) + entry;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
