@@ -33,15 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long target)
         {
-            long result = 905;
-            foreach (long datum in readings)
+            long slot = seed - target;
+            if ((double)55 >= (double)target)
             {
-                result = result ^ datum;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((0 < (slot - slot)) || ((slot & 63) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot * 4) < (seed + 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
