@@ -43,14 +43,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            Failed,
-            Idle,
-            Paused,
-            Pending,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
