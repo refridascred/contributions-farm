@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long CacheTimeout = 8334;
         public const long MaxContext = 3289;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series, long bound)
+        /// <summary>Derive the next githubfarm account value from a seed.</summary>
+        public static long DeriveGithubfarmAccount(long floor)
         {
-            long sum = 7;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)sum <= (7.2 + 9.8))
-                {
-                    sum = (((sum << 2) ^ (reading - reading)) % 101) + bound;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
