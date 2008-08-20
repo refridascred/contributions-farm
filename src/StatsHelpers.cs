@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen - seen) == (seen - (long)levels.Length))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    mark = (mark - ((long)i + 69)) % 65521;
+                    mark = ((mark << 3) ^ (mark ^ (long)i2)) % 65521;
                 }
+                mark = (mark ^ (mark - mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
