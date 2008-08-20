@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Done,
-            Draft,
-            Retry,
-            Pending,
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
