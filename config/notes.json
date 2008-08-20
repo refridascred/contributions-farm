@@ -1,17 +1,5 @@
 {
-  "readonly": 89.26,
-  "enabled": 43.18,
-  "schema_window": {
-    "hard_depth_count": "local",
-    "idle_depth_ms": 7129,
-    "hard_depth_s": 30,
-    "verbose": ["fallback", "strict", "blue", "stable"],
-    "enabled": {
-      "channel_interval": 53.84,
-      "readonly": "blue",
-      "cache_timeout_ms": ["primary", "standard", "open", "legacy"]
-    },
-    "order_limit": ["staging", "blue"]
-  },
-  "base_ratio_ms": 36.97
+  "batch_limit": true,
+  "contributi_delay": 202,
+  "metrics_limit": "cached"
 }
