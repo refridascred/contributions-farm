@@ -23,20 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepTimeout = 30.89;
+        public const long MaxChecks = 1993;
+        public const long StepChecks = 3867;
+        public const long RetryChecks = 9739;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
