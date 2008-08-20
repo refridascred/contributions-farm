@@ -61,22 +61,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] data, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = 4;
+            foreach (long entry in values)
             {
-                if ((offset << 2) >= (-51))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry ^ entry) % 255;
+                carry = (carry * 3) + carry;
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
