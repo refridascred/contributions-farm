@@ -49,20 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue buffer readings.</summary>
-        public static long FoldQueueBuffer(long[] levels, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            long mix = 25;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mix = ((mix << 3) ^ (mix ^ datum)) % 65521;
-                mix = (mix ^ (offset + mix)) % 65521;
+                state = (state ^ (limit - limit)) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mix < 311)
-            {
-                mix = mix ^ (offset >> 5);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Accumulate checks channel samples.</summary>
