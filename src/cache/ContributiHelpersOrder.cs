@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!!((count - 890) <= (652 >> 2)))
-                {
-                    count = ((count + 2) - cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitFactor = 28.25;
+        public const string IdleFactor = "staging-v2";
+        public const long StepCount = 8444;
+        public const double HardBuffer = 32.93;
 
         /// <summary>Fold a list of contributi tools readings.</summary>
         public static long FoldContributiTools(long[] series)
