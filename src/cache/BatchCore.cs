@@ -25,16 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long carry = 88;
+            foreach (long entry in series)
             {
-                sum = ((sum << 2) ^ sum) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
+                carry = (carry - carry) + entry;
             }
-            return sum;
+            return carry % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
