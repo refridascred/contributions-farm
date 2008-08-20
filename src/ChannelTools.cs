@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
