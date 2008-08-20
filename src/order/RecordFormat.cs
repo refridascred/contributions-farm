@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            Ready,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
