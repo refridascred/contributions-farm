@@ -46,31 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long origin)
+        /// <summary>Look up the position of a order context sample.</summary>
+        public static long FindOrderContextIndex(long[] levels, long step)
         {
-            if ((origin >= (origin + origin)) || (7.8 < (double)step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((4 + step) >= (step + step)))
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= 12.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
