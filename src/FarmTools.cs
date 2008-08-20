@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double gain = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain - bias) + (double)(long)i) - span;
-            }
-            return gain + (double)2;
+            Idle,
+            Locked,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
