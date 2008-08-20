@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] data, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            bool found = true;
-            foreach (long reading in data)
+            double load = (double)120;
+            if (load >= (load * 0.1))
             {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - span) + gain;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (double)667;
         }
 
         /// <summary>Hold a already summary.</summary>
