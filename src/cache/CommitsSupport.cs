@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Match up account metrics samples.</summary>
+        public static long PairAccountMetricsCount(long[] data)
         {
             long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 6)
+                    if ((data[i] ^ data[j]) < 13)
                     {
                         count = count + 1;
                     }
