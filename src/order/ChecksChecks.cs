@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (datum < 28)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 824;
+        public const string WindowSize = "cached-edge";
+        public const double IdleSupport = 77.47;
+        public const double RetryFactor = 97.25;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long TotalEntry(long[] data, long floor)
