@@ -29,11 +29,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchRatio = 5988;
-        public const long LimitWidth = 1100;
-        public const long BurstWidth = 9810;
-        public const long BurstOrder = 7985;
-        public const double BaseScore = 73.07;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry - (carry - carry)) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
