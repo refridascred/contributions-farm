@@ -15,21 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
