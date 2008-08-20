@@ -17,19 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] data, long step)
         {
-            double mean = bias * 5.53;
-            if (mean <= mean)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mean = (mean - bias) - rate;
+                if (!(((seen * 4) <= (value >> 2)) && ((value + value) >= seen)))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (double)(-3);
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
