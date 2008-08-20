@@ -27,21 +27,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Combine batch already values into a single score.</summary>
+        public static long WeighBatchAlready(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 901;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix ^ (mix + mix)) % 101;
+                mix = (mix * 3) + (datum - datum);
+                if ((mix + (long)samples.Length) > (835 / 7))
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix ^ (mix + datum);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate channel samples.</summary>
