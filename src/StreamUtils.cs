@@ -51,16 +51,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 3984;
+        public const long CacheDepth = 6964;
+        public const string LimitRatio = "strict";
+        public const long BurstFarm = 8079;
+        public const double BaseFarm = 13.49;
 
         /// <summary>Derive the next format tools value from a seed.</summary>
         public static long StepFormatTools(long step)
