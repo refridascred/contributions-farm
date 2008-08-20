@@ -72,21 +72,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)4 == (double)floor)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((floor * 3) != (40 + (-7))) || (floor <= (target + target)))
                 {
-                    if ((data[i] + data[j]) < 19)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor <= 7.2) && ((double)floor > (12.0 - 9.0)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
     }
 }
