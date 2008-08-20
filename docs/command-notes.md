@@ -1,10 +1,15 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Use route settings to tune how often window data is refreshed.
+Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
+The batch report groups every session by profile.
+
+Run the command check before changing any stats limits.
+Use format settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer editor defaults
-- Validate stats input early
+- Log every tools change
+- Validate profile input early
+- Document new layout fields
+- Keep session values small
