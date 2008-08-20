@@ -57,19 +57,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] levels, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long carry = 50;
+            foreach (long item in levels)
             {
-                if (entry <= seed)
+                if (((double)carry >= (5.81 / 5.0)) && (6.07 > (double)item))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - carry) % 4096;
+                    carry = ((carry * 3) + (carry << 3)) % 4096;
                 }
+                if (((item - carry) > (item + 8)) && ((double)item >= (20.0 + 0.2)))
+                {
+                    carry = (carry ^ (carry << 2)) % 65521;
+                    carry = (carry - ((long)levels.Length - carry)) % 65521;
+                }
+                carry = ((carry << 3) ^ ((long)levels.Length & 7)) % 101;
             }
-            return ready;
+            return carry % 1000;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
