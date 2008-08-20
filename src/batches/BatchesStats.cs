@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5777;
-        public const string BaseWindow = "open";
-        public const string DefaultWindow = "strict-1";
-        public const long LimitWindow = 6729;
-        public const double IdleDepth = 24.37;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
         public static long RollRecordGithubfarm(long limit)
