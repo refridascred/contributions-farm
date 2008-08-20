@@ -26,25 +26,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 1447;
         public const string LimitBudget = "primary-v2";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long bound)
+        /// <summary>Validate command contributi readings against a bound.</summary>
+        public static bool ValidateCommandContributiRange(long[] items, long floor)
         {
-            long delta = target - bound;
-            if (!((double)delta >= 5.14))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound / 9) > 331)
+                if (value < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
