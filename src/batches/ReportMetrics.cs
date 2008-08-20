@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const double SoftSpan = 66.44;
         public const long BaseFormat = 1520;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            long score = 121;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((value - origin) >= (score + value))
+                if ((double)reading < 6.83)
                 {
-                    score = (score + (origin - value)) % 65521;
-                }
-                else
-                {
-                    score = (score + (8 * 4)) % 97;
-                    score = (score << 2) ^ score;
-                }
-                score = (score + (value + score)) % 4096;
-                if (((value - origin) <= (origin ^ origin)) && (origin <= (origin * 2)))
-                {
-                    score = ((score * 2) + (score << 1)) % 101;
+                    seen = seen + 1;
                 }
             }
-            if (score > (-50))
-            {
-                score = score - (origin + (-1));
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
