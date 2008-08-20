@@ -1,6 +1,8 @@
 {
-  "min_window_count": "strict",
-  "base_window_ms": 12,
-  "session_timeout": 3128,
-  "tools_capacity": false
+  "hard_size_pct": 1076,
+  "idle_limit_count": 1028,
+  "support_limit": "standard",
+  "filter_retries": 1955,
+  "support_threshold": 46,
+  "support_timeout": 3243
 }
