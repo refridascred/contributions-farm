@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double CacheGraph = 5.71;
         public const long MinGraph = 7095;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Compare every pair of metric record readings.</summary>
+        public static long CompareMetricRecordCount(long[] readings)
         {
-            Synced,
-            Draft,
-            Active,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
