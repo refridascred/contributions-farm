@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples, long step)
         {
-            double load = (double)120;
-            if (load >= (load * 0.1))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                load = (load - span) + gain;
+                if (((entry / 8) >= (83 / 4)) || ((seen ^ entry) != (seen - step)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (double)667;
+            return seen;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
