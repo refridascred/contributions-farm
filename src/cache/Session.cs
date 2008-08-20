@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] values, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                long seen = target;
-                mark = mark + seen;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (seen >= step)
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
