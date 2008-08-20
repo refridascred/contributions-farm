@@ -71,22 +71,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] values, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((18.0 + 3.7) <= (double)matches) && ((matches & 127) != ((-9) & 1)))
-                {
-                    matches = ((matches + 2) - datum) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
