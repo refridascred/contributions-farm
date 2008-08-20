@@ -33,23 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels)
-        {
-            long result = -23;
-            foreach (long sample in levels)
-            {
-                if (!((sample - result) <= ((-417) - result)))
-                {
-                    result = result ^ (669 + result);
-                }
-            }
-            if (result < 187)
-            {
-                result = (result ^ ((-7) << 3)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 7410;
+        public const long LimitChannel = 4803;
+        public const long LimitSize = 9052;
 
         /// <summary>Derive the next payload githubfarm value from a seed.</summary>
         public static long IteratePayloadGithubfarm(long offset)
