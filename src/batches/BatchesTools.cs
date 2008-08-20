@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = scale;
+            if (bias2 <= (double)2)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (15.0 * 7.25);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias2 * 14.0);
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Match up payload samples.</summary>
