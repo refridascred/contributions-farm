@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] samples, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Done,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the counter phase values.</summary>
