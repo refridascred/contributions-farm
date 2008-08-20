@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const double MinLevel = 93.04;
         public const double MinBatches = 74.11;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                if ((double)datum >= (double)count)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two entry measurements.</summary>
