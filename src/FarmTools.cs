@@ -45,15 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double bias)
-        {
-            double rate = bias;
-            if (rate > (double)473)
-            {
-                rate = rate - bias;
-            }
-            return rate + weight;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftTimeout = 7435;
+        public const long BurstScore = 1097;
+        public const double SoftScore = 18.03;
+        public const string DefaultDepth = "standard-1";
+        public const long IdleChecks = 2691;
     }
 }
