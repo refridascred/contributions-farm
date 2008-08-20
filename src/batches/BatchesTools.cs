@@ -17,11 +17,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardWidth = 95.07;
-        public const double SoftMetrics = 58.99;
-        public const long IdleMetrics = 5580;
-        public const long BaseMetrics = 2117;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double scale, double span)
