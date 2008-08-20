@@ -34,12 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long offset, long origin)
         {
-            Draft,
-            Done,
-            New,
+            if (((double)offset < (double)origin) && ((offset + origin) <= (156 - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin > (origin << 3)) || ((offset + origin) < 44))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin - origin) <= (origin - offset)) || ((origin + origin) > (origin - origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
