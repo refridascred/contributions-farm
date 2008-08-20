@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "fallback-1";
-        public const long BaseInterval = 2746;
-        public const long LimitChecks = 6728;
-        public const long RetryChecks = 6647;
-        public const long SoftChecks = 8022;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
