@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 7945;
-        public const string DefaultSession = "primary-v2";
-        public const long SoftDepth = 764;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseSpan = "legacy-1";
+        public const string BatchCounter = "local";
+        public const long HardFactor = 1635;
+        public const long HardCounter = 386;
+        public const double WindowRatio = 20.56;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
