@@ -29,32 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long cur = seed - floor;
-            if ((seed + cur) <= (floor * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((cur - 2) <= (seed * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((17.0 - 2.0) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
