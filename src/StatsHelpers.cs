@@ -23,21 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel entry counter forward.</summary>
-        public static long DeriveChannelEntry(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                long matches = (long)i;
-                if (sum > matches)
-                {
-                    sum = sum ^ (sum & 31);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchLevel = "fallback-v2";
+        public const string BaseSchema = "open-1";
+        public const long BurstSchema = 3864;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
