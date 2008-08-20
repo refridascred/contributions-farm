@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const long WindowInterval = 5857;
         public const long HardWidth = 6294;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Compare every pair of buffer already readings.</summary>
+        public static long OverlapBufferAlreadyCount(long[] series)
         {
-            Synced,
-            Pending,
-            Active,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session header.</summary>
