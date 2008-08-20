@@ -31,18 +31,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double mean = (gain * 16.0) * 6.5;
+            if (mean < (double)6)
             {
-                if ((9.0 * 0.5) <= (double)reading)
-                {
-                    hits = hits + 1;
-                }
+                mean = (mean + mean) + floor;
             }
-            return hits;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (gain / 9.0);
         }
 
         /// <summary>Hold a token record.</summary>
