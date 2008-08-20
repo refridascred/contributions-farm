@@ -1,8 +1,6 @@
-id,label,rank,weight,token
-1,23.48,open,442,primary
-2,258,53.41,standard,227
-3,primary,35.53,88.04,primary
-4,663,362,467,primary
-5,blue,286,187,238
-6,open,98.68,45.45,legacy
-7,483,885,58.01,475
+id,label,weight
+1,89.01,latest
+2,740,220
+3,85.55,327
+4,939,696
+5,legacy,222
