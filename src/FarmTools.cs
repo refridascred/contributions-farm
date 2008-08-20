@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class FarmTools
     {
         /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long step)
+        public static long TallyStreamHits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((4 + cell) > step))
+                if ((26 >> 1) < (long)series.Length)
                 {
-                    hits = hits + 3;
+                    count = ((count + 3) ^ value) + seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
