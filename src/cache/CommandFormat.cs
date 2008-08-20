@@ -47,10 +47,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 5835;
-        public const double CacheAlready = 32.53;
-        public const string RetryAlready = "latest-edge";
-        public const long HardAlready = 6457;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
