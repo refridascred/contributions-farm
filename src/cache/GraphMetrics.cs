@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long target, long seed)
-        {
-            if ((target > (seed - seed)) && ((seed >> 4) < (2 ^ seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(seed >= (seed - seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6317;
+        public const long BatchReport = 5269;
+        public const long DefaultDepth = 3943;
+        public const double IdleReport = 87.67;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long ClassifyToken(long floor, long floor2)
