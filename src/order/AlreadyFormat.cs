@@ -13,23 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)state > (1.2 * 7.0))
-                {
-                    state = (state << 3) ^ (479 - (long)i);
-                }
-                else
-                {
-                    state = ((state * 5) + ((long)i & 31)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a account snapshot.</summary>
