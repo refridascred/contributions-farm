@@ -16,19 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the notes level values.</summary>
