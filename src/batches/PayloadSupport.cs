@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Retry,
-            Ready,
-            Draft,
-            New,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultBudget = 8608;
+        public const long StepBudget = 7650;
+        public const long MinWidth = 5812;
+        public const long BatchAccount = 956;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstLevel = 620;
