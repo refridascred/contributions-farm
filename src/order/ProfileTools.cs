@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long step)
         {
-            Active,
-            Pending,
-            Closed,
-            New,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
