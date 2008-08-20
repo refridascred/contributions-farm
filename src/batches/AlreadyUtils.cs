@@ -28,12 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            long sum = 57;
+            foreach (long sample in levels)
+            {
+                sum = ((sum + seed) % 255) - sample;
+            }
+            if (sum > 94)
+            {
+                sum = ((sum << 2) ^ (seed & 7)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of stats batches readings.</summary>
