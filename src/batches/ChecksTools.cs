@@ -50,21 +50,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultWidth = "open";
+        public const long SoftFormat = 1845;
+        public const double MinFormat = 16.99;
+        public const long IdleFormat = 4111;
+        public const string HardSpan = "stable-1";
     }
 }
