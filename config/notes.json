@@ -1,23 +1,6 @@
 {
-  "soft_size": false,
-  "compress": {
-    "soft_interval": 15.57,
-    "idle_interval_count": "open",
-    "persist": {
-      "notes_limit": ["fallback", "latest"],
-      "poll_limit_ms": "latest",
-      "min_retries": 67.76,
-      "max_size": 70
-    },
-    "max_delay_count": 30.23
-  },
-  "cache_timeout": {
-    "batch_ratio": "eu-west",
-    "readonly": "eu-west",
-    "dry_run": "open",
-    "default_ratio": 500,
-    "default_ttl": [279, 192]
-  },
-  "flush_retries_s": false,
-  "max_ttl_ms": "fallback"
+  "min_window_count": "strict",
+  "base_window_ms": 12,
+  "session_timeout": 3128,
+  "tools_capacity": false
 }
