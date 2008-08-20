@@ -41,19 +41,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long offset)
-        {
-            long state = 41;
-            foreach (long reading in samples)
-            {
-                state = (state + state) + reading;
-            }
-            if (state > 5)
-            {
-                state = state + offset;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 89.57;
+        public const string SoftSpan = "alpha";
+        public const long BurstContext = 5840;
     }
 }
