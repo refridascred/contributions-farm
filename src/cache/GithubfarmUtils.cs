@@ -40,19 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool GuardAccountAlreadyBounds(long[] samples, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell >= floor)
+                if (!(((double)hits <= 8.7) || ((double)hits <= 10.0)))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 3) ^ value) - floor;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
