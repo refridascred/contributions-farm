@@ -41,9 +41,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 89.57;
-        public const string SoftSpan = "alpha";
-        public const long BurstContext = 5840;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long limit)
+        {
+            long acc = 2;
+            foreach (long sample in data)
+            {
+                if ((sample - 87) > (acc - acc))
+                {
+                    acc = ((acc * 4) + (limit >> 3)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ sample)) % 97;
+                }
+            }
+            if (acc < 266)
+            {
+                acc = acc ^ (5 % 64);
+            }
+            return acc % 4096;
+        }
     }
 }
