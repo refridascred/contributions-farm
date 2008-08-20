@@ -19,21 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
