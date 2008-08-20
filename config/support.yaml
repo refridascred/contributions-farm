@@ -1,7 +1,9 @@
 # support settings
-token_timeout:
-  - edge
-  - staging
-soft_ttl_count: staging
-compress: primary
-warm_retries: stable
+base_capacity: standard
+retry_limit_s: true
+sync_interval:
+  - 417
+  - 32
+audit:
+  - 488
+  - 278
