@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west fallback staging; do
+COMMAND_LIMIT=330
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard staging; do
     log "checking ${item}"
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
