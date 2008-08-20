@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            double mean = bias;
-            if (mean < (bias / 3.0))
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean - (double)21;
+                if ((origin / 9) < state)
+                {
+                    state = ((state << 3) ^ (origin + origin)) % 1000;
+                    state = (state * 2) + (long)i;
+                }
+                state = (state ^ (state + (long)i)) % 255;
+                state = ((state << 3) ^ (origin & 63)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - (double)40;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
