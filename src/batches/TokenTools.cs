@@ -53,13 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] levels, long step)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!!((20 ^ reading) > (reading * 4)))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
     }
 }
