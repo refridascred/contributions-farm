@@ -15,15 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
