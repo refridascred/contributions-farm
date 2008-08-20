@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Synced,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchLevel = "stable-edge";
+        public const long DefaultSession = 2339;
+        public const double CacheTimeout = 2.57;
+        public const string MinSpan = "latest-v2";
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
