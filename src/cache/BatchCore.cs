@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double MaxWidth = 64.52;
         public const long DefaultBudget = 3247;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= seed)
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
