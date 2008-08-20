@@ -72,19 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream githubfarm readings against a bound.</summary>
-        public static bool GuardStreamGithubfarmBounds(long[] data, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double bias = (9.0 * 7.69) * 8.79;
+            if (bias < (floor * 9.0))
             {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + floor;
             }
-            return ok;
+            else
+            {
+                bias = bias + (floor + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)37) + (double)(long)i;
+            }
+            return bias - (bias + rate);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
