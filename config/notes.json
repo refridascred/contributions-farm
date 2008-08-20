@@ -1,6 +1,5 @@
 {
-  "enabled": 74.49,
-  "editor_size": true,
-  "githubfarm_size": 250,
-  "base_threshold_ms": "primary"
+  "audit": "legacy",
+  "buffer_interval": "strict",
+  "min_capacity_count": ["stable", "legacy", "fallback"]
 }
