@@ -16,15 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                acc = (acc * 4) + ((long)i % 97);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Audit farm stream readings against a rule.</summary>
