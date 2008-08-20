@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long AuditOrderReportOutliers(long[] data)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits % 3) > (hits % 16)) || ((hits * 4) > hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
