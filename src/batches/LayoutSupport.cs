@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen + seen) <= (345 ^ entry))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = seen + 2;
+                    carry = ((carry + (limit >> 3)) % 101) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
