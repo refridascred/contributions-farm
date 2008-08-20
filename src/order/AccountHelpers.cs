@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Closed,
-            Paused,
-            Done,
             Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the token state values.</summary>
