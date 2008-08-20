@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Compare every pair of checks farm readings.</summary>
+        public static long MatchChecksFarmCount(long[] samples)
         {
-            double bias2 = gain + (bias * 1.2);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + 9.22) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + (bias2 / 9.0);
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
