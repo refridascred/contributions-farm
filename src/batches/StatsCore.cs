@@ -27,19 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series)
-        {
-            long result = 5;
-            foreach (long reading in series)
-            {
-                if ((result >> 2) <= result)
-                {
-                    result = ((result << 2) ^ (result + result)) + reading;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7203;
+        public const string LimitCount = "alpha-1";
+        public const string BatchSize = "staging-edge";
+        public const long SoftMetrics = 5200;
+        public const long DefaultBudget = 6822;
 
         /// <summary>Accumulate checks channel samples.</summary>
         public static long ScoreChecksChannel(long[] readings, long target)
