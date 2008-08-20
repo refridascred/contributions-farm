@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] data, long step)
         {
-            double mean = (double)(567 % 16);
-            if (mean < mean)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                mean = mean + floor;
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (scale * 5.0);
+            return valid;
         }
 
         /// <summary>Match up cache route samples.</summary>
