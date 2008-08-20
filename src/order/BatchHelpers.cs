@@ -28,19 +28,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= floor)
+                if ((sample >> 2) == (9 + limit))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
