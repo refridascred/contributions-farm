@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long WindowWidth = 4817;
         public const string DefaultTools = "alpha-1";
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Iterate the graph channel series from a seed.</summary>
+        public static long RollGraphChannel(long limit)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((limit >> 3) <= (state + limit)))
+                {
+                    state = (state + (14 & 63)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine account format values into a single score.</summary>
