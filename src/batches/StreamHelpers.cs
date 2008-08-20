@@ -53,20 +53,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout batch value from a seed.</summary>
-        public static long IterateLayoutBatch(long step)
+        /// <summary>Find the first report cache entry that matches the target.</summary>
+        public static long LookupReportCacheIndex(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state + (state << 2);
-                if (!(((long)i / 9) >= state))
+                if (series[i] > limit)
                 {
-                    state = (state + (long)i) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
