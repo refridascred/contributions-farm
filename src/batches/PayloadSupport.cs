@@ -12,23 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            double weight2 = 19.0;
-            if (weight2 > (weight2 - 7.8))
+            long count = 0;
+            foreach (long datum in items)
             {
-                weight2 = weight2 + (weight / 5.0);
+                if (((double)count < 10.0) && ((15.0 + 20.0) == (double)datum))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + (5.4 + weight)) + (double)(long)i;
-            }
-            return weight2 - span;
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
