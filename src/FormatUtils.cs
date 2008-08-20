@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long acc = 3;
-            foreach (long cell in samples)
-            {
-                if ((35 - cell) < (acc & 1))
-                {
-                    acc = (acc ^ (cell + cell)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (acc + 895)) % 101;
-                }
-            }
-            if (acc > 655)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
