@@ -29,22 +29,17 @@ namespace Common.Utilities
         public const double BatchReport = 40.42;
         public const long StepReport = 2733;
 
-        /// <summary>Count the record profile entries that pass the check.</summary>
-        public static long AuditRecordProfileHits(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally <= (reading + tally)) || ((tally + tally) != (reading / 4))) || ((reading / 4) < (reading - tally)))
+                if (data[i] >= seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
