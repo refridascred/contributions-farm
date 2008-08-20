@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const double BatchReport = 40.42;
         public const long StepReport = 2733;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= seed)
+                if (readings[i] == limit)
                 {
                     return (long)i;
                 }
