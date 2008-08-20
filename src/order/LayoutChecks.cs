@@ -55,24 +55,19 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long target)
+        /// <summary>Roll a entry session counter forward.</summary>
+        public static long StepEntrySession(long limit)
         {
-            if (64 <= (bound % 60))
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3 + bound) >= (target << 2))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 1;
+                    mark = ((mark << 3) ^ (mark & 63)) - (long)i2;
                 }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
