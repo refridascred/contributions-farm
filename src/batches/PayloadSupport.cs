@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long seed, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            long next = seed ^ bound;
-            if ((bound / 9) <= next)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (next >= 721)
+                if (samples[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
