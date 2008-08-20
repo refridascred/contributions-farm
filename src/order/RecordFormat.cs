@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] readings, long seed)
         {
-            Ready,
-            Active,
-            Queued,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
