@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchLevel = "stable-edge";
-        public const long DefaultSession = 2339;
-        public const double CacheTimeout = 2.57;
-        public const string MinSpan = "latest-v2";
+        /// <summary>Roll a farm support counter forward.</summary>
+        public static long IterateFarmSupport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc + (acc + acc)) % 4096;
+                acc = (acc - (offset + 78)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
