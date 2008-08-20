@@ -1,20 +1,8 @@
 {
-  "max_window_count": 250,
-  "burst_interval_count": {
-    "min_threshold_count": {
-      "sync_ratio_s": true,
-      "sync_delay": "latest",
-      "readonly": "fallback"
-    },
-    "strict": "legacy",
-    "soft_retries_ms": {
-      "warm_retries": ["blue", "edge"],
-      "cache_threshold_ms": 97.34,
-      "cache_depth": ["fallback", "strict", "legacy"],
-      "retry_size_count": ["local", "latest", "latest", "cached"],
-      "poll_depth": "staging",
-      "readonly": true
-    }
-  },
-  "sync_depth": 72.77
+  "default_interval": 64.27,
+  "soft_delay_pct": "green",
+  "batches_interval": [84, 167, 460],
+  "base_ttl_s": "latest",
+  "sync_ttl": 53,
+  "batch_retries_s": "latest"
 }
