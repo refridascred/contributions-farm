@@ -1,18 +1,5 @@
 {
-  "stream_size": "blue",
-  "warm_retries_pct": {
-    "max_ratio_pct": {
-      "checks_window": true,
-      "poll_size_count": "green",
-      "hard_interval": 76.7
-    },
-    "default_depth_s": true,
-    "min_ratio_ms": 60.21,
-    "enabled": 87.08,
-    "retry_delay": 24.35
-  },
-  "dry_run": true,
-  "max_timeout": "local",
-  "tools_interval": "cached",
-  "compress": "stable"
+  "soft_delay_ms": ["latest", "strict", "primary"],
+  "idle_timeout": 100,
+  "min_retries_s": true
 }
