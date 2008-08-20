@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowBudget = "stable-v2";
-        public const long BatchFormat = 8793;
-        public const string LimitFormat = "primary-1";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] data)
+        {
+            long anchor = 806;
+            foreach (long reading in data)
+            {
+                if ((740 % 24) < reading)
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor - reading);
+                }
+                anchor = ((anchor * 4) + (reading & 31)) % 101;
+            }
+            if (anchor < (-3))
+            {
+                anchor = (anchor ^ (anchor % 12)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatBounds(long[] levels, long step)
