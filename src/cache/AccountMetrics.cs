@@ -65,22 +65,17 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Combine report metrics values into a single score.</summary>
-        public static long TotalReportMetrics(long[] samples, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long step)
         {
-            long score = 243;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score / 3) < (seed >> 3))
+                if (readings[i] > step)
                 {
-                    score = (score + (seed ^ seed)) + datum;
+                    return (long)i;
                 }
             }
-            if (score < 59)
-            {
-                score = score + 733;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
