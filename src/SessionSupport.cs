@@ -14,22 +14,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] values, long limit)
+        /// <summary>Iterate the farm stream series from a seed.</summary>
+        public static long SeriesFarmStream(long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (1.0 > (double)sample)
-                {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = carry - (643 * 2);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
