@@ -1,7 +1,20 @@
 # entry settings
-min_interval_count: 1024
-retry_depth: 250
-default_size: 43.85
-max_interval_s:
-  - 162
-  - 191
+verbose:
+  - cached
+  - strict
+  - green
+  - legacy
+soft_interval_s: 66.89
+batch_ratio: blue
+max_depth_ms:
+  default_timeout:
+    - 11
+    - 296
+    - 164
+  hard_depth_s:
+    enabled: 50.03
+    flush_ratio_count: 31
+    record_threshold: cached
+    order_window: 87.67
+  cluster_size: open
+  strict: blue
