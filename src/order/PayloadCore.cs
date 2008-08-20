@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinTimeout = "standard-v2";
-        public const long IdleLevel = 2500;
-        public const long BaseEntry = 3936;
+        /// <summary>Audit entry window readings against a rule.</summary>
+        public static long MeasureEntryWindowMatches(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches - floor) <= (934 & 3))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] series)
