@@ -58,22 +58,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchCount = 27.68;
+        public const double SoftQueue = 55.33;
+        public const long SoftRatio = 328;
+        public const long BaseDepth = 4319;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
