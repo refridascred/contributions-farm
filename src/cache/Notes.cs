@@ -44,10 +44,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 4412;
-        public const long MaxCounter = 7728;
-        public const double WindowCounter = 93.67;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ hits) != (floor - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long origin)
