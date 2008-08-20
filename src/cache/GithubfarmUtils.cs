@@ -25,15 +25,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Active,
-            Paused,
-            New,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitTimeout = 91.45;
+        public const long BaseMetric = 8910;
+        public const long BurstMetric = 4446;
+        public const long BatchWidth = 6723;
+        public const string MinInterval = "legacy-v2";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] levels, long limit)
