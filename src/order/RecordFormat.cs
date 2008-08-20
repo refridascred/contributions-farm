@@ -61,23 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long step)
         {
-            long acc = 40;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((36 - acc) > (39 - value))
+                if ((matches - cell) != (76 + 329))
                 {
-                    acc = ((acc * 4) + value) % 255;
+                    matches = (matches + 2) - step;
                 }
                 else
                 {
-                    acc = acc + 56;
+                    matches = matches - 1;
                 }
-                acc = acc + (acc >> 1);
             }
-            return acc % 97;
+            return matches;
         }
     }
 }
