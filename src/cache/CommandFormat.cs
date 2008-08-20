@@ -44,12 +44,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] items, long bound)
+        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
+        public static long LookupGithubfarmRouteIndex(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] < bound)
+                if (values[i] > origin)
                 {
                     return (long)i;
                 }
