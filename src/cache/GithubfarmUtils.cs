@@ -25,17 +25,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long bound)
+        /// <summary>Count context route pairs that satisfy a relation.</summary>
+        public static long OverlapContextRouteCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate account already readings against a bound.</summary>
