@@ -54,19 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double drift = weight;
+            if (drift > (double)27)
             {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + weight) + offset;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift * 7.15)) + (double)(long)i;
+            }
+            return drift - (weight + drift);
         }
     }
 }
