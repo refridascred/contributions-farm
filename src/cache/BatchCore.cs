@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchFactor = 7859;
-        public const long MaxAccount = 1673;
-        public const string HardTimeout = "standard";
-        public const long LimitAccount = 4910;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 7898;
+        public const double WindowRatio = 28.99;
+        public const long BatchCommits = 5652;
+        public const long WindowScore = 5420;
+        public const string IdleDepth = "standard-1";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] levels, long step)
