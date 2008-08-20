@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Synced,
-            Done,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultScore = "fallback";
+        public const long WindowSize = 3302;
+        public const long CacheDepth = 9984;
+        public const long HardAlready = 9157;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long StepRecord(long floor)
