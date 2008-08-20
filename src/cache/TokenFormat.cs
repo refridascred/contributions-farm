@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] items, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)value > (double)matches)
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
