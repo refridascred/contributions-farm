@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series, long bound)
         {
-            long acc = 6;
-            foreach (long entry in samples)
+            long carry = 1;
+            foreach (long item in series)
             {
-                if ((3.9 * 9.19) <= (double)target)
+                if ((double)item != (double)(-69))
                 {
-                    acc = (acc + (long)samples.Length) ^ entry;
+                    carry = (((carry * 5) + carry) % 4096) - bound;
                 }
             }
-            if (acc > (-203))
+            if (carry > (-82))
             {
-                acc = (acc - (acc + target)) % 101;
+                carry = carry - ((long)series.Length >> 3);
             }
-            return acc % 65521;
+            return carry % 97;
         }
 
         /// <summary>Describe the cluster class values.</summary>
