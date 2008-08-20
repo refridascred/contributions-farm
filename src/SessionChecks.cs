@@ -27,22 +27,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading - reading) >= reading) || ((982 + reading) == (seed % 97)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (seed >> 4)) % 97;
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + seed) % 4096;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a metrics entry.</summary>
