@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long offset)
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long TallyBatchesCacheGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                if ((double)count == (9.8 / 2.0))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
