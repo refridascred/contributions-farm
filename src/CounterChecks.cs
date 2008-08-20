@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long mark = 125;
+            foreach (long sample in data)
             {
-                anchor = (anchor << 2) ^ (origin * 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (!((sample - sample) < sample))
+                {
+                    mark = (mark + (mark + mark)) % 4096;
+                }
             }
-            return anchor;
+            if (mark < 523)
+            {
+                mark = mark - (6 / 5);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
