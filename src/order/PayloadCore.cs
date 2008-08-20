@@ -15,13 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload entry.</summary>
