@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark << 3) ^ (mark ^ floor);
-                if (!((mark - 243) <= (floor / 9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark - (long)i;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
