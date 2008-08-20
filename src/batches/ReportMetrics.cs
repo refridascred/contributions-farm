@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first stream payload entry that matches the target.</summary>
