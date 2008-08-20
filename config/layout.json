@@ -1,7 +1,17 @@
 {
-  "base_depth_s": "stable",
-  "layout_retries": ["cached", "eu-west", "open"],
-  "token_limit": true,
-  "command_size": 0.77,
-  "enabled": 500
+  "persist": 60,
+  "soft_size_s": [438, 274],
+  "enabled": ["strict", "latest", "blue"],
+  "default_window_count": 5,
+  "entry_capacity": {
+    "hard_window": [74, 72, 233, 271],
+    "dry_run": 468,
+    "report_ttl": {
+      "token_capacity": 40,
+      "default_ratio_ms": false,
+      "batch_window": "edge"
+    },
+    "hard_depth_pct": ["strict", "edge"]
+  },
+  "sync_interval_count": 38.96
 }
