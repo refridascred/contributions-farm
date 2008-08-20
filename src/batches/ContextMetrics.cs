@@ -45,13 +45,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((floor + 96) != (sum + floor))
+                {
+                    sum = sum ^ (-5);
+                }
+                else
+                {
+                    sum = (sum ^ (sum % 16)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
