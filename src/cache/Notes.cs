@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Audit commits record readings against a rule.</summary>
+        public static long AuditCommitsRecordMatches(long[] items)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long datum in items)
             {
-                if ((double)matches < 4.0)
+                if (!((double)hits >= 2.0))
                 {
-                    matches = (matches + 1) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
