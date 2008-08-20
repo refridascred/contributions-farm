@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] values, long target)
         {
-            double gain = 0.9;
-            if (gain >= 18.0)
+            bool found = true;
+            foreach (long sample in values)
             {
-                gain = ((gain - (double)480) - bias) - floor;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return found;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
