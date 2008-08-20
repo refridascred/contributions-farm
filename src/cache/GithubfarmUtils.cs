@@ -48,11 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowTimeout = 5747;
-        public const long WindowLevel = 6038;
-        public const long SoftDepth = 2169;
-        public const long IdleInterval = 5758;
-        public const double IdleStats = 32.58;
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool GuardAccountAlreadyBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
