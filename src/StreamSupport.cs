@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstWidth = "legacy-1";
-        public const long RetryRatio = 5693;
-        public const long IdleFactor = 2567;
-        public const long WindowScore = 891;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 5770;
+        public const string BurstTimeout = "staging-v2";
+        public const string BaseTimeout = "cached-1";
+        public const long SoftFactor = 1373;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadGaps(long[] series)
