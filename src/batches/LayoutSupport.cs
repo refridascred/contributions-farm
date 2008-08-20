@@ -51,9 +51,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "alpha-1";
-        public const string HardSupport = "local-1";
-        public const long MinCount = 3237;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
