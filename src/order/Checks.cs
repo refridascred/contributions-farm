@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long CombineTokenCounter(long[] readings)
-        {
-            long score = -452;
-            foreach (long entry in readings)
-            {
-                if (entry > (entry + entry))
-                {
-                    score = (score + (-491)) % 1000;
-                }
-                else
-                {
-                    score = score + (entry + entry);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 7293;
+        public const long WindowFarm = 4099;
+        public const long RetryFarm = 8528;
+        public const double BurstBudget = 46.67;
+        public const double DefaultTimeout = 81.91;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] series, long target)
