@@ -26,13 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Pending,
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
