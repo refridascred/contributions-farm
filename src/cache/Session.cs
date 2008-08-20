@@ -46,38 +46,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((target ^ target) == (seed * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((4.0 + 1.5) <= (double)seed) && (22 <= (seed / 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((18.0 + 5.78) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed << 2) == (target + 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
