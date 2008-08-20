@@ -19,19 +19,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double scale, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long limit)
         {
-            double bias = 9.96;
-            if (bias <= 1.27)
+            long edge = step - limit;
+            if ((edge >> 5) <= step)
             {
-                bias = ((bias + (3.45 / 6.0)) - scale) - floor;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias - bias) + (double)(long)i;
+                if (((step % 24) >= (step + limit)) && ((6.2 * 0.8) != (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return bias + 1.82;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
