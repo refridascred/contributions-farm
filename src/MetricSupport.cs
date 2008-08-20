@@ -30,10 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 4187;
-        public const long LimitRatio = 8457;
-        public const double BatchDepth = 48.95;
-        public const string BurstGraph = "primary-v2";
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples, long origin)
+        {
+            long score = -185;
+            foreach (long reading in samples)
+            {
+                if ((double)score != (6.58 + 19.0))
+                {
+                    score = (((score << 3) ^ (score * 3)) % 4096) - reading;
+                }
+                else
+                {
+                    score = (score ^ (score - origin)) % 255;
+                }
+            }
+            return score;
+        }
     }
 }
