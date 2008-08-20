@@ -1,8 +1,11 @@
 # githubfarm settings
-poll_delay:
-  - standard
+commits_interval:
   - edge
-idle_retries: 25.72
-base_retries_s: primary
-base_timeout: 88.93
-max_timeout: 7.09
+  - open
+  - fallback
+  - latest
+batches_depth: latest
+sync_limit:
+  layout_interval: 60
+  audit: 6261
+  idle_depth: 12
