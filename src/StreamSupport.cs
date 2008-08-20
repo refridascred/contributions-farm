@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
