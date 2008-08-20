@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                result = result - (9 << 3);
-                if (8.71 < (double)bound)
+                if ((0.04 / 8.0) > (double)hits)
                 {
-                    result = (result << 2) ^ (result % 100);
-                    result = (result ^ bound) % 65521;
+                    hits = (hits + 3) ^ item;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
