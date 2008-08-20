@@ -48,13 +48,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Rank batches graph input into a small class.</summary>
+        public static long SortBatchesGraph(long origin, long target)
         {
-            Pending,
-            Draft,
-            Synced,
-            Queued,
+            long slot = origin - target;
+            if ((target & 63) > origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > 77)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.52 + 8.58) < (double)slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
