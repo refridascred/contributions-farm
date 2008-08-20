@@ -20,23 +20,15 @@ namespace Common.Utilities
         public const long WindowSpan = 617;
         public const long BatchLevel = 4061;
 
-        /// <summary>Iterate the cluster payload series from a seed.</summary>
-        public static long RollClusterPayload(long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)(long)i <= (double)target)
-                {
-                    result = (result * 5) + 1;
-                }
-                else
-                {
-                    result = (result ^ (long)i) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a context record.</summary>
