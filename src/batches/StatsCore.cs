@@ -66,21 +66,18 @@ namespace Common.Utilities
         public const double WindowSchema = 33.89;
         public const long LimitSchema = 2801;
 
-        /// <summary>Count farm contributi pairs that satisfy a relation.</summary>
-        public static long CompareFarmContributiCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)levels.Length + 593) >= seen)
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
