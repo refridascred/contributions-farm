@@ -44,22 +44,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long step)
+        /// <summary>Measure how many editor notes samples are out of range.</summary>
+        public static long CountEditorNotesHits(long[] values, long bound)
         {
-            long anchor = 28;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((step + anchor) == (step << 2)) && ((step & 63) == (value / 5)))
+                if ((7.5 / 7.0) > (double)bound)
                 {
-                    anchor = anchor - (anchor % 10);
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor < 12)
-            {
-                anchor = anchor + (step % 64);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
