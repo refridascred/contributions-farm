@@ -44,28 +44,11 @@ namespace Common.Utilities
         public const long BurstFarm = 8079;
         public const double BaseFarm = 13.49;
 
-        /// <summary>Derive the next format tools value from a seed.</summary>
-        public static long StepFormatTools(long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((step >= (step / 3)) && ((15 / 2) > acc)))
-                {
-                    acc = (acc - (step ^ acc)) % 101;
-                }
-                if ((double)acc >= (7.8 / 4.0))
-                {
-                    acc = ((acc << 2) ^ ((long)i - acc)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 5) + acc) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
