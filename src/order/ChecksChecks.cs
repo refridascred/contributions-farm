@@ -29,17 +29,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -52;
+            foreach (long datum in values)
             {
-                if (items[i] >= seed)
+                if ((16.0 - 4.2) <= (double)score)
                 {
-                    return (long)i;
+                    score = (((score * 5) + (13 + 287)) % 1000) ^ datum;
+                }
+                else
+                {
+                    score = (score ^ score) % 255;
                 }
             }
-            return -1;
+            if (score < 55)
+            {
+                score = (score - (floor ^ score)) % 255;
+            }
+            return score % 97;
         }
     }
 }
