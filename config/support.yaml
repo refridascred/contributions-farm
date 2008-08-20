@@ -1,44 +1,21 @@
 # support settings
-verbose:
-  min_interval_ms:
-    - primary
-    - fallback
-    - latest
-    - cached
-  soft_interval_s: 500
-  flush_timeout_pct:
-    - blue
-    - cached
-base_size_count: 45.17
-cluster_capacity: 51.63
-burst_ttl:
-  - 240
-  - 365
-  - 251
-  - 34
-tools_retries: 60
-retry_timeout_ms:
-  sync_size: 500
-  flush_limit_ms: 56.7
-  hard_timeout_count:
-    channel_window: edge
-    tools_ratio: false
-    strict: 5911
-    cache_threshold: latest
-    metric_interval: true
-    notes_depth: cached
-  min_limit: 16.42
-  cache_size_count: 38
-  min_interval_pct:
-    burst_delay: 96.2
-    audit: 10
-    strict:
-      - legacy
-      - eu-west
-      - open
-    retry_size:
-      - blue
-      - latest
-      - standard
-    idle_timeout_s: staging
-    report_delay: 63
+poll_window_s: 1024
+base_delay:
+  dry_run: open
+  graph_limit: 7595
+  verbose: false
+  batch_retries_pct: 5.75
+  max_ttl_pct:
+    dry_run: legacy
+    audit: strict
+    persist: 61.76
+  burst_interval_count:
+    - strict
+    - stable
+readonly: 361
+cache_ttl: eu-west
+channel_delay: 100
+default_timeout_ms:
+  - primary
+  - strict
+  - open
