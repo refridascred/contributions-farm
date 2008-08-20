@@ -46,11 +46,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long offset)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
