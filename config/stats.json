@@ -1,12 +1,24 @@
 {
-  "metrics_window": {
-    "flush_retries_s": false,
-    "strict": 66.4,
-    "default_threshold_pct": [277, 452],
-    "burst_ttl": 22
+  "flush_ratio_count": 45,
+  "token_ttl": false,
+  "dry_run": {
+    "githubfarm_timeout": 30,
+    "githubfarm_delay": 10,
+    "min_depth_pct": 5762,
+    "batches_ratio": 6.12
   },
-  "min_ttl": "eu-west",
-  "retry_depth_count": 33,
-  "persist": 75.05,
-  "context_capacity": "cached"
+  "strict": 1302,
+  "flush_interval": {
+    "warm_retries_count": {
+      "min_timeout": 43.16,
+      "verbose": "edge",
+      "sync_window_s": 99,
+      "hard_timeout": 2659,
+      "support_limit": [492, 279, 312, 19],
+      "compress": 88.66
+    },
+    "flush_threshold_ms": false,
+    "dry_run": 4
+  },
+  "farm_ttl": 93.65
 }
