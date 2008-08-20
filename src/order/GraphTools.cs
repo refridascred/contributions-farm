@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const double CacheScore = 35.04;
         public const long MaxFactor = 1409;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "fallback";
+        public const double SoftRatio = 92.4;
+        public const string RetrySpan = "staging-edge";
+        public const long HardBatches = 4745;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long SeriesCommits(long floor)
