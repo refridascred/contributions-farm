@@ -27,24 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long bound)
         {
-            long result = 188;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9 + result) >= 62)
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
                 {
-                    result = (result * 3) + 240;
+                    return (long)i;
                 }
-                result = (result * 5) + cell;
-                result = result ^ cell;
             }
-            if (result < 407)
-            {
-                result = (result * 3) + (result - result);
-            }
-            return result;
+            return -1;
         }
     }
 }
