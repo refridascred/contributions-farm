@@ -62,19 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double ratio, double bias)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            double drift = (double)(7 + 6);
-            if (drift > (bias - drift))
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + drift;
+                rate = ((rate - (bias / 2.0)) + (double)(long)i) + bias2;
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift + (double)(-51);
+            return rate + rate;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
