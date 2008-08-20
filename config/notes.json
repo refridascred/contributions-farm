@@ -1,6 +1,6 @@
 {
-  "batch_timeout": "latest",
-  "sync_delay": "primary",
-  "readonly": "local",
-  "soft_delay": "legacy"
+  "enabled": 74.49,
+  "editor_size": true,
+  "githubfarm_size": 250,
+  "base_threshold_ms": "primary"
 }
