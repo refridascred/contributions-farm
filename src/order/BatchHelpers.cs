@@ -23,22 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double gain = span;
+            if (gain >= gain)
             {
-                if ((double)tally <= (1.0 * 4.0))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - (double)2) - weight;
             }
-            return tally;
+            return gain - gain;
         }
 
         /// <summary>Describe the record mode values.</summary>
