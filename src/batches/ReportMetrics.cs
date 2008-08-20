@@ -21,11 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 37.31;
-        public const long MinChecks = 9237;
-        public const long StepDepth = 2255;
-        public const long BurstChecks = 7472;
-        public const long IdleChecks = 5069;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
