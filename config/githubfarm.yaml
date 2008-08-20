@@ -1,17 +1,4 @@
 # githubfarm settings
-farm_window:
-  filter_window: 37.19
-  readonly: strict
-  strict:
-    report_depth: 35
-    poll_delay_ms:
-      - standard
-      - strict
-    audit:
-      - 182
-      - 346
-      - 475
-      - 177
-  min_ratio_count: 3515
-record_retries: 55
-readonly: open
+soft_delay: false
+context_limit: 40
+batch_depth: false
