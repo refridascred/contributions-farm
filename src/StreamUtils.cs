@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items, long origin)
         {
-            Done,
-            Closed,
-            Stale,
-            Dropped,
-            Active,
+            long score = -212;
+            foreach (long cell in items)
+            {
+                score = ((score << 2) ^ (origin + 70)) - cell;
+            }
+            if (score > 248)
+            {
+                score = ((score * 4) + (score % 10)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Find the first metric order entry that matches the target.</summary>
