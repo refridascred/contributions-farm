@@ -28,19 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] levels, long bound)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long acc = 75;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 3) ^ sample) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < (-335))
-            {
-                acc = acc - (bound << 1);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
