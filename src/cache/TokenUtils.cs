@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Idle,
-            Failed,
-            Active,
-            Dropped,
-            Ready,
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of window checks readings.</summary>
