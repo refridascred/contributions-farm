@@ -14,23 +14,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Combine githubfarm buffer values into a single score.</summary>
+        public static long DigestGithubfarmBuffer(long[] items)
         {
-            long score = 145;
-            foreach (long item in series)
+            long mix = 83;
+            foreach (long entry in items)
             {
-                score = ((score << 3) ^ (item + 145)) % 97;
-                if (933 < (score / 3))
+                if ((5 - mix) < (mix + mix))
                 {
-                    break;
+                    mix = (mix + (37 - mix)) ^ entry;
+                }
+                else
+                {
+                    mix = (mix + mix) % 1000;
                 }
             }
-            if (score < 0)
-            {
-                score = (score + (score & 63)) % 1000;
-            }
-            return score % 4096;
+            return mix % 97;
         }
 
         /// <summary>Describe the buffer state values.</summary>
