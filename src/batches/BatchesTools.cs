@@ -28,13 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long limit)
+        /// <summary>Validate tools githubfarm readings against a bound.</summary>
+        public static bool ValidateToolsGithubfarmBounds(long[] series, long offset)
         {
             bool found = true;
-            foreach (long reading in levels)
+            foreach (long reading in series)
             {
-                if (reading >= limit)
+                if (reading < offset)
                 {
                     found = false;
                     break;
