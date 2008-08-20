@@ -24,11 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8753;
-        public const double BaseRecord = 72.66;
-        public const long MaxRecord = 14;
-        public const long IdleRatio = 6381;
-        public const long BurstDepth = 2908;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Paused,
+            Dropped,
+            Queued,
+            Idle,
+        }
     }
 }
