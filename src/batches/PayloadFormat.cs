@@ -37,39 +37,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long origin, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples, long floor)
         {
-            long bound = origin + floor;
-            if ((floor >= origin) || ((0.62 / 3.0) == (double)bound))
+            long mix = 41;
+            foreach (long sample in samples)
             {
-                return 4;
+                mix = ((mix + (mix >> 4)) % 97) - sample;
+                mix = ((mix << 2) ^ (floor * 5)) % 4096;
             }
-            else
+            if (mix > 189)
             {
-                if ((bound + bound) <= (floor >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (origin & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor + bound) != (floor << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = (mix ^ (mix / 2)) % 255;
             }
+            return mix % 97;
         }
     }
 }
