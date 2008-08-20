@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double SoftSpan = 66.44;
         public const long BaseFormat = 1520;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 6.83)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Queued,
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
