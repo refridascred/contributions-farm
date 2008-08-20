@@ -29,13 +29,31 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long offset, long floor)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            if ((floor + offset) <= (offset + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.0 * 3.0) != (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((7.0 - 6.0) > (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
