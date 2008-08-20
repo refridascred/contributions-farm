@@ -19,22 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >> 3) >= (cell - seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
