@@ -34,18 +34,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 1818;
+        public const long LimitSupport = 2115;
+        public const long StepScore = 677;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long ScoreAlready(long[] data)
