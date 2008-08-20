@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer contributi series from a seed.</summary>
-        public static long RollBufferContributi(long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            double mean = 12.0 * 7.1;
+            if (mean < (floor - ratio))
             {
-                if ((double)origin == (2.0 * 4.3))
-                {
-                    sum = (sum + (33 >> 2)) % 4096;
-                    sum = sum ^ ((long)i & 15);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                mean = mean - (mean - floor);
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 20.0) + (double)(long)i;
+            }
+            return mean - (mean + 2.41);
         }
 
         /// <summary>Validate command contributi readings against a bound.</summary>
