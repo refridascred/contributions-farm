@@ -14,17 +14,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first layout support entry that matches the target.</summary>
-        public static long SeekLayoutSupportIndex(long[] series, long origin)
+        /// <summary>Roll a route filter counter forward.</summary>
+        public static long IterateRouteFilter(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] < origin)
+                if (43 < (acc >> 2))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + ((long)i & 3)) % 97;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate format samples.</summary>
