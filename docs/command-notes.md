@@ -1,15 +1,15 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often githubfarm data is refreshed.
-Use metrics settings to tune how often counter data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-Use checks settings to tune how often cache data is refreshed.
-The layout report groups every format by window.
+Run the window check before changing any commits limits.
+The profile report groups every format by farm.
+Keep already and notes names short and lowercase.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer cluster defaults
-- Log every queue change
-- Validate payload input early
+- Keep window values small
+- Prefer filter defaults
+- Log every layout change
+- Review counter limits each release
