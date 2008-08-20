@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open local edge; do
+COMMAND_LIMIT=367
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge blue open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=89
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
