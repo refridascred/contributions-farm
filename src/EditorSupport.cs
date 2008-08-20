@@ -83,12 +83,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Paused,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 5788;
+        public const string MinChannel = "fallback";
+        public const long BatchChannel = 1861;
+        public const long DefaultChannel = 6802;
     }
 }
