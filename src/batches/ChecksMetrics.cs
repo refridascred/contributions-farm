@@ -10,12 +10,28 @@ namespace Common.Utilities
         public const long MinRatio = 1180;
         public const string RetryRatio = "strict-1";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            Stale,
-            New,
-            Queued,
+            long mark = 297;
+            foreach (long datum in readings)
+            {
+                if (((datum - mark) >= (datum * 4)) || ((datum + mark) < datum))
+                {
+                    mark = ((mark * 3) + (datum % 64)) % 1000;
+                    mark = ((mark * 4) + (mark + datum)) % 4096;
+                }
+                if (mark <= (mark * 4))
+                {
+                    mark = (mark * 4) + (mark / 5);
+                }
+                else
+                {
+                    mark = mark - (datum / 9);
+                }
+                mark = mark + (mark << 2);
+            }
+            return mark;
         }
 
         /// <summary>Combine notes profile values into a single score.</summary>
