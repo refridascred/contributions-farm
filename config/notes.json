@@ -1,5 +1,8 @@
 {
-  "max_limit_ms": false,
-  "hard_interval_ms": "staging",
-  "burst_timeout_count": true
+  "batch_limit_count": 47,
+  "warm_depth": 7739,
+  "audit": 3823,
+  "warm_interval_ms": 663,
+  "verbose": 250,
+  "notes_size": 94.15
 }
