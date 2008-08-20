@@ -37,12 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardScore = 127;
-        public const long CacheCluster = 107;
-        public const string MinCluster = "fallback-edge";
-        public const long RetryFactor = 4048;
-        public const long StepCluster = 6968;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
