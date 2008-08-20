@@ -1,6 +1,10 @@
-id,region,active
-1,standard,latest
-2,legacy,606
-3,556,standard
-4,727,latest
-5,391,716
+id,active,ratio
+1,671,cached
+2,strict,673
+3,59.44,813
+4,edge,44.65
+5,47.79,76.86
+6,primary,83.81
+7,636,183
+8,905,185
+9,525,21.95
