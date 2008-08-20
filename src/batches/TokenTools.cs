@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the schema commits series from a seed.</summary>
-        public static long IterateSchemaCommits(long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long target, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            if ((seed - seed) >= seed)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry * 4) + (origin >> 5)) % 1000) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((target * 5) >= (54 * 5)) && ((double)22 != (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first format githubfarm entry that matches the target.</summary>
