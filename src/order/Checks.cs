@@ -16,17 +16,16 @@ namespace Common.Utilities
             return load - (offset / 9.0);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ ((long)i / 5)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a contributi info.</summary>
