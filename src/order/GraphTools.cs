@@ -32,18 +32,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 7908;
+        public const long CacheSchema = 7325;
+        public const long BaseDepth = 7348;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] series)
