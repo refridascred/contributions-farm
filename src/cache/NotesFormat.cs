@@ -25,13 +25,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Locked,
+            Pending,
+            Closed,
             Dropped,
-            Synced,
-            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
