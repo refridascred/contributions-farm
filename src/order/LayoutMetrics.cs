@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] series, long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
