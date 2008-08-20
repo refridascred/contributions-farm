@@ -33,19 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!((26 + sample) < sample))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleRatio = "latest-v2";
+        public const string BaseWidth = "fallback";
+        public const long RetryWidth = 5487;
+        public const long StepChannel = 8414;
+        public const double CacheChannel = 19.99;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
