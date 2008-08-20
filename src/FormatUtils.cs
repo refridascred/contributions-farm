@@ -48,11 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchCount = "stable-edge";
-        public const double WindowGraph = 69.66;
-        public const double CacheDepth = 63.99;
-        public const double RetryGraph = 23.71;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] items)
