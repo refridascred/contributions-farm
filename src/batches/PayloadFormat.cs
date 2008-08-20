@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long HardBatch = 7955;
         public const string SoftSpan = "strict-1";
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long sum = 6;
-            foreach (long entry in readings)
-            {
-                sum = sum ^ (target << 3);
-                sum = sum ^ (entry + sum);
-            }
-            return sum % 1000;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
