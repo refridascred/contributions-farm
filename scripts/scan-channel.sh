@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=432
+CHANNEL_LIMIT=455
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in latest edge strict; do
-    log "checking ${item}"
-done
 
 total=0
 for i in $(seq 1 4); do
-    total=$((total + i * 5))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+mode="${1:-open}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
