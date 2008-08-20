@@ -33,21 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != origin)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two account token measurements.</summary>
