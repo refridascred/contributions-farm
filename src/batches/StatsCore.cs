@@ -39,18 +39,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((12.0 - 4.0) > (double)sample) && ((seen + 572) < sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Ready,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
