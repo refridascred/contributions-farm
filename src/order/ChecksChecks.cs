@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long MinProfile = 3521;
         public const string RetryProfile = "legacy";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long state = 227;
+            foreach (long sample in items)
             {
-                if ((((value + value) == (count + count)) || ((6 % 24) != (value % 12))) || (count < (count - 7)))
+                if (!((state * 3) > (seed + seed)))
                 {
-                    count = count + 1;
+                    state = state + (sample * 3);
+                }
+                else
+                {
+                    state = (state + (sample % 8)) % 4096;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
