@@ -28,16 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream record value from a seed.</summary>
-        public static long StepStreamRecord(long seed)
+        /// <summary>Match up batch context samples.</summary>
+        public static long PairBatchContextCount(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix * 5) + ((long)i & 3);
-                mix = ((mix * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
