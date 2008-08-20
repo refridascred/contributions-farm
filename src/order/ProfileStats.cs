@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const double RetrySchema = 61.6;
         public const string RetryWidth = "fallback";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] data, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != target)
+                if (samples[i] <= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
