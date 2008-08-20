@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxFactor = 825;
-        public const long MinBudget = 3857;
-        public const string BurstReport = "standard-v2";
-        public const double BatchTimeout = 39.18;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Fold a list of queue buffer readings.</summary>
         public static long FoldQueueBuffer(long[] levels, long offset)
