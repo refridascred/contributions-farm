@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long target, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series, long step)
         {
-            long delta = target + step;
-            if (target >= delta)
+            long score = 3;
+            foreach (long datum in series)
             {
-                return 5;
+                score = (((score - score) % 101) + datum) + step;
+                score = ((score * 4) + 19) % 101;
             }
-            else
-            {
-                if ((target % 60) >= delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-150) < (step >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((39 * 3) <= (step - step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
