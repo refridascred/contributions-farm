@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Token { get; set; }
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            Idle,
+            Failed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
