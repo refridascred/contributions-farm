@@ -46,22 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long WeighAccountCache(long[] levels, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] values, long floor)
         {
-            long total = 3;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((limit ^ total) <= (6 % 3))
+                if (item <= floor)
                 {
-                    total = ((total * 3) + (667 & 255)) ^ item;
-                }
-                else
-                {
-                    total = (total ^ (total % 8)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
