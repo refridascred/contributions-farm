@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > target)
+                if (((long)samples.Length - value) > value)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up context queue samples.</summary>
