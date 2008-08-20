@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const long IdleMetrics = 5580;
         public const long BaseMetrics = 2117;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double load = (double)(65 + 4);
+            for (int i = 0; i < 6; i++)
             {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                load = ((load + (double)(long)i) - scale) + span;
             }
-            return valid;
+            return load + load;
         }
     }
 }
