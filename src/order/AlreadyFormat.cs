@@ -30,18 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading - seen) < (seen - 965))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 1;
+                    carry = (carry + ((long)i2 * 3)) % 255;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a already options.</summary>
