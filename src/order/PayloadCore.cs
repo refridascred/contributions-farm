@@ -68,11 +68,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxDepth = "primary-v2";
-        public const long LimitCount = 205;
-        public const string CacheSpan = "latest-v2";
-        public const long MinRatio = 4270;
-        public const long BaseToken = 7293;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxInterval = 7112;
+        public const long DefaultFilter = 8096;
+        public const string IdleFilter = "local-edge";
+        public const long BatchLevel = 5834;
     }
 }
