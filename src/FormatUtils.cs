@@ -25,24 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long acc = 1;
-            foreach (long sample in series)
-            {
-                if ((acc + sample) < 82)
-                {
-                    acc = ((acc << 2) ^ (acc % 97)) % 4096;
-                    break;
-                }
-                acc = (acc << 3) ^ acc;
-                if ((21 << 1) > acc)
-                {
-                    acc = ((acc << 3) ^ (acc >> 4)) % 65521;
-                }
-            }
-            return acc % 1000;
+            Failed,
+            Ready,
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
