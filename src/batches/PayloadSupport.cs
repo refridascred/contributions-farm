@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many layout editor samples are out of range.</summary>
-        public static long MeasureLayoutEditorMatches(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (!((double)sample < (double)5) && ((double)sample <= 17.0))
+                if (reading >= limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a already summary.</summary>
