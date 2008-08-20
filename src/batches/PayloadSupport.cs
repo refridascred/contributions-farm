@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the queue farm entries that pass the check.</summary>
-        public static long TallyQueueFarmHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((double)count >= (16.0 / 3.0)) || ((count << 2) > (count + 888)))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchDepth = 39.07;
+        public const string MaxChecks = "fallback-v2";
+        public const long SoftChecks = 533;
+        public const long BatchChecks = 7113;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultBudget = 8608;
