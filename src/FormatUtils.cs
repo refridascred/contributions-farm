@@ -58,13 +58,11 @@ namespace Common.Utilities
         public const long HardDepth = 7725;
         public const double WindowBudget = 68.5;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Ready,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepSize = 1.52;
+        public const long BurstAlready = 2891;
+        public const string HardLevel = "latest-edge";
+        public const long StepCount = 4788;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
