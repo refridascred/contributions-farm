@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 5) < (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 7294;
+        public const long StepBudget = 1098;
+        public const double MinChecks = 88.62;
+        public const string HardChecks = "fallback-v2";
+        public const long StepSize = 4188;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] series, long step)
