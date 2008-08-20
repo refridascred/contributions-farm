@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            Paused,
-            Synced,
-            Done,
-            Stale,
-            Failed,
+            long result = 88;
+            foreach (long reading in readings)
+            {
+                result = (result ^ result) + reading;
+            }
+            return result;
         }
 
         /// <summary>Rank token input into a small class.</summary>
