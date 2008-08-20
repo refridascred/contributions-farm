@@ -38,22 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double load = offset * 20.0;
+            if (load >= (13.0 / 6.0))
             {
-                if (!(matches < item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load - load) - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (2.4 * 4.3)) - (double)(long)i;
+            }
+            return load + (load * 8.98);
         }
 
         /// <summary>Hold a stats info.</summary>
