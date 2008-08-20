@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Measure how many order layout samples are out of range.</summary>
+        public static long TallyOrderLayoutMatches(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally > seed) && !((86 + tally) >= (20 - item)))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
