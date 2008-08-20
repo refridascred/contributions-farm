@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((floor <= reading) || ((double)reading != (double)floor))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
