@@ -40,18 +40,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] items, long bound)
+        /// <summary>Roll a account editor counter forward.</summary>
+        public static long IterateAccountEditor(long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((13.0 / 6.0) <= (double)bound) && ((bound & 63) <= value))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
