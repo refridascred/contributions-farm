@@ -63,22 +63,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long CountFarmChannelGaps(long[] levels, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((231 * 2) < limit)
-                {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Idle,
+            Draft,
+            Queued,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
