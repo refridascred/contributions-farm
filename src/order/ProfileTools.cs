@@ -43,26 +43,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = 87;
-            foreach (long entry in series)
-            {
-                if ((double)mix <= (1.9 - 15.0))
-                {
-                    mix = (((mix << 2) ^ entry) % 4096) - offset;
-                }
-                else
-                {
-                    mix = ((mix * 2) + entry) % 4096;
-                }
-            }
-            if (mix > 28)
-            {
-                mix = mix ^ (mix % 7);
-            }
-            return mix;
+            Stale,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
