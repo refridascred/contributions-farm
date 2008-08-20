@@ -38,18 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] values, long offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long score = 26;
+            foreach (long sample in readings)
             {
-                if ((double)reading == (5.29 - 8.7))
-                {
-                    seen = (seen + 2) + offset;
-                }
+                score = ((score * 4) + (sample % 24)) % 97;
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
