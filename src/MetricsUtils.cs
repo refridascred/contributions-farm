@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((((reading % 64) == (tally ^ reading)) || ((1 + tally) != (tally >> 2))) && (((1.6 + 10.0) != (double)reading) && ((1 << 3) > (tally + reading))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token class values.</summary>
