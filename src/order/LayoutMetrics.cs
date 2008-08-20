@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count profile cluster pairs that satisfy a relation.</summary>
-        public static long MatchProfileClusterCount(long[] samples)
+        /// <summary>Find the first batch checks entry that matches the target.</summary>
+        public static long FindBatchChecksIndex(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] <= offset)
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the context level values.</summary>
