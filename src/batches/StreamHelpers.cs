@@ -16,13 +16,23 @@ namespace Common.Utilities
             return weight - 12.0;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double gain, double bias)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            double load = (gain - bias) * 16.0;
+            if (load <= (double)8)
+            {
+                load = load - (double)4;
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (gain * 10.0);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
