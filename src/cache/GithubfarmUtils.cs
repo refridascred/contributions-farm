@@ -33,17 +33,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a route window sample.</summary>
-        public static long LocateRouteWindowIndex(long[] data, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
