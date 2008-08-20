@@ -1,8 +1,17 @@
 {
-  "base_window": 16,
-  "enabled": "legacy",
-  "compress": "staging",
-  "flush_depth": 1024,
-  "cache_interval_ms": "standard",
-  "base_delay_ms": "blue"
+  "dry_run": {
+    "cache_threshold_s": {
+      "compress": "primary",
+      "strict": 18.16,
+      "base_interval_count": 3340,
+      "base_threshold_pct": 30
+    },
+    "flush_limit_ms": "cached",
+    "channel_limit": 5437,
+    "queue_timeout": false
+  },
+  "burst_threshold_pct": 7161,
+  "idle_retries_count": "edge",
+  "channel_delay": "edge",
+  "token_interval": "primary"
 }
