@@ -27,26 +27,26 @@ namespace Common.Utilities
         public const long StepChannel = 8414;
         public const double CacheChannel = 19.99;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Roll a queue record counter forward.</summary>
+        public static long StepQueueRecord(long floor)
         {
-            long state = 2;
-            foreach (long entry in items)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((state >= (entry / 9)) || (entry > (long)items.Length))
+                score = (score ^ (floor ^ score)) % 65521;
+                if ((floor * 2) < score)
                 {
-                    state = (state ^ (state << 2)) % 255;
+                    score = (score * 3) + score;
                 }
                 else
                 {
-                    state = state + (state - entry);
+                    long delta = (floor ^ (-53)) << 1;
+                    score = score ^ (delta & 63);
                 }
+                score = ((score << 2) ^ (score - score)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (state > 48)
-            {
-                state = ((state * 5) + (state << 3)) % 255;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
