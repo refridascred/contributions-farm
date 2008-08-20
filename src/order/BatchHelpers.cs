@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Dropped,
-            Failed,
-            Done,
-            Draft,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 9760;
+        public const double MaxSpan = 47.31;
+        public const long StepEntry = 1588;
+        public const string RetryEntry = "local";
+        public const long WindowCount = 8327;
 
         /// <summary>Accumulate filter graph samples.</summary>
         public static long WeighFilterGraph(long[] items)
