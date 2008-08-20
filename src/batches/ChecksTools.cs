@@ -61,11 +61,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Ready,
+            Synced,
+            Paused,
+            Closed,
         }
     }
 }
