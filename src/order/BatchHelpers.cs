@@ -23,16 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix ^ (seed ^ mix)) % 1000;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
