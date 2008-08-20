@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long mark = 9;
+            foreach (long reading in series)
             {
-                sum = ((sum - sum) % 101) - item;
+                mark = ((mark - 1) % 1000) - reading;
             }
-            return sum;
+            if (mark < 160)
+            {
+                mark = (mark - (mark * 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the already level values.</summary>
