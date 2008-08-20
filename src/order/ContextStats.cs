@@ -41,11 +41,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 52.77;
-        public const long BaseOrder = 6844;
-        public const string SoftCount = "stable-edge";
-        public const long DefaultOrder = 7108;
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values, long offset)
+        {
+            long mark = 6;
+            foreach (long reading in values)
+            {
+                long span = (reading >> 2) / 2;
+                mark = (mark + span) % 65521;
+                if ((8.01 / 6.0) >= (double)offset)
+                {
+                    mark = mark + (mark >> 1);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Combine account format values into a single score.</summary>
         public static long TallyAccountFormat(long[] samples, long seed)
