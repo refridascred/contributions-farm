@@ -1,12 +1,15 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the checks list.
-The format report groups every commits by order.
-Run the filter check before changing any filter limits.
+Use format settings to tune how often order data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+Run the queue check before changing any window limits.
+A buffer that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Review command limits each release
-- Document new context fields
-- Keep filter values small
+- Review layout limits each release
+- Log every cluster change
+- Prefer batch defaults
+- Document new schema fields
