@@ -14,20 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long sum = 10;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum * 3) > (sum + datum))
+                if ((mark & 7) > mark)
                 {
-                    sum = sum - datum;
-                    sum = (sum + (datum >> 1)) % 101;
+                    break;
                 }
-                sum = ((sum << 3) ^ (datum % 2)) % 1000;
+                else
+                {
+                    mark = (mark ^ (long)i) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
