@@ -80,18 +80,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the contributi buffer entries that pass the check.</summary>
-        public static long MeasureContributiBufferHits(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches - reading) != (matches << 2))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 49.73;
+        public const long WindowCounter = 7784;
+        public const string BaseBudget = "latest-v2";
+        public const string BurstCounter = "local-1";
     }
 }
