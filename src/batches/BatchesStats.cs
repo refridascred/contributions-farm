@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const long SoftCluster = 4245;
         public const string BatchCluster = "latest-edge";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinRatio = 3719;
-        public const string WindowInterval = "fallback-v2";
-        public const double RetryInterval = 89.07;
-        public const double WindowSession = 62.63;
-        public const string SoftSession = "open-1";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Queued,
+            Retry,
+            Draft,
+            Idle,
+        }
     }
 }
