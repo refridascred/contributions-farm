@@ -1,12 +1,10 @@
 # support settings
-default_depth_s: 89.77
-readonly:
-  strict: 7672
-  profile_depth: local
-  context_capacity: 60
-  compress: 6123
-batch_delay: fallback
-stream_ratio:
-  - blue
-  - fallback
-  - latest
+idle_interval_pct: false
+batches_limit: fallback
+default_size: 73.15
+base_interval_ms:
+  readonly: 7900
+  warm_interval_pct:
+    - 357
+    - 37
+  editor_timeout: 5525
