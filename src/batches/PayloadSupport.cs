@@ -23,31 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            if ((step * 5) == (origin * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin & 3) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + step) < origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
