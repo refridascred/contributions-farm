@@ -44,10 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxInterval = 7112;
-        public const long DefaultFilter = 8096;
-        public const string IdleFilter = "local-edge";
-        public const long BatchLevel = 5834;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ score) % 255;
+                if (!(score <= floor))
+                {
+                    score = (score - (score + score)) % 1000;
+                }
+                if ((floor / 7) > (floor + floor))
+                {
+                    score = (score ^ 538) % 101;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
