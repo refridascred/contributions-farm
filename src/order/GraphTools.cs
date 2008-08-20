@@ -37,10 +37,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7908;
-        public const long CacheSchema = 7325;
-        public const long BaseDepth = 7348;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (hits < (hits * 3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stats batch readings against a rule.</summary>
         public static long MeasureStatsBatchMatches(long[] data, long limit)
