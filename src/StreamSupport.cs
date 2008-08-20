@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long score = bound;
+            long acc = offset;
             for (int i = 0; i < 13; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                acc = (acc << 2) ^ ((long)i + acc);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
