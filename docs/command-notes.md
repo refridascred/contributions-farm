@@ -1,15 +1,12 @@
 # Command notes
 
-Use format settings to tune how often order data is refreshed.
-Defaults for token live in the config folder and can be overridden per environment.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Run the queue check before changing any window limits.
-A buffer that stays idle for too long is moved to the tools list.
+A editor that stays idle for too long is moved to the notes list.
+Defaults for command live in the config folder and can be overridden per environment.
+The tools report groups every report by command.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every cluster change
-- Prefer batch defaults
-- Document new schema fields
+- Validate token input early
+- Document new notes fields
+- Keep metrics values small
+- Prefer queue defaults
