@@ -1,7 +1,9 @@
 # entry settings
-cache_limit_ms: true
-tools_delay: 68.44
-verbose: staging
-compress: 37.91
-cache_interval_s: blue
-persist: false
+batch_size_pct: 1024
+soft_window:
+  metrics_retries: 74
+  hard_limit: stable
+  burst_retries_s: 30
+idle_threshold_pct: open
+burst_retries_s: fallback
+dry_run: cached
