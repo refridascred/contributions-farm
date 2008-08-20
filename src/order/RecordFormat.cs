@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] series, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
