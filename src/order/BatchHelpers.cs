@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] samples)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long WeighFilterGraph(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 647;
+            foreach (long entry in items)
             {
-                if ((double)entry >= (4.6 + 7.98))
-                {
-                    count = count + 1;
-                }
+                state = ((state ^ state) % 1000) ^ entry;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the record mode values.</summary>
