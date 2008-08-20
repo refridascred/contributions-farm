@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long limit)
+        /// <summary>Scale a channel format figure with a bias.</summary>
+        public static double SmoothChannelFormat(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = bias;
+            if (load > bias)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                load = (load - (bias * 6.0)) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (bias * 0.82);
         }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
