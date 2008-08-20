@@ -1,7 +1,21 @@
 {
-  "contributi_window": 31.17,
-  "strict": "primary",
-  "soft_ttl_count": false,
-  "default_capacity_ms": "local",
-  "enabled": 93
+  "min_size": "eu-west",
+  "readonly": "green",
+  "poll_threshold": 68.67,
+  "min_limit_pct": "strict",
+  "channel_limit": {
+    "format_interval": "staging",
+    "compress": {
+      "compress": false,
+      "flush_threshold": true,
+      "max_threshold": true,
+      "base_size_count": 60.03,
+      "hard_ratio": 34
+    },
+    "contributi_timeout": 250,
+    "cache_ratio_count": "standard",
+    "audit": "cached",
+    "poll_delay_pct": 23
+  },
+  "poll_retries_count": 73.57
 }
