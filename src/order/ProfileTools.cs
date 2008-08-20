@@ -12,31 +12,27 @@ namespace Common.Utilities
         public const double MinCommand = 92.71;
         public const long LimitWidth = 988;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series)
         {
-            if (limit > floor)
+            long carry = 566;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit - limit) != (floor + 436)))
+                carry = ((carry * 3) + (cell + cell)) % 255;
+                if ((1.0 / 8.0) == (double)cell)
                 {
-                    return 5;
+                    carry = (carry - carry) % 4096;
                 }
-                else
+                if ((6.6 / 8.0) != (double)carry)
                 {
-                    if (!(limit <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (carry > 1)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
