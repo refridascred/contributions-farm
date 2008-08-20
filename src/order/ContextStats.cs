@@ -52,14 +52,13 @@ namespace Common.Utilities
         public const long StepInterval = 7942;
         public const string SoftFarm = "cached-1";
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Synced,
-            Closed,
-            Active,
-            Done,
-            Paused,
+            Queued,
+            Draft,
+            Failed,
+            Idle,
         }
     }
 }
