@@ -88,21 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
