@@ -1,6 +1,7 @@
 {
-  "hard_ratio": false,
-  "base_retries": 40,
-  "persist": 81.06,
-  "warm_ratio_pct": "cached"
+  "format_timeout": 58.72,
+  "token_capacity": 500,
+  "cache_delay_s": 92.72,
+  "support_ratio": "strict",
+  "strict": 9.82
 }
