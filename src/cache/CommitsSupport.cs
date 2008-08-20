@@ -46,13 +46,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 1121;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long offset)
         {
-            Locked,
-            Paused,
-            New,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
