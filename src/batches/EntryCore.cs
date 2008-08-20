@@ -44,11 +44,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 6548;
-        public const long LimitInterval = 1080;
-        public const long StepScore = 6710;
-        public const long SoftCount = 5967;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Ready,
+            Draft,
+            Closed,
+            New,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchSpan = 4348;
