@@ -17,26 +17,17 @@ namespace Common.Utilities
         public const long BaseSize = 1041;
         public const long StepChecks = 1265;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long bound)
+        /// <summary>Locate a entry schema reading by value.</summary>
+        public static long LocateEntrySchemaIndex(long[] levels, long target)
         {
-            long anchor = 188;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell >= (1.9 - 10.0))
+                if (levels[i] < target)
                 {
-                    anchor = ((anchor * 2) + (cell % 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + bound)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor ^ (anchor + bound)) % 1000;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
