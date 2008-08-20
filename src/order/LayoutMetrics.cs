@@ -35,14 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a account report reading.</summary>
+        public static double ProjectAccountReport(double rate, double floor)
         {
-            Stale,
-            Paused,
-            Failed,
-            Retry,
-            Closed,
+            double rate2 = rate - rate;
+            return (rate2 - (double)968) + floor;
         }
     }
 }
