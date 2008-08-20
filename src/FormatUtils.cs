@@ -48,12 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema checks measurements.</summary>
-        public static double BlendSchemaChecks(double weight, double offset)
-        {
-            double bias = (offset / 6.0) - weight;
-            return bias - bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchCount = "stable-edge";
+        public const double WindowGraph = 69.66;
+        public const double CacheDepth = 63.99;
+        public const double RetryGraph = 23.71;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] items)
