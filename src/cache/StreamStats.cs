@@ -48,10 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 1818;
-        public const long LimitSupport = 2115;
-        public const long StepScore = 677;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Failed,
+            Closed,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Measure how many report batch samples are out of range.</summary>
         public static long TallyReportBatchMatches(long[] data, long target)
