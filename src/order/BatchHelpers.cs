@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long delta = bound - floor;
-            if ((6 ^ bound) >= (delta + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta >= (delta - bound)) && ((7.2 * 8.65) < 16.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
