@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] items, long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double scale = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)hits != (5.9 - 20.0))
-                {
-                    hits = ((hits + 1) + entry) + seed;
-                }
+                scale = (scale - gain) + (double)(long)i;
             }
-            return hits;
+            return scale + (9.7 / 4.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
