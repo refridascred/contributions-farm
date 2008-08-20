@@ -1,70 +1,20 @@
 # entry settings
-hard_threshold_count:
-  idle_threshold_s: primary
-  idle_ttl_ms: 17.91
-  cache_delay_ms:
-    base_limit_s: strict
-    retry_window_pct: green
-    contributi_retries: true
-    poll_limit: 12.82
-    profile_ratio: 71
-  default_capacity_pct:
-    burst_ratio_count: 47
-    cache_ttl_pct: strict
-    warm_ratio_ms: strict
-    default_threshold_ms: blue
-  retry_threshold_s: edge
-  warm_depth_count:
-    audit: 60
-    tools_retries: 60
-    compress: legacy
-    burst_size_pct: 30
-    record_window: true
-    dry_run: standard
-max_delay_pct:
-  persist:
-    - 353
-    - 245
-    - 7
-    - 387
-  poll_delay_count: false
-  warm_timeout_s:
-    contributi_timeout: latest
-    hard_timeout_pct: edge
-    warm_delay:
-      - staging
-      - staging
-    layout_limit: 100
-flush_timeout:
-  - 454
-  - 427
-poll_ttl: 1024
-cache_delay_s:
-  default_size_count: 4008
-  dry_run:
-    batch_capacity_count: primary
-    verbose: 30
-    default_retries: true
-    min_interval: false
-    batches_capacity:
-      - 257
-      - 120
-      - 379
-    readonly:
-      - edge
-      - local
-      - staging
-      - primary
-  sync_ratio_count:
-    verbose: 4733
-    base_depth_s:
-      - 412
-      - 35
-    readonly: true
-  burst_limit: 53.74
-  contributi_capacity: 61
-batches_capacity:
-  - 175
-  - 29
-  - 386
-  - 233
+warm_interval_pct: 17.24
+contributi_threshold: 1024
+idle_window:
+  - stable
+  - standard
+  - blue
+  - eu-west
+command_timeout:
+  warm_limit_count:
+    - cached
+    - staging
+  persist: edge
+  idle_delay: 100
+  default_capacity_pct: 100
+  retry_limit: 17.77
+soft_threshold_count:
+  retry_threshold_count: 60
+  persist: false
+  report_retries: cached
