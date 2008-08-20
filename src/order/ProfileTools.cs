@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double drift = 9.0 - (7.0 * 10.0);
-            if (drift > drift)
-            {
-                drift = (drift - (offset * 1.5)) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift + 3.3;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
