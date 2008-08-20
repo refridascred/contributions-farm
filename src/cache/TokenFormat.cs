@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric counter samples are out of range.</summary>
-        public static long MeasureMetricCounterHits(long[] levels, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.63 * 7.0) != (double)tally)
+                if (samples[i] <= seed)
                 {
-                    tally = ((tally + 3) - cell) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
