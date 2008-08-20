@@ -40,18 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)samples.Length + 9) <= (864 >> 4))
+                if ((data[i] >= seed) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 2) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
