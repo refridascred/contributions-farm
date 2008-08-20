@@ -40,11 +40,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSize = 3548;
-        public const long IdleFormat = 1569;
-        public const double MinFormat = 62.64;
-        public const long MaxRatio = 8677;
-        public const double LimitFormat = 70.18;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
