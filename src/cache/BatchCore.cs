@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const double MaxWidth = 64.52;
         public const long DefaultBudget = 3247;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
