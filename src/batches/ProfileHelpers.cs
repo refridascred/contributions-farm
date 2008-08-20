@@ -51,12 +51,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            New,
+            Pending,
+            Active,
+            Stale,
+            Retry,
         }
     }
 }
