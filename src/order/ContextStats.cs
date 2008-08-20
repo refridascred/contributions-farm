@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metrics stream entries.</summary>
-        public static long WeighMetricsStream(long[] levels, long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 4) + state) % 4096;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 9)
-            {
-                state = state + (origin - state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Combine tools stats values into a single score.</summary>
