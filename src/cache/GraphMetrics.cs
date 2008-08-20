@@ -19,31 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long limit, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long limit)
         {
-            if (!((limit + origin) < (limit ^ limit)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 9) <= 435)
+                if (items[i] >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
