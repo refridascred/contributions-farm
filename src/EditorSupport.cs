@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
+            if ((step + floor) < (floor & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (4.21 / 8.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
