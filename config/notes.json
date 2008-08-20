@@ -1,6 +1,10 @@
 {
-  "dry_run": "blue",
-  "farm_ttl": "fallback",
-  "sync_capacity_ms": 55.01,
-  "sync_ratio_count": 17.22
+  "batch_ratio_ms": "fallback",
+  "account_ttl": 80.24,
+  "schema_capacity": "open",
+  "readonly": {
+    "default_ttl_s": "local",
+    "flush_threshold_count": "eu-west",
+    "audit": 500
+  }
 }
