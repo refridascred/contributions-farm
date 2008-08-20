@@ -19,25 +19,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            long edge = step - limit;
-            if ((edge >> 5) <= step)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step % 24) >= (step + limit)) && ((6.2 * 0.8) != (double)limit))
+                if ((double)2 < (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
