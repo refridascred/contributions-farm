@@ -25,14 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Blend two schema checks measurements.</summary>
+        public static double BlendSchemaChecks(double weight, double offset)
         {
-            Failed,
-            Ready,
-            Draft,
-            Pending,
-            Dropped,
+            double bias = (offset / 6.0) - weight;
+            return bias - bias;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
