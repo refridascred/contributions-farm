@@ -1,4 +1,7 @@
 # support settings
-min_retries_s: 47
-soft_window: 9151
-checks_depth: 8000
+token_timeout:
+  - edge
+  - staging
+soft_ttl_count: staging
+compress: primary
+warm_retries: stable
