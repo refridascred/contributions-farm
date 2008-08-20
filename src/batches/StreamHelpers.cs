@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double CacheGraph = 5.71;
         public const long MinGraph = 7095;
 
-        /// <summary>Compare every pair of metric record readings.</summary>
-        public static long CompareMetricRecordCount(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)237 / 5.0;
+            if (load <= 8.7)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load - (load / 9.0)) - ratio) + bias;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)18) - (double)(long)i;
+            }
+            return load + (double)64;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
