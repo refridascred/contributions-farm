@@ -35,11 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            Closed,
+            New,
+            Stale,
+            Ready,
         }
     }
 }
