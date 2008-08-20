@@ -1,6 +1,5 @@
 {
-  "strict": "primary",
-  "batches_threshold": "standard",
-  "idle_ratio": "latest",
-  "cache_capacity_pct": true
+  "max_depth_count": "legacy",
+  "flush_retries_ms": "strict",
+  "poll_window_s": "green"
 }
