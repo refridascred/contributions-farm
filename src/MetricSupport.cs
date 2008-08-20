@@ -31,15 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter route samples.</summary>
-        public static long ScoreFilterRoute(long[] items)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long acc = 4;
-            foreach (long reading in items)
-            {
-                acc = (acc * 5) + reading;
-            }
-            return acc % 97;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
