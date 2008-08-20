@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Idle,
-            Locked,
-            Done,
-            Draft,
-            Closed,
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
