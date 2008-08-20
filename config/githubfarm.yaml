@@ -1,8 +1,18 @@
 # githubfarm settings
-record_limit: 4740
-enabled: 100
-order_window: primary
-strict:
-  - staging
+base_ratio_s: 55.42
+batch_ratio:
+  - 320
+  - 123
+  - 85
+cache_limit:
+  readonly: 75.81
+  strict:
+    - 353
+    - 181
+  warm_ttl_count: 58
+idle_delay_ms:
+  - blue
+  - legacy
+  - standard
   - open
-filter_timeout: 250
+idle_capacity_pct: latest
