@@ -29,18 +29,32 @@ namespace Common.Utilities
             return drift - (ratio - floor);
         }
 
-        /// <summary>Count the session channel entries that pass the check.</summary>
-        public static long TallySessionChannelMatches(long[] items)
+        /// <summary>Classify a report stats pair into a bucket.</summary>
+        public static long BucketReportStats(long offset, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long prev = offset - step;
+            if ((prev ^ 0) >= (offset - prev))
             {
-                if ((((tally << 1) < (tally / 4)) || ((datum & 7) == (41 % 12))) && !((tally + 2) < (datum >> 3)))
+                return 5;
+            }
+            else
+            {
+                if (!(0 < (prev % 100)))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - prev) <= (prev << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
