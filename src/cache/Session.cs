@@ -38,18 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((double)entry < (7.7 + 4.0))
+                if (!((double)matches <= 4.0))
                 {
-                    hits = hits + 1;
+                    matches = ((matches + 2) ^ value) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
