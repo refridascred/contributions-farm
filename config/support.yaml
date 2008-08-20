@@ -1,23 +1,44 @@
 # support settings
-batch_ratio_ms:
-  - 57
-  - 348
-min_limit_s:
-  min_size: primary
-  readonly: primary
-  checks_delay: eu-west
-  retry_retries_count: 53
-cache_size:
-  payload_depth: 6195
-  min_timeout_pct: 100
-  min_limit_count:
-    sync_ratio_count: 81.32
-    strict: green
-    editor_interval: 9631
-    soft_ratio_s: 72
-idle_timeout:
-  - blue
-  - local
-  - legacy
-cluster_retries: 17
-max_interval_pct: 73
+verbose:
+  min_interval_ms:
+    - primary
+    - fallback
+    - latest
+    - cached
+  soft_interval_s: 500
+  flush_timeout_pct:
+    - blue
+    - cached
+base_size_count: 45.17
+cluster_capacity: 51.63
+burst_ttl:
+  - 240
+  - 365
+  - 251
+  - 34
+tools_retries: 60
+retry_timeout_ms:
+  sync_size: 500
+  flush_limit_ms: 56.7
+  hard_timeout_count:
+    channel_window: edge
+    tools_ratio: false
+    strict: 5911
+    cache_threshold: latest
+    metric_interval: true
+    notes_depth: cached
+  min_limit: 16.42
+  cache_size_count: 38
+  min_interval_pct:
+    burst_delay: 96.2
+    audit: 10
+    strict:
+      - legacy
+      - eu-west
+      - open
+    retry_size:
+      - blue
+      - latest
+      - standard
+    idle_timeout_s: staging
+    report_delay: 63
