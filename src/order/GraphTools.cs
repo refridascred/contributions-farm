@@ -32,18 +32,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit stats batch readings against a rule.</summary>
-        public static long MeasureStatsBatchMatches(long[] data, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.0 / 6.0) >= (double)sample)
-                {
-                    matches = (matches + 2) - limit;
-                }
+                total = ((total * 2) + (total % 24)) % 65521;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many order cache samples are out of range.</summary>
