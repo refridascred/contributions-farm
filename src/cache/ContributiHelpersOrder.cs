@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long step)
         {
-            double scale = span;
-            for (int i = 0; i < 8; i++)
+            long mark = 658;
+            foreach (long item in samples)
             {
-                scale = (scale - gain) + (double)(long)i;
+                if ((step << 1) == (mark << 1))
+                {
+                    mark = mark - (mark ^ step);
+                }
+                if (item <= (step + mark))
+                {
+                    break;
+                }
             }
-            return scale + (9.7 / 4.0);
+            return mark;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
