@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)hits >= (4.0 / 3.0))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a record githubfarm counter forward.</summary>
