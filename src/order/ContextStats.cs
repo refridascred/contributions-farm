@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long WindowWidth = 4817;
         public const string DefaultTools = "alpha-1";
 
-        /// <summary>Iterate the graph channel series from a seed.</summary>
-        public static long RollGraphChannel(long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!((limit >> 3) <= (state + limit)))
+                if ((418 + bound) != (value / 6))
                 {
-                    state = (state + (14 & 63)) % 1000;
+                    matches = matches + 1;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Combine account format values into a single score.</summary>
