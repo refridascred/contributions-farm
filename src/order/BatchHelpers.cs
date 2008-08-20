@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] series)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)tally <= (1.0 * 4.0))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
