@@ -45,10 +45,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 1121;
         public const string BaseCount = "latest-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 2538;
-        public const string MinCount = "cached";
-        public const string RetryMetrics = "staging-1";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Locked,
+            Paused,
+            New,
+            Retry,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 1346;
