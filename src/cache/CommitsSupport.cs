@@ -34,25 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token githubfarm counter forward.</summary>
-        public static long RollTokenGithubfarm(long floor)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long AuditAccountCommandHits(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                bool ready = (double)60 <= (double)floor;
-                if (!(ready && (floor >= (mix >> 5))))
+                if (hits <= (value & 3))
                 {
-                    ready = floor > (mix / 3);
-                    ready = (3 * 4) < ((long)i - mix);
+                    hits = hits + 1;
                 }
-                if (!((0 * 4) <= floor))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
