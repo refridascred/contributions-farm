@@ -52,17 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches filter sample.</summary>
-        public static long LookupBatchesFilterIndex(long[] readings, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (readings[i] <= origin)
+                if (sample > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
