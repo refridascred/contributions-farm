@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a schema metrics reading by value.</summary>
-        public static long LocateSchemaMetricsIndex(long[] samples, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
