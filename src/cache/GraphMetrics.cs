@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            double drift = 8.0 - (floor - floor);
-            if (drift > floor)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                drift = drift + gain;
+                if ((0.7 / 5.0) >= (double)reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift * 5.69)) + (double)(long)i;
-            }
-            return drift + (double)(-5);
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
