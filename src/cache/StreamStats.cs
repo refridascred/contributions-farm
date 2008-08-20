@@ -33,19 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (value < seed)
+                if (((sample << 2) == (seen ^ seen)) || (sample > (seen + sample)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
