@@ -58,20 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] samples, long bound)
         {
-            long mix = 41;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                mix = ((mix + (mix >> 4)) % 97) - sample;
-                mix = ((mix << 2) ^ (floor * 5)) % 4096;
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 189)
-            {
-                mix = (mix ^ (mix / 2)) % 255;
-            }
-            return mix % 97;
+            return ok;
         }
     }
 }
