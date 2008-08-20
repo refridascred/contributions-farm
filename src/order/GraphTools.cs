@@ -59,12 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            Failed,
+            Stale,
+            Done,
+            Queued,
         }
     }
 }
