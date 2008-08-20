@@ -1,7 +1,7 @@
 {
-  "audit": 71.22,
-  "layout_depth": "blue",
-  "burst_depth": 6389,
-  "max_threshold": [407, 140, 5, 216],
-  "farm_delay": 50
+  "contributi_window": 31.17,
+  "strict": "primary",
+  "soft_ttl_count": false,
+  "default_capacity_ms": "local",
+  "enabled": 93
 }
