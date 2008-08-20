@@ -91,22 +91,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double span)
         {
-            long mix = 0;
-            foreach (long datum in values)
+            double ratio = (weight / 4.0) + (double)92;
+            if (ratio > (span * 1.8))
             {
-                if ((mix < (datum >> 5)) && ((mix / 3) != (datum & 15)))
-                {
-                    mix = mix ^ (mix >> 3);
-                }
+                ratio = ratio - weight;
             }
-            if (mix < 2)
+            else
             {
-                mix = (mix ^ ((long)values.Length + mix)) % 97;
+                ratio = ratio - weight;
             }
-            return mix;
+            return ratio + (weight / 5.0);
         }
     }
 }
