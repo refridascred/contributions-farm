@@ -74,24 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter route counter forward.</summary>
-        public static long DeriveCounterRoute(long step)
+        /// <summary>Scale a entry editor figure with a bias.</summary>
+        public static double ProjectEntryEditor(double bias, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((step - step) > 729) && (3.0 > (double)anchor))
-                {
-                    anchor = ((anchor * 4) + step) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                    anchor = (anchor ^ ((long)i ^ (long)i)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            double scale = floor * 1.9;
+            return (scale + scale) + bias;
         }
     }
 }
