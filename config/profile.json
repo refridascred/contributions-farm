@@ -1,6 +1,11 @@
 {
-  "audit": [191, 236, 313],
-  "cache_retries": ["standard", "local"],
-  "tools_retries": ["local", "legacy"],
-  "cache_capacity": "latest"
+  "base_delay_pct": "stable",
+  "readonly": 61,
+  "batches_retries": {
+    "min_delay_count": "standard",
+    "soft_limit_pct": 250,
+    "record_window": 60,
+    "sync_timeout": false,
+    "cluster_limit": [10, 128, 429]
+  }
 }
