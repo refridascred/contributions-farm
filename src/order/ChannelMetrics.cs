@@ -43,12 +43,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinCount = 38.29;
+        public const long RetryEntry = 7416;
+        public const long WindowTimeout = 3023;
     }
 }
