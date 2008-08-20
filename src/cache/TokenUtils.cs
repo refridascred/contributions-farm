@@ -29,19 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] levels)
         {
-            bool found = true;
+            long tally = 0;
             foreach (long entry in levels)
             {
-                if (entry != floor)
+                if ((double)entry >= (double)737)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
