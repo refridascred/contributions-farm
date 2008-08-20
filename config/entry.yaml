@@ -1,12 +1,6 @@
 # entry settings
-burst_retries_pct: green
-soft_limit: 62.16
-max_interval_s:
-  farm_size: local
-  verbose: 11
-  audit: 60
-  max_retries: edge
-  retry_capacity_count: 9.99
-burst_depth_ms: staging
-batch_ttl_pct: false
-soft_depth_count: 84.02
+flush_interval_ms:
+  - open
+  - fallback
+compress: false
+min_ratio_s: true
