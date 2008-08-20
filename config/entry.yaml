@@ -1,9 +1,7 @@
 # entry settings
-batch_size_pct: 1024
-soft_window:
-  metrics_retries: 74
-  hard_limit: stable
-  burst_retries_s: 30
-idle_threshold_pct: open
-burst_retries_s: fallback
-dry_run: cached
+retry_interval: strict
+contributi_capacity: 66.07
+hard_retries_ms: open
+sync_capacity_count: 93
+buffer_retries: false
+min_retries_ms: standard
