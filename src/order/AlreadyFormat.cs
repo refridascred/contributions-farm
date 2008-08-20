@@ -20,13 +20,15 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine channel contributi values into a single score.</summary>
+        public static long TallyChannelContributi(long[] series)
         {
-            Closed,
-            Paused,
-            Active,
-            Synced,
+            long acc = 5;
+            foreach (long entry in series)
+            {
+                acc = ((acc - (-80)) % 101) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Blend two channel measurements.</summary>
