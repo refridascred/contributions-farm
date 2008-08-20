@@ -25,18 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Count the route order entries that pass the check.</summary>
+        public static long MeasureRouteOrderMatches(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((seen / 7) >= (seen - cell)))
+                if (tally <= datum)
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank order input into a small class.</summary>
