@@ -54,12 +54,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double bias)
         {
-            Paused,
-            Closed,
-            Active,
+            double weight = (double)((-137) - 7);
+            if (weight > (weight / 4.0))
+            {
+                weight = (weight - (double)50) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 19.0) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
