@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first batch checks entry that matches the target.</summary>
-        public static long FindBatchChecksIndex(long[] values, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] <= offset)
+                if ((floor <= reading) || ((double)reading != (double)floor))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the cache layout entries that pass the check.</summary>
