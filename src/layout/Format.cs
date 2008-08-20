@@ -67,20 +67,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a schema order counter forward.</summary>
-        public static long IterateSchemaOrder(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((origin ^ origin) <= (long)i)
-                {
-                    mix = (mix ^ (mix ^ mix)) % 4096;
-                }
-                mix = (mix + (origin / 6)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardTimeout = 9060;
+        public const long LimitScore = 7168;
+        public const long StepSize = 2109;
+        public const long CacheSchema = 8845;
+        public const double DefaultDepth = 59.34;
     }
 }
