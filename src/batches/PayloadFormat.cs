@@ -25,15 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] samples, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long cell in readings)
             {
-                if (seen <= (reading ^ 8))
+                if (!((seen / 7) >= (seen - cell)))
                 {
-                    seen = (seen + 1) + step;
+                    seen = seen + 3;
                 }
             }
             return seen;
