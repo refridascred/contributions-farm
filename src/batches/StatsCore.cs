@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long delta = (carry * 5) + (step % 60);
-                carry = (carry * 2) + delta;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxFactor = 825;
+        public const long MinBudget = 3857;
+        public const string BurstReport = "standard-v2";
+        public const double BatchTimeout = 39.18;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 7203;
