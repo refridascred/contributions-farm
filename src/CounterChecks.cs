@@ -14,18 +14,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = -5;
+            foreach (long entry in readings)
             {
-                if (((long)samples.Length - value) > value)
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = (hits + 3) + origin;
+                    sum = ((sum + (entry / 4)) % 4096) - (long)i;
+                }
+                if ((sum - entry) == (entry - sum))
+                {
+                    sum = (sum - entry) % 101;
+                }
+                if (((5.0 - 0.2) > (double)entry) || ((sum << 1) < (sum + entry)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < (-6))
+            {
+                sum = (sum ^ (sum - sum)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a buffer record.</summary>
