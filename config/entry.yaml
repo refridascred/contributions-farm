@@ -1,8 +1,11 @@
 # entry settings
-warm_interval_ms:
-  max_capacity: strict
-  base_delay: latest
-  retry_ttl_s: latest
-  notes_window: false
-hard_ttl: 500
-poll_retries_ms: strict
+persist:
+  filter_ttl: 60
+  sync_size_s: staging
+  githubfarm_interval: 19
+  record_retries: 50.62
+  sync_interval_s: blue
+  flush_retries_ms: 100
+flush_size_s: standard
+poll_ttl: 56.05
+dry_run: 51.9
