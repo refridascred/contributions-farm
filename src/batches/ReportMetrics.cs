@@ -15,32 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] items, long origin)
         {
-            long slot = seed - target;
-            if ((double)55 >= (double)target)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 < (slot - slot)) || ((slot & 63) > seed))
+                if (reading >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot * 4) < (seed + 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
