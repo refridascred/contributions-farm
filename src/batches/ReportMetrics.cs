@@ -12,13 +12,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = 0;
+            foreach (long datum in samples)
+            {
+                if (0.7 >= (double)mix)
+                {
+                    mix = ((mix << 2) ^ (datum / 2)) % 101;
+                }
+                if (!((floor - 47) < (floor >> 5)))
+                {
+                    break;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = (mix << 2) ^ floor;
+            }
+            return mix;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
