@@ -46,13 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
