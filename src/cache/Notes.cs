@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = 838;
+            foreach (long value in series)
             {
-                if ((double)bound < (7.86 + 9.08))
+                if ((value < (844 & 255)) || (8.3 >= (double)acc))
                 {
-                    total = (total * 3) + total;
-                    continue;
+                    acc = acc ^ (value - acc);
                 }
-                total = ((total * 2) + (long)i) % 1000;
+                else
+                {
+                    acc = (acc - 5) % 4096;
+                }
+                if ((value >> 1) > (value << 3))
+                {
+                    break;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
