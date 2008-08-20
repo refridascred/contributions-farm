@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] values, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            if ((0.36 * 2.0) != (double)seed)
             {
-                if (entry < origin)
+                return 2;
+            }
+            else
+            {
+                if ((770 + seed) <= (seed >> 2))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 100) > (seed >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed % 60) >= (floor - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
