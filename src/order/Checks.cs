@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] data)
         {
-            double load = (double)(6 + 808);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                load = ((load + 11.0) + (double)(long)i) + scale;
+                if ((matches << 1) > (matches & 63))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return load - (offset / 9.0);
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
