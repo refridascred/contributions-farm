@@ -53,15 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] items)
         {
-            long result = 51;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                result = (result ^ result) + datum;
+                if ((double)cell < (2.22 / 8.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
