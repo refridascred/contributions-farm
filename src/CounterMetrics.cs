@@ -40,21 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (offset / 4.0) / 7.0;
+            if (scale < (0.95 + offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (5.0 / 6.0)) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (offset - scale)) + (double)(long)i;
+            }
+            return scale - 0.5;
         }
     }
 }
