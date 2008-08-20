@@ -30,21 +30,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleScore = 6970;
+        public const long MaxBudget = 2889;
+        public const long IdlePayload = 3089;
+        public const double WindowScore = 26.08;
+        public const long CacheBudget = 1022;
     }
 }
