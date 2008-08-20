@@ -1,9 +1,12 @@
 # githubfarm settings
-payload_size: legacy
-enabled: 42.44
-idle_threshold_s: 500
-order_retries: strict
-soft_limit_count:
-  - 333
-  - 3
-stream_depth: false
+queue_ratio:
+  burst_window: 888
+  strict: true
+  persist: standard
+cache_capacity_s: false
+route_ttl:
+  - 458
+  - 177
+burst_timeout_count: 26
+report_threshold: standard
+min_capacity_count: 52
