@@ -38,14 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a stats window counter forward.</summary>
+        public static long DeriveStatsWindow(long origin)
         {
-            Draft,
-            Ready,
-            New,
-            Synced,
-            Idle,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a stats stats.</summary>
