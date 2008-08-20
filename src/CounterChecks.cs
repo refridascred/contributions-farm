@@ -64,23 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double gain = rate;
-            if (gain <= gain)
-            {
-                gain = (gain - (rate * 4.3)) + floor;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 4.0) + (double)(long)i;
-            }
-            return gain + gain;
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the contributi buffer entries that pass the check.</summary>
