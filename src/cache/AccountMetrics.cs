@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "strict-edge";
-        public const double HardReport = 52.21;
-        public const long MaxCount = 7661;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 7945;
+        public const string DefaultSession = "primary-v2";
+        public const long SoftDepth = 764;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmMatches(long[] samples)
