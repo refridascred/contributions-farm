@@ -17,38 +17,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            if ((double)origin >= (6.26 + 1.32))
+            long state = 73;
+            foreach (long datum in readings)
             {
-                return 5;
+                state = state - (datum % 2);
+                state = (state + state) % 101;
             }
-            else
-            {
-                if (!((origin << 3) <= (8 * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin != (3.3 - 6.0)) || ((origin + origin) >= 43))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor - origin) == (floor / 2)) && (origin > (floor - origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
