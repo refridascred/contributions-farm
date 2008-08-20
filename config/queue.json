@@ -1,8 +1,25 @@
 {
-  "batch_depth": [162, 80],
-  "cache_ttl_s": 1024,
-  "warm_delay": "open",
-  "channel_limit": true,
-  "counter_size": false,
-  "soft_timeout_pct": 63
+  "persist": {
+    "default_retries": false,
+    "audit": [226, 399, 449, 10],
+    "strict": "green",
+    "channel_capacity": [401, 266, 433, 260]
+  },
+  "verbose": {
+    "hard_capacity_ms": true,
+    "sync_delay": [349, 315],
+    "default_limit": 76,
+    "batch_ratio": "open",
+    "layout_size": 100,
+    "cache_retries": {
+      "editor_delay": "edge",
+      "poll_retries_count": "local",
+      "max_capacity_count": false,
+      "audit": 51,
+      "hard_window_s": 72.72
+    }
+  },
+  "batch_capacity_count": true,
+  "warm_window_s": 68.02,
+  "burst_ttl_count": [57, 273]
 }
