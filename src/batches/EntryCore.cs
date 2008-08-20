@@ -49,19 +49,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] samples, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long mark = 4;
+            foreach (long datum in series)
             {
-                if (cell > seed)
+                if ((datum / 8) == (bound & 15))
                 {
-                    ok = false;
+                    mark = ((mark << 3) ^ datum) % 65521;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                if (((double)bound <= (3.7 + 1.97)) || (49 >= (8 - (long)series.Length)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark > 34)
+            {
+                mark = ((mark << 2) ^ (bound / 2)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
