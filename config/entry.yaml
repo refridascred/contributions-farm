@@ -1,6 +1,7 @@
 # entry settings
-flush_interval_ms:
-  - open
-  - fallback
-compress: false
-min_ratio_s: true
+min_interval_count: 1024
+retry_depth: 250
+default_size: 43.85
+max_interval_s:
+  - 162
+  - 191
