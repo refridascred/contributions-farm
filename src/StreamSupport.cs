@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            double gain2 = (double)(49 & 255);
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                gain2 = ((gain2 - (offset / 4.0)) - (double)(long)i) + gain;
+                if ((2 + count) > count)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain2 - (double)(-73);
+            return count;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
