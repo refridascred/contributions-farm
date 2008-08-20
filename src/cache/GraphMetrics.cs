@@ -25,12 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long step = floor - floor2;
+            if ((double)floor <= (double)97)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step % 12) <= step) && ((floor & 15) >= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor2 - floor2) <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank githubfarm filter input into a small class.</summary>
