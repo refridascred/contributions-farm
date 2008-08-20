@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != floor)
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
