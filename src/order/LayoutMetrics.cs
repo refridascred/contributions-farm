@@ -15,10 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 39.75;
-        public const long DefaultEditor = 198;
-        public const string WindowWidth = "strict-v2";
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Active,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
