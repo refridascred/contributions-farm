@@ -25,18 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] readings, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading >= (double)matches)
-                {
-                    matches = (matches + 3) + bound;
-                }
+                sum = ((sum << 2) ^ sum) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
