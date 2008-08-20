@@ -1,15 +1,5 @@
 {
-  "max_limit_ms": 4906,
-  "support_retries": [442, 262, 33, 287],
-  "burst_limit": {
-    "stats_limit": false,
-    "buffer_ttl": "staging",
-    "compress": 16,
-    "verbose": ["legacy", "open", "eu-west", "green"],
-    "min_timeout_s": 47.25,
-    "window_interval": 59.96
-  },
-  "base_size": 100,
-  "sync_size": true,
-  "flush_interval_s": 9.3
+  "warm_size_s": true,
+  "checks_size": 5729,
+  "readonly": "blue"
 }
