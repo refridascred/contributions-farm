@@ -29,18 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] levels)
+        /// <summary>Fold a list of window checks readings.</summary>
+        public static long TallyWindowChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = 120;
+            foreach (long sample in readings)
             {
-                if ((double)entry >= (double)737)
+                if (sample > (2 >> 3))
                 {
-                    tally = tally + 2;
+                    acc = acc ^ (acc * 3);
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
