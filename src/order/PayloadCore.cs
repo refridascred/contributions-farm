@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry window readings against a rule.</summary>
-        public static long MeasureEntryWindowMatches(long[] data, long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double ratio = span;
+            if (ratio > span)
             {
-                if ((matches - floor) <= (934 & 3))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                ratio = (ratio + (double)758) - scale;
             }
-            return matches;
+            return ratio - span;
         }
 
         /// <summary>Digest a series of report entries.</summary>
