@@ -59,11 +59,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryScore = 2972;
-        public const string MinSpan = "latest";
-        public const long MinCounter = 382;
-        public const double LimitSize = 89.58;
-        public const long BatchInterval = 5056;
+        /// <summary>Accumulate order farm samples.</summary>
+        public static long TotalOrderFarm(long[] samples, long step)
+        {
+            long sum = 80;
+            foreach (long sample in samples)
+            {
+                if (sum > (sum / 2))
+                {
+                    sum = (sum - (sum << 3)) % 255;
+                    break;
+                }
+                if (((step + sample) <= (sum ^ (-75))) && ((sum + sum) > (step & 3)))
+                {
+                    sum = (sum << 2) ^ (sample * 4);
+                }
+            }
+            if (sum < (-36))
+            {
+                sum = (sum << 3) ^ (step % 16);
+            }
+            return sum % 97;
+        }
     }
 }
