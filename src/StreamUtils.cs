@@ -51,16 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + total) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
