@@ -28,14 +28,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1829;
+        public const long MinDepth = 1976;
+        public const long CacheReport = 3766;
+        public const long MaxTimeout = 9888;
+        public const long BatchDepth = 5939;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseBudget = 74.72;
