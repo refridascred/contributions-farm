@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5166;
-        public const long CacheLevel = 1282;
-        public const long IdleEntry = 6495;
+        /// <summary>Derive the next window filter value from a seed.</summary>
+        public static long IterateWindowFilter(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + (494 * 3)) % 4096;
+                if (((long)i <= acc) && ((2.8 * 12.0) > (double)acc))
+                {
+                    acc = (acc << 2) ^ (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorBounds(long[] data, long step)
