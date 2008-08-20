@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next layout route value.</summary>
-        public static double AdjustLayoutRoute(double bias, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            double gain = (double)(991 + 26);
-            for (int i = 0; i < 7; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                gain = (((gain - gain) + (double)(long)i) + bias) - floor;
+                acc = acc ^ (floor << 2);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return gain + (double)10;
+            return acc;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
