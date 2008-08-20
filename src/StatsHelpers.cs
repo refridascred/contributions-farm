@@ -33,11 +33,19 @@ namespace Common.Utilities
             return scale2 - offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "local-v2";
-        public const long IdleBudget = 4467;
-        public const long WindowCommits = 1471;
-        public const long LimitLevel = 2556;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum & 15) <= count)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
