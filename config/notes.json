@@ -1,6 +1,6 @@
 {
-  "compress": "fallback",
-  "strict": [394, 467],
-  "burst_delay_s": ["blue", "blue", "blue", "local"],
-  "verbose": 82.47
+  "batch_timeout": "latest",
+  "sync_delay": "primary",
+  "readonly": "local",
+  "soft_delay": "legacy"
 }
