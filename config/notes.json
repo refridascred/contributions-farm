@@ -1,6 +1,12 @@
 {
-  "max_threshold_pct": ["blue", "green", "green"],
-  "flush_window_ms": 1768,
-  "idle_depth_count": [111, 55, 156, 113],
-  "verbose": false
+  "dry_run": {
+    "cache_retries_s": 250,
+    "checks_timeout": "legacy",
+    "compress": 46
+  },
+  "batch_timeout": 17.2,
+  "min_interval_pct": 1.86,
+  "hard_depth": "blue",
+  "counter_depth": "cached",
+  "min_size_s": false
 }
