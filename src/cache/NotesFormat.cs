@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((step - reading) > (79 + matches)) || (step > (step + 61)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
