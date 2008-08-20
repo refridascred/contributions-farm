@@ -24,19 +24,12 @@ namespace Common.Utilities
             return drift + (rate + 1.7);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (double)seed)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheFactor = 49.52;
+        public const long BurstGithubfarm = 9745;
+        public const long MinGithubfarm = 2182;
+        public const long StepGithubfarm = 1444;
+        public const long WindowGithubfarm = 34;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] data, long limit)
