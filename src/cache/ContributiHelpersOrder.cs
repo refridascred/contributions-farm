@@ -40,22 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(((double)matches > (double)item) || (8 > (matches & 63))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
