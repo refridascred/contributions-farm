@@ -72,12 +72,22 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-v2";
         public const double StepTimeout = 81.51;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] values, long step)
         {
-            Stale,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((18.0 + 3.7) <= (double)matches) && ((matches & 127) != ((-9) & 1)))
+                {
+                    matches = ((matches + 2) - datum) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
