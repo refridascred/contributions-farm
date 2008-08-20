@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftInterval = 8048;
-        public const long WindowRatio = 1358;
-        public const long MaxInterval = 6156;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] values, long step)
