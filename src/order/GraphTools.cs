@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double floor)
         {
-            long carry = 6;
-            foreach (long item in series)
+            double drift = floor * 4.74;
+            if (drift >= (ratio + 11.0))
             {
-                if ((carry % 16) != (carry + item))
-                {
-                    carry = carry ^ ((long)series.Length << 3);
-                }
+                drift = drift - drift;
             }
-            return carry % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(-2)) + (double)(long)i;
+            }
+            return drift - (ratio - floor);
         }
 
         /// <summary>Count the session channel entries that pass the check.</summary>
