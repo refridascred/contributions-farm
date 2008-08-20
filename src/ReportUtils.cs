@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long offset, long floor)
         {
-            Done,
-            Retry,
-            New,
+            long cur = offset ^ floor;
+            if ((offset >> 2) < (floor - 30))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset & 63) >= (offset + cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - 561) <= cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < 2.13)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
