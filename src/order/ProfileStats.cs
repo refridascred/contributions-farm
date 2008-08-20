@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Idle,
-            Locked,
+            Queued,
+            Done,
             Dropped,
-            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
