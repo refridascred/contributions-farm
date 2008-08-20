@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] levels)
         {
-            long mark = 658;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((step << 1) == (mark << 1))
+                if (((value >> 5) < (-72)) || ((910 + matches) < (value + matches)))
                 {
-                    mark = mark - (mark ^ step);
+                    matches = matches + 3;
                 }
-                if (item <= (step + mark))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
