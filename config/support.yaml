@@ -1,5 +1,11 @@
 # support settings
-schema_retries: fallback
-soft_threshold: 500
-readonly: 40.67
-soft_retries: 62.44
+cache_timeout: green
+soft_threshold: true
+window_delay: 500
+sync_delay: local
+batches_capacity: 27.8
+verbose:
+  - 158
+  - 146
+  - 232
+  - 214
