@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >> 2) == (9 + limit))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 3172;
+        public const long IdleSupport = 8827;
+        public const long LimitSupport = 9781;
+        public const long MinSupport = 3452;
+        public const long BatchCount = 263;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] items, long floor)
