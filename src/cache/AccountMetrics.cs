@@ -63,17 +63,13 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
