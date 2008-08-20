@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Score { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitTimeout = 5540;
+        public const double MinCluster = 3.22;
+        public const long HardCluster = 791;
 
         /// <summary>Measure how many filter stats samples are out of range.</summary>
         public static long AuditFilterStatsOutliers(long[] series, long origin)
