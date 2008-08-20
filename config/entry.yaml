@@ -1,13 +1,4 @@
 # entry settings
-base_capacity_s: strict
-default_ttl_s:
-  batch_depth_s: 16.08
-  max_size_s: cached
-  batches_interval: 88.17
-  soft_timeout:
-    layout_interval: green
-    readonly: stable
-    command_ttl: blue
-  filter_timeout: 9672
-  persist: true
-tools_retries: 56.26
+layout_size: 3408
+readonly: 6876
+session_limit: open
