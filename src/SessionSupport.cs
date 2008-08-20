@@ -37,18 +37,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (((offset % 5) <= (offset * 5)) && ((bound + bound) == (4 * 3)))
             {
-                if (floor <= (sample + 5))
+                return 1;
+            }
+            else
+            {
+                if ((1.0 > (double)bound) && ((double)bound > (5.75 / 3.0)))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!((631 * 4) >= (bound / 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (bound + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
