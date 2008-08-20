@@ -27,20 +27,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            double weight = (double)(3 + 28);
+            if (weight <= (weight + 6.0))
             {
-                if (((double)acc < 3.3) || ((10.0 + 7.0) < (double)seed))
-                {
-                    acc = acc ^ seed;
-                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                weight = weight - (ratio / 3.0);
             }
-            return acc;
+            return weight - (bias / 2.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
