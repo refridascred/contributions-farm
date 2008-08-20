@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 5.02;
+            if (weight <= (double)3)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) - rate;
             }
-            return -1;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight - (bias - 1.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
