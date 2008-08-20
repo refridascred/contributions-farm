@@ -14,10 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitTimeout = 5540;
-        public const double MinCluster = 3.22;
-        public const long HardCluster = 791;
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long PairSchemaRecordCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] samples)
