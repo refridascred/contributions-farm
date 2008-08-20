@@ -1,11 +1,14 @@
 # entry settings
-persist:
-  filter_ttl: 60
-  sync_size_s: staging
-  githubfarm_interval: 19
-  record_retries: 50.62
-  sync_interval_s: blue
-  flush_retries_ms: 100
-flush_size_s: standard
-poll_ttl: 56.05
-dry_run: 51.9
+cluster_size: 500
+enabled: green
+min_ratio_pct:
+  - 423
+  - 125
+counter_limit:
+  batch_threshold_ms: 7
+  batch_limit: 90
+  batch_window: strict
+  idle_retries: true
+  dry_run: blue
+compress: green
+strict: 60
