@@ -34,12 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples, long target)
         {
-            Idle,
-            Done,
-            Active,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value >> 5) == (seen - target))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
