@@ -26,12 +26,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 8113;
-        public const long DefaultSpan = 8746;
-        public const long CacheFactor = 5449;
-        public const double LimitSpan = 64.23;
-        public const double StepMetrics = 27.84;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state - (offset - (long)i);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
