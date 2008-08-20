@@ -45,12 +45,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultWidth = "open";
-        public const long HardCache = 3183;
-        public const string MinRatio = "fallback-1";
-        public const long WindowSize = 7027;
-        public const string DefaultCache = "latest-v2";
+        /// <summary>Count the payload counter entries that pass the check.</summary>
+        public static long AuditPayloadCounterOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)bound <= (1.4 - 7.55)) || ((72 + entry) > bound))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of profile already readings.</summary>
         public static long WeighProfileAlready(long[] items)
