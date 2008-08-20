@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 4347;
-        public const long CacheTimeout = 8334;
-        public const long MaxContext = 3289;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings)
+        {
+            long state = 30;
+            foreach (long item in readings)
+            {
+                if ((double)state > (double)919)
+                {
+                    state = (state << 3) ^ (state ^ item);
+                }
+                else
+                {
+                    state = state + (25 + (-3));
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next githubfarm account value from a seed.</summary>
         public static long DeriveGithubfarmAccount(long floor)
