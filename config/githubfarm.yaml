@@ -1,5 +1,15 @@
 # githubfarm settings
-commits_timeout: 9.14
-profile_ttl: 35
-sync_capacity: 60
-base_ratio_s: 500
+contributi_window: false
+command_retries: open
+notes_interval: 90
+cache_ttl_pct:
+  max_ratio_ms: 1284
+  warm_threshold_pct: 385
+  hard_window: true
+  enabled: open
+entry_retries:
+  soft_timeout: cached
+  queue_ttl: green
+  token_ttl: true
+  flush_retries_count: false
+cache_interval_s: 15
