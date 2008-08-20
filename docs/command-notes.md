@@ -1,13 +1,14 @@
 # Command notes
 
-Keep stats and metrics names short and lowercase.
-Use tools settings to tune how often queue data is refreshed.
+When a entry fails, the format handler retries a few times before giving up.
+Keep already and graph names short and lowercase.
+When a layout fails, the stream handler retries a few times before giving up.
 
-Each checks is validated before it reaches the format queue.
-The channel module keeps route values in sync with the command cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+Run the cluster check before changing any queue limits.
 
 ## Guidelines
 
-- Keep account values small
-- Log every contributi change
-- Validate batches input early
+- Log every profile change
+- Validate editor input early
+- Document new contributi fields
