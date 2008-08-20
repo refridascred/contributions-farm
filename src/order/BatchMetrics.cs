@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Retry,
-            Ready,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinInterval = 1151;
+        public const string SoftStats = "open-v2";
+        public const double CacheBudget = 50.16;
+        public const long BatchScore = 4667;
+        public const long WindowCount = 763;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 77.99;
