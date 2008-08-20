@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double bias)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double weight = 5.02;
-            if (weight <= (double)3)
-            {
-                weight = (weight - weight) - rate;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight - (bias - 1.0);
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
