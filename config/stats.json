@@ -1,15 +1,6 @@
 {
-  "farm_ratio": 68.91,
-  "burst_depth": "staging",
-  "base_window": "staging",
-  "burst_limit": 80.04,
-  "soft_threshold_ms": {
-    "graph_timeout": "standard",
-    "counter_depth": 26,
-    "default_ratio_pct": 26.37,
-    "retry_size": [445, 377, 290, 107],
-    "base_retries_pct": "cached",
-    "max_interval_ms": "legacy"
-  },
-  "min_timeout": 14.8
+  "max_retries_ms": false,
+  "max_interval_count": 60,
+  "warm_ratio_pct": true,
+  "persist": "primary"
 }
