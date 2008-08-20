@@ -53,11 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinInterval = 9039;
-        public const string MaxLevel = "fallback-edge";
-        public const long RetryAccount = 9811;
-        public const long BurstAccount = 4467;
-        public const long RetryLevel = 4263;
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
