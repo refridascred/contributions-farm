@@ -49,15 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report payload value from a seed.</summary>
-        public static long SeriesReportPayload(long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
