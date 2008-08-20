@@ -14,10 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheDepth = 64.63;
-        public const long BaseCount = 3681;
-        public const long DefaultFarm = 2807;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((target ^ target) <= item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long step, long offset)
