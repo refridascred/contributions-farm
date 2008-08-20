@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Look up the position of a cluster cache sample.</summary>
+        public static long SeekClusterCacheIndex(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
