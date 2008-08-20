@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item <= bound)
+                if ((tally << 2) < (63 & 15))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 1) + datum) + floor;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
