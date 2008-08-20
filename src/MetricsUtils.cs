@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample <= (4.46 + 1.62))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
