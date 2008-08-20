@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of buffer support readings.</summary>
-        public static long DigestBufferSupport(long[] samples, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            long total = 72;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)total <= (8.1 + 11.0))
+                if ((count + cell) == (cell + cell))
                 {
-                    total = ((total ^ (seed % 3)) % 97) - reading;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Roll a channel entry counter forward.</summary>
