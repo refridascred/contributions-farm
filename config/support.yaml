@@ -1,10 +1,15 @@
 # support settings
-idle_interval_pct: false
-batches_limit: fallback
-default_size: 73.15
-base_interval_ms:
-  readonly: 7900
-  warm_interval_pct:
-    - 357
-    - 37
-  editor_timeout: 5525
+sync_delay_ms: false
+stats_limit: eu-west
+format_depth: true
+dry_run:
+  stats_limit: 7.33
+  cache_ratio_count: 9539
+  verbose: 18.03
+  batch_ratio_s:
+    batch_ttl: staging
+    persist: 63
+    min_threshold: false
+    max_capacity: false
+  flush_interval_count: 77
+poll_limit_s: staging
