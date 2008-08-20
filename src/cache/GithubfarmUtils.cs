@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            long acc = 95;
-            foreach (long value in data)
+            long sum = 9;
+            foreach (long item in items)
             {
-                acc = (acc ^ 717) ^ value;
+                sum = ((sum - sum) % 101) - item;
             }
-            if (acc < 418)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
