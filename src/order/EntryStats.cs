@@ -67,27 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order farm samples.</summary>
-        public static long TotalOrderFarm(long[] samples, long step)
-        {
-            long sum = 80;
-            foreach (long sample in samples)
-            {
-                if (sum > (sum / 2))
-                {
-                    sum = (sum - (sum << 3)) % 255;
-                    break;
-                }
-                if (((step + sample) <= (sum ^ (-75))) && ((sum + sum) > (step & 3)))
-                {
-                    sum = (sum << 2) ^ (sample * 4);
-                }
-            }
-            if (sum < (-36))
-            {
-                sum = (sum << 3) ^ (step % 16);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 6358;
+        public const long RetryBudget = 3765;
+        public const long StepStats = 6694;
+        public const long StepInterval = 3527;
     }
 }
