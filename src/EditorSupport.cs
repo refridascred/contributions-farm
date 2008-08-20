@@ -23,11 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowBudget = 740;
-        public const long RetryInterval = 2750;
-        public const long HardScore = 589;
-        public const string MaxFarm = "stable";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long origin, long offset)
