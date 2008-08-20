@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Stale,
-            Failed,
-            Locked,
-            Done,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1590;
+        public const double MinCommits = 35.46;
+        public const long StepCommits = 1471;
+        public const long WindowWidth = 9308;
+        public const double BatchCommits = 84.94;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultScore = 4368;
