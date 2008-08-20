@@ -1,5 +1,15 @@
 {
-  "base_threshold_s": 250,
-  "compress": 250,
-  "batch_retries_pct": 30
+  "farm_ratio": 68.91,
+  "burst_depth": "staging",
+  "base_window": "staging",
+  "burst_limit": 80.04,
+  "soft_threshold_ms": {
+    "graph_timeout": "standard",
+    "counter_depth": 26,
+    "default_ratio_pct": 26.37,
+    "retry_size": [445, 377, 290, 107],
+    "base_retries_pct": "cached",
+    "max_interval_ms": "legacy"
+  },
+  "min_timeout": 14.8
 }
