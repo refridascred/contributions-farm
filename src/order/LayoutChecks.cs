@@ -29,19 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] samples, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
