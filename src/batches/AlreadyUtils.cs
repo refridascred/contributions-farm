@@ -52,27 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stats batches readings.</summary>
-        public static long FoldStatsBatches(long[] readings)
+        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
+        public static long IteratePayloadGithubfarm(long offset)
         {
-            long state = 75;
-            foreach (long datum in readings)
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                state = state - (state ^ datum);
-                if ((20.0 - 7.0) < (double)state)
+                if ((total - offset) > total)
                 {
-                    state = (state + (state + (-508))) % 101;
+                    total = total - offset;
                 }
-                else
-                {
-                    state = (state - (state * 5)) % 101;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (state < 174)
-            {
-                state = state + (state << 2);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Match up notes samples.</summary>
