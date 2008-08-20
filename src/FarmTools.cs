@@ -19,38 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long offset2)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] readings)
         {
-            if (offset < (offset2 + offset))
+            long anchor = 4;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset < (offset % 7)) || ((62 >> 3) < (offset2 / 8)))
+                if (datum >= anchor)
                 {
-                    return 3;
+                    anchor = (anchor ^ (datum - datum)) % 1000;
                 }
-                else
+                if ((datum + datum) <= datum)
                 {
-                    if ((offset2 << 2) != (offset << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset2 ^ offset2) >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = (anchor ^ (datum ^ anchor)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
