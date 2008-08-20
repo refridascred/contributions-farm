@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const double RetrySchema = 61.6;
         public const string RetryWidth = "fallback";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] <= target)
+                if (origin >= (sample % 5))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
