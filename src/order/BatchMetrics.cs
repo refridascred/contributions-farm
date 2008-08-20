@@ -33,15 +33,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a checks payload figure with a bias.</summary>
-        public static double AdjustChecksPayload(double rate, double offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double ratio = (double)(9 - 6);
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - (double)67) + (double)(long)i) + offset;
-            }
-            return ratio + (rate - 7.9);
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
