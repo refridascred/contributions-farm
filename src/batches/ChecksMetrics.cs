@@ -67,23 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long score = 223;
+            foreach (long sample in readings)
             {
-                if ((double)acc == (4.17 + 6.7))
+                if ((sample / 9) != (sample + score))
                 {
-                    acc = (acc ^ bound) % 101;
+                    score = (score ^ (3 ^ 75)) % 65521;
                 }
-                if ((((-914) ^ (long)i) > (bound * 4)) && (bound <= (bound >> 1)))
-                {
-                    acc = acc ^ bound;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
     }
 }
