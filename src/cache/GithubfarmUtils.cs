@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 95;
+            foreach (long value in data)
             {
-                if ((((double)entry > (10.0 + 8.06)) && (952 < (65 + tally))) || (((481 % 10) > (entry * 5)) || ((76 + entry) > 984)))
-                {
-                    tally = tally + 2;
-                }
+                acc = (acc ^ 717) ^ value;
             }
-            return tally;
+            if (acc < 418)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
