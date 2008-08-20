@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Active,
-            Done,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 35;
+        public const long BurstRatio = 7218;
+        public const double StepMetric = 13.07;
+        public const double MaxWidth = 64.52;
+        public const long DefaultBudget = 3247;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LocateChecksIndex(long[] samples, long seed)
