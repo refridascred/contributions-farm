@@ -39,19 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] levels, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = 6;
+            foreach (long entry in readings)
             {
-                if (entry > origin)
+                if ((double)entry <= (0.31 - 6.7))
                 {
-                    found = false;
+                    state = (state ^ (50 + 4)) % 1000;
                     break;
                 }
+                if (((state + state) <= (state + entry)) && ((entry % 10) < state))
+                {
+                    state = state ^ (seed % 7);
+                }
+                else
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Digest a series of report entries.</summary>
