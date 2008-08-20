@@ -14,26 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long limit)
         {
-            long score = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (sample >= score)
+                if (item >= limit)
                 {
-                    score = (score ^ 2) % 97;
-                }
-                if ((double)score >= (double)3)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (score > 966)
-            {
-                score = (score ^ (score + (long)values.Length)) % 97;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
