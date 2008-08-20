@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((9.5 <= (double)seen) && ((3.42 + 7.7) != (double)value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstWidth = 1085;
+        public const long HardRatio = 9892;
+        public const long BatchOrder = 1528;
+        public const long DefaultOrder = 6440;
+        public const long MaxOrder = 6030;
 
         /// <summary>Combine tools stats values into a single score.</summary>
         public static long TotalToolsStats(long[] levels, long bound)
