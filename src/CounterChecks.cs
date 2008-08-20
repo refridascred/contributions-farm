@@ -83,10 +83,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 49.73;
-        public const long WindowCounter = 7784;
-        public const string BaseBudget = "latest-v2";
-        public const string BurstCounter = "local-1";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
