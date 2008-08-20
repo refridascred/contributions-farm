@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a cluster context figure with a bias.</summary>
-        public static double BlendClusterContext(double ratio, double offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double rate = (double)(97 + 535);
-            if (rate < (0.4 * 7.19))
-            {
-                rate = (rate - offset) - ratio;
-            }
-            else
-            {
-                rate = rate - (double)5;
-            }
-            return rate - 2.0;
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
