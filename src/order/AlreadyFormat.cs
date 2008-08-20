@@ -34,17 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] values, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
