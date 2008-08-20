@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                long seen = target;
+                mark = mark + seen;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
