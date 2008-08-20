@@ -1,7 +1,21 @@
 {
-  "readonly": 6948,
-  "burst_interval": 34.63,
-  "commits_retries": 90,
-  "idle_depth_pct": [373, 139, 410],
-  "persist": 93
+  "cache_ratio": 2627,
+  "burst_depth_count": {
+    "compress": {
+      "report_interval": 23,
+      "window_delay": "cached",
+      "retry_size": true
+    },
+    "max_limit_count": 100,
+    "poll_depth_s": 9,
+    "enabled": {
+      "token_ratio": 60,
+      "readonly": 27.94,
+      "flush_depth_ms": 51.61
+    }
+  },
+  "default_threshold_pct": [8, 27, 116, 123],
+  "dry_run": 2351,
+  "burst_timeout_s": 34.81,
+  "record_timeout": "fallback"
 }
