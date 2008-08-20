@@ -54,26 +54,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor queue samples.</summary>
-        public static long FoldEditorQueue(long[] samples)
+        /// <summary>Rank counter report input into a small class.</summary>
+        public static long GradeCounterReport(long limit, long limit2)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            if (!((limit2 << 1) >= (limit2 - limit2)))
             {
-                if (((double)carry > (19.0 + 3.2)) && (carry >= (333 - carry)))
+                return 6;
+            }
+            else
+            {
+                if (limit >= (limit2 >> 4))
                 {
-                    carry = (carry ^ (carry % 24)) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - carry) % 65521;
+                    return 7;
                 }
             }
-            if (carry > 947)
-            {
-                carry = (carry * 4) + (carry + 2);
-            }
-            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
