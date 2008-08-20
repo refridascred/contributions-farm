@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheWidth = 5145;
-        public const long RetryBatch = 6618;
-        public const double SoftWidth = 89.94;
-        public const string MaxInterval = "stable-1";
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] values, long offset)
