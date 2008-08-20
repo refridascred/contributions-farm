@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const long BatchSchema = 2085;
         public const long HardSchema = 7847;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 67.96;
-        public const string StepSize = "local-v2";
-        public const long IdleLevel = 8346;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long target)
+        {
+            if ((target > (405 % 10)) && (target > (step - target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step < (target << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data, long origin)
