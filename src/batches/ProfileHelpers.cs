@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long lane = target + origin;
-            if (!((target ^ origin) < (target - lane)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (3.0 < (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (lane <= (target << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
