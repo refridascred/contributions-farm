@@ -12,12 +12,16 @@ namespace Common.Utilities
             return (load - (double)3) + rate;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5709;
-        public const double CacheSpan = 15.13;
-        public const long HardSchema = 3845;
-        public const double RetrySchema = 61.6;
-        public const string RetryWidth = "fallback";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of record entry readings.</summary>
         public static long MatchRecordEntryCount(long[] levels)
