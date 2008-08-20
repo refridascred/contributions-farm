@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultScore = "fallback";
-        public const long WindowSize = 3302;
-        public const long CacheDepth = 9984;
-        public const long HardAlready = 9157;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Dropped,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchSize = 8797;
