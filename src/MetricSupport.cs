@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 4143;
+        public const long StepMetrics = 6234;
+        public const string BaseMetrics = "alpha-1";
+        public const string HardMetrics = "standard";
+        public const long MinBudget = 4890;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
