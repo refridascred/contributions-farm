@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] values, long floor)
+        /// <summary>Roll a batches commits counter forward.</summary>
+        public static long SeriesBatchesCommits(long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
