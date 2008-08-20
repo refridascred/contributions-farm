@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long result = 49;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value + 625) >= (result % 10)) && ((14.0 - 0.83) >= (double)value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ 897) - seed;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
