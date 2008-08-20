@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit order window readings against a rule.</summary>
-        public static long MeasureOrderWindowOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)(long)samples.Length != (11.0 + 13.0)) || (reading > (reading - seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSize = 8642;
+        public const double SoftSpan = 16.58;
+        public const string BaseSize = "latest-v2";
+        public const string IdleInterval = "latest-edge";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
