@@ -14,18 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            if (!((target << 2) >= offset))
             {
-                if (768 > (value / 9))
+                return 6;
+            }
+            else
+            {
+                if ((double)target < (9.0 - 6.47))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ 3) < (offset - (-87)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
