@@ -16,12 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "standard-1";
-        public const double RetryWidth = 51.96;
-        public const long LimitLevel = 2639;
-        public const long BatchBudget = 6775;
-        public const long BurstSpan = 7520;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Pending,
+            Active,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
