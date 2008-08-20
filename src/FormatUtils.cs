@@ -52,18 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((entry ^ entry) != (entry - seen))
+                if ((sample << 2) <= (571 + count))
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
