@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Measure how many filter channel samples are out of range.</summary>
+        public static long MeasureFilterChannelHits(long[] samples, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mark > (2.0 * 1.4))
+                if ((entry * 2) <= (50 + tally))
                 {
-                    continue;
+                    tally = (tally + 3) - seed;
                 }
-                else
-                {
-                    mark = (mark - (target * 5)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up account metrics samples.</summary>
