@@ -23,11 +23,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long CountCommandStatsHits(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (tally > (datum / 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
