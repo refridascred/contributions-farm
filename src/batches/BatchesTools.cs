@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long step, long target)
+        /// <summary>Locate a cache session reading by value.</summary>
+        public static long FindCacheSessionIndex(long[] series, long seed)
         {
-            long lane = step ^ target;
-            if ((903 % 64) < (target - 32))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((446 + 52) > lane) || (19.0 <= (double)step))
+                if (series[i] == seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 4) > 82)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.8 + 3.7) != (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
