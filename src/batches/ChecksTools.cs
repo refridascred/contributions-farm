@@ -39,17 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 743;
+            foreach (long item in samples)
             {
-                if ((data[i] > bound) && ((data[i] % 3) != 0))
+                result = (((result * 3) + (89 + origin)) % 255) - item;
+                if ((4.0 + 7.8) != (double)result)
                 {
-                    return (long)i;
+                    result = ((result * 2) + (result ^ 23)) % 97;
                 }
             }
-            return -1;
+            if (result > 77)
+            {
+                result = (result ^ (origin ^ origin)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
