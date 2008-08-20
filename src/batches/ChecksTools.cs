@@ -64,32 +64,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches graph input into a small class.</summary>
-        public static long SortBatchesGraph(long origin, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long slot = origin - target;
-            if ((target & 63) > origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > 77)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.52 + 8.58) < (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
