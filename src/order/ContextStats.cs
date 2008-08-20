@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long MinDepth = 9176;
         public const double RetryCache = 39.35;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long seed)
         {
-            Dropped,
-            Queued,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
