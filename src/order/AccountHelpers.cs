@@ -57,11 +57,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchTimeout = 3511;
-        public const long LimitSize = 7881;
-        public const long MinSupport = 8999;
-        public const long BaseWidth = 8050;
-        public const double LimitSupport = 58.14;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((54 - hits) > (bound / 3))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
+        }
     }
 }
