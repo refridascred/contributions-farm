@@ -27,21 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account farm pairs that satisfy a relation.</summary>
-        public static long CompareAccountFarmCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 3) ^ ((long)series.Length + 357)) + cell;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Blend two metric measurements.</summary>
