@@ -30,18 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((((reading % 64) == (tally ^ reading)) || ((1 + tally) != (tally >> 2))) && (((1.6 + 10.0) != (double)reading) && ((1 << 3) > (tally + reading))))
+                if (((cell + matches) <= ((long)values.Length & 63)) || ((double)cell >= (10.0 / 6.0)))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
