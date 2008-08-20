@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 15.59;
+        public const long MinSupport = 7276;
+        public const string MaxSupport = "staging-edge";
+        public const long HardSupport = 704;
+        public const string DefaultSize = "cached-edge";
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long seed, long step)
