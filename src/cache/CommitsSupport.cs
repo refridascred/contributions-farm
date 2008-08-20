@@ -84,9 +84,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 8305;
-        public const string CacheFormat = "stable-v2";
-        public const long StepLevel = 9152;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Stale,
+            Pending,
+            Closed,
+        }
     }
 }
