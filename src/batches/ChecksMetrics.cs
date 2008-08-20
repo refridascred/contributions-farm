@@ -32,31 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] items, long floor)
         {
-            long sum = 686;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                sum = (sum ^ (datum ^ 25)) % 97;
-                if (((datum << 3) == (sum + 2)) && (sum < 38))
+                if ((double)floor <= (4.0 * 9.0))
                 {
-                    sum = (sum ^ (4 + sum)) % 65521;
-                }
-                if (((double)datum > (9.67 - 8.9)) || (43 < sum))
-                {
-                    sum = (sum ^ (datum >> 5)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + sum) % 101;
+                    count = (count + 3) ^ cell;
                 }
             }
-            if (sum > 37)
-            {
-                sum = (sum * 3) + (sum - sum);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count record batches pairs that satisfy a relation.</summary>
