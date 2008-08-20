@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1829;
-        public const long MinDepth = 1976;
-        public const long CacheReport = 3766;
-        public const long MaxTimeout = 9888;
-        public const long BatchDepth = 5939;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseBudget = 74.72;
