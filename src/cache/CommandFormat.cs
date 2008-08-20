@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long AuditAccountEntryGaps(long[] values, long seed)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double mean = (double)(567 % 16);
+            if (mean < mean)
             {
-                if ((seed >> 4) <= value)
-                {
-                    hits = hits + 3;
-                }
+                mean = mean + floor;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (scale * 5.0);
         }
 
         /// <summary>Match up cache route samples.</summary>
