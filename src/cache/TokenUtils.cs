@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings, long limit)
+        /// <summary>Locate a record support reading by value.</summary>
+        public static long FindRecordSupportIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= seen)
+                if (series[i] >= step)
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
