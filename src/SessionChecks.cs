@@ -20,10 +20,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "alpha";
-        public const long StepSize = 9063;
-        public const long MinRatio = 802;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] samples)
