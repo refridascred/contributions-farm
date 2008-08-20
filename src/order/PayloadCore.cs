@@ -15,32 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long origin, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            long lane = origin - seed;
-            if ((lane > (lane << 2)) || (seed <= (seed - lane)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)lane >= (7.4 * 7.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + lane) <= (lane + origin))
+                    if ((items[i] + items[j]) > 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
