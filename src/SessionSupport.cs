@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings, long floor)
         {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (floor <= (sample + 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
