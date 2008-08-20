@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "legacy-1";
-        public const double BatchSession = 97.27;
-        public const long DefaultSession = 3990;
-        public const long IdleSession = 6542;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Synced,
+            Ready,
+            Idle,
+            Done,
+            Paused,
+        }
 
         /// <summary>Combine channel contributi values into a single score.</summary>
         public static long TallyChannelContributi(long[] series)
