@@ -32,14 +32,23 @@ namespace Common.Utilities
             return rate + (floor * 3.0);
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] levels, long seed)
         {
-            Retry,
-            Done,
-            Queued,
-            Closed,
-            Failed,
+            long sum = 49;
+            foreach (long entry in levels)
+            {
+                sum = (sum ^ (seed / 6)) % 1000;
+                if (2.7 <= (double)entry)
+                {
+                    sum = sum ^ ((long)levels.Length ^ sum);
+                }
+                if (((0.47 / 7.0) >= (double)seed) || ((seed >> 4) <= entry))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
