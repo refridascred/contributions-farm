@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Scale a report checks figure with a bias.</summary>
+        public static double ScaleReportChecks(double rate, double span)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
+            double gain = (double)(26 * 4);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (((gain - (double)1) - (double)(long)i) - rate) + span;
+            }
+            return gain + (double)68;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
