@@ -27,13 +27,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((((298 & 127) <= (tally & 63)) && ((tally + tally) < 45)) && (((datum & 3) > tally) || (tally >= (64 % 7))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
