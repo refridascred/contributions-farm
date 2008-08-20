@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + reading) <= (tally - (long)levels.Length))
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7783;
+        public const string CacheTimeout = "stable-1";
+        public const long StepLayout = 5812;
+        public const double MinBudget = 22.32;
+        public const double BatchLayout = 56.78;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
