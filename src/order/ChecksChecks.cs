@@ -40,12 +40,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Draft,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSize = 3548;
+        public const long IdleFormat = 1569;
+        public const double MinFormat = 62.64;
+        public const long MaxRatio = 8677;
+        public const double LimitFormat = 70.18;
     }
 }
