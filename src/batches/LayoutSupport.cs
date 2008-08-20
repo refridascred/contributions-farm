@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            Stale,
-            Active,
-            Queued,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen + seen) <= (345 ^ entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
