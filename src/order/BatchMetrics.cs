@@ -24,12 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinInterval = 1151;
-        public const string SoftStats = "open-v2";
-        public const double CacheBudget = 50.16;
-        public const long BatchScore = 4667;
-        public const long WindowCount = 763;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double rate, double bias)
+        {
+            double mean = bias * 5.53;
+            if (mean <= mean)
+            {
+                mean = (mean - bias) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (double)(-3);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 77.99;
