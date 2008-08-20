@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Draft,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
