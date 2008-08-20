@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const string DefaultSession = "primary-v2";
         public const long SoftDepth = 764;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
