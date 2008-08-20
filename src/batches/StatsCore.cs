@@ -53,12 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
