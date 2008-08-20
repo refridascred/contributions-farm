@@ -31,12 +31,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 8164;
-        public const long BatchInterval = 9296;
-        public const double RetryRatio = 19.56;
-        public const double HardContext = 68.16;
-        public const long BaseBudget = 8066;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
