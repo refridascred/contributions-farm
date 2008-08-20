@@ -20,9 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 7944;
-        public const double BaseAccount = 84.0;
-        public const string RetryTimeout = "cached-edge";
+        public const double MinAccount = 87.66;
+        public const long BatchFactor = 6966;
+        public const double BurstTimeout = 38.17;
+        public const long BaseAccount = 2372;
+        public const double HardAccount = 24.47;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] data)
