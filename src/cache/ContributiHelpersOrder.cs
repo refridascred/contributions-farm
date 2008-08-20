@@ -20,12 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long origin)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            if ((double)origin >= (6.26 + 1.32))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((origin << 3) <= (8 * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin != (3.3 - 6.0)) || ((origin + origin) >= 43))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - origin) == (floor / 2)) && (origin > (floor - origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
