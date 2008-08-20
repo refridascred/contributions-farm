@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long FoldFilterBatches(long[] readings, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long mark = 972;
-            foreach (long item in readings)
+            long mix = 31;
+            foreach (long reading in levels)
             {
-                if ((double)step >= (9.0 + 13.0))
+                if (!((reading + reading) > 32))
                 {
-                    mark = ((mark - 2) % 4096) ^ item;
+                    mix = (mix - (reading + mix)) % 101;
                 }
             }
-            return mark;
+            if (mix > 96)
+            {
+                mix = (mix + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
