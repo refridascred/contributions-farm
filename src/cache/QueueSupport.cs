@@ -23,18 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route farm entries that pass the check.</summary>
-        public static long MeasureRouteFarmGaps(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items, long bound)
         {
-            long matches = 0;
+            long carry = 72;
             foreach (long entry in items)
             {
-                if ((matches + matches) >= (entry << 1))
+                if ((carry * 2) < (48 ^ bound))
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ bound) + entry;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
     }
 }
