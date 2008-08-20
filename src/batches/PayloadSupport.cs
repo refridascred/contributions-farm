@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long offset)
         {
-            Failed,
-            Dropped,
-            Idle,
-            New,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
