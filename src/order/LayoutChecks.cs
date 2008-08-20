@@ -70,15 +70,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            New,
+            Active,
         }
     }
 }
