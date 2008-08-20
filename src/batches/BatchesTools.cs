@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache session reading by value.</summary>
-        public static long FindCacheSessionIndex(long[] series, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
