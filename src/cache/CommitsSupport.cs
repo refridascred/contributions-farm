@@ -52,19 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!(210 <= (577 - count)))
-                {
-                    count = ((count + 1) - cell) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 2538;
+        public const string MinCount = "cached";
+        public const string RetryMetrics = "staging-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 1346;
