@@ -40,13 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a account editor counter forward.</summary>
