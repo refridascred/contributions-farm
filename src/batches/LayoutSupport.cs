@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long HardSize = 2718;
         public const long MinWindow = 6369;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 34.38;
+        public const long WindowProfile = 8948;
+        public const long WindowSpan = 3308;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] data, long seed)
