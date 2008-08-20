@@ -1,12 +1,10 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the schema list.
-A commits that stays idle for too long is moved to the context list.
-Keep payload and token names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
+Use route settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new notes fields
-- Review notes limits each release
-- Validate payload input early
+- Log every entry change
+- Prefer editor defaults
+- Validate stats input early
