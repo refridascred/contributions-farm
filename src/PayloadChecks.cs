@@ -32,23 +32,21 @@ namespace Common.Utilities
             return rate + (floor * 3.0);
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] levels, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            long sum = 49;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (seed / 6)) % 1000;
-                if (2.7 <= (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum ^ ((long)levels.Length ^ sum);
-                }
-                if (((0.47 / 7.0) >= (double)seed) || ((seed >> 4) <= entry))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
