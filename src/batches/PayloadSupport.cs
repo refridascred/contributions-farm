@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] items, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long next = seed ^ bound;
+            if ((bound / 9) <= next)
             {
-                if (entry <= offset)
+                return 1;
+            }
+            else
+            {
+                if (next >= 721)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the tools phase values.</summary>
