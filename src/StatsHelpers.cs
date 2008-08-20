@@ -61,11 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long step)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            long anchor = 28;
+            foreach (long value in values)
+            {
+                if (((step + anchor) == (step << 2)) && ((step & 63) == (value / 5)))
+                {
+                    anchor = anchor - (anchor % 10);
+                }
+            }
+            if (anchor < 12)
+            {
+                anchor = anchor + (step % 64);
+            }
+            return anchor;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
