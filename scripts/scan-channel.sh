@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in staging open strict; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
