@@ -12,32 +12,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] series, long seed)
         {
-            long next = offset ^ limit;
-            if ((offset * 4) <= (next + offset))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit ^ limit) >= (limit + offset)) && ((-798) < limit))
+                if (value != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit < 1.78)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
