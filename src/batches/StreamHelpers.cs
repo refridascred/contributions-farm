@@ -75,11 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "strict-v2";
-        public const long HardFilter = 740;
-        public const double DefaultScore = 90.45;
-        public const long DefaultFilter = 42;
-        public const long MaxSize = 3843;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Dropped,
+            Pending,
+            Locked,
+            Draft,
+        }
     }
 }
