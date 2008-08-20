@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((4.78 + 15.0) < (double)item)
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
