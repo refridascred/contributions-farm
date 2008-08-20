@@ -1,14 +1,4 @@
 # support settings
-readonly: 24.72
-sync_size_ms: local
-enabled:
-  strict: 94
-  retry_depth: 4706
-  flush_depth_ms: staging
-  retry_delay: true
-  poll_delay_s: 5.9
-  route_depth: local
-dry_run:
-  - 50
-  - 61
-  - 301
+flush_depth: 8210
+audit: staging
+warm_size: strict
