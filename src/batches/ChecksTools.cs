@@ -61,14 +61,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long origin)
         {
-            Pending,
-            Ready,
-            Synced,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value % 10) <= (value - 69))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
