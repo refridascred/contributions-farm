@@ -53,23 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((matches - matches) == (matches * 4)))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinInterval = 97.17;
+        public const long MinSchema = 903;
+        public const double WindowSchema = 33.89;
+        public const long LimitSchema = 2801;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleInterval = 9767;
