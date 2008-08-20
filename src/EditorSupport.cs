@@ -42,11 +42,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 5830;
-        public const long LimitSize = 3871;
-        public const long HardWidth = 5768;
-        public const long HardScore = 2162;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double scale, double span)
