@@ -47,10 +47,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxSpan = "fallback";
-        public const long SoftOrder = 4245;
-        public const double DefaultFactor = 98.74;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data, long floor)
+        {
+            long acc = 5;
+            foreach (long datum in data)
+            {
+                if (((datum >> 3) > (acc + 5)) || ((datum * 5) < (acc + floor)))
+                {
+                    acc = acc ^ (floor - floor);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long origin)
