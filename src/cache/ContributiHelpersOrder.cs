@@ -19,28 +19,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long limit)
         {
-            if (!((7.55 - 8.8) < (double)floor))
+            long edge = step - limit;
+            if ((double)edge > 7.0)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (offset > (offset + offset))
+                if (((step - limit) > limit) || ((limit - edge) <= (limit ^ 725)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)offset > (double)floor)
+                    if ((17.0 + 3.13) <= (double)edge)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        return 1;
                     }
                 }
             }
