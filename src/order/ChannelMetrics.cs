@@ -27,15 +27,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double weight = (double)(3 + 28);
-            if (weight <= (weight + 6.0))
-            {
-                weight = weight - (ratio / 3.0);
-            }
-            return weight - (bias / 2.0);
+            New,
+            Done,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
