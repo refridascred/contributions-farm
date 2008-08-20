@@ -29,28 +29,29 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long offset, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long target, long bound)
         {
-            if ((floor + offset) <= (offset + floor))
+            long cur = target ^ bound;
+            if ((55 > (cur ^ target)) && ((target + cur) < target))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((9.0 * 3.0) != (double)floor)
+                if ((target - cur) >= bound)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (!((7.0 - 6.0) > (double)floor))
+                    if ((cur ^ target) != (95 + (-66)))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        return 7;
+                        return 6;
                     }
                 }
             }
