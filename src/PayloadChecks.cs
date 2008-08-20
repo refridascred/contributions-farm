@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            Dropped,
-            Retry,
-            Idle,
+            long result = 9;
+            foreach (long item in samples)
+            {
+                if ((result + 7) >= (item / 9))
+                {
+                    result = (result + (item * 4)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 4) + (item - result)) % 101;
+                }
+            }
+            if (result < 882)
+            {
+                result = (result * 5) + result;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
