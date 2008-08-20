@@ -32,18 +32,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the route order entries that pass the check.</summary>
-        public static long MeasureRouteOrderMatches(long[] values, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (tally <= datum)
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Rank order input into a small class.</summary>
