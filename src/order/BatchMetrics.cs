@@ -85,12 +85,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long score = 9;
+            foreach (long entry in series)
+            {
+                if ((score + score) >= (entry >> 3))
+                {
+                    score = (score * 4) + (score + score);
+                }
+                if ((96 - score) > (score % 3))
+                {
+                    score = (score - (entry << 3)) % 97;
+                }
+            }
+            return score;
         }
     }
 }
