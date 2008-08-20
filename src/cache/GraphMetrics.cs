@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardCount = 6302;
-        public const double MaxScore = 42.98;
-        public const long BaseFormat = 3492;
-        public const double MinDepth = 21.1;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long seed)
+        {
+            if ((target > (seed - seed)) && ((seed >> 4) < (2 ^ seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(seed >= (seed - seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
