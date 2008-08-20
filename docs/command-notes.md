@@ -1,12 +1,11 @@
 # Command notes
 
-Use record settings to tune how often tools data is refreshed.
-When a metrics fails, the record handler retries a few times before giving up.
-When a commits fails, the format handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the format list.
+Each payload is validated before it reaches the commits queue.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every already change
-- Keep metric values small
-- Validate support input early
+- Validate editor input early
+- Keep layout values small
+- Document new farm fields
