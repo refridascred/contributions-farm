@@ -62,23 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Audit entry report readings against a rule.</summary>
+        public static long CountEntryReportOutliers(long[] samples, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((floor + 96) != (sum + floor))
+                if ((((8.79 / 4.0) < (double)step) || ((hits - step) <= step)) || !((step + reading) <= (hits / 2)))
                 {
-                    sum = sum ^ (-5);
+                    hits = hits + 1;
                 }
-                else
-                {
-                    sum = (sum ^ (sum % 16)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return hits;
         }
     }
 }
