@@ -29,17 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) != 0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum - sum) % 4096) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    sum = ((sum * 4) + (sum >> 5)) ^ (long)i3;
+                }
+                sum = sum - sum;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
