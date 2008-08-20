@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepTimeout = 30.89;
-        public const long MaxChecks = 1993;
-        public const long StepChecks = 3867;
-        public const long RetryChecks = 9739;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
