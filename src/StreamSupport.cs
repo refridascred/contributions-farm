@@ -17,19 +17,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            long mark = 68;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((long)samples.Length + (-520)) >= mark)
+                if (hits < (entry + hits))
                 {
-                    mark = (mark ^ (mark + cell)) % 97;
+                    hits = hits + 1;
                 }
-                mark = mark + (494 - cell);
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
