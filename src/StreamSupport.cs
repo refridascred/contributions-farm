@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long sum = 371;
-            foreach (long entry in series)
-            {
-                sum = (sum << 2) ^ (sum + entry);
-            }
-            return sum;
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of report entries.</summary>
