@@ -1,5 +1,5 @@
 {
-  "persist": 34.51,
-  "min_timeout": "latest",
-  "retry_delay_s": ["fallback", "staging", "local"]
+  "soft_size": 8.68,
+  "min_size_pct": 3305,
+  "order_ttl": false
 }
