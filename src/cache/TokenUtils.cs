@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            Idle,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of window checks readings.</summary>
