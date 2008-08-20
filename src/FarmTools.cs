@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = 4;
-            foreach (long datum in readings)
-            {
-                if (datum >= anchor)
-                {
-                    anchor = (anchor ^ (datum - datum)) % 1000;
-                }
-                if ((datum + datum) <= datum)
-                {
-                    anchor = (anchor ^ (datum ^ anchor)) % 65521;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
