@@ -30,20 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values)
         {
-            long sum = 92;
-            foreach (long cell in levels)
+            long result = 42;
+            foreach (long item in values)
             {
-                long cur = sum;
-                if ((double)cur > (19.0 / 2.0))
+                if ((4 > (item - result)) || ((17.0 - 7.1) != (double)item))
                 {
-                    sum = (sum ^ (cell << 3)) % 1000;
+                    result = (result << 2) ^ (item * 5);
                 }
-                sum = ((sum << 2) ^ (3 % 2)) % 97;
             }
-            return sum % 97;
+            return result % 1000;
         }
     }
 }
