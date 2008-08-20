@@ -27,12 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Scale a farm githubfarm figure with a bias.</summary>
+        public static double ScaleFarmGithubfarm(double rate, double floor)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            double mean = 13.0 / 7.0;
+            if (mean < (3.0 - floor))
+            {
+                mean = (mean - mean) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean - floor)) - (double)(long)i;
+            }
+            return mean - (mean * 5.0);
         }
 
         /// <summary>Count commits report pairs that satisfy a relation.</summary>
