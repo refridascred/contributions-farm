@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = offset + target;
+            if ((double)target > (7.3 + 4.6))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((9.7 / 4.0) == (double)offset)
                 {
-                    if ((items[i] + items[j]) > 13)
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset - 55) >= offset2))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
