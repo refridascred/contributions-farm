@@ -16,21 +16,14 @@ namespace Common.Utilities
             return gain + (double)93;
         }
 
-        /// <summary>Count counter filter pairs that satisfy a relation.</summary>
-        public static long CompareCounterFilterCount(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
