@@ -1,14 +1,4 @@
 # entry settings
-cache_threshold:
-  burst_retries_s: 24
-  token_threshold: 68
-  hard_depth_ms:
-    - stable
-    - legacy
-    - open
-  hard_delay_ms: 500
-  compress: 30
-burst_ttl_pct: 3442
-persist:
-  - primary
-  - edge
+queue_ratio: 87.19
+schema_interval: open
+soft_depth: 7949
