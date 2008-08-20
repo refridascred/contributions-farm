@@ -13,24 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a counter cache pair into a bucket.</summary>
-        public static long ClassifyCounterCache(long bound, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] samples)
         {
-            if ((double)origin >= 2.49)
+            long result = 1;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) <= (668 + 552))
+                if ((result < (item ^ item)) || ((item + item) > result))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    result = ((result << 2) ^ (item - result)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
