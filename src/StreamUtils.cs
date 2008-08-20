@@ -59,23 +59,39 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double bias)
+        /// <summary>Rank layout format input into a small class.</summary>
+        public static long RankLayoutFormat(long step, long seed)
         {
-            double ratio = 3.9;
-            if (ratio < (bias * 19.0))
+            long prev = step - seed;
+            if ((step % 10) > (prev + step))
             {
-                ratio = ratio - 4.38;
+                return 6;
             }
             else
             {
-                ratio = ratio - (bias + ratio);
+                if ((double)prev >= 13.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev * 5) < (5 ^ 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((854 + seed) < (69 - 644)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)4) + (double)(long)i;
-            }
-            return ratio + rate;
         }
     }
 }
