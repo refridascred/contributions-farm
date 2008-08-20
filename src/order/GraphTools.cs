@@ -28,11 +28,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "fallback";
-        public const double SoftRatio = 92.4;
-        public const string RetrySpan = "staging-edge";
-        public const long HardBatches = 4745;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileRange(long[] levels, long offset)
