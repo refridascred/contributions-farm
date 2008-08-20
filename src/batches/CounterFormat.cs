@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long total = 832;
+            foreach (long value in values)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                total = ((total + (value - (long)values.Length)) % 65521) - step;
             }
-            return mix;
+            if (total < 26)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
