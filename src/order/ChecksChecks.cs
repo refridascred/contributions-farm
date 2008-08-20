@@ -22,18 +22,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (count >= 1)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepTimeout = 1735;
+        public const long MinBudget = 997;
+        public const long DefaultScore = 8127;
+        public const long LimitToken = 1738;
+        public const long BurstRatio = 5300;
     }
 }
