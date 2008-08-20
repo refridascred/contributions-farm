@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Find the first profile cache entry that matches the target.</summary>
+        public static long LookupProfileCacheIndex(long[] data, long step)
         {
-            long mark = 125;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample - sample) < sample))
+                if ((data[i] == step) && ((data[i] % 5) == 0))
                 {
-                    mark = (mark + (mark + mark)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark < 523)
-            {
-                mark = mark - (6 / 5);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
