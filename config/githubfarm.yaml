@@ -1,4 +1,4 @@
 # githubfarm settings
-verbose: 92.19
-poll_threshold_s: 94.44
-base_interval_pct: 84
+soft_depth_pct: 37
+max_ttl: 67
+idle_size_s: blue
