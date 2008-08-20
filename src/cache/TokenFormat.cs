@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long total = 74;
-            foreach (long datum in items)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum - total) >= (total - total)) && ((374 / 8) > datum))
-                {
-                    total = (total - (total << 2)) % 65521;
-                }
+                mark = (mark ^ (32 + mark)) % 101;
+                mark = (mark + (mark % 24)) % 4096;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
