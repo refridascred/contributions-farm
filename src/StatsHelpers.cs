@@ -62,19 +62,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long target)
         {
-            double mean = (double)(360 + 597);
-            if (mean > (double)62)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + floor) - rate;
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (5.0 * 11.0)) - (double)(long)i;
-            }
-            return mean + (double)914;
+            return -1;
         }
     }
 }
