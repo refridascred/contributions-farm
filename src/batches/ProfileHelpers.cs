@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long CacheDepth = 9984;
         public const long HardAlready = 9157;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSize = 8797;
+        public const double StepEditor = 8.48;
+        public const long BurstEditor = 8367;
+        public const long BatchCount = 14;
+        public const long SoftEditor = 8030;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] samples)
