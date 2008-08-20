@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a layout queue value against two limits.</summary>
+        public static long ClassifyLayoutQueue(long target, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            if ((target >> 2) > target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 60) > (bound + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.14 + 13.0) < (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - bound) > 1)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
