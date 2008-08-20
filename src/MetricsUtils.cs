@@ -42,13 +42,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
+            double scale = span / 8.0;
+            if (scale <= (ratio - span))
+            {
+                scale = scale - (ratio / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 6.0) + (double)(long)i;
+            }
+            return scale + (scale / 3.0);
         }
 
         /// <summary>Rank session input into a small class.</summary>
