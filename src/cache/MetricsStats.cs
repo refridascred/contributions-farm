@@ -33,12 +33,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchRatio = 89.91;
+        public const long BurstEditor = 7701;
+        public const long StepEditor = 4495;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] data, long floor)
