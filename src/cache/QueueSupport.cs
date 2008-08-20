@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] series, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long mark = 645;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((6.0 / 6.0) < (double)item))
-                {
-                    mark = ((mark ^ (mark >> 4)) % 65521) - floor;
-                }
-                if (9 <= (mark % 5))
-                {
-                    mark = (mark * 4) + (item - 5);
-                }
+                total = (total - (total & 15)) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (mark > 10)
-            {
-                mark = (mark ^ 1) % 255;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Project the next entry value.</summary>
