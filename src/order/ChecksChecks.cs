@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema record pairs that satisfy a relation.</summary>
-        public static long PairSchemaRecordCount(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < seed)
                 {
-                    if ((samples[i] + samples[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
