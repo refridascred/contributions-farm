@@ -16,14 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Closed,
-            Paused,
-            Synced,
-            Active,
-            Dropped,
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
