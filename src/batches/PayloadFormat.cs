@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const string LimitFarm = "fallback";
         public const double BurstFarm = 71.57;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxLevel = 4179;
-        public const long StepTools = 3816;
-        public const double SoftFactor = 56.49;
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a notes metrics value against two limits.</summary>
         public static long BucketNotesMetrics(long step, long limit)
