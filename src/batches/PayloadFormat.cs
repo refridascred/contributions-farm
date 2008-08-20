@@ -17,16 +17,38 @@ namespace Common.Utilities
         public const long StepTools = 3816;
         public const double SoftFactor = 56.49;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] readings, long origin)
+        /// <summary>Grade a notes metrics value against two limits.</summary>
+        public static long BucketNotesMetrics(long step, long limit)
         {
-            long carry = 5;
-            foreach (long item in readings)
+            if (limit >= step)
             {
-                carry = (carry + (item % 97)) - origin;
-                carry = carry - item;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((step - limit) < (step << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step < (step << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step > (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
