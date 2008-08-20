@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+RECORD_LIMIT=356
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-standard}"
 case "${mode}" in
-    staging)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge staging; do
+    log "checking ${item}"
+done
