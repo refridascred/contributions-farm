@@ -1,6 +1,5 @@
 {
-  "verbose": 897,
-  "idle_timeout_ms": 1024,
-  "cache_depth_count": "eu-west",
-  "default_limit": 4020
+  "channel_depth": true,
+  "burst_timeout_s": 21.48,
+  "idle_limit_ms": "blue"
 }
