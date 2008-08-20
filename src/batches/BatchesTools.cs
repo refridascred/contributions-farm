@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double scale, double bias)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            double bias2 = scale;
-            if (bias2 <= (double)2)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = bias2 - (15.0 * 7.25);
+                carry = (carry - (carry % 64)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                bias2 = bias2 + (bias2 * 14.0);
-            }
-            return bias2 - bias;
+            return carry;
         }
 
         /// <summary>Match up payload samples.</summary>
