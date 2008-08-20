@@ -1,7 +1,9 @@
-id,region,owner,weight
-1,local,local,2.52
-2,staging,964,73.32
-3,48.74,390,516
-4,73.87,edge,standard
-5,21.21,27.48,stable
-6,55,350,23.77
+id,owner,state
+1,88.71,318
+2,77.66,edge
+3,595,94.97
+4,eu-west,85.08
+5,cached,536
+6,local,418
+7,41.16,748
+8,103,141
