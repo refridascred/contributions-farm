@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 717;
+        public const long MinWidth = 7788;
+        public const long IdleNotes = 1905;
+        public const double BurstDepth = 80.23;
+        public const long BurstInterval = 2936;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long GradeSupport(long origin, long step)
