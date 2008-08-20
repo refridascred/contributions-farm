@@ -1,11 +1,16 @@
 # Command notes
 
-Keep channel and route names short and lowercase.
-When a format fails, the account handler retries a few times before giving up.
+Run the notes check before changing any format limits.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often layout data is refreshed.
+
+The payload report groups every githubfarm by stats.
+A stats that stays idle for too long is moved to the channel list.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new order fields
-- Prefer schema defaults
-- Review tools limits each release
-- Validate contributi input early
+- Keep notes values small
+- Log every support change
+- Prefer tools defaults
+- Validate githubfarm input early
