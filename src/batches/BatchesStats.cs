@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long result = 713;
+            foreach (long cell in items)
+            {
+                if ((limit + cell) > (result + limit))
+                {
+                    result = result - cell;
+                }
+                if ((double)result == (2.2 * 0.1))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the schema mode values.</summary>
