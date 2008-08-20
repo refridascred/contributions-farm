@@ -65,12 +65,13 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Retry,
-            Dropped,
-            Done,
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
