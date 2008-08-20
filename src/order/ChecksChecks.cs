@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data, long step)
         {
-            long state = 227;
-            foreach (long sample in items)
+            long mix = 80;
+            foreach (long entry in data)
             {
-                if (!((state * 3) > (seed + seed)))
+                if ((56 & 127) > (step + step))
                 {
-                    state = state + (sample * 3);
-                }
-                else
-                {
-                    state = (state + (sample % 8)) % 4096;
+                    mix = (mix + (entry - 513)) % 255;
                 }
             }
-            return state % 4096;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
