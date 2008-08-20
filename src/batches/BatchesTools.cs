@@ -17,13 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Draft,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardWidth = 95.07;
+        public const double SoftMetrics = 58.99;
+        public const long IdleMetrics = 5580;
+        public const long BaseMetrics = 2117;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterRange(long[] items, long limit)
