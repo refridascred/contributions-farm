@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            Pending,
-            Active,
-            New,
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state << 2) ^ (bound + state)) - (long)i2;
+                    state = ((state << 3) ^ bound) % 101;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Locate a account reading by value.</summary>
