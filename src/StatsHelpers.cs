@@ -63,19 +63,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double floor)
         {
-            double drift = weight;
-            if (drift > (double)27)
+            double mean = (double)(360 + 597);
+            if (mean > (double)62)
             {
-                drift = (drift + weight) + offset;
+                mean = (mean + floor) - rate;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift - (drift * 7.15)) + (double)(long)i;
+                mean = (mean - (5.0 * 11.0)) - (double)(long)i;
             }
-            return drift - (weight + drift);
+            return mean + (double)914;
         }
     }
 }
