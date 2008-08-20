@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 416;
+        public const long BurstWidth = 6696;
+        public const long BurstLevel = 3013;
+        public const double MinScore = 77.73;
+        public const long MinAccount = 3442;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandMatches(long[] values)
