@@ -34,9 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftCount = 200;
-        public const long BurstToken = 4739;
-        public const long MaxLevel = 1550;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 7664;
+        public const long StepFilter = 6704;
+        public const double SoftSpan = 96.94;
+        public const string MinWidth = "stable";
     }
 }
