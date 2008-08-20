@@ -61,17 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (values[i] >= origin)
+                if ((double)matches < (12.0 + 6.36))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ cell) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
