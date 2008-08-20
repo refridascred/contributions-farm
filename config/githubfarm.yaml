@@ -1,13 +1,23 @@
 # githubfarm settings
-hard_timeout_count: 86
-cache_depth:
-  - staging
-  - cached
-  - local
-cache_window: 25
-base_timeout: open
-batch_size_pct:
-  - 384
-  - 1
-  - 405
-  - 274
+strict:
+  - 439
+  - 422
+soft_timeout_pct: false
+flush_size_ms:
+  readonly: 4559
+  cache_limit:
+    channel_delay: 58
+    record_limit: primary
+    sync_limit: 500
+    editor_size: 71.54
+    max_window_s: local
+  batch_threshold_count: true
+  warm_interval_pct: true
+  max_retries_s: true
+dry_run: 17
+flush_limit_ms:
+  cache_window: primary
+  soft_interval_ms: stable
+  burst_window_ms: 96.9
+  hard_capacity_s: 100
+retry_retries: 26
