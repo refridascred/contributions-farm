@@ -35,19 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Dropped,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
