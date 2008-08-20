@@ -1,6 +1,8 @@
 {
-  "flush_ttl": "open",
-  "idle_delay": [202, 483, 80],
-  "cluster_ttl": "stable",
-  "batch_size": false
+  "farm_interval": false,
+  "hard_threshold_s": [51, 65],
+  "batch_capacity": "latest",
+  "burst_capacity_pct": 250,
+  "verbose": "fallback",
+  "stats_retries": false
 }
