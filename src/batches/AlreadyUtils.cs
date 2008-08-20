@@ -75,22 +75,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long mark = 93;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)data.Length << 2) >= (cell / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + (origin - 38);
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 648)
-            {
-                mark = ((mark * 5) + (mark + mark)) % 255;
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
