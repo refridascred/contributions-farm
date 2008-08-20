@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long bound)
         {
-            double load = bias + bias2;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - (double)7) + (double)(long)i;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return load + (bias + bias);
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
