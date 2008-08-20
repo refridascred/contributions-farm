@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] samples, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((double)target < (5.0 / 6.0))
+                if (item < offset)
                 {
-                    seen = (seen + 1) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
