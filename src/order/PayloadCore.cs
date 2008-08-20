@@ -14,16 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 8046;
+        public const long IdleGithubfarm = 8527;
+        public const string MinGithubfarm = "latest";
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
