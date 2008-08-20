@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
-        public static long TallyGithubfarmWindowMatches(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading & 255) <= (reading + tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a support info.</summary>
