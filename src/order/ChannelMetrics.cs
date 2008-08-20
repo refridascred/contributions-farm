@@ -37,9 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinCount = 38.29;
-        public const long RetryEntry = 7416;
-        public const long WindowTimeout = 3023;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double offset)
+        {
+            double weight2 = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (double)6) + (double)(long)i;
+            }
+            return weight2 - weight;
+        }
     }
 }
