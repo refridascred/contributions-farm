@@ -1,6 +1,12 @@
 # entry settings
-profile_size: 56
-counter_capacity: 91.54
-stats_retries: standard
-soft_retries_s: false
-idle_timeout_count: stable
+burst_retries_pct: green
+soft_limit: 62.16
+max_interval_s:
+  farm_size: local
+  verbose: 11
+  audit: 60
+  max_retries: edge
+  retry_capacity_count: 9.99
+burst_depth_ms: staging
+batch_ttl_pct: false
+soft_depth_count: 84.02
