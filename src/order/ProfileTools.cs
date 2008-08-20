@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of token already readings.</summary>
+        public static long CombineTokenAlready(long[] levels, long bound)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long acc = 11;
+            foreach (long entry in levels)
+            {
+                if ((bound > (acc - bound)) || ((double)acc <= (8.69 * 2.06)))
+                {
+                    acc = ((acc - 788) % 65521) + entry;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a buffer options.</summary>
