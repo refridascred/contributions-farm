@@ -31,19 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool VerifySchemaProfileRange(long[] data, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Paused,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Locate a token reading by value.</summary>
