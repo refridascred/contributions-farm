@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            New,
-            Draft,
-            Paused,
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
