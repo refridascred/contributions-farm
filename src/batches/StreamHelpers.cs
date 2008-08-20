@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double weight = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) - bias;
-            }
-            return weight - 12.0;
+            Stale,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Project the next queue value.</summary>
