@@ -20,22 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long floor)
         {
-            long mix = -51;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum >> 3) >= (mix / 8))
+                if (data[i] > floor)
                 {
-                    mix = (mix + 879) % 65521;
-                }
-                if (datum < (datum & 1))
-                {
-                    mix = ((mix * 4) + (665 ^ mix)) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
