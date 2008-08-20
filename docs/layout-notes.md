@@ -1,14 +1,16 @@
 # Layout notes
 
-Each tools is validated before it reaches the layout queue.
-When a counter fails, the account handler retries a few times before giving up.
+Keep filter and stream names short and lowercase.
+The stream module keeps report values in sync with the metric cache.
+The order report groups every graph by batches.
 
-Run the editor check before changing any command limits.
-The command report groups every contributi by entry.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The already module keeps already values in sync with the metric cache.
+When a context fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Review record limits each release
-- Document new record fields
+- Keep context values small
+- Validate context input early
+- Review cache limits each release
+- Log every route change
