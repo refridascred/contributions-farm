@@ -76,19 +76,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double gain, double span)
         {
-            long mix = -35;
-            foreach (long entry in values)
+            double ratio = span;
+            if (ratio < (span / 7.0))
             {
-                mix = (mix ^ (entry & 127)) % 255;
-                if ((double)mix != (double)entry)
-                {
-                    mix = (mix ^ entry) % 101;
-                }
+                ratio = (ratio - (span * 9.57)) - gain;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - (double)56;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (17.0 + ratio);
         }
     }
 }
