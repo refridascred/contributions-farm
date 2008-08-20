@@ -23,10 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 5950;
-        public const double CacheInterval = 12.13;
-        public const long BatchStream = 5880;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "strict-1";
+        public const long CacheCommits = 6115;
+        public const long MinFactor = 773;
+        public const string BaseInterval = "legacy";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] values, long floor)
