@@ -63,18 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] samples, long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((86 % 24) > floor)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Stale,
         }
     }
 }
