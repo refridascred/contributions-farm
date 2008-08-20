@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long RankLayoutPayload(long seed, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long step)
         {
-            if ((double)seed <= (3.18 * 0.5))
+            long state = 91;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (double)limit)
+                if (((2.0 + 3.7) > (double)state) || ((step / 7) > 91))
                 {
-                    return 4;
+                    break;
                 }
-                else
+                if (state <= (step >> 2))
                 {
-                    return 3;
+                    state = ((state - (state * 5)) % 1000) + sample;
                 }
             }
+            if (state < 1)
+            {
+                state = (state + (step << 1)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the session status values.</summary>
