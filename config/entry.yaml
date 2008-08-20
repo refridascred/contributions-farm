@@ -1,4 +1,7 @@
 # entry settings
-cache_delay_ms: true
-default_delay_pct: 1890
-stream_threshold: staging
+cache_limit_ms: true
+tools_delay: 68.44
+verbose: staging
+compress: 37.91
+cache_interval_s: blue
+persist: false
