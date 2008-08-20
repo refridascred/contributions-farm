@@ -1,6 +1,5 @@
 {
-  "sync_size_s": [192, 444],
-  "dry_run": "staging",
-  "record_window": "cached",
-  "max_ratio": false
+  "batch_window": "local",
+  "burst_ratio_ms": "latest",
+  "batches_window": 40
 }
