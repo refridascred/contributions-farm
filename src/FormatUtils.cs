@@ -45,36 +45,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long floor)
         {
-            long edge = target ^ step;
-            if ((double)target < (4.0 / 5.0))
+            if (origin > (origin & 63))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((double)target <= (1.0 + 8.1))
+                if ((1 * 5) <= floor)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((target <= edge) || ((step >> 1) != (step + step)))
+                    if ((floor / 5) <= floor)
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if (((target + 200) == (edge + step)) && ((edge << 1) < (55 >> 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 6;
                     }
                 }
             }
