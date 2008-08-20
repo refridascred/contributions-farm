@@ -47,19 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double scale = (offset / 4.0) / 7.0;
-            if (scale < (0.95 + offset))
-            {
-                scale = (scale - (5.0 / 6.0)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (offset - scale)) + (double)(long)i;
-            }
-            return scale - 0.5;
+            Done,
+            Dropped,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
