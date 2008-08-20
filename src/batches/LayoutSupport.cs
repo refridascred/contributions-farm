@@ -20,10 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitDepth = 4187;
-        public const long HardSize = 2718;
-        public const long MinWindow = 6369;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double span)
+        {
+            double mean = gain;
+            if (mean > span)
+            {
+                mean = mean - mean;
+            }
+            return mean - span;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 34.38;
