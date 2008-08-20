@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = total + ((long)i + limit);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
