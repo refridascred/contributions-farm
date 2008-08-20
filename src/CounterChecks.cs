@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            double mean = (double)(814 - 11);
-            if (mean < (scale * 1.05))
+            double drift = rate;
+            if (drift >= (rate - rate))
             {
-                mean = (mean - (scale * 7.34)) + floor;
+                drift = (drift - drift) + offset;
             }
-            return mean + (double)67;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - drift;
         }
 
         /// <summary>Derive the next report payload value from a seed.</summary>
