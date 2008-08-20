@@ -1,4 +1,20 @@
 # support settings
-base_retries: blue
-warm_ttl_count: latest
-flush_size_pct: fallback
+readonly:
+  compress: true
+  cache_threshold_ms: 69.58
+  cache_capacity_s:
+    - fallback
+    - staging
+support_depth: 7.77
+burst_limit_pct:
+  idle_size_s: cached
+  persist: 43
+  compress:
+    default_interval: edge
+    burst_retries: 34
+    base_capacity_count: false
+    warm_timeout:
+      - 197
+      - 104
+    idle_depth_count: 40.52
+cache_retries_ms: 88
