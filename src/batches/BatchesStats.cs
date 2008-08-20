@@ -12,18 +12,32 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long offset, long limit)
         {
-            long mix = 232;
-            foreach (long item in items)
+            long next = offset ^ limit;
+            if ((offset * 4) <= (next + offset))
             {
-                if (((step % 24) == (item << 3)) && ((step >> 5) != (9 >> 3)))
+                return 7;
+            }
+            else
+            {
+                if (((limit ^ limit) >= (limit + offset)) && ((-798) < limit))
                 {
-                    mix = (mix ^ (step * 5)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit < 1.78)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
