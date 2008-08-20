@@ -19,19 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            if ((step - origin) <= origin)
             {
-                if ((double)135 == (double)state)
-                {
-                    state = (state << 2) ^ origin;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (((step + origin) < (origin << 2)) && ((origin / 7) != ((-211) % 100)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin >> 1) != (step + 42)) && ((origin & 31) != (84 / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((15.0 * 2.65) <= (double)step) || ((step + 11) == (step ^ origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
