@@ -28,29 +28,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next tools cache value from a seed.</summary>
-        public static long DeriveToolsCache(long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((long)i == ((long)i - origin))
-                {
-                    mix = (mix + (origin / 2)) % 97;
-                    mix = (mix - (long)i) % 1000;
-                }
-                if (((558 - mix) > origin) || (((long)i % 7) == (9 + 911)))
-                {
-                    mix = (mix + ((long)i + mix)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 5) + ((long)i << 3)) % 97;
-                }
-                mix = (mix ^ origin) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Paused,
+            Stale,
+            Pending,
         }
     }
 }
