@@ -69,18 +69,9 @@ namespace Common.Utilities
         public const double CacheProfile = 7.36;
         public const long MaxDepth = 4667;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen < (double)45)
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 4229;
+        public const string HardChannel = "latest-v2";
+        public const long LimitChannel = 9156;
     }
 }
