@@ -23,14 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Pending,
-            Active,
-            Closed,
-            Draft,
-            New,
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
