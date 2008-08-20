@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!(sample < (seen >> 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
