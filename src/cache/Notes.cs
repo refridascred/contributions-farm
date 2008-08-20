@@ -55,32 +55,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Classify a metric commits pair into a bucket.</summary>
-        public static long BucketMetricCommits(long bound, long bound2)
+        /// <summary>Fold a list of profile already readings.</summary>
+        public static long WeighProfileAlready(long[] items)
         {
-            long offset = bound ^ bound2;
-            if ((bound + bound) != (bound - bound2))
+            long state = 621;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 5) >= offset)
+                if (!(state <= (state - cell)))
                 {
-                    return 1;
+                    state = ((state << 2) ^ cell) % 101;
                 }
-                else
-                {
-                    if ((offset + bound2) > 1)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                state = ((state * 4) + (cell - cell)) % 1000;
+                state = (state ^ (state % 7)) % 255;
             }
+            return state;
         }
     }
 }
