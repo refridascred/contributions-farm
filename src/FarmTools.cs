@@ -25,17 +25,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            double rate = bias;
+            if (rate > (double)473)
             {
-                acc = acc - acc;
-                acc = (acc ^ ((long)i * 2)) % 1000;
-                acc = ((acc * 3) + (long)i) % 4093;
+                rate = rate - bias;
             }
-            return acc;
+            return rate + weight;
         }
     }
 }
