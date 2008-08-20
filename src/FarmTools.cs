@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset - offset) >= tally))
+                if (series[i] < target)
                 {
-                    tally = (tally + 1) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
