@@ -53,18 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] levels, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (!!((20 ^ reading) > (reading * 4)))
+                if (reading < offset)
                 {
-                    seen = (seen + 2) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
