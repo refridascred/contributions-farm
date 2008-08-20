@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
