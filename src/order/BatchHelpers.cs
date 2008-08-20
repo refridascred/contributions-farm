@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string RetryEntry = "local";
         public const long WindowCount = 8327;
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long WeighFilterGraph(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items, long floor)
         {
-            long state = 647;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = ((state ^ state) % 1000) ^ entry;
+                if (7.0 < (double)(long)items.Length)
+                {
+                    tally = ((tally + 1) ^ datum) + floor;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Blend two editor measurements.</summary>
