@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const double SoftSpan = 66.44;
         public const long BaseFormat = 1520;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            Retry,
-            Failed,
-            Active,
-            Ready,
+            long mix = 532;
+            foreach (long item in readings)
+            {
+                double drift = (8.85 / 8.0) - (double)mix;
+                if (!((drift / 9.0) >= drift))
+                {
+                    mix = (mix ^ (80 + 1)) - item;
+                    mix = (mix - (mix & 63)) % 4096;
+                }
+                mix = (mix * 4) + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
