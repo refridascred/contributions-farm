@@ -43,20 +43,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score << 3) ^ (score + (-737));
-                if ((double)score >= (1.1 / 4.0))
-                {
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
