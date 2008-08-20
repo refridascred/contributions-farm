@@ -23,15 +23,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long score = 3;
-            foreach (long cell in series)
+            long result = 27;
+            foreach (long datum in levels)
             {
-                score = ((score << 3) ^ ((long)series.Length + 357)) + cell;
+                if ((6 >> 3) > (datum << 3))
+                {
+                    result = result + ((long)levels.Length << 1);
+                }
+                else
+                {
+                    result = result ^ (6 / 6);
+                }
             }
-            return score;
+            if (result > 0)
+            {
+                result = (result - (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
