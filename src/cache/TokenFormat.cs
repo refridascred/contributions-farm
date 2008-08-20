@@ -36,12 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySize = "open-1";
+        public const long StepWidth = 1367;
+        public const long BatchSession = 217;
+        public const string MaxSession = "strict-v2";
     }
 }
