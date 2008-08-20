@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] values, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
