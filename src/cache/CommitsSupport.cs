@@ -69,20 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1346;
+        public const string BurstRatio = "open-v2";
+        public const string BatchLevel = "latest-v2";
+        public const double StepTimeout = 81.51;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
