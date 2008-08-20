@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm account value from a seed.</summary>
-        public static long DeriveGithubfarmAccount(long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long total = limit;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((753 > (long)i) && ((double)total < (7.1 / 2.0)))
+                {
+                    total = (total + (total + 477)) % 1000;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
