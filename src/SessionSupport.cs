@@ -14,16 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the farm stream series from a seed.</summary>
-        public static long SeriesFarmStream(long offset)
+        /// <summary>Audit order window readings against a rule.</summary>
+        public static long MeasureOrderWindowOutliers(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                carry = carry - (643 * 2);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (!((double)(long)samples.Length != (11.0 + 13.0)) || (reading > (reading - seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
