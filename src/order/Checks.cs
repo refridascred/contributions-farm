@@ -52,11 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream command figure with a bias.</summary>
-        public static double BlendStreamCommand(double scale, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] levels, long floor)
         {
-            double weight = (double)(0 + (-46));
-            return (weight + scale) + bias;
+            long anchor = 653;
+            foreach (long value in levels)
+            {
+                if ((15.0 * 3.27) > (double)value)
+                {
+                    anchor = ((anchor - (anchor >> 1)) % 255) + floor;
+                }
+                if ((double)value < (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
