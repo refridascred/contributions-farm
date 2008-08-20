@@ -79,20 +79,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Classify a editor buffer pair into a bucket.</summary>
+        public static long SortEditorBuffer(long offset, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            if (((offset >> 4) <= (step & 1)) || ((3.0 + 7.0) < (double)step))
             {
-                result = ((result << 2) ^ (result & 1)) % 4096;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (result ^ (origin & 1)) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (((step ^ 124) > step) && (step < (offset << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
