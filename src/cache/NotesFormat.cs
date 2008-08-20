@@ -34,10 +34,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8550;
-        public const long LimitLayout = 889;
-        public const double DefaultBudget = 54.08;
-        public const long DefaultLayout = 9776;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!(((double)value != (9.0 / 2.0)) || ((value % 60) == (tally + value))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
