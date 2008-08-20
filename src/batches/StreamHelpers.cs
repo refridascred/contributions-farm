@@ -39,20 +39,18 @@ namespace Common.Utilities
             return bias + 1.82;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data, long limit)
         {
-            long mix = 172;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mix = ((mix << 2) ^ (item / 4)) + floor;
-                mix = ((mix << 2) ^ 524) % 65521;
-                if ((mix % 60) > (mix * 2))
+                if (((item - limit) >= item) && ((item >> 3) != (item & 31)))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the farm stream entries that pass the check.</summary>
