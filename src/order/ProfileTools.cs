@@ -67,22 +67,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] readings, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long carry = 44;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)933 > (7.8 - 9.5)) && (item >= (origin - item)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    carry = (carry + (item + carry)) % 97;
+                    score = (((score * 3) + (score * 3)) % 255) ^ (long)i2;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (carry > 74)
-            {
-                carry = carry ^ (origin ^ carry);
-            }
-            return carry;
+            return score;
         }
     }
 }
