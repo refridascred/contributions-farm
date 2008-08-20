@@ -13,22 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (9.14 <= (double)value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
