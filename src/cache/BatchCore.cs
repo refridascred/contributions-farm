@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 35;
-        public const long BurstRatio = 7218;
-        public const double StepMetric = 13.07;
-        public const double MaxWidth = 64.52;
-        public const long DefaultBudget = 3247;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double span)
+        {
+            double gain = span;
+            if (gain > gain)
+            {
+                gain = (gain + (span * 5.2)) - scale;
+            }
+            return gain + (double)93;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
