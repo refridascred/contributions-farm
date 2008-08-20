@@ -59,21 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
