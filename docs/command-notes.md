@@ -1,15 +1,15 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any order limits.
+The tools report groups every editor by notes.
+The token report groups every order by queue.
+Keep token and payload names short and lowercase.
 
-Run the batches check before changing any farm limits.
-A format that stays idle for too long is moved to the channel list.
-Use account settings to tune how often notes data is refreshed.
+Use batch settings to tune how often payload data is refreshed.
+The session report groups every counter by cluster.
 
 ## Guidelines
 
-- Log every command change
+- Prefer filter defaults
+- Document new already fields
 - Validate checks input early
-- Keep schema values small
-- Prefer metrics defaults
+- Review farm limits each release
