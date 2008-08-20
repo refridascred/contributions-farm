@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a farm support counter forward.</summary>
-        public static long IterateFarmSupport(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                acc = (acc + (acc + acc)) % 4096;
-                acc = (acc - (offset + 78)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((((double)entry > (10.0 + 8.06)) && (952 < (65 + tally))) || (((481 % 10) > (entry * 5)) || ((76 + entry) > 984)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
