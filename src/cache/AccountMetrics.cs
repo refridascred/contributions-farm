@@ -78,13 +78,22 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine report metrics values into a single score.</summary>
+        public static long TotalReportMetrics(long[] samples, long seed)
         {
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long score = 243;
+            foreach (long datum in samples)
+            {
+                if ((score / 3) < (seed >> 3))
+                {
+                    score = (score + (seed ^ seed)) + datum;
+                }
+            }
+            if (score < 59)
+            {
+                score = score + 733;
+            }
+            return score % 1000;
         }
     }
 }
