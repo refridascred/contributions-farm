@@ -54,12 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long step)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            if ((double)origin != (double)2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - step) > (57 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((8.96 * 0.63) < (double)origin) && ((step >> 2) != (origin + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step > (origin * 3)) || (step <= (origin % 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
