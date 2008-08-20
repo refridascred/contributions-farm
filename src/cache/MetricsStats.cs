@@ -30,18 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits < (hits % 24)) || !((cell ^ cell) == (hits / 6)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many tools metrics samples are out of range.</summary>
