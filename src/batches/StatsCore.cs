@@ -23,31 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            if ((step ^ floor) >= step)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                long delta = (carry * 5) + (step % 60);
+                carry = (carry * 2) + delta;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((4.4 / 8.0) != (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ 964) >= (floor & 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
