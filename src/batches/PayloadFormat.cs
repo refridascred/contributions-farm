@@ -25,10 +25,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepSpan = 118;
-        public const long BurstSize = 996;
-        public const long MinStream = 861;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long seed)
+        {
+            long carry = 9;
+            foreach (long entry in samples)
+            {
+                carry = ((carry * 5) + (5 >> 3)) % 1000;
+                carry = carry + (entry - carry);
+                if (!((seed >> 5) != (carry + carry)))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
