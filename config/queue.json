@@ -1,7 +1,12 @@
 {
-  "entry_interval": [178, 66, 266, 37],
-  "base_ttl_s": "stable",
-  "idle_size": "edge",
-  "hard_depth_s": "eu-west",
-  "max_size_count": 5078
+  "readonly": 63,
+  "strict": "blue",
+  "sync_delay_ms": "green",
+  "batches_size": {
+    "audit": "primary",
+    "poll_depth_pct": false,
+    "schema_timeout": 56,
+    "hard_limit_pct": ["fallback", "blue", "standard"]
+  },
+  "max_threshold_pct": 6163
 }
