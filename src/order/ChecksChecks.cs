@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Done,
-            Failed,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryBudget = 1990;
+        public const string SoftSession = "open-1";
+        public const long LimitSession = 6608;
+        public const long WindowSession = 230;
+        public const long BatchCount = 650;
 
         /// <summary>Count schema record pairs that satisfy a relation.</summary>
         public static long PairSchemaRecordCount(long[] samples)
