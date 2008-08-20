@@ -50,23 +50,30 @@ namespace Common.Utilities
             return weight + (weight * 8.2);
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long seed)
+        /// <summary>Classify a metric commits pair into a bucket.</summary>
+        public static long BucketMetricCommits(long bound, long bound2)
         {
-            long prev = step - seed;
-            if (((6.3 - 11.0) < (double)seed) || (9.2 > (double)prev))
+            long offset = bound ^ bound2;
+            if ((bound + bound) != (bound - bound2))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((75 < (step & 31)) && ((double)seed < (0.12 + 13.0)))
+                if ((offset >> 5) >= offset)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if ((offset + bound2) > 1)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
