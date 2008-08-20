@@ -28,18 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (2.1 / 9.0))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of stats batches readings.</summary>
