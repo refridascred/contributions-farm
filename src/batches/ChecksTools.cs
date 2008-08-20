@@ -39,14 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Idle,
-            Dropped,
-            Closed,
-            New,
-            Retry,
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
