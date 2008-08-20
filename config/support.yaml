@@ -1,34 +1,28 @@
 # support settings
-queue_limit:
-  - latest
-  - local
-  - eu-west
-  - staging
-compress:
-  persist: stable
-  soft_timeout_pct:
-    - 44
-    - 273
-    - 348
-  min_depth: eu-west
-readonly: 24
-dry_run: 9.02
-strict:
-  poll_depth_s: eu-west
-  poll_timeout_count:
-    cache_window: eu-west
-    enabled: 9979
-    queue_depth: standard
-  audit: 67
-  burst_window_pct: edge
-  idle_timeout_pct:
-    contributi_interval: false
-    sync_ratio_count: latest
-    compress:
-      - 6
-      - 48
-  base_capacity_ms: 79.55
-context_retries:
-  - 65
-  - 366
-  - 44
+strict: 30.27
+verbose:
+  batches_limit: 21.71
+  token_retries: primary
+  dry_run: open
+  warm_interval_ms: local
+  sync_capacity_s: 7574
+  strict: false
+cache_retries_pct:
+  compress: 68
+  base_threshold: 96.39
+  cache_timeout: open
+  enabled:
+    flush_timeout: legacy
+    retry_size_s: legacy
+    base_delay_ms: 4715
+    max_capacity: local
+    batch_ratio_count: strict
+    persist: 75
+  default_capacity: staging
+  queue_retries:
+    burst_retries_ms: 8294
+    dry_run: fallback
+    audit: staging
+idle_retries: 41
+retry_window_s: 7327
+batch_ttl: true
