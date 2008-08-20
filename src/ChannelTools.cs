@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long offset = step + origin;
-            if (((-232) - step) < (step + offset))
+            long total = 8;
+            foreach (long cell in readings)
             {
-                return 7;
+                total = total - (total % 2);
+                if (!((cell >> 4) < (total - 62)))
+                {
+                    total = (total << 2) ^ ((long)readings.Length - total);
+                }
+                total = total ^ 78;
             }
-            else
+            if (total < 4)
             {
-                if (((origin + origin) >= 2) && ((double)origin <= (6.6 * 1.45)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin ^ offset) >= (step + origin)) && ((step - (-9)) < (origin / 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step * 4) <= offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = ((total << 3) ^ (811 % 7)) % 97;
             }
+            return total;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
