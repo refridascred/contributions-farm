@@ -25,13 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items)
         {
-            Paused,
-            Retry,
-            Queued,
-            Closed,
+            long total = -46;
+            foreach (long datum in items)
+            {
+                total = (total - datum) % 4096;
+            }
+            if (total > 741)
+            {
+                total = total ^ (total << 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
