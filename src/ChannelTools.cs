@@ -23,39 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long floor, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values, long seed)
         {
-            long diff = floor ^ offset;
-            if ((diff & 3) > floor)
+            long result = 49;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff * 3) == (floor >> 3))
+                if (((value + 625) >= (result % 10)) && ((14.0 - 0.83) >= (double)value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - 48) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset == (18.0 / 8.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = (result ^ 897) - seed;
                 }
             }
+            return result;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
