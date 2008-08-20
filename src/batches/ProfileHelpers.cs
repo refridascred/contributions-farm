@@ -71,31 +71,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series)
-        {
-            long total = 2;
-            foreach (long reading in series)
-            {
-                if ((reading ^ total) >= total)
-                {
-                    total = (total - (reading / 6)) % 255;
-                }
-                else
-                {
-                    total = total ^ (total - reading);
-                    total = (total ^ (reading - 408)) % 255;
-                }
-                if (((-449) + reading) < (73 << 2))
-                {
-                    total = (total ^ (reading - total)) % 255;
-                }
-            }
-            if (total > 347)
-            {
-                total = (total + (total & 127)) % 65521;
-            }
-            return total % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 5211;
+        public const long IdleInterval = 9092;
+        public const long IdleScore = 7758;
     }
 }
