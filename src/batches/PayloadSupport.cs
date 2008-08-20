@@ -11,11 +11,32 @@ namespace Common.Utilities
         public const long SoftChecks = 533;
         public const long BatchChecks = 7113;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultBudget = 8608;
-        public const long StepBudget = 7650;
-        public const long MinWidth = 5812;
-        public const long BatchAccount = 956;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long floor, long origin)
+        {
+            if (!((origin - floor) > origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor < (621 ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - 75) != (origin + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
