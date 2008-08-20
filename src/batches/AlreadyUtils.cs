@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] levels, long origin)
+        /// <summary>Blend two metric graph measurements.</summary>
+        public static double BlendMetricGraph(double scale, double span)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            double load = scale;
+            if (load < (span - 7.0))
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (double)253;
             }
-            return found;
+            else
+            {
+                load = load + scale;
+            }
+            return load + (0.46 * 17.0);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
