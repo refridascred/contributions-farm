@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many command token samples are out of range.</summary>
-        public static long MeasureCommandTokenMatches(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = 645;
+            foreach (long item in series)
             {
-                if ((36 + 63) > (tally << 3))
+                if (!((6.0 / 6.0) < (double)item))
                 {
-                    tally = (tally + 1) + reading;
+                    mark = ((mark ^ (mark >> 4)) % 65521) - floor;
+                }
+                if (9 <= (mark % 5))
+                {
+                    mark = (mark * 4) + (item - 5);
                 }
             }
-            return tally;
+            if (mark > 10)
+            {
+                mark = (mark ^ 1) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Project the next entry value.</summary>
