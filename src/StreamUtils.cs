@@ -29,21 +29,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Find the first metric order entry that matches the target.</summary>
+        public static long FindMetricOrderIndex(long[] items, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((182 % 24) == (origin * 3)) || ((score << 1) >= score))
+                if (items[i] == target)
                 {
-                    score = (score ^ origin) % 255;
-                    score = ((score * 2) + score) % 4096;
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
