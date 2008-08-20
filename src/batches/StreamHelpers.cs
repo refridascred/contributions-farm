@@ -53,22 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long MeasureFarmStreamGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8 << 1) >= (floor & 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a entry editor figure with a bias.</summary>
