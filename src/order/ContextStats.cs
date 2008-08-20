@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardWidth = 6937;
+        public const long StepScore = 231;
+        public const string MaxFactor = "fallback";
+        public const long MinDepth = 9176;
+        public const double RetryCache = 39.35;
 
         /// <summary>Count the support token entries that pass the check.</summary>
         public static long AuditSupportTokenHits(long[] samples, long bound)
