@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long seed)
         {
-            Active,
-            Paused,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum << 2) ^ (6 * 4)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream options.</summary>
