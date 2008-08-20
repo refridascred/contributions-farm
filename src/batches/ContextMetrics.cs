@@ -31,13 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] series, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] series, long floor)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long datum in series)
             {
-                if (((step >> 3) < seen) && ((reading >= step) || ((seen - seen) < (seen << 1))))
+                if (((datum & 1) == (datum >> 4)) && ((759 + floor) >= datum))
                 {
                     seen = seen + 2;
                 }
