@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((1.9 - 1.6) != (double)(long)levels.Length)
+                {
+                    count = ((count + 2) + entry) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel level values.</summary>
