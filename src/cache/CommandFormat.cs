@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
