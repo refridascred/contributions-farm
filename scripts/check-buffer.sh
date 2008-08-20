@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=70
+BUFFER_LIMIT=248
 log "limit is ${BUFFER_LIMIT}"
-
-for item in staging local standard green; do
-    log "checking ${item}"
-done
