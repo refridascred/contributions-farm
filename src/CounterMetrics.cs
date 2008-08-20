@@ -25,12 +25,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowCount = 6401;
-        public const double StepScore = 75.68;
-        public const long DefaultContext = 8248;
-        public const long CacheContext = 6185;
-        public const long MaxContext = 4932;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] values, long step)
+        {
+            long mark = -3;
+            foreach (long datum in values)
+            {
+                mark = (mark ^ (datum + mark)) - step;
+            }
+            return mark;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] readings)
