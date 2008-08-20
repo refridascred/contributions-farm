@@ -28,18 +28,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (7.0 < (double)(long)items.Length)
+                if (entry <= floor)
                 {
-                    tally = ((tally + 1) ^ datum) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a tools entry.</summary>
