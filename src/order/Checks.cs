@@ -39,22 +39,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data, long seed)
+        /// <summary>Count commits report pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsReportCount(long[] data)
         {
-            long acc = 2;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((seed + seed) >= ((long)data.Length ^ acc)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc * 3) + value) % 4096;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 224)
-            {
-                acc = ((acc * 5) + 331) % 255;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a stream command figure with a bias.</summary>
