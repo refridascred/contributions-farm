@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long step2 = step + offset;
-            if (step <= (step2 & 127))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((819 + step2) > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
