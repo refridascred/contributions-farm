@@ -14,35 +14,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long target, long seed)
         {
-            if ((floor / 7) <= (668 % 97))
+            long cur = target ^ seed;
+            if ((target + seed) <= (cur + target))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((floor + floor2) == (floor * 2))
+                if (((seed % 5) < 59) || ((double)seed <= (2.9 + 4.0)))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)7 >= (double)floor2)
+                    if (!((3 ^ cur) <= (target << 3)))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if ((18 + floor) < (floor2 + floor2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 5;
                     }
                 }
             }
