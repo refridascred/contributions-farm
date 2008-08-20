@@ -45,39 +45,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long target, long target2)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long prev = target - target2;
-            if ((2.5 - 6.2) >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (0.8 >= (double)target2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((846 >> 2) == (prev >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target & 255) == (prev * 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Rank session input into a small class.</summary>
