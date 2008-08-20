@@ -37,9 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 4464;
-        public const long WindowBudget = 975;
-        public const long WindowSchema = 4981;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
