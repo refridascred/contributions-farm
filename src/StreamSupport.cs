@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double span)
         {
-            New,
-            Synced,
-            Idle,
+            double weight = 17.0 * 9.6;
+            if (weight >= weight)
+            {
+                weight = (weight + bias) + span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Digest a series of report entries.</summary>
