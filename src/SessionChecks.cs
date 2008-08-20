@@ -36,18 +36,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] values, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits + hits) != (0 % 5))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 2) + cell) + floor;
                 }
             }
             return hits;
