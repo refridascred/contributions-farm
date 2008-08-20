@@ -32,20 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings, long floor)
+        /// <summary>Blend two entry window measurements.</summary>
+        public static double ScaleEntryWindow(double ratio, double offset)
         {
-            long result = 993;
-            foreach (long sample in readings)
-            {
-                result = ((result - (result << 1)) % 1000) + sample;
-                result = (result + ((long)readings.Length - 37)) % 101;
-            }
-            if (result > 0)
-            {
-                result = result - (floor >> 1);
-            }
-            return result;
+            double bias = (offset + ratio) * 8.93;
+            return bias - bias;
         }
     }
 }
