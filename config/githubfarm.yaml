@@ -1,18 +1,11 @@
 # githubfarm settings
-support_delay:
-  - latest
-  - local
-poll_depth: primary
-sync_ratio: legacy
-sync_window: eu-west
-format_size: latest
-base_capacity:
-  burst_threshold:
-    soft_depth: true
-    readonly: open
-    buffer_depth: 40
-    retry_ratio: 7116
-    already_depth: 664
-  payload_limit: eu-west
-  base_size: eu-west
-  cluster_retries: 80
+cluster_window:
+  - 304
+  - 44
+  - 19
+  - 42
+max_ttl_s:
+  - 224
+  - 436
+  - 27
+farm_retries: true
