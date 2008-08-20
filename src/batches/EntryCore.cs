@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (reading > bound)
+                if (count < (cell << 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - floor;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
