@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4975;
-        public const double HardBudget = 70.3;
-        public const string LimitCache = "strict-1";
-        public const string MinCache = "staging-1";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data, long floor)
+        {
+            long carry = 85;
+            foreach (long datum in data)
+            {
+                carry = ((carry - (7 % 16)) + datum) + floor;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] samples)
