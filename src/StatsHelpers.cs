@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next context support value from a seed.</summary>
-        public static long DeriveContextSupport(long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
