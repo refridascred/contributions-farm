@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - step;
+                carry = ((carry * 2) + ((long)i + 434)) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
