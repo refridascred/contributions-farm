@@ -33,34 +33,35 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long target, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long origin, long offset)
         {
-            if (target > (target & 63))
+            long lane = origin + offset;
+            if ((double)origin >= 0.9)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((target + target) > floor)
+                if ((offset / 2) < (56 * 2))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (!((target - target) <= (target >> 3)))
+                    if (!((origin & 255) == (lane - offset)))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        if ((floor / 6) > (2 % 100))
+                        if ((9.26 - 7.8) != (double)origin)
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
