@@ -50,24 +50,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                score = (score ^ score) % 255;
-                if (!(score <= floor))
-                {
-                    score = (score - (score + score)) % 1000;
-                }
-                if ((floor / 7) > (floor + floor))
-                {
-                    score = (score ^ 538) % 101;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
     }
 }
