@@ -1,7 +1,4 @@
 # support settings
-warm_ratio_pct: false
-idle_ratio_s: staging
-idle_capacity_ms: local
-notes_retries: 57
-base_ratio: primary
-route_interval: staging
+burst_interval_s: 1024
+audit: blue
+flush_window_count: latest
