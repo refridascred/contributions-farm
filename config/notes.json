@@ -1,17 +1,6 @@
 {
-  "base_timeout_ms": true,
-  "compress": {
-    "audit": {
-      "dry_run": "staging",
-      "cache_ttl": "standard",
-      "base_window_s": 22.19,
-      "burst_retries_pct": [48, 330, 69],
-      "default_threshold": 54
-    },
-    "burst_delay_s": 500,
-    "verbose": ["blue", "standard", "primary", "legacy"],
-    "persist": 1667
-  },
-  "audit": 6518,
-  "warm_depth_s": ["legacy", "open"]
+  "dry_run": "blue",
+  "farm_ttl": "fallback",
+  "sync_capacity_ms": 55.01,
+  "sync_ratio_count": 17.22
 }
