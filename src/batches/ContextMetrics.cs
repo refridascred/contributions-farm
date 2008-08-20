@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8797;
+        public const string WindowSpan = "open-v2";
+        public const long LimitFactor = 8551;
+        public const long WindowFactor = 493;
+        public const long MaxScore = 2388;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LocateContextIndex(long[] readings, long limit)
