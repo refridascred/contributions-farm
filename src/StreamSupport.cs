@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 68;
+            foreach (long cell in samples)
             {
-                if ((double)matches > (5.9 * 1.0))
+                if (((long)samples.Length + (-520)) >= mark)
                 {
-                    matches = (matches + 1) ^ cell;
+                    mark = (mark ^ (mark + cell)) % 97;
                 }
+                mark = mark + (494 - cell);
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Derive the next tools cache value from a seed.</summary>
