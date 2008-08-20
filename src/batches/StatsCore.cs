@@ -41,22 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] samples, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((844 - bound) >= (value - 518))
+                if (!((57 / 6) >= origin) && ((68 >> 3) == (datum + matches)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a farm entry.</summary>
