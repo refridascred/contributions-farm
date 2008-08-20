@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 3;
-        public const long DefaultRatio = 18;
-        public const double MaxTimeout = 47.43;
-        public const double LimitReport = 23.67;
-        public const double WindowReport = 91.27;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] data)
