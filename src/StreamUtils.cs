@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double rate, double offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            double weight = offset;
-            if (weight >= (double)19)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                weight = weight - (offset + 4.17);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (double)(-13);
-            }
-            return weight - rate;
+            return total;
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
