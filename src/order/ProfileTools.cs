@@ -19,13 +19,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)135 == (double)state)
+                {
+                    state = (state << 2) ^ origin;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics state values.</summary>
