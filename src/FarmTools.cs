@@ -25,14 +25,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            Draft,
-            Stale,
-            Pending,
-            Synced,
-            Active,
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc - acc;
+                acc = (acc ^ ((long)i * 2)) % 1000;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
