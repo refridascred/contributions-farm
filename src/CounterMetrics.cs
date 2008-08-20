@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = -34;
+            foreach (long sample in series)
             {
-                if ((double)matches != (18.0 - 20.0))
-                {
-                    matches = (matches + 2) + value;
-                }
+                state = ((state + state) + sample) + offset;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a filter info.</summary>
