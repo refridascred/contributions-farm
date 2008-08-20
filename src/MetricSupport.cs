@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 5581;
-        public const double MinNotes = 12.92;
-        public const string StepBudget = "latest-edge";
-        public const long BurstNotes = 4437;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            New,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
