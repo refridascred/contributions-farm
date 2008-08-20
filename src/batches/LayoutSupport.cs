@@ -51,11 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "alpha-v2";
-        public const long WindowSpan = 7010;
-        public const string WindowDepth = "strict-v2";
-        public const string MaxWidth = "open";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double ratio, double bias)
+        {
+            double drift = (double)(7 + 6);
+            if (drift > (bias - drift))
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            return drift + (double)(-51);
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadBounds(long[] items, long bound)
