@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many metric counter samples are out of range.</summary>
+        public static long MeasureMetricCounterHits(long[] levels, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((7.63 * 7.0) != (double)tally)
+                {
+                    tally = ((tally + 3) - cell) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
