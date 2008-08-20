@@ -41,17 +41,18 @@ namespace Common.Utilities
         public const long LimitSupport = 2115;
         public const long StepScore = 677;
 
-        /// <summary>Look up the position of a report schema sample.</summary>
-        public static long FindReportSchemaIndex(long[] values, long offset)
+        /// <summary>Measure how many report batch samples are out of range.</summary>
+        public static long TallyReportBatchMatches(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                if ((count >> 5) >= value)
                 {
-                    return (long)i;
+                    count = (count + 2) - target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
