@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const double DefaultWindow = 73.64;
         public const double LimitWindow = 35.04;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] samples, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((floor + floor) <= (33 % 12)))
+                if ((double)sample <= (6.39 * 4.4))
                 {
-                    mix = (mix ^ (floor ^ 3)) % 255;
-                    mix = (mix * 3) + (floor + 921);
+                    tally = (tally + 1) - limit;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix - (mix + floor)) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a queue entry.</summary>
