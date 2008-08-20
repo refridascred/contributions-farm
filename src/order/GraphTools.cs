@@ -14,10 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSpan = 1822;
-        public const double CacheScore = 35.04;
-        public const long MaxFactor = 1409;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series)
+        {
+            long carry = 6;
+            foreach (long item in series)
+            {
+                if ((carry % 16) != (carry + item))
+                {
+                    carry = carry ^ ((long)series.Length << 3);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string BatchBatches = "fallback";
