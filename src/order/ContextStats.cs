@@ -32,25 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total > ((long)i - limit)) && ((limit + limit) <= (total ^ (long)i)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total - total;
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total << 3) ^ ((long)i >> 5)) % 1000;
-                if (limit < (limit / 4))
-                {
-                    total = (total ^ (77 + (long)i)) % 4096;
-                    total = (total - (total << 2)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
     }
 }
