@@ -1,5 +1,6 @@
 {
-  "flush_depth_ms": 500,
-  "compress": [388, 387, 206, 306],
-  "cache_interval_ms": true
+  "min_capacity_ms": 28.38,
+  "min_ratio": 5.37,
+  "poll_depth_ms": "primary",
+  "compress": false
 }
