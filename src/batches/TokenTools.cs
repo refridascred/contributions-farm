@@ -22,19 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
