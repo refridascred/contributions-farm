@@ -84,18 +84,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)datum != (9.0 + 7.59)))
+                if (readings[i] <= floor)
                 {
-                    seen = (seen + 1) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
