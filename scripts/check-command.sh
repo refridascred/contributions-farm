@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary cached edge eu-west; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=174
+COMMAND_LIMIT=131
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-staging}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
