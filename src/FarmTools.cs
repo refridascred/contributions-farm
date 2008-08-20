@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftTimeout = 7435;
-        public const long BurstScore = 1097;
-        public const double SoftScore = 18.03;
-        public const string DefaultDepth = "standard-1";
-        public const long IdleChecks = 2691;
+        /// <summary>Validate entry graph readings against a bound.</summary>
+        public static bool GuardEntryGraphBounds(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
