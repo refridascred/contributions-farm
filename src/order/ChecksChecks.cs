@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryBudget = 1990;
-        public const string SoftSession = "open-1";
-        public const long LimitSession = 6608;
-        public const long WindowSession = 230;
-        public const long BatchCount = 650;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (datum < 28)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count schema record pairs that satisfy a relation.</summary>
         public static long PairSchemaRecordCount(long[] samples)
