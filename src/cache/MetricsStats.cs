@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] levels, long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) > floor)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
