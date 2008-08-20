@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8145;
+        public const long WindowStats = 5288;
+        public const long StepStats = 6833;
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double gain, double floor)
