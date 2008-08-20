@@ -54,16 +54,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = 572;
+            foreach (long value in data)
             {
-                carry = (carry - (carry - carry)) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((double)anchor != (1.8 - 1.42))
+                {
+                    anchor = ((anchor + (anchor % 64)) % 4096) + value;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ offset) % 1000;
+                }
+                if ((double)anchor >= (1.0 - 4.31))
+                {
+                    break;
+                }
             }
-            return carry;
+            return anchor % 4096;
         }
     }
 }
