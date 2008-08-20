@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((695 << 3) != (sample ^ sample)))
+                if (!((mix * 3) < bound))
                 {
-                    hits = hits + 3;
+                    mix = ((mix * 4) + mix) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the metric mode values.</summary>
