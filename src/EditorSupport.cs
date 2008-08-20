@@ -38,38 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            if (((198 + origin) == (offset + origin)) && (9 <= offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((19.0 + 10.0) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin >= (3.8 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(origin > offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Define account limits and defaults.</summary>
