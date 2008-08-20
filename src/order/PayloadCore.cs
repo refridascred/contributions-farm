@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit stream account readings against a rule.</summary>
-        public static long AuditStreamAccountMatches(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits << 1) > target)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 6538;
+        public const long HardSize = 560;
+        public const long MinWindow = 1055;
+        public const long DefaultWindow = 5544;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long offset)
