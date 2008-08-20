@@ -1,23 +1,7 @@
 # support settings
-idle_timeout_pct: 623
-buffer_ratio: green
-verbose: 21
-retry_ratio: 2758
-min_depth:
-  - legacy
-  - strict
-buffer_delay:
-  flush_interval_ms: 30
-  profile_interval: staging
-  metric_depth:
-    buffer_timeout: 94.39
-    warm_capacity_pct: cached
-    strict:
-      - 235
-      - 264
-      - 242
-    account_retries: legacy
-    cache_retries_ms: false
-    poll_ttl: 65.49
-  order_size: false
-  idle_timeout_s: 3280
+cache_ratio_ms: 7546
+retry_depth_pct: true
+format_depth: 6735
+dry_run: 72.95
+sync_window_s: staging
+batch_window: legacy
