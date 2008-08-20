@@ -29,17 +29,12 @@ namespace Common.Utilities
         public const double BatchReport = 40.42;
         public const long StepReport = 2733;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] readings, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
