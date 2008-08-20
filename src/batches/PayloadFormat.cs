@@ -62,19 +62,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] samples, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long origin)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long step = target ^ origin;
+            if (origin < (step << 3))
             {
-                if (item > bound)
+                return 4;
+            }
+            else
+            {
+                if (16 >= (target << 1))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
