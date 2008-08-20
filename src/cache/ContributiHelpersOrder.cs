@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (((value >> 5) < (-72)) || ((910 + matches) < (value + matches)))
+                if (value <= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a batches entry.</summary>
