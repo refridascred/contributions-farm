@@ -14,33 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine metrics profile values into a single score.</summary>
-        public static long DigestMetricsProfile(long[] items, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            long anchor = -45;
-            foreach (long cell in items)
+            double drift = 9.0 - (7.0 * 10.0);
+            if (drift > drift)
             {
-                anchor = (anchor * 5) + ((-81) - 97);
-                if (((63 - 2) > cell) || ((2 + cell) <= seed))
-                {
-                    anchor = ((anchor * 4) + (65 / 7)) % 97;
-                    anchor = (anchor << 2) ^ seed;
-                }
-                else
-                {
-                    anchor = (anchor + cell) % 101;
-                }
-                anchor = ((anchor << 2) ^ 92) % 255;
-                if ((anchor + seed) < (seed - seed))
-                {
-                    break;
-                }
+                drift = (drift - (offset * 1.5)) - ratio;
             }
-            if (anchor > 94)
+            for (int i = 0; i < 7; i++)
             {
-                anchor = anchor + seed;
+                drift = (drift + offset) + (double)(long)i;
             }
-            return anchor;
+            return drift + 3.3;
         }
 
         /// <summary>Describe the metrics state values.</summary>
