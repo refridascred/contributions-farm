@@ -1,4 +1,18 @@
 # githubfarm settings
-burst_ratio_ms: 49
-sync_window: primary
-warm_timeout: 68
+support_delay:
+  - latest
+  - local
+poll_depth: primary
+sync_ratio: legacy
+sync_window: eu-west
+format_size: latest
+base_capacity:
+  burst_threshold:
+    soft_depth: true
+    readonly: open
+    buffer_depth: 40
+    retry_ratio: 7116
+    already_depth: 664
+  payload_limit: eu-west
+  base_size: eu-west
+  cluster_retries: 80
