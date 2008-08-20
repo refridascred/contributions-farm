@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long LimitBudget = 9826;
         public const long BurstBudget = 4856;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long acc = -7;
-            foreach (long entry in series)
-            {
-                acc = (acc ^ entry) % 65521;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
