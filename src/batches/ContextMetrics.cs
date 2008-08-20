@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long step)
         {
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
