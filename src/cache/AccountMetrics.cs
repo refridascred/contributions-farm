@@ -71,18 +71,12 @@ namespace Common.Utilities
             return gain - (bias - gain);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] series, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (double)tally)
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Done,
         }
     }
 }
