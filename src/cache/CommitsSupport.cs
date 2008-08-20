@@ -40,19 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long AuditAccountCommandHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits <= (value & 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseScore = 2525;
+        public const long WindowTimeout = 1121;
+        public const string BaseCount = "latest-edge";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowMetrics = 2538;
