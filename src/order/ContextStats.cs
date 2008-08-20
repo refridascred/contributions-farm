@@ -32,23 +32,21 @@ namespace Common.Utilities
         public const long StepInterval = 7942;
         public const string SoftFarm = "cached-1";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long state = 916;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ datum) % 255;
-                if ((floor - 922) != (state ^ floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 165)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            return seen;
         }
     }
 }
