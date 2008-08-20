@@ -29,22 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] readings)
         {
-            long mix = 2;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)item <= (3.0 * 10.0))
+                if (matches < (datum / 7))
                 {
-                    mix = mix - (step * 5);
+                    matches = matches + 3;
                 }
             }
-            if (mix < 15)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
