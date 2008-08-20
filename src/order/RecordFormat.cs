@@ -14,14 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheDepth = 64.63;
+        public const long BaseCount = 3681;
+        public const long DefaultFarm = 2807;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] levels)
