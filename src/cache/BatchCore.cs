@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const long CacheChannel = 8495;
         public const string LimitChannel = "fallback-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleCount = "cached-edge";
-        public const string BaseRecord = "cached-1";
-        public const long SoftScore = 5428;
-        public const long LimitRatio = 9109;
-        public const string DefaultRecord = "local-1";
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long CountFilterRouteHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches << 1) <= (datum >> 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
