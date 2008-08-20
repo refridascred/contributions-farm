@@ -1,4 +1,34 @@
 # support settings
-burst_interval_s: 1024
-audit: blue
-flush_window_count: latest
+queue_limit:
+  - latest
+  - local
+  - eu-west
+  - staging
+compress:
+  persist: stable
+  soft_timeout_pct:
+    - 44
+    - 273
+    - 348
+  min_depth: eu-west
+readonly: 24
+dry_run: 9.02
+strict:
+  poll_depth_s: eu-west
+  poll_timeout_count:
+    cache_window: eu-west
+    enabled: 9979
+    queue_depth: standard
+  audit: 67
+  burst_window_pct: edge
+  idle_timeout_pct:
+    contributi_interval: false
+    sync_ratio_count: latest
+    compress:
+      - 6
+      - 48
+  base_capacity_ms: 79.55
+context_retries:
+  - 65
+  - 366
+  - 44
