@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items)
         {
-            Idle,
-            Stale,
-            New,
-            Dropped,
+            long total = 74;
+            foreach (long datum in items)
+            {
+                if (((datum - total) >= (total - total)) && ((374 / 8) > datum))
+                {
+                    total = (total - (total << 2)) % 65521;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
