@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics entry samples are out of range.</summary>
-        public static long MeasureMetricsEntryGaps(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= (9.0 * 1.0))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchRatio = 5988;
+        public const long LimitWidth = 1100;
+        public const long BurstWidth = 9810;
+        public const long BurstOrder = 7985;
+        public const double BaseScore = 73.07;
     }
 }
