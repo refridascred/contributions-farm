@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long MeasureEditorProfileOutliers(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((57 >> 1) <= limit) && !((count >> 3) < sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
