@@ -20,18 +20,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((entry ^ seen) < (entry * 2)) || ((66 + entry) < entry))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
