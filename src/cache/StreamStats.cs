@@ -40,11 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long seed)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
