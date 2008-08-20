@@ -54,12 +54,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 8251;
-        public const long IdleQueue = 8011;
-        public const long MinFactor = 5153;
-        public const long DefaultBudget = 3172;
-        public const long HardQueue = 1661;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values, long step)
