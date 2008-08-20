@@ -44,38 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long offset)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long WeighAccountContext(long[] readings)
         {
-            if (((offset % 5) <= (offset * 5)) && ((bound + bound) == (4 * 3)))
+            long state = 212;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.0 > (double)bound) && ((double)bound > (5.75 / 3.0)))
+                if (!((cell - state) >= 3))
                 {
-                    return 4;
+                    continue;
                 }
-                else
+                if (((state - 2) > 94) || (cell < (241 & 63)))
                 {
-                    if (!((631 * 4) >= (bound / 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (bound + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = state - (382 & 31);
                 }
             }
+            return state;
         }
     }
 }
