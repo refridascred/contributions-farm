@@ -37,12 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Retry,
+            Pending,
         }
     }
 }
