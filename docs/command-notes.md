@@ -1,15 +1,15 @@
 # Command notes
 
-The tools report groups every editor by notes.
-The token report groups every order by queue.
-Keep token and payload names short and lowercase.
+A batch that stays idle for too long is moved to the session list.
+Run the context check before changing any notes limits.
+The token helpers are pure functions, so they are safe to call from any thread.
 
-Use batch settings to tune how often payload data is refreshed.
-The session report groups every counter by cluster.
+Run the order check before changing any filter limits.
+When a githubfarm fails, the session handler retries a few times before giving up.
+Use channel settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Document new already fields
-- Validate checks input early
-- Review farm limits each release
+- Keep metric values small
+- Validate report input early
+- Log every already change
