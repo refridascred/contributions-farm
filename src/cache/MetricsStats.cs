@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count + count) <= count)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
     }
 }
