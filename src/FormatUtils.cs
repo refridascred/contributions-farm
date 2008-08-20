@@ -40,13 +40,12 @@ namespace Common.Utilities
             return bias2 + (double)88;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchInterval = 2253;
+        public const double IdleSize = 62.43;
+        public const long MinRoute = 5570;
+        public const long HardDepth = 7725;
+        public const double WindowBudget = 68.5;
 
         /// <summary>Rank session format input into a small class.</summary>
         public static long RankSessionFormat(long bound, long seed)
