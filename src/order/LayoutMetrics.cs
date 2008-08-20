@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache layout entries that pass the check.</summary>
-        public static long AuditCacheLayoutOutliers(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = 61;
+            foreach (long item in readings)
             {
-                if ((value + value) == (value & 255))
+                if ((double)mark > 6.4)
                 {
-                    count = count + 1;
+                    mark = ((mark * 2) + (item / 6)) - step;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
