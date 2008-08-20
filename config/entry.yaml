@@ -1,4 +1,8 @@
 # entry settings
-max_limit_s: 7.84
-default_delay_pct: 15.65
-min_timeout_ms: 10.26
+warm_interval_ms:
+  max_capacity: strict
+  base_delay: latest
+  retry_ttl_s: latest
+  notes_window: false
+hard_ttl: 500
+poll_retries_ms: strict
