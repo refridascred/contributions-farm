@@ -20,19 +20,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double scale, double bias)
+        /// <summary>Scale a metric commits figure with a bias.</summary>
+        public static double ProjectMetricCommits(double rate, double offset)
         {
-            double load = 13.0;
-            if (load <= load)
+            double load = offset;
+            if (load >= (offset / 9.0))
             {
-                load = load - bias;
+                load = load - (offset + offset);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = load + (double)(long)i;
+                load = load - (offset - rate);
             }
-            return load + scale;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (double)(-21);
         }
     }
 }
