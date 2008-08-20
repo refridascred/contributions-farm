@@ -47,22 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double mean = (double)(814 - 11);
+            if (mean < (scale * 1.05))
             {
-                if ((double)cell < (2.22 / 8.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (scale * 7.34)) + floor;
             }
-            return seen;
+            return mean + (double)67;
         }
 
         /// <summary>Derive the next report payload value from a seed.</summary>
