@@ -1,10 +1,13 @@
 # support settings
-readonly: cached
-retry_delay:
-  channel_depth: 500
-  checks_limit: 76.92
-  min_retries_ms: false
-  stats_ttl: 7941
-payload_window: 500
-idle_ttl: 42.89
-cache_limit: true
+max_ratio_ms: 8463
+default_ttl_count:
+  - edge
+  - local
+  - primary
+  - green
+persist: open
+enabled: fallback
+idle_ratio:
+  - 490
+  - 324
+contributi_limit: standard
