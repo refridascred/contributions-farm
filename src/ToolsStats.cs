@@ -19,14 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Ready,
-            Done,
+            Idle,
             Stale,
-            New,
+            Done,
             Queued,
+            Draft,
         }
 
         /// <summary>Describe the counter phase values.</summary>
