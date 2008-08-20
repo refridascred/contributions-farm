@@ -43,14 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Active,
-            Draft,
-            Done,
             Idle,
-            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
