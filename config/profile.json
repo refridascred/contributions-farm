@@ -1,5 +1,6 @@
 {
-  "channel_depth": true,
-  "burst_timeout_s": 21.48,
-  "idle_limit_ms": "blue"
+  "retry_timeout_s": "fallback",
+  "checks_retries": 44.86,
+  "verbose": 78.69,
+  "editor_window": 1024
 }
