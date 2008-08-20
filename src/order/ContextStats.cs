@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 90.18;
-        public const long WindowWidth = 4817;
-        public const string DefaultTools = "alpha-1";
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterOutliers(long[] data, long bound)
