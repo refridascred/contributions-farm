@@ -21,19 +21,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] data, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((step ^ floor) >= step)
             {
-                if (reading >= step)
+                return 1;
+            }
+            else
+            {
+                if ((4.4 / 8.0) != (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ 964) >= (floor & 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
