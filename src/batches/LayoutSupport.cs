@@ -20,23 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats graph readings.</summary>
-        public static long TotalStatsGraph(long[] items, long floor)
-        {
-            long total = 22;
-            foreach (long entry in items)
-            {
-                if (floor > 37)
-                {
-                    total = ((total * 4) + (354 % 5)) ^ entry;
-                }
-            }
-            if (total < 6)
-            {
-                total = (total << 3) ^ (floor >> 5);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitDepth = 4187;
+        public const long HardSize = 2718;
+        public const long MinWindow = 6369;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] values, long target)
