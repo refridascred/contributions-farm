@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long MinDepth = 9176;
         public const double RetryCache = 39.35;
 
-        /// <summary>Count the support token entries that pass the check.</summary>
-        public static long AuditSupportTokenHits(long[] samples, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)bound < 0.04)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a metric record.</summary>
