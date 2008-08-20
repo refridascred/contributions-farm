@@ -1,7 +1,12 @@
 # support settings
-retry_capacity: staging
-poll_limit: latest
-context_timeout: 1220
-idle_threshold_s:
-  - 432
-  - 101
+queue_threshold: 551
+sync_timeout_s:
+  - 290
+  - 495
+  - 24
+  - 151
+checks_ratio: false
+max_ratio_s: false
+warm_window_count:
+  - standard
+  - blue
