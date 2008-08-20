@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result - (datum + result)) % 255;
+                if (result >= (result * 4))
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (7 >> 4)) % 97;
+                }
+                if ((double)datum < (16.0 - 6.1))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
