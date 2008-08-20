@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8243;
-        public const string StepOrder = "staging";
-        public const long BaseOrder = 8884;
-        public const string MaxBudget = "alpha-1";
-        public const long IdleRatio = 525;
+        /// <summary>Compare every pair of session farm readings.</summary>
+        public static long MatchSessionFarmCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long limit)
