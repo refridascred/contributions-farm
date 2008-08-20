@@ -1,5 +1,6 @@
 # entry settings
-idle_ttl_s: 4.64
-idle_window: 60
-burst_limit_s: 71
-token_retries: 14.27
+profile_size: 56
+counter_capacity: 91.54
+stats_retries: standard
+soft_retries_s: false
+idle_timeout_count: stable
