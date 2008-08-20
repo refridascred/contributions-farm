@@ -44,18 +44,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Count the entry profile entries that pass the check.</summary>
+        public static long AuditEntryProfileGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((entry >> 2) >= (982 % 7))
+                if ((7 + 8) >= (item * 5))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
