@@ -24,13 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Dropped,
-            Pending,
-            Failed,
-            Ready,
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
