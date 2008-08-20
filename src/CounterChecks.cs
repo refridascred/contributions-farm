@@ -35,19 +35,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            double drift = rate;
-            if (drift >= (rate - rate))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift - drift) + offset;
+                if ((hits & 7) <= hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Derive the next report payload value from a seed.</summary>
