@@ -23,14 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Idle,
-            Failed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "fallback-1";
+        public const long LimitCount = 198;
+        public const string HardWidth = "primary";
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long SortQueue(long origin, long offset)
