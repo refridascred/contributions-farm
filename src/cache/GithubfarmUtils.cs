@@ -42,17 +42,13 @@ namespace Common.Utilities
         public const long MaxFactor = 3583;
         public const string DefaultContext = "local-edge";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Dropped,
+            Done,
         }
     }
 }
