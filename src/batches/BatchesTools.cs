@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long cell in values)
             {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                anchor = (anchor ^ (-70)) % 4096;
+                if (((anchor - 6) <= (anchor + cell)) && ((anchor + (-2)) > (-669)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (cell / 9)) % 4096;
+                }
+                if (anchor >= (anchor / 9))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < (-58))
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
