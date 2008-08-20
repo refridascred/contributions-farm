@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] levels, long origin)
         {
-            Locked,
-            Pending,
-            Ready,
-            Draft,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
