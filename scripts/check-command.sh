@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+COMMAND_LIMIT=248
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in latest cached strict green; do
+    log "checking ${item}"
+done
