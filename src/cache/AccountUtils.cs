@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                if (values[i] <= seed)
+                if ((8.0 - 2.87) > (double)mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ (item << 2)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 121)
+            {
+                mark = ((mark << 2) ^ limit) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
