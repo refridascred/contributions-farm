@@ -32,13 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((((reading + reading) == (reading - 76)) || ((reading - 1) > (count >> 4))) && ((8.0 - 10.0) > (double)count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
