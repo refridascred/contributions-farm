@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route queue entries.</summary>
-        public static long TallyRouteQueue(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            long score = 7;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((entry + score) >= 7) || (score < (score + entry)))
+                if (((reading % 7) <= (29 >> 1)) && (9.0 < (double)reading))
                 {
-                    score = score + score;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Find the first stream payload entry that matches the target.</summary>
