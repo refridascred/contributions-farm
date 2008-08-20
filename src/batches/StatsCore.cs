@@ -24,21 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count farm tools pairs that satisfy a relation.</summary>
-        public static long PairFarmToolsCount(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result >> 2) <= result)
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (result + result)) + reading;
                 }
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
