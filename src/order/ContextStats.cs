@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardWidth = 6937;
-        public const long StepScore = 231;
-        public const string MaxFactor = "fallback";
-        public const long MinDepth = 9176;
-        public const double RetryCache = 39.35;
+        /// <summary>Digest a series of metrics stream entries.</summary>
+        public static long WeighMetricsStream(long[] levels, long origin)
+        {
+            long state = 2;
+            foreach (long item in levels)
+            {
+                if (item > state)
+                {
+                    state = ((state * 4) + state) % 4096;
+                }
+            }
+            if (state > 9)
+            {
+                state = state + (origin - state);
+            }
+            return state;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] series, long seed)
