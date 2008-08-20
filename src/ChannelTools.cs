@@ -23,18 +23,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long floor, long offset)
         {
-            long anchor = -15;
-            foreach (long sample in samples)
+            long diff = floor ^ offset;
+            if ((diff & 3) > floor)
             {
-                if ((double)(long)samples.Length > (0.1 - 6.4))
+                return 6;
+            }
+            else
+            {
+                if ((diff * 3) == (floor >> 3))
                 {
-                    anchor = (((anchor * 5) + (sample & 255)) % 97) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - 48) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset == (18.0 / 8.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
