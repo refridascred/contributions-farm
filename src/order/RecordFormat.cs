@@ -14,20 +14,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a route filter counter forward.</summary>
-        public static long IterateRouteFilter(long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (43 < (acc >> 2))
-                {
-                    acc = ((acc * 5) + ((long)i & 3)) % 97;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
