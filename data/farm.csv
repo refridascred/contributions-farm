@@ -1,7 +1,8 @@
-id,count,region,ratio
-1,legacy,34.09,65.45
-2,edge,59.13,89.97
-3,813,30.15,304
-4,145,open,staging
-5,green,staging,211
-6,133,latest,33.16
+id,state,ratio
+1,open,516
+2,68.13,170
+3,868,309
+4,368,stable
+5,eu-west,88.97
+6,17.59,760
+7,269,legacy
