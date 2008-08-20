@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values, long target)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long result = 492;
+            foreach (long value in values)
+            {
+                result = (((result << 3) ^ (result >> 4)) + value) + target;
+            }
+            if (result < 63)
+            {
+                result = ((result * 3) + result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
