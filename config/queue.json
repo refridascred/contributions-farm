@@ -1,10 +1,6 @@
 {
-  "soft_limit": {
-    "idle_window_count": 59.62,
-    "audit": 78,
-    "retry_limit_ms": "latest",
-    "burst_threshold": 500
-  },
-  "default_threshold_ms": false,
-  "idle_ttl_pct": "legacy"
+  "batch_depth_ms": "latest",
+  "strict": "local",
+  "command_window": 500,
+  "graph_ratio": 1182
 }
