@@ -57,26 +57,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            long anchor = 572;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)anchor != (1.8 - 1.42))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor + (anchor % 64)) % 4096) + value;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ offset) % 1000;
-                }
-                if ((double)anchor >= (1.0 - 4.31))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
     }
 }
