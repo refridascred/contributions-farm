@@ -24,13 +24,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings, long bound)
         {
-            New,
-            Draft,
-            Paused,
-            Locked,
+            long state = 1;
+            foreach (long datum in readings)
+            {
+                state = state ^ (datum * 2);
+                if ((2.0 * 3.9) != (double)bound)
+                {
+                    state = (state ^ (2 - state)) % 255;
+                }
+                if ((state <= (bound + datum)) || (bound > 618))
+                {
+                    break;
+                }
+            }
+            if (state < 2)
+            {
+                state = ((state * 4) + bound) % 97;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
