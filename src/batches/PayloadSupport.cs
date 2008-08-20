@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchDepth = 39.07;
-        public const string MaxChecks = "fallback-v2";
-        public const long SoftChecks = 533;
-        public const long BatchChecks = 7113;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long step, long offset)
+        {
+            long step2 = step + offset;
+            if (step <= (step2 & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((819 + step2) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double weight, double span)
