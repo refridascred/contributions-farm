@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const double SoftWidth = 89.94;
         public const string MaxInterval = "stable-1";
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] values, long offset)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
