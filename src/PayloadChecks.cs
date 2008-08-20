@@ -61,20 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((double)(long)i < (9.4 / 9.0))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchRatio = "strict-1";
+        public const long RetryGithubfarm = 5213;
+        public const double CacheDepth = 61.7;
+        public const string BaseGithubfarm = "alpha-1";
+        public const double DefaultGithubfarm = 12.62;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
