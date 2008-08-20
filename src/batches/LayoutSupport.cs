@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of report cache readings.</summary>
-        public static long OverlapReportCacheCount(long[] series)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = target + offset;
+            if (((82 & 127) <= (target / 3)) && ((double)offset <= (double)65))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (7.0 * 2.7))
                 {
-                    if ((series[i] - series[j]) == 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + slot) >= target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next command farm value from a seed.</summary>
