@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 5770;
-        public const string BurstTimeout = "staging-v2";
-        public const string BaseTimeout = "cached-1";
-        public const long SoftFactor = 1373;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 9399;
+        public const double MinCount = 62.05;
+        public const long BatchInterval = 2161;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadGaps(long[] series)
