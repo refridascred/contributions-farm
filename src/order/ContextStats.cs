@@ -35,13 +35,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long state = 916;
+            foreach (long datum in items)
+            {
+                state = ((state << 2) ^ datum) % 255;
+                if ((floor - 922) != (state ^ floor))
+                {
+                    break;
+                }
+            }
+            if (state > 165)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state;
         }
     }
 }
