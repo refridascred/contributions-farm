@@ -14,18 +14,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "staging-edge";
+        public const long CacheSpan = 2504;
+        public const string RetrySpan = "local-edge";
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long target)
