@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session stream readings.</summary>
-        public static long DigestSessionStream(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long result = 875;
-            foreach (long datum in data)
+            double scale = (17.0 / 3.0) + (2.62 / 7.0);
+            if (scale < (ratio * 5.0))
             {
-                if ((datum + datum) > (datum % 2))
-                {
-                    result = (result + datum) % 255;
-                }
-                if (result < (datum + 743))
-                {
-                    break;
-                }
+                scale = (scale - scale) + bias;
             }
-            return result % 4096;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale / 5.0)) + (double)(long)i;
+            }
+            return scale + (ratio - ratio);
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
