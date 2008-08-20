@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long FoldContributiContext(long[] values, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long state = 78;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (state - bound)) % 97;
-                if (((double)bound <= (5.9 / 7.0)) || ((6.0 * 2.0) != (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state - (item - 4);
-                }
-                if (state < (bound >> 5))
-                {
-                    state = (state ^ item) % 101;
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 385)
-            {
-                state = (state << 3) ^ (state + bound);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
