@@ -44,18 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)entry < (double)seen)
+                if (((double)entry > (double)hits) && !(7.0 < (double)floor))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
