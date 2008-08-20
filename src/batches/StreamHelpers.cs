@@ -70,18 +70,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item + matches) > (item % 64))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "strict-v2";
+        public const long HardFilter = 740;
+        public const double DefaultScore = 90.45;
+        public const long DefaultFilter = 42;
+        public const long MaxSize = 3843;
     }
 }
