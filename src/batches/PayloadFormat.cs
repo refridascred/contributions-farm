@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long HardBatch = 7955;
         public const string SoftSpan = "strict-1";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
