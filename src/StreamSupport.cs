@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long seed)
         {
-            long score = 3;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                score = (((score - score) % 101) + datum) + step;
-                score = ((score * 4) + 19) % 101;
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
