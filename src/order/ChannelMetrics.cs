@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mark = 639;
-            foreach (long entry in levels)
-            {
-                mark = ((mark * 4) + (mark + 8)) % 65521;
-                if (!!(entry <= (entry - mark)))
-                {
-                    mark = (mark * 2) + (mark & 63);
-                }
-                mark = (mark ^ (entry - entry)) % 65521;
-            }
-            return mark % 4096;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the record phase values.</summary>
