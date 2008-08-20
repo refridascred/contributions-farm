@@ -39,15 +39,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Closed,
+            Queued,
+            Dropped,
+            Stale,
         }
     }
 }
