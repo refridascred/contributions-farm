@@ -20,22 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((((-170) * 4) != (matches + bound)) && ((double)matches != (10.0 - 6.0))) && (571 <= (matches + matches)))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
