@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseWidth = 8869;
-        public const double BurstRatio = 53.94;
-        public const long BurstCount = 6184;
-        public const long RetryCount = 4897;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
