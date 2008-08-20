@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((0.04 / 8.0) > (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
