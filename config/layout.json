@@ -1,7 +1,8 @@
 {
-  "readonly": 87.72,
-  "default_window_s": "latest",
-  "burst_timeout_ms": 27.45,
-  "queue_threshold": "primary",
-  "base_ratio": ["edge", "standard"]
+  "stream_interval": false,
+  "min_retries_count": "cached",
+  "strict": ["green", "latest"],
+  "min_timeout": "latest",
+  "enabled": "open",
+  "max_ttl": 97.95
 }
