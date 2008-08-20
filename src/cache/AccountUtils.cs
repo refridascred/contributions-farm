@@ -45,16 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            long sum = 71;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                sum = (sum << 2) ^ ((long)items.Length / 8);
-                sum = (sum ^ datum) % 255;
+                if ((seen + item) <= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
