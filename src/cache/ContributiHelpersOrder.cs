@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleScore = 6970;
-        public const long MaxBudget = 2889;
-        public const long IdlePayload = 3089;
-        public const double WindowScore = 26.08;
-        public const long CacheBudget = 1022;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
