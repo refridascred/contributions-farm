@@ -1,5 +1,5 @@
 {
-  "soft_delay_ms": ["latest", "strict", "primary"],
-  "idle_timeout": 100,
-  "min_retries_s": true
+  "dry_run": "edge",
+  "warm_threshold_ms": [80, 214, 153, 176],
+  "compress": "strict"
 }
