@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values)
         {
-            Pending,
-            Ready,
-            Locked,
-            Queued,
-            Dropped,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((value + value) == (count + count)) || ((6 % 24) != (value % 12))) || (count < (count - 7)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already mode values.</summary>
