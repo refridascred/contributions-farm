@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain - bias) + (double)(long)i) - span;
+            }
+            return gain + (double)2;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
