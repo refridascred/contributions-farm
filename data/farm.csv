@@ -1,6 +1,6 @@
-id,label,weight
-1,89.01,latest
-2,740,220
-3,85.55,327
-4,939,696
-5,legacy,222
+id,weight,level,token
+1,44.09,452,69.36
+2,31.09,17,standard
+3,blue,39.92,35.35
+4,blue,edge,open
+5,legacy,latest,53.75
