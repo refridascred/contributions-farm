@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const double HardContext = 68.16;
         public const long BaseBudget = 8066;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] items, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
