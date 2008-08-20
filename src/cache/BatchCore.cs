@@ -33,19 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits % 97) >= (79 / 7))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 4249;
+        public const long CacheChannel = 8495;
+        public const string LimitChannel = "fallback-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const string IdleCount = "cached-edge";
