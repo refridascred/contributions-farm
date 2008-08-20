@@ -19,26 +19,38 @@ namespace Common.Utilities
         public const long BaseCount = 3681;
         public const long DefaultFarm = 2807;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long step, long offset)
         {
-            long result = 27;
-            foreach (long datum in levels)
+            if (((step / 7) < (offset - step)) || (offset > (step * 3)))
             {
-                if ((6 >> 3) > (datum << 3))
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) < offset)
                 {
-                    result = result + ((long)levels.Length << 1);
+                    return 0;
                 }
                 else
                 {
-                    result = result ^ (6 / 6);
+                    if (!(3.1 > (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step << 3) >= step) || ((double)offset > (6.0 * 4.01)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (result > 0)
-            {
-                result = (result - (result + result)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
