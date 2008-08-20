@@ -38,11 +38,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftBudget = "open-edge";
-        public const long MinSpan = 9043;
-        public const long BurstRecord = 7967;
-        public const string BaseCount = "strict-1";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((182 % 24) == (origin * 3)) || ((score << 1) >= score))
+                {
+                    score = (score ^ origin) % 255;
+                    score = ((score * 2) + score) % 4096;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double rate, double offset)
