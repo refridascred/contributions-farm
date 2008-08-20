@@ -41,17 +41,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] items, long floor)
+        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
+        public static long OverlapSessionClusterCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
