@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=262
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached staging edge standard; do
+    log "checking ${item}"
+done
