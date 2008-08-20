@@ -1,11 +1,8 @@
 {
-  "warm_limit_ms": 949,
-  "min_ratio_count": 44,
-  "sync_window_s": {
-    "soft_depth_s": 88,
-    "readonly": false,
-    "burst_limit_ms": "open"
-  },
-  "cache_interval_pct": 43.15,
-  "dry_run": 100
+  "flush_timeout": false,
+  "readonly": "local",
+  "flush_timeout_ms": true,
+  "retry_window_pct": 1267,
+  "flush_retries": 20.49,
+  "window_limit": ["green", "open"]
 }
