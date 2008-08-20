@@ -1,6 +1,11 @@
 {
-  "min_capacity_ms": 28.38,
-  "min_ratio": 5.37,
-  "poll_depth_ms": "primary",
-  "compress": false
+  "poll_delay": true,
+  "filter_retries": true,
+  "notes_depth": {
+    "idle_ratio_ms": ["edge", "legacy", "blue", "eu-west"],
+    "sync_threshold_count": "latest",
+    "idle_delay": 500,
+    "burst_timeout_count": ["local", "fallback", "green"],
+    "batch_depth_pct": 24.48
+  }
 }
