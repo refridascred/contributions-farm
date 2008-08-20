@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command context readings.</summary>
-        public static long CompareCommandContextCount(long[] levels)
+        /// <summary>Count the cache layout entries that pass the check.</summary>
+        public static long AuditCacheLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + value) == (value & 255))
                 {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
