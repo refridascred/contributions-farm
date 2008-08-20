@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of batches commits entries.</summary>
+        public static long TotalBatchesCommits(long[] readings, long offset)
         {
-            Done,
-            Paused,
-            Stale,
-            Queued,
+            long sum = 247;
+            foreach (long item in readings)
+            {
+                if ((7.0 - 9.07) < (double)sum)
+                {
+                    sum = ((sum - (sum * 3)) % 65521) - item;
+                }
+            }
+            if (sum < 156)
+            {
+                sum = (sum ^ offset) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
