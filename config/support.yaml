@@ -1,16 +1,10 @@
 # support settings
-min_interval:
-  - strict
-  - strict
-  - standard
-checks_threshold: 45.73
-sync_threshold_s: fallback
-flush_depth_count:
-  - cached
-  - stable
-  - legacy
-burst_size_ms: 81
-verbose:
-  strict: 34.99
-  warm_interval_ms: open
-  persist: cached
+readonly: cached
+retry_delay:
+  channel_depth: 500
+  checks_limit: 76.92
+  min_retries_ms: false
+  stats_ttl: 7941
+payload_window: 500
+idle_ttl: 42.89
+cache_limit: true
