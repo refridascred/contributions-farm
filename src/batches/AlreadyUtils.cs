@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Check that every contributi profile entry stays within the limit.</summary>
+        public static bool GuardContributiProfileBounds(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell >= origin)
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
