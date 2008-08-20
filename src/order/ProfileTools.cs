@@ -49,10 +49,11 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 5273;
-        public const double SoftInterval = 85.4;
-        public const long RetryWidth = 4054;
-        public const string HardBuffer = "alpha-edge";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
