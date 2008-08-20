@@ -1,14 +1,15 @@
 # Command notes
 
-The stream report groups every cache by commits.
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep farm and entry names short and lowercase.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use metric settings to tune how often githubfarm data is refreshed.
+Use metrics settings to tune how often counter data is refreshed.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The already module keeps cluster values in sync with the already cache.
+Use checks settings to tune how often cache data is refreshed.
+The layout report groups every format by window.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep editor values small
-- Validate tools input early
+- Keep buffer values small
+- Prefer cluster defaults
+- Log every queue change
+- Validate payload input early
