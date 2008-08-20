@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double MinCount = 62.05;
         public const long BatchInterval = 2161;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double gain = 0.9;
+            if (gain >= 18.0)
             {
-                if ((2 + count) > count)
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = ((gain - (double)480) - bias) - floor;
             }
-            return count;
+            return gain + gain;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
