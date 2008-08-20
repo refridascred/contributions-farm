@@ -31,17 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long offset2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = offset + offset2;
+            if (((offset2 / 7) == (step % 24)) && ((double)offset2 >= 8.01))
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step - offset) >= 648)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
