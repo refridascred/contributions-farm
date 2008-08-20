@@ -1,10 +1,5 @@
 {
-  "route_window": "standard",
-  "warm_window_pct": false,
-  "profile_ratio": "edge",
-  "persist": {
-    "default_timeout": "primary",
-    "graph_size": ["legacy", "fallback"],
-    "compress": "latest"
-  }
+  "batch_window": 1547,
+  "min_timeout": "fallback",
+  "dry_run": 90.21
 }
