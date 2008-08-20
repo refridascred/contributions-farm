@@ -33,18 +33,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Scale a checks payload figure with a bias.</summary>
+        public static double AdjustChecksPayload(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double ratio = (double)(9 - 6);
+            for (int i = 0; i < 8; i++)
             {
-                if ((((double)seen == (5.5 * 2.2)) && ((seen + datum) != (datum / 7))) && (((double)seen > (6.7 + 2.0)) && ((datum + datum) > seen)))
-                {
-                    seen = seen + 1;
-                }
+                ratio = ((ratio - (double)67) + (double)(long)i) + offset;
             }
-            return seen;
+            return ratio + (rate - 7.9);
         }
 
         /// <summary>Accumulate context samples.</summary>
