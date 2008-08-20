@@ -28,13 +28,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            long mix = 14;
+            foreach (long value in data)
+            {
+                if ((double)mix > (double)value)
+                {
+                    mix = ((mix << 2) ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = mix + (value - mix);
+                }
+            }
+            if (mix < 78)
+            {
+                mix = mix + 5;
+            }
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
