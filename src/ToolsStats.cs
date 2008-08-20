@@ -38,12 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool GuardToolsStatsBounds(long[] readings, long origin)
         {
-            Retry,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next batches value.</summary>
