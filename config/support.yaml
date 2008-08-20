@@ -1,11 +1,10 @@
 # support settings
-cache_timeout: green
-soft_threshold: true
-window_delay: 500
-sync_delay: local
-batches_capacity: 27.8
-verbose:
-  - 158
-  - 146
-  - 232
-  - 214
+queue_threshold: edge
+min_threshold: blue
+max_depth: false
+poll_delay:
+  - 440
+  - 65
+  - 412
+  - 342
+hard_threshold: 1024
