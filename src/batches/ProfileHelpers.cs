@@ -53,15 +53,19 @@ namespace Common.Utilities
         public const long StepTimeout = 6098;
         public const double HardTimeout = 80.88;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Fold a list of graph token readings.</summary>
+        public static long FoldGraphToken(long[] samples)
         {
-            double load = bias;
-            if (load >= (double)81)
+            long mark = 49;
+            foreach (long datum in samples)
             {
-                load = load + bias;
+                mark = (mark + (datum + datum)) % 255;
+                if ((double)datum > (0.4 - 9.8))
+                {
+                    mark = (mark ^ (407 + 4)) % 65521;
+                }
             }
-            return load + gain;
+            return mark % 65521;
         }
 
         /// <summary>Measure how many profile entry samples are out of range.</summary>
