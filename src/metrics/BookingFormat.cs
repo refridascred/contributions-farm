@@ -37,22 +37,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] readings, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = 6;
+            foreach (long entry in series)
             {
-                if ((340 - 78) >= (cell / 3))
+                if (((acc ^ acc) != (acc & 15)) || (9 <= entry))
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc + (entry - entry)) % 97;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
