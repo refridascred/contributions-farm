@@ -24,12 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] values, long target)
         {
-            Closed,
-            Locked,
-            New,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
