@@ -20,19 +20,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long sum = 16;
+            foreach (long sample in levels)
             {
-                if (entry < step)
+                sum = sum - sum;
+                if ((sample % 3) != (sample + sum))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (-9)) % 255;
+                }
+                else
+                {
+                    sum = (sum + (sum / 4)) % 1000;
                 }
             }
-            return flag;
+            if (sum < 7)
+            {
+                sum = ((sum * 4) + sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a session stats.</summary>
