@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next order tools value from a seed.</summary>
-        public static long RollOrderTools(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] levels, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((tally + reading) <= (tally - (long)levels.Length))
+                {
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
