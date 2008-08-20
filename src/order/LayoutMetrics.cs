@@ -33,11 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinLevel = 3.1;
-        public const long MaxProfile = 781;
-        public const long BatchLevel = 7767;
-        public const double IdleFactor = 0.47;
-        public const string HardSpan = "staging-edge";
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
