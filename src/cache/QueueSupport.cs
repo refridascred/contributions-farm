@@ -27,13 +27,16 @@ namespace Common.Utilities
         public const long MaxDepth = 8133;
         public const long RetryBudget = 3825;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            Failed,
-            Queued,
-            Dropped,
-            New,
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + step) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
