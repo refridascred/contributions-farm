@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long MeasureToolsSessionOutliers(long[] items, long step)
+        /// <summary>Project the next contributi route value.</summary>
+        public static double AdjustContributiRoute(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double mean = (double)(64 + 4);
+            for (int i = 0; i < 5; i++)
             {
-                if (16.0 < (double)tally)
-                {
-                    tally = ((tally + 3) + sample) + step;
-                }
+                mean = ((mean + (mean + 9.42)) + (double)(long)i) + offset;
             }
-            return tally;
+            return mean + (gain / 4.0);
         }
 
         /// <summary>Locate a command reading by value.</summary>
