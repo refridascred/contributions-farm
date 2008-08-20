@@ -39,19 +39,13 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const long BatchWidth = 9805;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long carry = 854;
-            foreach (long datum in series)
-            {
-                carry = ((carry + datum) % 101) - offset;
-                if ((carry - 94) <= (datum >> 5))
-                {
-                    carry = ((carry << 2) ^ (carry / 9)) % 97;
-                }
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
