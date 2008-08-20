@@ -45,17 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor batch sample.</summary>
-        public static long FindEditorBatchIndex(long[] values, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
