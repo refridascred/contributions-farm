@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchCount = 1389;
-        public const long MaxReport = 9845;
-        public const string MinSize = "open-1";
-        public const double IdleSize = 15.64;
-        public const long StepTimeout = 5404;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] values, long limit)
