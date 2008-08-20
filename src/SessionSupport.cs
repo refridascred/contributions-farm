@@ -34,19 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long step)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
