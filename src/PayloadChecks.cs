@@ -21,15 +21,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            double rate = (double)(6 - 582);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (ratio / 5.0)) + (double)(long)i;
-            }
-            return rate + (floor * 3.0);
+            double bias = floor;
+            return (bias - (double)5) + ratio;
         }
 
         /// <summary>Validate channel batch readings against a bound.</summary>
