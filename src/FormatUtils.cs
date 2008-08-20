@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Accumulate batch entry samples.</summary>
+        public static long TotalBatchEntry(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long carry = 436;
+            foreach (long reading in values)
             {
-                if (!((17.0 + 7.0) <= (double)seed))
-                {
-                    carry = (carry ^ (seed + seed)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                carry = (carry ^ (carry % 5)) - reading;
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Project the next stream value.</summary>
