@@ -66,17 +66,18 @@ namespace Common.Utilities
         public const double CacheProfile = 7.36;
         public const long MaxDepth = 4667;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                if ((((origin * 5) >= (origin << 3)) && (1 <= (origin << 1))) || ((origin >> 1) < (reading / 5)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
