@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (acc > ((long)i << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc + (203 - (long)i)) % 97;
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
