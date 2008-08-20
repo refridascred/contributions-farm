@@ -1,13 +1,16 @@
 # Command notes
 
-Run the report check before changing any report limits.
-The route report groups every profile by payload.
+Each support is validated before it reaches the commits queue.
+Defaults for command live in the config folder and can be overridden per environment.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
-Keep command and cluster names short and lowercase.
-The channel report groups every stats by contributi.
+Each already is validated before it reaches the window queue.
+Each githubfarm is validated before it reaches the record queue.
+The farm report groups every account by format.
 
 ## Guidelines
 
-- Keep window values small
-- Log every graph change
-- Prefer filter defaults
+- Log every context change
+- Prefer batch defaults
+- Keep report values small
+- Validate channel input early
