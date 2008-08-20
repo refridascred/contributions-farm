@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local cached legacy; do
+CHANNEL_LIMIT=398
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west staging primary; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=12
-log "limit is ${CHANNEL_LIMIT}"
