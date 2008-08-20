@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits - hits) > (cell - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine token metric values into a single score.</summary>
