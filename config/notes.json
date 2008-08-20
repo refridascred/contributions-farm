@@ -1,5 +1,16 @@
 {
-  "audit": "legacy",
-  "buffer_interval": "strict",
-  "min_capacity_count": ["stable", "legacy", "fallback"]
+  "retry_limit": 16,
+  "soft_timeout_s": 89,
+  "persist": 4803,
+  "verbose": {
+    "support_capacity": {
+      "sync_timeout_ms": "open",
+      "layout_capacity": [148, 388],
+      "strict": false,
+      "default_depth_s": 500
+    },
+    "default_size_count": "primary",
+    "default_delay": "primary",
+    "min_interval": 4134
+  }
 }
