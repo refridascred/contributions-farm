@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a context payload reading by value.</summary>
-        public static long LookupContextPayloadIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstInterval = 7319;
+        public const long CacheBudget = 1054;
+        public const double HardBudget = 69.87;
+        public const long MaxDepth = 224;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelBounds(long[] data, long bound)
