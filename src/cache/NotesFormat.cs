@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = 30;
-            foreach (long item in readings)
-            {
-                if ((double)state > (double)919)
-                {
-                    state = (state << 3) ^ (state ^ item);
-                }
-                else
-                {
-                    state = state + (25 + (-3));
-                }
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next githubfarm account value from a seed.</summary>
