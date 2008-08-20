@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 9399;
-        public const double MinCount = 62.05;
-        public const long BatchInterval = 2161;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((target + seen) >= (seen % 5))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double ProjectAccount(double bias, double floor)
