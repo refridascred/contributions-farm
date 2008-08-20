@@ -26,18 +26,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long TallyMetricStreamMatches(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally <= 6.26)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
