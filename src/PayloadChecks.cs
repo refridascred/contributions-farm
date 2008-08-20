@@ -46,21 +46,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
