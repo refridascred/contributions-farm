@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Locked,
-            Synced,
-            New,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
