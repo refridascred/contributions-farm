@@ -1,16 +1,16 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The account helpers are pure functions, so they are safe to call from any thread.
-The account helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+A cluster that stays idle for too long is moved to the checks list.
+Use already settings to tune how often contributi data is refreshed.
 
-When a account fails, the already handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Use entry settings to tune how often record data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the support queue.
+Use counter settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Log every commits change
-- Keep entry values small
-- Document new account fields
+- Keep format values small
+- Prefer channel defaults
+- Document new metric fields
+- Log every farm change
