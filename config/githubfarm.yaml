@@ -1,13 +1,8 @@
 # githubfarm settings
-retry_interval_s: 250
-enabled:
-  flush_capacity: 55.58
-  persist: 2123
-  sync_capacity_s: standard
-  window_retries: 54.9
-  max_size_pct: 5755
-order_ratio:
-  batch_depth: standard
-  hard_limit_pct: false
-  batch_ratio_ms: 9226
-  flush_interval_count: 86.35
+record_limit: 4740
+enabled: 100
+order_window: primary
+strict:
+  - staging
+  - open
+filter_timeout: 250
