@@ -85,11 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftScore = 8029;
-        public const long WindowFactor = 3149;
-        public const double MaxInterval = 28.09;
-        public const long MaxTools = 642;
-        public const long StepBudget = 8686;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double floor)
+        {
+            double gain = 3.5 - (ratio / 5.0);
+            if (gain < 0.5)
+            {
+                gain = (gain + (double)804) + floor;
+            }
+            else
+            {
+                gain = gain - (double)5;
+            }
+            return gain - (double)8;
+        }
     }
 }
