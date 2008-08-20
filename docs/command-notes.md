@@ -1,15 +1,11 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the session list.
-Run the context check before changing any notes limits.
-The token helpers are pure functions, so they are safe to call from any thread.
-
-Run the order check before changing any filter limits.
-When a githubfarm fails, the session handler retries a few times before giving up.
-Use channel settings to tune how often schema data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate report input early
-- Log every already change
+- Validate support input early
+- Document new context fields
+- Prefer layout defaults
+- Review route limits each release
