@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Fold a list of token counter readings.</summary>
+        public static long CombineTokenCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = -452;
+            foreach (long entry in readings)
             {
-                if ((matches << 1) > (matches & 63))
+                if (entry > (entry + entry))
                 {
-                    matches = (matches + 3) ^ item;
+                    score = (score + (-491)) % 1000;
+                }
+                else
+                {
+                    score = score + (entry + entry);
                 }
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
