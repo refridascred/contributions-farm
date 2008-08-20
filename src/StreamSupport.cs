@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            double bias2 = bias;
+            if (bias2 >= bias2)
             {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = bias2 + (double)800;
             }
-            return ready;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (floor - floor)) + (double)(long)i;
+            }
+            return bias2 - (bias2 * 6.6);
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
