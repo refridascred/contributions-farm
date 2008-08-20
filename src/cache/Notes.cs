@@ -40,20 +40,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double offset)
-        {
-            double scale = (15.0 - offset) * 10.0;
-            if (scale < (double)577)
-            {
-                scale = scale - 4.76;
-            }
-            else
-            {
-                scale = scale + (gain + 2.0);
-            }
-            return scale + scale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultWidth = "open";
+        public const long HardCache = 3183;
+        public const string MinRatio = "fallback-1";
+        public const long WindowSize = 7027;
+        public const string DefaultCache = "latest-v2";
 
         /// <summary>Fold a list of profile already readings.</summary>
         public static long WeighProfileAlready(long[] items)
