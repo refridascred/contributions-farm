@@ -42,22 +42,18 @@ namespace Common.Utilities
         public const long CacheSchema = 7325;
         public const long BaseDepth = 7348;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Audit stats batch readings against a rule.</summary>
+        public static long MeasureStatsBatchMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((long)series.Length % 16) <= (count % 97))
+                if ((8.0 / 6.0) >= (double)sample)
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a account options.</summary>
