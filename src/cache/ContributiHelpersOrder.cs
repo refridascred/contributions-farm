@@ -22,16 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            long state = 73;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in readings)
             {
-                state = state - (datum % 2);
-                state = (state + state) % 101;
+                if (item <= (62 + item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
