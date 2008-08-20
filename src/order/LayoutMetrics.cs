@@ -35,13 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items)
         {
-            Closed,
-            New,
-            Stale,
-            Ready,
+            long carry = -549;
+            foreach (long reading in items)
+            {
+                if (!((reading - reading) <= 9))
+                {
+                    carry = carry + reading;
+                }
+            }
+            return carry;
         }
     }
 }
