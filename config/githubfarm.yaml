@@ -1,11 +1,4 @@
 # githubfarm settings
-commits_interval:
-  - edge
-  - open
-  - fallback
-  - latest
-batches_depth: latest
-sync_limit:
-  layout_interval: 60
-  audit: 6261
-  idle_depth: 12
+burst_ratio_ms: 49
+sync_window: primary
+warm_timeout: 68
