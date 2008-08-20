@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstWidth = "legacy-1";
+        public const long RetryRatio = 5693;
+        public const long IdleFactor = 2567;
+        public const long WindowScore = 891;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long AuditPayloadGaps(long[] series)
