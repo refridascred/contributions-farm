@@ -32,15 +32,14 @@ namespace Common.Utilities
             return rate + (floor * 3.0);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 38;
-            foreach (long item in levels)
-            {
-                acc = ((acc ^ (93 + item)) % 101) - limit;
-            }
-            return acc;
+            Retry,
+            Done,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
