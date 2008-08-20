@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long offset)
         {
-            double bias2 = bias;
-            if (bias2 >= bias2)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 + (double)800;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (floor - floor)) + (double)(long)i;
-            }
-            return bias2 - (bias2 * 6.6);
+            return flag;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
