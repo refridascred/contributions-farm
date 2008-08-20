@@ -51,18 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 1284;
+        public const long BurstBatch = 6185;
+        public const long IdleScore = 3382;
+        public const string WindowBatch = "local";
+        public const long WindowSpan = 787;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutOutliers(long[] readings)
