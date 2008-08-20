@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] data, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (2.95 < (double)value)
+                if ((double)value > (double)matches)
                 {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) - target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
