@@ -12,19 +12,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] series, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Failed,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
