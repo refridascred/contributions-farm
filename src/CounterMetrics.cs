@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const string RetryProfile = "local-1";
         public const double CacheRatio = 68.38;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of batches commits entries.</summary>
