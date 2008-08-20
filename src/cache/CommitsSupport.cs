@@ -27,10 +27,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseScore = 2525;
-        public const long WindowTimeout = 1121;
-        public const string BaseCount = "latest-edge";
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] readings, long offset)
