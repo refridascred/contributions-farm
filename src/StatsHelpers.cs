@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Derive the next context support value from a seed.</summary>
+        public static long DeriveContextSupport(long seed)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a context payload reading by value.</summary>
