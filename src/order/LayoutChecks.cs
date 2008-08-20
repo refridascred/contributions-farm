@@ -66,18 +66,21 @@ namespace Common.Utilities
         public const double CacheProfile = 7.36;
         public const long MaxDepth = 4667;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long origin)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((origin * 5) >= (origin << 3)) && (1 <= (origin << 1))) || ((origin >> 1) < (reading / 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
