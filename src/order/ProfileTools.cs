@@ -37,15 +37,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data, long limit)
         {
-            double rate2 = floor;
-            if (rate2 < rate)
+            long score = 403;
+            foreach (long entry in data)
             {
-                rate2 = rate2 - floor;
+                score = (((score << 2) ^ ((long)data.Length + entry)) % 255) + limit;
             }
-            return rate2 - floor;
+            return score % 4096;
         }
 
         /// <summary>Accumulate tools samples.</summary>
