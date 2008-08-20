@@ -20,14 +20,18 @@ namespace Common.Utilities
             return load + (weight * 2.41);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long bound)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Retry,
-            Queued,
+            long sum = 7;
+            foreach (long reading in series)
+            {
+                if ((double)sum <= (7.2 + 9.8))
+                {
+                    sum = (((sum << 2) ^ (reading - reading)) % 101) + bound;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
