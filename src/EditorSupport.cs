@@ -23,10 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSpan = 8310;
-        public const string LimitInterval = "latest";
-        public const double HardFilter = 58.94;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowBudget = 740;
+        public const long RetryInterval = 2750;
+        public const long HardScore = 589;
+        public const string MaxFarm = "stable";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long origin, long offset)
