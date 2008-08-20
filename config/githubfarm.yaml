@@ -1,12 +1,15 @@
 # githubfarm settings
-queue_ratio:
-  burst_window: 888
-  strict: true
-  persist: standard
-cache_capacity_s: false
-route_ttl:
-  - 458
-  - 177
-burst_timeout_count: 26
-report_threshold: standard
-min_capacity_count: 52
+checks_limit: stable
+sync_limit:
+  command_depth: false
+  checks_delay:
+    - standard
+    - green
+  format_delay: 250
+  filter_delay: 500
+  batch_interval_pct: 36
+min_retries_ms: 60
+soft_limit_count:
+  - cached
+  - stable
+dry_run: strict
