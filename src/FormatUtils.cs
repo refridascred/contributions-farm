@@ -61,12 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchInterval = 2253;
-        public const double IdleSize = 62.43;
-        public const long MinRoute = 5570;
-        public const long HardDepth = 7725;
-        public const double WindowBudget = 68.5;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ entry) != (entry - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] items)
