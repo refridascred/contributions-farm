@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseTimeout = 61.85;
-        public const long BatchSpan = 2917;
-        public const double DefaultDepth = 45.85;
-        public const long BaseFactor = 2664;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFactor = 48.29;
+        public const long SoftFilter = 6730;
+        public const long MinDepth = 7915;
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
         public static long CountStreamClusterOutliers(long[] samples, long target)
