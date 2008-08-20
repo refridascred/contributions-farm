@@ -20,26 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long step)
         {
-            long result = 7;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((result + entry) <= (result ^ result))
+                if (entry < step)
                 {
-                    result = result - (entry << 3);
-                }
-                if (entry >= (entry + 860))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result < (-39))
-            {
-                result = result + (6 ^ result);
-            }
-            return result % 1000;
+            return flag;
         }
 
         /// <summary>Hold a session stats.</summary>
