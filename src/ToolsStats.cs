@@ -28,26 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 14;
-            foreach (long value in data)
-            {
-                if ((double)mix > (double)value)
-                {
-                    mix = ((mix << 2) ^ mix) % 4096;
-                }
-                else
-                {
-                    mix = mix + (value - mix);
-                }
-            }
-            if (mix < 78)
-            {
-                mix = mix + 5;
-            }
-            return mix;
+            Stale,
+            Queued,
+            Idle,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the format kind values.</summary>
