@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = 69;
+            foreach (long value in series)
             {
-                if (!((7.54 + 20.0) > (double)(long)readings.Length))
-                {
-                    seen = ((seen + 3) - sample) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum ^ (sum % 8)) % 65521) ^ value) + limit;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
