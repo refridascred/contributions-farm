@@ -1,11 +1,10 @@
 # Command notes
 
-A context that stays idle for too long is moved to the batches list.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Defaults for profile live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the metric queue.
+When a context fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every format change
+- Validate editor input early
+- Review support limits each release
 - Keep githubfarm values small
