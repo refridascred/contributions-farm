@@ -86,24 +86,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a editor buffer pair into a bucket.</summary>
-        public static long SortEditorBuffer(long offset, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            if (((offset >> 4) <= (step & 1)) || ((3.0 + 7.0) < (double)step))
+            long mix = -35;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step ^ 124) > step) && (step < (offset << 3)))
+                mix = (mix ^ (entry & 127)) % 255;
+                if ((double)mix != (double)entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix ^ entry) % 101;
                 }
             }
+            return mix;
         }
     }
 }
