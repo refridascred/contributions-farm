@@ -77,21 +77,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix - (floor - mix)) % 1000;
+                mix = (mix + mix) % 97;
+                if ((0 % 97) == (floor - floor))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (floor << 3)) % 97;
                 }
+                else
+                {
+                    mix = (mix << 2) ^ 650;
+                    mix = (mix + (long)i) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
