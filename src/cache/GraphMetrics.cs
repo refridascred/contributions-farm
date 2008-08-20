@@ -16,32 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long floor2)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long step = floor - floor2;
-            if ((double)floor <= (double)97)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step % 12) <= step) && ((floor & 15) >= step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor2 - floor2) <= floor)
+                    if ((data[i] + data[j]) < 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up route samples.</summary>
