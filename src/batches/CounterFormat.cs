@@ -37,18 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((((reading + reading) == (reading - 76)) || ((reading - 1) > (count >> 4))) && ((8.0 - 10.0) > (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
