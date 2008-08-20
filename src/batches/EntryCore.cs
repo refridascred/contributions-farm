@@ -64,24 +64,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank counter report input into a small class.</summary>
-        public static long GradeCounterReport(long limit, long limit2)
+        /// <summary>Digest a series of queue layout entries.</summary>
+        public static long ScoreQueueLayout(long[] readings, long seed)
         {
-            if (!((limit2 << 1) >= (limit2 - limit2)))
+            long result = 7;
+            foreach (long cell in readings)
             {
-                return 6;
+                result = (((result ^ (547 + 481)) % 97) + cell) + seed;
             }
-            else
-            {
-                if (limit >= (limit2 >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Hold a payload info.</summary>
