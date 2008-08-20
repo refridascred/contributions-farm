@@ -57,18 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] levels, long seed)
         {
-            long total = 12;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((item / 8) > 67)
+                if (entry <= seed)
                 {
-                    total = total ^ limit;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
