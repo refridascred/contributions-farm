@@ -28,13 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Paused,
-            Dropped,
-            Queued,
-            Idle,
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
