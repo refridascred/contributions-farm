@@ -56,19 +56,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((bound & 15) <= matches) && ((5.73 / 4.0) == (double)reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 44.56;
+        public const long DefaultChannel = 3847;
+        public const long IdleDepth = 4182;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string CacheFilter = "strict-v2";
