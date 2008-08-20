@@ -18,21 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count batches counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCounterCount(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
