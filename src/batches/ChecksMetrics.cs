@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Paused,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepTimeout = 14.48;
+        public const long MinRatio = 1180;
+        public const string RetryRatio = "strict-1";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] data)
