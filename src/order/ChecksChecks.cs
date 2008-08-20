@@ -13,14 +13,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Closed,
+            Pending,
+            Ready,
+            Locked,
             Queued,
-            Stale,
-            Idle,
-            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the already mode values.</summary>
