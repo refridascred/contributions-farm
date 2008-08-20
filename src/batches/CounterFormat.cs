@@ -42,21 +42,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] < bound)
                 {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
