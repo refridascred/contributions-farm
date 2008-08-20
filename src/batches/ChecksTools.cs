@@ -50,18 +50,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value % 10) <= (value - 69))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + origin;
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
