@@ -62,10 +62,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowTimeout = 356;
-        public const double IdleGraph = 39.54;
-        public const double SoftGraph = 38.84;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Draft,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] series)
