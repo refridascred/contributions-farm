@@ -1,5 +1,10 @@
 {
-  "commits_depth": "primary",
-  "window_interval": "blue",
-  "idle_retries_s": 46.22
+  "session_ratio": "primary",
+  "graph_capacity": "primary",
+  "burst_timeout": 82.08,
+  "flush_depth_pct": {
+    "cache_interval": 100,
+    "persist": "local",
+    "max_retries": [231, 389, 177, 343]
+  }
 }
