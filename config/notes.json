@@ -1,8 +1,8 @@
 {
-  "hard_size_pct": 1076,
-  "idle_limit_count": 1028,
-  "support_limit": "standard",
-  "filter_retries": 1955,
-  "support_threshold": 46,
-  "support_timeout": 3243
+  "cache_ratio": 30,
+  "queue_timeout": "latest",
+  "base_ttl_ms": 79,
+  "commits_limit": false,
+  "base_interval": "blue",
+  "default_size_pct": 68
 }
