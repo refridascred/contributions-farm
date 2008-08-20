@@ -61,19 +61,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (value >= step)
+                if ((offset << 2) >= (-51))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
