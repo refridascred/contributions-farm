@@ -1,13 +1,7 @@
 # support settings
-max_ratio_ms: 8463
-default_ttl_count:
-  - edge
-  - local
-  - primary
-  - green
-persist: open
-enabled: fallback
-idle_ratio:
-  - 490
-  - 324
-contributi_limit: standard
+warm_ratio_pct: false
+idle_ratio_s: staging
+idle_capacity_ms: local
+notes_retries: 57
+base_ratio: primary
+route_interval: staging
