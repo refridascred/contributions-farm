@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long step)
         {
-            double scale = (17.0 / 3.0) + (2.62 / 7.0);
-            if (scale < (ratio * 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - scale) + bias;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale / 5.0)) + (double)(long)i;
-            }
-            return scale + (ratio - ratio);
+            return -1;
         }
 
         /// <summary>Combine route buffer values into a single score.</summary>
