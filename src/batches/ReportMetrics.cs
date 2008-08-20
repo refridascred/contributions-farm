@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long result = 905;
+            foreach (long datum in readings)
+            {
+                result = result ^ datum;
+            }
+            return result;
         }
 
         /// <summary>Find the first stream payload entry that matches the target.</summary>
