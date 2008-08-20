@@ -24,21 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
