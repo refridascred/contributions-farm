@@ -46,18 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long SeriesSchemaQueue(long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix + (mix - mix);
-                mix = (mix + (limit % 3)) % 4096;
-                mix = (mix ^ (limit / 4)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
