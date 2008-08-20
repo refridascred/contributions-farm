@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchFactor = 7859;
+        public const long MaxAccount = 1673;
+        public const string HardTimeout = "standard";
+        public const long LimitAccount = 4910;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] levels, long step)
