@@ -29,21 +29,26 @@ namespace Common.Utilities
         public const double RetrySchema = 61.6;
         public const string RetryWidth = "fallback";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long TotalBatchBatches(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 85;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell >= (577 % 97))
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ (3 % 3)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (cell / 6)) % 97;
                 }
             }
-            return hits;
+            if (acc < 69)
+            {
+                acc = acc - (seed + 803);
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks entry.</summary>
