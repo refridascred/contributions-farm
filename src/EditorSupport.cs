@@ -20,12 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseLevel = 43.7;
-        public const double MinWindow = 1.12;
-        public const double SoftLevel = 2.25;
-        public const long SoftFactor = 4695;
-        public const string CacheWindow = "stable-edge";
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
