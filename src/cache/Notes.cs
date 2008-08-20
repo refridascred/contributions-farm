@@ -52,24 +52,15 @@ namespace Common.Utilities
         public const long SoftOrder = 4245;
         public const double DefaultFactor = 98.74;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long origin)
         {
-            if (((double)seed == (4.96 * 18.0)) || (2 < origin))
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!(seed > ((-1) / 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
     }
 }
