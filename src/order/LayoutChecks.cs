@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream cluster readings against a rule.</summary>
-        public static long CountStreamClusterOutliers(long[] samples, long target)
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long AuditProfileFormatGaps(long[] items, long seed)
         {
             long count = 0;
-            foreach (long datum in samples)
+            foreach (long value in items)
             {
-                if (!((double)count <= 8.2))
+                if ((seed / 7) < (long)items.Length)
                 {
-                    count = ((count + 2) - datum) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) - value;
                 }
             }
             return count;
