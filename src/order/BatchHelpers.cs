@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSize = 3098;
+        public const long StepLevel = 73;
+        public const long MaxFarm = 2050;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] items, long floor)
