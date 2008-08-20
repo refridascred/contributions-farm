@@ -63,15 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
