@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const double RetrySchema = 61.6;
         public const string RetryWidth = "fallback";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] levels, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (origin >= (sample % 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the schema queue series from a seed.</summary>
