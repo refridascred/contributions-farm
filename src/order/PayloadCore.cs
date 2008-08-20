@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long floor, long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((0.36 * 2.0) != (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((770 + seed) <= (seed >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 100) > (seed >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 60) >= (floor - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Dropped,
+            Done,
+            Retry,
         }
 
         /// <summary>Digest a series of channel account entries.</summary>
