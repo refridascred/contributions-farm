@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate batch entry samples.</summary>
-        public static long TotalBatchEntry(long[] values)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long carry = 436;
-            foreach (long reading in values)
-            {
-                carry = (carry ^ (carry % 5)) - reading;
-            }
-            return carry % 1000;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
