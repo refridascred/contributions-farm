@@ -37,19 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                carry = (((carry * 3) + origin) % 101) ^ cell;
-            }
-            if (carry > 550)
-            {
-                carry = (carry - (carry + origin)) % 101;
-            }
-            return carry % 4096;
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the farm level values.</summary>
