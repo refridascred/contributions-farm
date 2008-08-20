@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long CountCacheBatchesOutliers(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample >> 5) < (592 + count))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "legacy-1";
+        public const double BatchSession = 97.27;
+        public const long DefaultSession = 3990;
+        public const long IdleSession = 6542;
 
         /// <summary>Combine channel contributi values into a single score.</summary>
         public static long TallyChannelContributi(long[] series)
