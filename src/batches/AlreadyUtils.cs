@@ -40,11 +40,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of stats batches readings.</summary>
+        public static long FoldStatsBatches(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long state = 75;
+            foreach (long datum in readings)
+            {
+                state = state - (state ^ datum);
+                if ((20.0 - 7.0) < (double)state)
+                {
+                    state = (state + (state + (-508))) % 101;
+                }
+                else
+                {
+                    state = (state - (state * 5)) % 101;
+                }
+            }
+            if (state < 174)
+            {
+                state = state + (state << 2);
+            }
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
