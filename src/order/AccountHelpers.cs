@@ -47,38 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] items, long step)
         {
-            if ((double)origin != (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - step) > (57 << 2))
+                if (items[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((8.96 * 0.63) < (double)origin) && ((step >> 2) != (origin + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step > (origin * 3)) || (step <= (origin % 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
