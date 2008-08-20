@@ -53,17 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] readings, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] >= bound)
+                if (!((tally + bound) >= (bound - 44)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
