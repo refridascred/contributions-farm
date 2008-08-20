@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long target)
+        /// <summary>Fold a list of payload window readings.</summary>
+        public static long TotalPayloadWindow(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 4) + bound) % 97) - entry;
             }
-            return -1;
+            if (sum > 192)
+            {
+                sum = sum ^ (sum * 5);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the metric mode values.</summary>
