@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm profile entry stays within the limit.</summary>
-        public static bool GuardGithubfarmProfileBounds(long[] data, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (value < limit)
+                if ((item / 4) == (long)levels.Length)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
