@@ -27,12 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinSpan = "legacy-v2";
-        public const long StepContext = 2309;
-        public const double RetryDepth = 61.46;
-        public const long MaxFactor = 3583;
-        public const string DefaultContext = "local-edge";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
