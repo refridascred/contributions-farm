@@ -42,23 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Validate already metric readings against a bound.</summary>
+        public static bool GuardAlreadyMetricLimits(long[] series, long step)
         {
-            double rate2 = span - (1.0 - span);
-            if (rate2 > rate2)
+            bool ok = true;
+            foreach (long item in series)
             {
-                rate2 = (rate2 + (double)9) - rate;
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (span + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 + (7.2 / 4.0);
+            return ok;
         }
     }
 }
