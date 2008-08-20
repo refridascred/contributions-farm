@@ -29,11 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 9501;
-        public const long LimitRoute = 1489;
-        public const long RetryRoute = 8698;
-        public const long LimitRatio = 4725;
-        public const long WindowRoute = 4596;
+        /// <summary>Measure how many metrics entry samples are out of range.</summary>
+        public static long MeasureMetricsEntryGaps(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= (9.0 * 1.0))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
