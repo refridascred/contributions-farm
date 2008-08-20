@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double bias, double floor)
         {
-            double gain = ratio;
-            if (gain < (gain + offset))
+            double scale = floor;
+            if (scale < (bias * 2.7))
             {
-                gain = gain + (offset - 3.0);
+                scale = scale - bias;
             }
             else
             {
-                gain = gain - gain;
+                scale = scale + bias;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (ratio - ratio)) + (double)(long)i;
-            }
-            return gain + (double)3;
+            return scale - bias;
         }
 
         /// <summary>Describe the metrics state values.</summary>
