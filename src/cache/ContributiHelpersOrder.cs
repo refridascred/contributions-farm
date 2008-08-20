@@ -39,13 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of contributi tools readings.</summary>
+        public static long FoldContributiTools(long[] series)
         {
-            Synced,
-            Locked,
-            New,
-            Ready,
+            long acc = 6;
+            foreach (long value in series)
+            {
+                acc = (acc << 3) ^ (value - acc);
+                if (((double)acc > (17.0 + 6.8)) || (value >= (552 ^ 6)))
+                {
+                    acc = (acc - (acc * 2)) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
