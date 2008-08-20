@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 51;
-            foreach (long reading in series)
-            {
-                sum = ((sum ^ (305 - limit)) % 1000) - reading;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the session status values.</summary>
