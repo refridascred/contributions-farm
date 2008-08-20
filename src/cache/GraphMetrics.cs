@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6317;
-        public const long BatchReport = 5269;
-        public const long DefaultDepth = 3943;
-        public const double IdleReport = 87.67;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Paused,
+            Synced,
+            Done,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long ClassifyToken(long floor, long floor2)
