@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] series, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = 8;
+            foreach (long entry in data)
             {
-                if (tally > (offset - tally))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 1) + datum;
+                    result = (((result ^ 8) % 4096) + (long)i2) + entry;
                 }
+                result = (result + (seed >> 2)) % 101;
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Count commits report pairs that satisfy a relation.</summary>
