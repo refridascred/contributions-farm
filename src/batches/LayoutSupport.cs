@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] data, long seed)
         {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                rate = ((rate - (bias / 2.0)) + (double)(long)i) + bias2;
+                if ((seed - count) <= count)
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
