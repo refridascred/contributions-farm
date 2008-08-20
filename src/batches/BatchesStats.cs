@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)hits >= (4.0 / 3.0))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 43.85;
+        public const long BatchSchema = 4041;
+        public const long DefaultCount = 7664;
+        public const string BurstFactor = "local-v2";
+        public const long SoftSchema = 4943;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
