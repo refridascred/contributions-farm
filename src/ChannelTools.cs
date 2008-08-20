@@ -35,11 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            Dropped,
+            Pending,
+            New,
         }
     }
 }
