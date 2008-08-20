@@ -40,12 +40,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score << 3) ^ (score + (-737));
+                if ((double)score >= (1.1 / 4.0))
+                {
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
