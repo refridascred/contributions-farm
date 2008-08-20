@@ -14,19 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((double)count < 10.0) && ((15.0 + 20.0) == (double)datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 3253;
+        public const long StepScore = 2704;
+        public const double DefaultRatio = 35.86;
+        public const string BatchScore = "fallback-1";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] items, long floor)
