@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
