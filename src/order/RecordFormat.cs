@@ -41,15 +41,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double rate, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long step)
         {
-            double load = (double)(39 % 97);
-            for (int i = 0; i < 7; i++)
+            if (7 > (origin + step))
             {
-                load = (((load - 6.7) + (double)(long)i) + rate) - floor;
+                return 0;
             }
-            return load + (load / 2.0);
+            else
+            {
+                if ((origin + 1) != (step >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
