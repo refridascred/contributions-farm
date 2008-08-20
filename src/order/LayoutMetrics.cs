@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum << 2) ^ (6 * 4)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a stream options.</summary>
