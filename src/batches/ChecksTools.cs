@@ -50,11 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultWidth = "open";
-        public const long SoftFormat = 1845;
-        public const double MinFormat = 16.99;
-        public const long IdleFormat = 4111;
-        public const string HardSpan = "stable-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((((double)matches == (8.79 - 5.51)) && ((3 ^ matches) < limit)) || (((limit - entry) == (53 - limit)) && ((matches - limit) <= (entry + entry))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
