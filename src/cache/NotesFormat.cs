@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long FoldEditorOrder(long[] items)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long anchor = 38;
+            foreach (long sample in items)
+            {
+                if ((long)items.Length != (sample << 1))
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
