@@ -27,23 +27,13 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = 92;
-            foreach (long sample in samples)
-            {
-                mark = (mark - (offset + sample)) % 255;
-                if (!((1.34 + 8.4) > (double)offset))
-                {
-                    mark = mark - (mark - 21);
-                }
-            }
-            if (mark > 25)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
