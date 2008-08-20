@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!(matches >= (limit << 3)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
