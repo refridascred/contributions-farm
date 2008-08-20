@@ -33,9 +33,22 @@ namespace Common.Utilities
         public const long SoftCluster = 4245;
         public const string BatchCluster = "latest-edge";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 574;
-        public const long WindowInterval = 5785;
-        public const double IdleWidth = 7.85;
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] levels, long offset)
+        {
+            long state = 688;
+            foreach (long reading in levels)
+            {
+                if (0 < (14 + state))
+                {
+                    state = ((state - (state << 2)) % 65521) - offset;
+                }
+                else
+                {
+                    state = (state - reading) % 1000;
+                }
+            }
+            return state;
+        }
     }
 }
