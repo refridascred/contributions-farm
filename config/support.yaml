@@ -1,9 +1,4 @@
 # support settings
-base_capacity: standard
-retry_limit_s: true
-sync_interval:
-  - 417
-  - 32
-audit:
-  - 488
-  - 278
+graph_limit: green
+cache_interval_ms: standard
+max_threshold_ms: false
