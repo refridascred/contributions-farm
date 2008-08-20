@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long MinReport = 3701;
         public const string HardReport = "open-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSize = 8642;
-        public const double SoftSpan = 16.58;
-        public const string BaseSize = "latest-v2";
-        public const string IdleInterval = "latest-edge";
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
