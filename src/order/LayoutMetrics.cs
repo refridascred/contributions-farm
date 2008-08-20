@@ -32,22 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)target == (2.0 - 0.5))
-                {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinLevel = 3.1;
+        public const long MaxProfile = 781;
+        public const long BatchLevel = 7767;
+        public const double IdleFactor = 0.47;
+        public const string HardSpan = "staging-edge";
     }
 }
