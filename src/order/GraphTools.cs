@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long TallyCommitsChannelOutliers(long[] values)
         {
-            New,
-            Queued,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item - (-74)) < (item + item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
