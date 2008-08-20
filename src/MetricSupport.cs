@@ -30,22 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long score = -185;
-            foreach (long reading in samples)
-            {
-                if ((double)score != (6.58 + 19.0))
-                {
-                    score = (((score << 3) ^ (score * 3)) % 4096) - reading;
-                }
-                else
-                {
-                    score = (score ^ (score - origin)) % 255;
-                }
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
