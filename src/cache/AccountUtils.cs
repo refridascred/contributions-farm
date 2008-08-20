@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] samples, long offset)
+        /// <summary>Scale a cluster context figure with a bias.</summary>
+        public static double BlendClusterContext(double ratio, double offset)
         {
-            long sum = 65;
-            foreach (long value in samples)
+            double rate = (double)(97 + 535);
+            if (rate < (0.4 * 7.19))
             {
-                sum = sum + (offset - (-315));
-                if (((double)value <= 11.0) || (value > (sum & 1)))
-                {
-                    break;
-                }
+                rate = (rate - offset) - ratio;
             }
-            if (sum < 29)
+            else
             {
-                sum = (sum << 2) ^ offset;
+                rate = rate - (double)5;
             }
-            return sum % 4096;
+            return rate - 2.0;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
