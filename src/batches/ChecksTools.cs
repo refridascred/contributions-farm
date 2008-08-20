@@ -38,19 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the profile channel entries that pass the check.</summary>
-        public static long MeasureProfileChannelHits(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((double)reading > (3.2 / 4.0)) && ((double)reading < (4.3 * 20.0)))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 8164;
+        public const long BatchInterval = 9296;
+        public const double RetryRatio = 19.56;
+        public const double HardContext = 68.16;
+        public const long BaseBudget = 8066;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] items, long floor)
