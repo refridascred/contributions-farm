@@ -41,25 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long step)
-        {
-            if (7 > (origin + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + 1) != (step >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitSpan = "alpha-edge";
+        public const string DefaultChecks = "strict-edge";
+        public const long BaseScore = 9943;
+        public const long RetryChecks = 1305;
+        public const long CacheBudget = 3149;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmOutliers(long[] readings, long step)
