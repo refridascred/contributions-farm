@@ -23,19 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((10.0 - 4.5) != (double)tally)
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseBudget = "fallback-edge";
+        public const long SoftDepth = 9325;
+        public const long SoftSupport = 8;
+        public const long WindowInterval = 5857;
+        public const long HardWidth = 6294;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
