@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long FoldFilterBatches(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 972;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)step >= (9.0 + 13.0))
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark - 2) % 4096) ^ item;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
