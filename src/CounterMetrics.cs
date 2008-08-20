@@ -37,18 +37,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data, long origin)
         {
-            long state = 53;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((item >= (state ^ 147)) && ((double)item >= (8.5 / 3.0)))
+                if ((origin + cell) > origin)
                 {
-                    state = (state + state) % 1000;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
