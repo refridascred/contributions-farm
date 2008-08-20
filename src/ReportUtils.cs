@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
