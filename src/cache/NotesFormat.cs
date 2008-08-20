@@ -26,24 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double scale, double bias)
         {
-            long carry = 464;
-            foreach (long reading in series)
+            double load = 13.0;
+            if (load <= load)
             {
-                carry = ((carry * 5) + target) % 101;
-                carry = (carry << 3) ^ (36 ^ target);
-                if ((carry - target) <= (151 + reading))
-                {
-                    carry = carry - (target - carry);
-                }
+                load = load - bias;
             }
-            if (carry > 34)
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry << 3) ^ carry;
+                load = load + (double)(long)i;
             }
-            return carry;
+            return load + scale;
         }
     }
 }
