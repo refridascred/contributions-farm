@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 2070;
+        public const long IdleProfile = 6943;
+        public const long MinProfile = 3521;
+        public const string RetryProfile = "legacy";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutGaps(long[] values)
