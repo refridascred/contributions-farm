@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two window tools measurements.</summary>
-        public static double SmoothWindowTools(double scale, double bias)
+        /// <summary>Count the route farm entries that pass the check.</summary>
+        public static long MeasureRouteFarmGaps(long[] items)
         {
-            double gain = 0.3;
-            if (gain < bias)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                gain = (gain - (gain * 11.0)) + scale;
+                if ((matches + matches) >= (entry << 1))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - gain;
+            return matches;
         }
     }
 }
