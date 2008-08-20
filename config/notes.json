@@ -1,7 +1,6 @@
 {
-  "audit": ["primary", "latest", "strict"],
-  "buffer_limit": true,
-  "poll_capacity_pct": "staging",
-  "poll_interval": ["staging", "standard"],
-  "flush_size_pct": 100
+  "compress": "fallback",
+  "strict": [394, 467],
+  "burst_delay_s": ["blue", "blue", "blue", "local"],
+  "verbose": 82.47
 }
