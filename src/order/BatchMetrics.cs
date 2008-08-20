@@ -47,18 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster cache readings.</summary>
-        public static long DigestClusterCache(long[] series, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long offset)
         {
-            long total = 24;
-            foreach (long sample in series)
+            long carry = 854;
+            foreach (long datum in series)
             {
-                if (!(sample < (total >> 1)))
+                carry = ((carry + datum) % 101) - offset;
+                if ((carry - 94) <= (datum >> 5))
                 {
-                    total = (total * 4) + (floor + sample);
+                    carry = ((carry << 2) ^ (carry / 9)) % 97;
                 }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
