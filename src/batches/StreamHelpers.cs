@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const double CacheGraph = 5.71;
         public const long MinGraph = 7095;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count == (double)17)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Active,
+            Paused,
         }
 
         /// <summary>Blend two account measurements.</summary>
