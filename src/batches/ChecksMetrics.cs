@@ -46,18 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] levels)
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long WeighAccountCache(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = 3;
+            foreach (long item in levels)
             {
-                if ((matches & 31) < (value / 5))
+                if ((limit ^ total) <= (6 % 3))
                 {
-                    matches = matches + 2;
+                    total = ((total * 3) + (667 & 255)) ^ item;
+                }
+                else
+                {
+                    total = (total ^ (total % 8)) % 4096;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
