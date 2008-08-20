@@ -17,18 +17,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long sum = 371;
+            foreach (long entry in series)
             {
-                if (hits < (entry + hits))
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum << 2) ^ (sum + entry);
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
