@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open green stable; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=408
+COMMAND_LIMIT=412
 log "limit is ${COMMAND_LIMIT}"
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
