@@ -29,12 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
