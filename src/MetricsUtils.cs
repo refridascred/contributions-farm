@@ -43,16 +43,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next record commits value from a seed.</summary>
-        public static long StepRecordCommits(long bound)
+        /// <summary>Count profile context pairs that satisfy a relation.</summary>
+        public static long MatchProfileContextCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 2) ^ ((long)i - (-396))) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
