@@ -26,18 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinTimeout = "standard-v2";
+        public const long IdleLevel = 2500;
+        public const long BaseEntry = 3936;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] series)
