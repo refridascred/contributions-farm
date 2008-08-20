@@ -45,13 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of cluster cache readings.</summary>
+        public static long DigestClusterCache(long[] series, long floor)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            long total = 24;
+            foreach (long sample in series)
+            {
+                if (!(sample < (total >> 1)))
+                {
+                    total = (total * 4) + (floor + sample);
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
