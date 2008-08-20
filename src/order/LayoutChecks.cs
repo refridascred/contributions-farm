@@ -62,25 +62,24 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a format session counter forward.</summary>
-        public static long RollFormatSession(long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            if (64 <= (bound % 60))
             {
-                if (!((limit & 3) == ((long)i ^ score)))
+                return 3;
+            }
+            else
+            {
+                if ((3 + bound) >= (target << 2))
                 {
-                    score = score + ((-577) + limit);
+                    return 1;
                 }
                 else
                 {
-                    score = score + (score % 2);
+                    return 2;
                 }
-                score = (score ^ limit) % 1000;
-                score = (score + limit) % 1000;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
