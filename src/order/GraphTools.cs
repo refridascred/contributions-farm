@@ -57,18 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long AuditOrderCacheGaps(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum & 127) == (datum - 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
