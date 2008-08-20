@@ -32,25 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long floor, long floor2)
-        {
-            if ((floor + floor2) < (floor2 / 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((57 & 255) <= (floor + floor)) || (floor2 > (9 + floor2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinInterval = "latest-1";
+        public const long RetryCache = 4164;
+        public const long SoftCache = 8904;
+        public const string CacheBudget = "latest";
+        public const long MaxCache = 2373;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] levels, long origin)
