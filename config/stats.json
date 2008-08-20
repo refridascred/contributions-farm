@@ -1,5 +1,5 @@
 {
-  "enabled": "fallback",
-  "profile_interval": 5204,
-  "cache_retries_s": "fallback"
+  "flush_depth_ms": 500,
+  "compress": [388, 387, 206, 306],
+  "cache_interval_ms": true
 }
