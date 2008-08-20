@@ -32,14 +32,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank editor tools input into a small class.</summary>
+        public static long BucketEditorTools(long step, long bound)
         {
-            Idle,
-            Closed,
-            Queued,
-            Dropped,
-            Stale,
+            if ((double)bound <= 2.4)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound <= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound & 7) == (bound + 950)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
