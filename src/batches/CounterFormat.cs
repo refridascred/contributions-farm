@@ -37,12 +37,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
+        public static long SeekCommitsGithubfarmIndex(long[] data, long limit)
         {
-            Idle,
-            Retry,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
