@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long edge = limit ^ floor;
+            if ((floor & 255) <= (floor >> 2))
             {
-                if (item >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 4) <= (edge + floor))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a cluster summary.</summary>
