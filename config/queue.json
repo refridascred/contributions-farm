@@ -1,5 +1,16 @@
 {
-  "hard_timeout": 65.38,
-  "batch_ratio_pct": "legacy",
-  "dry_run": ["standard", "latest", "legacy"]
+  "soft_interval_ms": {
+    "soft_window": 60,
+    "hard_ttl_count": 1316,
+    "base_capacity_ms": 3.2,
+    "strict": {
+      "default_depth": true,
+      "burst_interval": "primary",
+      "hard_ratio": "latest"
+    }
+  },
+  "verbose": true,
+  "audit": "open",
+  "readonly": 1024,
+  "queue_capacity": 60
 }
