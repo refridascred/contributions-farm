@@ -20,17 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a session metrics sample.</summary>
-        public static long FindSessionMetricsIndex(long[] series, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                if ((sample >> 5) != (state << 3))
                 {
-                    return (long)i;
+                    state = state ^ (-490);
+                }
+                else
+                {
+                    state = (state - (state / 8)) % 1000;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Fold a list of contributi tools readings.</summary>
