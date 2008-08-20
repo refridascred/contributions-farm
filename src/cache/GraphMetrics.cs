@@ -75,19 +75,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] samples, long floor)
         {
-            double gain = 3.5 - (ratio / 5.0);
-            if (gain < 0.5)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                gain = (gain + (double)804) + floor;
+                if ((86 % 24) > floor)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            else
-            {
-                gain = gain - (double)5;
-            }
-            return gain - (double)8;
+            return matches;
         }
     }
 }
