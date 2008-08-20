@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mean - (mean + 2.41);
         }
 
-        /// <summary>Validate command contributi readings against a bound.</summary>
-        public static bool ValidateCommandContributiRange(long[] items, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Pending,
+            Synced,
+            Active,
         }
     }
 }
