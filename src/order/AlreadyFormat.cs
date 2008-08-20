@@ -29,12 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            Stale,
-            Active,
-            Locked,
+            double drift = bias;
+            if (drift < 0.08)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift / 7.0)) + (double)(long)i;
+            }
+            return drift + (bias + bias2);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
