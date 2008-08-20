@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((17.0 + 7.0) <= (double)seed))
+                {
+                    carry = (carry ^ (seed + seed)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next stream value.</summary>
