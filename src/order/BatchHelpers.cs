@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate profile filter readings against a bound.</summary>
+        public static bool GuardProfileFilterRange(long[] items, long limit)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
