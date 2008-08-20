@@ -46,19 +46,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data, long floor)
-        {
-            long acc = 5;
-            foreach (long datum in data)
-            {
-                if (((datum >> 3) > (acc + 5)) || ((datum * 5) < (acc + floor)))
-                {
-                    acc = acc ^ (floor - floor);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 4412;
+        public const long MaxCounter = 7728;
+        public const double WindowCounter = 93.67;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long origin)
