@@ -27,12 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long target)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long sum = 57;
+            foreach (long entry in data)
+            {
+                sum = (((sum * 5) + (target >> 5)) % 255) ^ entry;
+                sum = sum - sum;
+            }
+            if (sum < (-32))
+            {
+                sum = (sum - target) % 97;
+            }
+            return sum;
         }
     }
 }
