@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
