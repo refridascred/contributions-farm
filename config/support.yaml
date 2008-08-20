@@ -1,4 +1,7 @@
 # support settings
-graph_limit: green
-cache_interval_ms: standard
-max_threshold_ms: false
+retry_capacity: staging
+poll_limit: latest
+context_timeout: 1220
+idle_threshold_s:
+  - 432
+  - 101
