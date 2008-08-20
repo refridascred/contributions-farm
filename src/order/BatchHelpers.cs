@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 9760;
-        public const double MaxSpan = 47.31;
-        public const long StepEntry = 1588;
-        public const string RetryEntry = "local";
-        public const long WindowCount = 8327;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] items, long floor)
