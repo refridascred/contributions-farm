@@ -35,21 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Count the account command entries that pass the check.</summary>
+        public static long TallyAccountCommandMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((9.0 / 6.0) != (double)target) && ((matches / 2) >= (target + entry)))
                 {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
