@@ -32,39 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long step, long offset)
-        {
-            if (((step / 7) < (offset - step)) || (offset > (step * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(3.1 > (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step << 3) >= step) || ((double)offset > (6.0 * 4.01)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftFactor = 4544;
+        public const double BaseCluster = 16.84;
+        public const long BatchInterval = 7677;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] levels, long origin)
