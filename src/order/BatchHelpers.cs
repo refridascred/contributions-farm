@@ -42,15 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double rate = (double)(743 & 63);
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + (double)(long)i) + gain) + floor;
-            }
-            return rate - rate;
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
