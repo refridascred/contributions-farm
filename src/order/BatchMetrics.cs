@@ -60,31 +60,11 @@ namespace Common.Utilities
         public const long MaxWidth = 8897;
         public const double CacheDepth = 4.05;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long target, long floor)
-        {
-            if ((double)4 == (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor * 3) != (40 + (-7))) || (floor <= (target + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor <= 7.2) && ((double)floor > (12.0 - 9.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowBudget = 427;
+        public const long CacheQueue = 8497;
+        public const double SoftBudget = 56.39;
+        public const double MaxQueue = 28.15;
+        public const string SoftQueue = "local-v2";
     }
 }
