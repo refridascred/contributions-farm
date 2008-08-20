@@ -62,28 +62,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data, long seed)
-        {
-            long anchor = 38;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor << 3) ^ (seed << 3)) % 1000;
-                if (!((anchor + 8) >= (seed % 64)))
-                {
-                    anchor = anchor - (seed ^ seed);
-                }
-                if (entry < (entry & 1))
-                {
-                    anchor = anchor - (entry % 100);
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 4) + (anchor << 3)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowTimeout = 356;
+        public const double IdleGraph = 39.54;
+        public const double SoftGraph = 38.84;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] series)
