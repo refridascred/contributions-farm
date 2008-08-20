@@ -34,21 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of record entry readings.</summary>
-        public static long MatchRecordEntryCount(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed ^ 7) < (reading / 2))
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
