@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long slot = target + offset;
-            if (((82 & 127) <= (target / 3)) && ((double)offset <= (double)65))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (7.0 * 2.7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + slot) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Derive the next command farm value from a seed.</summary>
