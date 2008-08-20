@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] items, long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
