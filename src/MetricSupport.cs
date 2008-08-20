@@ -24,18 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((17.0 - 2.12) <= (double)(long)samples.Length) || (0.37 <= (double)matches))
+                if (entry != step)
                 {
-                    matches = ((matches + 1) - datum) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
