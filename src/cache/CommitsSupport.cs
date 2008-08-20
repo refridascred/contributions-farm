@@ -27,17 +27,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] values, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                if ((reading >= (hits - reading)) || !(reading >= ((-17) >> 3)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
