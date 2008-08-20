@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
         {
-            Failed,
-            Done,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
