@@ -17,9 +17,13 @@ namespace Common.Utilities
         public const long MinWidth = 5812;
         public const long BatchAccount = 956;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstLevel = 620;
-        public const string CacheGithubfarm = "cached-edge";
-        public const string BatchGithubfarm = "local-1";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
