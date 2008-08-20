@@ -25,21 +25,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count context route pairs that satisfy a relation.</summary>
-        public static long OverlapContextRouteCount(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Validate account already readings against a bound.</summary>
