@@ -1,13 +1,12 @@
 {
-  "soft_threshold_s": "strict",
-  "default_interval_pct": {
-    "default_capacity_count": true,
-    "session_size": ["latest", "strict"],
-    "report_window": [171, 448, 184],
-    "graph_retries": "stable"
+  "metrics_window": {
+    "flush_retries_s": false,
+    "strict": 66.4,
+    "default_threshold_pct": [277, 452],
+    "burst_ttl": 22
   },
-  "base_threshold": true,
-  "dry_run": "cached",
-  "flush_limit_ms": "local",
-  "verbose": [377, 97, 249]
+  "min_ttl": "eu-west",
+  "retry_depth_count": 33,
+  "persist": 75.05,
+  "context_capacity": "cached"
 }
