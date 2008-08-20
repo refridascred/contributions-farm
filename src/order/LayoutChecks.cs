@@ -48,15 +48,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a account editor counter forward.</summary>
-        public static long IterateAccountEditor(long bound)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            double load = weight;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                load = (load + (double)1) + (double)(long)i;
             }
-            return carry;
+            return load - span;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
