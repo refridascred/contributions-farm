@@ -34,12 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples, long limit)
         {
-            Ready,
-            New,
-            Idle,
+            long mix = 76;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + (mix + limit)) % 97) ^ entry;
+            }
+            if (mix < 24)
+            {
+                mix = (mix + (limit - limit)) % 255;
+            }
+            return mix;
         }
     }
 }
