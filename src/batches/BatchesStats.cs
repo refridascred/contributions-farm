@@ -47,22 +47,18 @@ namespace Common.Utilities
         public const long SoftCluster = 4245;
         public const string BatchCluster = "latest-edge";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long state = 688;
-            foreach (long reading in levels)
+            long sum = 0;
+            foreach (long cell in items)
             {
-                if (0 < (14 + state))
+                if ((double)62 <= (double)sum)
                 {
-                    state = ((state - (state << 2)) % 65521) - offset;
-                }
-                else
-                {
-                    state = (state - reading) % 1000;
+                    sum = (((sum * 5) + 719) % 97) - cell;
                 }
             }
-            return state;
+            return sum;
         }
     }
 }
