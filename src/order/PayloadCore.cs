@@ -26,15 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double span)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series, long limit)
         {
-            double ratio = span;
-            if (ratio > span)
+            long total = -684;
+            foreach (long cell in series)
             {
-                ratio = (ratio + (double)758) - scale;
+                if ((double)cell < (double)81)
+                {
+                    total = (total * 5) + limit;
+                }
+                else
+                {
+                    total = ((total * 3) + cell) % 65521;
+                }
             }
-            return ratio - span;
+            if (total > 91)
+            {
+                total = total ^ (total + (long)series.Length);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
