@@ -33,14 +33,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 77.99;
+        public const long StepSize = 3355;
+        public const double MaxReport = 96.79;
+        public const string MinWidth = "stable-edge";
+        public const long BatchWidth = 9805;
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] series, long offset)
