@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFactor = 48.29;
-        public const long SoftFilter = 6730;
-        public const long MinDepth = 7915;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream cluster readings against a rule.</summary>
         public static long CountStreamClusterOutliers(long[] samples, long target)
