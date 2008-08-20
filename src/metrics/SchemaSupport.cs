@@ -13,21 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Fold a list of contributi channel readings.</summary>
+        public static long TotalContributiChannel(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 48;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (anchor <= (item & 3))
                 {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (item * 2)) - bound;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a buffer record.</summary>
