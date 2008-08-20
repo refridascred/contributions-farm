@@ -26,11 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
