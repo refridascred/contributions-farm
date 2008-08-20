@@ -64,14 +64,30 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate checks channel samples.</summary>
+        public static long ScoreChecksChannel(long[] readings, long target)
         {
-            Active,
-            Done,
-            Ready,
-            Locked,
-            Idle,
+            long mix = 87;
+            foreach (long datum in readings)
+            {
+                if (target > (1 & 255))
+                {
+                    mix = (mix ^ (target ^ datum)) % 101;
+                }
+                else
+                {
+                    mix = (mix * 5) + (target - target);
+                }
+                if ((double)(long)readings.Length >= (double)datum)
+                {
+                    break;
+                }
+            }
+            if (mix > 3)
+            {
+                mix = (mix * 4) + (23 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
