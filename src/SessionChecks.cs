@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "stable-1";
+        public const long LimitBudget = 9826;
+        public const long BurstBudget = 4856;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
