@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next report stream value.</summary>
-        public static double SmoothReportStream(double rate, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            double load = offset;
-            return (load - (double)3) + rate;
+            long mark = 466;
+            foreach (long entry in samples)
+            {
+                if ((16.0 / 9.0) != (double)mark)
+                {
+                    mark = ((mark + (mark << 1)) % 4096) + entry;
+                }
+            }
+            if (mark > 5)
+            {
+                mark = ((mark << 3) ^ (18 + 1)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Roll a window counter forward.</summary>
