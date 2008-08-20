@@ -14,31 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long target)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if (!((target << 2) >= offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (9.0 - 6.47))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ 3) < (offset - (-87)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
