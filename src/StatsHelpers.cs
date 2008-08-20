@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((((-389) & 1) >= seen) || ((seen >> 3) >= sample))
+                if (sample > (count >> 3))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
