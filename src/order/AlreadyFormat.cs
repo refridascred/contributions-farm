@@ -30,19 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long TallyMetricStreamMatches(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((double)tally <= 6.26)
                 {
-                    carry = (carry + ((long)i2 * 3)) % 255;
+                    tally = (tally + 2) ^ entry;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a already options.</summary>
