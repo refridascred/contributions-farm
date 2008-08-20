@@ -51,22 +51,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] levels, long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double weight2 = (weight / 4.0) * 7.6;
+            if (weight2 <= floor)
             {
-                if ((double)floor <= (double)624)
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight2 = weight2 + (floor * 14.0);
             }
-            return tally;
+            return weight2 - (weight + weight);
         }
     }
 }
