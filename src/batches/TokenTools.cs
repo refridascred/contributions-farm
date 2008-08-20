@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double floor)
+        /// <summary>Iterate the schema commits series from a seed.</summary>
+        public static long IterateSchemaCommits(long origin)
         {
-            double mean = (double)(243 >> 1);
-            for (int i = 0; i < 5; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                mean = (((mean + (double)877) - (double)(long)i) - gain) + floor;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (((carry * 4) + (origin >> 5)) % 1000) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mean + (double)0;
+            return carry;
         }
 
         /// <summary>Find the first format githubfarm entry that matches the target.</summary>
