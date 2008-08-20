@@ -48,17 +48,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 38;
+            foreach (long entry in data)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                anchor = ((anchor << 3) ^ (seed << 3)) % 1000;
+                if (!((anchor + 8) >= (seed % 64)))
                 {
-                    return (long)i;
+                    anchor = anchor - (seed ^ seed);
+                }
+                if (entry < (entry & 1))
+                {
+                    anchor = anchor - (entry % 100);
                 }
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 4) + (anchor << 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
