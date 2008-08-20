@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the batches stream entries that pass the check.</summary>
-        public static long MeasureBatchesStreamHits(long[] data)
+        /// <summary>Digest a series of notes record entries.</summary>
+        public static long TallyNotesRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = 56;
+            foreach (long entry in readings)
             {
-                if ((7.0 * 9.0) <= (double)datum)
+                if ((double)anchor < (18.0 - 9.8))
                 {
-                    count = count + 1;
+                    anchor = (anchor + (entry / 9)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
+                    anchor = (anchor << 3) ^ (entry << 2);
+                }
+                if (0.44 >= (double)anchor)
+                {
+                    anchor = anchor ^ (anchor ^ anchor);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
