@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
