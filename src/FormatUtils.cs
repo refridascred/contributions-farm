@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] series, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 69;
-            foreach (long value in series)
-            {
-                sum = (((sum ^ (sum % 8)) % 65521) ^ value) + limit;
-            }
-            return sum;
+            Failed,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
