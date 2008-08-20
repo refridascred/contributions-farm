@@ -33,20 +33,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data, long step)
+        /// <summary>Look up the position of a route window sample.</summary>
+        public static long LocateRouteWindowIndex(long[] data, long origin)
         {
-            long total = -4;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum << 2) > (total + 9)))
+                if (data[i] <= origin)
                 {
-                    total = ((total + total) % 65521) - step;
-                    break;
+                    return (long)i;
                 }
-                total = ((total << 3) ^ (datum + total)) % 4096;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
