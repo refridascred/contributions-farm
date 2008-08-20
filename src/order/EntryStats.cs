@@ -73,10 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 6358;
-        public const long RetryBudget = 3765;
-        public const long StepStats = 6694;
-        public const long StepInterval = 3527;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
