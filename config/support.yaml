@@ -1,28 +1,20 @@
 # support settings
-strict: 30.27
-verbose:
-  batches_limit: 21.71
-  token_retries: primary
-  dry_run: open
-  warm_interval_ms: local
-  sync_capacity_s: 7574
-  strict: false
-cache_retries_pct:
-  compress: 68
-  base_threshold: 96.39
-  cache_timeout: open
-  enabled:
-    flush_timeout: legacy
-    retry_size_s: legacy
-    base_delay_ms: 4715
-    max_capacity: local
-    batch_ratio_count: strict
-    persist: 75
-  default_capacity: staging
-  queue_retries:
-    burst_retries_ms: 8294
-    dry_run: fallback
-    audit: staging
-idle_retries: 41
-retry_window_s: 7327
-batch_ttl: true
+contributi_limit: false
+retry_timeout_pct:
+  max_ttl_pct:
+    session_threshold: 24
+    cache_ttl_s: 13.81
+    buffer_timeout: true
+    sync_threshold_s: strict
+    githubfarm_retries: 1024
+  min_interval: latest
+  max_size_s: eu-west
+  soft_capacity_count:
+    report_ratio: 84
+    max_window_ms: blue
+    warm_delay_ms: 346
+    default_threshold_count: 58.09
+    strict: cached
+    hard_window_s: 3574
+retry_delay_ms: strict
+audit: false
