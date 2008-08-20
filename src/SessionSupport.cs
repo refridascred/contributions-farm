@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long WindowRatio = 1358;
         public const long MaxInterval = 6156;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((entry ^ seen) < (entry * 2)) || ((66 + entry) < entry))
+                if (sample != step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
