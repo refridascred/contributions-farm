@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long origin)
         {
-            Closed,
-            New,
-            Idle,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
