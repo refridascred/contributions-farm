@@ -35,16 +35,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long origin, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long bound = origin + floor;
+            if ((floor >= origin) || ((0.62 / 3.0) == (double)bound))
             {
-                mix = (mix ^ (long)i) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((bound + bound) <= (floor >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (origin & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor + bound) != (floor << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
