@@ -51,33 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric report samples.</summary>
-        public static long DigestMetricReport(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] levels, long floor)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                sum = sum - sum;
-                if ((sum / 4) > 1)
+                if ((double)floor <= (double)624)
                 {
-                    sum = ((sum << 2) ^ datum) % 101;
-                    sum = (sum + 6) % 97;
+                    tally = (tally + 2) ^ value;
                 }
                 else
                 {
-                    sum = sum - (datum / 7);
-                }
-                sum = (sum ^ ((long)items.Length - sum)) % 97;
-                if ((6.4 * 8.58) > (double)sum)
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (sum < 247)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 97;
+            return tally;
         }
     }
 }
