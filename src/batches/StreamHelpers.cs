@@ -25,21 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order notes value from a seed.</summary>
-        public static long SeriesOrderNotes(long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                long offset = (long)i;
-                state = state ^ offset;
-                if (!((offset / 6) != (offset * 2)))
+                if (!((double)datum == (7.68 - 5.6)))
                 {
-                    offset = ((offset * 5) + (916 * 5)) % 65521;
+                    sum = sum + datum;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                else
+                {
+                    sum = (sum ^ (datum - 183)) % 101;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Derive the next layout batch value from a seed.</summary>
