@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark << 3) ^ (mark ^ floor);
+                if (!((mark - 243) <= (floor / 9)))
+                {
+                    mark = mark - (long)i;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
