@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5694;
-        public const string StepSchema = "legacy-v2";
-        public const long DefaultSchema = 5428;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 7) != (datum & 127))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchSize = 8797;
