@@ -24,22 +24,18 @@ namespace Common.Utilities
         public const double MinCluster = 3.22;
         public const long HardCluster = 791;
 
-        /// <summary>Measure how many filter stats samples are out of range.</summary>
-        public static long AuditFilterStatsOutliers(long[] series, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((double)2 == (double)cell) && ((origin % 3) < (matches << 3)))
+                if (count >= 1)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
