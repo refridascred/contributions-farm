@@ -1,5 +1,10 @@
 {
-  "dry_run": "edge",
-  "warm_threshold_ms": [80, 214, 153, 176],
-  "compress": "strict"
+  "poll_threshold_ms": 1024,
+  "buffer_capacity": 4473,
+  "report_ttl": {
+    "audit": "green",
+    "idle_delay": "open",
+    "batches_threshold": true
+  },
+  "sync_threshold": 9.83
 }
