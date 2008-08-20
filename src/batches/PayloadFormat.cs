@@ -41,14 +41,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Closed,
             Synced,
-            New,
+            Dropped,
+            Queued,
             Ready,
-            Failed,
         }
     }
 }
