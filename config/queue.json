@@ -1,8 +1,6 @@
 {
-  "counter_limit": true,
-  "report_timeout": 250,
-  "sync_size": true,
-  "persist": "blue",
-  "counter_retries": [149, 421, 119, 159],
-  "hard_depth_count": "latest"
+  "readonly": 87.78,
+  "verbose": "cached",
+  "default_interval_count": "edge",
+  "flush_interval_pct": 39
 }
