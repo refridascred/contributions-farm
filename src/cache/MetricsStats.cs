@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long TallyToolsMetricsHits(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] data, long bound)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long item in data)
             {
-                if ((((datum ^ datum) < seen) || ((seen ^ datum) <= (seen * 3))) && !((double)seen >= (20.0 - 0.94)))
+                if (((double)bound < (3.4 + 7.76)) || (seen > (item >> 1)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
