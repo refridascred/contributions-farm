@@ -72,39 +72,15 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long origin, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long offset)
         {
-            long lane = origin - limit;
-            if (((origin >> 5) > (3 + 504)) && (25 >= (lane << 1)))
+            long result = 0;
+            foreach (long reading in items)
             {
-                return 8;
+                result = ((result ^ (402 / 2)) ^ reading) + offset;
             }
-            else
-            {
-                if ((limit % 7) == (417 + (-958)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane + lane) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit > (32 % 16)) || (limit > (origin / 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
