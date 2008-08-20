@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-The account report groups every githubfarm by route.
+Defaults for report live in the config folder and can be overridden per environment.
+The channel module keeps checks values in sync with the context cache.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer window defaults
-- Review context limits each release
+- Keep command values small
+- Prefer tools defaults
+- Review format limits each release
