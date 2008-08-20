@@ -23,11 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
