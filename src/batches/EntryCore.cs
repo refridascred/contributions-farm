@@ -74,10 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSpan = 4348;
-        public const long BaseRoute = 9563;
-        public const long DefaultDepth = 643;
-        public const long MinRoute = 5111;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
