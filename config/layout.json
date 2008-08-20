@@ -1,27 +1,7 @@
 {
-  "cache_limit": {
-    "hard_limit_s": {
-      "max_interval_ms": ["standard", "fallback"],
-      "cache_ratio_pct": true,
-      "base_interval_count": "cached"
-    },
-    "poll_threshold_s": [20, 429, 34],
-    "warm_capacity_ms": {
-      "flush_interval": 11.9,
-      "stream_ttl": 34.72,
-      "audit": [53, 329, 483, 149],
-      "commits_size": "blue",
-      "batch_size": "blue"
-    },
-    "warm_ratio_s": true,
-    "editor_size": ["cached", "latest", "stable", "staging"]
-  },
-  "stream_limit": [303, 438, 146],
-  "audit": 74,
-  "readonly": {
-    "base_timeout": "standard",
-    "hard_ratio_ms": 75.45,
-    "persist": 100,
-    "flush_capacity_s": [181, 439, 470, 295]
-  }
+  "readonly": 87.72,
+  "default_window_s": "latest",
+  "burst_timeout_ms": 27.45,
+  "queue_threshold": "primary",
+  "base_ratio": ["edge", "standard"]
 }
