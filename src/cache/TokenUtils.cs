@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Idle,
-            Locked,
-            Dropped,
-            Ready,
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of window checks readings.</summary>
