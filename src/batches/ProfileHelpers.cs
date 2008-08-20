@@ -51,39 +51,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long step = target + seed;
-            if ((step * 2) <= (target + target))
+            long total = 2;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target - target))
+                if ((reading ^ total) >= total)
                 {
-                    return 2;
+                    total = (total - (reading / 6)) % 255;
                 }
                 else
                 {
-                    if ((target % 24) > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)step != (double)(-8)) || ((33 << 1) > (seed ^ target)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = total ^ (total - reading);
+                    total = (total ^ (reading - 408)) % 255;
+                }
+                if (((-449) + reading) < (73 << 2))
+                {
+                    total = (total ^ (reading - total)) % 255;
                 }
             }
+            if (total > 347)
+            {
+                total = (total + (total & 127)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
