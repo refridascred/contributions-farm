@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
