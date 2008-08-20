@@ -1,6 +1,20 @@
 {
-  "sync_ratio_s": 24.02,
-  "schema_retries": "fallback",
-  "soft_timeout": [18, 371, 124, 224],
-  "poll_timeout": "legacy"
+  "max_window_count": 250,
+  "burst_interval_count": {
+    "min_threshold_count": {
+      "sync_ratio_s": true,
+      "sync_delay": "latest",
+      "readonly": "fallback"
+    },
+    "strict": "legacy",
+    "soft_retries_ms": {
+      "warm_retries": ["blue", "edge"],
+      "cache_threshold_ms": 97.34,
+      "cache_depth": ["fallback", "strict", "legacy"],
+      "retry_size_count": ["local", "latest", "latest", "cached"],
+      "poll_depth": "staging",
+      "readonly": true
+    }
+  },
+  "sync_depth": 72.77
 }
