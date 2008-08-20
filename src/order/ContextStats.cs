@@ -45,12 +45,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFactor = 96.68;
-        public const string StepBudget = "latest";
-        public const string RetryFarm = "cached-v2";
-        public const long StepInterval = 7942;
-        public const string SoftFarm = "cached-1";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine account format values into a single score.</summary>
         public static long TallyAccountFormat(long[] samples, long seed)
