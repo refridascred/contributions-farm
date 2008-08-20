@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Synced,
-            Locked,
-            Draft,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinFactor = 3328;
+        public const double LimitGraph = 24.88;
+        public const double SoftTimeout = 49.58;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
