@@ -18,27 +18,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings, long bound)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long floor)
         {
-            long state = 1;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (datum * 2);
-                if ((2.0 * 3.9) != (double)bound)
+                if (data[i] <= floor)
                 {
-                    state = (state ^ (2 - state)) % 255;
-                }
-                if ((state <= (bound + datum)) || (bound > 618))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 2)
-            {
-                state = ((state * 4) + bound) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
