@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches filter readings against a rule.</summary>
-        public static long TallyBatchesFilterOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (hits >> 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftInterval = 8048;
+        public const long WindowRatio = 1358;
+        public const long MaxInterval = 6156;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsGaps(long[] items)
