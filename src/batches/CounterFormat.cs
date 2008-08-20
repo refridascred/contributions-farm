@@ -19,13 +19,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
