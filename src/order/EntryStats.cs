@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Locked,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 9871;
+        public const long IdleWidth = 3499;
+        public const string CacheMetric = "legacy-v2";
+        public const double RetryRatio = 9.68;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] values, long limit)
