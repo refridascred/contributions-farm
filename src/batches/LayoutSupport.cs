@@ -38,19 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long floor)
         {
-            double mean = (gain * 16.0) * 6.5;
-            if (mean < (double)6)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + mean) + floor;
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (gain / 9.0);
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
