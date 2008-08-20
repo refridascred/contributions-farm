@@ -18,28 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data)
-        {
-            long acc = 895;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc ^ (item + item)) % 4096) + (long)i;
-                    acc = (acc - (9 + item)) % 4096;
-                }
-                if ((item & 3) >= (acc / 3))
-                {
-                    acc = (acc ^ (item & 3)) % 97;
-                }
-            }
-            if (acc > 433)
-            {
-                acc = acc - ((-8) & 63);
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 90.18;
+        public const long WindowWidth = 4817;
+        public const string DefaultTools = "alpha-1";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
