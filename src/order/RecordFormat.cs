@@ -52,21 +52,22 @@ namespace Common.Utilities
         public const long MaxRecord = 9143;
         public const string StepRecord = "strict-1";
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 67;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((19.0 / 4.0) != (double)mark)
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark * 3) + (datum << 3);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (datum % 12)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
