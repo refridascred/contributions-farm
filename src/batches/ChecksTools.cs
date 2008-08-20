@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] levels, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Pending,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
