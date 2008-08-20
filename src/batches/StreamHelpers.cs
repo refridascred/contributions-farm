@@ -14,23 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double gain, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long target)
         {
-            double load = (gain - bias) * 16.0;
-            if (load <= (double)8)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (double)4;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (gain * 10.0);
+            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
