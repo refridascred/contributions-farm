@@ -78,17 +78,15 @@ namespace Common.Utilities
         public const long HardWidth = 5768;
         public const long HardScore = 2162;
 
-        /// <summary>Locate a channel tools reading by value.</summary>
-        public static long FindChannelToolsIndex(long[] levels, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = span + span;
+            if (mean <= (scale * 6.3))
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)(-1);
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
