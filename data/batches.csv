@@ -1,7 +1,7 @@
-id,label,region,active,level
-1,408,55.17,staging,952
-2,178,35.16,primary,16.52
-3,315,85.03,13,primary
-4,7.68,20,22.52,917
-5,181,868,local,61.91
-6,standard,878,standard,edge
+id,token,region
+1,2.87,latest
+2,978,38.07
+3,3.5,90.59
+4,82.91,53.2
+5,62.89,905
+6,latest,941
