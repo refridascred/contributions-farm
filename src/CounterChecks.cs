@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first profile cache entry that matches the target.</summary>
-        public static long LookupProfileCacheIndex(long[] data, long step)
+        /// <summary>Accumulate stream already samples.</summary>
+        public static long CombineStreamAlready(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 25;
+            foreach (long item in data)
             {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark + item)) % 65521;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
