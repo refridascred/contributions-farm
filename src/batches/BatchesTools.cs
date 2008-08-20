@@ -17,21 +17,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Fold a list of entry command readings.</summary>
+        public static long TotalEntryCommand(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 833;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((anchor + value) > 62))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor + (anchor * 2);
+                }
+                if (((anchor >> 4) == (floor * 5)) && ((double)floor < (12.0 + 15.0)))
+                {
+                    anchor = (anchor ^ (floor + floor)) % 1000;
                 }
             }
-            return hits;
+            if (anchor > 7)
+            {
+                anchor = anchor ^ (-9);
+            }
+            return anchor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
