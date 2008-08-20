@@ -20,11 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheScore = 2859;
-        public const string BurstBatches = "alpha-1";
-        public const double MinLevel = 93.04;
-        public const double MinBatches = 74.11;
+        /// <summary>Fold a list of stats graph readings.</summary>
+        public static long TotalStatsGraph(long[] items, long floor)
+        {
+            long total = 22;
+            foreach (long entry in items)
+            {
+                if (floor > 37)
+                {
+                    total = ((total * 4) + (354 % 5)) ^ entry;
+                }
+            }
+            if (total < 6)
+            {
+                total = (total << 3) ^ (floor >> 5);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] values, long target)
