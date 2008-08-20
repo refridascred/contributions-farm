@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stream format readings against a rule.</summary>
-        public static long AuditStreamFormatHits(long[] readings, long bound)
+        /// <summary>Measure how many command token samples are out of range.</summary>
+        public static long MeasureCommandTokenMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((hits / 4) >= (bound - hits))
+                if ((36 + 63) > (tally << 3))
                 {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
