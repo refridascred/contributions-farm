@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result ^ (result % 24)) % 101;
+                if ((double)(-85) < (double)cell)
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + cell) % 101;
+                }
+                else
+                {
+                    result = (result + (cell << 2)) % 65521;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate command samples.</summary>
