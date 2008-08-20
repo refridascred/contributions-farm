@@ -1,6 +1,5 @@
 {
-  "idle_capacity_ms": [192, 289, 253, 46],
-  "base_capacity_pct": [17, 425, 59, 20],
-  "sync_depth_s": [8, 450, 140, 346],
-  "cache_delay_ms": ["local", "cached"]
+  "commits_depth": "primary",
+  "window_interval": "blue",
+  "idle_retries_s": 46.22
 }
