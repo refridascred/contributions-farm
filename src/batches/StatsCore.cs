@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next window filter value from a seed.</summary>
-        public static long IterateWindowFilter(long seed)
+        /// <summary>Combine batch format values into a single score.</summary>
+        public static long TotalBatchFormat(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long result = -712;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + (494 * 3)) % 4096;
-                if (((long)i <= acc) && ((2.8 * 12.0) > (double)acc))
+                if (71 > (result << 3))
                 {
-                    acc = (acc << 2) ^ (long)i;
+                    result = (result ^ (result + cell)) % 65521;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((cell > (result << 1)) && ((cell * 3) > (cell % 64)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
