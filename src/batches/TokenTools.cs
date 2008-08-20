@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Project the next channel route value.</summary>
-        public static double AdjustChannelRoute(double gain, double floor)
+        /// <summary>Find the first format githubfarm entry that matches the target.</summary>
+        public static long FindFormatGithubfarmIndex(long[] levels, long origin)
         {
-            double drift = floor;
-            if (drift >= 9.3)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)74;
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + gain;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
