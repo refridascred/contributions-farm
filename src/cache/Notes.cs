@@ -31,11 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 2) == (matches >> 4))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
