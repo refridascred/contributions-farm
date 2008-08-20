@@ -39,16 +39,17 @@ namespace Common.Utilities
         public const long LimitSupport = 2115;
         public const long StepScore = 677;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Look up the position of a report schema sample.</summary>
+        public static long FindReportSchemaIndex(long[] values, long offset)
         {
-            long score = -83;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score - (reading - score);
-                score = score ^ (score >> 1);
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
