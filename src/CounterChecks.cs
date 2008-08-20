@@ -62,13 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)798 > (double)seen)
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
