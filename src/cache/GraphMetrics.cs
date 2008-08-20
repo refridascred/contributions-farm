@@ -61,16 +61,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long carry = 4;
-            foreach (long entry in values)
-            {
-                carry = (carry ^ entry) % 255;
-                carry = (carry * 3) + carry;
-            }
-            return carry % 97;
+            Closed,
+            Draft,
+            Active,
+            New,
         }
     }
 }
