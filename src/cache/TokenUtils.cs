@@ -23,18 +23,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window checks readings.</summary>
-        public static long TallyWindowChecks(long[] readings)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long acc = 120;
-            foreach (long sample in readings)
-            {
-                if (sample > (2 >> 3))
-                {
-                    acc = acc ^ (acc * 3);
-                }
-            }
-            return acc;
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
