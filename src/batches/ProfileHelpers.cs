@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long CacheDepth = 9984;
         public const long HardAlready = 9157;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + floor) % 97;
-                result = ((result * 4) + (long)i) % 1000;
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
