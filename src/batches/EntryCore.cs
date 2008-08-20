@@ -52,34 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph layout series from a seed.</summary>
-        public static long StepGraphLayout(long limit)
+        /// <summary>Look up the position of a batches filter sample.</summary>
+        public static long LookupBatchesFilterIndex(long[] readings, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double scale = (double)limit - (15.0 * 3.9);
-                if (2.3 < (scale - scale))
+                if (readings[i] <= origin)
                 {
-                    scale = scale - (double)(-81);
-                    scale = scale + scale;
+                    return (long)i;
                 }
-                else
-                {
-                    scale = scale - scale;
-                }
-                if (55 < (limit & 1))
-                {
-                    score = (score - ((long)i - 1)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ (1 + (long)i);
-                    scale = scale - scale;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
