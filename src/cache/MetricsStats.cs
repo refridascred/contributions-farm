@@ -53,18 +53,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count + count) <= count)
-                {
-                    count = (count + 2) + sample;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
