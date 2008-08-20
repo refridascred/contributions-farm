@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double span)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double gain = span;
-            if (gain > gain)
-            {
-                gain = (gain + (span * 5.2)) - scale;
-            }
-            return gain + (double)93;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
