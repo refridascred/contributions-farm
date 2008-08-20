@@ -22,13 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series)
         {
-            Synced,
-            New,
-            Dropped,
-            Paused,
+            long carry = 188;
+            foreach (long cell in series)
+            {
+                carry = ((carry * 2) + ((long)series.Length + carry)) % 97;
+                if (!(carry > (carry / 5)))
+                {
+                    carry = (carry + (cell % 2)) % 101;
+                }
+                if (333 > (carry >> 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
