@@ -26,18 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!(sample < (seen >> 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Done,
         }
     }
 }
