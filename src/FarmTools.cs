@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
