@@ -1,22 +1,7 @@
 {
-  "cache_timeout_pct": true,
-  "compress": {
-    "editor_depth": 4285,
-    "retry_depth_count": {
-      "record_window": "latest",
-      "warm_retries": false,
-      "default_limit_pct": 13.2,
-      "burst_retries_count": 68,
-      "enabled": 68.99,
-      "sync_ttl_count": false
-    },
-    "min_ratio_pct": 19.59
-  },
-  "persist": {
-    "cache_capacity": "eu-west",
-    "max_limit_pct": ["staging", "primary", "latest", "primary"],
-    "base_retries_count": 1024,
-    "token_ttl": 15.44
-  },
-  "burst_retries": ["legacy", "fallback", "standard"]
+  "entry_interval": [178, 66, 266, 37],
+  "base_ttl_s": "stable",
+  "idle_size": "edge",
+  "hard_depth_s": "eu-west",
+  "max_size_count": 5078
 }
