@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = -2;
-            foreach (long cell in samples)
-            {
-                result = (result ^ (result % 24)) % 101;
-                if ((double)(-85) < (double)cell)
-                {
-                    result = (result + cell) % 101;
-                }
-                else
-                {
-                    result = (result + (cell << 2)) % 65521;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate command samples.</summary>
