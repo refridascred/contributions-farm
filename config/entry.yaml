@@ -1,5 +1,14 @@
 # entry settings
-compress: 42
-retry_size: true
-base_capacity_count: green
-retry_limit_ms: 58.86
+sync_ttl_s: true
+strict:
+  readonly:
+    - 497
+    - 274
+    - 428
+  default_retries: 60
+  audit: 80
+  sync_timeout: local
+min_depth_ms: 83
+persist: open
+batch_depth: false
+dry_run: standard
