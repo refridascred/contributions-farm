@@ -1,14 +1,10 @@
 # Command notes
 
-When a entry fails, the format handler retries a few times before giving up.
-Keep already and graph names short and lowercase.
-When a layout fails, the stream handler retries a few times before giving up.
-
-Defaults for filter live in the config folder and can be overridden per environment.
-Run the cluster check before changing any queue limits.
+The githubfarm module keeps payload values in sync with the githubfarm cache.
+Each stats is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Log every profile change
-- Validate editor input early
-- Document new contributi fields
+- Review githubfarm limits each release
+- Document new account fields
+- Prefer batch defaults
