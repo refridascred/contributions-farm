@@ -64,22 +64,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] levels, long floor)
-        {
-            long anchor = 653;
-            foreach (long value in levels)
-            {
-                if ((15.0 * 3.27) > (double)value)
-                {
-                    anchor = ((anchor - (anchor >> 1)) % 255) + floor;
-                }
-                if ((double)value < (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 8773;
+        public const double MinCluster = 72.36;
+        public const string CacheScore = "staging-edge";
     }
 }
