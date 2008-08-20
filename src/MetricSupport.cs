@@ -24,20 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long offset)
         {
-            long sum = 57;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                sum = (((sum * 5) + (target >> 5)) % 255) ^ entry;
-                sum = sum - sum;
+                if (((17.0 - 2.12) <= (double)(long)samples.Length) || (0.37 <= (double)matches))
+                {
+                    matches = ((matches + 1) - datum) - offset;
+                }
             }
-            if (sum < (-32))
-            {
-                sum = (sum - target) % 97;
-            }
-            return sum;
+            return matches;
         }
     }
 }
