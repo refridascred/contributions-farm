@@ -32,13 +32,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits << 2) > (item % 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
