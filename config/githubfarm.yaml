@@ -1,5 +1,4 @@
 # githubfarm settings
-record_delay: 16
-flush_window_ms: false
-stream_retries: false
-dry_run: 10.18
+min_delay: 29
+schema_window: local
+default_capacity_count: 2.54
