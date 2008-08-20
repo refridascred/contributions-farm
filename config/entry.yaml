@@ -1,5 +1,14 @@
 # entry settings
-base_size_ms: 30
-warm_capacity: 3830
-profile_delay: 7284
-verbose: primary
+cache_threshold:
+  burst_retries_s: 24
+  token_threshold: 68
+  hard_depth_ms:
+    - stable
+    - legacy
+    - open
+  hard_delay_ms: 500
+  compress: 30
+burst_ttl_pct: 3442
+persist:
+  - primary
+  - edge
