@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_depth_pct: 37
-max_ttl: 67
-idle_size_s: blue
+warm_timeout_ms: blue
+session_ttl: primary
+compress: false
+default_retries_s: 5261
+commits_capacity: 572
+verbose: false
