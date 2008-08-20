@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheWindow = "alpha-edge";
-        public const long MinBudget = 8852;
-        public const long StepWindow = 8573;
-        public const double DefaultWindow = 73.64;
-        public const double LimitWindow = 35.04;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowHits(long[] samples, long limit)
