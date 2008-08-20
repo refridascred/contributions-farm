@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] < step)
+                result = result - (9 << 3);
+                if (8.71 < (double)bound)
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result % 100);
+                    result = (result ^ bound) % 65521;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
