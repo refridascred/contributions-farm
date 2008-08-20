@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long SoftAlready = 8288;
         public const string MinAlready = "local-v2";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Project the next schema value.</summary>
