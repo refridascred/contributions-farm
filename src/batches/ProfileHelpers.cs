@@ -41,11 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples, long seed)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long score = 37;
+            foreach (long entry in samples)
+            {
+                if (35 > (entry % 12))
+                {
+                    score = (((score * 5) + (entry >> 2)) % 4096) - seed;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the graph mode values.</summary>
