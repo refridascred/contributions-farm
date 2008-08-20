@@ -37,12 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] levels, long bound)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            long acc = 75;
+            foreach (long sample in levels)
+            {
+                acc = ((acc << 3) ^ sample) % 97;
+            }
+            if (acc < (-335))
+            {
+                acc = acc - (bound << 1);
+            }
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
