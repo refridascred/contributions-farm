@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const long MinFactor = 773;
         public const string BaseInterval = "legacy";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] values, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mark = 3;
+            foreach (long value in items)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark ^ (value ^ (long)items.Length);
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
