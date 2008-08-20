@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Derive the next checks cache value from a seed.</summary>
+        public static long RollChecksCache(long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((43 & 31) >= (hits + (long)items.Length)) && ((((long)items.Length & 1) >= (reading - hits)) || (hits > reading)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
