@@ -35,11 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account report reading.</summary>
-        public static double ProjectAccountReport(double rate, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] items, long target)
         {
-            double rate2 = rate - rate;
-            return (rate2 - (double)968) + floor;
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)target == (2.0 - 0.5))
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
