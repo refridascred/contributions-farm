@@ -1,6 +1,5 @@
 {
-  "min_limit_ms": "cached",
-  "batch_window": "open",
-  "dry_run": "local",
-  "cache_size_pct": 5465
+  "contributi_window": 67,
+  "retry_size_ms": 4213,
+  "burst_limit": 250
 }
