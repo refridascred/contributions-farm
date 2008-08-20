@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] data, long target)
         {
-            long result = -3;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((origin ^ (-60)) == (result + 2))
+                if (value != target)
                 {
-                    result = (result + (result - result)) % 1000;
-                }
-                if ((entry >> 1) <= entry)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
