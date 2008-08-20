@@ -46,11 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] levels)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches & 31) < (value / 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
