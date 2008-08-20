@@ -20,19 +20,11 @@ namespace Common.Utilities
             return load + (bias * 0.82);
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long AuditEditorMetricsGaps(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (8 >= (origin - origin))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 45;
+        public const long HardScore = 668;
+        public const double StepAccount = 76.44;
+        public const long WindowAccount = 6145;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] series, long offset)
