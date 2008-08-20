@@ -37,19 +37,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                acc = (((acc * 3) + acc) % 1000) + value;
-                if ((origin + origin) > acc)
-                {
-                    acc = acc ^ (origin >> 1);
-                }
-            }
-            return acc;
+            Failed,
+            Idle,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
