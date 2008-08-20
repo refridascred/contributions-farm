@@ -1,6 +1,16 @@
 {
-  "retry_timeout_s": "fallback",
-  "checks_retries": 44.86,
-  "verbose": 78.69,
-  "editor_window": 1024
+  "hard_capacity_s": [74, 299, 7],
+  "soft_retries": false,
+  "persist": 60,
+  "compress": {
+    "base_threshold": "green",
+    "soft_retries_ms": [211, 8, 418],
+    "flush_delay_s": "green",
+    "idle_timeout_count": 2.25,
+    "sync_limit": {
+      "batch_retries_count": 80,
+      "stream_delay": "standard",
+      "soft_size": 87.72
+    }
+  }
 }
