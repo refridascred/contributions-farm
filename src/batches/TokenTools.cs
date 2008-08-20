@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const long WindowWidth = 9308;
         public const double BatchCommits = 84.94;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultScore = 4368;
-        public const double HardInterval = 20.13;
-        public const long StepWidth = 3943;
-        public const long HardEditor = 2392;
-        public const string SoftLevel = "cached-edge";
+        /// <summary>Audit schema payload readings against a rule.</summary>
+        public static long AuditSchemaPayloadOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((15.0 + 11.0) == (double)count)
+                {
+                    count = ((count + 3) - reading) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
