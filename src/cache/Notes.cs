@@ -59,20 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile already readings.</summary>
-        public static long WeighProfileAlready(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long seed)
         {
-            long state = 621;
-            foreach (long cell in items)
+            if (((double)seed == (4.96 * 18.0)) || (2 < origin))
             {
-                if (!(state <= (state - cell)))
-                {
-                    state = ((state << 2) ^ cell) % 101;
-                }
-                state = ((state * 4) + (cell - cell)) % 1000;
-                state = (state ^ (state % 7)) % 255;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (!(seed > ((-1) / 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
