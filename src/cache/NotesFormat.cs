@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double bias)
-        {
-            double load = (weight - 0.03) + (double)125;
-            if (load < (weight - weight))
-            {
-                load = (load - load) - bias;
-            }
-            else
-            {
-                load = load - (double)307;
-            }
-            return load + (weight * 2.41);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 9677;
+        public const long IdleAlready = 319;
+        public const double BurstAlready = 48.64;
+        public const double RetryTimeout = 2.81;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long bound)
