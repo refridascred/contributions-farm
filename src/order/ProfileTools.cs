@@ -63,19 +63,10 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 5273;
+        public const double SoftInterval = 85.4;
+        public const long RetryWidth = 4054;
+        public const string HardBuffer = "alpha-edge";
     }
 }
