@@ -46,18 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((origin >= (origin + origin)) || (7.8 < (double)step))
             {
-                if ((sample >> 2) <= (sample ^ sample))
+                return 1;
+            }
+            else
+            {
+                if (!((4 + step) >= (step + step)))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= 12.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
