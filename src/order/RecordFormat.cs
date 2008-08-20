@@ -61,11 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long acc = 40;
+            foreach (long value in data)
+            {
+                if ((36 - acc) > (39 - value))
+                {
+                    acc = ((acc * 4) + value) % 255;
+                }
+                else
+                {
+                    acc = acc + 56;
+                }
+                acc = acc + (acc >> 1);
+            }
+            return acc % 97;
         }
     }
 }
