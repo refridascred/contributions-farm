@@ -20,21 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cache route samples.</summary>
-        public static long CompareCacheRouteCount(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((floor + floor) <= (33 % 12)))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (floor ^ 3)) % 255;
+                    mix = (mix * 3) + (floor + 921);
                 }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix - (mix + floor)) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a queue entry.</summary>
