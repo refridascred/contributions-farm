@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of notes record entries.</summary>
-        public static long TallyNotesRecord(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long anchor = 56;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor < (18.0 - 9.8))
-                {
-                    anchor = (anchor + (entry / 9)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                    anchor = (anchor << 3) ^ (entry << 2);
-                }
-                if (0.44 >= (double)anchor)
-                {
-                    anchor = anchor ^ (anchor ^ anchor);
-                }
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
