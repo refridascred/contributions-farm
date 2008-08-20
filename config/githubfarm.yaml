@@ -1,4 +1,13 @@
 # githubfarm settings
-min_delay: 29
-schema_window: local
-default_capacity_count: 2.54
+hard_timeout_count: 86
+cache_depth:
+  - staging
+  - cached
+  - local
+cache_window: 25
+base_timeout: open
+batch_size_pct:
+  - 384
+  - 1
+  - 405
+  - 274
