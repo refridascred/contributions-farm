@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "stable-1";
-        public const long LimitBudget = 9826;
-        public const long BurstBudget = 4856;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((695 << 3) != (sample ^ sample)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
