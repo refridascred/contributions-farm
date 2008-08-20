@@ -1,4 +1,26 @@
 # githubfarm settings
-soft_delay: false
-context_limit: 40
-batch_depth: false
+flush_depth_ms: legacy
+audit: legacy
+sync_ttl: cached
+hard_timeout_s:
+  cache_retries:
+    - cached
+    - staging
+  sync_timeout_count: 78.91
+  audit: true
+  order_delay: strict
+  counter_size:
+    max_size:
+      - 291
+      - 117
+      - 330
+      - 214
+    strict: 100
+    queue_delay:
+      - standard
+      - cached
+      - eu-west
+    default_limit_ms: 250
+  min_size: green
+max_window: true
+retry_retries_s: primary
