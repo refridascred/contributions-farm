@@ -58,11 +58,12 @@ namespace Common.Utilities
         public const long HardDepth = 7725;
         public const double WindowBudget = 68.5;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
