@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            Synced,
+            Locked,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Match up format samples.</summary>
