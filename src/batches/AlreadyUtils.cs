@@ -33,12 +33,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "open";
-        public const string CacheWidth = "alpha-1";
-        public const double SoftWidth = 69.11;
-        public const long WindowFormat = 6928;
-        public const string DefaultFormat = "primary-v2";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Closed,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] readings, long offset)
