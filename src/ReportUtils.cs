@@ -53,16 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state - (offset - (long)i);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Draft,
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a stats window counter forward.</summary>
