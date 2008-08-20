@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many filter channel samples are out of range.</summary>
-        public static long MeasureFilterChannelHits(long[] samples, long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry * 2) <= (50 + tally))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a command info.</summary>
