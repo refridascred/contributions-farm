@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double scale = 20.0;
-            return (scale - bias) + gain;
+            Closed,
+            Queued,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
