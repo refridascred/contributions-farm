@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftSize = "primary";
-        public const long BurstReport = 6599;
-        public const long CacheDepth = 1299;
-        public const long MinReport = 3701;
-        public const string HardReport = "open-1";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (1.0 > (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit batches filter readings against a rule.</summary>
         public static long TallyBatchesFilterOutliers(long[] readings)
