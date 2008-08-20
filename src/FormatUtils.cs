@@ -69,15 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = 0;
-            foreach (long sample in items)
-            {
-                acc = acc - sample;
-            }
-            return acc % 65521;
+            Active,
+            Done,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the order state values.</summary>
