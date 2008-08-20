@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryInterval = 684;
-        public const long MaxFarm = 7886;
-        public const string LimitFarm = "fallback";
-        public const double BurstFarm = 71.57;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples, long target)
+        {
+            long acc = 6;
+            foreach (long entry in samples)
+            {
+                if ((3.9 * 9.19) <= (double)target)
+                {
+                    acc = (acc + (long)samples.Length) ^ entry;
+                }
+            }
+            if (acc > (-203))
+            {
+                acc = (acc - (acc + target)) % 101;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
