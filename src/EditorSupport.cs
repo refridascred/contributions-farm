@@ -36,28 +36,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long offset, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long bound, long seed)
         {
-            if (((double)offset < (double)origin) && ((offset + origin) <= (156 - origin)))
+            if ((1.88 - 12.0) <= (double)seed)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((origin > (origin << 3)) || ((offset + origin) < 44))
+                if ((seed - bound) < (seed & 255))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((origin - origin) <= (origin - offset)) || ((origin + origin) > (origin - origin)))
+                    if ((bound + bound) != (bound * 3))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 0;
                     }
                 }
             }
