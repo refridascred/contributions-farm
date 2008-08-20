@@ -1,14 +1,7 @@
 # entry settings
-cluster_size: 500
-enabled: green
-min_ratio_pct:
-  - 423
-  - 125
-counter_limit:
-  batch_threshold_ms: 7
-  batch_limit: 90
-  batch_window: strict
-  idle_retries: true
-  dry_run: blue
-compress: green
-strict: 60
+burst_capacity_s: 46
+audit: 97.49
+window_depth:
+  - local
+  - legacy
+hard_timeout_pct: 6.27
