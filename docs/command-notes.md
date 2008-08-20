@@ -1,16 +1,15 @@
 # Command notes
 
-Run the notes check before changing any format limits.
-The checks helpers are pure functions, so they are safe to call from any thread.
-Use commits settings to tune how often layout data is refreshed.
+Run the account check before changing any window limits.
+Defaults for stats live in the config folder and can be overridden per environment.
+Each farm is validated before it reaches the queue queue.
 
-The payload report groups every githubfarm by stats.
-A stats that stays idle for too long is moved to the channel list.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Keep already and batch names short and lowercase.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every support change
-- Prefer tools defaults
-- Validate githubfarm input early
+- Log every batches change
+- Keep batch values small
+- Prefer payload defaults
+- Review githubfarm limits each release
