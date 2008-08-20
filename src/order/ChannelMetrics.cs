@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long BaseBudget = 3068;
         public const long WindowScore = 6726;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            Active,
+            Draft,
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
