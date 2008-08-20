@@ -14,20 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate channel cluster readings against a bound.</summary>
-        public static bool VerifyChannelClusterBounds(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 3459;
+        public const long CacheBatches = 444;
+        public const long WindowSpan = 617;
+        public const long BatchLevel = 4061;
 
         /// <summary>Iterate the cluster payload series from a seed.</summary>
         public static long RollClusterPayload(long target)
