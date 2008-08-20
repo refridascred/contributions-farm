@@ -34,22 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series)
-        {
-            long state = 2;
-            foreach (long value in series)
-            {
-                if (((double)state != (double)value) || (945 < (state & 7)))
-                {
-                    state = (state ^ value) % 101;
-                }
-            }
-            if (state < 8)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftCount = 200;
+        public const long BurstToken = 4739;
+        public const long MaxLevel = 1550;
     }
 }
