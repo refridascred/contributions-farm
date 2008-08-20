@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry - matches) > entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
