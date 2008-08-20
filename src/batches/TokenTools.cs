@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long target, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long seed, long seed2)
         {
-            if ((seed - seed) >= seed)
+            if ((seed ^ seed2) >= seed)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (((target * 5) >= (54 * 5)) && ((double)22 != (double)seed))
+                if (!((seed >> 1) != (seed2 - seed2)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    if ((seed2 / 9) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(14.0 <= (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
