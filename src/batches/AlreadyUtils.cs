@@ -18,10 +18,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 7410;
-        public const long LimitChannel = 4803;
-        public const long LimitSize = 9052;
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool VerifyTokenBatchesBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BurstFormat = "open";
