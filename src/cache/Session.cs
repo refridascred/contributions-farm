@@ -23,12 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseBudget = "fallback-edge";
-        public const long SoftDepth = 9325;
-        public const long SoftSupport = 8;
-        public const long WindowInterval = 5857;
-        public const long HardWidth = 6294;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Queued,
+            Dropped,
+            Pending,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long WeighStream(long[] readings)
