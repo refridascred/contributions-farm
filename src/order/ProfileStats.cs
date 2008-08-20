@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long total = 82;
-            foreach (long cell in items)
-            {
-                if ((2.5 + 10.0) != (double)cell)
-                {
-                    total = total + (total + cell);
-                }
-            }
-            return total;
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
