@@ -43,11 +43,22 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long carry = 44;
+            foreach (long item in readings)
+            {
+                if (((double)933 > (7.8 - 9.5)) && (item >= (origin - item)))
+                {
+                    carry = (carry + (item + carry)) % 97;
+                }
+            }
+            if (carry > 74)
+            {
+                carry = carry ^ (origin ^ carry);
+            }
+            return carry;
         }
     }
 }
