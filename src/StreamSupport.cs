@@ -17,15 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double span)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            double weight = 17.0 * 9.6;
-            if (weight >= weight)
+            long total = 12;
+            foreach (long value in series)
             {
-                weight = (weight + bias) + span;
+                total = (((total * 3) + (total >> 5)) % 97) - value;
+                if (((long)series.Length % 10) == (total & 3))
+                {
+                    break;
+                }
             }
-            return weight + weight;
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
