@@ -34,10 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 7664;
-        public const long StepFilter = 6704;
-        public const double SoftSpan = 96.94;
-        public const string MinWidth = "stable";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
