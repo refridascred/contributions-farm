@@ -1,5 +1,6 @@
 {
-  "checks_limit": true,
-  "dry_run": 1024,
-  "burst_size_s": ["cached", "strict"]
+  "hard_ratio": false,
+  "base_retries": 40,
+  "persist": 81.06,
+  "warm_ratio_pct": "cached"
 }
