@@ -1,5 +1,25 @@
 {
-  "base_window_ms": [89, 418, 324, 6],
-  "flush_ratio_s": "staging",
-  "warm_size_count": 7487
+  "hard_ttl": "legacy",
+  "retry_ratio": 7759,
+  "poll_threshold_ms": 30,
+  "soft_window": "latest",
+  "counter_delay": {
+    "soft_ratio_ms": 3866,
+    "flush_capacity_s": {
+      "default_threshold_s": 97.8,
+      "dry_run": 35.08,
+      "flush_ratio_ms": "edge"
+    },
+    "default_limit_pct": 91.14,
+    "editor_window": "standard",
+    "flush_capacity": {
+      "cache_depth": 50,
+      "layout_depth": "legacy",
+      "soft_threshold_count": "local",
+      "audit": 76,
+      "retry_depth_pct": "blue"
+    },
+    "audit": false
+  },
+  "retry_delay_s": 1024
 }
