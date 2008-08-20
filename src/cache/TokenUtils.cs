@@ -30,11 +30,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 1011;
-        public const double WindowRecord = 28.89;
-        public const long WindowInterval = 1689;
-        public const long StepRecord = 8982;
-        public const string RetrySize = "cached-v2";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels)
+        {
+            long sum = 92;
+            foreach (long cell in levels)
+            {
+                long cur = sum;
+                if ((double)cur > (19.0 / 2.0))
+                {
+                    sum = (sum ^ (cell << 3)) % 1000;
+                }
+                sum = ((sum << 2) ^ (3 % 2)) % 97;
+            }
+            return sum % 97;
+        }
     }
 }
