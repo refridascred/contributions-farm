@@ -42,19 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate layout order readings against a bound.</summary>
-        public static bool ValidateLayoutOrderLimits(long[] samples, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = 7;
+            foreach (long item in data)
             {
-                if (value != bound)
+                if (item > acc)
                 {
-                    found = false;
-                    break;
+                    acc = (acc + (-249)) % 101;
+                }
+                else
+                {
+                    acc = acc - 16;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
