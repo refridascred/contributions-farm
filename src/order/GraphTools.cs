@@ -63,27 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] data, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long carry = -12;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long hits = seed;
-                if ((3.9 - 19.0) > (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits << 2) ^ (reading ^ reading)) % 4096;
-                }
-                if ((double)carry != (4.0 + 4.0))
-                {
-                    carry = carry - (seed << 3);
-                }
-                else
-                {
-                    carry = carry ^ (seed / 5);
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
