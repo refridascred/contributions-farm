@@ -47,31 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] series, long bound)
         {
-            if ((double)target >= (13.0 / 9.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + target) >= limit)
+                if (!(210 <= (577 - count)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 31) < (422 >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = ((count + 1) - cell) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
