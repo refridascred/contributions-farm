@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 1085;
-        public const long HardRatio = 9892;
-        public const long BatchOrder = 1528;
-        public const long DefaultOrder = 6440;
-        public const long MaxOrder = 6030;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long FoldFarm(long[] data)
