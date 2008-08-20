@@ -1,11 +1,18 @@
 # githubfarm settings
-burst_threshold_count: true
-flush_threshold_ms: true
-max_delay:
-  - primary
-  - local
-  - edge
-  - eu-west
-burst_threshold_ms: true
-base_interval_ms: 70.92
-batch_retries: eu-west
+cache_window_ms:
+  - open
+  - strict
+  - latest
+enabled: true
+verbose:
+  base_timeout: 250
+  persist: 593
+  hard_ratio_ms:
+    base_size_count: 60
+    buffer_timeout: 26.57
+    sync_timeout_pct: primary
+  flush_timeout:
+    - 129
+    - 32
+min_retries: 6496
+stats_size: true
