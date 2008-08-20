@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next record counter value.</summary>
-        public static double SmoothRecordCounter(double bias, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            double gain = span / 6.0;
-            if (gain < gain)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                gain = (gain + span) - bias;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain * 6.3)) + (double)(long)i;
-            }
-            return gain - gain;
+            return carry;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
