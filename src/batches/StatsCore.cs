@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheLevel = 1282;
         public const long IdleEntry = 6495;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] levels, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((seen % 5) != (87 & 3))
+                if (reading >= step)
                 {
-                    seen = ((seen + 3) ^ datum) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
