@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] data, long bound)
+        /// <summary>Look up the position of a cache route sample.</summary>
+        public static long LookupCacheRouteIndex(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < bound)
+                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
