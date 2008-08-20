@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Pending,
-            Closed,
-            Dropped,
-            Done,
-            Retry,
+            New,
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Roll a route counter forward.</summary>
