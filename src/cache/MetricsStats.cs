@@ -33,10 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchRatio = 89.91;
-        public const long BurstEditor = 7701;
-        public const long StepEditor = 4495;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] data, long floor)
