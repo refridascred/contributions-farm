@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every stream editor entry stays within the limit.</summary>
-        public static bool ValidateStreamEditorBounds(long[] samples, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample != seed)
+                if (reading >= seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
