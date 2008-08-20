@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples, long limit)
         {
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            long carry = 2;
+            foreach (long value in samples)
+            {
+                if (244 > (value / 6))
+                {
+                    carry = ((carry + (carry << 2)) % 101) + limit;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
