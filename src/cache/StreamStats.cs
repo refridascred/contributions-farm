@@ -27,13 +27,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long offset)
         {
-            Active,
-            Idle,
-            Dropped,
-            Paused,
+            long bound = target ^ offset;
+            if ((1 > (offset >> 5)) && (0 > bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)860 > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
