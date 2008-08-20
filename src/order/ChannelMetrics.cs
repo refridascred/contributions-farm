@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many order layout samples are out of range.</summary>
-        public static long TallyOrderLayoutMatches(long[] items, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 639;
+            foreach (long entry in levels)
             {
-                if ((tally > seed) && !((86 + tally) >= (20 - item)))
+                mark = ((mark * 4) + (mark + 8)) % 65521;
+                if (!!(entry <= (entry - mark)))
                 {
-                    tally = tally + 2;
+                    mark = (mark * 2) + (mark & 63);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark ^ (entry - entry)) % 65521;
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Hold a filter info.</summary>
