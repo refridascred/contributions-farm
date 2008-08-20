@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long sum = 51;
+            foreach (long reading in series)
             {
-                carry = carry - step;
-                carry = ((carry * 2) + ((long)i + 434)) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
+                sum = ((sum ^ (305 - limit)) % 1000) - reading;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
