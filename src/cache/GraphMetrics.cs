@@ -73,18 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= (7.0 + 2.7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
