@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long score = 7;
-            foreach (long value in readings)
-            {
-                if (((origin << 2) >= 55) || (8.44 >= (double)origin))
-                {
-                    score = (score - 41) ^ value;
-                }
-                else
-                {
-                    score = score + (origin % 60);
-                }
-            }
-            return score;
+            Dropped,
+            Failed,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate filter graph samples.</summary>
