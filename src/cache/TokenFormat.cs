@@ -20,16 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] data, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = score + ((long)i / 3);
-                score = ((score * 2) + (long)i) % 65521;
+                if (2.95 < (double)value)
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
