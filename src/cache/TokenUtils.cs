@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultWidth = 2396;
+        public const double WindowSize = 68.15;
+        public const long MinCount = 9452;
+        public const string HardGraph = "open-v2";
+        public const double CacheSize = 52.55;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] values)
