@@ -20,11 +20,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
