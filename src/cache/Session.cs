@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < (7.7 + 4.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
