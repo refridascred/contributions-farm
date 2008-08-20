@@ -32,21 +32,19 @@ namespace Common.Utilities
             return rate + (floor * 3.0);
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Validate channel batch readings against a bound.</summary>
+        public static bool VerifyChannelBatchLimits(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > bound)
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
