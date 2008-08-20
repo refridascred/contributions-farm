@@ -25,17 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch format sample.</summary>
-        public static long LookupBatchFormatIndex(long[] data, long step)
+        /// <summary>Derive the next order notes value from a seed.</summary>
+        public static long SeriesOrderNotes(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] > step) && ((data[i] % 5) != 0))
+                long offset = (long)i;
+                state = state ^ offset;
+                if (!((offset / 6) != (offset * 2)))
                 {
-                    return (long)i;
+                    offset = ((offset * 5) + (916 * 5)) % 65521;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next layout batch value from a seed.</summary>
