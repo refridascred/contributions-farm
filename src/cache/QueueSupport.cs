@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch token entries.</summary>
