@@ -33,19 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] readings, long seed)
+        /// <summary>Find the first format payload entry that matches the target.</summary>
+        public static long SeekFormatPayloadIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= seed)
+                if (data[i] == bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Blend two stats measurements.</summary>
