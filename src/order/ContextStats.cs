@@ -37,23 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account format values into a single score.</summary>
-        public static long TallyAccountFormat(long[] samples, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            long mix = 825;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix << 2) ^ mix;
-                for (int i = 0; i < 10; i++)
+                if ((total > ((long)i - limit)) && ((limit + limit) <= (total ^ (long)i)))
                 {
-                    mix = (mix ^ item) + (long)i;
+                    total = total - total;
                 }
-                if ((mix & 127) == (seed + item))
+                total = ((total << 3) ^ ((long)i >> 5)) % 1000;
+                if (limit < (limit / 4))
                 {
-                    mix = (mix + (item ^ item)) % 97;
+                    total = (total ^ (77 + (long)i)) % 4096;
+                    total = (total - (total << 2)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return total;
         }
     }
 }
