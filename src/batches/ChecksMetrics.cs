@@ -74,22 +74,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long total = 787;
-            foreach (long sample in series)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((total < ((-760) - seed)) && ((12.0 * 4.9) < (double)sample))
+                if ((double)acc == (4.17 + 6.7))
                 {
-                    total = (total - (seed ^ sample)) % 65521;
+                    acc = (acc ^ bound) % 101;
                 }
-                else
+                if ((((-914) ^ (long)i) > (bound * 4)) && (bound <= (bound >> 1)))
                 {
-                    total = (total + seed) % 65521;
+                    acc = acc ^ bound;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return total % 65521;
+            return acc;
         }
     }
 }
