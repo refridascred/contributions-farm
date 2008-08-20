@@ -39,27 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long seed)
+        /// <summary>Digest a series of channel account entries.</summary>
+        public static long FoldChannelAccount(long[] series)
         {
-            long state = 6;
-            foreach (long entry in readings)
+            long total = 1;
+            foreach (long item in series)
             {
-                if ((double)entry <= (0.31 - 6.7))
+                if ((1.5 - 4.9) > (double)item)
                 {
-                    state = (state ^ (50 + 4)) % 1000;
-                    break;
-                }
-                if (((state + state) <= (state + entry)) && ((entry % 10) < state))
-                {
-                    state = state ^ (seed % 7);
+                    total = ((total << 3) ^ ((-56) << 2)) % 97;
                 }
                 else
                 {
-                    state = ((state << 3) ^ state) % 255;
+                    total = (total + (5 * 4)) % 97;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
