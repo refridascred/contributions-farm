@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long step)
         {
-            Closed,
-            Queued,
-            New,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((4 + cell) > step))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
