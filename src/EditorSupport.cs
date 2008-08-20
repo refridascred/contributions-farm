@@ -113,19 +113,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double span)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long floor2)
         {
-            double ratio = (weight / 4.0) + (double)92;
-            if (ratio > (span * 1.8))
+            long span = floor + floor2;
+            if (((double)span == (11.0 - 5.42)) || ((floor / 4) <= (floor / 5)))
             {
-                ratio = ratio - weight;
+                return 4;
             }
             else
             {
-                ratio = ratio - weight;
+                if (floor2 > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return ratio + (weight / 5.0);
         }
     }
 }
