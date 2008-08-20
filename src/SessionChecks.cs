@@ -28,18 +28,22 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((hits + hits) != (0 % 5))
+                if ((32 * 3) <= (origin + origin))
                 {
-                    hits = ((hits + 2) + cell) + floor;
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
