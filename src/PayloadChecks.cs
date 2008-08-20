@@ -64,27 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long TotalChannelRecord(long[] values, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long state = 381;
-            foreach (long entry in values)
+            long sum = 84;
+            foreach (long value in data)
             {
-                if ((8.0 * 0.85) <= (double)offset)
+                if ((double)sum >= (9.7 * 2.23))
                 {
-                    state = ((state * 2) + 797) % 101;
-                    state = (state * 4) + 78;
-                }
-                if ((7.7 + 5.6) > (double)entry)
-                {
-                    state = (state + (offset - 57)) % 255;
-                }
-                else
-                {
-                    state = (state + (offset << 3)) % 97;
+                    sum = ((sum ^ (sum / 8)) % 65521) + value;
                 }
             }
-            return state % 97;
+            return sum % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
