@@ -43,17 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first metric order entry that matches the target.</summary>
-        public static long FindMetricOrderIndex(long[] items, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
