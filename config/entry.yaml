@@ -1,14 +1,5 @@
 # entry settings
-sync_ttl_s: true
-strict:
-  readonly:
-    - 497
-    - 274
-    - 428
-  default_retries: 60
-  audit: 80
-  sync_timeout: local
-min_depth_ms: 83
-persist: open
-batch_depth: false
-dry_run: standard
+idle_ttl_s: 4.64
+idle_window: 60
+burst_limit_s: 71
+token_retries: 14.27
