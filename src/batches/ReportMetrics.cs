@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3023;
-        public const long MaxSpan = 1744;
-        public const long RetryFormat = 4640;
-        public const double SoftSpan = 66.44;
-        public const long BaseFormat = 1520;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Token { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] readings)
