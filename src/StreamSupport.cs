@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] series, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long carry = 103;
-            foreach (long reading in series)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) + reading;
-                if (!((double)floor >= (1.19 + 9.0)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
