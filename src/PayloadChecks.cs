@@ -42,19 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate channel batch readings against a bound.</summary>
-        public static bool VerifyChannelBatchLimits(long[] data, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if (item > bound)
+                score = (score << 3) ^ (cell + 421);
+                if (!((8.2 * 20.0) > (double)score))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ (offset - cell);
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
