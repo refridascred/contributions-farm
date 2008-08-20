@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] samples, long seed)
         {
-            Stale,
-            New,
-            Draft,
-            Closed,
-            Done,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
