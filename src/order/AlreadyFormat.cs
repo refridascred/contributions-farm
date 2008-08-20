@@ -31,19 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            double drift = bias;
-            if (drift < 0.08)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - drift;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift / 7.0)) + (double)(long)i;
-            }
-            return drift + (bias + bias2);
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
