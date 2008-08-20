@@ -22,24 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            if ((double)floor < (6.3 + 16.0))
             {
-                if ((score + score) > (step & 15))
+                return 7;
+            }
+            else
+            {
+                if (floor > (bound >> 5))
                 {
-                    score = (score << 2) ^ (step >> 2);
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    score = score + score;
+                    if (((88 * 3) <= floor) && ((double)2 >= (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
