@@ -1,6 +1,10 @@
 {
-  "max_retries_ms": false,
-  "max_interval_count": 60,
-  "warm_ratio_pct": true,
-  "persist": "primary"
+  "route_window": "standard",
+  "warm_window_pct": false,
+  "profile_ratio": "edge",
+  "persist": {
+    "default_timeout": "primary",
+    "graph_size": ["legacy", "fallback"],
+    "compress": "latest"
+  }
 }
