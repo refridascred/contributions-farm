@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Locate a schema metrics reading by value.</summary>
+        public static long LocateSchemaMetricsIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + entry) > (entry << 3))
+                if (samples[i] > floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
