@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next stream notes value from a seed.</summary>
-        public static long StepStreamNotes(long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            double load = (weight - 0.03) + (double)125;
+            if (load < (weight - weight))
             {
-                if ((sum - sum) != (47 & 63))
-                {
-                    sum = sum + (long)i;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (3 >> 1);
-                    sum = (sum ^ (821 >> 3)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                load = (load - load) - bias;
             }
-            return sum;
+            else
+            {
+                load = load - (double)307;
+            }
+            return load + (weight * 2.41);
         }
 
         /// <summary>Describe the stats class values.</summary>
