@@ -19,15 +19,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels, long seed)
         {
-            double mean = (double)(173 + 59);
-            for (int i = 0; i < 3; i++)
+            long anchor = 4;
+            foreach (long reading in levels)
             {
-                mean = ((mean - weight) + (double)(long)i) - span;
+                if (((reading - reading) >= reading) || ((982 + reading) == (seed % 97)))
+                {
+                    anchor = (anchor ^ (seed >> 4)) % 97;
+                }
             }
-            return mean - weight;
+            if (anchor > 9)
+            {
+                anchor = (anchor + seed) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
