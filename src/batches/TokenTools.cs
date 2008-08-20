@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Grade a entry batch value against two limits.</summary>
+        public static long SortEntryBatch(long target, long offset)
         {
-            Queued,
-            Dropped,
-            Stale,
+            if ((offset / 6) < offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) == (target >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the filter kind values.</summary>
