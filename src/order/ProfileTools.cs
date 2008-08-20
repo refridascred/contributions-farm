@@ -65,18 +65,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long score = -7;
+            foreach (long cell in items)
             {
-                if (!(entry < (target * 5)) || (((hits * 5) < (target - hits)) && ((entry / 6) >= (target / 7))))
+                if ((2.4 / 6.0) >= (double)step)
                 {
-                    hits = hits + 2;
+                    score = ((score + score) % 1000) + cell;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
