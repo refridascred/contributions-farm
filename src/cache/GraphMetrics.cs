@@ -44,31 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm filter input into a small class.</summary>
-        public static long GradeGithubfarmFilter(long step, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            if ((step ^ seed) == ((-60) - step))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed < (seed - seed)) || ((5.85 - 6.29) != (double)step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed << 1) > 901) || ((double)8 >= (double)step))
+                    if ((values[i] - values[j]) != 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
