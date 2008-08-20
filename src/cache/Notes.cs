@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches < 4.0)
+                {
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
