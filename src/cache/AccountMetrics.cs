@@ -39,18 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.0 < (double)hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two account token measurements.</summary>
