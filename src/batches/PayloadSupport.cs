@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total - (total + total)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
