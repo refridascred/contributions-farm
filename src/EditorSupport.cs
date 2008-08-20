@@ -91,26 +91,17 @@ namespace Common.Utilities
             return bias - (bias + rate);
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Locate a channel tools reading by value.</summary>
+        public static long FindChannelToolsIndex(long[] levels, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix - (floor - mix)) % 1000;
-                mix = (mix + mix) % 97;
-                if ((0 % 97) == (floor - floor))
+                if (levels[i] < offset)
                 {
-                    mix = (mix + (floor << 3)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix << 2) ^ 650;
-                    mix = (mix + (long)i) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
