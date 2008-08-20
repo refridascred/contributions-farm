@@ -76,19 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long acc = 82;
+            foreach (long item in samples)
             {
-                if (datum < limit)
+                if (limit < (acc + 47))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc - (acc / 5)) % 97) - item;
                 }
             }
-            return ready;
+            if (acc < 33)
+            {
+                acc = ((acc * 3) + (acc - limit)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a entry options.</summary>
