@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long origin)
         {
-            double scale2 = scale * 6.4;
-            if (scale2 < (scale2 / 2.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (scale2 - scale2);
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (double)(-9)) + (double)(long)i;
-            }
-            return scale2 + (floor - 7.74);
+            return -1;
         }
 
         /// <summary>Match up window samples.</summary>
