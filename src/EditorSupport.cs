@@ -22,31 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings, long seed)
         {
-            if ((double)floor < (6.3 + 16.0))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor > (bound >> 5))
+                if ((double)count == (1.81 - 2.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((88 * 3) <= floor) && ((double)2 >= (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 2) + datum) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
