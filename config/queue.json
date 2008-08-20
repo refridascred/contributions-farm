@@ -1,19 +1,8 @@
 {
-  "burst_window": {
-    "farm_size": "strict",
-    "batches_window": [118, 297, 13],
-    "profile_interval": 250,
-    "burst_retries_s": 64,
-    "hard_interval": {
-      "flush_ratio": 10,
-      "compress": 40,
-      "batch_delay": "stable",
-      "poll_threshold_ms": 8629,
-      "strict": 74,
-      "burst_interval_ms": 21.66
-    }
-  },
-  "max_depth": 1024,
-  "tools_retries": 7381,
-  "command_window": 3959
+  "cache_retries": [320, 439],
+  "cache_depth": ["local", "legacy", "primary", "legacy"],
+  "checks_depth": 65.27,
+  "cache_threshold": ["cached", "latest", "latest"],
+  "poll_ratio": false,
+  "max_limit_count": 91
 }
