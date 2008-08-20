@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] levels)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double load = bias + bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if (((92 - matches) == (2 << 1)) || (3.3 >= (double)reading))
-                {
-                    matches = matches + 3;
-                }
+                load = (load - (double)7) + (double)(long)i;
             }
-            return matches;
+            return load + (bias + bias);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
