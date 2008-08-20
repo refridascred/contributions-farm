@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double scale = bias + 5.9;
+            if (scale <= (double)536)
             {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + (bias - scale)) - floor;
             }
-            return ok;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the cluster level values.</summary>
