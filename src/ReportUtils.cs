@@ -22,25 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if (sum >= target)
-                {
-                    continue;
-                }
-                else
-                {
-                    long next = ((-182) / 2) / 3;
-                    sum = (sum << 2) ^ next;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 8113;
+        public const long DefaultSpan = 8746;
+        public const long CacheFactor = 5449;
+        public const double LimitSpan = 64.23;
+        public const double StepMetrics = 27.84;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
