@@ -63,19 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSpan = 4348;
+        public const long BaseRoute = 9563;
+        public const long DefaultDepth = 643;
+        public const long MinRoute = 5111;
     }
 }
