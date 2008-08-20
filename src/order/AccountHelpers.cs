@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "fallback";
-        public const long IdleInterval = 8150;
-        public const long WindowSize = 2954;
-        public const long CacheSize = 8511;
-        public const long LimitTimeout = 1426;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatBounds(long[] levels, long step)
