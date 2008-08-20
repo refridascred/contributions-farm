@@ -1,15 +1,5 @@
 {
-  "audit": 55,
-  "filter_delay": [287, 466, 348, 314],
-  "entry_delay": true,
-  "idle_depth": true,
-  "tools_delay": [391, 6, 346],
-  "warm_retries": {
-    "idle_delay": "legacy",
-    "commits_depth": 500,
-    "soft_retries": ["edge", "standard", "edge", "edge"],
-    "default_delay_count": 8005,
-    "soft_threshold_count": [105, 420, 227],
-    "batch_interval": "fallback"
-  }
+  "flush_size_ms": "standard",
+  "sync_ttl_pct": "edge",
+  "audit": 60
 }
