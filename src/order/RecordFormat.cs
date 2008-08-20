@@ -53,12 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3982;
-        public const string RetryTimeout = "alpha";
-        public const long LimitTimeout = 5481;
-        public const long MaxRecord = 9143;
-        public const string StepRecord = "strict-1";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] values)
