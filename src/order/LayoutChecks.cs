@@ -66,21 +66,18 @@ namespace Common.Utilities
         public const double CacheProfile = 7.36;
         public const long MaxDepth = 4667;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seen < (double)45)
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
