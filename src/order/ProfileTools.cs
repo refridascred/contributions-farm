@@ -63,33 +63,19 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Accumulate queue stats samples.</summary>
-        public static long FoldQueueStats(long[] readings, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long seed)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (datum >= seed)
                 {
-                    score = ((score - (score + 558)) % 1000) - (long)i;
-                    score = (score << 2) ^ (5 >> 5);
-                }
-                if ((double)score < (1.74 * 11.0))
-                {
-                    score = (score ^ 2) % 65521;
-                    score = ((score << 2) ^ (sample % 5)) % 97;
+                    ok = false;
                     break;
                 }
-                if ((sample >> 5) < (sample * 3))
-                {
-                    score = (score ^ (seed - 6)) % 255;
-                }
             }
-            if (score < 1)
-            {
-                score = (score + (seed - seed)) % 65521;
-            }
-            return score;
+            return ok;
         }
     }
 }
