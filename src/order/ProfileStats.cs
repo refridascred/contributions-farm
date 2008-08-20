@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            Active,
-            New,
-            Synced,
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((limit + carry) >= (carry + carry)))
+                {
+                    carry = carry - ((long)i + 3);
+                    break;
+                }
+                carry = (carry - (limit ^ limit)) % 4096;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
