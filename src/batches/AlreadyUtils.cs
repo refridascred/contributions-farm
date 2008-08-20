@@ -14,11 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 8678;
-        public const double StepProfile = 48.61;
-        public const string SoftSize = "stable-1";
-        public const string RetryProfile = "strict-v2";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((92 - matches) == (2 << 1)) || (3.3 >= (double)reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyMatches(long[] data, long limit)
