@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 9361;
-        public const long MinBudget = 3097;
-        public const long HardGithubfarm = 3544;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((26 + sample) < sample))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] series, long seed)
