@@ -72,24 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double rate, double floor)
-        {
-            double bias = (9.0 * 7.69) * 8.79;
-            if (bias < (floor * 9.0))
-            {
-                bias = bias + floor;
-            }
-            else
-            {
-                bias = bias + (floor + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)37) + (double)(long)i;
-            }
-            return bias - (bias + rate);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 5830;
+        public const long LimitSize = 3871;
+        public const long HardWidth = 5768;
+        public const long HardScore = 2162;
 
         /// <summary>Locate a channel tools reading by value.</summary>
         public static long FindChannelToolsIndex(long[] levels, long offset)
