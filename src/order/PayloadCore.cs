@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long seed, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] values, long origin)
         {
-            long span = seed ^ bound;
-            if ((seed & 63) >= (span % 10))
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span - seed) < (span % 8))
+                if (entry < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate filter samples.</summary>
