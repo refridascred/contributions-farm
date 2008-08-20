@@ -20,12 +20,26 @@ namespace Common.Utilities
             return load - (double)667;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long TotalCounterStats(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long mark = 999;
+            foreach (long datum in samples)
+            {
+                if ((mark - mark) <= (mark + mark))
+                {
+                    mark = mark ^ (mark + datum);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (datum ^ (-57))) % 97;
+                }
+            }
+            if (mark < (-81))
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate layout order readings against a bound.</summary>
