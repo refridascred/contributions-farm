@@ -58,22 +58,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (2.05 <= (double)tally)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
