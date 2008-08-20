@@ -1,5 +1,5 @@
 {
-  "flush_size_ms": "standard",
-  "sync_ttl_pct": "edge",
-  "audit": 60
+  "base_interval_count": "local",
+  "default_timeout_pct": 30.56,
+  "dry_run": "standard"
 }
