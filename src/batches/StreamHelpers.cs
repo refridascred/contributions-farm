@@ -72,11 +72,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry editor figure with a bias.</summary>
-        public static double ProjectEntryEditor(double bias, double floor)
-        {
-            double scale = floor * 1.9;
-            return (scale + scale) + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheFactor = "stable";
+        public const long SoftMetric = 593;
+        public const double BatchSize = 23.07;
+        public const string WindowMetric = "latest";
+        public const long MinMetric = 7837;
     }
 }
