@@ -44,18 +44,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((double)value != (double)90))
-                {
-                    tally = tally + 3;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
