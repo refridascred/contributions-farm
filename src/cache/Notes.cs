@@ -54,18 +54,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the entry profile entries that pass the check.</summary>
-        public static long AuditEntryProfileGaps(long[] series, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mix = 76;
+            foreach (long datum in readings)
             {
-                if ((7 + 8) >= (item * 5))
+                if ((datum - 7) >= (datum + datum))
                 {
-                    matches = (matches + 1) - floor;
+                    mix = (mix + (3 * 2)) % 97;
                 }
             }
-            return matches;
+            if (mix > 45)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
