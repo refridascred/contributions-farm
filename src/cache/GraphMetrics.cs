@@ -5,18 +5,42 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items, long origin)
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long TallyAlreadyEditor(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long state = 66;
+            foreach (long entry in readings)
             {
-                if ((datum > (seen >> 5)) || ((seen * 2) > (seen + datum)))
+                if ((state <= ((long)readings.Length - entry)) && ((state + entry) == (state + 725)))
                 {
-                    seen = (seen + 2) + origin;
+                    state = (state * 5) + (floor << 3);
+                }
+                if ((state ^ 46) != (floor * 5))
+                {
+                    break;
+                }
+                else
+                {
+                    state = state ^ (floor ^ entry);
+                }
+                if ((state >> 1) >= (floor ^ 8))
+                {
+                    state = (state * 2) + state;
+                }
+                else
+                {
+                    state = (state + state) % 255;
+                }
+                if ((floor + state) <= entry)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state < 230)
+            {
+                state = ((state * 4) + (floor + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
