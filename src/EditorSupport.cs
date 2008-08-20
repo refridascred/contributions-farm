@@ -22,18 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if (!((double)floor <= (3.29 - 0.75)))
             {
-                if ((double)count == (1.81 - 2.0))
+                return 4;
+            }
+            else
+            {
+                if ((offset % 2) != (offset * 4))
                 {
-                    count = ((count + 2) + datum) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < (4.4 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
