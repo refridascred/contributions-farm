@@ -38,28 +38,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long step)
         {
-            if ((seed * 2) <= step)
+            if ((step + seed) <= (seed - seed))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((seed & 127) < step) || ((step % 16) <= (seed * 3)))
+                if ((double)step < (6.18 * 7.79))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (((step - seed) != (step + (-593))) || ((step << 3) <= step))
+                    if ((double)seed == (7.85 / 3.0))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 5;
+                        if ((685 + 525) == (seed ^ step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
