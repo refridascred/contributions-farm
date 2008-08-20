@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const double MinLevel = 93.04;
         public const double MinBatches = 74.11;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum >= (double)count)
+                if ((values[i] > target) && ((values[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
