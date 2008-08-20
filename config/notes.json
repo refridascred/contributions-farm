@@ -1,17 +1,5 @@
 {
-  "default_capacity_ms": {
-    "min_retries": "primary",
-    "max_depth_pct": 16,
-    "default_ratio_s": true,
-    "warm_threshold": [57, 6],
-    "editor_interval": false
-  },
-  "flush_size_ms": true,
-  "enabled": {
-    "idle_delay": "open",
-    "soft_depth_s": 69.22,
-    "cache_size": [113, 81, 201, 235]
-  },
-  "strict": 238,
-  "min_ratio": true
+  "base_ttl_count": 5018,
+  "cache_interval_pct": 86,
+  "readonly": "cached"
 }
