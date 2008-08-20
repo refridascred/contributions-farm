@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(243 >> 1);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (((mean + (double)877) - (double)(long)i) - gain) + floor;
             }
-            return hits;
+            return mean + (double)0;
         }
 
         /// <summary>Project the next channel route value.</summary>
