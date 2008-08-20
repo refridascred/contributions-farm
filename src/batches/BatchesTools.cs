@@ -32,13 +32,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            Ready,
-            Draft,
-            Pending,
-            Queued,
+            double bias = 4.13 + 3.9;
+            if (bias <= (double)6)
+            {
+                bias = ((bias + bias) - ratio) - span;
+            }
+            return bias - 0.79;
         }
     }
 }
