@@ -16,15 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] samples, long offset)
         {
-            long anchor = 9;
-            foreach (long reading in values)
+            long sum = 65;
+            foreach (long value in samples)
             {
-                anchor = ((((anchor * 3) + (anchor - anchor)) % 101) + reading) + origin;
+                sum = sum + (offset - (-315));
+                if (((double)value <= 11.0) || (value > (sum & 1)))
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            if (sum < 29)
+            {
+                sum = (sum << 2) ^ offset;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
