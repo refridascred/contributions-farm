@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] items, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 103;
+            foreach (long reading in series)
             {
-                if ((target + seen) >= (seen % 5))
+                carry = ((carry << 3) ^ (carry + carry)) + reading;
+                if (!((double)floor >= (1.19 + 9.0)))
                 {
-                    seen = (seen + 2) + item;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
