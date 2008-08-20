@@ -1,12 +1,4 @@
 # support settings
-queue_threshold: 551
-sync_timeout_s:
-  - 290
-  - 495
-  - 24
-  - 151
-checks_ratio: false
-max_ratio_s: false
-warm_window_count:
-  - standard
-  - blue
+audit: 82
+commits_interval: green
+payload_ttl: 4538
