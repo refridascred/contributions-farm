@@ -1,11 +1,11 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the queue queue.
+Use cache settings to tune how often already data is refreshed.
+Keep filter and queue names short and lowercase.
 
 ## Guidelines
 
-- Validate support input early
-- Document new context fields
-- Prefer layout defaults
-- Review route limits each release
+- Log every stream change
+- Validate stats input early
+- Document new order fields
+- Prefer cache defaults
