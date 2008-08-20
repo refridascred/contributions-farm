@@ -19,20 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record githubfarm counter forward.</summary>
-        public static long RollRecordGithubfarm(long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((state >> 2) != (55 % 97))
-                {
-                    state = (state << 3) ^ state;
-                    state = (state - 422) % 97;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Queued,
+            Idle,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
