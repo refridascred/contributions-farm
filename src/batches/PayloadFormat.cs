@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long HardBatch = 7955;
         public const string SoftSpan = "strict-1";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Retry,
-            Idle,
-            Locked,
+            Closed,
+            Paused,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
