@@ -14,15 +14,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next checks cache value from a seed.</summary>
-        public static long RollChecksCache(long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long floor2)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            if ((floor / 7) <= (668 % 97))
             {
-                total = ((total * 5) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((floor + floor2) == (floor * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)7 >= (double)floor2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((18 + floor) < (floor2 + floor2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two schema checks measurements.</summary>
