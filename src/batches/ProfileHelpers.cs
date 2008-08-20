@@ -52,13 +52,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
