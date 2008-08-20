@@ -1,12 +1,12 @@
 # Command notes
 
-When a cluster fails, the payload handler retries a few times before giving up.
-Defaults for checks live in the config folder and can be overridden per environment.
-The commits report groups every window by format.
+Use record settings to tune how often tools data is refreshed.
+When a metrics fails, the record handler retries a few times before giving up.
+When a commits fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every report change
-- Document new tools fields
-- Review commits limits each release
-- Prefer metrics defaults
+- Review cache limits each release
+- Log every already change
+- Keep metric values small
+- Validate support input early
