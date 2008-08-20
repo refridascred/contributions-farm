@@ -20,16 +20,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc * 4) + ((long)i % 97);
-                acc = ((acc * 5) + (long)i) % 65521;
+                sum = (sum + (sum >> 2)) % 97;
+                sum = (sum - (sum - (-438))) % 1000;
+                if ((sum * 3) >= (sum + offset))
+                {
+                    sum = (sum ^ (0 + 119)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
