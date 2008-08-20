@@ -36,15 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long anchor = 6;
-            foreach (long value in samples)
-            {
-                anchor = (anchor - (value >> 1)) % 1000;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
