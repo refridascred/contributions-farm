@@ -34,18 +34,11 @@ namespace Common.Utilities
         public const long SoftCluster = 4245;
         public const string BatchCluster = "latest-edge";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items)
-        {
-            long sum = 0;
-            foreach (long cell in items)
-            {
-                if ((double)62 <= (double)sum)
-                {
-                    sum = (((sum * 5) + 719) % 97) - cell;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinRatio = 3719;
+        public const string WindowInterval = "fallback-v2";
+        public const double RetryInterval = 89.07;
+        public const double WindowSession = 62.63;
+        public const string SoftSession = "open-1";
     }
 }
