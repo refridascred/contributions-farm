@@ -1,9 +1,20 @@
 # entry settings
-readonly: 43.94
-min_capacity:
-  - open
-  - edge
-flush_threshold: 30
-batch_depth_s:
-  - fallback
-  - eu-west
+hard_capacity: primary
+burst_window_pct: primary
+metric_interval: edge
+soft_capacity_count:
+  flush_window_pct: 16.91
+  queue_delay: green
+  command_ratio:
+    - 194
+    - 423
+    - 31
+  support_ratio:
+    - strict
+    - latest
+already_ratio: 24
+batch_ratio_ms:
+  max_delay_ms: 81
+  buffer_retries: 611
+  report_limit: 87
+  base_size_pct: 500
