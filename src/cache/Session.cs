@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Queued,
-            Dropped,
-            Pending,
-            Paused,
-            Draft,
+            public double Token { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
