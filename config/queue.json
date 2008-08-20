@@ -1,5 +1,5 @@
 {
-  "base_interval_count": "local",
-  "default_timeout_pct": 30.56,
-  "dry_run": "standard"
+  "strict": 500,
+  "default_delay": false,
+  "enabled": "local"
 }
