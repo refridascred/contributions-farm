@@ -1,19 +1,5 @@
 {
-  "base_window": {
-    "queue_ttl": 8618,
-    "hard_threshold_pct": "cached",
-    "warm_timeout_pct": ["green", "primary"],
-    "cache_capacity": 250
-  },
-  "readonly": 4845,
-  "compress": {
-    "dry_run": "standard",
-    "farm_threshold": false,
-    "burst_window_pct": {
-      "stream_limit": 38.63,
-      "window_window": "stable",
-      "warm_depth_ms": 60,
-      "soft_delay": true
-    }
-  }
+  "base_window_ms": [89, 418, 324, 6],
+  "flush_ratio_s": "staging",
+  "warm_size_count": 7487
 }
