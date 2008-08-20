@@ -72,12 +72,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Derive the next report payload value from a seed.</summary>
+        public static long SeriesReportPayload(long seed)
         {
-            Ready,
-            Active,
-            Closed,
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
