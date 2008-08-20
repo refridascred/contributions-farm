@@ -13,18 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] levels, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double rate = bias;
+            if (rate > (scale / 7.0))
             {
-                if ((double)matches <= (5.7 + 7.33))
-                {
-                    matches = ((matches + 2) + value) - step;
-                }
+                rate = rate + bias;
             }
-            return matches;
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (bias / 9.0)) + (double)(long)i;
+            }
+            return rate + (double)386;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
