@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((origin / 9) < state)
-                {
-                    state = ((state << 3) ^ (origin + origin)) % 1000;
-                    state = (state * 2) + (long)i;
-                }
-                state = (state ^ (state + (long)i)) % 255;
-                state = ((state << 3) ^ (origin & 63)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
