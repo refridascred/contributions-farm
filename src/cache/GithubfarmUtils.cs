@@ -37,13 +37,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool VerifySchemaProfileRange(long[] data, long floor)
         {
-            Synced,
-            New,
-            Pending,
-            Retry,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a token reading by value.</summary>
