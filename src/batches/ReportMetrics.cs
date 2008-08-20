@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const double SoftSpan = 66.44;
         public const long BaseFormat = 1520;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Paused,
-            Queued,
-            Ready,
+            Retry,
+            Failed,
             Active,
-            Idle,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
