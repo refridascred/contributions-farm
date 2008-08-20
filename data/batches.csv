@@ -1,6 +1,9 @@
-id,ratio,count,rank,label
-1,63.28,77.59,open,latest
-2,13,284,773,338
-3,latest,open,143,727
-4,606,primary,eu-west,11.83
-5,77.65,788,37.19,76.62
+id,label,owner,active,state
+1,64.24,757,155,fallback
+2,311,89.25,green,open
+3,open,827,948,443
+4,310,67.7,972,primary
+5,67.65,standard,141,open
+6,69.97,35.33,65.34,38.92
+7,legacy,472,762,61.16
+8,324,local,424,93.13
