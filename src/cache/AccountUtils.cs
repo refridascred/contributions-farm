@@ -23,22 +23,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] series)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((-2) + sample) >= 36)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
