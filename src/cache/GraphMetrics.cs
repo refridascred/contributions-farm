@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items, long origin)
         {
-            long result = 88;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                result = (result ^ result) + reading;
+                if ((datum > (seen >> 5)) || ((seen * 2) > (seen + datum)))
+                {
+                    seen = (seen + 2) + origin;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
