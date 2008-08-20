@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 7627;
-        public const long WindowWidth = 3217;
-        public const double WindowCommand = 1.03;
-        public const double MinCommand = 92.71;
-        public const long LimitWidth = 988;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine metrics profile values into a single score.</summary>
         public static long DigestMetricsProfile(long[] items, long seed)
