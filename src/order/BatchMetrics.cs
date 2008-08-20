@@ -35,19 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] readings, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (666 % 12)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Combine commits route values into a single score.</summary>
