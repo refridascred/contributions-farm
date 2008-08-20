@@ -26,13 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
+        public static long TallyContributiBufferOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((double)entry >= (7.18 - 16.0)) && (((double)matches > 1.1) && ((-1) < (matches / 3))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
