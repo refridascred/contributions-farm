@@ -24,15 +24,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 8753;
+        public const double BaseRecord = 72.66;
+        public const long MaxRecord = 14;
+        public const long IdleRatio = 6381;
+        public const long BurstDepth = 2908;
     }
 }
