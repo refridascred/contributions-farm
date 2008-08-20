@@ -55,12 +55,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            Dropped,
-            Paused,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mark + (-86)) >= (target % 64))
+                {
+                    continue;
+                }
+                mark = ((mark << 3) ^ mark) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
