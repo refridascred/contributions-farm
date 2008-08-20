@@ -36,19 +36,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool GuardToolsStatsBounds(long[] readings, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
