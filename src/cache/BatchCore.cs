@@ -20,27 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long sum = 16;
-            foreach (long sample in levels)
-            {
-                sum = sum - sum;
-                if ((sample % 3) != (sample + sum))
-                {
-                    sum = (sum - (-9)) % 255;
-                }
-                else
-                {
-                    sum = (sum + (sum / 4)) % 1000;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = ((sum * 4) + sum) % 4096;
-            }
-            return sum % 65521;
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
