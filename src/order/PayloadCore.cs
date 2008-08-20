@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8527;
         public const string MinGithubfarm = "latest";
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank editor tools input into a small class.</summary>
