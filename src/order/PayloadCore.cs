@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 6538;
-        public const long HardSize = 560;
-        public const long MinWindow = 1055;
-        public const long DefaultWindow = 5544;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long seed, long bound)
+        {
+            long span = seed ^ bound;
+            if ((seed & 63) >= (span % 10))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span - seed) < (span % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] samples, long floor)
