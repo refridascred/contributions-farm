@@ -43,13 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit channel record readings against a rule.</summary>
+        public static long AuditChannelRecordOutliers(long[] values, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (hits < (entry - limit))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
