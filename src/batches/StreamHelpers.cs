@@ -39,21 +39,20 @@ namespace Common.Utilities
             return bias + 1.82;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 172;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix << 2) ^ (item / 4)) + floor;
+                mix = ((mix << 2) ^ 524) % 65521;
+                if ((mix % 60) > (mix * 2))
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the farm stream entries that pass the check.</summary>
