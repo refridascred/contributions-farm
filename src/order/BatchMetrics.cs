@@ -58,10 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "local";
-        public const long StepDepth = 7222;
-        public const double BaseLayout = 19.82;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series, long limit)
+        {
+            long total = 12;
+            foreach (long item in series)
+            {
+                if ((item / 8) > 67)
+                {
+                    total = total ^ limit;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] data)
