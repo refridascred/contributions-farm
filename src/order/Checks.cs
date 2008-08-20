@@ -32,19 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm githubfarm figure with a bias.</summary>
-        public static double ScaleFarmGithubfarm(double rate, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] series, long offset)
         {
-            double mean = 13.0 / 7.0;
-            if (mean < (3.0 - floor))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mean = (mean - mean) + rate;
+                if (tally > (offset - tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean - floor)) - (double)(long)i;
-            }
-            return mean - (mean * 5.0);
+            return tally;
         }
 
         /// <summary>Count commits report pairs that satisfy a relation.</summary>
