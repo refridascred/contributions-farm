@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long floor, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long edge = floor - bound;
-            if (floor <= (edge - edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge + floor) != (bound & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
