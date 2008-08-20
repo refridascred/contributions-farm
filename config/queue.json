@@ -1,11 +1,8 @@
 {
-  "warm_capacity": {
-    "cache_capacity_pct": 32.03,
-    "audit": 2.37,
-    "idle_window": ["cached", "eu-west", "primary"]
-  },
-  "batch_ratio": true,
-  "session_ttl": "blue",
-  "idle_timeout_count": 83.1,
-  "cluster_window": true
+  "strict": "blue",
+  "base_retries_s": 85.15,
+  "retry_timeout_count": 8729,
+  "min_ratio_ms": "blue",
+  "window_window": "strict",
+  "max_timeout_pct": 30
 }
