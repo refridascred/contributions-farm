@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const long StepTimeout = 6098;
         public const double HardTimeout = 80.88;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long CountPayloadEntryGaps(long[] samples)
         {
-            long score = 680;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((score <= (item - 824)) && ((item & 7) <= score))
+                if ((3.8 * 0.87) == (double)cell)
                 {
-                    score = (score * 3) + (item % 12);
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
