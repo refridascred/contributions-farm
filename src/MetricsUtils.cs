@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate window support readings against a bound.</summary>
-        public static bool CheckWindowSupportLimits(long[] items, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (cell <= seed)
+                if (!((matches + 889) > matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
