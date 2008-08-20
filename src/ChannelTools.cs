@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long seed)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                total = total - (total % 2);
-                if (!((cell >> 4) < (total - 62)))
+                if (value <= seed)
                 {
-                    total = (total << 2) ^ ((long)readings.Length - total);
+                    valid = false;
+                    break;
                 }
-                total = total ^ 78;
             }
-            if (total < 4)
-            {
-                total = ((total << 3) ^ (811 % 7)) % 97;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
