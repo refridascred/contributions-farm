@@ -1,10 +1,5 @@
 # entry settings
-enabled: 1024
-payload_capacity: 500
-min_window_ms: false
-audit: fallback
-sync_depth_pct: 30
-min_limit_count:
-  - primary
-  - legacy
-  - standard
+compress: 42
+retry_size: true
+base_capacity_count: green
+retry_limit_ms: 58.86
