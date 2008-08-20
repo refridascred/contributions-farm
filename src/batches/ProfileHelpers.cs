@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSize = 8797;
-        public const double StepEditor = 8.48;
-        public const long BurstEditor = 8367;
-        public const long BatchCount = 14;
-        public const long SoftEditor = 8030;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (768 > (value / 9))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] data)
