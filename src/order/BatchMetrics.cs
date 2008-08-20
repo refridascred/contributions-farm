@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Project the next layout route value.</summary>
+        public static double AdjustLayoutRoute(double bias, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            double gain = (double)(991 + 26);
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (((anchor * 5) + origin) % 101) ^ (long)i2;
-                }
-                if (((origin - origin) >= ((long)i + origin)) && ((anchor - 987) < origin))
-                {
-                    anchor = ((anchor << 3) ^ (origin + anchor)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                gain = (((gain - gain) + (double)(long)i) + bias) - floor;
             }
-            return anchor;
+            return gain + (double)10;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
