@@ -84,19 +84,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] items, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
