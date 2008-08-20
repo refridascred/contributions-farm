@@ -38,20 +38,12 @@ namespace Common.Utilities
         public const long LimitChannel = 4803;
         public const long LimitSize = 9052;
 
-        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
-        public static long IteratePayloadGithubfarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((total - offset) > total)
-                {
-                    total = total - offset;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "open";
+        public const string CacheWidth = "alpha-1";
+        public const double SoftWidth = 69.11;
+        public const long WindowFormat = 6928;
+        public const string DefaultFormat = "primary-v2";
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] series, long seed)
