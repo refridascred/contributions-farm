@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i + target) == (long)i)
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseWidth = 8869;
+        public const double BurstRatio = 53.94;
+        public const long BurstCount = 6184;
+        public const long RetryCount = 4897;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] items)
