@@ -33,12 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first channel batches entry that matches the target.</summary>
-        public static long LookupChannelBatchesIndex(long[] series, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
