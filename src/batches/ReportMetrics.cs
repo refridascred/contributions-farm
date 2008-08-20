@@ -41,32 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long target, long bound)
-        {
-            long cur = target ^ bound;
-            if ((55 > (cur ^ target)) && ((target + cur) < target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - cur) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur ^ target) != (95 + (-66)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 32.22;
+        public const long StepChannel = 3189;
+        public const long MaxChannel = 4285;
+        public const double MinChannel = 28.47;
+        public const string SoftInterval = "local-v2";
     }
 }
