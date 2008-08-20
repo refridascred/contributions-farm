@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long sum = 4;
-            foreach (long sample in values)
-            {
-                if ((sample / 2) <= (sample - sum))
-                {
-                    sum = (sum << 3) ^ (sum << 1);
-                }
-            }
-            return sum;
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Combine session values into a single score.</summary>
