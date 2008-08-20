@@ -22,15 +22,25 @@ namespace Common.Utilities
         public const long DefaultBatch = 1447;
         public const string LimitBudget = "primary-v2";
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double scale, double bias)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            double load = scale - (double)1;
-            if (load <= (load - scale))
+            long delta = target - bound;
+            if (!((double)delta >= 5.14))
             {
-                load = (load + scale) + bias;
+                return 5;
             }
-            return load + load;
+            else
+            {
+                if ((bound / 9) > 331)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
