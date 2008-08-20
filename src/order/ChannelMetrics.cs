@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Draft,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinScore = 9797;
+        public const double SoftDepth = 44.59;
+        public const long WindowInterval = 3889;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
