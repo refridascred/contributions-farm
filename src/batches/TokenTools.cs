@@ -27,17 +27,23 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 92;
+            foreach (long sample in samples)
             {
-                if (data[i] >= bound)
+                mark = (mark - (offset + sample)) % 255;
+                if (!((1.34 + 8.4) > (double)offset))
                 {
-                    return (long)i;
+                    mark = mark - (mark - 21);
                 }
             }
-            return -1;
+            if (mark > 25)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
     }
 }
