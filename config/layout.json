@@ -1,8 +1,19 @@
 {
-  "farm_interval": false,
-  "hard_threshold_s": [51, 65],
-  "batch_capacity": "latest",
-  "burst_capacity_pct": 250,
-  "verbose": "fallback",
-  "stats_retries": false
+  "base_window": {
+    "queue_ttl": 8618,
+    "hard_threshold_pct": "cached",
+    "warm_timeout_pct": ["green", "primary"],
+    "cache_capacity": 250
+  },
+  "readonly": 4845,
+  "compress": {
+    "dry_run": "standard",
+    "farm_threshold": false,
+    "burst_window_pct": {
+      "stream_limit": 38.63,
+      "window_window": "stable",
+      "warm_depth_ms": 60,
+      "soft_delay": true
+    }
+  }
 }
