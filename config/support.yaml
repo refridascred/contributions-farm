@@ -1,9 +1,6 @@
 # support settings
-cache_timeout_pct: open
-poll_capacity_count: 45
-entry_depth: 50.43
-poll_size:
-  - edge
-  - primary
-  - cached
-min_timeout_ms: 2420
+hard_capacity_ms: 17.72
+order_ttl: stable
+batches_depth: 3.34
+metric_interval: strict
+dry_run: false
