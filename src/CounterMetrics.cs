@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next contributi route value.</summary>
-        public static double AdjustContributiRoute(double gain, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long bound)
         {
-            double mean = (double)(64 + 4);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean + (mean + 9.42)) + (double)(long)i) + offset;
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (gain / 4.0);
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
