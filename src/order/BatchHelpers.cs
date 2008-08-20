@@ -43,18 +43,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit channel record readings against a rule.</summary>
-        public static long AuditChannelRecordOutliers(long[] values, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double rate2 = span - (1.0 - span);
+            if (rate2 > rate2)
             {
-                if (hits < (entry - limit))
-                {
-                    hits = hits + 3;
-                }
+                rate2 = (rate2 + (double)9) - rate;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + (span + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 + (7.2 / 4.0);
         }
     }
 }
