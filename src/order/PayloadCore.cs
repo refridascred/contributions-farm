@@ -15,22 +15,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of channel account entries.</summary>
-        public static long FoldChannelAccount(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long origin, long seed)
         {
-            long total = 1;
-            foreach (long item in series)
+            long lane = origin - seed;
+            if ((lane > (lane << 2)) || (seed <= (seed - lane)))
             {
-                if ((1.5 - 4.9) > (double)item)
+                return 7;
+            }
+            else
+            {
+                if (!((double)lane >= (7.4 * 7.0)))
                 {
-                    total = ((total << 3) ^ ((-56) << 2)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    total = (total + (5 * 4)) % 97;
+                    if ((seed + lane) <= (lane + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
