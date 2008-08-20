@@ -33,12 +33,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
+            Dropped,
             Paused,
-            Stale,
-            Pending,
+            Closed,
         }
     }
 }
