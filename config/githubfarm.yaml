@@ -1,34 +1,14 @@
 # githubfarm settings
-enabled:
-  cache_depth: standard
-  audit:
-    - legacy
-    - legacy
-  hard_delay:
-    - 174
-    - 159
-    - 192
-persist:
-  metrics_timeout: 73
-  hard_depth:
-    compress: green
-    base_limit:
-      - open
-      - green
-      - latest
-      - staging
-    token_capacity:
-      - 34
-      - 432
-      - 345
-      - 409
-    min_depth_count:
-      - 130
-      - 180
-      - 407
-      - 34
-  idle_window_count: stable
-cache_retries_ms: 42.79
-idle_window_s: 6327
-base_retries: 9309
-max_limit: 55.83
+metric_depth: 44.2
+tools_threshold: fallback
+poll_capacity_count: true
+default_threshold_pct:
+  farm_timeout: legacy
+  token_retries: false
+  context_window:
+    - blue
+    - fallback
+    - standard
+  tools_size: 250
+  enabled: true
+  schema_timeout: false
