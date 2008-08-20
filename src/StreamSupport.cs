@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] values, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample > target)
+                if ((double)matches > (5.9 * 1.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Grade a profile stream value against two limits.</summary>
