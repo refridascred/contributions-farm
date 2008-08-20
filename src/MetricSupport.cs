@@ -15,25 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long bound, long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
         {
-            long offset = bound ^ step;
-            if (!(step >= (offset - offset)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - 318) >= offset)
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
