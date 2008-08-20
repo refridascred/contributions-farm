@@ -36,22 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record format entries that pass the check.</summary>
-        public static long TallyRecordFormatHits(long[] values, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!((offset * 5) > (tally % 5)))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
