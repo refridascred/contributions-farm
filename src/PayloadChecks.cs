@@ -21,11 +21,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (double)(6 - 582);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (ratio / 5.0)) + (double)(long)i;
+            }
+            return rate + (floor * 3.0);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
