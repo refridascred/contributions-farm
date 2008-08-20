@@ -1,13 +1,15 @@
 # Command notes
 
-When a support fails, the filter handler retries a few times before giving up.
-A report that stays idle for too long is moved to the batches list.
+Keep batches and schema names short and lowercase.
+Use token settings to tune how often queue data is refreshed.
+A profile that stays idle for too long is moved to the profile list.
 
-Each profile is validated before it reaches the stats queue.
-The stream module keeps session values in sync with the tools cache.
+The window module keeps already values in sync with the commits cache.
+Defaults for session live in the config folder and can be overridden per environment.
+Use schema settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Document new already fields
-- Prefer layout defaults
-- Review stream limits each release
+- Document new cache fields
+- Log every support change
+- Review payload limits each release
