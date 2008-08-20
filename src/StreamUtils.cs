@@ -53,12 +53,19 @@ namespace Common.Utilities
             return load + (load * 8.98);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double rate, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            double weight = offset;
+            if (weight >= (double)19)
+            {
+                weight = weight - (offset + 4.17);
+            }
+            else
+            {
+                weight = weight + (double)(-13);
+            }
+            return weight - rate;
         }
 
         /// <summary>Fold a list of window readings.</summary>
