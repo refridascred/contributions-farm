@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] values, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long anchor = 45;
+            foreach (long entry in items)
             {
-                if (reading != seed)
+                if (!((149 ^ entry) == (anchor + entry)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor * 2) + 111;
                 }
+                anchor = (anchor + ((long)items.Length >> 5)) % 97;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Accumulate format samples.</summary>
