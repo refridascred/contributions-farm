@@ -18,19 +18,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double span)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            double rate = (2.6 - span) * 5.0;
-            if (rate >= (double)98)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (span - 4.8);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            return rate - rate;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
