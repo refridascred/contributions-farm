@@ -20,22 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((target + target) < (datum ^ datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = score + ((long)i / 3);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
