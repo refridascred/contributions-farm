@@ -1,11 +1,11 @@
 # Command notes
 
-Keep profile and stats names short and lowercase.
-When a cache fails, the session handler retries a few times before giving up.
+A context that stays idle for too long is moved to the batches list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metrics change
-- Prefer stats defaults
-- Document new checks fields
-- Validate batches input early
+- Document new schema fields
+- Log every format change
+- Keep githubfarm values small
