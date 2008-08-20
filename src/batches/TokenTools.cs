@@ -53,12 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Synced,
-            Locked,
-            Ready,
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
