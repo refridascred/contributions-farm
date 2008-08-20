@@ -25,12 +25,38 @@ namespace Common.Utilities
         public const string LimitInterval = "latest";
         public const double HardFilter = 58.94;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long offset)
         {
-            Ready,
-            Locked,
-            Dropped,
+            if (((198 + origin) == (offset + origin)) && (9 <= offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((19.0 + 10.0) == (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin >= (3.8 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(origin > offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stream githubfarm readings against a bound.</summary>
