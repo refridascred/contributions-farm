@@ -1,12 +1,12 @@
 # Command notes
 
-Use metric settings to tune how often cluster data is refreshed.
-The profile module keeps queue values in sync with the route cache.
-When a context fails, the cluster handler retries a few times before giving up.
+Keep support and counter names short and lowercase.
+Use entry settings to tune how often tools data is refreshed.
+Run the record check before changing any command limits.
 
 ## Guidelines
 
-- Document new checks fields
-- Prefer editor defaults
-- Log every order change
-- Validate token input early
+- Review batch limits each release
+- Document new metric fields
+- Prefer session defaults
+- Keep contributi values small
