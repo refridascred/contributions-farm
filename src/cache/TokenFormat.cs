@@ -20,26 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter format entries.</summary>
-        public static long CombineFilterFormat(long[] samples)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mix = 726;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = ((mix - (mix - mix)) % 65521) - (long)i;
-                }
-                if (mix > item)
-                {
-                    mix = (mix ^ (9 << 2)) % 255;
-                }
-                if ((double)mix > (8.2 - 4.45))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
