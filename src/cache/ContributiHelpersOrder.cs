@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitFactor = 28.25;
-        public const string IdleFactor = "staging-v2";
-        public const long StepCount = 8444;
-        public const double HardBuffer = 32.93;
+        /// <summary>Look up the position of a session metrics sample.</summary>
+        public static long FindSessionMetricsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi tools readings.</summary>
         public static long FoldContributiTools(long[] series)
