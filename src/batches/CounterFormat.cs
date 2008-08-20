@@ -29,19 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] values, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long cur = seed - floor;
+            if ((seed + cur) <= (floor * 4))
             {
-                if (datum < offset)
+                return 6;
+            }
+            else
+            {
+                if ((cur - 2) <= (seed * 5))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((17.0 - 2.0) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
