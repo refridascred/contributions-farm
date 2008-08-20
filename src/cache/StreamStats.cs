@@ -33,13 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultScore = 39.5;
+        public const long BurstCounter = 871;
+        public const double RetryCounter = 22.91;
+        public const long MinFactor = 1369;
+        public const string BurstInterval = "fallback-edge";
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double ProjectChannel(double weight, double floor)
