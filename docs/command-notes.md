@@ -1,12 +1,12 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the notes list.
-Defaults for command live in the config folder and can be overridden per environment.
-The tools report groups every report by command.
+Use metric settings to tune how often cluster data is refreshed.
+The profile module keeps queue values in sync with the route cache.
+When a context fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
+- Document new checks fields
+- Prefer editor defaults
+- Log every order change
 - Validate token input early
-- Document new notes fields
-- Keep metrics values small
-- Prefer queue defaults
