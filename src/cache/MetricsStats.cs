@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats stream series from a seed.</summary>
-        public static long IterateStatsStream(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if ((matches << 2) == (matches + cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a channel entry.</summary>
