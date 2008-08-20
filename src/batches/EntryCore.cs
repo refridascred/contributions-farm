@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = floor - bound;
+            if (floor <= (edge - edge))
             {
-                if (values[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((edge + floor) != (bound & 1))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
