@@ -20,22 +20,10 @@ namespace Common.Utilities
             return mean - (double)40;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSpan = 8310;
+        public const string LimitInterval = "latest";
+        public const double HardFilter = 58.94;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
