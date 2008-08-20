@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < (tally + datum))
+                if (levels[i] == seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
