@@ -19,12 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchWidth = "stable-edge";
-        public const long LimitScore = 7874;
-        public const string WindowScore = "standard";
-        public const long BaseFactor = 7863;
-        public const long IdleWidth = 1268;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiOutliers(long[] values, long floor)
