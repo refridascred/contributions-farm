@@ -1,16 +1,13 @@
 # Command notes
 
-Each support is validated before it reaches the commits queue.
-Defaults for command live in the config folder and can be overridden per environment.
-The filter helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the filter handler retries a few times before giving up.
+A report that stays idle for too long is moved to the batches list.
 
-Each already is validated before it reaches the window queue.
-Each githubfarm is validated before it reaches the record queue.
-The farm report groups every account by format.
+Each profile is validated before it reaches the stats queue.
+The stream module keeps session values in sync with the tools cache.
 
 ## Guidelines
 
-- Log every context change
-- Prefer batch defaults
-- Keep report values small
-- Validate channel input early
+- Document new already fields
+- Prefer layout defaults
+- Review stream limits each release
