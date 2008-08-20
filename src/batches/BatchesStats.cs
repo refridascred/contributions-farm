@@ -22,12 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 8795;
-        public const long WindowDepth = 6865;
-        public const long HardWidth = 8504;
-        public const long SoftCluster = 4245;
-        public const string BatchCluster = "latest-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryCount = 5288;
+        public const long MaxReport = 5627;
+        public const string CacheReport = "open";
+        public const double BatchReport = 40.42;
+        public const long StepReport = 2733;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
