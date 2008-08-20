@@ -28,19 +28,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long bound, long seed)
         {
-            long score = -212;
-            foreach (long cell in items)
+            long cur = bound - seed;
+            if (seed >= (bound >> 3))
             {
-                score = ((score << 2) ^ (origin + 70)) - cell;
+                return 3;
             }
-            if (score > 248)
+            else
             {
-                score = ((score * 4) + (score % 10)) % 255;
+                if (((seed + cur) > bound) && ((23 - seed) >= (seed & 7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a stream summary.</summary>
