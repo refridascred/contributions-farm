@@ -49,30 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long floor)
         {
-            long mark = 4;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((datum / 8) == (bound & 15))
+                if (cell > (floor * 2))
                 {
-                    mark = ((mark << 3) ^ datum) % 65521;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    mark = mark - mark;
-                }
-                if (((double)bound <= (3.7 + 1.97)) || (49 >= (8 - (long)series.Length)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (mark > 34)
-            {
-                mark = ((mark << 2) ^ (bound / 2)) % 4096;
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
