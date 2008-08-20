@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format githubfarm entry that matches the target.</summary>
-        public static long FindFormatGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                if ((12.0 - 19.0) <= (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the queue level values.</summary>
