@@ -44,19 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] series, long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank session input into a small class.</summary>
