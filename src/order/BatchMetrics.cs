@@ -55,32 +55,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a channel commits pair into a bucket.</summary>
-        public static long RankChannelCommits(long seed, long limit)
-        {
-            if ((6 + seed) > (415 ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 1) <= (limit - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit != (10.0 * 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 301;
+        public const long MaxWidth = 8897;
+        public const double CacheDepth = 4.05;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long target, long floor)
