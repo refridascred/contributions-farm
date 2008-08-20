@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepDepth = 5275;
-        public const double WindowRatio = 84.72;
-        public const string MinCache = "stable-edge";
-        public const long WindowDepth = 5156;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 8678;
