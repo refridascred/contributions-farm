@@ -84,15 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings)
-        {
-            long score = -724;
-            foreach (long cell in readings)
-            {
-                score = (score << 3) ^ (score - cell);
-            }
-            return score % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftScore = 8029;
+        public const long WindowFactor = 3149;
+        public const double MaxInterval = 28.09;
+        public const long MaxTools = 642;
+        public const long StepBudget = 8686;
     }
 }
