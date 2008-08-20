@@ -27,19 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long acc = 294;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - (cell / 8);
-                if ((1 / 4) <= cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc + (acc << 2);
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
