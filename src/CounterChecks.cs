@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the commits channel series from a seed.</summary>
-        public static long RollCommitsChannel(long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry - (72 + target)) % 65521) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                anchor = (anchor << 2) ^ (origin * 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
