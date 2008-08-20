@@ -44,22 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] samples, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 7;
-            foreach (long value in samples)
-            {
-                if ((2.61 + 9.7) != (double)value)
-                {
-                    acc = (acc + acc) - origin;
-                }
-                if ((acc / 5) == (431 / 5))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
