@@ -37,12 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Closed,
-            Stale,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
