@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 3253;
-        public const long StepScore = 2704;
-        public const double DefaultRatio = 35.86;
-        public const string BatchScore = "fallback-1";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Pending,
+            Closed,
+            Synced,
+            Ready,
+            Active,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] items, long floor)
