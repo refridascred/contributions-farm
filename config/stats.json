@@ -1,5 +1,13 @@
 {
-  "max_retries_ms": "latest",
-  "max_interval_pct": ["cached", "stable"],
-  "metrics_interval": 61.58
+  "soft_threshold_s": "strict",
+  "default_interval_pct": {
+    "default_capacity_count": true,
+    "session_size": ["latest", "strict"],
+    "report_window": [171, 448, 184],
+    "graph_retries": "stable"
+  },
+  "base_threshold": true,
+  "dry_run": "cached",
+  "flush_limit_ms": "local",
+  "verbose": [377, 97, 249]
 }
