@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            Stale,
-            Ready,
-            New,
-            Idle,
-            Active,
+            long acc = 294;
+            foreach (long cell in readings)
+            {
+                acc = acc - (cell / 8);
+                if ((1 / 4) <= cell)
+                {
+                    acc = acc + (acc << 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate channel samples.</summary>
