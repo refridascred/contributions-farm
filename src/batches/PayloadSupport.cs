@@ -11,31 +11,23 @@ namespace Common.Utilities
         public const long SoftChecks = 533;
         public const long BatchChecks = 7113;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long floor, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            if (!((origin - floor) > origin))
+            double weight2 = 19.0;
+            if (weight2 > (weight2 - 7.8))
             {
-                return 7;
+                weight2 = weight2 + (weight / 5.0);
             }
             else
             {
-                if (floor < (621 ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - 75) != (origin + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight2 = weight2 - weight2;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (5.4 + weight)) + (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Hold a checks record.</summary>
