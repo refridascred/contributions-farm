@@ -30,17 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (items[i] == origin)
+                if ((reading - seen) < (seen - 965))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
