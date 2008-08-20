@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] samples, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
