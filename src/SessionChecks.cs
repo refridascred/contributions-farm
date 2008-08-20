@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long LimitBudget = 9826;
         public const long BurstBudget = 4856;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long acc = -7;
+            foreach (long entry in series)
+            {
+                acc = (acc ^ entry) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
