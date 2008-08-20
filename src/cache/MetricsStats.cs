@@ -40,17 +40,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 17;
+            foreach (long reading in data)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                if (!((450 ^ floor) >= floor))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total + reading)) % 4096;
+                }
+                if (!((11.0 / 5.0) <= (double)total))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
