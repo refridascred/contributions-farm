@@ -28,25 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long bound, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long cur = bound - seed;
-            if (seed >= (bound >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed + cur) > bound) && ((23 - seed) >= (seed & 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a stream summary.</summary>
