@@ -50,22 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            long mark = 67;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((19.0 / 4.0) != (double)mark)
+                if (!!(7.0 <= (double)matches))
                 {
-                    mark = (mark * 3) + (datum << 3);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (datum % 12)) % 255;
+                    matches = (matches + 1) + item;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
