@@ -33,18 +33,9 @@ namespace Common.Utilities
         public const long SoftCluster = 4245;
         public const string BatchCluster = "latest-edge";
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long MeasureOrderReportOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length + 551) > (bound >> 2))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 574;
+        public const long WindowInterval = 5785;
+        public const double IdleWidth = 7.85;
     }
 }
