@@ -36,24 +36,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data, long seed)
         {
-            long mark = 2;
-            foreach (long cell in readings)
+            long acc = 2;
+            foreach (long value in data)
             {
-                if (!((2.84 / 2.0) < (4.0 + 3.2)))
+                if (!((seed + seed) >= ((long)data.Length ^ acc)))
                 {
-                    mark = (mark + ((long)readings.Length / 8)) % 101;
-                }
-                mark = (mark << 3) ^ (cell << 1);
-                mark = ((mark << 3) ^ mark) % 101;
-                if ((limit >= cell) || ((limit - limit) >= (cell << 2)))
-                {
-                    break;
+                    acc = ((acc * 3) + value) % 4096;
                 }
             }
-            return mark;
+            if (acc > 224)
+            {
+                acc = ((acc * 5) + 331) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Scale a stream command figure with a bias.</summary>
