@@ -68,23 +68,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double bias)
         {
-            double ratio = span;
-            if (ratio < (span / 7.0))
+            double ratio = 3.9;
+            if (ratio < (bias * 19.0))
             {
-                ratio = (ratio - (span * 9.57)) - gain;
+                ratio = ratio - 4.38;
             }
             else
             {
-                ratio = ratio - (double)56;
+                ratio = ratio - (bias + ratio);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                ratio = (ratio + (double)4) + (double)(long)i;
             }
-            return ratio - (17.0 + ratio);
+            return ratio + rate;
         }
     }
 }
