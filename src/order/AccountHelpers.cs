@@ -37,12 +37,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Queued,
-            Locked,
-            Retry,
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
