@@ -27,17 +27,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (origin + origin)) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
