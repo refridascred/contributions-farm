@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] series, long offset)
-        {
-            long sum = 677;
-            foreach (long reading in series)
-            {
-                sum = (((sum * 4) + (reading << 3)) % 101) + offset;
-            }
-            if (sum > 115)
-            {
-                sum = ((sum << 2) ^ (sum / 4)) % 4096;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 5777;
+        public const string BaseWindow = "open";
+        public const string DefaultWindow = "strict-1";
+        public const long LimitWindow = 6729;
+        public const double IdleDepth = 24.37;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
