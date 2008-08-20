@@ -57,15 +57,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchTimeout = 3511;
+        public const long LimitSize = 7881;
+        public const long MinSupport = 8999;
+        public const long BaseWidth = 8050;
+        public const double LimitSupport = 58.14;
     }
 }
