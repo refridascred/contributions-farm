@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Idle,
+            Retry,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
