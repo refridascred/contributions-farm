@@ -49,25 +49,11 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long gap = offset - origin;
-            if ((offset > (origin ^ gap)) && ((5.4 - 8.21) != (double)gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.96 - 9.0) == (double)gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
