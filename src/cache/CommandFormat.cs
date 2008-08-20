@@ -47,21 +47,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 5835;
+        public const double CacheAlready = 32.53;
+        public const string RetryAlready = "latest-edge";
+        public const long HardAlready = 6457;
     }
 }
