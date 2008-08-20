@@ -22,15 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale2 = (scale2 - (double)46) + (double)(long)i;
+                if ((((-389) & 1) >= seen) || ((seen >> 3) >= sample))
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale2 - offset;
+            return seen;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
