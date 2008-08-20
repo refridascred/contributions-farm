@@ -1,6 +1,7 @@
-id,token,ratio,owner,weight
-1,blue,85.83,edge,15.6
-2,724,8.82,latest,16
-3,67.77,221,standard,81.07
-4,legacy,62.98,560,9.46
-5,595,272,113,52.95
+id,score,count
+1,80.87,standard
+2,blue,57.33
+3,28.39,79.0
+4,open,13.9
+5,edge,staging
+6,eu-west,legacy
