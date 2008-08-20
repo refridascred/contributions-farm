@@ -1,6 +1,8 @@
 {
-  "batch_interval_s": 25.31,
-  "verbose": 24.32,
-  "default_threshold_s": "cached",
-  "compress": [170, 118]
+  "batch_timeout": 8714,
+  "persist": 36,
+  "stream_size": 39.48,
+  "dry_run": 73.74,
+  "metric_timeout": 96.12,
+  "sync_ttl": 37.89
 }
