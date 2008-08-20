@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((6 > (seed * 3)) || (0 > (floor - 865)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (floor < (64 - seed))
                 {
-                    if ((items[i] ^ items[j]) != 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor <= (17.0 * 6.98))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
