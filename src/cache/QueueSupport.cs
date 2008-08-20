@@ -22,19 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Digest a series of batch token entries.</summary>
+        public static long FoldBatchToken(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            long anchor = 321;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((double)3 >= (double)anchor)
                 {
-                    score = ((score - (bound - 996)) % 65521) - (long)i2;
+                    anchor = (anchor - (anchor >> 4)) - datum;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
+                }
             }
-            return score;
+            if (anchor < 88)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
