@@ -57,11 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 4975;
-        public const string IdleDepth = "alpha-1";
-        public const long BurstSpan = 3502;
-        public const long BaseAccount = 7542;
-        public const long BatchSpan = 6333;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
