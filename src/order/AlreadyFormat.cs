@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Done,
-            Locked,
-            Pending,
+            Active,
+            Closed,
             Synced,
-            Dropped,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
