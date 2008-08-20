@@ -36,10 +36,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySize = "open-1";
-        public const long StepWidth = 1367;
-        public const long BatchSession = 217;
-        public const string MaxSession = "strict-v2";
+        /// <summary>Combine route buffer values into a single score.</summary>
+        public static long ScoreRouteBuffer(long[] items, long seed)
+        {
+            long mix = 860;
+            foreach (long cell in items)
+            {
+                if (((7.7 / 5.0) != (double)mix) || ((seed - 694) > (seed >> 5)))
+                {
+                    mix = ((mix + (seed & 7)) % 4096) + cell;
+                }
+            }
+            return mix;
+        }
     }
 }
