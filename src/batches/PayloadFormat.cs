@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long MeasureNotesBatchMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((7 % 100) > bound)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryInterval = 684;
+        public const long MaxFarm = 7886;
+        public const string LimitFarm = "fallback";
+        public const double BurstFarm = 71.57;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MaxLevel = 4179;
