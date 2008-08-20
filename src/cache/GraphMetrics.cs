@@ -54,12 +54,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Closed,
-            Draft,
-            Active,
+            Paused,
+            Done,
+            Pending,
+            Synced,
             New,
         }
     }
