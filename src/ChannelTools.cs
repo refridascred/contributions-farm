@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a cache route sample.</summary>
-        public static long LookupCacheRouteIndex(long[] readings, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset & 63) > (offset & 3))
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((6.7 * 0.55) > (double)offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two payload measurements.</summary>
