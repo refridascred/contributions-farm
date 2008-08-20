@@ -39,15 +39,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Look up the position of a entry layout sample.</summary>
+        public static long LookupEntryLayoutIndex(long[] series, long bound)
         {
-            double weight = 18.0 + (offset + offset);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight - (offset / 8.0)) - (double)(long)i) - scale;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (weight * 8.2);
+            return -1;
         }
 
         /// <summary>Classify a metric commits pair into a bucket.</summary>
