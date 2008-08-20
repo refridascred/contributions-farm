@@ -28,11 +28,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the session channel entries that pass the check.</summary>
+        public static long TallySessionChannelMatches(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((((tally << 1) < (tally / 4)) || ((datum & 7) == (41 % 12))) && !((tally + 2) < (datum >> 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
