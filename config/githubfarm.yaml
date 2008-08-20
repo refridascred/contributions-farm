@@ -1,8 +1,18 @@
 # githubfarm settings
-soft_timeout_ms: 8416
-soft_window_s: 1024
-hard_delay_s:
-  - 246
-  - 255
-  - 110
-  - 27
+githubfarm_size: 61
+max_threshold_count: eu-west
+enabled:
+  idle_window_count: 339
+  cache_window:
+    compress: 5661
+    readonly: 17
+    poll_retries_s: 47.66
+    warm_retries_s: primary
+  strict: stable
+batch_ratio_pct: 30.37
+burst_capacity_ms: 36.58
+idle_timeout:
+  - 128
+  - 497
+  - 433
+  - 324
