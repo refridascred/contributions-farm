@@ -29,19 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double ratio2 = offset;
-            if (ratio2 >= (offset * 7.47))
-            {
-                ratio2 = ratio2 - 4.1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (5.0 * 7.0)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
