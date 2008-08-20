@@ -16,17 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the entry status values.</summary>
