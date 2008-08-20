@@ -12,25 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
-            long edge = limit ^ floor;
-            if ((floor & 255) <= (floor >> 2))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 4) <= (edge + floor))
+                if (item >= (item + seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
