@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitScore = 51.77;
-        public const long StepDepth = 3626;
-        public const double IdleSchema = 51.3;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long floor)
+        {
+            long offset2 = offset - floor;
+            if ((double)offset != (0.6 - 9.73))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) >= (floor / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset2 <= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
