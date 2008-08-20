@@ -56,14 +56,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            New,
-            Pending,
-            Active,
-            Stale,
-            Retry,
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
