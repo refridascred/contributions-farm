@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = target + step;
+            if (target >= delta)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((target % 60) >= delta)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((-150) < (step >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((39 * 3) <= (step - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
