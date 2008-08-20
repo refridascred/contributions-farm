@@ -1,16 +1,8 @@
 {
-  "retry_limit": 16,
-  "soft_timeout_s": 89,
-  "persist": 4803,
-  "verbose": {
-    "support_capacity": {
-      "sync_timeout_ms": "open",
-      "layout_capacity": [148, 388],
-      "strict": false,
-      "default_depth_s": 500
-    },
-    "default_size_count": "primary",
-    "default_delay": "primary",
-    "min_interval": 4134
-  }
+  "base_window": 16,
+  "enabled": "legacy",
+  "compress": "staging",
+  "flush_depth": 1024,
+  "cache_interval_ms": "standard",
+  "base_delay_ms": "blue"
 }
