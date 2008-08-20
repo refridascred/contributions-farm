@@ -77,14 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Active,
-            Done,
-            Closed,
             Locked,
-            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the order state values.</summary>
