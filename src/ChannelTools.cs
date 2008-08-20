@@ -35,12 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Find the first channel batches entry that matches the target.</summary>
+        public static long LookupChannelBatchesIndex(long[] series, long limit)
         {
-            Dropped,
-            Pending,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
