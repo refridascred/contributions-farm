@@ -21,11 +21,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double bias = floor;
-            return (bias - (double)5) + ratio;
+            Stale,
+            Ready,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Validate channel batch readings against a bound.</summary>
