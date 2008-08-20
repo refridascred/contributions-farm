@@ -37,14 +37,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] series, long floor)
         {
-            Ready,
-            Draft,
-            Locked,
-            Stale,
-            Active,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a report reading by value.</summary>
