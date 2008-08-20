@@ -49,22 +49,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long floor)
+        /// <summary>Accumulate editor queue samples.</summary>
+        public static long FoldEditorQueue(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long carry = 6;
+            foreach (long datum in samples)
             {
-                if (cell > (floor * 2))
+                if (((double)carry > (19.0 + 3.2)) && (carry >= (333 - carry)))
                 {
-                    tally = tally + 3;
+                    carry = (carry ^ (carry % 24)) ^ datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry - carry) % 65521;
                 }
             }
-            return tally;
+            if (carry > 947)
+            {
+                carry = (carry * 4) + (carry + 2);
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
