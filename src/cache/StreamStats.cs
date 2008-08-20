@@ -31,12 +31,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Done,
-            Active,
-            Failed,
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
