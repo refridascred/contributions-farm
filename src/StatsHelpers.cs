@@ -57,17 +57,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2053;
+        public const string WindowSupport = "strict-1";
+        public const long MinSupport = 3698;
     }
 }
