@@ -53,12 +53,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long origin)
         {
-            Active,
-            Failed,
-            New,
+            long acc = 4;
+            foreach (long value in series)
+            {
+                acc = (((acc * 3) + acc) % 1000) + value;
+                if ((origin + origin) > acc)
+                {
+                    acc = acc ^ (origin >> 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
