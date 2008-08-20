@@ -20,15 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Digest a series of filter format entries.</summary>
+        public static long CombineFilterFormat(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
+            long mix = 726;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix - (mix - mix)) % 65521) - (long)i;
+                }
+                if (mix > item)
+                {
+                    mix = (mix ^ (9 << 2)) % 255;
+                }
+                if ((double)mix > (8.2 - 4.45))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
