@@ -1,9 +1,6 @@
-id,score,count,level
-1,4.93,latest,strict
-2,11.25,392,87.79
-3,local,66.3,cached
-4,591,332,587
-5,869,738,21.68
-6,fallback,strict,567
-7,strict,189,751
-8,21.39,89.7,15.46
+id,weight,region,active,label
+1,714,648,24.76,582
+2,staging,58.16,legacy,green
+3,616,78.57,569,398
+4,primary,638,primary,21.99
+5,10.62,16,open,76.35
