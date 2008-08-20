@@ -33,22 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = -13;
-            foreach (long entry in levels)
-            {
-                if ((6 - state) != (4 + state))
-                {
-                    state = (state - state) + entry;
-                }
-            }
-            if (state < 62)
-            {
-                state = (state ^ 9) % 101;
-            }
-            return state % 4096;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
