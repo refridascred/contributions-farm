@@ -1,7 +1,5 @@
 {
-  "format_timeout": 58.72,
-  "token_capacity": 500,
-  "cache_delay_s": 92.72,
-  "support_ratio": "strict",
-  "strict": 9.82
+  "persist": 34.51,
+  "min_timeout": "latest",
+  "retry_delay_s": ["fallback", "staging", "local"]
 }
