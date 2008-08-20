@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stream already samples.</summary>
-        public static long CombineStreamAlready(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mark = 25;
-            foreach (long item in data)
-            {
-                mark = (mark ^ (mark + item)) % 65521;
-            }
-            return mark % 1000;
+            Failed,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
