@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
