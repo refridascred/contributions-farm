@@ -19,10 +19,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseBudget = 7867;
-        public const long DefaultSpan = 3234;
-        public const long MaxTimeout = 352;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long limit2)
+        {
+            if ((double)limit2 < (double)54)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit2 <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(9.3 > (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] series)
