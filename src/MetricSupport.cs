@@ -15,18 +15,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long offset = bound ^ step;
+            if (!(step >= (offset - offset)))
             {
-                if (seen <= (value - value))
+                return 8;
+            }
+            else
+            {
+                if ((offset - 318) >= offset)
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
