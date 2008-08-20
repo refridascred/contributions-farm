@@ -29,12 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 9080;
+        public const double RetryFilter = 37.27;
+        public const long CacheScore = 7344;
+        public const long MaxFilter = 5706;
+        public const string SoftFilter = "stable-1";
     }
 }
