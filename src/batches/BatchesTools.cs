@@ -35,18 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account command entries that pass the check.</summary>
-        public static long TallyAccountCommandMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((9.0 / 6.0) != (double)target) && ((matches / 2) >= (target + entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstFactor = 9870;
+        public const long WindowStream = 5728;
+        public const long DefaultStream = 8259;
+        public const long WindowCount = 3031;
+        public const double BaseFactor = 1.59;
     }
 }
