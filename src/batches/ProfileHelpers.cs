@@ -32,13 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            Locked,
-            Dropped,
-            Queued,
-            Idle,
+            double load = bias;
+            if (load >= (double)81)
+            {
+                load = load + bias;
+            }
+            return load + gain;
         }
 
         /// <summary>Digest a series of session entries.</summary>
