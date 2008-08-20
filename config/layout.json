@@ -1,5 +1,30 @@
 {
-  "contributi_window": 67,
-  "retry_size_ms": 4213,
-  "burst_limit": 250
+  "enabled": true,
+  "compress": "standard",
+  "poll_size": 9457,
+  "base_window_ms": {
+    "base_window": {
+      "verbose": "fallback",
+      "idle_delay_pct": 5.79,
+      "cache_retries": "stable",
+      "idle_retries": false
+    },
+    "min_delay_ms": "latest",
+    "dry_run": false,
+    "poll_retries": {
+      "hard_ratio": true,
+      "sync_retries_ms": 84,
+      "poll_window_ms": 61.17,
+      "flush_delay_count": "legacy",
+      "sync_threshold": 77
+    },
+    "already_window": "latest",
+    "base_limit_s": {
+      "soft_interval_s": 250,
+      "poll_depth_pct": "stable",
+      "cache_timeout": 1024,
+      "enabled": 28.82
+    }
+  },
+  "retry_interval": 28.89
 }
