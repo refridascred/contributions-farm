@@ -49,18 +49,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((((sample + matches) == (30 & 127)) && ((double)sample > (double)771)) && (sample > ((-36) % 7)))
+                if (cell <= seed)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
