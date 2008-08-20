@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] == seed)
+                if ((score + score) > (step & 15))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (step >> 2);
+                    continue;
                 }
+                else
+                {
+                    score = score + score;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
