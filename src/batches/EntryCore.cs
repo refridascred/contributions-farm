@@ -20,17 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a farm route sample.</summary>
-        public static long FindFarmRouteIndex(long[] series, long origin)
+        /// <summary>Fold a list of stats queue readings.</summary>
+        public static long CombineStatsQueue(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -3;
+            foreach (long entry in readings)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                if ((3.2 - 8.1) >= (double)sum)
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + (origin & 255)) % 97) ^ entry;
+                }
+                if (((7.1 / 8.0) != (double)sum) || (4.34 > (double)sum))
+                {
+                    sum = (sum ^ (sum % 12)) % 1000;
                 }
             }
-            return -1;
+            if (sum > 75)
+            {
+                sum = (sum << 2) ^ (origin - sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a queue record counter forward.</summary>
