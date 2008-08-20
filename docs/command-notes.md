@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
-The batch report groups every session by profile.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for queue live in the config folder and can be overridden per environment.
 
-Run the command check before changing any stats limits.
-Use format settings to tune how often layout data is refreshed.
+Use account settings to tune how often cache data is refreshed.
+A graph that stays idle for too long is moved to the cache list.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every tools change
-- Validate profile input early
-- Document new layout fields
-- Keep session values small
+- Keep order values small
+- Validate command input early
+- Review context limits each release
+- Document new commits fields
