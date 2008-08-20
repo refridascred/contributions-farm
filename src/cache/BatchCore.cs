@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
+        public static long TallyGithubfarmWindowMatches(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!((998 ^ seed) != (seed + (long)i)))
+                if ((reading & 255) <= (reading + tally))
                 {
-                    mark = ((mark * 5) + mark) % 65521;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
