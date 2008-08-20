@@ -13,11 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmStreamBounds(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
