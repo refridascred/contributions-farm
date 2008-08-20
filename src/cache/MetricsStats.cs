@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Iterate the stats stream series from a seed.</summary>
+        public static long IterateStatsStream(long step)
         {
-            double rate = (double)((-59) - 4);
-            for (int i = 0; i < 7; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                rate = ((rate + offset) + (double)(long)i) - gain;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return rate - 5.1;
+            return state;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
