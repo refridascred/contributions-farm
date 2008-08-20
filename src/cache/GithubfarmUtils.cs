@@ -25,11 +25,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepCount = 3420;
-        public const long WindowPayload = 8795;
-        public const long MinLevel = 5151;
-        public const long LimitRatio = 9549;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSpan = "legacy-v2";
+        public const long StepContext = 2309;
+        public const double RetryDepth = 61.46;
+        public const long MaxFactor = 3583;
+        public const string DefaultContext = "local-edge";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] levels, long limit)
