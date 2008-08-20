@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmStreamBounds(long[] samples, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
