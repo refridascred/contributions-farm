@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long carry = 161;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry << 3) <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry - (origin ^ origin)) % 255) - cell;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry * 5) + (origin / 5);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
