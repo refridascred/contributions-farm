@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Size { get; set; }
             public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
