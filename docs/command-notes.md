@@ -1,10 +1,16 @@
 # Command notes
 
-Each payload is validated before it reaches the context queue.
-Defaults for order live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The account helpers are pure functions, so they are safe to call from any thread.
+The account helpers are pure functions, so they are safe to call from any thread.
+
+When a account fails, the already handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Use entry settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every tools change
-- Prefer graph defaults
+- Prefer stats defaults
+- Log every commits change
+- Keep entry values small
+- Document new account fields
