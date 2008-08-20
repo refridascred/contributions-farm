@@ -16,31 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long limit2)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long origin)
         {
-            if ((double)limit2 < (double)54)
+            long anchor = 9;
+            foreach (long reading in values)
             {
-                return 5;
+                anchor = ((((anchor * 3) + (anchor - anchor)) % 101) + reading) + origin;
             }
-            else
-            {
-                if ((double)limit2 <= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(9.3 > (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
