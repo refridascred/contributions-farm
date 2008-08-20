@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 9677;
-        public const long IdleAlready = 319;
-        public const double BurstAlready = 48.64;
-        public const double RetryTimeout = 2.81;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 4347;
+        public const long CacheTimeout = 8334;
+        public const long MaxContext = 3289;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long bound)
