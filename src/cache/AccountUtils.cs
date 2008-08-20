@@ -19,32 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long offset)
-        {
-            if (step >= 38)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.5 + 1.83) != (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseBudget = 7867;
+        public const long DefaultSpan = 3234;
+        public const long MaxTimeout = 352;
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] values)
