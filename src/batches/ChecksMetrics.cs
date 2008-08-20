@@ -19,19 +19,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] samples, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long anchor = 516;
+            foreach (long reading in data)
             {
-                if (value != limit)
+                if (((reading + 0) < anchor) || ((double)reading < (6.1 - 17.0)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor << 2) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor / 9)) % 255;
                 }
             }
-            return ok;
+            if (anchor < 31)
+            {
+                anchor = (anchor - (821 * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
