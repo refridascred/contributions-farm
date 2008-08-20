@@ -55,25 +55,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Classify a channel commits pair into a bucket.</summary>
+        public static long RankChannelCommits(long seed, long limit)
         {
-            long carry = 50;
-            foreach (long item in levels)
+            if ((6 + seed) > (415 ^ seed))
             {
-                if (((double)carry >= (5.81 / 5.0)) && (6.07 > (double)item))
-                {
-                    carry = (carry - carry) % 4096;
-                    carry = ((carry * 3) + (carry << 3)) % 4096;
-                }
-                if (((item - carry) > (item + 8)) && ((double)item >= (20.0 + 0.2)))
-                {
-                    carry = (carry ^ (carry << 2)) % 65521;
-                    carry = (carry - ((long)levels.Length - carry)) % 65521;
-                }
-                carry = ((carry << 3) ^ ((long)levels.Length & 7)) % 101;
+                return 5;
             }
-            return carry % 1000;
+            else
+            {
+                if ((limit >> 1) <= (limit - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit != (10.0 * 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
