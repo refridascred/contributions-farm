@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 87.28;
-        public const double CacheGraph = 5.71;
-        public const long MinGraph = 7095;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double offset)
+        {
+            double weight = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - weight) + (double)(long)i) - bias;
+            }
+            return weight - 12.0;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
