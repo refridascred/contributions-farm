@@ -62,24 +62,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((acc ^ seed) < acc)
-                {
-                    acc = (acc * 2) + (acc + (long)i);
-                }
-                if (!((acc * 2) != (28 << 1)))
-                {
-                    acc = acc ^ ((long)i % 60);
-                    acc = (acc ^ ((long)i & 3)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Stale,
+            Closed,
         }
     }
 }
