@@ -23,13 +23,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings, long target)
         {
-            Failed,
-            Queued,
-            Locked,
-            Draft,
+            long sum = 6;
+            foreach (long entry in readings)
+            {
+                sum = sum ^ (target << 3);
+                sum = sum ^ (entry + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
