@@ -43,12 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Idle,
-            Retry,
-            Dropped,
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
