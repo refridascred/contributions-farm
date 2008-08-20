@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long state = 611;
+            foreach (long value in values)
+            {
+                state = (state ^ (state ^ bound)) + value;
+            }
+            if (state < 6)
+            {
+                state = state + (bound - 0);
+            }
+            return state;
         }
 
         /// <summary>Combine context values into a single score.</summary>
