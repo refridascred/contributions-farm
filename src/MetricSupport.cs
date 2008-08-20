@@ -24,19 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
