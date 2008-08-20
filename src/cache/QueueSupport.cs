@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate >= (offset + weight))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + weight;
             }
-            return seen;
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + 6.0) + (double)(long)i;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Describe the commits level values.</summary>
